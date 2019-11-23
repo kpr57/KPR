@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addon
+	id="skin.KPR"
+	version="0.1.0"
+	name="KPR"
+	provider-name="Michel">
+	<requires>
+		<import addon="xbmc.gui" version="5.14.0"/>
+		<import addon="script.skinshortcuts" version="1.0.8"/>
+		<import addon="script.skin.helper.service" version="1.0.11"/>
+		<import addon="script.module.autocompletion" version="1.0.1"/>
+	</requires>
+	<extension
+		point="xbmc.gui.skin"
+		debugging="false"
+		effectslowdown="1.0">
+		<res width="1920" height="1080" aspect="16:9" default="true" folder="xml" />
+		<res width="1920" height="1200" aspect="16:10" default="false" folder="xml" />
+		<res width="1920" height="1280" aspect="3:2" default="false" folder="xml" />
+		<res width="1920" height="1440" aspect="4:3" default="false" folder="xml" />
+		<res width="2040" height="1080" aspect="17:9" default="false" folder="xml" />
+		<res width="2560" height="1080" aspect="21:9" default="false" folder="xml" />
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary lang="en_AU">A new skin for Kodi par Michel</summary>
+		<summary lang="en_GB">A new skin for Kodi par Michel</summary>
+		<summary lang="en_NZ">A new skin for Kodi par Michel</summary>
+		<summary lang="en_US">A new skin for Kodi par Michel</summary>
+		<description lang="en_AU">Simple et efficace</description>
+		<description lang="en_GB">Simple et efficace</description>
+		<description lang="en_NZ">Simple et efficace</description>
+		<description lang="en_US">Simple et efficace</description>
+		<disclaimer lang="en_AU"></disclaimer>
+		<disclaimer lang="en_GB"></disclaimer>
+		<disclaimer lang="en_NZ"></disclaimer>
+		<disclaimer lang="en_US"></disclaimer>
+		<license></license>
+		<forum></forum>
+		<source></source>
+		<platform>all</platform>
+	<assets>
+		<screenshot>ressources/screenshot01.png</screenshot>
+		<screenshot>ressources/screenshot02.png</screenshot>
+		<screenshot>ressources/screenshot03.png</screenshot>
+		<screenshot>ressources/screenshot04.png</screenshot>
+		<screenshot>ressources/screenshot05.png</screenshot>
+		<screenshot>ressources/screenshot06.png</screenshot>
+		<screenshot>ressources/screenshot07.png</screenshot>
+		<screenshot>ressources/screenshot08.png</screenshot>
+		<screenshot>ressources/screenshot09.png</screenshot>
+		<screenshot>ressources/screenshot10.png</screenshot>
+		<screenshot>ressources/screenshot11.png</screenshot>
+		<screenshot>ressources/screenshot12.png</screenshot>		
+		<screenshot>ressources/screenshot13.png</screenshot>
+		<screenshot>ressources/screenshot14.png</screenshot>
+		<screenshot>ressources/screenshot15.png</screenshot>
+		<screenshot>ressources/screenshot16.png</screenshot>
+		<screenshot>ressources/screenshot17.png</screenshot>
+		<screenshot>ressources/screenshot18.png</screenshot>
+		<screenshot>ressources/screenshot19.png</screenshot>
+		<screenshot>ressources/screenshot20.png</screenshot>
+		<screenshot>ressources/screenshot21.png</screenshot>
+		<screenshot>ressources/screenshot22.png</screenshot>
+	</assets>
+	</extension>
+</addon>
