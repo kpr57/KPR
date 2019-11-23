@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>	
+	<backgroundcolor>00X000000</backgroundcolor>
+	<zorder>10</zorder>
+	<onload>control.setFocus(8)</onload>	
+<controls>
+	<control type="group">
+		<animation effect="fade" start="0" end="100" time="150" delay="150" reversible="false">windowopen</animation>
+		<animation effect="fade" start="100" end="0" time="250" reversible="false">windowclose</animation>
+	<include>arriere_plan</include>	
+	<control type="image">
+		<texture>calibration/fond.jpg</texture>		
+		<visible>!player.hasvideo</visible>
+	</control>
+	<include content="masque_fond">																												<description>masque fond si fanart</description>						
+	</include>
+	<control type="group">
+		<visible>control.hasFocus(8) | control.hasFocus(9)</visible>	
+	<control type="mover" id="8">
+		<width>128</width>
+		<height>128</height>
+		<texturefocus colordiffuse="ffc0392b">calibration/haut_gauche.png</texturefocus>
+		<texturenofocus>calibration/haut_gauche.png</texturenofocus>
+	</control>	
+	<control type="mover" id="9">
+		<width>128</width>
+		<height>128</height>
+		<texturefocus colordiffuse="ffc0392b">calibration/bas_droit.png</texturefocus>
+		<texturenofocus>calibration/bas_droit.png</texturenofocus>
+	</control>
+	</control>
+	<control type="mover" id="10">
+		<left>200</left>
+		<top>500</top>
+		<width>384</width>
+		<height>128</height>
+		<texturefocus border="41" colordiffuse="ffc0392b">calibration/centre.png</texturefocus>
+		<texturenofocus border="41" colordiffuse="ffc0392b">calibration/centre.png</texturenofocus>
+		<visible>control.hasFocus(10)</visible>
+	</control>
+	<control type="resize" id="11">
+		<top>390</top>
+		<width>500</width>
+		<height>500</height>
+		<pulseonselect>no</pulseonselect>
+		<texturefocus colordiffuse="ffc0392b" border="100">calibration/centre.png</texturefocus>
+		<texturenofocus colordiffuse="ffc0392b" border="100">calibration/centre.png</texturenofocus>
+		<pulseonselect>no</pulseonselect>		
+		<visible>control.hasFocus(11)</visible>
+	</control>
+	<control type="label" id="2">
+		<top>150</top>
+		<width>100%</width>
+		<align>center</align>
+		<font>titre</font>
+	</control>
+	<control type="label" id="3">
+		<top>210</top>
+		<width>100%</width>
+		<align>center</align>
+		<font>titre</font>
+	</control>
+	</control>
+</controls>
+</window>

@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+	<backgroundcolor>00X000000</backgroundcolor>
+	<include>animation_dialogue</include>
+	<defaultcontrol always="true">300</defaultcontrol>	
+<controls>
+	<include>image_fond</include>
+	<control type="label" id="311">																												<description>titre</description>	
+		<height>140</height>
+		<align>center</align>
+		<font>titre</font>				
+	</control>	
+	<include content="barre_separation_horizontale">																							<description>barre de separation horizontale</description>
+		<param name="left" value="50"/> 
+		<param name="right" value="50"/>
+		<param name="bottom" value="940"/>		
+	</include>	
+	<control type="button">																														<description>texte entré</description>
+		<top>190</top>
+		<centerleft>50%</centerleft>		
+		<width>1180</width>
+		<height>60</height>
+	<include>bouton_clavier</include>
+	</control>
+	<control type="edit" id="312">																												<description>texte entré</description>
+		<top>190</top>
+		<centerleft>50%</centerleft>
+		<width>1180</width>
+		<height>60</height>								
+	</control>	
+	<control type="group">	 																													<description>boutons du clavier</description>
+		<top>280</top>
+		<height>500</height>
+	<control type="grouplist" id="950">																											<description>1ere rangée de boutons</description>
+		<align>center</align>
+		<height>80</height>
+		<width>1920</width>
+		<ondown>951</ondown>
+		<itemgap>20</itemgap>
+		<orientation>horizontal</orientation>	
+	<control type="button" id="100">
+	<include>bouton_clavier</include>
+	</control>
+	<control type="button" id="101">
+	<include>bouton_clavier</include>
+	</control>
+	<control type="button" id="102">
+	<include>bouton_clavier</include>
+	</control>
+	<control type="button" id="103">
+	<include>bouton_clavier</include>
+	</control>
+	<control type="button" id="104">
+	<include>bouton_clavier</include>
+	</control>
+	<control type="button" id="105">
+	<include>bouton_clavier</include>
+	</control>
+	<control type="button" id="106">
+	<include>bouton_clavier</include>
+	</control>
+	<control type="button" id="107">
+	<include>bouton_clavier</include>
+	</control>
+	<control type="button" id="108">
+	<include>bouton_clavier</include>
+	</control>
+	<control type="button" id="109">
+	<include>bouton_clavier</include>
+	</control>
+	<control type="button" id="110">
+	<include>bouton_clavier</include>
+	</control>
+	<control type="button" id="111">
+	<include>bouton_clavier</include>
+	</control>
+	<control type="button" id="112">
+	<include>bouton_clavier</include>
+	</control>	
+	</control>
+	<control type="grouplist" id="951">																											<description>2eme rangée de boutons</description>
+		<align>center</align>
+		<top>80</top>
+		<height>80</height>
+		<width>1920</width>
+		<onup>950</onup>		
+		<ondown>952</ondown>
+		<itemgap>20</itemgap>
+		<orientation>horizontal</orientation>	
+	<control type="button" id="120">
+	<include>bouton_clavier</include>
+	</control>
+	<control type="button" id="121">
+	<include>bouton_clavier</include>
+	</control>
+	<control type="button" id="122">
+	<include>bouton_clavier</include>
+	</control>
+	<control type="button" id="123">
+	<include>bouton_clavier</include>
+	</control>
+	<control type="button" id="124">
+	<include>bouton_clavier</include>
+	</control>
+	<control type="button" id="125">
+	<include>bouton_clavier</include>
+	</control>
+	<control type="button" id="126">
+	<include>bouton_clavier</include>
+	</control>
+	<control type="button" id="127">
+	<include>bouton_clavier</include>
+	</control>
+	<control type="button" id="128">
+	<include>bouton_clavier</include>
+	</control>
+	<control type="button" id="129">
+	<include>bouton_clavier</include>
+	</control>
+	<control type="button" id="130">
+	<include>bouton_clavier</include>
+	</control>
+	<control type="button" id="131">
+	<include>bouton_clavier</include>
+	</control>
+	<control type="button" id="132">
+	<include>bouton_clavier</include>
+	</control>
+	</control>
+	<control type="grouplist" id="952">																											<description>3eme rangée de boutons</description>
+		<align>center</align>
+		<top>160</top>
+		<height>80</height>
+		<width>1920</width>
+		<onup>951</onup>		
+		<ondown>953</ondown>
+		<itemgap>20</itemgap>
+		<orientation>horizontal</orientation>	
+	<control type="button" id="140">
+	<include>bouton_clavier</include>
+	</control>
+	<control type="button" id="141">
+	<include>bouton_clavier</include>
+	</control>
+	<control type="button" id="142">
+	<include>bouton_clavier</include>
+	</control>
+	<control type="button" id="143">
+	<include>bouton_clavier</include>
+	</control>
+	<control type="button" id="144">
+	<include>bouton_clavier</include>
+	</control>
+	<control type="button" id="145">
+	<include>bouton_clavier</include>
+	</control>
+	<control type="button" id="146">
+	<include>bouton_clavier</include>
+	</control>
+	<control type="button" id="147">
+	<include>bouton_clavier</include>
+	</control>
+	<control type="button" id="148">
+	<include>bouton_clavier</include>
+	</control>
+	<control type="button" id="149">
+	<include>bouton_clavier</include>
+	</control>
+	<control type="button" id="150">
+	<include>bouton_clavier</include>
+	</control>
+	<control type="button" id="151">
+	<include>bouton_clavier</include>
+	</control>
+	<control type="button" id="152">
+	<include>bouton_clavier</include>
+	</control>
+	</control>
+	<control type="grouplist" id="953">																											<description>4eme rangée de boutons</description>
+		<align>center</align>
+		<top>240</top>
+		<height>80</height>
+		<width>1920</width>
+		<onup>952</onup>		
+		<ondown>954</ondown>
+		<itemgap>20</itemgap>
+		<orientation>horizontal</orientation>	
+	<control type="button" id="160">
+	<include>bouton_clavier</include>
+	</control>
+	<control type="button" id="161">
+	<include>bouton_clavier</include>
+	</control>
+	<control type="button" id="162">
+	<include>bouton_clavier</include>
+	</control>
+	<control type="button" id="163">
+	<include>bouton_clavier</include>
+	</control>
+	<control type="button" id="164">
+	<include>bouton_clavier</include>
+	</control>
+	<control type="button" id="165">
+	<include>bouton_clavier</include>
+	</control>
+	<control type="button" id="166">
+	<include>bouton_clavier</include>
+	</control>
+	<control type="button" id="167">
+	<include>bouton_clavier</include>
+	</control>
+	<control type="button" id="168">
+	<include>bouton_clavier</include>
+	</control>
+	<control type="button" id="169">
+	<include>bouton_clavier</include>
+	</control>
+	<control type="button" id="170">
+	<include>bouton_clavier</include>
+	</control>
+	<control type="button" id="171">
+	<include>bouton_clavier</include>
+	</control>
+	<control type="button" id="172">
+	<include>bouton_clavier</include>
+	</control>
+	</control>
+	<control type="grouplist" id="954">																											<description>5eme rangée de boutons</description>
+		<align>center</align>
+		<top>320</top>
+		<height>80</height>
+		<width>1920</width>
+		<onup>953</onup>		
+		<ondown>955</ondown>
+		<itemgap>20</itemgap>
+		<orientation>horizontal</orientation>
+	<control type="radiobutton" id="304">
+		<textureradioonfocus colordiffuse="$VAR[gris]">boutons/clavier/letters.png</textureradioonfocus>
+		<textureradioonnofocus>boutons/clavier/letters.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="$VAR[gris]">boutons/clavier/symbols.png</textureradioofffocus>
+		<textureradiooffnofocus>boutons/clavier/symbols.png</textureradiooffnofocus>
+		<radioposx>20</radioposx>
+		<radioposy>10</radioposy>
+		<radiowidth>40</radiowidth>
+		<radioheight>40</radioheight>
+	<include>bouton_clavier</include>
+	</control>
+	<control type="radiobutton" id="303">	
+		<textureradioonfocus colordiffuse="$VAR[gris]">boutons/clavier/capslock.png</textureradioonfocus>
+		<textureradioonnofocus>boutons/clavier/capslock.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="$VAR[gris]">boutons/clavier/capslock.png</textureradioofffocus>
+		<textureradiooffnofocus>boutons/clavier/capslock.png</textureradiooffnofocus>
+		<radioposx>20</radioposx>
+		<radioposy>10</radioposy>
+		<radiowidth>40</radiowidth>
+		<radioheight>40</radioheight>
+	<include>bouton_clavier</include>
+	</control>
+	<control type="radiobutton" id="302">	
+		<textureradioonfocus colordiffuse="$VAR[gris]">boutons/clavier/shift.png</textureradioonfocus>
+		<textureradioonnofocus>boutons/clavier/shift.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="$VAR[gris]">boutons/clavier/shift.png</textureradioofffocus>
+		<textureradiooffnofocus>boutons/clavier/shift.png</textureradiooffnofocus>
+		<radioposx>20</radioposx>
+		<radioposy>10</radioposy>
+		<radiowidth>40</radiowidth>
+		<radioheight>40</radioheight>
+	<include>bouton_clavier</include>
+	</control>
+	<control type="button" id="32">
+		<textoffsetx>10</textoffsetx>		
+		<label>$LOCALIZE[31202]</label>
+		<width>380</width>
+		<height>60</height>
+	<include>bouton_clavier</include>
+	</control>	
+	<control type="radiobutton" id="305">	
+		<textureradioonfocus colordiffuse="$VAR[gris]">boutons/clavier/arrowleft.png</textureradioonfocus>
+		<textureradioonnofocus>boutons/clavier/arrowleft.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="$VAR[gris]">boutons/clavier/arrowleft.png</textureradioofffocus>
+		<textureradiooffnofocus>boutons/clavier/arrowleft.png</textureradiooffnofocus>
+		<radioposx>20</radioposx>
+		<radioposy>10</radioposy>
+		<radiowidth>40</radiowidth>
+		<radioheight>40</radioheight>
+	<include>bouton_clavier</include>
+	</control>
+	<control type="radiobutton" id="306">	
+		<textureradioonfocus colordiffuse="$VAR[gris]">boutons/clavier/arrowright.png</textureradioonfocus>
+		<textureradioonnofocus>boutons/clavier/arrowright.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="$VAR[gris]">boutons/clavier/arrowright.png</textureradioofffocus>
+		<textureradiooffnofocus>boutons/clavier/arrowright.png</textureradiooffnofocus>
+		<radioposx>20</radioposx>
+		<radioposy>10</radioposy>
+		<radiowidth>40</radiowidth>
+		<radioheight>40</radioheight>
+	<include>bouton_clavier</include>
+	</control>
+	<control type="radiobutton" id="8">	
+		<textureradioonfocus colordiffuse="$VAR[gris]">boutons/clavier/backspace.png</textureradioonfocus>
+		<textureradioonnofocus>boutons/clavier/backspace.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="$VAR[gris]">boutons/clavier/backspace.png</textureradioofffocus>
+		<textureradiooffnofocus>boutons/clavier/backspace.png</textureradiooffnofocus>
+		<radioposx>20</radioposx>
+		<radioposy>10</radioposy>
+		<radiowidth>40</radiowidth>
+		<radioheight>40</radioheight>
+	<include>bouton_clavier</include>
+	</control>		
+	</control>
+	<control type="grouplist" id="955">																											<description>boutons de controle</description>
+		<align>center</align>
+		<top>400</top>
+		<height>80</height>
+		<width>1920</width>
+		<onup>954</onup>		
+		<ondown>252</ondown>
+		<itemgap>20</itemgap>
+		<orientation>horizontal</orientation>
+	<control type="radiobutton" id="300">
+		<onfocus>skin.setstring(temp,$INFO[control.getlabel(312).index(1)])</onfocus>
+		<textureradioonfocus colordiffuse="$VAR[gris]">boutons/clavier/valider.png</textureradioonfocus>
+		<textureradioonnofocus>boutons/clavier/valider.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="$VAR[gris]">boutons/clavier/valider.png</textureradioofffocus>
+		<textureradiooffnofocus>boutons/clavier/valider.png</textureradiooffnofocus>
+		<radioposx>20</radioposx>
+		<radioposy>10</radioposy>
+		<radiowidth>40</radiowidth>
+		<radioheight>40</radioheight>
+	<include>bouton_clavier</include>
+	</control>
+	<control type="radiobutton" id="301">
+		<textureradioonfocus colordiffuse="$VAR[gris]">boutons/clavier/annuler.png</textureradioonfocus>
+		<textureradioonnofocus>boutons/clavier/annuler.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="$VAR[gris]">boutons/clavier/annuler.png</textureradioofffocus>
+		<textureradiooffnofocus>boutons/clavier/annuler.png</textureradiooffnofocus>
+		<radioposx>20</radioposx>
+		<radioposy>10</radioposy>
+		<radiowidth>40</radiowidth>
+		<radioheight>40</radioheight>
+	<include>bouton_clavier</include>
+	</control>
+	<control type="radiobutton" id="307">	
+		<textureradioonfocus colordiffuse="$VAR[gris]">boutons/clavier/ip.png</textureradioonfocus>
+		<textureradioonnofocus>boutons/clavier/ip.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="$VAR[gris]">boutons/clavier/ip.png</textureradioofffocus>
+		<textureradiooffnofocus>boutons/clavier/ip.png</textureradiooffnofocus>
+		<radioposx>20</radioposx>
+		<radioposy>10</radioposy>
+		<radiowidth>40</radiowidth>
+		<radioheight>40</radioheight>
+	<include>bouton_clavier</include>
+	</control>
+	<control type="button" id="309">
+		<textoffsetx>20</textoffsetx>		
+		<width min="280">auto</width>		
+	<include>bouton_clavier</include>
+	</control>
+	</control>
+	</control>
+	<include content="barre_separation_horizontale">																							<description>barre de separation horizontale</description>
+		<param name="left" value="50"/> 
+		<param name="right" value="50"/>
+		<param name="bottom" value="300"/>		
+	</include>	
+	<control type="panel">																														<description>cases du panneau de suggestions</description>
+		<left>30</left>
+		<bottom>30</bottom>
+		<width>1920</width>
+		<height>240</height>
+		<onup>955</onup>
+		<scrolltime tween="Linear" easing="in">200</scrolltime>
+		<orientation>vertical</orientation>		
+	<itemlayout width="620" height="80">
+	<control type="button">	
+	<include content="bouton">
+		<param name="width" value="590"/> 
+		<param name="height" value="60"/>
+		<param name="align" value="center"/>	
+	</include>
+	</control>		
+	</itemlayout>
+	<focusedlayout width="620" height="80">
+	<control type="button">	
+	<include content="bouton">
+		<param name="width" value="590"/> 
+		<param name="height" value="60"/>
+		<param name="align" value="center"/>	
+	</include>
+	</control>	
+	</focusedlayout>
+	<content>
+	<item><label></label></item>
+	<item><label></label></item>
+	<item><label></label></item>
+	<item><label></label></item>
+	<item><label></label></item>
+	<item><label></label></item>
+	<item><label></label></item>
+	<item><label></label></item>
+	<item><label></label></item>
+	<item><label></label></item>	
+	</content>
+	</control>
+	<control type="panel" id="252">																												<description>panneau de suggestions</description>
+		<left>30</left>
+		<bottom>30</bottom>
+		<width>1920</width>
+		<height>240</height>
+		<onup>955</onup>
+		<scrolltime tween="Linear" easing="in">200</scrolltime>
+		<orientation>vertical</orientation>		
+	<itemlayout width="620" height="80">	
+	<control type="label">		
+		<width>600</width>
+		<height>60</height>
+		<align>center</align>
+		<textoffsetx>10</textoffsetx>
+		<label>$INFO[ListItem.Label]</label>		
+	</control>		
+	</itemlayout>
+	<focusedlayout width="620" height="80">
+	<control type="button">	
+	<include content="bouton">
+		<param name="width" value="600"/> 
+		<param name="height" value="60"/>
+		<param name="align" value="center"/>	
+	</include>
+	</control>
+	<control type="label">		
+		<width>600</width>
+		<height>60</height>
+		<align>center</align>
+		<textoffsetx>10</textoffsetx>
+		<textcolor>$VAR[gris]</textcolor>		
+		<label>$INFO[ListItem.Label]</label>
+		<scroll>true</scroll>		
+	</control>
+	</focusedlayout>
+		<content>$VAR[suggestion_clavier]</content>
+	</control>
+</controls>
+</window>

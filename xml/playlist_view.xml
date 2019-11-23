@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<includes>
+    <backgroundcolor>00X000000</backgroundcolor>
+	<defaultcontrol always="true">500</defaultcontrol>
+	<include name="playlist">
+	<control type="panel" id="500">																												<description>liste</description>
+		<viewtype label="playlist">playlist</viewtype>
+		<scrolltime tween="Linear" easing="in">250</scrolltime>				
+		<bottom>25</bottom>		
+		<left>268</left>
+		<right>-1</right>
+		<height>110</height>
+		<onup>action(close)</onup>
+		<ondown>action(close)</ondown>
+        <orientation>horizontal</orientation>			
+	<itemlayout width="551" height="110">    	
+	<control type="image">																														<description>fond nom de chaine et date</description>		
+		<width>550</width>
+		<texture colordiffuse="$VAR[1dialogue_panneau]">fenetres/texture.png</texture>			
+	</control>
+	<control type="label">
+		<top>10</top>
+		<width>550</width>
+		<height>30</height>
+		<font>texte_moyen</font>
+		<aligny>center</aligny>
+		<align>center</align>
+		<textcolor>$VAR[1dialogue_bouton_texte]</textcolor>
+		<selectedcolor>$VAR[1selection_osd]</selectedcolor>
+		<textoffsetx>5</textoffsetx>
+		<label>[B]$INFO[ListItem.album] ([LOWERCASE]$LOCALIZE[31169][/LOWERCASE] $INFO[ListItem.TrackNumber])[/B]</label>						
+	</control>
+	<control type="label">
+		<top>40</top>
+		<width>550</width>
+		<height>30</height>
+		<font>texte_moyen</font>
+		<aligny>center</aligny>
+		<align>center</align>
+		<textcolor>$VAR[1dialogue_bouton_texte]</textcolor>
+		<selectedcolor>$VAR[1dialogue_bouton_texte]</selectedcolor>
+		<textoffsetx>5</textoffsetx>
+		<label>$INFO[ListItem.title]</label>				
+	</control>
+	<control type="label">
+		<top>70</top>
+		<width>550</width>
+		<height>30</height>
+		<font>texte_moyen</font>
+		<aligny>center</aligny>
+		<align>center</align>
+		<textcolor>$VAR[1dialogue_bouton_texte]</textcolor>
+		<selectedcolor>$VAR[1dialogue_bouton_texte]</selectedcolor>
+		<textoffsetx>5</textoffsetx>
+		<label>[B]$INFO[ListItem.Artist][/B]</label>				
+	</control>
+	</itemlayout>
+    <focusedlayout width="551" height="110">				
+	<control type="image">
+		<width>550</width>
+		<texture colordiffuse="$VAR[1selection_osd]">fenetres/texture.png</texture>
+	</control>
+	<control type="label">
+		<top>10</top>
+		<width>550</width>
+		<height>30</height>
+		<font>texte_moyen</font>
+		<aligny>center</aligny>
+		<align>center</align>
+		<textcolor>$VAR[1dialogue_bouton_texte_focus]</textcolor>
+		<textoffsetx>5</textoffsetx>
+		<label>[B]$INFO[ListItem.album] ([LOWERCASE]$LOCALIZE[31169][/LOWERCASE] $INFO[ListItem.TrackNumber])[/B]</label>				
+	</control>
+	<control type="label">
+		<top>40</top>
+		<width>550</width>
+		<height>30</height>
+		<font>texte_moyen</font>
+		<aligny>center</aligny>
+		<align>center</align>
+		<textcolor>$VAR[1dialogue_bouton_texte_focus]</textcolor>
+		<textoffsetx>5</textoffsetx>
+		<label>$INFO[ListItem.title]</label>				
+	</control>
+	<control type="label">
+		<top>70</top>
+		<width>550</width>
+		<height>30</height>
+		<font>texte_moyen</font>
+		<aligny>center</aligny>
+		<align>center</align>
+		<textcolor>$VAR[1dialogue_bouton_texte_focus]</textcolor>
+		<textoffsetx>5</textoffsetx>
+		<label>[B]$INFO[ListItem.Artist][/B]</label>				
+	</control>
+    </focusedlayout>
+    </control>
+	</include>
+</includes>

@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+	<backgroundcolor>00X000000</backgroundcolor>
+	<defaultcontrol always="true">8000</defaultcontrol>
+<include>animation_dialogue</include>
+<controls>	
+	<include content="masque_fond"></include>		
+	<control type="group">
+		<centertop>50%</centertop>
+		<centerleft>50%</centerleft>
+		<height>690</height>																													<description>((60 + 1) * nombre de boutons) + 18</description>	
+		<width>1053</width>		
+	<include>panneau_dialogue</include>		
+	<control type="label">																														<description>titre de la fenetre</description>
+		<centerleft>50%</centerleft>
+		<width>1000</width>
+		<height>126</height>
+		<font>titre</font>
+		<textcolor>$VAR[gris]</textcolor>
+		<align>center</align>
+		<scroll>true</scroll>
+		<label>$LOCALIZE[31177]</label>
+	</control>
+	<control type="group">
+		<top>126</top>
+		<left>14</left>
+		<right>14</right>
+		<bottom>14</bottom>
+	<control type="panel" id="11">																												<description>liste des signets</description>
+		<top>0</top>		
+		<bottom>0</bottom>		
+		<right>290</right>		
+		<onright>60</onright>
+		<onleft>noop</onleft>		
+		<pagecontrol>60</pagecontrol>
+		<orientation>vertical</orientation>		
+		<scrolltime tween="linear" easing="out">250</scrolltime>
+	<itemlayout height="270" width="365">
+	<control type="image">
+		<top>80</top>
+		<width>360</width>
+		<height>202</height>
+		<aspectratio>scale</aspectratio>
+		<texture fallback="fenetres/noimage.png">$INFO[ListItem.Icon]</texture>
+		<visible>!string.isEmpty(ListItem.Icon)</visible>
+	</control>
+	<control type="image">
+		<top>80</top>
+		<width>360</width>
+		<height>202</height>
+		<aspectratio>scale</aspectratio>
+		<texture>fenetres/noimage.png</texture>
+		<visible>string.isEmpty(ListItem.Icon)</visible>
+	</control>	
+	<control type="label">																														<description>titre du signet</description>
+		<top>16</top>
+		<width>360</width>
+		<height>60</height>
+		<font>texte_moyen</font>
+		<align>center</align>
+		<aligny>center</aligny>
+		<textcolor>$VAR[gris]</textcolor>
+		<label>$INFO[ListItem.Label] · $INFO[ListItem.Label2]</label>
+	</control>	
+	</itemlayout>
+	<focusedlayout height="270" width="365">	
+	<control type="image">
+		<top>80</top>
+		<width>360</width>
+		<height>202</height>
+		<aspectratio>scale</aspectratio>
+		<texture fallback="fenetres/noimage.png">$INFO[ListItem.Icon]</texture>
+		<visible>!string.isEmpty(ListItem.Icon)</visible>
+	</control>
+	<control type="image">
+		<top>80</top>
+		<width>360</width>
+		<height>202</height>
+		<aspectratio>scale</aspectratio>
+		<texture>fenetres/noimage.png</texture>
+		<visible>string.isEmpty(ListItem.Icon)</visible>
+	</control>	
+	<control type="image">
+		<top>16</top>
+		<width>360</width>
+		<height>60</height>
+		<aspectratio>scale</aspectratio>
+		<texture colordiffuse="$VAR[selection_dialogue]">fenetres/texture.png</texture>
+		<visible>control.hasFocus(11)</visible>
+	</control>
+	<control type="label">																														<description>titre du signet</description>
+		<top>16</top>
+		<width>360</width>
+		<height>60</height>
+		<font>texte_moyen</font>
+		<align>center</align>
+		<aligny>center</aligny>
+		<textcolor>$VAR[blanc]</textcolor>
+		<label>$INFO[ListItem.Label] · $INFO[ListItem.Label2]</label>
+	</control>		
+	</focusedlayout>
+	</control>
+	<control type="image">           																											<description>separation gauche</description>
+		<top>-2</top>
+		<bottom>-2</bottom>
+		<right>294</right>
+		<width>1</width>
+		<aspectratio>scale</aspectratio>
+		<texture colordiffuse="80808080">fenetres/texture.png</texture>	
+	</control>	
+	<control type="scrollbar" id="60">																											<description>image scrollbar</description>
+		<top>0</top>
+		<bottom>0</bottom>
+		<right>292</right>
+		<width>5</width>		
+		<onleft>11</onleft>
+		<onright>8000</onright>
+		<texturesliderbackground></texturesliderbackground>		
+		<texturesliderbar colordiffuse="00ffffff">fenetres/texture.png</texturesliderbar>
+		<textureslidernib colordiffuse="00ffffff">fenetres/texture.png</textureslidernib>
+		<texturesliderbarfocus colordiffuse="ffffffff">fenetres/texture.png</texturesliderbarfocus>
+		<textureslidernibfocus colordiffuse="$VAR[selection_dialogue]">fenetres/texture.png</textureslidernibfocus>
+		<showonepage>false</showonepage>		
+	</control>	
+	<control type="grouplist" id="8000">																										<description>liste boutons</description>	
+		<right>0</right>
+		<width>290</width>
+		<itemgap>1</itemgap>
+		<onleft>60</onleft>
+		<orientation>vertical</orientation>		
+	<control type="button" id="2">																												
+		<width>290</width>
+		<align>center</align>
+		<aligny>center</aligny>
+	<include content="dialogue_bouton">
+		<param name="label" value="$LOCALIZE[31178]"/>
+	</include>		
+	</control>
+	<control type="button" id="3">																												
+		<width>290</width>
+		<align>center</align>
+		<aligny>center</aligny>
+	<include content="dialogue_bouton">
+		<param name="label" value="$LOCALIZE[31179]"/>
+	</include>		
+	</control>
+	<control type="button" id="4">																												
+		<width>290</width>
+		<align>center</align>
+		<aligny>center</aligny>
+	<include content="dialogue_bouton">
+		<param name="label" value="$LOCALIZE[31180]"/>
+	</include>		
+	</control>	
+	<control type="button" id="30">																												
+		<width>290</width>
+		<align>center</align>
+		<aligny>center</aligny>
+		<onclick>action(close)</onclick>
+	<include content="dialogue_bouton">
+		<param name="label" value="$LOCALIZE[31176]"/>
+	</include>		
+	</control>	
+	</control>			
+	</control>
+	</control>	
+</controls>
+</window>

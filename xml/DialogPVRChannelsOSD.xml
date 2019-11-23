@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+	<backgroundcolor>00X000000</backgroundcolor>
+	<onload>Action(Close)</onload>
+	<onload>ActivateWindow(tvchannels)</onload>	
+<controls>		
+</controls>
+</window>

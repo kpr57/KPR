@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fonts>
+	<fontset id="Default" unicode="true">
+	<font>
+		<name>texte_infos</name>
+		<filename>OpenSans-SemiBold.ttf</filename>
+		<size>23</size>
+	</font>
+	<font>
+		<name>label_parametres</name>
+		<filename>OpenSans-SemiBold.ttf</filename>
+		<style>uppercase</style>
+		<size>26</size>
+	</font>
+	
+	<font>
+		<name>menu</name>
+		<filename>NotoSans-Bold.ttf</filename>
+		<size>28</size>
+	</font>		
+	<font>
+		<name>gros_titre</name>
+		<filename>arial.ttf</filename>
+		<style>bold</style>	
+		<size>40</size>
+	</font>
+	<font>
+		<name>resume</name>
+		<filename>arial.ttf</filename>
+		<size>35</size>
+	</font>
+	<font>
+		<name>titre</name>
+		<filename>arial.ttf</filename>
+		<size>28</size>
+	</font>	
+	<font>
+		<name>titre_fenetre</name>
+		<filename>arial.ttf</filename>
+		<style>bold</style>			
+		<size>28</size>
+	</font>	
+	<font>
+		<name>label</name>
+		<filename>arial.ttf</filename>
+		<size>26</size>
+	</font>
+	<font>
+		<name>infos</name>
+		<filename>arial.ttf</filename>
+		<size>22</size>
+	</font>
+	<font>
+		<name>texte</name>
+		<filename>arial.ttf</filename>
+		<size>24</size>
+	</font>
+	<font>
+		<name>bouton</name>
+		<filename>arial.ttf</filename>
+		<size>18</size>
+	</font>
+	<font>
+		<name>petit_texte</name>
+		<filename>arial.ttf</filename>
+		<size>18</size>
+	</font>	
+	<font>
+		<name>pseudo_music</name>
+		<filename>arial.ttf</filename>
+		<size>9</size>
+	</font>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<font>
+		<name>textebold</name>
+		<filename>arial.ttf</filename>
+		<style>bold</style>	
+		<size>22</size>
+	</font>
+	<font>
+		<name>texte2</name>
+		<filename>arial.ttf</filename>
+		<size>18</size>
+	</font>
+	<font>
+		<name>texte2bold</name>
+		<filename>arial.ttf</filename>
+		<style>bold</style>	
+		<size>18</size>
+	</font>
+	<font>
+		<name>texte3</name>
+		<filename>arial.ttf</filename>
+		<size>16</size>
+	</font>	
+	<font>
+		<name>label2</name>
+		<filename>good times rg.ttf</filename>
+		<size>25</size>
+	</font>	
+	<font>
+		<name>label3</name>
+		<filename>good times rg.ttf</filename>
+		<size>20</size>
+	</font>		
+	<font>
+		<name>label3_special</name>
+		<filename>arial.ttf</filename>
+		<size>25</size>
+	</font>	
+	<font>
+		<name>label4</name>
+		<filename>good times rg.ttf</filename>
+		<size>18</size>
+	</font>
+	
+	
+	
+	<font>
+		<name>texte_moyen</name>
+		<filename>NotoSans-Bold.ttf</filename>
+		<size>22</size>
+	</font>	
+	<font>
+		<name>petit_texte</name>
+		<filename>arial.ttf</filename>
+		<size>21</size>
+	</font>						
+	
+			
+		<font>
+			<name>tres_petit_texte</name>
+			<filename>arial.ttf</filename>
+			<size>18</size>
+		</font>
+		
+			
+		
+		<font>
+			<name>grand_texte</name>
+			<filename>NotoSans-Bold.ttf</filename>
+			<size>38</size>
+		</font>
+		<font>
+			<name>zoom_texte</name>
+			<filename>NotoSans-Bold.ttf</filename>
+			<size>33</size>
+		</font>
+	</fontset>
+</fonts>

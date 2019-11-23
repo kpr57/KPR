@@ -1,0 +1,3100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>			
+	<backgroundcolor>00X000000</backgroundcolor>
+	<onload condition="string.isempty(skin.string(skin_start))">ReplaceWindow(startup)</onload>
+	<onload>cancelalarm(scroll_infos,silent)</onload>
+	<onload>clearproperty(scroll_infos,home)</onload>
+	<onload condition="string.isempty(window(home).property(chemin_widget_tv))">setproperty(chemin_widget_tv,pvr://channels/tv/*,home)</onload>	
+	<onload condition="!string.isempty(window(home).property(osd))">activatewindow(fullscreenvideo)</onload>
+	<onload condition="!string.isempty(window(home).property(osd))">activatewindow(videoosd)</onload>
+	<defaultcontrol>1000</defaultcontrol>	
+<controls>
+	<include>image_fond</include>		
+	<control type="image" id="67890">																											<description>fanart meteo</description>
+		<fadetime>500</fadetime>
+		<aspectratio>scale</aspectratio>	
+		<texture>$INFO[Skin.String(weather.fanart.path),,]$INFO[container(7010).listitem.Property(FanartCode),,]$VAR[extension_fanart_meteo]</texture>		
+		<visible>!control.hasfocus(1000) + string.isequal(window(home).property(menu),$LOCALIZE[31173]) + [!string.isempty(Skin.String(weather.fanart.path)) + !String.contains(Skin.String(weather.fanart.path),multi)]</visible>
+	</control>
+	<control type="image" id="67890">																											<description>fanart meteo par defaut</description>
+		<fadetime>500</fadetime>
+		<aspectratio>scale</aspectratio>	
+		<texture>extras/meteo/fanarts/$INFO[container(7010).listitem.Property(FanartCode),,]$VAR[extension_fanart_meteo]</texture>		
+		<visible>!control.hasfocus(1000) + string.isequal(window(home).property(menu),$LOCALIZE[31173]) + string.isempty(Skin.String(weather.fanart.path))</visible>		
+	</control>
+	<control type="multiimage" id="67890">																										<description>fanart meteo anime</description>		
+		<fadetime>5000</fadetime>
+		<imagepath>$INFO[Skin.String(weather.fanart.path),,]$INFO[container(7010).listitem.Property(FanartCode),,]$VAR[extension_fanart_meteo]</imagepath>
+		<visible>!control.hasfocus(1000) + string.isequal(window(home).property(menu),$LOCALIZE[31173]) + [!string.isempty(Skin.String(weather.fanart.path)) + String.contains(Skin.String(weather.fanart.path),multi)]</visible>
+	</control>
+	<control type="image" id="67890">																											<description>fanart meteo</description>
+		<fadetime>500</fadetime>
+		<aspectratio>scale</aspectratio>	
+		<texture>$INFO[Skin.String(weather.fanart.path),,]$INFO[Weather.fanartcode,,]$VAR[extension_fanart_meteo]</texture>		
+		<visible>control.hasfocus(1000) + string.isequal(window(home).property(menu),$LOCALIZE[31173]) + [!string.isempty(Skin.String(weather.fanart.path)) + !String.contains(Skin.String(weather.fanart.path),multi)]</visible>
+	</control>
+	<control type="image" id="67890">																											<description>fanart meteo par defaut</description>
+		<fadetime>500</fadetime>
+		<aspectratio>scale</aspectratio>	
+		<texture>extras/meteo/fanarts/$INFO[Weather.fanartcode,,]$VAR[extension_fanart_meteo]</texture>		
+		<visible>control.hasfocus(1000) + string.isequal(window(home).property(menu),$LOCALIZE[31173]) + string.isempty(Skin.String(weather.fanart.path))</visible>		
+	</control>
+	<control type="multiimage" id="67890">																										<description>fanart meteo anime</description>		
+		<fadetime>5000</fadetime>
+		<imagepath>$INFO[Skin.String(weather.fanart.path),,]$INFO[Weather.fanartcode,,]$VAR[extension_fanart_meteo]</imagepath>
+		<visible>control.hasfocus(1000) + string.isequal(window(home).property(menu),$LOCALIZE[31173]) + [!string.isempty(Skin.String(weather.fanart.path)) + String.contains(Skin.String(weather.fanart.path),multi)]</visible>
+	</control>	
+	<control type="image">																														<description>masque fond si meteo</description>	
+		<texture colordiffuse="ebffffff">commun/fond.png</texture>
+		<visible>control.isVisible(67890)</visible>	
+	</control>
+	
+	
+	
+	
+	<control type="group">																														<description>faux panels pour verifier si vide ou pas</description>
+		<left>-3000</left>
+	<control type="panel" id="6800">
+		<width>0</width>
+		<height>0</height>
+		<orientation>horizontal</orientation>
+	<itemlayout>					
+	</itemlayout>
+	<focusedlayout>
+	</focusedlayout>
+	<content>pvr://channels/tv/</content>	
+	</control>
+	<include content="widget_fake">
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_1010)]"/>
+		<param name="id" value="10109"/>
+	</include>
+	<include content="widget_fake">
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_1011)]"/>
+		<param name="id" value="10119"/>
+	</include>
+	<include content="widget_fake">
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_1012)]"/>
+		<param name="id" value="10129"/>
+	</include>
+	<include content="widget_fake">
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_1013)]"/>
+		<param name="id" value="10139"/>
+	</include>
+	<include content="widget_fake">
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_1014)]"/>
+		<param name="id" value="10149"/>
+	</include>
+	<include content="widget_fake">
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_1015)]"/>
+		<param name="id" value="10159"/>
+	</include>
+	<include content="widget_fake">
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_1016)]"/>
+		<param name="id" value="10169"/>
+	</include>
+	<include content="widget_fake">
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_1017)]"/>
+		<param name="id" value="10179"/>
+	</include>
+	<include content="widget_fake">
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_1018)]"/>
+		<param name="id" value="10189"/>
+	</include>
+	<include content="widget_fake">
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_1019)]"/>
+		<param name="id" value="10199"/>
+	</include>
+	<include content="widget_fake">
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_1020)]"/>
+		<param name="id" value="10209"/>
+	</include>
+	<include content="widget_fake">
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_1021)]"/>
+		<param name="id" value="10219"/>
+	</include>
+	<include content="widget_fake">
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_1022)]"/>
+		<param name="id" value="10229"/>
+	</include>
+	<include content="widget_fake">
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_1023)]"/>
+		<param name="id" value="10239"/>
+	</include>
+	
+	<include content="widget_fake">
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_2010)]"/>
+		<param name="id" value="20109"/>
+	</include>
+	<include content="widget_fake">
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_2011)]"/>
+		<param name="id" value="20119"/>
+	</include>
+	<include content="widget_fake">
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_2012)]"/>
+		<param name="id" value="20129"/>
+	</include>
+	<include content="widget_fake">
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_2013)]"/>
+		<param name="id" value="20139"/>
+	</include>
+	<include content="widget_fake">
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_2014)]"/>
+		<param name="id" value="20149"/>
+	</include>
+	<include content="widget_fake">
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_2015)]"/>
+		<param name="id" value="20159"/>
+	</include>
+	<include content="widget_fake">
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_2016)]"/>
+		<param name="id" value="20169"/>
+	</include>
+	<include content="widget_fake">
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_2017)]"/>
+		<param name="id" value="20179"/>
+	</include>
+	<include content="widget_fake">
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_2018)]"/>
+		<param name="id" value="20189"/>
+	</include>
+	
+	<include content="widget_fake">
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_3010)]"/>
+		<param name="id" value="30109"/>
+	</include>
+	<include content="widget_fake">
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_3011)]"/>
+		<param name="id" value="30119"/>
+	</include>
+	<include content="widget_fake">
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_3012)]"/>
+		<param name="id" value="30129"/>
+	</include>
+	<include content="widget_fake">
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_3013)]"/>
+		<param name="id" value="30139"/>
+	</include>
+	<include content="widget_fake">
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_3014)]"/>
+		<param name="id" value="30149"/>
+	</include>
+	<include content="widget_fake">
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_3015)]"/>
+		<param name="id" value="30159"/>
+	</include>
+	<include content="widget_fake">
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_3016)]"/>
+		<param name="id" value="30169"/>
+	</include>
+	
+	<include content="widget_fake">
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_4010)]"/>
+		<param name="id" value="40109"/>
+	</include>
+	<include content="widget_fake">
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_4011)]"/>
+		<param name="id" value="40119"/>
+	</include>
+	<include content="widget_fake">
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_4012)]"/>
+		<param name="id" value="40129"/>
+	</include>
+	<include content="widget_fake">
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_4013)]"/>
+		<param name="id" value="40139"/>
+	</include>
+	<include content="widget_fake">
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_4014)]"/>
+		<param name="id" value="40149"/>
+	</include>
+	<include content="widget_fake">
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_4015)]"/>
+		<param name="id" value="40159"/>
+	</include>
+	<include content="widget_fake">
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_4016)]"/>
+		<param name="id" value="40169"/>
+	</include>
+	
+	<include content="widget_fake">	
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_5010)]"/>	
+		<param name="id" value="50109"/>
+	</include>
+	<include content="widget_fake">	
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_5011)]"/>	
+		<param name="id" value="50119"/>
+	</include>	
+	<include content="widget_fake">	
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_5012)]"/>	
+		<param name="id" value="50129"/>
+	</include>	
+	<include content="widget_fake">	
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_5013)]"/>	
+		<param name="id" value="50139"/>
+	</include>	
+	<include content="widget_fake">	
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_5014)]"/>	
+		<param name="id" value="50149"/>
+	</include>	
+	<include content="widget_fake">	
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_5015)]"/>	
+		<param name="id" value="50159"/>
+	</include>	
+	<include content="widget_fake">	
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_5016)]"/>	
+		<param name="id" value="50169"/>
+	</include>
+	<include content="widget_fake">	
+		<param name="chemin" value="$INFO[window(home).property(chemin_widget_tv)]"/>	
+		<param name="id" value="60109"/>
+	</include>
+	</control>
+		
+	
+	<control type="group">																														<description>menu principal</description>
+		<animation effect="slide" end="-450,0" time="400" condition="!control.hasfocus(1000) + !control.hasfocus(111) + !skin.hassetting(menu_icones)">conditional</animation>
+		<animation effect="slide" end="-150,0" time="150" condition="!control.hasfocus(1000) + !control.hasfocus(111) + skin.hassetting(menu_icones)">conditional</animation>
+		<animation effect="slide" end="-300,0" time="150" condition="skin.hassetting(menu_icones)">conditional</animation>
+		<width>450</width>		
+	<control type="image">
+		<width>430</width>
+		<texture colordiffuse="33000000">commun/texture.png</texture>
+	</control>
+	<control type="button" id="111">
+		<top>0</top>
+		<left>0</left>
+		<width>80</width>
+		<height>100</height>
+		<texturenofocus colordiffuse="80ffffff">boutons/menu.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]">boutons/menu.png</texturefocus>
+		<ondown>control.setfocus(1000,0,absolute)</ondown>
+		<onup>control.setfocus(1000,100,absolute)</onup>
+		<onclick>skin.togglesetting(menu_icones)</onclick>
+		<animation effect="slide" end="320,0" time="150" condition="skin.hassetting(menu_icones)">conditional</animation>		
+	</control>	
+	<control type="list" id="1000">		
+		<itemgap>0</itemgap>
+		<top>130</top>
+		<height>732</height>
+		<onup>111</onup>			
+		<onfocus condition="!Weather.IsFetched">alarmclock(actualiser_meteo,activatewindow(weather),00:05,silent)</onfocus>		
+		<onright condition="string.isequal(window(home).property(menu),home)">1001</onright>
+		<onright condition="string.isequal(window(home).property(menu),$LOCALIZE[31168])">2001</onright>
+		<onright condition="string.isequal(window(home).property(menu),$LOCALIZE[31213])">3001</onright>		
+		<onright condition="string.isequal(window(home).property(menu),$LOCALIZE[31169])">4001</onright>
+		<onright condition="string.isequal(window(home).property(menu),$LOCALIZE[31170])">5001</onright>
+		<onright condition="string.isequal(window(home).property(menu),$LOCALIZE[31171])">6001</onright>
+		<onright condition="string.isequal(window(home).property(menu),$LOCALIZE[31173])">7001</onright>
+		<onright condition="string.isequal(window(home).property(menu),$LOCALIZE[31174])">9001</onright>
+		<onright condition="string.isequal(window(home).property(menu),$LOCALIZE[31175])">10001</onright>
+		<onclick>$INFO[listitem.property(action)]</onclick>			
+		<scrolltime tween="cubic" easing="out">500</scrolltime>
+		<orientation>vertical</orientation>	
+	<itemlayout height="122">	
+	<control type="image">		
+		<right>50</right>
+		<top>20</top>
+		<height>82</height>
+		<width>82</width>
+		<aspectratio>keep</aspectratio>
+		<texture colordiffuse="80ffffff">$INFO[listitem.icon]</texture>				
+	</control>
+	<control type="label">
+		<right>170</right>
+		<align>right</align>
+		<font>menu</font>
+		<textcolor>80ffffff</textcolor>
+		<label>$INFO[listitem.label]</label>
+	</control>
+	</itemlayout>
+	<focusedlayout height="122">
+	<control type="button">
+		<onfocus>cancelalarm(actualiser_widget_tv,silent)</onfocus>			
+		<onfocus condition="string.isequal(listitem.label,$LOCALIZE[31171])">alarmclock(actualiser_widget_tv,activatewindow(1299),00:02,loop,silent)</onfocus>
+		<onfocus>setproperty(menu,$INFO[container(1000).listitem.label],home)</onfocus>
+	</control>
+	<control type="group">
+		<visible>control.hasfocus(111)</visible>
+	<control type="image">		
+		<right>50</right>
+		<top>20</top>
+		<height>82</height>
+		<width>82</width>
+		<aspectratio>keep</aspectratio>
+		<texture colordiffuse="80ffffff">$INFO[listitem.icon]</texture>				
+	</control>
+	<control type="label">
+		<right>170</right>
+		<align>right</align>
+		<font>menu</font>
+		<textcolor>80ffffff</textcolor>
+		<label>$INFO[listitem.label]</label>
+	</control>	
+	</control>
+	<control type="group">
+		<visible>!control.hasfocus(111)</visible>
+	<control type="image">		
+		<top>-20</top>
+		<height>162</height>
+		<aspectratio>stretch</aspectratio>
+		<texture border="10" colordiffuse="$VAR[couleur_dominante]">boutons/bouton_menu_cd.png</texture>				
+		<bordersize>0,10,10,10</bordersize>
+	</control>
+	<control type="image">		
+		<right>50</right>
+		<top>20</top>
+		<height>82</height>
+		<width>82</width>
+		<aspectratio>keep</aspectratio>
+		<texture colordiffuse="$VAR[gris]">$INFO[listitem.icon]</texture>				
+	</control>
+	<control type="label">
+		<right>170</right>
+		<align>right</align>
+		<font>menu</font>
+		<textcolor>$VAR[gris]</textcolor>
+		<label>$INFO[listitem.label]</label>
+	</control>		
+	</control>
+	</focusedlayout>
+	<content>
+	<item>
+		<label>HOME</label>
+		<icon>menus/home.png</icon>
+		<property name="action">action(right)</property>
+	</item>	
+	<item>	
+		<label>$LOCALIZE[31168]</label>
+		<icon>menus/videos.png</icon>
+		<property name="action">activatewindow(videos,videodb://movies/titles,return)</property>
+		<visible>Library.HasContent(movies)</visible>
+	</item>	
+	<item>	
+		<label>$LOCALIZE[31213]</label>
+		<icon>menus/series.png</icon>
+		<property name="action">activatewindow(videos,videodb://tvshows/titles,return)</property>
+		<visible>Library.HasContent(tvshows)</visible>		
+	</item>		
+	<item>	
+		<label>$LOCALIZE[31169]</label>
+		<icon>menus/music.png</icon>
+		<property name="action">activatewindow(music,musicdb://albums,return)</property>
+		<visible>Library.HasContent(music)</visible>		
+	</item>	
+	<item>	
+		<label>$LOCALIZE[31170]</label>
+		<icon>menus/pictures.png</icon>
+		<property name="action">activatewindow(Pictures)</property>		
+	</item>	
+	<item>	
+		<label>$LOCALIZE[31171]</label>
+		<icon>menus/livetv.png</icon>
+		<property name="action">activatewindow(TVGuide)</property>
+		<visible>System.HasPVRAddon</visible>		
+	</item>	
+	<item>	
+		<label>$LOCALIZE[31172]</label>
+		<icon>menus/radio.png</icon>
+		<property name="action">activatewindow(RadioChannels)</property>
+		<visible>System.HasPVRAddon + Pvr.HasRadioChannels</visible>		
+	</item>		
+	<item>	
+		<label>$LOCALIZE[31173]</label>
+		<icon>menus/weather.png</icon>
+		<property name="action">activatewindow(Weather)</property>
+		<visible>!String.IsEmpty(Weather.Plugin)</visible>			
+	</item>
+	<item>	
+		<label>$LOCALIZE[31174]</label>
+		<icon>menus/system.png</icon>
+		<property name="action">right</property>			
+	</item>
+	<item>	
+		<label>$LOCALIZE[31175]</label>
+		<icon>menus/eteindre.png</icon>
+		<property name="action">right</property>			
+	</item>		
+	</content>	
+	</control>	
+	<control type="image">
+		<left>430</left>
+		<width>20</width>		
+		<texture flipx="true">commun/ombre_gauche.png</texture>
+	</control>
+	</control>
+	
+	
+	
+
+	<control type="grouplist" id="1001">																										<description>page accueil</description>
+		<visible>string.isequal(window(home).property(menu),home)</visible>
+		<include>style_et_cacher_page_accueil</include>		
+		<ondown>noop</ondown>
+		<onup>noop</onup>
+		<left>430</left>
+		<width>1920</width>
+		<scrolltime tween="cubic" easing="out">500</scrolltime>	
+	<control type="group" id="994">																												<description>horloge</description>
+		<usecontrolcoords>true</usecontrolcoords>
+		<right>40</right>					
+	<include>titre</include>
+	</control>	
+	<control type="grouplist" id="999">																											<description>boutons recherche et parametres</description>
+		<usecontrolcoords>true</usecontrolcoords>
+		<height>118</height>			
+		<onleft>1000</onleft>
+		<orientation>horizontal</orientation>
+		<itemgap>50</itemgap>
+	<control type="radiobutton" id="998">
+		<left>50</left>
+		<top>30</top>
+		<height>60</height>
+		<width>80</width>
+		<ondown>900</ondown>
+		<onright>997</onright>
+		<texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
+		<textureradioonfocus colordiffuse="$VAR[gris]">menus/recherche.png</textureradioonfocus>
+		<textureradioonnofocus>menus/recherche.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="$VAR[gris]">menus/recherche.png</textureradioofffocus>
+		<textureradiooffnofocus>menus/recherche.png</textureradiooffnofocus>
+		<radioposx>1</radioposx>
+		<radiowidth>80</radiowidth>
+		<radioheight>80</radioheight>			
+	</control>
+	<control type="group" id="993">
+		<top>30</top>
+		<height>60</height>
+		<width>80</width>
+	<control type="image">
+		<texture colordiffuse="20000000" border="20">commun/bouton.png</texture>
+		<visible>!control.hasfocus(997)</visible>
+	</control>	
+	<control type="image">
+		<texture colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texture>
+		<visible>control.hasfocus(997)</visible>
+	</control>
+	<control type="togglebutton" id="997">
+		<left>10</left>
+		<height>60</height>
+		<width>60</width>
+		<ondown>900</ondown>
+		<onleft>998</onleft>
+		<onright>996</onright>		
+		<onclick>PlayerControl(Play)</onclick>		
+		<texturenofocus colordiffuse="ccffffff">boutons/OSD/pause.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[gris]">boutons/OSD/pause.png</texturefocus>
+		<alttexturenofocus colordiffuse="ccffffff">boutons/OSD/play.png</alttexturenofocus>
+		<alttexturefocus colordiffuse="$VAR[gris]">boutons/OSD/play.png</alttexturefocus>
+		<usealttexture>Player.Paused</usealttexture>
+	</control>
+		<visible>player.hasmedia</visible>
+	</control>
+	<control type="radiobutton" id="996">
+		<top>30</top>		
+		<height>60</height>
+		<width>80</width>
+		<ondown>900</ondown>
+		<onleft>997</onleft>
+		<onclick>control.setfocus(998)</onclick>
+		<onclick>alarmclock(alarme,PlayerControl(stop),00:00,silent)</onclick>
+		<texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
+		<textureradioonfocus colordiffuse="$VAR[gris]">boutons/OSD/stop.png</textureradioonfocus>
+		<textureradioonnofocus colordiffuse="ccffffff">boutons/OSD/stop.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="$VAR[gris]">boutons/OSD/stop.png</textureradioofffocus>
+		<textureradiooffnofocus colordiffuse="ccffffff">boutons/OSD/stop.png</textureradiooffnofocus>
+		<radioposx>11</radioposx>
+		<radiowidth>60</radiowidth>
+		<radioheight>60</radioheight>			
+		<visible>player.hasmedia</visible>
+	</control>
+	</control>	
+	<control type="group" id="995">																												<description>barre de separation horizontale</description>
+		<height>2</height>
+	<include content="barre_separation_horizontale">
+		<param name="left" value="25"/> 
+		<param name="right" value="25"/>
+		<param name="bottom" value="0"/>			
+	</include>	
+	</control>	
+	<include content="video_en_cours">																											<description>incrustation de la video en cours</description>
+		<param name="id" value="900"/>
+		<param name="id2" value="100"/>		
+		<param name="ondown" value="1010"/>
+		<param name="onup" value="999"/>
+	</include>		
+	<include content="widget">	
+		<param name="id" value="1010"/>
+	</include>
+	<include content="widget">	
+		<param name="id" value="1011"/>
+	</include>
+	<include content="widget">	
+		<param name="id" value="1012"/>
+	</include>
+	<include content="widget">	
+		<param name="id" value="1013"/>
+	</include>
+	<include content="widget">	
+		<param name="id" value="1014"/>
+	</include>
+	<include content="widget">	
+		<param name="id" value="1015"/>
+	</include>
+	<include content="widget">	
+		<param name="id" value="1016"/>
+	</include>
+	<include content="widget">	
+		<param name="id" value="1017"/>
+	</include>
+	<include content="widget">	
+		<param name="id" value="1018"/>
+	</include>
+	<include content="widget">	
+		<param name="id" value="1019"/>
+	</include>
+	<include content="widget">	
+		<param name="id" value="1020"/>
+	</include>
+	<include content="widget">	
+		<param name="id" value="1021"/>
+	</include>
+	<include content="widget">	
+		<param name="id" value="1022"/>
+	</include>
+	<include content="widget">	
+		<param name="id" value="1023"/>
+	</include>
+	<control type="group" id="1004">																											<description>titre boutons parametrage de la page d'accueil</description>
+		<height>85</height>
+	<control type="image">
+		<top>27</top>		
+		<left>60</left>
+		<height>25</height>
+		<width>10</width>
+		<aspectratio>keep</aspectratio>
+		<texture background="true" colordiffuse="80ffffff">commun/3points.png</texture>	
+	</control>
+	<control type="label">
+		<top>15</top>		
+		<left>80</left>
+		<height>50</height>
+		<width>1820</width>
+		<font>titre</font>
+		<textcolor>80ffffff</textcolor>
+		<label>[UPPERCASE]$LOCALIZE[5][/UPPERCASE]</label>		
+	</control>
+	</control>
+	<control type="grouplist" id="1005">																										<description>boutons parametrage de la page d'accueil</description>		
+		<height>100</height>
+		<usecontrolcoords>true</usecontrolcoords>			
+		<onleft>1000</onleft>
+		<itemgap>40</itemgap>
+		<orientation>horizontal</orientation>
+	<control type="button" id="1006">
+		<left>50</left>	
+		<onclick>activatewindow(1201)</onclick>
+		<onclick>control.setFocus(1006)</onclick>				
+	<include content="bouton">																										
+		<param name="width" value="auto"/> 
+		<param name="height" value="80"/>
+		<param name="align" value="center"/>			 
+		<param name="label" value="$LOCALIZE[31190]"/>
+	</include>
+	</control>
+	<control type="button" id="1007">
+		<include>reinitialiser_widget_accueil</include>		
+	<include content="bouton">																										
+		<param name="width" value="auto"/> 
+		<param name="height" value="80"/>
+		<param name="align" value="center"/>			 
+		<param name="label" value="$LOCALIZE[31191]"/>
+	</include>
+	</control>
+	</control>	
+	</control>
+		
+	<control type="grouplist" id="2001">																										<description>page video</description>
+		<visible>string.isequal(window(home).property(menu),$LOCALIZE[31168])</visible>
+		<include>style_et_cacher_page_accueil</include>		
+		<ondown>noop</ondown>
+		<onup>noop</onup>
+		<left>430</left>
+		<width>1920</width>
+		<scrolltime tween="cubic" easing="out">500</scrolltime>		
+	<control type="group" id="1994">																											<description>horloge</description>
+		<usecontrolcoords>true</usecontrolcoords>
+		<right>40</right>					
+	<include>titre</include>
+	</control>	
+	<control type="grouplist" id="1999">																										<description>boutons recherche et parametres</description>
+		<usecontrolcoords>true</usecontrolcoords>
+		<height>118</height>			
+		<onleft>1000</onleft>
+		<orientation>horizontal</orientation>
+		<itemgap>50</itemgap>
+	<control type="radiobutton" id="1998">
+		<left>50</left>
+		<top>30</top>
+		<height>60</height>
+		<width>80</width>
+		<ondown>2000</ondown>
+		<texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
+		<textureradioonfocus colordiffuse="$VAR[gris]">menus/recherche.png</textureradioonfocus>
+		<textureradioonnofocus>menus/recherche.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="$VAR[gris]">menus/recherche.png</textureradioofffocus>
+		<textureradiooffnofocus>menus/recherche.png</textureradiooffnofocus>
+		<radioposx>1</radioposx>
+		<radiowidth>80</radiowidth>
+		<radioheight>80</radioheight>			
+	</control>
+	<control type="button" id="1997">
+		<top>30</top>
+		<height>60</height>
+		<width>auto</width>
+		<ondown>2000</ondown>
+		<onclick>UpdateLibrary(video)</onclick>						
+	<include content="bouton">																										
+		<param name="width" value="auto"/> 
+		<param name="height" value="80"/>
+		<param name="align" value="center"/>			 
+		<param name="label" value="$LOCALIZE[31214]"/>
+	</include>
+	</control>
+	<control type="button" id="1996">
+		<top>30</top>		
+		<height>60</height>
+		<width>auto</width>
+		<ondown>2000</ondown>
+		<onright>1992</onright>		
+		<onclick>CleanLibrary(video)</onclick>		
+	<include content="bouton">																										
+		<param name="width" value="auto"/> 
+		<param name="height" value="80"/>
+		<param name="align" value="center"/>			 
+		<param name="label" value="$LOCALIZE[31215]"/>
+	</include>
+	</control>		
+	<control type="group" id="1993">
+		<top>30</top>
+		<height>60</height>
+		<width>80</width>
+	<control type="image">
+		<texture colordiffuse="20000000" border="20">commun/bouton.png</texture>
+		<visible>!control.hasfocus(1992)</visible>
+	</control>	
+	<control type="image">
+		<texture colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texture>
+		<visible>control.hasfocus(1992)</visible>
+	</control>
+	<control type="togglebutton" id="1992">
+		<left>10</left>
+		<height>60</height>
+		<width>60</width>
+		<ondown>2000</ondown>
+		<onleft>1996</onleft>
+		<onright>1991</onright>		
+		<onclick>PlayerControl(Play)</onclick>		
+		<texturenofocus colordiffuse="ccffffff">boutons/OSD/pause.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[gris]">boutons/OSD/pause.png</texturefocus>
+		<alttexturenofocus colordiffuse="ccffffff">boutons/OSD/play.png</alttexturenofocus>
+		<alttexturefocus colordiffuse="$VAR[gris]">boutons/OSD/play.png</alttexturefocus>
+		<usealttexture>Player.Paused</usealttexture>
+	</control>
+		<visible>player.hasmedia</visible>
+	</control>
+	<control type="radiobutton" id="1991">
+		<top>30</top>		
+		<height>60</height>
+		<width>80</width>
+		<ondown>2000</ondown>
+		<onleft>1992</onleft>
+		<onclick>control.setfocus(1998)</onclick>
+		<onclick>alarmclock(alarme,PlayerControl(stop),00:00,silent)</onclick>
+		<texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
+		<textureradioonfocus colordiffuse="$VAR[gris]">boutons/OSD/stop.png</textureradioonfocus>
+		<textureradioonnofocus colordiffuse="ccffffff">boutons/OSD/stop.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="$VAR[gris]">boutons/OSD/stop.png</textureradioofffocus>
+		<textureradiooffnofocus colordiffuse="ccffffff">boutons/OSD/stop.png</textureradiooffnofocus>
+		<radioposx>11</radioposx>
+		<radiowidth>60</radiowidth>
+		<radioheight>60</radioheight>			
+		<visible>player.hasmedia</visible>
+	</control>	
+	</control>	
+	<control type="group" id="1995">																											<description>barre de separation horizontale</description>
+		<height>2</height>
+	<include content="barre_separation_horizontale">
+		<param name="left" value="25"/> 
+		<param name="right" value="25"/>
+		<param name="bottom" value="0"/>			
+	</include>
+	</control>		
+	<include content="video_en_cours">																											<description>incrustation de la video en cours</description>
+		<param name="id" value="2000"/>
+		<param name="id2" value="2100"/>		
+		<param name="ondown" value="2010"/>
+		<param name="onup" value="1999"/>
+	</include>		
+	<include content="widget">	
+		<param name="id" value="2010"/>
+	</include>
+	<include content="widget">	
+		<param name="id" value="2011"/>
+	</include>
+	<include content="widget">	
+		<param name="id" value="2012"/>
+	</include>
+	<include content="widget">	
+		<param name="id" value="2013"/>
+	</include>
+	<include content="widget">	
+		<param name="id" value="2014"/>
+	</include>
+	<include content="widget">	
+		<param name="id" value="2015"/>
+	</include>
+	<include content="widget">	
+		<param name="id" value="2016"/>
+	</include>
+	<include content="widget">	
+		<param name="id" value="2017"/>
+	</include>
+	<include content="widget">	
+		<param name="id" value="2018"/>
+	</include>
+	<control type="group" id="2004">																											<description>titre boutons parametrage de la page video</description>
+		<height>85</height>
+	<control type="image">
+		<top>27</top>		
+		<left>60</left>
+		<height>25</height>
+		<width>10</width>
+		<aspectratio>keep</aspectratio>
+		<texture background="true" colordiffuse="80ffffff">commun/3points.png</texture>	
+	</control>
+	<control type="label">
+		<top>15</top>		
+		<left>80</left>
+		<height>50</height>
+		<width>1820</width>
+		<font>titre</font>
+		<textcolor>80ffffff</textcolor>
+		<label>[UPPERCASE]$LOCALIZE[5][/UPPERCASE]</label>		
+	</control>
+	</control>
+	<control type="grouplist" id="2005">																										<description>boutons parametrage de la page video</description>		
+		<height>100</height>
+		<usecontrolcoords>true</usecontrolcoords>			
+		<onleft>1000</onleft>
+		<itemgap>40</itemgap>
+		<orientation>horizontal</orientation>
+	<control type="button" id="2006">
+		<left>50</left>	
+		<onclick>activatewindow(1202)</onclick>
+		<onclick>control.setFocus(2006)</onclick>				
+	<include content="bouton">																										
+		<param name="width" value="auto"/> 
+		<param name="height" value="80"/>
+		<param name="align" value="center"/>			 
+		<param name="label" value="$LOCALIZE[31217]"/>
+	</include>
+	</control>
+	<control type="button" id="2007">
+		<include>reinitialiser_widget_video</include>		
+	<include content="bouton">																										
+		<param name="width" value="auto"/> 
+		<param name="height" value="80"/>
+		<param name="align" value="center"/>			 
+		<param name="label" value="$LOCALIZE[31191]"/>
+	</include>
+	</control>
+	</control>		
+	</control>
+	
+	<control type="grouplist" id="3001">																										<description>page series</description>
+		<visible>string.isequal(window(home).property(menu),$LOCALIZE[31213])</visible>
+		<include>style_et_cacher_page_accueil</include>		
+			<ondown>noop</ondown>
+		<onup>noop</onup>
+		<left>430</left>
+		<width>1920</width>
+		<scrolltime tween="cubic" easing="out">500</scrolltime>		
+	<control type="group" id="3994">																											<description>horloge</description>
+		<usecontrolcoords>true</usecontrolcoords>
+		<right>40</right>					
+	<include>titre</include>
+	</control>	
+	<control type="grouplist" id="3999">																										<description>boutons recherche et parametres</description>
+		<usecontrolcoords>true</usecontrolcoords>
+		<height>118</height>			
+		<onleft>1000</onleft>
+		<orientation>horizontal</orientation>
+		<itemgap>50</itemgap>
+	<control type="radiobutton" id="3998">
+		<left>50</left>
+		<top>30</top>
+		<height>60</height>
+		<width>80</width>
+		<ondown>3000</ondown>
+		<texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
+		<textureradioonfocus colordiffuse="$VAR[gris]">menus/recherche.png</textureradioonfocus>
+		<textureradioonnofocus>menus/recherche.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="$VAR[gris]">menus/recherche.png</textureradioofffocus>
+		<textureradiooffnofocus>menus/recherche.png</textureradiooffnofocus>
+		<radioposx>1</radioposx>
+		<radiowidth>80</radiowidth>
+		<radioheight>80</radioheight>			
+	</control>
+	<control type="button" id="3997">
+		<top>30</top>
+		<height>60</height>
+		<width>auto</width>
+		<ondown>3000</ondown>
+		<onclick>UpdateLibrary(video)</onclick>						
+	<include content="bouton">																										
+		<param name="width" value="auto"/> 
+		<param name="height" value="80"/>
+		<param name="align" value="center"/>			 
+		<param name="label" value="$LOCALIZE[31214]"/>
+	</include>
+	</control>
+	<control type="button" id="3996">
+		<top>30</top>		
+		<height>60</height>
+		<width>auto</width>
+		<ondown>3000</ondown>
+		<onright>3992</onright>		
+		<onclick>CleanLibrary(video)</onclick>		
+	<include content="bouton">																										
+		<param name="width" value="auto"/> 
+		<param name="height" value="80"/>
+		<param name="align" value="center"/>			 
+		<param name="label" value="$LOCALIZE[31215]"/>
+	</include>
+	</control>		
+	<control type="group" id="3993">
+		<top>30</top>
+		<height>60</height>
+		<width>80</width>
+	<control type="image">
+		<texture colordiffuse="20000000" border="20">commun/bouton.png</texture>
+		<visible>!control.hasfocus(3992)</visible>
+	</control>	
+	<control type="image">
+		<texture colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texture>
+		<visible>control.hasfocus(3992)</visible>
+	</control>
+	<control type="togglebutton" id="3992">
+		<left>10</left>
+		<height>60</height>
+		<width>60</width>
+		<ondown>3000</ondown>
+		<onleft>3996</onleft>
+		<onright>3991</onright>		
+		<onclick>PlayerControl(Play)</onclick>		
+		<texturenofocus colordiffuse="ccffffff">boutons/OSD/pause.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[gris]">boutons/OSD/pause.png</texturefocus>
+		<alttexturenofocus colordiffuse="ccffffff">boutons/OSD/play.png</alttexturenofocus>
+		<alttexturefocus colordiffuse="$VAR[gris]">boutons/OSD/play.png</alttexturefocus>
+		<usealttexture>Player.Paused</usealttexture>
+	</control>
+		<visible>player.hasmedia</visible>
+	</control>
+	<control type="radiobutton" id="3991">
+		<top>30</top>		
+		<height>60</height>
+		<width>80</width>
+		<ondown>3000</ondown>
+		<onleft>3992</onleft>
+		<onclick>control.setfocus(3998)</onclick>
+		<onclick>alarmclock(alarme,PlayerControl(stop),00:00,silent)</onclick>
+		<texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
+		<textureradioonfocus colordiffuse="$VAR[gris]">boutons/OSD/stop.png</textureradioonfocus>
+		<textureradioonnofocus colordiffuse="ccffffff">boutons/OSD/stop.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="$VAR[gris]">boutons/OSD/stop.png</textureradioofffocus>
+		<textureradiooffnofocus colordiffuse="ccffffff">boutons/OSD/stop.png</textureradiooffnofocus>
+		<radioposx>11</radioposx>
+		<radiowidth>60</radiowidth>
+		<radioheight>60</radioheight>			
+		<visible>player.hasmedia</visible>
+	</control>	
+	</control>	
+	<control type="group" id="3995">																											<description>barre de separation horizontale</description>
+		<height>2</height>
+	<include content="barre_separation_horizontale">
+		<param name="left" value="25"/> 
+		<param name="right" value="25"/>
+		<param name="bottom" value="0"/>			
+	</include>
+	</control>		
+	<include content="video_en_cours">																											<description>incrustation de la video en cours</description>
+		<param name="id" value="3000"/>
+		<param name="id2" value="3100"/>		
+		<param name="ondown" value="3010"/>
+		<param name="onup" value="3999"/>
+	</include>		
+	<include content="widget">	
+		<param name="id" value="3010"/>
+	</include>
+	<include content="widget">	
+		<param name="id" value="3011"/>
+	</include>
+	<include content="widget">	
+		<param name="id" value="3012"/>
+	</include>
+	<include content="widget">	
+		<param name="id" value="3013"/>
+	</include>
+	<include content="widget">	
+		<param name="id" value="3014"/>
+	</include>
+	<include content="widget">	
+		<param name="id" value="3015"/>
+	</include>
+	<include content="widget">	
+		<param name="id" value="3016"/>
+	</include>
+	<control type="group" id="3004">																											<description>titre boutons parametrage de la page series</description>
+		<height>85</height>
+	<control type="image">
+		<top>27</top>		
+		<left>60</left>
+		<height>25</height>
+		<width>10</width>
+		<aspectratio>keep</aspectratio>
+		<texture background="true" colordiffuse="80ffffff">commun/3points.png</texture>	
+	</control>
+	<control type="label">
+		<top>15</top>		
+		<left>80</left>
+		<height>50</height>
+		<width>1820</width>
+		<font>titre</font>
+		<textcolor>80ffffff</textcolor>
+		<label>[UPPERCASE]$LOCALIZE[5][/UPPERCASE]</label>		
+	</control>
+	</control>
+	<control type="grouplist" id="3005">																										<description>boutons parametrage de la page series</description>		
+		<height>100</height>
+		<usecontrolcoords>true</usecontrolcoords>			
+		<onleft>1000</onleft>
+		<itemgap>40</itemgap>
+		<orientation>horizontal</orientation>
+	<control type="button" id="3006">
+		<left>50</left>	
+		<onclick>activatewindow(1203)</onclick>
+		<onclick>control.setFocus(3006)</onclick>				
+	<include content="bouton">																										
+		<param name="width" value="auto"/> 
+		<param name="height" value="80"/>
+		<param name="align" value="center"/>			 
+		<param name="label" value="$LOCALIZE[31236]"/>
+	</include>
+	</control>
+	<control type="button" id="3007">
+		<include>reinitialiser_widget_series</include>		
+	<include content="bouton">																										
+		<param name="width" value="auto"/> 
+		<param name="height" value="80"/>
+		<param name="align" value="center"/>			 
+		<param name="label" value="$LOCALIZE[31191]"/>
+	</include>
+	</control>
+	</control>		
+	</control>
+	
+	<control type="grouplist" id="4001">																										<description>page musique</description>
+		<visible>string.isequal(window(home).property(menu),$LOCALIZE[31169])</visible>
+		<include>style_et_cacher_page_accueil</include>		
+		<ondown>noop</ondown>
+		<onup>noop</onup>
+		<left>430</left>
+		<width>1920</width>
+		<scrolltime tween="cubic" easing="out">500</scrolltime>		
+	<control type="group" id="4994">																											<description>horloge</description>
+		<usecontrolcoords>true</usecontrolcoords>
+		<right>40</right>					
+	<include>titre</include>
+	</control>	
+	<control type="grouplist" id="4999">																										<description>boutons recherche et parametres</description>
+		<usecontrolcoords>true</usecontrolcoords>
+		<height>118</height>			
+		<onleft>1000</onleft>
+		<orientation>horizontal</orientation>
+		<itemgap>50</itemgap>
+	<control type="radiobutton" id="4998">
+		<left>50</left>
+		<top>30</top>
+		<height>60</height>
+		<width>80</width>
+		<ondown>4000</ondown>
+		<texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
+		<textureradioonfocus colordiffuse="$VAR[gris]">menus/recherche.png</textureradioonfocus>
+		<textureradioonnofocus>menus/recherche.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="$VAR[gris]">menus/recherche.png</textureradioofffocus>
+		<textureradiooffnofocus>menus/recherche.png</textureradiooffnofocus>
+		<radioposx>1</radioposx>
+		<radiowidth>80</radiowidth>
+		<radioheight>80</radioheight>			
+	</control>
+	<control type="button" id="4997">
+		<top>30</top>
+		<height>60</height>
+		<width>auto</width>
+		<ondown>4000</ondown>
+		<onclick>UpdateLibrary(music)</onclick>						
+	<include content="bouton">																										
+		<param name="width" value="auto"/> 
+		<param name="height" value="80"/>
+		<param name="align" value="center"/>			 
+		<param name="label" value="$LOCALIZE[31214]"/>
+	</include>
+	</control>
+	<control type="button" id="4996">
+		<top>30</top>		
+		<height>60</height>
+		<width>auto</width>
+		<ondown>4000</ondown>
+		<onclick>CleanLibrary(music)</onclick>		
+	<include content="bouton">																										
+		<param name="width" value="auto"/> 
+		<param name="height" value="80"/>
+		<param name="align" value="center"/>			 
+		<param name="label" value="$LOCALIZE[31215]"/>
+	</include>
+	</control>
+	<control type="button" id="4990">
+		<top>30</top>		
+		<height>60</height>
+		<width>auto</width>
+		<ondown>4000</ondown>
+		<onright>4993</onright>		
+		<onclick>playercontrol(partymode)</onclick>		
+	<include content="bouton">																										
+		<param name="width" value="auto"/> 
+		<param name="height" value="80"/>
+		<param name="align" value="center"/>			 
+		<param name="label" value="$LOCALIZE[31231]"/>
+	</include>
+	</control>	
+	<control type="group" id="4993">
+		<top>30</top>
+		<height>60</height>
+		<width>80</width>
+	<control type="image">
+		<texture colordiffuse="20000000" border="20">commun/bouton.png</texture>
+		<visible>!control.hasfocus(4992)</visible>
+	</control>	
+	<control type="image">
+		<texture colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texture>
+		<visible>control.hasfocus(4992)</visible>
+	</control>
+	<control type="togglebutton" id="4992">
+		<left>10</left>
+		<height>60</height>
+		<width>60</width>
+		<ondown>4000</ondown>
+		<onleft>4990</onleft>
+		<onright>4991</onright>		
+		<onclick>PlayerControl(Play)</onclick>		
+		<texturenofocus colordiffuse="ccffffff">boutons/OSD/pause.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[gris]">boutons/OSD/pause.png</texturefocus>
+		<alttexturenofocus colordiffuse="ccffffff">boutons/OSD/play.png</alttexturenofocus>
+		<alttexturefocus colordiffuse="$VAR[gris]">boutons/OSD/play.png</alttexturefocus>
+		<usealttexture>Player.Paused</usealttexture>
+	</control>
+		<visible>player.hasmedia</visible>
+	</control>
+	<control type="radiobutton" id="4991">
+		<top>30</top>		
+		<height>60</height>
+		<width>80</width>
+		<ondown>4000</ondown>
+		<onleft>4992</onleft>
+		<onclick>control.setfocus(4998)</onclick>
+		<onclick>alarmclock(alarme,PlayerControl(stop),00:00,silent)</onclick>
+		<texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
+		<textureradioonfocus colordiffuse="$VAR[gris]">boutons/OSD/stop.png</textureradioonfocus>
+		<textureradioonnofocus colordiffuse="ccffffff">boutons/OSD/stop.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="$VAR[gris]">boutons/OSD/stop.png</textureradioofffocus>
+		<textureradiooffnofocus colordiffuse="ccffffff">boutons/OSD/stop.png</textureradiooffnofocus>
+		<radioposx>11</radioposx>
+		<radiowidth>60</radiowidth>
+		<radioheight>60</radioheight>			
+		<visible>player.hasmedia</visible>
+	</control>	
+	</control>	
+	<control type="group" id="4995">																											<description>barre de separation horizontale</description>
+		<height>2</height>
+	<include content="barre_separation_horizontale">
+		<param name="left" value="25"/> 
+		<param name="right" value="25"/>
+		<param name="bottom" value="0"/>			
+	</include>
+	</control>		
+	<include content="video_en_cours">																											<description>incrustation de la video en cours</description>
+		<param name="id" value="4000"/>
+		<param name="id2" value="4100"/>		
+		<param name="ondown" value="4010"/>
+		<param name="onup" value="4999"/>
+	</include>		
+	<include content="widget">	
+		<param name="id" value="4010"/>
+	</include>
+	<include content="widget">	
+		<param name="id" value="4011"/>
+	</include>
+	<include content="widget">	
+		<param name="id" value="4012"/>
+	</include>
+	<include content="widget">	
+		<param name="id" value="4013"/>
+	</include>
+	<include content="widget">	
+		<param name="id" value="4014"/>
+	</include>
+	<include content="widget">	
+		<param name="id" value="4015"/>
+	</include>
+	<include content="widget">	
+		<param name="id" value="4016"/>
+	</include>
+	<control type="group" id="4004">																											<description>titre boutons parametrage de la page series</description>
+		<height>85</height>
+	<control type="image">
+		<top>27</top>		
+		<left>60</left>
+		<height>25</height>
+		<width>10</width>
+		<aspectratio>keep</aspectratio>
+		<texture background="true" colordiffuse="80ffffff">commun/3points.png</texture>	
+	</control>
+	<control type="label">
+		<top>15</top>		
+		<left>80</left>
+		<height>50</height>
+		<width>1820</width>
+		<font>titre</font>
+		<textcolor>80ffffff</textcolor>
+		<label>[UPPERCASE]$LOCALIZE[5][/UPPERCASE]</label>		
+	</control>
+	</control>
+	<control type="grouplist" id="4005">																										<description>boutons parametrage de la page series</description>		
+		<height>100</height>
+		<usecontrolcoords>true</usecontrolcoords>			
+		<onleft>1000</onleft>
+		<itemgap>40</itemgap>
+		<orientation>horizontal</orientation>
+	<control type="button" id="4006">
+		<left>50</left>	
+		<onclick>activatewindow(1204)</onclick>
+		<onclick>control.setFocus(4006)</onclick>				
+	<include content="bouton">																										
+		<param name="width" value="auto"/> 
+		<param name="height" value="80"/>
+		<param name="align" value="center"/>			 
+		<param name="label" value="$LOCALIZE[31232]"/>
+	</include>
+	</control>
+	<control type="button" id="4007">
+		<include>reinitialiser_widget_musique</include>		
+	<include content="bouton">																										
+		<param name="width" value="auto"/> 
+		<param name="height" value="80"/>
+		<param name="align" value="center"/>			 
+		<param name="label" value="$LOCALIZE[31191]"/>
+	</include>
+	</control>
+	</control>		
+	</control>
+
+	<control type="grouplist" id="5001">																										<description>page photo</description>
+		<visible>string.isequal(window(home).property(menu),$LOCALIZE[31170])</visible>
+		<include>style_et_cacher_page_accueil</include>		
+		<ondown>noop</ondown>
+		<onup>noop</onup>
+		<left>430</left>
+		<width>1920</width>
+		<scrolltime tween="cubic" easing="out">500</scrolltime>		
+	<control type="group" id="5994">																											<description>horloge</description>
+		<usecontrolcoords>true</usecontrolcoords>
+		<right>40</right>					
+	<include>titre</include>
+	</control>	
+	<control type="grouplist" id="5999">																										<description>boutons recherche et parametres</description>
+		<usecontrolcoords>true</usecontrolcoords>
+		<height>118</height>			
+		<onleft>1000</onleft>
+		<orientation>horizontal</orientation>
+		<itemgap>50</itemgap>
+	<control type="radiobutton" id="5998">
+		<left>50</left>
+		<top>30</top>
+		<height>60</height>
+		<width>80</width>
+		<ondown>5000</ondown>
+		<texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
+		<textureradioonfocus colordiffuse="$VAR[gris]">menus/recherche.png</textureradioonfocus>
+		<textureradioonnofocus>menus/recherche.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="$VAR[gris]">menus/recherche.png</textureradioofffocus>
+		<textureradiooffnofocus>menus/recherche.png</textureradiooffnofocus>
+		<radioposx>1</radioposx>
+		<radiowidth>80</radiowidth>
+		<radioheight>80</radioheight>			
+	</control>	
+	<control type="group" id="5993">
+		<top>30</top>
+		<height>60</height>
+		<width>80</width>
+	<control type="image">
+		<texture colordiffuse="20000000" border="20">commun/bouton.png</texture>
+		<visible>!control.hasfocus(5992)</visible>
+	</control>	
+	<control type="image">
+		<texture colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texture>
+		<visible>control.hasfocus(5992)</visible>
+	</control>
+	<control type="togglebutton" id="5992">
+		<left>10</left>
+		<height>60</height>
+		<width>60</width>
+		<ondown>5000</ondown>
+		<onleft>5998</onleft>
+		<onright>5991</onright>		
+		<onclick>PlayerControl(Play)</onclick>		
+		<texturenofocus colordiffuse="ccffffff">boutons/OSD/pause.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[gris]">boutons/OSD/pause.png</texturefocus>
+		<alttexturenofocus colordiffuse="ccffffff">boutons/OSD/play.png</alttexturenofocus>
+		<alttexturefocus colordiffuse="$VAR[gris]">boutons/OSD/play.png</alttexturefocus>
+		<usealttexture>Player.Paused</usealttexture>
+	</control>
+		<visible>player.hasmedia</visible>
+	</control>
+	<control type="radiobutton" id="5991">
+		<top>30</top>		
+		<height>60</height>
+		<width>80</width>
+		<ondown>5000</ondown>
+		<onleft>5992</onleft>
+		<onclick>control.setfocus(5998)</onclick>
+		<onclick>alarmclock(alarme,PlayerControl(stop),00:00,silent)</onclick>
+		<texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
+		<textureradioonfocus colordiffuse="$VAR[gris]">boutons/OSD/stop.png</textureradioonfocus>
+		<textureradioonnofocus colordiffuse="ccffffff">boutons/OSD/stop.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="$VAR[gris]">boutons/OSD/stop.png</textureradioofffocus>
+		<textureradiooffnofocus colordiffuse="ccffffff">boutons/OSD/stop.png</textureradiooffnofocus>
+		<radioposx>11</radioposx>
+		<radiowidth>60</radiowidth>
+		<radioheight>60</radioheight>			
+		<visible>player.hasmedia</visible>
+	</control>	
+	</control>	
+	<control type="group" id="5995">																											<description>barre de separation horizontale</description>
+		<height>2</height>
+	<include content="barre_separation_horizontale">
+		<param name="left" value="25"/> 
+		<param name="right" value="25"/>
+		<param name="bottom" value="0"/>			
+	</include>
+	</control>		
+	<include content="video_en_cours">																											<description>incrustation de la video en cours</description>
+		<param name="id" value="5000"/>
+		<param name="id2" value="5100"/>		
+		<param name="ondown" value="5010"/>
+		<param name="onup" value="5999"/>
+	</include>
+	<include content="widget_photos">	
+		<param name="id" value="5010"/>
+	</include>
+	<include content="widget_photos">	
+		<param name="id" value="5011"/>
+	</include>
+	<include content="widget_photos">	
+		<param name="id" value="5012"/>
+	</include>
+	<include content="widget_photos">	
+		<param name="id" value="5013"/>
+	</include>
+	<include content="widget_photos">	
+		<param name="id" value="5014"/>
+	</include>
+	<include content="widget_photos">	
+		<param name="id" value="5015"/>
+	</include>
+	<include content="widget_photos">	
+		<param name="id" value="5016"/>
+	</include>
+	<control type="group" id="5004">																											<description>titre boutons parametrage de la page photos</description>
+		<height>85</height>
+	<control type="image">
+		<top>27</top>		
+		<left>60</left>
+		<height>25</height>
+		<width>10</width>
+		<aspectratio>keep</aspectratio>
+		<texture background="true" colordiffuse="80ffffff">commun/3points.png</texture>	
+	</control>
+	<control type="label">
+		<top>15</top>		
+		<left>80</left>
+		<height>50</height>
+		<width>1820</width>
+		<font>titre</font>
+		<textcolor>80ffffff</textcolor>
+		<label>[UPPERCASE]$LOCALIZE[5][/UPPERCASE]</label>		
+	</control>
+	</control>
+	<control type="grouplist" id="5005">																										<description>boutons parametrage de la page photos</description>		
+		<height>100</height>
+		<usecontrolcoords>true</usecontrolcoords>			
+		<onleft>1000</onleft>
+		<itemgap>40</itemgap>
+		<orientation>horizontal</orientation>
+	<control type="button" id="5006">
+		<left>50</left>	
+		<onclick>activatewindow(1205)</onclick>
+		<onclick>control.setFocus(5006)</onclick>				
+	<include content="bouton">																										
+		<param name="width" value="auto"/> 
+		<param name="height" value="80"/>
+		<param name="align" value="center"/>			 
+		<param name="label" value="$LOCALIZE[31235]"/>
+	</include>
+	</control>
+	<control type="button" id="5007">
+		<include>reinitialiser_widget_photos</include>		
+	<include content="bouton">																										
+		<param name="width" value="auto"/> 
+		<param name="height" value="80"/>
+		<param name="align" value="center"/>			 
+		<param name="label" value="$LOCALIZE[31191]"/>
+	</include>
+	</control>
+	</control>		
+	</control>
+
+	<control type="grouplist" id="6001">																										<description>page tv</description>
+		<visible>string.isequal(window(home).property(menu),$LOCALIZE[31171])</visible>
+		<include>style_et_cacher_page_accueil</include>		
+		<ondown>noop</ondown>
+		<onup>noop</onup>
+		<left>430</left>
+		<width>1920</width>
+		<scrolltime tween="cubic" easing="out">500</scrolltime>		
+	<control type="group" id="6994">																											<description>horloge</description>
+		<usecontrolcoords>true</usecontrolcoords>
+		<right>40</right>					
+	<include>titre</include>
+	</control>	
+	<control type="grouplist" id="6999">																										<description>boutons recherche et parametres</description>
+		<usecontrolcoords>true</usecontrolcoords>
+		<height>118</height>		
+		<onleft>1000</onleft>
+		<orientation>horizontal</orientation>
+		<itemgap>50</itemgap>
+	<control type="radiobutton" id="6998">
+		<left>50</left>
+		<top>30</top>
+		<height>60</height>
+		<width>80</width>
+		<ondown>6000</ondown>
+		<onfocus>cancelalarm(actualiser_widget_tv,silent)</onfocus>	
+		<onfocus>alarmclock(actualiser_widget_tv,activatewindow(1299),00:02,loop,silent)</onfocus><texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
+		<textureradioonfocus colordiffuse="$VAR[gris]">menus/recherche.png</textureradioonfocus>
+		<textureradioonnofocus>menus/recherche.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="$VAR[gris]">menus/recherche.png</textureradioofffocus>
+		<textureradiooffnofocus>menus/recherche.png</textureradiooffnofocus>
+		<radioposx>1</radioposx>
+		<radiowidth>80</radiowidth>
+		<radioheight>80</radioheight>			
+	</control>
+	<control type="button" id="6997">
+		<top>30</top>
+		<height>60</height>
+		<width>auto</width>
+		<ondown>6000</ondown>
+		<onfocus>cancelalarm(actualiser_widget_tv,silent)</onfocus>	
+		<onfocus>alarmclock(actualiser_widget_tv,activatewindow(1299),00:02,loop,silent)</onfocus><onclick>Control.Move(6800,1)</onclick>			
+		<onclick>setproperty(chemin_widget_tv,pvr://channels/tv/123456,home)</onclick>
+		<onclick>alarmclock(alarme,setproperty(chemin_widget_tv,pvr://channels/tv/$INFO[container(6800).listitem.label],home),00:00,silent)</onclick>		
+	<include content="bouton">																										
+		<param name="width" value="auto"/> 
+		<param name="height" value="80"/>
+		<param name="align" value="center"/>			 
+		<param name="label" value="$INFO[container(6800).listitem.label]"/>
+	</include>
+	</control>
+	<control type="button" id="6996">
+		<top>30</top>
+		<height>60</height>
+		<width>auto</width>
+		<ondown>6000</ondown>
+		<onfocus>cancelalarm(actualiser_widget_tv,silent)</onfocus>	
+		<onfocus>alarmclock(actualiser_widget_tv,activatewindow(1299),00:02,loop,silent)</onfocus>			
+		<onclick>skin.setpath(chemin_logos_tv)</onclick>
+		<onright>6992</onright>	
+	<include content="bouton">																										
+		<param name="width" value="auto"/> 
+		<param name="height" value="80"/>
+		<param name="align" value="center"/>			 
+		<param name="label" value="$LOCALIZE[31260]"/>
+	</include>
+	</control>
+	<control type="group" id="6993">
+		<top>30</top>
+		<height>60</height>
+		<width>80</width>
+	<control type="image">
+		<texture colordiffuse="20000000" border="20">commun/bouton.png</texture>
+		<visible>!control.hasfocus(6992)</visible>
+	</control>
+	<control type="image">
+		<texture colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texture>
+		<visible>control.hasfocus(6992)</visible>
+	</control>
+	<control type="togglebutton" id="6992">
+		<left>10</left>
+		<height>60</height>
+		<width>60</width>
+		<ondown>6000</ondown>
+		<onleft>6997</onleft>
+		<onright>6991</onright>		
+		<onfocus>cancelalarm(actualiser_widget_tv,silent)</onfocus>	
+		<onfocus>alarmclock(actualiser_widget_tv,activatewindow(1299),00:02,loop,silent)</onfocus><onclick>PlayerControl(Play)</onclick>		
+		<texturenofocus colordiffuse="ccffffff">boutons/OSD/pause.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[gris]">boutons/OSD/pause.png</texturefocus>
+		<alttexturenofocus colordiffuse="ccffffff">boutons/OSD/play.png</alttexturenofocus>
+		<alttexturefocus colordiffuse="$VAR[gris]">boutons/OSD/play.png</alttexturefocus>
+		<usealttexture>Player.Paused</usealttexture>
+	</control>
+		<visible>player.hasmedia</visible>
+	</control>
+	<control type="radiobutton" id="6991">
+		<top>30</top>		
+		<height>60</height>
+		<width>80</width>
+		<ondown>6000</ondown>
+		<onleft>6992</onleft>
+		<onfocus>cancelalarm(actualiser_widget_tv,silent)</onfocus>	
+		<onfocus>alarmclock(actualiser_widget_tv,activatewindow(1299),00:02,loop,silent)</onfocus><onclick>control.setfocus(6998)</onclick>
+		<onclick>alarmclock(alarme,PlayerControl(stop),00:00,silent)</onclick>
+		<texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
+		<textureradioonfocus colordiffuse="$VAR[gris]">boutons/OSD/stop.png</textureradioonfocus>
+		<textureradioonnofocus colordiffuse="ccffffff">boutons/OSD/stop.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="$VAR[gris]">boutons/OSD/stop.png</textureradioofffocus>
+		<textureradiooffnofocus colordiffuse="ccffffff">boutons/OSD/stop.png</textureradiooffnofocus>
+		<radioposx>11</radioposx>
+		<radiowidth>60</radiowidth>
+		<radioheight>60</radioheight>			
+		<visible>player.hasmedia</visible>
+	</control>	
+	</control>	
+	<control type="group" id="6995">																											<description>barre de separation horizontale</description>
+		<height>2</height>
+	<include content="barre_separation_horizontale">
+		<param name="left" value="25"/> 
+		<param name="right" value="25"/>
+		<param name="bottom" value="0"/>			
+	</include>
+	</control>	
+	<include content="video_en_cours">																											<description>incrustation de la video en cours</description>
+		<param name="id" value="6000"/>
+		<param name="id2" value="6100"/>		
+		<param name="ondown" value="6008"/>
+		<param name="onup" value="6999"/>
+	</include>	
+	<control type="group" id="6004">																											<description>acces rapide</description>
+		<height>70</height>
+	<control type="image">
+		<top>27</top>		
+		<left>60</left>
+		<height>25</height>
+		<width>10</width>
+		<aspectratio>keep</aspectratio>
+		<texture background="true" colordiffuse="80ffffff">commun/3points.png</texture>	
+	</control>
+	<control type="label">
+		<top>15</top>		
+		<left>80</left>
+		<height>50</height>
+		<width>595</width>
+		<font>titre</font>
+		<textcolor>80ffffff</textcolor>		
+		<label>[UPPERCASE]$LOCALIZE[31216][/UPPERCASE]</label>		
+	</control>
+	</control>
+	<control type="list" id="6008">
+		<width>1920</width>
+		<height>100</height>
+		<onleft>1000</onleft>
+		<onback>control.setFocus(6008,0,absolute)</onback>		
+		<preloaditems>2</preloaditems>
+		<scrolltime tween="cubic" easing="out">500</scrolltime>
+		<orientation>horizontal</orientation>	
+	<itemlayout height="170" width="350">
+	<control type="group">
+		<left>-10</left>
+		<right>10</right>
+	<control type="button">
+		<left>60</left>
+		<right>0</right>
+	<include content="bouton">																										
+		<param name="width" value="290"/> 
+		<param name="height" value="60"/>
+		<param name="align" value="center"/>
+		<param name="texturenofocus_colordiffuse" value="20ffffff"/>	
+	</include>
+	</control>
+	<control type="label">
+		<left>60</left>
+		<right>0</right>
+		<height>60</height>
+		<font>label</font>
+		<textoffsetx>10</textoffsetx>
+		<align>center</align>
+		<textcolor>80ffffff</textcolor>
+		<label>$INFO[listitem.label]</label>
+	</control>
+	</control>
+	</itemlayout>
+	<focusedlayout height="170" width="350">		
+	<control type="group">
+		<left>-10</left>
+		<right>10</right>
+	<control type="button">
+		<left>60</left>
+		<right>0</right>
+		<onfocus>clearproperty(image,home)</onfocus>
+		<onfocus>clearproperty(label,home)</onfocus>		
+		<onfocus>cancelalarm(actualiser_widget_tv,silent)</onfocus>	
+		<onfocus>alarmclock(actualiser_widget_tv,activatewindow(1299),00:02,loop,silent)</onfocus>
+	<include content="bouton">																										
+		<param name="width" value="290"/> 
+		<param name="height" value="60"/>
+		<param name="align" value="center"/>
+		<param name="texturenofocus_colordiffuse" value="20ffffff"/>			
+	</include>
+	</control>
+	<control type="label">
+		<left>60</left>
+		<right>0</right>
+		<height>60</height>
+		<font>label</font>
+		<textoffsetx>10</textoffsetx>
+		<align>center</align>
+		<textcolor>80ffffff</textcolor>
+		<label>$INFO[listitem.label]</label>
+		<visible>!control.hasfocus(6008)</visible>
+	</control>
+	<control type="label">
+		<left>60</left>
+		<right>0</right>
+		<height>60</height>
+		<font>label</font>
+		<textoffsetx>10</textoffsetx>
+		<align>center</align>
+		<textcolor>$VAR[gris]</textcolor>
+		<label>$INFO[listitem.label]</label>
+		<visible>control.hasfocus(6008)</visible>
+	</control>	
+	</control>
+	</focusedlayout>	
+	<content>
+	<item>
+		<label>$LOCALIZE[19019]</label>
+		<onclick>ActivateWindow(tvChannels)</onclick>
+	</item>
+	<item>
+		<label>$LOCALIZE[19069]</label>
+		<onclick>ActivateWindow(tvGuide)</onclick>
+	</item>
+	<item>
+		<label>$LOCALIZE[19017]</label>
+		<onclick>ActivateWindow(tvRecordings)</onclick>
+	</item>
+	<item>
+		<label>$LOCALIZE[19040]</label>
+		<onclick>ActivateWindow(tvTimers)</onclick>
+	</item>
+	<item>
+		<label>$LOCALIZE[19138]</label>
+		<onclick>ActivateWindow(tvTimerRules)</onclick>
+	</item>
+	<item>
+		<label>$LOCALIZE[137]</label>
+		<onclick>setproperty(rechercher,1,home)</onclick>
+		<onclick>ActivateWindow(tvSearch)</onclick>
+		<onclick>alarmclock(rechercher,control.setfocus(6,0,absolute),00:00,silent)</onclick>
+		<onclick>alarmclock(rechercher2,action(select),00:00,silent)</onclick>						
+	</item>
+	</content>
+	</control>
+	<control type="group" id="6009">		
+	<include content="barre_separation_horizontale">																							<description>barre de separation horizontale</description>
+		<param name="left" value="25"/> 
+		<param name="right" value="25"/>
+		<param name="bottom" value="10"/>			
+	</include>
+	</control>	
+	<control type="group" id="6011">				
+		<height>760</height>			
+	<control type="image">																														<description>panneau gris</description>		
+		<left>460</left>
+		<width>1440</width>
+		<top>75</top>
+		<height>182</height>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="0dffffff">commun/texture.png</texture>
+	</control>
+	<control type="image">																														<description>pas de miniature</description>	
+		<top>65</top>		
+		<right>1470</right>
+		<height>200</height>
+		<width>200</width>
+		<aspectratio align="right" aligny="center">keep</aspectratio>
+		<texture background="true" colordiffuse="40ffffff">commun/noimage.png</texture>			
+	</control>	
+	<control type="image">																														<description>miniature</description>
+		<top>-5</top>		
+		<right>1470</right>
+		<height>350</height>
+		<width>420</width>
+		<aspectratio align="right" aligny="center">keep</aspectratio>
+		<texture background="true" border="10">$VAR[poster_widget_tv]</texture>
+		<bordertexture border="10">commun/tuiles.png</bordertexture>
+		<bordersize>10,0,10,10</bordersize>		
+	</control>
+	<control type="image">																														<description>icone detail</description>
+		<top>25</top>
+		<right>20</right>
+		<width>80</width>
+		<height>60</height>
+		<aspectratio>keep</aspectratio>
+		<texture fallback="icones/infos/chaine.png">$INFO[skin.string(chemin_logos_tv)]$INFO[container(6012).listitem.channelname].png</texture>
+	</control>
+	<control type="label">																														<description>detail</description>
+		<top>45</top>
+		<right>120</right>
+		<width>1320</width>
+		<height>20</height>
+		<font>texte_infos</font>
+		<textcolor>80ffffff</textcolor>
+		<align>right</align>
+		<label>$VAR[detail_widget_tv]</label>		
+	</control>		
+	<control type="textbox">																													<description>resume</description>		
+		<top>76</top>
+		<height>180</height>
+		<left>470</left>
+		<width>1420</width>
+		<font>infos</font>
+		<align>justify</align>
+		<label>$VAR[resume_widget_tv]</label>	
+		<autoscroll delay="20000" time="3000" repeat="20000">false</autoscroll>		
+	</control>	
+	<control type="label">																														<description>aucun resume disponible</description>
+		<top>86</top>
+		<height>160</height>
+		<left>470</left>
+		<width>1420</width>
+		<font>infos</font>
+		<align>center</align>
+		<label>$LOCALIZE[31206]</label>		
+		<visible>[string.isempty(window(home).property(guide_widget_tv)) + string.isequal(container(6012).listitem.plot,)] | [!string.isempty(window(home).property(guide_widget_tv)) + string.isequal(container(6012).listitem.nextplot,)]</visible>
+	</control>
+	<control type="label">																														<description>heure debut en ce moment</description>
+		<top>355</top>
+		<height>20</height>
+		<left>311</left>
+		<width>783</width>
+		<font>texte_infos</font>
+		<textcolor>80ffffff</textcolor>
+		<label>[B]$INFO[container(6012).listitem.starttime][/B]</label>
+		<visible>string.isempty(window(home).property(guide_widget_tv))</visible>
+	</control>
+	<control type="label">																														<description>texte en ce moment</description>
+		<top>355</top>
+		<height>20</height>
+		<left>301</left>
+		<width>785</width>
+		<font>texte_infos</font>
+		<textcolor>80ffffff</textcolor>
+		<align>center</align>
+		<label>[B]$LOCALIZE[31241][/B]</label>		
+	</control>
+	<control type="label">																														<description>heure fin en ce moment</description>
+		<top>355</top>
+		<height>20</height>
+		<left>301</left>
+		<width>1566</width>
+		<font>texte_infos</font>
+		<textcolor>80ffffff</textcolor>
+		<align>center</align>
+		<label>[B]$INFO[container(6012).listitem.endtime][/B]</label>
+	</control>
+	<control type="label">																														<description>texte programme suivant</description>
+		<top>355</top>
+		<height>20</height>
+		<right>50</right>
+		<width>783</width>
+		<font>texte_infos</font>
+		<textcolor>80ffffff</textcolor>
+		<align>center</align>
+		<label>[B]$LOCALIZE[31242][/B]</label>		
+	</control>
+	<control type="label">																														<description>heure fin programme suivant</description>
+		<top>355</top>
+		<height>20</height>
+		<right>62</right>
+		<width>300</width>
+		<font>texte_infos</font>
+		<textcolor>80ffffff</textcolor>
+		<align>right</align>
+		<label>[B]$INFO[container(6012).listitem.nextendtime][/B]</label>
+		<visible>!string.isempty(window(home).property(guide_widget_tv))</visible>
+	</control>
+	<control type="list" id="6012">																												<description>grille EPG</description>
+		<top>380</top>
+		<height>380</height>
+		<left>50</left>
+		<width>1820</width>
+		<orientation>vertical</orientation>
+		<preloaditems>2</preloaditems>
+		<scrolltime tween="Linear" easing="in">250</scrolltime>			
+		<onback>control.setFocus(6997)</onback>
+		<onup>6008</onup>
+		<onleft condition="string.isempty(window(home).property(guide_widget_tv))">1000</onleft>		
+		<onleft condition="!string.isempty(window(home).property(guide_widget_tv))">clearproperty(guide_widget_tv,home)</onleft>
+		<onright>setproperty(guide_widget_tv,1,home)</onright>
+	<itemlayout height="95" width="940">
+	<control type="group">																														<description>liste des chaines</description>		
+		<width>250</width>			
+	<control type="image">		
+		<top>1</top>
+		<height>93</height>
+        <width>249</width>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="33ffffff">commun/texture.png</texture>		
+	</control>
+	<control type="image">
+		<top>7</top>
+		<left>193</left>
+		<height>50</height>
+        <width>50</width>
+		<aspectratio align="center">keep</aspectratio>
+		<texture fallback="icones/infos/chaine.png">$INFO[skin.string(chemin_logos_tv)]$INFO[listitem.channelname].png</texture>	
+	</control>	
+	<control type="label">
+        <top>10</top>
+		<left>10</left>
+		<width>238</width>
+        <height>42</height>
+		<font>texte_infos</font>
+		<selectedcolor>ffffffff</selectedcolor>
+		<textcolor>80ffffff</textcolor>
+		<label>$LOCALIZE[31253] $INFO[listItem.channelnumberlabel]</label>		
+	</control>
+	<control type="label">
+        <top>50</top>
+		<left>10</left>
+		<width>228</width>
+        <height>42</height>
+		<font>texte_infos</font>
+		<selectedcolor>ffffffff</selectedcolor>
+		<textcolor>80ffffff</textcolor>
+		<label> • [CAPITALIZE][LOWERCASE]$INFO[listItem.label][/LOWERCASE][/CAPITALIZE]</label>
+	</control>
+	<control type="progress">																													<description>barre de progression</description>
+		<top>87</top>		
+		<height>3</height>		
+		<left>10</left>
+		<width>228</width>
+		<reveal>true</reveal>
+		<texturebg colordiffuse="1affffff">commun/texture.png</texturebg>
+		<midtexture colordiffuse="$VAR[couleur_dominante]">commun/texture.png</midtexture>
+		<info>listitem.progress</info>
+	</control>
+	</control>
+	<control type="group">																														<description>programmes en cours</description>
+		<left>251</left>
+		<width>785</width>			
+	<control type="image">		
+		<top>1</top>
+		<height>93</height>
+        <width>783</width>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="0dffffff">commun/texture.png</texture>		
+	</control>
+	<control type="label">
+		<width>775</width>
+		<height>70</height>
+		<font>texte_infos</font>
+		<aligny>center</aligny>
+		<selectedcolor>$VAR[couleur_dominante]</selectedcolor>
+		<textcolor>80ffffff</textcolor>
+		<align>left</align>
+		<label>   [B]$INFO[listitem.title][/B]</label>			
+	</control>	
+	<control type="label">
+		<top>45</top>
+		<width>775</width>
+		<height>54</height>
+		<font>infos</font>
+		<aligny>center</aligny>
+		<selectedcolor>$VAR[couleur_dominante]</selectedcolor>
+		<textcolor>80ffffff</textcolor>
+		<align>left</align>
+		<label>      [I]$INFO[listitem.genre]  •  $INFO[listitem.starttime] - $INFO[listitem.endtime] ($INFO[listitem.duration(hh:mm)])[/I]</label>		
+	</control>		
+	</control>
+	<control type="group">																														<description>programmes suivants</description>
+		<left>1036</left>
+		<width>785</width>			
+	<control type="image">		
+		<top>1</top>
+		<height>93</height>
+        <width>783</width>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="0dffffff">commun/texture.png</texture>		
+	</control>
+	<control type="label">
+		<width>775</width>
+		<height>70</height>
+		<font>texte_infos</font>
+		<aligny>center</aligny>
+		<selectedcolor>80ffffff</selectedcolor>
+		<textcolor>80ffffff</textcolor>
+		<align>left</align>
+		<label>   [B]$INFO[listitem.nexttitle][/B]</label>			
+	</control>	
+	<control type="label">
+		<top>45</top>
+		<width>775</width>		
+		<height>54</height>
+		<font>infos</font>
+		<aligny>center</aligny>
+		<selectedcolor>80ffffff</selectedcolor>
+		<textcolor>80ffffff</textcolor>
+		<align>left</align>
+		<label>      [I]$INFO[listitem.nextgenre]  •  $INFO[listitem.nextstarttime] - $INFO[listitem.nextendtime] ($INFO[listitem.nextduration(hh:mm)])[/I]</label>
+	</control>				
+	</control>
+	</itemlayout>		
+	<focusedlayout height="95" width="940">	
+	<control type="button">
+		<onfocus>setproperty(image,$INFO[container(6012).listitem.epgeventicon],home)</onfocus>
+		<onfocus>setproperty(label,[CAPITALIZE][LOWERCASE]$INFO[container(6012).listitem.label][/LOWERCASE][/CAPITALIZE] • $INFO[listitem.title],home)</onfocus>
+		<onfocus>cancelalarm(actualiser_widget_tv,silent)</onfocus>	
+		<onfocus>alarmclock(actualiser_widget_tv,activatewindow(1299),00:02,loop,silent)</onfocus>		
+	</control>
+	<control type="group">																														<description>liste des chaines</description>		
+		<width>250</width>	
+	<control type="image">		
+		<top>1</top>
+		<height>93</height>
+        <width>249</width>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="33ffffff">commun/texture.png</texture>		
+	</control>
+	<control type="image">
+		<top>7</top>
+		<left>193</left>
+		<height>50</height>
+        <width>50</width>
+		<aspectratio align="center">keep</aspectratio>
+		<texture fallback="icones/infos/chaine.png">$INFO[skin.string(chemin_logos_tv)]$INFO[listitem.channelname].png</texture>		
+	</control>	
+	<control type="label">
+        <top>10</top>
+		<left>10</left>
+		<width>238</width>
+        <height>42</height>
+		<font>texte_infos</font>
+		<selectedcolor>ffffffff</selectedcolor>
+		<label>$LOCALIZE[31253] $INFO[listItem.channelnumberlabel]</label>		
+	</control>
+	<control type="label">
+        <top>50</top>
+		<left>10</left>
+		<width>228</width>
+        <height>42</height>
+		<font>texte_infos</font>
+		<selectedcolor>ffffffff</selectedcolor>
+		<label> • [CAPITALIZE][LOWERCASE]$INFO[listItem.label][/LOWERCASE][/CAPITALIZE]</label>
+		<scrollsuffix></scrollsuffix>	
+		<scroll>true</scroll>		
+	</control>
+	<control type="progress">																													<description>barre de progression</description>
+		<top>87</top>		
+		<height>3</height>		
+		<left>10</left>
+		<width>228</width>
+		<reveal>true</reveal>
+		<texturebg colordiffuse="1affffff">commun/texture.png</texturebg>
+		<midtexture colordiffuse="$VAR[couleur_dominante]">commun/texture.png</midtexture>
+		<info>listitem.progress</info>
+	</control>
+	</control>
+	<control type="group">																														<description>programmes en cours</description>
+		<left>251</left>
+		<width>785</width>			
+	<control type="group">		
+	<control type="image">		
+		<top>1</top>
+		<height>93</height>
+        <width>783</width>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="$VAR[couleur_dominante]">commun/texture.png</texture>
+		<animation effect="fade" start="100" end="25" condition="!control.hasfocus(6012)">conditional</animation>
+	</control>
+	<control type="label">
+		<width>775</width>
+		<height>70</height>
+		<font>texte_infos</font>
+		<aligny>center</aligny>
+		<align>left</align>
+		<label>   [B]$INFO[listitem.title][/B]</label>			
+	</control>
+	<control type="label">
+		<top>45</top>
+		<width>775</width>		
+		<height>54</height>
+		<font>infos</font>
+		<aligny>center</aligny>
+		<align>left</align>
+		<label>      [I]$INFO[listitem.genre]  •  $INFO[listitem.starttime] - $INFO[listitem.endtime] ($INFO[listitem.duration(hh:mm)])[/I]</label>		
+	</control>			
+		<visible>string.isempty(window(home).property(guide_widget_tv))</visible>
+	</control>	
+	<control type="group">
+	<control type="image">		
+		<top>1</top>
+		<height>93</height>
+        <width>783</width>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="0dffffff">commun/texture.png</texture>		
+	</control>
+	<control type="label">
+		<width>775</width>
+		<height>70</height>
+		<font>texte_infos</font>
+		<aligny>center</aligny>
+		<selectedcolor>$VAR[couleur_dominante]</selectedcolor>
+		<textcolor>80ffffff</textcolor>
+		<align>left</align>
+		<label>   [B]$INFO[listitem.title][/B]</label>			
+	</control>
+	<control type="label">
+		<top>45</top>
+		<width>775</width>		
+		<height>54</height>
+		<font>infos</font>
+		<aligny>center</aligny>
+		<selectedcolor>$VAR[couleur_dominante]</selectedcolor>
+		<textcolor>80ffffff</textcolor>
+		<align>left</align>
+		<label>      [I]$INFO[listitem.genre]  •  $INFO[listitem.starttime] - $INFO[listitem.endtime] ($INFO[listitem.duration(hh:mm)])[/I]</label>		
+	</control>
+		<visible>!string.isempty(window(home).property(guide_widget_tv))</visible>
+	</control>		
+	</control>
+	<control type="group">																														<description>programmes suivants</description>
+		<left>1036</left>
+		<width>785</width>			
+	<control type="group">	
+	<control type="image">		
+		<top>1</top>
+		<height>93</height>
+        <width>783</width>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="$VAR[couleur_dominante]">commun/texture.png</texture>
+		<animation effect="fade" start="100" end="25" condition="!control.hasfocus(6012)">conditional</animation>				
+	</control>
+	<control type="label">
+		<width>775</width>
+		<height>70</height>
+		<font>texte_infos</font>
+		<aligny>center</aligny>
+		<align>left</align>
+		<selectedcolor>ffffffff</selectedcolor>
+		<label>   [B]$INFO[listitem.nexttitle][/B]</label>			
+	</control>
+	<control type="label">
+		<top>45</top>
+		<width>775</width>		
+		<height>54</height>
+		<font>infos</font>
+		<aligny>center</aligny>
+		<align>left</align>
+		<selectedcolor>ffffffff</selectedcolor>
+		<label>      [I]$INFO[listitem.nextgenre]  •  $INFO[listitem.nextstarttime] - $INFO[listitem.nextendtime] ($INFO[listitem.nextduration(hh:mm)])[/I]</label>		
+	</control>	
+		<visible>!string.isempty(window(home).property(guide_widget_tv))</visible>
+	</control>	
+	<control type="group">
+	<control type="image">		
+		<top>1</top>
+		<height>93</height>
+        <width>783</width>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="0dffffff">commun/texture.png</texture>		
+	</control>
+	<control type="label">
+		<width>775</width>
+		<height>70</height>
+		<font>texte_infos</font>
+		<aligny>center</aligny>
+		<selectedcolor>80ffffff</selectedcolor>
+		<textcolor>80ffffff</textcolor>
+		<align>left</align>
+		<label>   [B]$INFO[listitem.nexttitle][/B]</label>			
+	</control>
+	<control type="label">
+		<top>45</top>
+		<width>775</width>		
+		<height>54</height>
+		<font>infos</font>
+		<aligny>center</aligny>
+		<selectedcolor>80ffffff</selectedcolor>
+		<textcolor>80ffffff</textcolor>
+		<align>left</align>
+		<label>      [I]$INFO[listitem.nextgenre]  •  $INFO[listitem.nextstarttime] - $INFO[listitem.nextendtime] ($INFO[listitem.nextduration(hh:mm)])[/I]</label>		
+	</control>
+		<visible>string.isempty(window(home).property(guide_widget_tv))</visible>
+	</control>			
+	</control>	
+	</focusedlayout>
+		<content>$INFO[window(home).property(chemin_widget_tv)]</content>
+	</control>	
+	</control>
+	</control>
+	
+	<control type="grouplist" id="7001">																										<description>page meteo</description>
+		<visible>string.isequal(window(home).property(menu),$LOCALIZE[31173])</visible>
+		<include>style_et_cacher_page_accueil</include>		
+		<ondown>noop</ondown>
+		<onup>noop</onup>
+		<left>430</left>
+		<width>1920</width>
+		<scrolltime tween="cubic" easing="out">500</scrolltime>		
+	<control type="group" id="7994">																											<description>horloge</description>
+		<usecontrolcoords>true</usecontrolcoords>
+		<right>40</right>					
+	<include>titre</include>
+	</control>	
+	<control type="grouplist" id="7999">																										<description>boutons recherche et parametres</description>
+		<usecontrolcoords>true</usecontrolcoords>
+		<height>118</height>			
+		<onleft>1000</onleft>
+		<orientation>horizontal</orientation>
+		<itemgap>50</itemgap>
+	<control type="radiobutton" id="7998">
+		<left>50</left>
+		<top>30</top>
+		<height>60</height>
+		<width>80</width>
+		<ondown>7000</ondown>
+		<texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
+		<textureradioonfocus colordiffuse="$VAR[gris]">menus/recherche.png</textureradioonfocus>
+		<textureradioonnofocus>menus/recherche.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="$VAR[gris]">menus/recherche.png</textureradioofffocus>
+		<textureradiooffnofocus>menus/recherche.png</textureradiooffnofocus>
+		<radioposx>1</radioposx>
+		<radiowidth>80</radiowidth>
+		<radioheight>80</radioheight>			
+	</control>
+	<control type="button" id="7997">
+		<top>30</top>
+		<height>60</height>
+		<width>auto</width>
+		<ondown>7000</ondown>
+		<onclick condition="string.isempty(window(home).property(type_meteo))">setproperty(type_meteo,horaire,home)</onclick>
+		<onclick condition="!string.isempty(window(home).property(type_meteo))">clearproperty(type_meteo,home)</onclick>		
+	<include content="bouton">																										
+		<param name="width" value="auto"/> 
+		<param name="height" value="80"/>
+		<param name="align" value="center"/>			 
+		<param name="label" value="$LOCALIZE[31267]"/>
+	</include>
+	</control>
+	<control type="group" id="7993">
+		<top>30</top>
+		<height>60</height>
+		<width>80</width>
+	<control type="image">
+		<texture colordiffuse="20000000" border="20">commun/bouton.png</texture>
+		<visible>!control.hasfocus(7992)</visible>
+	</control>	
+	<control type="image">
+		<texture colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texture>
+		<visible>control.hasfocus(7992)</visible>
+	</control>
+	<control type="togglebutton" id="7992">
+		<left>10</left>
+		<height>60</height>
+		<width>60</width>
+		<ondown>7000</ondown>
+		<onleft>7997</onleft>
+		<onright>7991</onright>		
+		<onclick>PlayerControl(Play)</onclick>		
+		<texturenofocus colordiffuse="ccffffff">boutons/OSD/pause.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[gris]">boutons/OSD/pause.png</texturefocus>
+		<alttexturenofocus colordiffuse="ccffffff">boutons/OSD/play.png</alttexturenofocus>
+		<alttexturefocus colordiffuse="$VAR[gris]">boutons/OSD/play.png</alttexturefocus>
+		<usealttexture>Player.Paused</usealttexture>
+	</control>
+		<visible>player.hasmedia</visible>
+	</control>
+	<control type="radiobutton" id="7991">
+		<top>30</top>		
+		<height>60</height>
+		<width>80</width>
+		<ondown>7000</ondown>
+		<onleft>7992</onleft>
+		<onclick>control.setfocus(7998)</onclick>
+		<onclick>alarmclock(alarme,PlayerControl(stop),00:00,silent)</onclick>
+		<texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
+		<textureradioonfocus colordiffuse="$VAR[gris]">boutons/OSD/stop.png</textureradioonfocus>
+		<textureradioonnofocus colordiffuse="ccffffff">boutons/OSD/stop.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="$VAR[gris]">boutons/OSD/stop.png</textureradioofffocus>
+		<textureradiooffnofocus colordiffuse="ccffffff">boutons/OSD/stop.png</textureradiooffnofocus>
+		<radioposx>11</radioposx>
+		<radiowidth>60</radiowidth>
+		<radioheight>60</radioheight>			
+		<visible>player.hasmedia</visible>
+	</control>	
+	</control>	
+	<control type="group" id="7995">																											<description>barre de separation horizontale</description>
+		<height>2</height>
+	<include content="barre_separation_horizontale">
+		<param name="left" value="25"/> 
+		<param name="right" value="25"/>
+		<param name="bottom" value="0"/>			
+	</include>
+	</control>		
+	<include content="video_en_cours">																											<description>incrustation de la video en cours</description>
+		<param name="id" value="7000"/>
+		<param name="id2" value="7100"/>		
+		<param name="ondown" value="7004"/>
+		<param name="onup" value="7999"/>
+	</include>
+	<control type="group" id="7004">																											<description>acces rapide</description>
+		<height>70</height>
+	<control type="image">
+		<top>27</top>		
+		<left>60</left>
+		<height>25</height>
+		<width>10</width>
+		<aspectratio>keep</aspectratio>
+		<texture background="true" colordiffuse="80ffffff">commun/3points.png</texture>	
+	</control>
+	<control type="label">
+		<top>15</top>		
+		<left>80</left>
+		<height>50</height>
+		<width>595</width>
+		<font>titre</font>
+		<textcolor>80ffffff</textcolor>		
+		<label>[UPPERCASE]$LOCALIZE[31216][/UPPERCASE]</label>		
+	</control>
+	</control>	
+	<control type="list" id="7008">
+		<width>1920</width>
+		<height>100</height>
+		<onleft>1000</onleft>
+		<onback>control.setFocus(7008,0,absolute)</onback>		
+		<preloaditems>2</preloaditems>
+		<scrolltime tween="cubic" easing="out">500</scrolltime>
+		<orientation>horizontal</orientation>	
+	<itemlayout height="170" width="350">
+	<control type="group">
+		<left>-10</left>
+		<right>10</right>
+	<control type="button">
+		<left>60</left>
+		<right>0</right>
+	<include content="bouton">																										
+		<param name="width" value="290"/> 
+		<param name="height" value="60"/>
+		<param name="align" value="center"/>
+		<param name="texturenofocus_colordiffuse" value="20ffffff"/>	
+	</include>
+	</control>
+	<control type="label">
+		<left>60</left>
+		<right>0</right>
+		<height>60</height>
+		<font>label</font>
+		<textoffsetx>10</textoffsetx>
+		<align>center</align>
+		<textcolor>80ffffff</textcolor>
+		<label>$INFO[listitem.label]</label>
+	</control>
+	</control>
+	</itemlayout>
+	<focusedlayout height="170" width="350">		
+	<control type="group">
+		<left>-10</left>
+		<right>10</right>
+	<control type="button">
+		<left>60</left>
+		<right>0</right>			
+	<include content="bouton">																										
+		<param name="width" value="290"/> 
+		<param name="height" value="60"/>
+		<param name="align" value="center"/>
+		<param name="texturenofocus_colordiffuse" value="20ffffff"/>			
+	</include>
+	</control>
+	<control type="label">
+		<left>60</left>
+		<right>0</right>
+		<height>60</height>
+		<font>label</font>
+		<textoffsetx>10</textoffsetx>
+		<align>center</align>
+		<textcolor>80ffffff</textcolor>
+		<label>$INFO[listitem.label]</label>
+		<visible>!control.hasfocus(7008)</visible>
+	</control>
+	<control type="label">
+		<left>60</left>
+		<right>0</right>
+		<height>60</height>
+		<font>label</font>
+		<textoffsetx>10</textoffsetx>
+		<align>center</align>
+		<textcolor>$VAR[gris]</textcolor>
+		<label>$INFO[listitem.label]</label>
+		<visible>control.hasfocus(7008)</visible>
+		<scroll>true</scroll>
+	</control>	
+	</control>
+	</focusedlayout>	
+	<content>
+	<item>
+		<label>$LOCALIZE[31261]</label>
+		<onclick condition="System.HasAddon(script.image.resource.select)">RunScript(script.image.resource.select,property=weather.icons&amp;type=resource.images.weathericons)</onclick>
+		<onclick condition="!System.HasAddon(script.image.resource.select)">InstallAddon(script.image.resource.select)</onclick>		
+	</item>
+	<item>
+		<label>$LOCALIZE[31262]</label>
+		<onclick condition="System.HasAddon(script.image.resource.select)">RunScript(script.image.resource.select,property=weather.fanart&amp;type=resource.images.weatherfanart)</onclick>
+		<onclick condition="!System.HasAddon(script.image.resource.select)">InstallAddon(script.image.resource.select)</onclick>	
+	</item>
+	<item>
+		<label>$INFO[Window(weather).Property(WeatherProvider)]</label>
+		<onclick>ActivateWindow(servicesettings,weather)</onclick>
+	</item>
+	<item>
+		<label>$INFO[window(weather).property(Location)]</label>
+		<onclick>ActivateWindow(weather)</onclick>
+		<onclick>Weather.LocationNext</onclick>
+	</item>
+	</content>	
+	</control>	
+	<control type="group" id="7009">		
+	<include content="barre_separation_horizontale">																							<description>barre de separation horizontale</description>
+		<param name="left" value="25"/> 
+		<param name="right" value="25"/>
+		<param name="bottom" value="10"/>			
+	</include>
+	</control>		
+	<control type="group" id="70101">
+		<top>70</top>
+		<height>74</height>		
+	<control type="image">
+		<top>27</top>		
+		<left>60</left>
+		<height>25</height>
+		<width>10</width>
+		<aspectratio>keep</aspectratio>
+		<texture background="true" colordiffuse="80ffffff">commun/3points.png</texture>	
+	</control>
+	<control type="label">
+		<top>15</top>		
+		<left>80</left>
+		<height>50</height>
+		<width>595</width>
+		<font>titre</font>
+		<textcolor>80ffffff</textcolor>
+		<label>[UPPERCASE]$VAR[type_meteo][/UPPERCASE]</label>		
+	</control>	
+	<control type="group">
+	<control type="image">
+		<top>23</top>		
+		<right>25</right>
+		<height>30</height>
+		<width>1230</width>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="20ffffff" border="15">commun/bouton.png</texture>
+		<visible>!string.isempty(Control.GetLabel(70103))</visible>		
+	</control>
+	<control type="label" id="70103">
+		<top>28</top>		
+		<right>25</right>
+		<height>20</height>
+		<width>1230</width>
+		<font>infos</font>
+		<textoffsetx>8</textoffsetx>
+		<textcolor>80ffffff</textcolor>
+		<align>right</align>		
+		<label>$VAR[infos_widget]</label>
+		<visible>string.isempty(window(home).property(scroll_infos))</visible>
+	</control>
+	<control type="label">
+		<top>28</top>		
+		<right>25</right>
+		<height>20</height>
+		<width>1230</width>
+		<font>infos</font>
+		<textoffsetx>8</textoffsetx>
+		<textcolor>80ffffff</textcolor>
+		<align>right</align>		
+		<scrollspeed>150</scrollspeed>
+		<scrollsuffix>•</scrollsuffix>
+		<label>$VAR[infos_widget]</label>
+		<scroll>true</scroll>
+		<visible>!string.isempty(window(home).property(scroll_infos))</visible>
+	</control>
+		<visible>control.hasfocus(7010)</visible>		
+	</control>			
+	</control>	
+	<control type="group" id="37010">
+		<height>570</height>		
+	<control type="panel" id="7010">
+		<visible>string.isempty(window(home).property(type_meteo))</visible>
+		<width>1920</width>
+		<height>570</height>
+		<onleft>1000</onleft>
+		<onback>control.setFocus(7010,0,absolute)</onback>		
+		<onup>7008</onup>
+		<preloaditems>2</preloaditems>
+		<scrolltime tween="cubic" easing="out">500</scrolltime>
+		<orientation>horizontal</orientation>	
+	<itemlayout height="95" width="770">
+	<control type="group">																														<description>liste des jours</description>		
+		<width>300</width>
+		<left>50</left>
+	<control type="image">		
+		<top>1</top>
+		<height>93</height>
+        <width>299</width>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="33ffffff">commun/texture.png</texture>		
+	</control>
+	<control type="multiimage">
+		<top>7</top>
+		<left>243</left>
+		<height>50</height>
+        <width>50</width>
+		<aspectratio align="center">keep</aspectratio>
+		<imagepath>$INFO[Skin.String(weather.icons.path)]/$INFO[listitem.Property(FanartCode)]$VAR[extension_icone_meteo]</imagepath>
+		<visible>!string.isempty(Skin.String(weather.icons.path))</visible>	
+	</control>	
+	<control type="multiimage">
+		<top>7</top>
+		<left>243</left>
+		<height>50</height>
+        <width>50</width>
+		<aspectratio align="center">keep</aspectratio>
+		<imagepath>extras/meteo/icones/$INFO[listitem.Property(FanartCode)]$VAR[extension_icone_meteo]</imagepath>
+		<visible>string.isempty(Skin.String(weather.icons.path))</visible>	
+	</control>	
+	<control type="label">
+        <top>10</top>
+		<left>10</left>
+		<width>238</width>
+        <height>42</height>
+		<font>texte_infos</font>
+		<textcolor>80ffffff</textcolor>
+		<label>$LOCALIZE[10508]</label>		
+	</control>
+	<control type="label">
+        <top>50</top>
+		<left>10</left>
+		<width>228</width>
+        <height>42</height>
+		<font>texte_infos</font>
+		<textcolor>80ffffff</textcolor>
+		<label> • [CAPITALIZE][LOWERCASE]$INFO[listItem.label][/LOWERCASE][/CAPITALIZE]</label>
+	</control>
+	</control>	
+	<control type="group">																														<description>temperatures / precipitations</description>
+		<left>351</left>
+		<width>400</width>			
+	<control type="image">		
+		<top>1</top>
+		<height>93</height>
+        <width>399</width>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="0dffffff">commun/texture.png</texture>		
+	</control>
+	<control type="label">
+		<width>399</width>
+		<height>70</height>
+		<font>infos</font>
+		<aligny>center</aligny>
+		<align>left</align>
+		<textcolor>80ffffff</textcolor>
+		<label>$INFO[listitem.property(temperature)]</label>			
+	</control>
+	<control type="label">
+		<top>45</top>
+		<width>399</width>		
+		<height>54</height>
+		<font>infos</font>
+		<aligny>center</aligny>
+		<align>left</align>
+		<textcolor>80ffffff</textcolor>
+		<label>$INFO[listitem.property(precipitation)]</label>		
+	</control>	
+	</control>
+	</itemlayout>		
+	<focusedlayout height="95" width="770">		
+	<control type="group">																														<description>liste des jours</description>		
+		<width>300</width>
+		<left>50</left>
+	<control type="image">		
+		<top>1</top>
+		<height>93</height>
+        <width>299</width>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="33ffffff">commun/texture.png</texture>		
+	</control>
+	<control type="multiimage">
+		<top>7</top>
+		<left>243</left>
+		<height>50</height>
+        <width>50</width>
+		<aspectratio align="center">keep</aspectratio>
+		<imagepath>$INFO[Skin.String(weather.icons.path)]/$INFO[listitem.Property(FanartCode)]$VAR[extension_icone_meteo]</imagepath>
+		<visible>!string.isempty(Skin.String(weather.icons.path))</visible>	
+	</control>	
+	<control type="multiimage">
+		<top>7</top>
+		<left>243</left>
+		<height>50</height>
+        <width>50</width>
+		<aspectratio align="center">keep</aspectratio>
+		<imagepath>extras/meteo/icones/$INFO[listitem.Property(FanartCode)]$VAR[extension_icone_meteo]</imagepath>
+		<visible>string.isempty(Skin.String(weather.icons.path))</visible>	
+	</control>	
+	<control type="label">
+        <top>10</top>
+		<left>10</left>
+		<width>238</width>
+        <height>42</height>
+		<font>texte_infos</font>
+		<label>$LOCALIZE[10508]</label>		
+	</control>
+	<control type="label">
+        <top>50</top>
+		<left>10</left>
+		<width>228</width>
+        <height>42</height>
+		<font>texte_infos</font>
+		<label> • [CAPITALIZE][LOWERCASE]$INFO[listItem.label][/LOWERCASE][/CAPITALIZE]</label>
+	</control>
+	</control>
+	<control type="group">																														<description>temperatures / precipitations</description>
+		<left>351</left>
+		<width>400</width>			
+	<control type="image">		
+		<top>1</top>
+		<height>93</height>
+        <width>399</width>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="$VAR[couleur_dominante]">commun/texture.png</texture>
+	</control>
+	
+	<control type="label">
+		<width>399</width>
+		<height>70</height>
+		<font>infos</font>
+		<aligny>center</aligny>
+		<align>left</align>
+		<label>$INFO[listitem.property(temperature)]</label>			
+	</control>
+	<control type="label">
+		<top>45</top>
+		<width>399</width>		
+		<height>54</height>
+		<font>infos</font>
+		<aligny>center</aligny>
+		<align>left</align>
+		<label>$INFO[listitem.property(precipitation)]</label>		
+	</control>	
+	</control>
+	</focusedlayout>
+		<include>meteo_journaliere</include>
+	</control>	
+	<control type="panel" id="7010">
+		<visible>!string.isempty(window(home).property(type_meteo))</visible>
+		<width>1920</width>
+		<height>570</height>
+		<onleft>1000</onleft>
+		<onback>control.setFocus(7010,0,absolute)</onback>		
+		<onup>7008</onup>
+		<preloaditems>2</preloaditems>
+		<scrolltime tween="cubic" easing="out">500</scrolltime>
+		<orientation>horizontal</orientation>	
+	<itemlayout height="95" width="770">
+	<control type="group">																														<description>liste des jours</description>		
+		<width>300</width>
+		<left>50</left>
+	<control type="image">		
+		<top>1</top>
+		<height>93</height>
+        <width>299</width>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="33ffffff">commun/texture.png</texture>		
+	</control>
+	<control type="multiimage">
+		<top>7</top>
+		<left>243</left>
+		<height>50</height>
+        <width>50</width>
+		<aspectratio align="center">keep</aspectratio>
+		<imagepath>$INFO[Skin.String(weather.icons.path)]/$INFO[listitem.Property(FanartCode)]$VAR[extension_icone_meteo]</imagepath>
+		<visible>!string.isempty(Skin.String(weather.icons.path))</visible>	
+	</control>	
+	<control type="multiimage">
+		<top>7</top>
+		<left>243</left>
+		<height>50</height>
+        <width>50</width>
+		<aspectratio align="center">keep</aspectratio>
+		<imagepath>extras/meteo/icones/$INFO[listitem.Property(FanartCode)]$VAR[extension_icone_meteo]</imagepath>
+		<visible>string.isempty(Skin.String(weather.icons.path))</visible>	
+	</control>	
+	<control type="label">
+        <top>10</top>
+		<left>10</left>
+		<width>238</width>
+        <height>42</height>
+		<font>texte_infos</font>
+		<textcolor>80ffffff</textcolor>
+		<label>$LOCALIZE[10508]</label>		
+	</control>
+	<control type="label">
+        <top>50</top>
+		<left>10</left>
+		<width>228</width>
+        <height>42</height>
+		<font>texte_infos</font>
+		<textcolor>80ffffff</textcolor>
+		<label> • [CAPITALIZE][LOWERCASE]$INFO[listItem.label][/LOWERCASE][/CAPITALIZE]</label>
+	</control>
+	</control>	
+	<control type="group">																														<description>temperatures / precipitations</description>
+		<left>351</left>
+		<width>400</width>			
+	<control type="image">		
+		<top>1</top>
+		<height>93</height>
+        <width>399</width>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="0dffffff">commun/texture.png</texture>		
+	</control>
+	<control type="label">
+		<width>399</width>
+		<height>70</height>
+		<font>infos</font>
+		<aligny>center</aligny>
+		<align>left</align>
+		<textcolor>80ffffff</textcolor>
+		<label>$INFO[listitem.property(temperature)]</label>			
+	</control>
+	<control type="label">
+		<top>45</top>
+		<width>399</width>		
+		<height>54</height>
+		<font>infos</font>
+		<aligny>center</aligny>
+		<align>left</align>
+		<textcolor>80ffffff</textcolor>
+		<label>$INFO[listitem.property(precipitation)]</label>		
+	</control>	
+	</control>
+	</itemlayout>		
+	<focusedlayout height="95" width="770">		
+	<control type="group">																														<description>liste des jours</description>		
+		<width>300</width>
+		<left>50</left>
+	<control type="image">		
+		<top>1</top>
+		<height>93</height>
+        <width>299</width>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="33ffffff">commun/texture.png</texture>		
+	</control>
+	<control type="multiimage">
+		<top>7</top>
+		<left>243</left>
+		<height>50</height>
+        <width>50</width>
+		<aspectratio align="center">keep</aspectratio>
+		<imagepath>$INFO[Skin.String(weather.icons.path)]/$INFO[listitem.Property(FanartCode)]$VAR[extension_icone_meteo]</imagepath>
+		<visible>!string.isempty(Skin.String(weather.icons.path))</visible>	
+	</control>	
+	<control type="multiimage">
+		<top>7</top>
+		<left>243</left>
+		<height>50</height>
+        <width>50</width>
+		<aspectratio align="center">keep</aspectratio>
+		<imagepath>extras/meteo/icones/$INFO[listitem.Property(FanartCode)]$VAR[extension_icone_meteo]</imagepath>
+		<visible>string.isempty(Skin.String(weather.icons.path))</visible>	
+	</control>	
+	<control type="label">
+        <top>10</top>
+		<left>10</left>
+		<width>238</width>
+        <height>42</height>
+		<font>texte_infos</font>
+		<label>$LOCALIZE[10508]</label>		
+	</control>
+	<control type="label">
+        <top>50</top>
+		<left>10</left>
+		<width>228</width>
+        <height>42</height>
+		<font>texte_infos</font>
+		<label> • [CAPITALIZE][LOWERCASE]$INFO[listItem.label][/LOWERCASE][/CAPITALIZE]</label>
+	</control>
+	</control>
+	<control type="group">																														<description>temperatures / precipitations</description>
+		<left>351</left>
+		<width>400</width>			
+	<control type="image">		
+		<top>1</top>
+		<height>93</height>
+        <width>399</width>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="$VAR[couleur_dominante]">commun/texture.png</texture>
+	</control>
+	
+	<control type="label">
+		<width>399</width>
+		<height>70</height>
+		<font>infos</font>
+		<aligny>center</aligny>
+		<align>left</align>
+		<label>$INFO[listitem.property(temperature)]</label>			
+	</control>
+	<control type="label">
+		<top>45</top>
+		<width>399</width>		
+		<height>54</height>
+		<font>infos</font>
+		<aligny>center</aligny>
+		<align>left</align>
+		<label>$INFO[listitem.property(precipitation)]</label>		
+	</control>	
+	</control>
+	</focusedlayout>
+		<include>meteo_horaire</include>
+	</control>	
+	
+	
+	<control type="grouplist">																													<description>informations actuelles</description>
+		<left>1590</left>
+		<height>570</height>
+		<itemgap>2</itemgap>
+		<orientation>vertical</orientation>
+	<include content="icones_meteo">
+		<param name="colordiffuse" value="33ffffff"/>
+		<param name="height" value="78"/>
+		<param name="label" value="$INFO[system.date(DDD dd mmm)]"/>
+		<param name="icone" value="icones/meteo/date.png"/>
+	</include>
+	<include content="icones_meteo">
+		<param name="left" value="20"/>
+		<param name="height" value="100"/>
+		<param name="label" value="• $LOCALIZE[1375] $INFO[Weather.Temperature][CR]• $LOCALIZE[31264] $INFO[Window(weather).Property(Current.FeelsLike)]$INFO[System.TemperatureUnits][CR]• $INFO[Weather.Conditions]"/>		
+	</include>
+	<include content="icones_meteo">
+		<param name="label" value="$INFO[Window(weather).Property(Current.Wind)]"/>
+		<param name="icone" value="icones/meteo/wind.png"/>
+	</include>		
+	<include content="icones_meteo">
+		<param name="label" value="$INFO[Window(weather).Property(Current.Humidity)]"/>
+		<param name="icone" value="icones/meteo/humidity.png"/>
+	</include>
+	<include content="icones_meteo">
+		<param name="label" value="$INFO[Window(weather).Property(Current.Precipitation)]"/>
+		<param name="icone" value="icones/meteo/rain.png"/>
+	</include>
+	<include content="icones_meteo">
+		<param name="label" value="$INFO[Window(weather).Property(Today.Sunrise)]"/>
+		<param name="icone" value="icones/meteo/sunrise.png"/>
+	</include>	
+	<include content="icones_meteo">
+		<param name="label" value="$INFO[Window(weather).Property(Today.Sunset)]"/>
+		<param name="icone" value="icones/meteo/sunset.png"/>
+	</include>
+	</control>
+	
+	
+	</control>
+	</control>
+
+
+	
+
+
+
+
+
+
+
+	
+	<control type="grouplist" id="9001">																										<description>page parametres</description>
+		<visible>string.isequal(window(home).property(menu),$LOCALIZE[31174])</visible>
+		<include>style_et_cacher_page_accueil</include>		
+		<left>430</left>
+		<width>1920</width>
+		<scrolltime tween="cubic" easing="out">500</scrolltime>	
+	<control type="group" id="9994">																											<description>horloge</description>
+		<usecontrolcoords>true</usecontrolcoords>
+		<right>40</right>					
+	<include>titre</include>
+	</control>	
+	<control type="grouplist" id="9999">																										<description>boutons recherche et parametres</description>
+		<usecontrolcoords>true</usecontrolcoords>
+		<height>118</height>			
+		<onleft>1000</onleft>
+		<orientation>horizontal</orientation>
+		<itemgap>50</itemgap>
+	<control type="radiobutton" id="9998">
+		<left>50</left>
+		<top>30</top>
+		<height>60</height>
+		<width>80</width>
+		<onleft>1000</onleft>
+		<ondown>9002</ondown>
+		<texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
+		<textureradioonfocus colordiffuse="$VAR[gris]">menus/recherche.png</textureradioonfocus>
+		<textureradioonnofocus>menus/recherche.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="$VAR[gris]">menus/recherche.png</textureradioofffocus>
+		<textureradiooffnofocus>menus/recherche.png</textureradiooffnofocus>
+		<radioposx>1</radioposx>
+		<radiowidth>80</radiowidth>
+		<radioheight>80</radioheight>	
+	</control>		
+	</control>
+	<control type="group" id="9995">																											<description>barre de separation horizontale</description>
+		<height>2</height>
+	<include content="barre_separation_horizontale">
+		<param name="left" value="25"/> 
+		<param name="right" value="25"/>
+		<param name="bottom" value="0"/>			
+	</include>
+	</control>	
+	<control type="group">																														<description>parametres</description>
+		<height>930</height>				
+	<include content="panneau_gauche_parametres">
+		<param name="titre" value="$LOCALIZE[31178]"/> 
+		<param name="container" value="9002"/>		
+	</include>
+	<control type="panel" id="9002">		
+		<left>980</left>
+		<top>60</top>
+		<width>800</width>
+		<height>800</height>
+		<onright>7001</onright>
+		<onleft>1000</onleft>
+		<onback>1000</onback>
+		<onup>9999</onup>
+		<pagecontrol>7001</pagecontrol>
+		<scrolltime tween="linear" easing="out">250</scrolltime>
+		<orientation>vertical</orientation>	
+	<itemlayout height="100" width="800">		
+	<control type="group">
+		<top>10</top>
+	<control type="button">
+	<include content="bouton">																										
+		<param name="width" value="780"/> 
+		<param name="height" value="80"/>
+	</include>
+	</control>
+	<control type="label">
+	<include content="bouton_label">																									
+		<param name="width" value="780"/> 
+		<param name="height" value="80"/> 
+		<param name="label" value="$INFO[listItem.label]"/>
+	</include>		
+	</control>
+	</control>
+	</itemlayout>
+	<focusedlayout height="100" width="800">
+	<control type="group">
+		<top>10</top>
+	<control type="button">
+	<include content="bouton">																										
+		<param name="width" value="780"/> 
+		<param name="height" value="80"/> 
+	</include>
+	</control>
+	<control type="label">
+	<include content="bouton_label">																									
+		<param name="width" value="780"/> 
+		<param name="height" value="80"/> 
+		<param name="label" value="$INFO[listItem.label]"/>
+		<param name="textcolor" value="$VAR[gris]"/> 
+	</include>		
+	</control>
+	</control>
+	</focusedlayout>
+	<content>
+	<item>
+		<label>$LOCALIZE[14200]</label>					
+		<onclick>ActivateWindow(PlayerSettings)</onclick>
+		<icon>icones/settings/player.png</icon>
+	</item>
+	<item>
+		<label>$LOCALIZE[14204]</label>
+		<onclick>ActivateWindow(PVRSettings)</onclick>
+		<icon>icones/settings/livetv.png</icon>
+	</item>
+	<item>
+		<label>$LOCALIZE[14211]</label>
+		<onclick>ActivateWindow(MediaSettings)</onclick>
+		<icon>icones/settings/media.png</icon>
+	</item>
+	<item>
+		<label>$LOCALIZE[31177]</label>
+		<onclick>ActivateWindow(AddonBrowser)</onclick>
+		<icon>icones/settings/addons.png</icon>
+	</item>
+	<item>
+		<label>$LOCALIZE[14036]</label>
+		<onclick>ActivateWindow(ServiceSettings)</onclick>
+		<icon>icones/settings/network.png</icon>
+	</item>
+	<item>
+		<label>$LOCALIZE[14206]</label>
+		<onclick>ActivateWindow(InterfaceSettings)</onclick>
+		<icon>icones/settings/interface.png</icon>
+	</item>
+	<item>
+		<label>$LOCALIZE[13000]</label>
+		<onclick>ActivateWindow(SystemSettings)</onclick>
+		<icon>icones/settings/system.png</icon>
+	</item>
+	<item>
+		<label>$LOCALIZE[166]</label>
+		<onclick>ActivateWindow(SkinSettings)</onclick>
+		<icon>icones/settings/skin.png</icon>
+	</item>
+	<item>
+		<label>$LOCALIZE[10003]</label>
+		<onclick>ActivateWindow(FileManager)</onclick>
+		<icon>defaultnetwork.png</icon>
+	</item>
+	<item>
+		<label>$LOCALIZE[13200]</label>
+		<onclick>ActivateWindow(Profiles)</onclick>
+		<icon>defaultuser.png</icon>
+	</item>
+	<item>
+		<label>$LOCALIZE[138]</label>
+		<onclick>ActivateWindow(SystemInfo)</onclick>
+		<icon>defaultaddoninfoprovider.png</icon>
+	</item>
+	<item>
+		<label>$LOCALIZE[31067]</label>
+		<onclick>ActivateWindow(EventLog)</onclick>
+		<icon>icones/settings/logokodi.png</icon>
+	</item>
+	</content>		
+	</control>	
+	<include content="scrollbar">																												<description>scrollbar</description>
+		<param name="id" value="7001"/> 
+		<param name="top" value="70"/> 
+		<param name="height" value="780"/> 
+		<param name="container" value="9002"/>
+	</include>
+	</control>
+	</control>
+	
+	<control type="grouplist" id="10001">																										<description>page extinction</description>
+		<visible>string.isequal(window(home).property(menu),$LOCALIZE[31175])</visible>
+		<include>style_et_cacher_page_accueil</include>		
+		<left>430</left>
+		<width>1920</width>
+		<scrolltime tween="cubic" easing="out">500</scrolltime>	
+	<control type="group" id="10994">																											<description>horloge</description>
+		<usecontrolcoords>true</usecontrolcoords>
+		<right>40</right>					
+	<include>titre</include>
+	</control>	
+	<control type="grouplist" id="10999">																										<description>boutons recherche et parametres</description>
+		<usecontrolcoords>true</usecontrolcoords>
+		<height>118</height>			
+		<onleft>1000</onleft>
+		<orientation>horizontal</orientation>
+		<itemgap>50</itemgap>
+	<control type="radiobutton" id="10998">
+		<left>50</left>
+		<top>30</top>
+		<height>60</height>
+		<width>80</width>
+		<onleft>1000</onleft>
+		<ondown>10002</ondown>
+		<texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
+		<textureradioonfocus colordiffuse="$VAR[gris]">menus/recherche.png</textureradioonfocus>
+		<textureradioonnofocus>menus/recherche.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="$VAR[gris]">menus/recherche.png</textureradioofffocus>
+		<textureradiooffnofocus>menus/recherche.png</textureradiooffnofocus>
+		<radioposx>1</radioposx>
+		<radiowidth>80</radiowidth>
+		<radioheight>80</radioheight>	
+	</control>		
+	</control>
+	<control type="group" id="10995">																											<description>barre de separation horizontale</description>
+		<height>2</height>
+	<include content="barre_separation_horizontale">
+		<param name="left" value="25"/> 
+		<param name="right" value="25"/>
+		<param name="bottom" value="0"/>			
+	</include>
+	</control>	
+	<control type="group">																														<description>extinction</description>
+		<visible>string.isequal(window(home).property(menu),$LOCALIZE[31175])</visible>
+		<height>930</height>
+	<include content="panneau_gauche_parametres">
+		<param name="titre" value="$LOCALIZE[31187]"/> 
+		<param name="container" value="10002"/>		
+	</include>
+	<control type="panel" id="10002">		
+		<left>980</left>
+		<top>160</top>
+		<width>800</width>
+		<height>800</height>
+		<onright>8001</onright>
+		<onleft>1000</onleft>		
+		<onup>10999</onup>
+		<onback>1000</onback>
+		<pagecontrol>8001</pagecontrol>
+		<scrolltime tween="linear" easing="out">250</scrolltime>
+		<orientation>vertical</orientation>	
+	<itemlayout height="100" width="800">		
+	<control type="group">
+		<top>10</top>
+	<control type="button">
+	<include content="bouton">																										
+		<param name="width" value="780"/> 
+		<param name="height" value="80"/>
+	</include>
+	</control>
+	<control type="label">
+	<include content="bouton_label">																									
+		<param name="width" value="780"/> 
+		<param name="height" value="80"/> 
+		<param name="label" value="$INFO[listItem.label]"/>
+	</include>		
+	</control>
+	</control>
+	</itemlayout>
+	<focusedlayout height="100" width="800">
+	<control type="group">
+		<top>10</top>
+	<control type="button">
+	<include content="bouton">																										
+		<param name="width" value="780"/> 
+		<param name="height" value="80"/> 
+	</include>
+	</control>
+	<control type="label">
+	<include content="bouton_label">																									
+		<param name="width" value="780"/> 
+		<param name="height" value="80"/> 
+		<param name="label" value="$INFO[listItem.label]"/>
+		<param name="textcolor" value="$VAR[gris]"/> 
+	</include>		
+	</control>
+	</control>
+	</focusedlayout>
+	<content>
+	<item>
+		<label>$LOCALIZE[31181]</label>
+		<icon>icones/extinction/quitter.png</icon>
+		<onclick>Quit</onclick>	
+	</item>	
+	<item>
+		<label>$LOCALIZE[31182]</label>
+		<icon>icones/extinction/eteindre.png</icon>
+		<onclick>ShutDown</onclick>	
+	</item>
+	<item>
+		<label>$LOCALIZE[31183]</label>
+		<icon>icones/extinction/redemarrer.png</icon>
+		<onclick>Reboot</onclick>	
+	</item>
+	<item>
+		<label>$LOCALIZE[31184]</label>
+		<icon>icones/extinction/veille.png</icon>
+		<onclick>Suspend</onclick>	
+	</item>
+	<item>
+		<label>$LOCALIZE[31185]</label>
+		<icon>icones/extinction/veille prolongee.png</icon>
+		<onclick>Hibernate</onclick>	
+	</item>
+	<item>
+		<label>$LOCALIZE[31186]</label>
+		<icon>icones/extinction/habillage.png</icon>				
+		<onclick>control.setfocus(1001)</onclick>
+		<onclick>ReloadSkin()</onclick>				
+		<onclick>replaceWindow(startup)</onclick>				
+	</item>
+	</content>		
+	</control>		
+	<include content="scrollbar">																												<description>scrollbar</description>
+		<param name="id" value="8001"/> 
+		<param name="top" value="170"/> 
+		<param name="height" value="580"/> 
+		<param name="container" value="10002"/>
+	</include>	
+	</control>
+	</control>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<control type="label" id="9999">																											<description>label pour les tests</description>
+		<bottom>0</bottom>
+		<label>$INFO[]</label>
+	</control>
+</controls>
+</window>

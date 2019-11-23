@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>		
+	<default type="label">		
+		<font>label</font>
+		<selectedcolor>$VAR[gris]</selectedcolor>
+		<textcolor>ffffffff</textcolor>
+		<align>left</align>
+		<aligny>center</aligny>			
+		<scrollspeed>50</scrollspeed>		
+		<scrollsuffix>  •  </scrollsuffix>
+		<pulseonselect>no</pulseonselect>
+		<scroll>false</scroll>
+	</default>
+	<default type="button">		
+		<font>label</font>
+		<textcolor>ffffffff</textcolor>
+		<focusedcolor>$VAR[gris]</focusedcolor>
+		<selectedcolor>$VAR[gris]</selectedcolor>
+		<disabledcolor>80ffffff</disabledcolor>
+		<invalidcolor>ffffffff</invalidcolor>
+		<align>center</align>
+		<aligny>center</aligny>			
+		<scrollspeed>50</scrollspeed>		
+		<scrollsuffix>  •  </scrollsuffix>
+		<pulseonselect>no</pulseonselect>				
+	</default>
+	<default type="togglebutton">		
+		<font>label</font>
+		<textcolor>ffffffff</textcolor>
+		<focusedcolor>$VAR[gris]</focusedcolor>
+		<selectedcolor>$VAR[gris]</selectedcolor>
+		<disabledcolor>80ffffff</disabledcolor>
+		<invalidcolor>ffffffff</invalidcolor>
+		<align>center</align>
+		<aligny>center</aligny>			
+		<scrollspeed>50</scrollspeed>		
+		<scrollsuffix>  •  </scrollsuffix>
+		<pulseonselect>no</pulseonselect>				
+	</default>
+	<default type="radiobutton">	
+		<disabledcolor>80ffffff</disabledcolor>
+		<scrollspeed>50</scrollspeed>		
+		<scrollsuffix>  •  </scrollsuffix>
+		<pulseonselect>no</pulseonselect>	
+	</default>
+	<default type="textbox">
+		<font>label</font>
+		<textcolor>80ffffff</textcolor>
+		<align>center</align>
+		<aligny>center</aligny>
+	</default>	
+	<default type="edit">		
+		<font>label</font>
+		<textcolor>ffffffff</textcolor>
+		<align>left</align>
+		<aligny>center</aligny>			
+		<textoffsetx>10</textoffsetx>
+		<pulseonselect>no</pulseonselect>				
+	</default>
+	<default type="spincontrolex">
+		<spinwidth>35</spinwidth>
+		<spinheight>35</spinheight>
+		<spinposx>40</spinposx>
+		<texturefocus></texturefocus>
+		<texturenofocus></texturenofocus>
+		<textureup colordiffuse="80ffffff">boutons/haut.png</textureup>
+		<textureupfocus colordiffuse="$VAR[gris]">boutons/haut.png</textureupfocus>
+		<texturedown colordiffuse="80ffffff">boutons/bas.png</texturedown>
+		<texturedownfocus colordiffuse="$VAR[gris]">boutons/bas.png</texturedownfocus>
+		<textureupdisabled colordiffuse="20ffffff">boutons/haut.png</textureupdisabled>
+		<texturedowndisabled colordiffuse="20ffffff">boutons/bas.png</texturedowndisabled>
+		<pulseonselect>no</pulseonselect>
+	</default>
+	<default type="slider">
+		<texturesliderbar colordiffuse="80ffffff">boutons/slider_background.png</texturesliderbar>
+		<textureslidernib colordiffuse="ffffffff">boutons/slider.png</textureslidernib>
+		<textureslidernibfocus colordiffuse="$VAR[gris]">boutons/slider.png</textureslidernibfocus>	
+		<orientation>horizontal</orientation>
+	</default>
+	<default type="sliderex">
+		<aligny>center</aligny>
+		<textoffsetx>15</textoffsetx>
+		<sliderwidth>200</sliderwidth>
+		<sliderheight>25</sliderheight>
+		<texturesliderbar colordiffuse="80ffffff">boutons/slider_background.png</texturesliderbar>
+		<textureslidernib colordiffuse="ffffffff">boutons/slider.png</textureslidernib>
+		<textureslidernibfocus colordiffuse="$VAR[gris]">boutons/slider.png</textureslidernibfocus>		
+		<font>label</font>
+		<textcolor>ffffffff</textcolor>
+		<pulseonselect>no</pulseonselect>
+		<disabledcolor>20ffffff</disabledcolor>
+	</default>
+</includes>

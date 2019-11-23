@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>			
+	<backgroundcolor>00X000000</backgroundcolor>
+	<onload condition="window.isVisible(home)">Action(close)</onload>
+	<onload condition="window.isVisible(home)">ActivateWindow(tvchannels)</onload>
+	<onload condition="!string.isEmpty(window(home).property(guide_item))">alarmclock(test,control.setFocus(11,$INFO[window(home).property(guide_item)],absolute),00:00,silent)</onload>
+	<onload condition="!string.isEmpty(window(home).property(guide_item))">alarmclock(test,action(up),00:00,silent)</onload>
+	<onload condition="string.isEmpty(window(home).property(guide_item))">control.setFocus(11)</onload>			
+	<controls>	
+	<control type="group">
+	<include>animation_ouverture_fermeture_250</include>	
+	<control type="image">																														<description>degrade haut</description>
+		<top>0</top>
+		<centerleft>50%</centerleft>
+		<width>2500</width>
+		<height>700</height>
+		<aspectratio>stretch</aspectratio>
+		<texture flipy="true" colordiffuse="ff000000">fenetres/degrade.png</texture>
+	</control>
+	<control type="image">																														<description>degrade fond lecteur OSD</description>
+		<bottom>0</bottom>
+		<centerleft>50%</centerleft>
+		<width>2500</width>
+		<height>700</height>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="ff000000">fenetres/degrade.png</texture>
+	</control>
+	<include content="heure"></include> 	     																								<description>heure + volume</description>
+	<control type="label">       																												<description>titre</description>
+		<bottom>-10</bottom>
+		<right>20</right>
+		<align>right</align>
+		<height>120</height>
+		<width>1200</width>
+		<scroll>true</scroll>
+		<font>titre</font>
+		<textcolor>$VAR[blanc]</textcolor>
+		<aligny>center</aligny>
+		<label>$INFO[listitem.label] · $INFO[listItem.starttime] - $INFO[listItem.endtime]   </label>		
+	</control>	
+	</control>
+	<control type="group">
+		<animation effect="slide" start="-650" end="0" time="250" delay="150" reversible="false">windowopen</animation>
+		<animation effect="slide" start="0" end="-650" time="250" reversible="false">WindowClose</animation>	
+	<control type="group">																														<description>nom de chaine et date</description>		
+		<width>650</width>	
+		<height>108</height>
+	<control type="image">																														<description>fond nom de chaine et date</description>		
+		<aspectratio>scale</aspectratio>
+		<texture colordiffuse="$VAR[panneau_fenetre]">fenetres/texture.png</texture>			
+	</control>
+	<control type="image">																														<description>fond  nom de chaine et date</description>
+		<aspectratio>scale</aspectratio>
+		<texture colordiffuse="$VAR[couleur_oppose]">fenetres/texture.png</texture>			
+	</control>
+	<control type="image">		
+		<bottom>0</bottom>
+		<height>1</height>
+        <aspectratio>scale</aspectratio>
+		<texture colordiffuse="80808080">fenetres/texture.png</texture>		
+	</control>	
+	<control type="image">
+		<left>35</left>
+		<top>4</top>		
+        <height>100</height>
+        <width>180</width>
+		<aspectratio align="center">keep</aspectratio>
+		<texture>$INFO[player.icon]</texture>		
+	</control>	
+	<control type="label">																														<description>date</description>
+        <left>260</left>
+		<width>380</width>
+        <height>60</height>
+		<align>center</align>
+		<aligny>center</aligny>
+		<font>texte_moyen</font>
+		<textcolor>$VAR[couleur_texte_oppose]</textcolor>
+		<selectedcolor>$VAR[1selection_osd]</selectedcolor>
+		<label>$INFO[listitem.startdate]</label>		
+	</control>
+	<control type="label">																														<description>nom de chaine</description>
+		<top>60</top>
+		<left>260</left>
+		<width>380</width>
+        <height>40</height>
+		<align>center</align>
+		<aligny>center</aligny>
+		<font>texte_moyen</font>
+		<textcolor>$VAR[couleur_texte_oppose]</textcolor>
+		<selectedcolor>$VAR[1selection_osd]</selectedcolor>
+		<label>$INFO[videoplayer.channelname]</label>		
+	</control>
+	</control>
+	<control type="group">																														<description>fonds</description>	
+		<top>108</top>			
+	<control type="image">																														<description>fond liste des chaines</description>		
+		<width>650</width>	
+		<aspectratio>scale</aspectratio>
+		<texture colordiffuse="$VAR[panneau_fenetre]">fenetres/texture.png</texture>			
+	</control>
+	<control type="image">																														<description>fond horaires</description>
+		<width>250</width>	
+		<aspectratio>scale</aspectratio>
+		<texture colordiffuse="$VAR[couleur_oppose]">fenetres/texture.png</texture>			
+	</control>
+	</control>
+	<control type="image">																														<description>ombre de droite</description>
+		<left>650</left>
+		<width>40</width>
+		<aspectratio>stretch</aspectratio>
+		<texture>fenetres/ombre_droite.png</texture>	
+	</control>
+	<control type="panel" id="11">																												<description>liste des chaines</description>
+		<top>108</top>	
+		<width>650</width>			
+		<onback>clearProperty(guide_item,home)</onback>		
+		<onright>clearProperty(guide_item,home)</onright>
+		<onright>control.setFocus(11,$INFO[window(home).property(guide_item_base)],absolute)</onright>
+		<onright>action(up)</onright>
+		<onleft>action(back)</onleft>			
+		<orientation>vertical</orientation>
+		<scrolltime tween="linear" easing="out">250</scrolltime>					
+	<itemlayout height="108" width="1500">			
+	<control type="group">		
+		<width>250</width>	
+	<control type="label">
+        <height>108</height>
+		<align>center</align>
+		<aligny>center</aligny>
+		<font>texte_moyen</font>
+		<textcolor>$VAR[couleur_texte_oppose]</textcolor>
+		<selectedcolor>$VAR[1selection_osd]</selectedcolor>
+		<label>$INFO[listItem.starttime] - $INFO[listItem.endtime]</label>		
+	</control>
+	<control type="image">
+		<left>0</left>
+		<width>1</width>
+        <aspectratio>scale</aspectratio>
+		<texture colordiffuse="80808080">fenetres/texture.png</texture>		
+	</control>
+	<control type="image">		
+		<bottom>0</bottom>
+		<height>1</height>
+        <aspectratio>scale</aspectratio>
+		<texture colordiffuse="80808080">fenetres/texture.png</texture>		
+	</control>
+	</control>
+	<control type="group">		
+		<left>250</left>
+		<width>400</width>	
+	<control type="label">
+        <left>15</left>
+		<right>15</right>	
+		<height>75</height>
+		<align>center</align>
+		<aligny>center</aligny>
+		<font>texte_moyen</font>
+		<textcolor>$VAR[texte_fenetre]</textcolor>
+		<selectedcolor>$VAR[1selection_osd]</selectedcolor>		
+		<label>$INFO[listItem.label]</label>		
+	</control>
+	<control type="image">																														<description>icone enregistrement</description>	
+		<bottom>10</bottom>
+		<left>10</left>
+        <height>32</height>
+        <width>32</width>
+		<aspectratio>keep</aspectratio>
+		<texture colordiffuse="ffc0392b">icones/pvr-isrecording.png</texture>		
+		<visible>listitem.isRecording</visible>
+	</control>
+	<control type="image">																														<description>icone programmation</description>	
+		<bottom>10</bottom>
+		<left>10</left>
+        <height>32</height>
+        <width>32</width>
+		<aspectratio>keep</aspectratio>
+		<texture colordiffuse="80263238">icones/pvr-hastimer.png</texture>		
+		<visible>listitem.hasTimer</visible>
+	</control>
+	<control type="label">
+        <bottom>0</bottom>
+		<left>10</left>
+		<right>10</right>
+        <height>40</height>
+		<align>right</align>
+		<font>petit_texte</font>
+		<textcolor>$VAR[texte_fenetre]</textcolor>
+		<selectedcolor>$VAR[1selection_osd]</selectedcolor>
+		<label>[I]$INFO[listitem.genre][/I]</label>		
+	</control>
+	<control type="image">
+		<left>0</left>
+		<width>1</width>
+        <aspectratio>scale</aspectratio>
+		<texture colordiffuse="80808080">fenetres/texture.png</texture>		
+	</control>
+	<control type="image">		
+		<bottom>0</bottom>
+		<height>1</height>
+        <aspectratio>scale</aspectratio>
+		<texture colordiffuse="80808080">fenetres/texture.png</texture>		
+	</control>	
+	</control>
+	</itemlayout>
+	<focusedlayout height="108" width="1500">	
+	<control type="button">
+		<onfocus condition="string.isEmpty(window(home).property(guide_item_base))">setProperty(guide_item_base,$INFO[container(11).currentitem],home)</onfocus>
+		<onfocus>setProperty(guide_item,$INFO[container(11).currentitem],home)</onfocus>
+		<onfocus condition="!listitem.isrecording">clearProperty(recording,home)</onfocus>
+		<onfocus condition="!listitem.hastimer">clearProperty(timer,home)</onfocus>
+		<onfocus condition="listitem.isrecording">setProperty(recording,1,home)</onfocus>
+		<onfocus condition="listitem.hastimer">setProperty(timer,1,home)</onfocus>
+	</control>
+	<control type="group">		
+		<width>250</width>	
+	<control type="label">
+        <height>108</height>
+		<align>center</align>
+		<aligny>center</aligny>
+		<font>texte_moyen</font>
+		<textcolor>$VAR[couleur_texte_oppose]</textcolor>
+		<selectedcolor>$VAR[1selection_osd]</selectedcolor>
+		<label>$INFO[listItem.starttime] - $INFO[listItem.endtime]</label>		
+	</control>
+	<control type="image">
+		<left>0</left>
+		<width>1</width>
+        <aspectratio>scale</aspectratio>
+		<texture colordiffuse="80808080">fenetres/texture.png</texture>		
+	</control>
+	<control type="image">		
+		<bottom>0</bottom>
+		<height>1</height>
+        <aspectratio>scale</aspectratio>
+		<texture colordiffuse="80808080">fenetres/texture.png</texture>		
+	</control>
+	</control>
+	<control type="group">		
+		<left>250</left>
+		<width>400</width>	
+	<control type="image">		
+        <height>107</height>
+		<aspectratio>scale</aspectratio>
+		<texture colordiffuse="$VAR[1selection_osd]">fenetres/texture.png</texture>		
+	</control>
+	<control type="label">
+        <left>15</left>
+		<right>15</right>	
+		<height>75</height>
+		<align>center</align>
+		<aligny>center</aligny>
+		<font>texte_moyen</font>
+		<textcolor>$VAR[blanc]</textcolor>
+		<selectedcolor>$VAR[1selection_osd]</selectedcolor>
+		<scroll>true</scroll>
+		<label>$INFO[listItem.label]</label>		
+	</control>
+	<control type="image">																														<description>icone enregistrement</description>	
+		<bottom>10</bottom>
+		<left>10</left>
+        <height>32</height>
+        <width>32</width>
+		<aspectratio>keep</aspectratio>
+		<texture colordiffuse="ffc0392b">icones/pvr-isrecording.png</texture>		
+		<visible>listitem.isRecording</visible>
+	</control>
+	<control type="image">																														<description>icone programmation</description>	
+		<bottom>10</bottom>
+		<left>10</left>
+        <height>32</height>
+        <width>32</width>
+		<aspectratio>keep</aspectratio>
+		<texture>icones/pvr-hastimer.png</texture>		
+		<visible>listitem.hasTimer</visible>
+	</control>
+	<control type="label">																														<description>titre si pas d'enregistrement ni timer</description>
+        <bottom>0</bottom>
+		<left>10</left>
+		<right>10</right>
+        <height>40</height>
+		<align>right</align>
+		<font>petit_texte</font>
+		<textcolor>$VAR[blanc]</textcolor>
+		<selectedcolor>$VAR[1selection_osd]</selectedcolor>
+		<label>[I]$INFO[listitem.genre][/I]</label>		
+	</control>
+	<control type="image">
+		<left>0</left>
+		<width>1</width>
+        <aspectratio>scale</aspectratio>
+		<texture colordiffuse="80808080">fenetres/texture.png</texture>		
+	</control>
+	<control type="image">		
+		<bottom>0</bottom>
+		<height>1</height>
+        <aspectratio>scale</aspectratio>
+		<texture colordiffuse="80808080">fenetres/texture.png</texture>		
+	</control>	
+	</control>
+	</focusedlayout>
+	</control>
+	</control>
+	<control type="image">																														<description>image masquée pour recuperer les vignettes a l'avance</description>	
+		<top>1100</top>
+		<texture>http://localhost:52307/getthumb&amp;title=$ESCINFO[listitem.title]</texture>			
+	</control>	
+	<control type="image">																														<description>image masquée pour recuperer les vignettes a l'avance</description>	
+		<top>1100</top>
+		<texture>$INFO[listitem.epgeventicon]</texture>		
+	</control>
+</controls>
+</window>

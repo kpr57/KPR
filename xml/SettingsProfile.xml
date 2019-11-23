@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+	<backgroundcolor>00X000000</backgroundcolor>
+	<onload>setProperty(retour,1,home)</onload> 
+	<onunload>clearProperty(focus,home)</onunload>
+	<onload>setProperty(focus,bouton1,home)</onload>		
+	<defaultcontrol always="true">8000</defaultcontrol>	
+<controls>				
+	<include>arriere_plan</include>			
+	<control type="group">																														<description>horloge</description>						
+		<height>100</height>	
+	<include>heure</include>	
+	</control>	
+	<control type="group">																														<description>titre</description>						
+		<height>100</height>	
+	<include>titre_fenetre</include>	
+	</control>		
+	<include>fond_boutons_fenetre</include>																										<description>fond liste boutons du bas</description>	
+	<control type="group">																														<description>faux boutons du bas pour simuler effet de fading</description>
+	<control type="group">
+		<left>384</left>
+		<top>921</top>
+		<height>98</height>		
+	<include content="bouton_fenetre">			
+	</include>
+		<visible>!string.isEqual(window(home).property(focus),bouton1)</visible>
+	</control>
+	<control type="group">	
+		<left>768</left>
+		<top>921</top>
+		<height>98</height>		
+	<include content="bouton_fenetre">
+	</include>
+		<visible>!string.isEqual(window(home).property(focus),bouton2)</visible>
+	</control>	
+	<control type="image">	
+		<top>921</top>
+		<height>98</height>
+		<width>384</width>
+		<texture colordiffuse="$VAR[selection]">fenetres/texture.png</texture>	
+		<animation effect="slide" start="0" end="384" condition="string.isEqual(window(home).property(focus),bouton1)">conditional</animation>
+		<animation effect="slide" start="0" end="768" condition="string.isEqual(window(home).property(focus),bouton2)">conditional</animation>		
+		<animation effect="fade" start="100" end="50" condition="true">conditional</animation>
+		<visible>!control.hasFocus(8000)</visible>
+	</control>
+	</control>
+	<control type="group">																														<description>boutons du bas</description>
+		<left>384</left>
+		<top>921</top>
+		<height>98</height>		
+	<control type="grouplist" id="8000">																										<description>liste des boutons</description>
+		<itemgap>0</itemgap>
+		<orientation>horizontal</orientation>
+		<scrolltime tween="Linear" easing="in">250</scrolltime>	
+	<include content="bouton_fenetre">																											<description>bouton1</description>
+		<param name="id" value="1000"/>
+		<param name="label" value="$LOCALIZE[16000]"/>
+		<param name="texturenofocus" value="00ffffff"/>
+		<param name="ondown" value="close"/>		
+		<param name="onfocus" value="setProperty(focus,bouton1,home)"/>
+		<param name="onclick1" value="control.setFocus(8001)"/>
+		<param name="onup" value="control.setFocus(8001)"/>		
+	</include>	
+	<include content="bouton_fenetre">																											<description>bouton2</description>
+		<param name="id" value="1001"/>
+		<param name="label" value="$LOCALIZE[13200]"/>
+		<param name="texturenofocus" value="00ffffff"/>
+		<param name="ondown" value="close"/>		
+		<param name="onfocus" value="setProperty(focus,bouton2,home)"/>
+		<param name="onclick1" value="control.setFocus(2)"/>
+		<param name="onup" value="control.setFocus(2)"/>		
+	</include>		
+	</control>
+	</control>	
+	<control type="grouplist">																													<description>profil actuel</description>
+		<right>20</right>
+		<top>921</top>
+		<height>98</height>	
+		<itemgap>0</itemgap>
+		<orientation>horizontal</orientation>
+		<align>right</align>
+	<control type="button" id="22">				
+		<width>auto</width>
+		<height>98</height>		
+		<aligny>center</aligny>
+		<font>texte_moyen</font>
+		<textcolor>$VAR[blanc]</textcolor>
+		<textoffsetx>30</textoffsetx>
+		<texturenofocus colordiffuse="00ffffff">fenetres/texture.png</texturenofocus>
+		<texturefocus colordiffuse="00ffffff">fenetres/texture.png</texturefocus>	
+		<label>$LOCALIZE[31308]  :  $INFO[System.ProfileName]</label>
+	</control>	
+	<control type="group">
+		<bottom>0</bottom>
+		<top>0</top>
+		<width>98</width>
+		<height>98</height>	
+	<control type="image">
+		<bottom>14</bottom>
+		<top>14</top>
+		<width>70</width>
+		<height>70</height>
+		<texture>$INFO[System.ProfileThumb]</texture>
+		<aspectratio align="center">scale</aspectratio>		
+	</control>
+	</control>
+	</control>	
+	
+	<control type="group">																														<description>parametres</description>
+		<top>120</top>
+		<left>404</left>
+		<height>760</height>
+		<width>1496</width>
+	<control type="image">   	     																									
+		<left>-10</left>
+		<height>770</height>
+		<width>1516</width>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="66000000">fenetres/texture.png</texture>
+		<bordertexture border="10">fenetres/tuiles.png</bordertexture>
+		<bordersize>10,0,10,10</bordersize>		
+	</control>	
+	<control type="grouplist" id="8001">																										<description>liste connexion</description>		
+		<top>0</top>
+		<bottom>0</bottom>		
+		<right>12</right>
+		<ondown>8000</ondown>		
+		<onright>60</onright>
+		<onleft>8000</onleft>
+		<onback>8000</onback>	
+		<itemgap>0</itemgap>
+		<pagecontrol>60</pagecontrol>
+		<scrolltime tween="Linear" easing="in">250</scrolltime>	
+	<control type="radiobutton" id="4">		
+	<include content="bouton_listes_fenetre">
+		<param name="label" value="$LOCALIZE[31305]"/>
+	</include>						
+	</control>	
+	<control type="button" id="5">		
+	<include content="bouton_listes_fenetre">
+		<param name="label" value="$LOCALIZE[31306]"/>
+		<param name="label2" value="$INFO[System.ProfileAutoLogin]"/>							
+	</include>
+		<enable>!Window.IsVisible(ProfileSettings) + !System.HasLoginScreen</enable>	
+	</control>			
+		<visible>string.isEqual(window(home).property(focus),bouton1)</visible>				
+	</control>	
+	<control type="panel" id="2">																												<description>liste des profils</description>
+		<top>0</top>
+		<bottom>0</bottom>		
+		<right>12</right>
+		<ondown>8000</ondown>		
+		<onright>61</onright>
+		<onleft>8000</onleft>
+		<onback>8000</onback>	
+		<itemgap>0</itemgap>
+		<pagecontrol>61</pagecontrol>
+		<scrolltime tween="Linear" easing="in">250</scrolltime>	
+	<itemlayout height="76">	
+	<control type="image">	
+		<top>10</top>
+		<left>10</left>
+		<width>56</width>
+		<height>56</height>
+		<texture fallback="defaultuser.png" colordiffuse="$VAR[blanc]">$INFO[ListItem.Icon]</texture>
+		<aspectratio align="center">scale</aspectratio>		
+	</control>
+	<control type="label">
+		<left>60</left>
+	<include content="bouton_listes_fenetre"></include>
+		<label>$INFO[ListItem.Label]</label>
+	</control>	
+	<control type="label">
+		<align>right</align>
+	<include content="bouton_listes_fenetre"></include>
+		<label>$LOCALIZE[31307] : $INFO[ListItem.Label2]</label>
+		<visible>!String.IsEmpty(ListItem.Label2)</visible>		
+	</control>	
+	</itemlayout>
+	<focusedlayout height="76">	
+	<control type="button">
+	<include content="bouton_listes_fenetre">
+		<param name="texturenofocus" value="$VAR[selection]"/>
+	</include>		
+	</control>	
+	<control type="image">	
+		<top>10</top>
+		<left>10</left>
+		<width>56</width>
+		<height>56</height>
+		<texture fallback="defaultuser.png" colordiffuse="$VAR[blanc]">$INFO[ListItem.Icon]</texture>
+		<aspectratio align="center">scale</aspectratio>		
+	</control>
+	<control type="label">
+		<left>60</left>
+	<include content="bouton_listes_fenetre">		
+	</include>
+		<label>$INFO[ListItem.Label]</label>
+	</control>	
+	<control type="label">
+		<align>right</align>
+	<include content="bouton_listes_fenetre">		
+	</include>
+		<label>$LOCALIZE[31307] : $INFO[ListItem.Label2]</label>
+		<visible>!String.IsEmpty(ListItem.Label2)</visible>		
+	</control>
+	</focusedlayout>
+		<visible>string.isEqual(window(home).property(focus),bouton2)</visible>				
+	</control>		
+	<include content="scrollbar_fenetre">
+		<param name="id" value="60"/>
+		<param name="onleft" value="8001"/>
+		<param name="onright" value="8000"/>
+		<param name="visible" value="Control.IsVisible(8001)"/>
+	</include>		
+	<include content="scrollbar_fenetre">
+		<param name="id" value="61"/>	
+		<param name="onleft" value="2"/>
+		<param name="onright" value="8000"/>		
+		<param name="visible" value="Control.IsVisible(2)"/>
+	</include>
+	</control>
+	<include content="textbox_parametres">																										<description>textbox description</description>
+		<param name="label" value="$VAR[description_parametre]"/>
+	</include>
+</controls>
+</window>

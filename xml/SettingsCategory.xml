@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+	<backgroundcolor>00X000000</backgroundcolor>
+	<defaultcontrol always="true">3</defaultcontrol>		
+<controls>		
+	<control type="group">
+	<include>animation_dialogue</include>	
+	<include>image_fond</include>																												<description>image de fond</description>		
+	<control type="label">																														<description>horloge</description>
+		<right>60</right>
+		<height>116</height>			
+		<font>menu</font>
+		<textcolor>80ffffff</textcolor>
+		<align>right</align>
+		<label>$INFO[system.time(hh:mm)]</label>		
+	</control>
+	<control type="label" id="2">																												<description>titre</description>	
+		<height>140</height>
+		<align>center</align>
+		<font>titre</font>		
+	</control>
+	<include content="barre_separation_horizontale">																							<description>barre de separation horizontale</description>
+		<param name="left" value="50"/> 
+		<param name="right" value="50"/>
+		<param name="bottom" value="940"/>		
+	</include>	
+	<control type="grouplist" id="3">																											<description>liste des boutons de gauche</description>		
+		<top>200</top>
+		<left>60</left>
+		<width>600</width>
+		<height>405</height>
+		<onleft>action(back)</onleft>
+		<onright>5</onright>
+		<onup>noop</onup>
+		<ondown>noop</ondown>
+		<itemgap>20</itemgap>		
+	</control>	
+	<control type="button" id="10">
+		<onclick>action(right)</onclick>		
+	<include content="bouton">																											
+		<param name="width" value="600"/> 
+		<param name="height" value="65"/> 		
+	</include>		
+	</control>
+	<control type="image">
+		<top>200</top>
+		<right>50</right>
+		<width>1140</width>
+		<height>800</height>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="20000000" border="50">commun/bouton.png</texture>
+	</control>
+	<control type="image">
+		<top>625</top>
+		<left>60</left>
+		<width>600</width>
+		<height>375</height>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="20ffffff" border="50">commun/bouton.png</texture>
+	</control>
+	<control type="textbox" id="6">																												<description>resume</description>		
+		<top>626</top>
+		<left>80</left>
+		<width>560</width>
+		<height>373</height>
+		<textcolor>80ffffff</textcolor>
+		<font>infos</font>
+		<align>justify</align>
+		<autoscroll delay="20000" time="3000" repeat="20000">false</autoscroll>		
+	</control>	
+	<control type="grouplist" id="5">																											<description>liste des parametres</description>				
+		<top>210</top>
+		<right>80</right>
+		<width>1100</width>
+		<height>780</height>
+		<onleft>3</onleft>		
+		<onright>60</onright>		
+		<onup>noop</onup>
+		<ondown>noop</ondown>
+		<itemgap>20</itemgap>
+		<pagecontrol>60</pagecontrol>
+		<scrolltime tween="Linear" easing="in">250</scrolltime>		
+	</control>
+	<control type="button" id="7">
+	<include content="bouton">																											
+		<param name="width" value="1100"/> 
+		<param name="height" value="80"/> 
+		<param name="textoffsetx" value="40"/>
+		<param name="texturenofocus_colordiffuse" value="05ffffff"/>
+	</include>		
+	</control>
+	<control type="radiobutton" id="8">
+	<include content="bouton">																											
+		<param name="width" value="1100"/> 
+		<param name="height" value="80"/> 
+		<param name="textoffsetx" value="40"/>
+		<param name="texturenofocus_colordiffuse" value="05ffffff"/>
+		<param name="radioposx" value="1020"/>			 		
+	</include>		
+	</control>
+	<control type="spincontrolex" id="9">
+	<include content="bouton">																											
+		<param name="width" value="1100"/> 
+		<param name="height" value="80"/> 
+		<param name="textoffsetx" value="40"/>
+		<param name="texturenofocus_colordiffuse" value="05ffffff"/>
+	</include>		
+	</control>
+	<control type="edit" id="12">
+	<include content="bouton">																											
+		<param name="width" value="1100"/> 
+		<param name="height" value="80"/> 
+		<param name="textoffsetx" value="40"/>
+		<param name="texturenofocus_colordiffuse" value="05ffffff"/>
+	</include>	
+	</control>
+	<control type="sliderex" id="13">
+	<include content="bouton">																											
+		<param name="width" value="1100"/> 
+		<param name="height" value="80"/> 
+		<param name="textoffsetx" value="40"/>
+		<param name="texturenofocus_colordiffuse" value="05ffffff"/>
+	</include>	
+	</control>
+	<control type="image" id="11">   	     																									
+		<height>80</height>
+		<texture colordiffuse="05ffffff">commun/separation_parametres.png</texture>
+	</control>
+	<control type="label" id="14">  			
+		<align>center</align>
+		<textoffsetx>20</textoffsetx>
+		<height>80</height>
+		<textcolor>80ffffff</textcolor>
+		<font>label_parametres</font>
+	</control>
+	<include content="scrollbar_parametres">																									<description>scrollbar</description>
+		<param name="id" value="60"/> 
+		<param name="top" value="210"/> 
+		<param name="height" value="780"/> 
+		<param name="container" value="5"/>		
+	</include>
+	</control>
+</controls>
+</window>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>	
+	<backgroundcolor>00X000000</backgroundcolor>
+	<onload condition="window.isVisible(1206)">dialog.close(script-cu-lrclyrics-main.xml)</onload>
+	<controls>
+	<!-- ** Required ** Do not change <id> or <type> (Lyrics, will autoscroll if lrc based lyrics are shown) -->
+	<control type="group">
+		<animation effect="fade" start="0" end="100" time="250" delay="500" reversible="false">windowopen</animation>
+		<animation effect="fade" start="100" end="0" time="250" reversible="false">windowclose</animation>				
+	<control type="list" id="110">						
+		<top>450</top>
+		<bottom>450</bottom>		
+		<onup>110</onup>
+		<ondown>110</ondown>
+		<pagecontrol>111</pagecontrol>
+		<scrolltime>200</scrolltime>
+	<itemlayout height="60">	
+	<control type="label" id="111">
+		<height>60</height>
+		<font>textbox</font>
+		<aligny>center</aligny>
+		<align>center</align>
+		<shadowcolor>cc000000</shadowcolor>
+		<label>[B]$INFO[ListItem.Label][/B]</label>
+		<visible>!string.isEmpty(ListItem.Label)</visible>
+	</control>
+	<control type="label">
+		<height>60</height>
+		<font>textbox</font>
+		<aligny>center</aligny>
+		<align>center</align>
+		<shadowcolor>cc000000</shadowcolor>
+		<label>----------------</label>
+		<visible>string.isEmpty(ListItem.Label)</visible>
+	</control>
+	</itemlayout>
+	<focusedlayout height="60">		
+	<control type="group">
+		<animation effect="zoom" start="100" end="130,130" time="250" center="auto" reversible="false">focus</animation>
+		<animation effect="zoom" start="130,130" end="100" time="250" center="auto" reversible="false">unfocus</animation>	
+	<control type="label">
+		<height>60</height>
+		<font>textbox</font>
+		<aligny>center</aligny>
+		<align>center</align>
+		<textcolor>$VAR[1selection_osd]</textcolor>
+		<shadowcolor>cc000000</shadowcolor>
+		<label>[B]$INFO[ListItem.Label][/B]</label>
+		<visible>!string.isEmpty(ListItem.Label)</visible>
+	</control>
+	<control type="label">
+		<height>60</height>
+		<font>textbox</font>
+		<aligny>center</aligny>
+		<align>center</align>
+		<textcolor>$VAR[1selection_osd]</textcolor>
+		<shadowcolor>cc000000</shadowcolor>
+		<label>----------------</label>
+		<visible>string.isEmpty(ListItem.Label)</visible>
+	</control>
+	</control>
+	</focusedlayout>
+	</control>
+	</control>
+		
+		<!-- ** Required ** Do not change <id> or <type> (Lyrics Chooser, if multiple lyrics are available) -->
+		<control type="list" id="120">
+			<left>10</left>
+			<top>110</top>
+			<width>1300</width>
+			<height>600</height>
+			<onleft>121</onleft>
+			<onright>121</onright>
+			<onup>120</onup>
+			<ondown>120</ondown>
+			<pagecontrol>121</pagecontrol>
+			<scrolltime>200</scrolltime>
+			<animation effect="slide" start="0,0" end="20,0" time="0" condition="!Control.IsVisible(121)">Conditional</animation>
+			<itemlayout height="40">
+				<control type="label">
+					<left>10</left>
+					<top>0</top>
+					<width>530</width>
+					<height>40</height>
+					<font>textbox</font>
+					<aligny>center</aligny>
+					<label>$INFO[ListItem.Label]</label>
+				</control>
+			</itemlayout>
+			<focusedlayout height="40">
+				<control type="label">
+					<left>10</left>
+					<top>0</top>
+					<width>530</width>
+					<height>40</height>
+					<font>textbox</font>
+					<aligny>center</aligny>
+					<label>$INFO[ListItem.Label]</label>
+					<textcolor>FF12B2E7</textcolor>
+				</control>
+			</focusedlayout>
+		</control>		
+		<!-- ** Required ** Do not change <id> or <type> (name of the used scraper and optionally the number of found lyrics) -->
+		<control type="label" id="200">
+			<description>Scraper label</description>
+			<visible>false</visible>
+		</control>
+	</controls>
+</window>

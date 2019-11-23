@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window type="dialog">	
+	<backgroundcolor>00X000000</backgroundcolor>
+	<include>animation_dialogue</include>	
+	<defaultcontrol>996</defaultcontrol>		
+<controls>
+	<include>image_fond</include>																												<description>image de fond</description>	
+	<control type="label">																														<description>titre</description>	
+		<height>180</height>
+		<align>center</align>
+		<font>titre</font>
+		<label>$LOCALIZE[31189]</label>				
+	</control>	
+	<include content="barre_separation_horizontale">																							<description>barre de separation horizontale</description>
+		<param name="left" value="50"/> 
+		<param name="right" value="50"/>
+		<param name="bottom" value="900"/>		
+	</include>	
+	<control type="group">																														<description>groupe qui se place en fonction du nombre d'options</description>
+		<left>980</left>
+		<animation effect="slide" start="0,0" end="0,490" time="0" condition="Integer.isequal(Container(996).NumItems,1)">conditional</animation>
+		<animation effect="slide" start="0,0" end="0,440" time="0" condition="Integer.isequal(Container(996).NumItems,2)">conditional</animation>
+		<animation effect="slide" start="0,0" end="0,390" time="0" condition="Integer.isequal(Container(996).NumItems,3)">conditional</animation>
+		<animation effect="slide" start="0,0" end="0,340" time="0" condition="Integer.isequal(Container(996).NumItems,4)">conditional</animation>
+		<animation effect="slide" start="0,0" end="0,290" time="0" condition="Integer.isequal(Container(996).NumItems,5)">conditional</animation>
+		<animation effect="slide" start="0,0" end="0,240" time="0" condition="Integer.IsGreaterOrEqual(Container(996).NumItems,6)">conditional</animation>			
+	<control type="grouplist" id="996">																											<description>liste des options</description>
+		<width>800</width>
+		<height>580</height>
+		<onright>7001</onright>		
+		<itemgap>20</itemgap>
+		<pagecontrol>7001</pagecontrol>
+		<scrolltime tween="linear" easing="out">250</scrolltime>
+		<orientation>vertical</orientation>			
+	</control>	
+	</control>
+	<control type="button" id="1000">																											<description>configuration des boutons</description>				
+	<include content="bouton">																											
+		<param name="width" value="780"/> 
+		<param name="height" value="80"/> 	
+	</include>
+	</control>
+	<control type="image">																														<description>si aucune vignette</description>
+		<top>350</top>
+		<bottom>350</bottom>
+		<left>125</left>
+		<right>1085</right>
+		<aspectratio align="center" aligny="center">keep</aspectratio>
+		<texture background="true" colordiffuse="40000000">commun/noimage.png</texture>		
+	</control>
+	<control type="image">																														<description>vignette</description>
+		<top>250</top>
+		<bottom>250</bottom>
+		<left>125</left>
+		<right>1085</right>
+		<aspectratio align="center" aligny="center">keep</aspectratio>
+		<texture background="true">$INFO[window(home).property(image)]</texture>
+		<bordertexture border="10">commun/tuiles.png</bordertexture>
+		<bordersize>10,0,10,10</bordersize>			
+	</control>
+	<include content="barre_separation_horizontale">																							<description>barre de separation horizontale</description>
+		<param name="left" value="50"/> 
+		<param name="right" value="50"/>
+		<param name="bottom" value="180"/>		
+	</include>
+	<control type="label">																														<description>nom de l'element</description>
+		<bottom>0</bottom>
+		<height>180</height>
+		<align>center</align>
+		<font>titre</font>
+		<textcolor>80ffffff</textcolor>
+		<label>$INFO[window(home).property(label)]</label>				
+	</control>	
+</controls>
+</window>

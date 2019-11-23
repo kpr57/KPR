@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>		
+	<backgroundcolor>00X000000</backgroundcolor>
+	<onload condition="string.isequal(window(home).property(osd),1) + player.hasvideo">control.setfocus(400)</onload>
+	<onload condition="string.isequal(window(home).property(osd),2) + player.hasvideo">control.setfocus(399)</onload>
+	<onload condition="string.isempty(window(home).property(osd)) + player.hasvideo">control.setfocus(405)</onload>
+	<onload>clearproperty(osd,home)</onload>
+<controls>
+	<control type="panel" id="50">																												<description>liste des acteurs</description>
+		<width>0</width>
+		<height>0</height>
+		<orientation>horizontal</orientation>
+	<itemlayout>		
+	</itemlayout>
+	<focusedlayout>		
+	</focusedlayout>
+		<content>plugin://script.skin.helper.service/?action=getcast&amp;movie=$INFO[videoplayer.title]</content>
+	</control>
+	<control type="progress" id="1111">
+		<info>Player.Volume</info>
+		<visible>false</visible>
+	</control>
+	<control type="group">
+		<animation effect="fade" start="0" end="100" time="250" reversible="false">windowopen</animation>
+		<animation effect="fade" start="100" end="0" time="250" reversible="false">windowclose</animation>			
+		<animation effect="fade" start="0" end="100" time="250" reversible="false">visible</animation>
+		<animation effect="fade" start="100" end="0" time="250" reversible="false">hidden</animation>	
+	<control type="image">																														<description>fond titre OSD</description>
+		<top>0</top>
+		<centerleft>50%</centerleft>
+		<width>1920</width>
+		<height>110</height>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="cc201f20">commun/texture.png</texture>
+		<visible>!player.Paused + !Player.Forwarding + !Player.Rewinding + !player.showinfo + !window.isvisible(1220) + !window.isvisible(DialogSelect.xml) + !window.isvisible(DialogConfirm.xml) + !window.isvisible(dialogsettings.xml) + !window.isvisible(DialogNotification.xml)</visible>
+	</control>
+	<control type="image">																														<description>ombre fond titre OSD</description>
+		<top>110</top>
+		<centerleft>50%</centerleft>
+		<width>1920</width>
+		<height>20</height>
+		<aspectratio>stretch</aspectratio>
+		<texture>commun/ombre_bas.png</texture>
+		<visible>!player.Paused + !Player.Forwarding + !Player.Rewinding + !player.showinfo + !window.isvisible(1220) + !window.isvisible(DialogSelect.xml) + !window.isvisible(DialogConfirm.xml) + !window.isvisible(dialogsettings.xml) + !window.isvisible(DialogNotification.xml)</visible>
+	</control>
+	<control type="label">       																												<description>titre</description>
+		<top>-10</top>
+		<left>60</left>
+		<align>left</align>
+		<height>120</height>
+		<width>1200</width>
+		<scroll>true</scroll>
+		<font>label</font>
+		<label>$INFO[player.title]</label>
+		<visible>!window.isvisible(DialogSlider.xml) + !player.showinfo</visible>		
+	</control>
+	<control type="label">			       																										<description>heure</description>
+		<top>-10</top>
+		<right>60</right>
+		<align>right</align>
+		<height>120</height>
+		<width>1200</width>
+		<scroll>true</scroll>
+		<font>label</font>
+		<label>$VAR[etat_lecteur]$INFO[System.Time(h:mm)]</label>	
+		<visible>!window.isvisible(DialogSlider.xml) + !player.showinfo</visible>	
+	</control>		
+	<control type="image">																														<description>fond lecteur OSD video</description>
+		<bottom>0</bottom>
+		<centerleft>50%</centerleft>
+		<width>1920</width>
+		<height>90</height>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="cc201f20">commun/texture.png</texture>
+		<visible>!videoplayer.content(liveTV) + !player.showinfo + !window.isvisible(1220) + !window.isvisible(DialogSelect.xml) + !window.isvisible(DialogConfirm.xml) + !window.isvisible(dialogsettings.xml) + !window.isvisible(DialogNotification.xml)</visible>
+	</control>
+	<control type="image">																														<description>ombre fond lecteur OSD video</description>
+		<bottom>90</bottom>
+		<centerleft>50%</centerleft>
+		<width>1920</width>
+		<height>20</height>
+		<aspectratio>stretch</aspectratio>
+		<texture flipy="true">commun/ombre_bas.png</texture>		
+		<visible>!videoplayer.content(liveTV) + !player.showinfo + !window.isvisible(1220) + !window.isvisible(DialogSelect.xml) + !window.isvisible(DialogConfirm.xml) + !window.isvisible(dialogsettings.xml) + !window.isvisible(DialogNotification.xml)</visible>
+	</control>
+	<control type="image">																														<description>fond lecteur OSD tv</description>
+		<bottom>0</bottom>
+		<centerleft>50%</centerleft>
+		<width>1920</width>
+		<height>150</height>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="cc201f20">commun/texture.png</texture>
+		<visible>videoplayer.content(liveTV) + !player.showinfo + !window.isvisible(1220) + !window.isvisible(DialogSelect.xml) + !window.isvisible(DialogConfirm.xml) + !window.isvisible(dialogsettings.xml) + !window.isvisible(DialogNotification.xml)</visible>
+	</control>
+	<control type="image">																														<description>ombre fond lecteur OSD tv</description>
+		<bottom>150</bottom>
+		<centerleft>50%</centerleft>
+		<width>1920</width>
+		<height>20</height>
+		<aspectratio>stretch</aspectratio>
+		<texture flipy="true">commun/ombre_bas.png</texture>		
+		<visible>videoplayer.content(liveTV) + !player.showinfo + !window.isvisible(1220) + !window.isvisible(DialogSelect.xml) + !window.isvisible(DialogConfirm.xml) + !window.isvisible(dialogsettings.xml) + !window.isvisible(DialogNotification.xml)</visible>
+	</control>
+	<control type="image">																														<description>fond barres de progression</description>
+		<left>39</left>
+		<bottom>34</bottom>		
+        <height>12</height>		
+		<width>402</width>	
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="40ffffff">commun/texture.png</texture>
+	</control>
+	<control type="group">																														<description>progression TV</description>
+	<control type="progress">				
+		<left>40</left>
+		<bottom>35</bottom>		
+        <height>10</height>		
+		<width>400</width>	
+		<reveal>true</reveal>
+		<texturebg colordiffuse="00ffffff">commun/texture.png</texturebg>
+		<midtexture colordiffuse="$VAR[couleur_dominante]">commun/texture.png</midtexture>
+		<info>PVR.EpgEventProgress</info>
+	</control>
+	<control type="label">
+		<left>15</left>
+		<bottom>78</bottom>		
+        <height>20</height>
+		<font>petit_texte</font>
+		<textcolor>ffffffff</textcolor>
+		<aligny>center</aligny>
+		<label>Timeshift</label>		
+	</control>
+	<control type="progress">				
+		<left>130</left>
+		<bottom>83</bottom>		
+        <height>4</height>		
+		<width>1770</width>	
+		<reveal>true</reveal>
+		<texturebg colordiffuse="40ffffff">commun/texture.png</texturebg>
+		<midtexture colordiffuse="80ffffff">commun/texture.png</midtexture>
+		<info>PVR.TimeShiftProgress</info>
+	</control>
+	<control type="label">
+		<right>120</right>
+		<bottom>100</bottom>		
+        <height>38</height>
+		<font>texte_moyen</font>
+		<textcolor>ffffffff</textcolor>
+		<align>right</align>
+		<aligny>center</aligny>
+		<label>[B][I]$INFO[videoplayer.channelName][/I][/B]</label>		
+	</control>
+	<control type="image">
+		<right>30</right>
+		<bottom>100</bottom>		
+        <height>38</height>
+		<width>76</width>
+		<aspectratio align="center" aligny="center">keep</aspectratio>
+		<texture fallback="icones/infos/chaine.png">$INFO[skin.string(chemin_logos_tv)]$INFO[videoplayer.channelname].png</texture>		
+	</control>	
+	<control type="label">
+		<left>40</left>
+		<bottom>8</bottom>		
+        <height>20</height>
+		<width>440</width>
+		<align>left</align>
+		<font>petit_texte</font>
+		<textcolor>ffffffff</textcolor>
+		<aligny>center</aligny>
+		<label>$INFO[videoplayer.startTime(hh:mm:ss)]</label>		
+	</control>
+	<control type="label">
+		<bottom>8</bottom>		
+        <height>20</height>
+		<width>440</width>
+		<align>right</align>
+		<font>petit_texte</font>
+		<textcolor>ffffffff</textcolor>
+		<aligny>center</aligny>
+		<label>$INFO[videoplayer.endTime(hh:mm:ss)]</label>		
+	</control>
+		<visible>videoplayer.content(liveTV)</visible>
+	</control>
+	<control type="group">																														<description>progression video</description>
+	<control type="progress">																																		
+		<left>40</left>
+		<bottom>35</bottom>		
+        <height>10</height>		
+		<width>400</width>	
+		<reveal>true</reveal>
+		<texturebg colordiffuse="00ffffff">commun/texture.png</texturebg>
+		<midtexture colordiffuse="$VAR[couleur_dominante]">commun/texture.png</midtexture>
+		<info>player.progress</info>
+	</control>	
+	<control type="label">
+		<bottom>8</bottom>		
+        <height>20</height>
+		<width>440</width>
+		<align>right</align>
+		<font>petit_texte</font>
+		<textcolor>ffffffff</textcolor>
+		<aligny>center</aligny>
+		<label>$INFO[Player.FinishTime]</label>		
+	</control>
+		<visible>!videoplayer.content(liveTV)</visible>
+	</control>
+	<control type="grouplist">																													<description>controles lecteur</description>				
+		<bottom>5</bottom>
+		<centerleft>50%</centerleft>
+        <width>1920</width> 
+		<height>70</height>
+		<itemgap>0</itemgap>
+		<align>center</align>
+		<orientation>horizontal</orientation>	
+	<include content="bouton_lecteur">																											<description>bouton epg</description>
+		<param name="id" value="399"/> 
+		<param name="onclick" value="action(info)"/>
+		<param name="icone1" value="info"/>	
+		<param name="icone2" value="info"/>
+	</include>
+	<include content="bouton_lecteur">																											<description>bouton epg</description>
+		<param name="id" value="400"/> 
+		<param name="onclick" value="setproperty(osd,1,home)"/>
+		<param name="onclick2" value="dialog.close(videoosd)"/>
+		<param name="onclick3" value="activatewindow(TVguide)"/>
+		<param name="icone1" value="epg"/>	
+		<param name="icone2" value="epg"/>
+	</include>	
+	<include content="bouton_lecteur">																											<description>bouton signets</description>
+		<param name="id" value="401"/> 
+		<param name="onclick" value="activateWindow(VideoBookmarks)"/>
+		<param name="icone1" value="signets"/>	
+		<param name="icone2" value="signets"/>
+		<param name="enable" value="!videoplayer.content(liveTV)"/>	
+	</include>
+	<include condition="videoplayer.content(liveTV)" content="bouton_lecteur">																	<description>bouton chaine precedente</description>
+		<param name="id" value="402"/> 
+		<param name="onclick" value="ChannelDown"/>
+		<param name="icone1" value="chaine_moins"/>	
+		<param name="icone2" value="chaine_moins"/>
+	</include>
+	<include condition="!videoplayer.content(liveTV)" content="bouton_lecteur">																	<description>bouton chapitre precedent</description>
+		<param name="id" value="402"/> 
+		<param name="onclick" value="ChapterOrBigStepBack"/>
+		<param name="icone1" value="previous"/>	
+		<param name="icone2" value="previous"/>
+	</include>
+	<include content="bouton_lecteur">																											<description>bouton stop</description>
+		<param name="id" value="403"/> 
+		<param name="onclick" value="PlayerControl(Rewind)"/>
+		<param name="icone1" value="Rewind"/>	
+		<param name="icone2" value="Rewind"/>
+	</include>	
+	<include content="bouton_lecteur">																											<description>bouton enregistrement</description>
+		<param name="id" value="404"/> 
+		<param name="onclick" value="PVR.ToggleRecordPlayingChannel"/>
+		<param name="icone1" value="record"/>	
+		<param name="icone2" value="no_record"/>	
+		<param name="selected" value="PVR.IsRecordingPlayingChannel"/>
+		<param name="enable" value="PVR.CanRecordPlayingChannel"/>	
+	</include>
+	<include content="bouton_lecteur">																											<description>bouton lecture/pause</description>
+		<param name="id" value="405"/> 
+		<param name="onclick" value="PlayerControl(Play)"/>
+		<param name="icone1" value="play"/>	
+		<param name="icone2" value="pause"/>	
+		<param name="selected" value="Player.Paused | Player.Forwarding | Player.Rewinding"/>	
+	</include>
+	<include content="bouton_lecteur">																											<description>bouton stop</description>
+		<param name="id" value="406"/> 
+		<param name="onclick" value="PlayerControl(stop)"/>
+		<param name="icone1" value="stop"/>	
+		<param name="icone2" value="stop"/>
+	</include>
+	<include content="bouton_lecteur">																											<description>bouton stop</description>
+		<param name="id" value="407"/> 
+		<param name="onclick" value="PlayerControl(forward)"/>
+		<param name="icone1" value="forward"/>	
+		<param name="icone2" value="forward"/>
+	</include>
+	<include condition="videoplayer.content(liveTV)" content="bouton_lecteur">																	<description>bouton chaine precedente</description>
+		<param name="id" value="408"/> 
+		<param name="onclick" value="ChannelUp"/>
+		<param name="icone1" value="chaine_plus"/>	
+		<param name="icone2" value="chaine_plus"/>
+	</include>
+	<include condition="!videoplayer.content(liveTV)" content="bouton_lecteur">																	<description>bouton chapitre precedent</description>
+		<param name="id" value="408"/> 
+		<param name="onclick" value="ChapterOrBigStepForward"/>
+		<param name="icone1" value="next"/>	
+		<param name="icone2" value="next"/>
+	</include>
+	<include content="bouton_lecteur">																											<description>bouton stop</description>
+		<param name="id" value="409"/> 
+		<param name="onclick" value="activateWindow(1220)"/>
+		<param name="icone1" value="settings"/>	
+		<param name="icone2" value="settings"/>
+	</include>
+	<include content="bouton_lecteur">																											<description>bouton stop</description>
+		<param name="id" value="410"/> 
+		<param name="onclick" value="activateWindow(osdsubtitlesettings)"/>
+		<param name="icone1" value="soustitres"/>	
+		<param name="icone2" value="soustitres"/>
+	</include>	
+	</control>
+	<control type="grouplist">																													<description>flags lecteur</description>				
+		<visible>!player.showinfo</visible>
+		<right>10</right>
+		<bottom>17</bottom>
+		<width>870</width>
+		<height>48</height>
+		<align>right</align>
+		<itemgap>10</itemgap>
+		<orientation>horizontal</orientation>
+	<control type="image">
+		<width>71</width>
+		<height>48</height>		
+		<texture>$INFO[VideoPlayer.VideoCodec,flags/videocodec/,.png]</texture>
+	</control>
+	<control type="image">
+		<width>71</width>
+		<height>48</height>
+		<texture colordiffuse="$VAR[couleur_dominante]">$INFO[VideoPlayer.AudioCodec,flags/audiocodec/,.png]</texture>			
+	</control>
+	<control type="image">
+		<width>71</width>
+		<height>48</height>
+		<texture fallback="flags/audiochannel/2.png">$INFO[VideoPlayer.AudioChannels,flags/audiochannel/,.png]</texture>
+	</control>
+	<control type="image">
+		<width>71</width>
+		<height>48</height>
+		<texture colordiffuse="$VAR[couleur_dominante]">$INFO[VideoPlayer.VideoAspect,flags/aspectratio/,.png]</texture>
+	</control>			
+	<control type="image">
+		<width>71</width>
+		<height>48</height>
+		<texture>$INFO[VideoPlayer.VideoResolution,flags/videoresolution/,.png]</texture>
+	</control>			
+	</control>
+	</control>
+</controls>
+</window>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+	<backgroundcolor>00X000000</backgroundcolor>
+	<onload>setProperty(retour,1,home)</onload> 
+	<defaultcontrol always="true">700</defaultcontrol>
+	<views>700</views>
+<controls>	
+	<include>video</include>																													<description>arriere plan video</description>
+	<include>image_fond</include>		
+	<control type="group">
+		<animation effect="slide" end="1920,0" time="0" condition="window.isvisible(movieinformation) | window.isvisible(selectdialog) | window.isvisible(contextmenu)" reversible="false">conditional</animation>
+		<animation effect="slide" end="0,0" delay="500" time="0" condition="!window.isvisible(movieinformation) + !window.isvisible(selectdialog) + !window.isvisible(contextmenu)" reversible="false">conditional</animation>		
+	<include>kodroid_view</include>
+	</control>
+</controls>
+</window>

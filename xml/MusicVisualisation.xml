@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+	<backgroundcolor>00X000000</backgroundcolor>
+<controls>			
+	<control type="visualisation" id="2">																										<description>visualisation</description>
+		<left>0</left>
+		<right>0</right>
+		<top>0</top>
+		<bottom>0</bottom>	
+		<visible>Player.HasAudio + !Skin.hassetting(0visualisation_music)</visible>
+	</control>			
+	<control type="image">																														<description>fanart</description>
+		<texture background="true" colordiffuse="40ffffff">$INFO[MusicPlayer.Property(Fanart_Image)]</texture>
+		<aspectratio>scale</aspectratio>
+		<visible>!Skin.HasSetting(0music_fanart)</visible>
+	</control>		
+	<control type="image">																														<description>masque</description>
+		<texture background="true" colordiffuse="80000000">fenetres/texture.png</texture>
+		<aspectratio>scale</aspectratio>
+		<visible>Skin.hassetting(0cycle_couleur_music)</visible>
+	</control>	
+	<control type="multiimage">																													<description>fanart</description>
+		<timeperimage>3000</timeperimage>
+		<randomize>true</randomize>
+		<fadetime>1500</fadetime>
+		<loop>yes</loop>
+		<aspectratio>scale</aspectratio>
+		<imagepath background="true" colordiffuse="40ffffff">fenetres/couleurs/</imagepath>				
+		<visible>!Skin.hassetting(0cycle_couleur_music)</visible>
+	</control>
+	<control type="image">																														<description>fanart</description>
+		<top>-100</top>
+		<texture background="true" colordiffuse="ccffffff">$INFO[MusicPlayer.Cover]</texture>
+		<aspectratio>keep</aspectratio>
+		<animation effect="zoom" start="65" end="20" center="auto" time="30000" tween="sine" easing="inout" pulse="true" condition="!Skin.HasSetting(0animation_music_pochette)">Conditional</animation>
+		<animation effect="rotatex" start="-22,-22" end="22,22" center="auto" time="5000" tween="sine" easing="inout" pulse="true" condition="!Skin.HasSetting(0animation_music_pochette)">Conditional</animation>		
+		<animation effect="rotatey" start="-22,-22" end="22,22" center="auto" time="7500" tween="sine" easing="inout" pulse="true" condition="!Skin.HasSetting(0animation_music_pochette)">Conditional</animation>		
+		<visible>!Skin.HasSetting(0animation_music_pochette)</visible>
+	</control>	
+	<control type="label">																														<description>titre</description>
+		<centertop>50%</centertop>
+		<centerleft>50%</centerleft>
+		<height>120</height>
+		<width>1920</width>
+		<font>textbox</font>
+		<align>center</align>
+		<aligny>center</aligny>
+		<textcolor>ffffffff</textcolor>
+		<shadowcolor>cc000000</shadowcolor>
+		<label>[B]$INFO[MusicPlayer.Artist][/B][CR]$INFO[MusicPlayer.Album]</label>		
+		<animation effect="zoom" start="150" end="175" time="5000" tween="sine" easing="inout" pulse="true" condition="!Skin.HasSetting(0animation_music_pochette)">Conditional</animation>
+		<animation effect="slide" start="-700,-200" end="0,200" time="30000" tween="sine" easing="inout" pulse="true" condition="!Skin.HasSetting(0animation_music_pochette)">Conditional</animation>		
+		<animation effect="rotatex" start="50" end="-50" center="420,0" time="7500" tween="sine" easing="inout" pulse="true" condition="!Skin.HasSetting(0animation_music_pochette)">Conditional</animation>		
+		<animation effect="rotatey" start="-50" end="50" center="960,0" time="15000" tween="sine" easing="inout" pulse="true" condition="!Skin.HasSetting(0animation_music_pochette)">Conditional</animation>				
+		<animation effect="fade" start="100" end="0" time="3000" reversible="false" condition="window.isvisible(script-cu-lrclyrics-main.xml)">conditional</animation>
+		<animation effect="fade" start="0" end="100" time="3000" reversible="false" condition="!window.isvisible(script-cu-lrclyrics-main.xml)">conditional</animation>
+		<visible>!Skin.HasSetting(0animation_music_pochette)</visible>
+	</control>
+	<control type="label">																														<description>titre</description>
+		<centertop>50%</centertop>
+		<centerleft>50%</centerleft>
+		<height>120</height>
+		<width>1920</width>
+		<font>bouton</font>
+		<align>center</align>
+		<aligny>center</aligny>
+		<textcolor>ffffffff</textcolor>
+		<shadowcolor>cc000000</shadowcolor>
+		<label>[B]$INFO[MusicPlayer.Title][/B]</label>		
+		<animation effect="zoom" start="150" end="175" time="3000" tween="sine" easing="inout" pulse="true" condition="!Skin.HasSetting(0animation_music_pochette)">Conditional</animation>
+		<animation effect="slide" start="0,200" end="-700,-200" time="20000" tween="sine" easing="inout" pulse="true" condition="!Skin.HasSetting(0animation_music_pochette)">Conditional</animation>		
+		<animation effect="rotatex" start="-50" end="50" center="420,0" time="5000" tween="sine" easing="inout" pulse="true" condition="!Skin.HasSetting(0animation_music_pochette)">Conditional</animation>		
+		<animation effect="rotatey" start="-50" end="50" center="960,0" time="10000" tween="sine" easing="inout" pulse="true" condition="!Skin.HasSetting(0animation_music_pochette)">Conditional</animation>				
+		<animation effect="fade" start="100" end="0" time="3000" reversible="false" condition="window.isvisible(script-cu-lrclyrics-main.xml)">conditional</animation>
+		<animation effect="fade" start="0" end="100" time="3000" reversible="false" condition="!window.isvisible(script-cu-lrclyrics-main.xml)">conditional</animation>
+		<visible>!Skin.HasSetting(0animation_music_pochette)</visible>
+	</control>	
+	<control type="group">	
+		<visible>Player.ShowInfo | window.isvisible(musicosd)</visible>
+		<animation effect="fade" start="0" end="100" time="250" delay="250" reversible="false">visible</animation>
+		<animation effect="fade" start="100" end="0" time="250" delay="250" reversible="false">hidden</animation>
+	<control type="image">																														<description>degrade haut</description>
+		<top>0</top>
+		<centerleft>50%</centerleft>
+		<width>2500</width>
+		<height>700</height>
+		<aspectratio>stretch</aspectratio>
+		<texture flipy="true" colordiffuse="ff000000">fenetres/degrade.png</texture>
+	</control>
+	<control type="image">																														<description>degrade fond lecteur OSD</description>
+		<bottom>0</bottom>
+		<centerleft>50%</centerleft>
+		<width>2500</width>
+		<height>700</height>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="ff000000">fenetres/degrade.png</texture>
+	</control>
+	<include content="heure">																													<description>heure + volume</description>
+	</include>		
+	<control type="label">																														<description>titre</description>
+		<top>-10</top>
+		<height>120</height>
+		<font>titre</font>
+		<align>left</align>
+		<aligny>center</aligny>
+		<label>   $INFO[MusicPlayer.Artist] : $INFO[MusicPlayer.Album]</label>
+		<textcolor>ffffffff</textcolor>
+		<visible>player.hasAudio + !window.isVisible(DialogMusicInfo.xml)</visible>
+	</control>
+	<control type="group">
+		<left>0</left>			
+		<bottom>0</bottom>
+		<height>256</height>	
+	<control type="image">																														<description>album</description>
+		<bottom>10</bottom>
+		<left>10</left>
+		<width>256</width>
+		<height>256</height>
+		<texture fallback="default_album.jpg">$INFO[MusicPlayer.Cover]</texture>
+		<aspectratio aligny="center">keep</aspectratio>
+	</control>
+	<control type="group">
+		<animation effect="slide" start="0,0" end="0,-90" time="250" condition="window.isVisible(musicosd)" reversible="false">conditional</animation>
+		<animation effect="slide" start="0,-90" end="0,0" time="250" delay ="250" condition="!window.isVisible(musicosd)" reversible="false">conditional</animation>
+	<control type="label">																														<description>titre</description>
+		<left>340</left>
+		<bottom>80</bottom>
+		<height>40</height>
+		<font>texte_moyen</font>
+		<align>left</align>
+		<aligny>bottom</aligny>
+		<label>[I]$LOCALIZE[31259] : $INFO[MusicPlayer.offset(1).Artist] - $INFO[MusicPlayer.offset(1).Album] - $INFO[MusicPlayer.offset(1).Title] ($INFO[MusicPlayer.offset(1).duration])[/I]</label>
+		<textcolor>ffffffff</textcolor>
+		<visible>!string.isEmpty(MusicPlayer.offset(1).Title)</visible>
+	</control>			
+	<control type="label">																														<description>titre</description>
+		<left>340</left>
+		<bottom>10</bottom>
+		<height>60</height>
+		<font>textbox</font>
+		<align>left</align>
+		<aligny>center</aligny>
+		<label>[I]$INFO[MusicPlayer.title][/I]</label>
+		<textcolor>ffffffff</textcolor>
+	</control>	
+	<control type="label">																														<description>titre</description>
+		<right>60</right>
+		<bottom>10</bottom>
+		<height>60</height>
+		<font>textbox</font>
+		<align>right</align>
+		<aligny>center</aligny>
+		<label>$INFO[MusicPlayer.Time]/$INFO[MusicPlayer.duration]</label>
+		<textcolor>ffffffff</textcolor>		
+	</control>
+	<control type="progress">				
+		<left>330</left>
+		<right>50</right>
+		<bottom>70</bottom>		
+        <height>5</height>	
+		<reveal>true</reveal>
+		<texturebg colordiffuse="80808080">fenetres/texture.png</texturebg>
+		<midtexture colordiffuse="$VAR[1selection_osd]">fenetres/texture.png</midtexture>
+		<info>player.Progress</info>				
+	</control>
+	</control>
+	</control>
+	</control>	
+	</controls>
+</window>

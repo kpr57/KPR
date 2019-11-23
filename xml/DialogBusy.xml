@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+	<backgroundcolor>00X000000</backgroundcolor>
+	<include>animation_dialogue</include>	
+<controls>	
+	<control type="image">																														<description>degrade haut</description>
+		<top>0</top>
+		<width>2500</width>
+		<height>2000</height>
+		<aspectratio>stretch</aspectratio>
+		<texture flipy="true">commun/degrade.png</texture>
+	</control>
+	<control type="image">																														<description>degrade fond lecteur OSD</description>
+		<bottom>0</bottom>		
+		<width>2500</width>
+		<height>2000</height>
+		<aspectratio>stretch</aspectratio>
+		<texture>commun/degrade.png</texture>
+	</control>		
+	<control type="image">																														<description>fond animation</description>				
+		<centerleft>50%</centerleft>
+		<centertop>50%</centertop>
+		<width>160</width>
+		<height>160</height>
+		<texture>commun/fond_occupe.png</texture>
+		<aspectratio>keep</aspectratio>		
+	</control>
+	<control type="image">																														<description>animation</description>				
+		<centerleft>50%</centerleft>
+		<centertop>50%</centertop>
+		<width>160</width>
+		<height>160</height>
+		<texture colordiffuse="$VAR[couleur_dominante]">commun/occupe.png</texture>
+		<aspectratio>keep</aspectratio>
+		<animation effect="rotate" center="auto" start="360" end="0" time="1500" loop="true" condition="true">Conditional</animation>
+	</control>
+	</controls>
+</window>

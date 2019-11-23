@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+	<backgroundcolor>00X000000</backgroundcolor>
+	<defaultcontrol always="true">8000</defaultcontrol>
+	<views>570</views>
+<controls>				
+	<include>fenetre</include>		
+	<control type="group">
+		<top>106</top>	
+	<control type="group">																														<description>boutons du haut</description>
+		<top>0</top>
+		<height>60</height>			
+	<control type="grouplist" id="8000">																										<description>liste des boutons</description>				
+		<bottom>0</bottom>
+		<top>0</top>
+		<left>463</left>
+		<ondown>570</ondown>
+		<onleft>220</onleft>
+		<itemgap>3</itemgap>
+		<orientation>horizontal</orientation>
+		<scrolltime tween="Linear" easing="in">250</scrolltime>		
+	<include content="boutons_hauts_fenetre">
+		<param name="id" value="4"/>
+		<param name="label" value="Ordre $INFO[Container(570).SortOrder]"/>	
+		<param name="ondown" value="570"/>
+	</include>
+	<include content="boutons_hauts_fenetre">
+		<param name="id" value="20"/>
+		<param name="label" value="Effacer les données"/>
+		<param name="ondown" value="570"/>	
+	</include>
+	<include content="boutons_hauts_fenetre">
+		<param name="id" value="21"/>
+		<param name="ondown" value="570"/>	
+	</include>
+	<include content="boutons_hauts_fenetre">
+		<param name="id" value="23"/>
+		<param name="label" value="Paramètres"/>
+		<param name="ondown" value="570"/>
+		<param name="onclick" value="ActivateWindow(systemsettings,logging)"/>	
+	</include>	
+	</control>	
+	<control type="radiobutton" id="220">																										<description>bouton niveau du rapport</description>          																								
+		<top>60</top>	
+		<left>48</left>
+		<width>364</width>
+		<height>60</height>
+		<textoffsetx>20</textoffsetx>
+		<align>left</align>
+		<aligny>center</aligny>
+		<textoffsetx>5</textoffsetx>
+		<font>bouton</font>
+		<textcolor>$VAR[panneau_fenetre]</textcolor>
+		<focusedcolor>$VAR[focus_texte_bouton_fenetre]</focusedcolor>
+		<texturenofocus colordiffuse="$VAR[texte_bouton_fenetre]">texture.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[focus_bouton_fenetre]">texture.png</texturefocus>	
+		<textureradioonfocus colordiffuse="$VAR[focus_texte_bouton_fenetre]">boutons/radiobutton_focus.png</textureradioonfocus>
+		<textureradioonnofocus colordiffuse="$VAR[panneau_fenetre]">boutons/radiobutton_focus.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="$VAR[focus_texte_bouton_fenetre]">boutons/radiobutton_no_focus.png</textureradioofffocus>
+		<textureradiooffnofocus colordiffuse="$VAR[panneau_fenetre]">boutons/radiobutton_no_focus.png</textureradiooffnofocus>		
+		<label>Niveaux plus élevés</label>
+		<selected>String.contains(Control.GetLabel(22),*) + !String.contains(Control.GetLabel(21),err)</selected>
+		<onright>8000</onright>
+		<onclick>Sendclick(22)</onclick>
+		<ondown condition="player.hasvideo">120</ondown>				
+	</control>
+	<control type="radiobutton" id="22"> 																										<description>bouton cache pour recuperer le niveau du rapport</description> 
+		<left>2000</left>
+	</control>
+	</control>	
+	<control type="panel" id="570">																												<description>liste du rapport</description>
+		<top>62</top>
+		<bottom>0</bottom>
+		<right>10</right>
+		<left>460</left>
+		<onup>8000</onup>
+		<onright>60</onright>
+		<onleft>220</onleft>		
+		<onback>8000</onback>
+		<itemgap>0</itemgap>
+		<pagecontrol>60</pagecontrol>
+		<scrolltime tween="Linear" easing="in">250</scrolltime>	
+	<itemlayout height="76">	
+	<control type="label">
+		<left>30</left>
+		<height>76</height>
+		<aligny>center</aligny>
+		<font>texte_moyen</font>
+		<textcolor>$VAR[texte_bouton_fenetre]</textcolor>
+		<label>$INFO[ListItem.Label2]   -   $INFO[ListItem.Label]</label>
+	</control>
+	</itemlayout>
+	<focusedlayout height="76">	
+	<control type="image">
+		<texture colordiffuse="$VAR[focus_bouton_fenetre]">texture.png</texture>
+	</control>
+	<control type="label">
+		<left>30</left>
+		<height>76</height>
+		<aligny>center</aligny>
+		<font>texte_moyen</font>
+		<textcolor>$VAR[focus_texte_bouton_fenetre]</textcolor>
+		<label>$INFO[ListItem.Label2]   -   $INFO[ListItem.Label]</label>
+	</control>
+	</focusedlayout>	
+	</control>
+	<include content="scrollbar_fenetre">																										<description>scrollbar</description>
+		<param name="id" value="60"/>
+		<param name="onleft" value="570"/>
+		<param name="onright" value="8000"/>
+	</include>	
+	<include content="video_fenetre">																											<description>video</description>
+		<param name="onup" value="220"/>
+		<param name="onright" value="8000"/>
+		<param name="onclick1" value="alarmClock(name1,activatewindow(fullscreenvideo),00:00,silent)"/>		
+	</include>	
+	<include content="textbox_parametres">																										<description>textbox description</description>
+		<param name="id"/>
+		<param name="label" value="$VAR[description_parametre]"/>
+	</include>
+	<control type="image">           																											<description>ombre cadre gauche</description>
+		<top>63</top>
+		<left>460</left>
+		<width>20</width>
+		<height>1000</height>
+		<aspectratio>stretch</aspectratio>
+		<texture>fenetres/ombre_droite.png</texture>	
+	</control>
+	</control>	
+</controls>
+</window>

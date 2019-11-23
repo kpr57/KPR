@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window type="dialog">
+	<backgroundcolor>00X000000</backgroundcolor>
+	<defaultcontrol always="true">3</defaultcontrol>
+<controls>				
+	<control type="progress" id="1111">
+		<info>Player.Volume</info>
+		<visible>false</visible>
+	</control>
+	<control type="group">
+		<visible>window.isvisible(VideoFullScreen.xml)</visible>
+		<animation effect="fade" start="0" end="100" delay="200" time="200">windowopen</animation>
+		<animation effect="fade" start="100" end="0" time="200">windowclose</animation>	
+	<control type="image">
+		<top>257</top>
+		<left>605</left>
+		<width>710</width>
+		<height>565</height>	
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="fff0f0f0" border="50">commun/bouton.png</texture>
+	</control>
+	<control type="image">
+		<top>337</top>
+		<left>610</left>
+		<width>700</width>
+		<height>480</height>	
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="1a000000" border="50">commun/bouton.png</texture>
+	</control>
+	<control type="label" id="1">																												<description>titre</description>
+		<top>257</top>
+		<left>610</left>
+		<width>700</width>
+		<height>80</height>			
+		<font>menu</font>
+		<textcolor>$VAR[gris]</textcolor>
+		<align>center</align>
+	</control>	
+	<include condition="window.isvisible(videofullscreen.xml)">dialogselect_videofullscreen</include>
+	</control>
+	<control type="group">
+		<visible>!window.isvisible(VideoFullScreen.xml)</visible>
+	<include>animation_dialogue</include>	
+	<include>image_fond</include>																												<description>image de fond</description>	
+	<control type="label">																														<description>horloge</description>
+		<right>60</right>
+		<height>116</height>			
+		<font>menu</font>
+		<textcolor>80ffffff</textcolor>
+		<align>right</align>
+		<label>$INFO[system.time(hh:mm)]</label>		
+	</control>	
+	<control type="label" id="1">																												<description>titre</description>	
+		<height>140</height>
+		<align>center</align>
+		<font>titre</font>		
+	</control>	
+	<include content="barre_separation_horizontale">																							<description>barre de separation horizontale</description>
+		<param name="left" value="50"/> 
+		<param name="right" value="50"/>
+		<param name="bottom" value="940"/>		
+	</include>			
+	<include condition="!window.isvisible(videofullscreen.xml)">dialogselect_no_videofullscreen</include>
+	<include content="scrollbar">																												<description>scrollbar</description>
+		<param name="id" value="61"/> 
+		<param name="top" value="200"/> 
+		<param name="height" value="780"/> 
+		<param name="container" value="3"/>
+		<param name="right" value="694"/>
+		<param name="visible" value="control.isvisible(3)"/>
+	</include>	
+	<control type="group">																														<description>groupe qui se place en fonction du nombre d'options</description>
+		<animation effect="slide" start="0,0" end="0,540" time="1" condition="Integer.isequal(Container(6).NumAllItems,1)">conditional</animation>
+		<animation effect="slide" start="0,0" end="0,470" time="1" condition="Integer.isequal(Container(6).NumAllItems,2)">conditional</animation>
+		<animation effect="slide" start="0,0" end="0,400" time="1" condition="Integer.isequal(Container(6).NumAllItems,3)">conditional</animation>
+		<animation effect="slide" start="0,0" end="0,330" time="1" condition="Integer.isequal(Container(6).NumAllItems,4)">conditional</animation>
+		<animation effect="slide" start="0,0" end="0,260" time="1" condition="Integer.isequal(Container(6).NumAllItems,5)">conditional</animation>					
+		<animation effect="slide" start="0,0" end="0,190" time="1" condition="integer.IsGreaterOrEqual(Container(6).NumAllItems,6)">conditional</animation>
+	<control type="list" id="6">																												<description>listes complexe</description>		
+		<left>500</left>
+		<width>700</width>
+		<height>840</height>		
+		<onleft>8000</onleft>
+		<onright>60</onright>
+		<pagecontrol>60</pagecontrol>
+		<scrolltime tween="linear" easing="out">250</scrolltime>
+		<orientation>vertical</orientation>			
+	<itemlayout height="140">					
+	<control type="group">
+		<top>10</top>
+	<control type="button">
+	<include content="bouton">
+		<param name="height" value="120"/> 
+	</include>
+	</control>	
+	<control type="label">
+		<left>130</left>
+		<right>2</right>
+		<height>70</height>
+		<label>$INFO[ListItem.Label]</label>		
+	</control>		
+	<control type="textbox">
+		<top>50</top>
+		<left>150</left>
+		<right>10</right>		
+		<height>70</height>
+		<font>infos</font>
+		<align>left</align>		
+		<textcolor>bfffffff</textcolor>
+		<label>$INFO[ListItem.Label2]</label>
+	</control>	
+	<control type="image">	
+		<left>10</left>
+		<top>10</top>
+		<width>100</width>
+		<height>100</height>
+		<texture background="true" fallback="defaultfolder.png">$INFO[ListItem.Icon]</texture>
+		<aspectratio>keep</aspectratio>
+	</control>
+	</control>
+	</itemlayout>
+	<focusedlayout height="140">				
+	<control type="group">
+		<top>10</top>
+	<control type="button">
+	<include content="bouton">
+		<param name="height" value="120"/> 
+	</include>
+	</control>
+	<control type="button">
+	<include content="bouton">
+		<param name="height" value="120"/>
+		<param name="texturenofocus_colordiffuse" value="$VAR[couleur_dominante]"/>
+	</include>
+		<visible>!control.hasfocus(6)</visible>
+		<animation effect="fade" start="100" end="75" condition="true">conditional</animation>
+	</control>
+	<control type="label">
+		<left>130</left>
+		<right>2</right>
+		<height>70</height>		
+		<textcolor>ff433736</textcolor>
+		<label>$INFO[ListItem.Label]</label>
+		<scroll>true</scroll>	
+	</control>		
+	<control type="textbox">
+		<top>50</top>
+		<left>150</left>
+		<right>10</right>		
+		<height>70</height>
+		<font>infos</font>
+		<align>left</align>		
+		<textcolor>bfffffff</textcolor>
+		<label>$INFO[ListItem.Label2]</label>
+	</control>	
+	<control type="image">	
+		<left>10</left>
+		<top>10</top>
+		<width>100</width>
+		<height>100</height>
+		<texture background="true" fallback="defaultfolder.png">$INFO[ListItem.Icon]</texture>
+		<aspectratio>keep</aspectratio>
+	</control>
+	</control>
+	</focusedlayout>	
+	</control>
+	</control>	
+	<include content="scrollbar">																												<description>scrollbar</description>
+		<param name="id" value="60"/> 
+		<param name="top" value="200"/> 
+		<param name="height" value="820"/> 
+		<param name="container" value="6"/>
+		<param name="right" value="694"/>
+		<param name="visible" value="control.isvisible(6)"/>
+	</include>	
+	<control type="image">																														<description>grande icone de droite</description>
+		<fadetime>50</fadetime>
+		<top>200</top>
+		<bottom>60</bottom>
+		<left>1320</left>
+		<right>100</right>
+		<aspectratio align="center" aligny="center">keep</aspectratio>
+		<texture background="true" border="10" fallback="defaultfolder.png">$INFO[container(6).ListItem.Icon]</texture>
+		<bordertexture border="10">commun/tuiles.png</bordertexture>
+		<bordersize>10,0,10,10</bordersize>
+		<visible>control.isvisible(6)</visible>		
+	</control>	
+	<control type="image">																														<description>grande icone de droite</description>
+		<fadetime>50</fadetime>
+		<top>200</top>
+		<bottom>60</bottom>
+		<left>1320</left>
+		<right>100</right>
+		<aspectratio align="center" aligny="center">keep</aspectratio>
+		<texture background="true" border="10" fallback="defaultfolder.png">$INFO[container(3).ListItem.Icon]</texture>
+		<bordertexture border="10">commun/tuiles.png</bordertexture>
+		<bordersize>10,0,10,10</bordersize>	
+		<visible>control.isvisible(3)</visible>	
+	</control>	
+	<control type="grouplist" id="8000">																										<description>liste boutons</description>	
+		<top>200</top>
+		<height>800</height>
+		<left>75</left>
+		<width>350</width>
+		<itemgap>10</itemgap>
+		<onright condition="Control.IsVisible(6)">6</onright>
+		<onright condition="Control.IsVisible(3)">3</onright>	
+		<orientation>vertical</orientation>			
+	<control type="button" id="5">																												<description>bouton valider</description>			
+	<include content="bouton">
+		<param name="align" value="center"/>	
+	</include>
+	</control>
+	<control type="button" id="7">																												<description>bouton plus</description>					
+	<include content="bouton">
+		<param name="align" value="center"/>	
+	</include>
+	</control>	
+	</control>	
+	</control>
+</controls>
+</window>

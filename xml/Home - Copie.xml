@@ -1,0 +1,1519 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<window>		
+	<defaultcontrol>1000</defaultcontrol>	
+<controls>
+	<include>video</include>																													<description>arriere plan video</description>
+	<include>image_fond</include>		
+	
+	
+	<!--
+	PENSE BETE :
+	
+	CLAVIER : metre des ondown et onup pour chaque touche
+	-->
+		
+	
+	<control type="group">																														<description>menu principal</description>
+		<animation effect="slide" end="-450,0" time="400" condition="!control.hasfocus(1000) + !control.hasfocus(111) + !skin.hassetting(menu_icones)">conditional</animation>
+		<animation effect="slide" end="-150,0" time="150" condition="!control.hasfocus(1000) + !control.hasfocus(111) + skin.hassetting(menu_icones)">conditional</animation>
+		<animation effect="slide" end="-300,0" time="150" condition="skin.hassetting(menu_icones)">conditional</animation>
+		<width>450</width>		
+	<control type="image">
+		<width>430</width>
+		<texture colordiffuse="33000000">commun/texture.png</texture>
+	</control>
+	<control type="button" id="111">
+		<top>0</top>
+		<left>0</left>
+		<width>80</width>
+		<height>100</height>
+		<texturenofocus colordiffuse="80ffffff">boutons/menu.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]">boutons/menu.png</texturefocus>
+		<ondown>1000</ondown>
+		<onclick>skin.togglesetting(menu_icones)</onclick>
+		<animation effect="slide" end="320,0" time="150" condition="skin.hassetting(menu_icones)">conditional</animation>		
+	</control>
+	<control type="list" id="1000">		
+		<top>225</top>
+		<onup>111</onup>
+		<onright condition="string.isequal(window(home).property(menu),home)">1001</onright>
+		<onright condition="string.isequal(window(home).property(menu),$LOCALIZE[31168])">2001</onright>		
+		<onright condition="string.isequal(window(home).property(menu),$LOCALIZE[31174])">9001</onright>
+		<onright condition="string.isequal(window(home).property(menu),$LOCALIZE[31175])">10001</onright>
+		<onclick>$INFO[listitem.property(action)]</onclick>			
+		<scrolltime tween="cubic" easing="out">500</scrolltime>
+		<orientation>vertical</orientation>	
+	<itemlayout height="122">	
+	<control type="image">		
+		<right>50</right>
+		<top>20</top>
+		<height>82</height>
+		<width>82</width>
+		<aspectratio>keep</aspectratio>
+		<texture colordiffuse="80ffffff">$INFO[listitem.icon]</texture>				
+	</control>
+	<control type="label">
+		<right>170</right>
+		<align>right</align>
+		<font>menu</font>
+		<textcolor>80ffffff</textcolor>
+		<label>$INFO[listitem.label]</label>
+	</control>
+	</itemlayout>
+	<focusedlayout height="122">
+	<control type="button">
+		<onfocus>setproperty(menu,$INFO[container(1000).listitem.label],home)</onfocus>		
+	</control>
+	<control type="group">
+		<visible>control.hasfocus(111)</visible>
+	<control type="image">		
+		<right>50</right>
+		<top>20</top>
+		<height>82</height>
+		<width>82</width>
+		<aspectratio>keep</aspectratio>
+		<texture colordiffuse="80ffffff">$INFO[listitem.icon]</texture>				
+	</control>
+	<control type="label">
+		<right>170</right>
+		<align>right</align>
+		<font>menu</font>
+		<textcolor>80ffffff</textcolor>
+		<label>$INFO[listitem.label]</label>
+	</control>	
+	</control>
+	<control type="group">
+		<visible>!control.hasfocus(111)</visible>
+	<control type="image">		
+		<top>-17</top>
+		<height>157</height>
+		<aspectratio>stretch</aspectratio>
+		<texture border="10" colordiffuse="$VAR[couleur_dominante]">boutons/bouton_menu_cd.png</texture>				
+		<bordersize>0,10,10,10</bordersize>
+	</control>
+	<control type="image">		
+		<right>50</right>
+		<top>20</top>
+		<height>82</height>
+		<width>82</width>
+		<aspectratio>keep</aspectratio>
+		<texture colordiffuse="$VAR[gris]">$INFO[listitem.icon]</texture>				
+	</control>
+	<control type="label">
+		<right>170</right>
+		<align>right</align>
+		<font>menu</font>
+		<textcolor>$VAR[gris]</textcolor>
+		<label>$INFO[listitem.label]</label>
+	</control>		
+	</control>
+	</focusedlayout>
+	<content>
+	<item>
+		<label>HOME</label>
+		<icon>menus/home.png</icon>
+		<property name="action">action(right)</property>
+	</item>
+	
+	<item>	
+		<label>$LOCALIZE[31168]</label>
+		<icon>menus/videos.png</icon>
+		<property name="action">activatewindow(videos,videodb://movies/titles,return)</property>		
+	</item>	
+	<item>	
+		<label>$LOCALIZE[31213]</label>
+		<icon>menus/series.png</icon>
+		<property name="action">activatewindow(videos,videodb://tvshows/titles,return)</property>		
+	</item>		
+	<item>	
+		<label>$LOCALIZE[31169]</label>
+		<icon>menus/music.png</icon>
+		<property name="action">activatewindow(music,musicdb://albums,return)</property>		
+	</item>	
+	<item>	
+		<label>$LOCALIZE[31170]</label>
+		<icon>menus/pictures.png</icon>
+		<property name="action">activatewindow(Pictures)</property>		
+	</item>	
+	<item>	
+		<label>$LOCALIZE[31171]</label>
+		<icon>menus/livetv.png</icon>
+		<property name="action">activatewindow(TVGuide)</property>		
+	</item>	
+	<item>	
+		<label>$LOCALIZE[31172]</label>
+		<icon>menus/radio.png</icon>
+		<property name="action">activatewindow(RadioChannels)</property>		
+	</item>		
+	<item>	
+		<label>$LOCALIZE[31173]</label>
+		<icon>menus/weather.png</icon>
+		<property name="action">activatewindow(Weather)</property>		
+	</item>	
+	<item>	
+		<label>$LOCALIZE[31174]</label>
+		<icon>menus/system.png</icon>
+		<property name="action">action(right)</property>		
+	</item>		
+	<item>	
+		<label>$LOCALIZE[31175]</label>
+		<icon>menus/eteindre.png</icon>
+		<property name="action">action(right)</property>		
+	</item>
+	</content>	
+	</control>
+	</control>
+
+	<control type="grouplist" id="1001">																										<description>page accueil/parametres/extinction</description>
+		<visible>string.isequal(window(home).property(menu),home)</visible>
+		<animation effect="slide" end="1920,0" time="0" condition="window.isvisible(movieinformation) | window.isvisible(selectdialog) | window.isvisible(contextmenu)" reversible="false">conditional</animation>
+		<animation effect="slide" end="0,0" delay="500" time="0" condition="!window.isvisible(movieinformation) + !window.isvisible(selectdialog) + !window.isvisible(contextmenu)" reversible="false">conditional</animation>		
+		<animation effect="slide" end="-450,0" time="400" condition="!control.hasfocus(1000) + !control.hasfocus(111) + !skin.hassetting(menu_icones)">conditional</animation>
+		<animation effect="slide" end="-150,0" time="150" condition="!control.hasfocus(1000) + !control.hasfocus(111) + skin.hassetting(menu_icones)">conditional</animation>
+		<animation effect="slide" end="-300,0" time="150" condition="skin.hassetting(menu_icones)">conditional</animation>		
+		<left>450</left>
+		<width>1920</width>
+		<scrolltime tween="cubic" easing="out">500</scrolltime>	
+	<control type="group">																														<description>horloge</description>
+		<height>130</height>	
+	<control type="radiobutton" id="999">
+		<left>50</left>
+		<top>35</top>
+		<height>60</height>
+		<width>1500</width>
+		<onleft>1000</onleft>
+		<ondown>1010</ondown>
+		<texturenofocus colordiffuse="$VAR[couleur_dominante]" border="20">$PARAM[texturenofocus]</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
+		<textureradioonfocus colordiffuse="$VAR[gris]">menus/recherche.png</textureradioonfocus>
+		<textureradioonnofocus colordiffuse="80ffffff">menus/recherche.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="$VAR[gris]">menus/recherche.png</textureradioofffocus>
+		<textureradiooffnofocus colordiffuse="80ffffff">menus/recherche.png</textureradiooffnofocus>
+		<radioposx>1</radioposx>
+		<radiowidth>80</radiowidth>
+		<radioheight>80</radioheight>			
+	</control>
+	<control type="label">																														<description>horloge</description>
+		<right>60</right>
+		<height>130</height>
+		<font>menu</font>
+		<textcolor>80ffffff</textcolor>
+		<align>right</align>
+		<label>$INFO[system.time(hh:mm)]</label>		
+	</control>
+	<include content="barre_separation_horizontale">																							<description>barre de separation horizontale</description>
+		<param name="left" value="25"/> 
+		<param name="right" value="25"/>
+		<param name="bottom" value="0"/>			
+	</include>
+	</control>
+	<include content="panneau_poster">																											<description>widget video</description>	
+		<param name="id" value="1010"/>
+		<param name="onleft" value="1000"/>
+		<param name="onup" value="999"/>
+		<param name="ondown" value="1011"/>
+		<param name="nom" value="$INFO[skin.string(nom_widget_1010)]"/>
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_1010)]"/>
+		<param name="cible" value="$INFO[skin.string(cible_widget_1010)]"/>
+		<param name="sortby" value="$INFO[skin.string(tri_widget_1010)]"/>
+		<param name="sortorder" value="$INFO[skin.string(ordre_widget_1010)]"/>
+		<param name="progression" value="String.StartsWith(Skin.String(chemin_widget_1010),videodb://movies/)"/>
+		<param name="visible" value="string.isEqual(Skin.String(type_widget_1010),poster) + string.isEqual(Skin.String(afficher_widget_1010),1)"/>
+	</include>
+	<include content="panneau_fanart">	
+		<param name="id" value="1010"/>
+		<param name="onleft" value="1000"/>
+		<param name="onup" value="999"/>
+		<param name="ondown" value="1011"/>
+		<param name="nom" value="$INFO[skin.string(nom_widget_1010)]"/>
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_1010)]"/>
+		<param name="cible" value="$INFO[skin.string(cible_widget_1010)]"/>
+		<param name="sortby" value="$INFO[skin.string(tri_widget_1010)]"/>
+		<param name="sortorder" value="$INFO[skin.string(ordre_widget_1010)]"/>
+		<param name="progression" value="String.StartsWith(Skin.String(chemin_widget_1010),videodb://movies/)"/>
+		<param name="visible" value="string.isEqual(Skin.String(type_widget_1010),fanart) + string.isEqual(Skin.String(afficher_widget_1010),1)"/>
+	</include>
+	<include content="panneau_carre">	
+		<param name="id" value="1010"/>
+		<param name="onleft" value="1000"/>
+		<param name="onup" value="999"/>
+		<param name="ondown" value="1011"/>
+		<param name="nom" value="$INFO[skin.string(nom_widget_1010)]"/>
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_1010)]"/>
+		<param name="cible" value="$INFO[skin.string(cible_widget_1010)]"/>
+		<param name="sortby" value="$INFO[skin.string(tri_widget_1010)]"/>
+		<param name="sortorder" value="$INFO[skin.string(ordre_widget_1010)]"/>
+		<param name="progression" value="String.StartsWith(Skin.String(chemin_widget_1010),videodb://movies/)"/> 
+		<param name="visible" value="string.isEqual(Skin.String(type_widget_1010),carre) + string.isEqual(Skin.String(afficher_widget_1010),1)"/>
+	</include>
+	<include content="panneau_tv">	
+		<param name="id" value="1010"/>
+		<param name="onleft" value="1000"/>
+		<param name="onup" value="999"/>
+		<param name="ondown" value="1011"/>
+		<param name="nom" value="$INFO[skin.string(nom_widget_1010)]"/>
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_1010)]"/>
+		<param name="cible" value="$INFO[skin.string(cible_widget_1010)]"/>
+		<param name="sortby" value="$INFO[skin.string(tri_widget_1010)]"/>
+		<param name="sortorder" value="$INFO[skin.string(ordre_widget_1010)]"/>
+		<param name="progression" value="String.StartsWith(Skin.String(chemin_widget_1010),videodb://movies/)"/> 
+		<param name="visible" value="string.isEqual(Skin.String(type_widget_1010),tv) + string.isEqual(Skin.String(afficher_widget_1010),1)"/>
+	</include>	
+	<include content="panneau_poster">																											<description>widget tv</description>	
+		<param name="id" value="1011"/>
+		<param name="onleft" value="1000"/>
+		<param name="onup" value="1010"/>
+		<param name="ondown" value="1012"/> 
+		<param name="nom" value="$INFO[skin.string(nom_widget_1011)]"/>
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_1011)]"/>
+		<param name="cible" value="$INFO[skin.string(cible_widget_1011)]"/>
+		<param name="sortby" value="$INFO[skin.string(tri_widget_1011)]"/>
+		<param name="sortorder" value="$INFO[skin.string(ordre_widget_1011)]"/>
+		<param name="progression" value="String.StartsWith(Skin.String(chemin_widget_1011),videodb://movies/)"/>
+		<param name="visible" value="string.isEqual(Skin.String(type_widget_1011),poster) + string.isEqual(Skin.String(afficher_widget_1011),1)"/>
+	</include>
+	<include content="panneau_fanart">	
+		<param name="id" value="1011"/>
+		<param name="onleft" value="1000"/>
+		<param name="onup" value="1010"/>
+		<param name="ondown" value="1012"/> 
+		<param name="nom" value="$INFO[skin.string(nom_widget_1011)]"/>
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_1011)]"/>
+		<param name="cible" value="$INFO[skin.string(cible_widget_1011)]"/>
+		<param name="sortby" value="$INFO[skin.string(tri_widget_1011)]"/>
+		<param name="sortorder" value="$INFO[skin.string(ordre_widget_1011)]"/>
+		<param name="progression" value="String.StartsWith(Skin.String(chemin_widget_1011),videodb://movies/)"/>
+		<param name="visible" value="string.isEqual(Skin.String(type_widget_1011),fanart) + string.isEqual(Skin.String(afficher_widget_1011),1)"/> 
+	</include>
+	<include content="panneau_carre">	
+		<param name="id" value="1011"/>
+		<param name="onleft" value="1000"/>
+		<param name="onup" value="1010"/>
+		<param name="ondown" value="1012"/> 
+		<param name="nom" value="$INFO[skin.string(nom_widget_1011)]"/>
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_1011)]"/>
+		<param name="cible" value="$INFO[skin.string(cible_widget_1011)]"/>
+		<param name="sortby" value="$INFO[skin.string(tri_widget_1011)]"/>
+		<param name="sortorder" value="$INFO[skin.string(ordre_widget_1011)]"/>
+		<param name="progression" value="String.StartsWith(Skin.String(chemin_widget_1011),videodb://movies/)"/>
+		<param name="visible" value="string.isEqual(Skin.String(type_widget_1011),carre) + string.isEqual(Skin.String(afficher_widget_1011),1)"/> 
+	</include>
+	<include content="panneau_tv">	
+		<param name="id" value="1011"/>
+		<param name="onleft" value="1000"/>
+		<param name="onup" value="1010"/>
+		<param name="ondown" value="1012"/>
+		<param name="nom" value="$INFO[skin.string(nom_widget_1011)]"/>
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_1011)]"/>
+		<param name="cible" value="$INFO[skin.string(cible_widget_1011)]"/>
+		<param name="sortby" value="$INFO[skin.string(tri_widget_1011)]"/>
+		<param name="sortorder" value="$INFO[skin.string(ordre_widget_1011)]"/>
+		<param name="progression" value="String.StartsWith(Skin.String(chemin_widget_1011),videodb://movies/)"/>  
+		<param name="visible" value="string.isEqual(Skin.String(type_widget_1011),tv) + string.isEqual(Skin.String(afficher_widget_1011),1)"/>
+	</include>	
+	<include content="panneau_poster">																											<description>widget albums</description>	
+		<param name="id" value="1012"/>
+		<param name="onleft" value="1000"/>
+		<param name="onup" value="1011"/>
+		<param name="ondown" value="1013"/>
+		<param name="nom" value="$INFO[skin.string(nom_widget_1012)]"/>
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_1012)]"/>
+		<param name="cible" value="$INFO[skin.string(cible_widget_1012)]"/>
+		<param name="sortby" value="$INFO[skin.string(tri_widget_1012)]"/>
+		<param name="sortorder" value="$INFO[skin.string(ordre_widget_1012)]"/>
+		<param name="progression" value="String.StartsWith(Skin.String(chemin_widget_1012),videodb://movies/)"/> 
+		<param name="visible" value="string.isEqual(Skin.String(type_widget_1012),poster) + string.isEqual(Skin.String(afficher_widget_1012),1)"/> 	
+	</include>
+	<include content="panneau_fanart">	
+		<param name="id" value="1012"/>
+		<param name="onleft" value="1000"/>
+		<param name="onup" value="1011"/>
+		<param name="ondown" value="1013"/>
+		<param name="nom" value="$INFO[skin.string(nom_widget_1012)]"/>
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_1012)]"/>
+		<param name="cible" value="$INFO[skin.string(cible_widget_1012)]"/>
+		<param name="sortby" value="$INFO[skin.string(tri_widget_1012)]"/>
+		<param name="sortorder" value="$INFO[skin.string(ordre_widget_1012)]"/>
+		<param name="progression" value="String.StartsWith(Skin.String(chemin_widget_1012),videodb://movies/)"/> 
+		<param name="visible" value="string.isEqual(Skin.String(type_widget_1012),fanart) + string.isEqual(Skin.String(afficher_widget_1012),1)"/> 	
+	</include>
+	<include content="panneau_carre">	
+		<param name="id" value="1012"/>
+		<param name="onleft" value="1000"/>
+		<param name="onup" value="1011"/>
+		<param name="ondown" value="1013"/>
+		<param name="nom" value="$INFO[skin.string(nom_widget_1012)]"/>
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_1012)]"/>
+		<param name="cible" value="$INFO[skin.string(cible_widget_1012)]"/>
+		<param name="sortby" value="$INFO[skin.string(tri_widget_1012)]"/>
+		<param name="sortorder" value="$INFO[skin.string(ordre_widget_1012)]"/>
+		<param name="progression" value="String.StartsWith(Skin.String(chemin_widget_1012),videodb://movies/)"/> 
+		<param name="visible" value="string.isEqual(Skin.String(type_widget_1012),carre) + string.isEqual(Skin.String(afficher_widget_1012),1)"/> 	
+	</include>
+	<include content="panneau_tv">	
+		<param name="id" value="1012"/>
+		<param name="onleft" value="1000"/>
+		<param name="onup" value="1011"/>
+		<param name="ondown" value="1013"/>
+		<param name="nom" value="$INFO[skin.string(nom_widget_1012)]"/>
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_1012)]"/>
+		<param name="cible" value="$INFO[skin.string(cible_widget_1012)]"/>
+		<param name="sortby" value="$INFO[skin.string(tri_widget_1012)]"/>
+		<param name="sortorder" value="$INFO[skin.string(ordre_widget_1012)]"/>
+		<param name="progression" value="String.StartsWith(Skin.String(chemin_widget_1012),videodb://movies/)"/> 
+		<param name="visible" value="string.isEqual(Skin.String(type_widget_1012),tv) + string.isEqual(Skin.String(afficher_widget_1012),1)"/> 	
+	</include>	
+	<include content="panneau_poster">																											<description>widget artistes</description>	
+		<param name="id" value="1013"/>
+		<param name="onleft" value="1000"/>
+		<param name="onup" value="1012"/>
+		<param name="ondown" value="1014"/>
+		<param name="nom" value="$INFO[skin.string(nom_widget_1013)]"/>
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_1013)]"/>
+		<param name="cible" value="$INFO[skin.string(cible_widget_1013)]"/>
+		<param name="sortby" value="$INFO[skin.string(tri_widget_1013)]"/>
+		<param name="sortorder" value="$INFO[skin.string(ordre_widget_1013)]"/>
+		<param name="progression" value="String.StartsWith(Skin.String(chemin_widget_1013),videodb://movies/)"/> 
+		<param name="visible" value="string.isEqual(Skin.String(type_widget_1013),poster) + string.isEqual(Skin.String(afficher_widget_1013),1)"/> 	
+	</include>
+	<include content="panneau_fanart">	
+		<param name="id" value="1013"/>
+		<param name="onleft" value="1000"/>
+		<param name="onup" value="1012"/>
+		<param name="ondown" value="1014"/>
+		<param name="nom" value="$INFO[skin.string(nom_widget_1013)]"/>
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_1013)]"/>
+		<param name="cible" value="$INFO[skin.string(cible_widget_1013)]"/>
+		<param name="sortby" value="$INFO[skin.string(tri_widget_1013)]"/>
+		<param name="sortorder" value="$INFO[skin.string(ordre_widget_1013)]"/>
+		<param name="progression" value="String.StartsWith(Skin.String(chemin_widget_1013),videodb://movies/)"/> 
+		<param name="visible" value="string.isEqual(Skin.String(type_widget_1013),fanart) + string.isEqual(Skin.String(afficher_widget_1013),1)"/> 
+	</include>
+	<include content="panneau_carre">	
+		<param name="id" value="1013"/>
+		<param name="onleft" value="1000"/>
+		<param name="onup" value="1012"/>
+		<param name="ondown" value="1014"/>
+		<param name="nom" value="$INFO[skin.string(nom_widget_1013)]"/>
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_1013)]"/>
+		<param name="cible" value="$INFO[skin.string(cible_widget_1013)]"/>
+		<param name="sortby" value="$INFO[skin.string(tri_widget_1013)]"/>
+		<param name="sortorder" value="$INFO[skin.string(ordre_widget_1013)]"/>
+		<param name="progression" value="String.StartsWith(Skin.String(chemin_widget_1013),videodb://movies/)"/>  
+		<param name="visible" value="string.isEqual(Skin.String(type_widget_1013),carre) + string.isEqual(Skin.String(afficher_widget_1013),1)"/>
+	</include>
+	<include content="panneau_tv">	
+		<param name="id" value="1013"/>
+		<param name="onleft" value="1000"/>
+		<param name="onup" value="1012"/>
+		<param name="ondown" value="1014"/>
+		<param name="nom" value="$INFO[skin.string(nom_widget_1013)]"/>
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_1013)]"/>
+		<param name="cible" value="$INFO[skin.string(cible_widget_1013)]"/>
+		<param name="sortby" value="$INFO[skin.string(tri_widget_1013)]"/>
+		<param name="sortorder" value="$INFO[skin.string(ordre_widget_1013)]"/>
+		<param name="progression" value="String.StartsWith(Skin.String(chemin_widget_1013),videodb://movies/)"/>  
+		<param name="visible" value="string.isEqual(Skin.String(type_widget_1013),tv) + string.isEqual(Skin.String(afficher_widget_1013),1)"/>
+	</include>	
+	<include content="panneau_poster">																											<description>widget personnalise n°1</description>	
+		<param name="id" value="1014"/>
+		<param name="onleft" value="1000"/>
+		<param name="onup" value="1013"/>
+		<param name="ondown" value="1015"/>
+		<param name="nom" value="$INFO[skin.string(nom_widget_1014)]"/>
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_1014)]"/>
+		<param name="cible" value="$INFO[skin.string(cible_widget_1014)]"/>
+		<param name="sortby" value="$INFO[skin.string(tri_widget_1014)]"/>
+		<param name="sortorder" value="$INFO[skin.string(ordre_widget_1014)]"/>
+		<param name="progression" value="String.StartsWith(Skin.String(chemin_widget_1014),videodb://movies/)"/>  
+		<param name="visible" value="string.isEqual(Skin.String(type_widget_1014),poster) + string.isEqual(Skin.String(afficher_widget_1014),1)"/>
+	</include>
+	<include content="panneau_fanart">	
+		<param name="id" value="1014"/>
+		<param name="onleft" value="1000"/>
+		<param name="onup" value="1013"/>
+		<param name="ondown" value="1015"/>
+		<param name="nom" value="$INFO[skin.string(nom_widget_1014)]"/>
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_1014)]"/>
+		<param name="cible" value="$INFO[skin.string(cible_widget_1014)]"/>
+		<param name="sortby" value="$INFO[skin.string(tri_widget_1014)]"/>
+		<param name="sortorder" value="$INFO[skin.string(ordre_widget_1014)]"/>
+		<param name="progression" value="String.StartsWith(Skin.String(chemin_widget_1014),videodb://movies/)"/>   
+		<param name="visible" value="string.isEqual(Skin.String(type_widget_1014),fanart) + string.isEqual(Skin.String(afficher_widget_1014),1)"/>
+	</include>
+	<include content="panneau_carre">	
+		<param name="id" value="1014"/>
+		<param name="onleft" value="1000"/>
+		<param name="onup" value="1013"/>
+		<param name="ondown" value="1015"/>
+		<param name="nom" value="$INFO[skin.string(nom_widget_1014)]"/>
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_1014)]"/>
+		<param name="cible" value="$INFO[skin.string(cible_widget_1014)]"/>
+		<param name="sortby" value="$INFO[skin.string(tri_widget_1014)]"/>
+		<param name="sortorder" value="$INFO[skin.string(ordre_widget_1014)]"/>
+		<param name="progression" value="String.StartsWith(Skin.String(chemin_widget_1014),videodb://movies/)"/>  
+		<param name="visible" value="string.isequal(window(home).property(menu),home) + string.isEqual(Skin.String(type_widget_1014),carre) + string.isEqual(Skin.String(afficher_widget_1014),1)"/> 
+	</include>
+	<include content="panneau_tv">	
+		<param name="id" value="1014"/>
+		<param name="onleft" value="1000"/>
+		<param name="onup" value="1013"/>
+		<param name="ondown" value="1015"/>
+		<param name="nom" value="$INFO[skin.string(nom_widget_1014)]"/>
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_1014)]"/>
+		<param name="cible" value="$INFO[skin.string(cible_widget_1014)]"/>
+		<param name="sortby" value="$INFO[skin.string(tri_widget_1014)]"/>
+		<param name="sortorder" value="$INFO[skin.string(ordre_widget_1014)]"/>
+		<param name="progression" value="String.StartsWith(Skin.String(chemin_widget_1014),videodb://movies/)"/>  
+		<param name="visible" value="string.isEqual(Skin.String(type_widget_1014),tv) + string.isEqual(Skin.String(afficher_widget_1014),1)"/> 
+	</include>	
+	<include content="panneau_poster">																											<description>widget personnalise n°2</description>	
+		<param name="id" value="1015"/>
+		<param name="onleft" value="1000"/>
+		<param name="onup" value="1014"/>
+		<param name="ondown" value="1016"/>
+		<param name="nom" value="$INFO[skin.string(nom_widget_1015)]"/>
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_1015)]"/>
+		<param name="cible" value="$INFO[skin.string(cible_widget_1015)]"/>
+		<param name="sortby" value="$INFO[skin.string(tri_widget_1015)]"/>
+		<param name="sortorder" value="$INFO[skin.string(ordre_widget_1015)]"/>
+		<param name="progression" value="String.StartsWith(Skin.String(chemin_widget_1015),videodb://movies/)"/>   
+		<param name="visible" value="string.isEqual(Skin.String(type_widget_1015),poster) + string.isEqual(Skin.String(afficher_widget_1015),1)"/>
+	</include>
+	<include content="panneau_fanart">	
+		<param name="id" value="1015"/>
+		<param name="onleft" value="1000"/>
+		<param name="onup" value="1014"/>
+		<param name="ondown" value="1016"/>
+		<param name="nom" value="$INFO[skin.string(nom_widget_1015)]"/>
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_1015)]"/>
+		<param name="cible" value="$INFO[skin.string(cible_widget_1015)]"/>
+		<param name="sortby" value="$INFO[skin.string(tri_widget_1015)]"/>
+		<param name="sortorder" value="$INFO[skin.string(ordre_widget_1015)]"/>
+		<param name="progression" value="String.StartsWith(Skin.String(chemin_widget_1015),videodb://movies/)"/>   
+		<param name="visible" value="string.isEqual(Skin.String(type_widget_1015),fanart) + string.isEqual(Skin.String(afficher_widget_1015),1)"/>
+	</include>
+	<include content="panneau_carre">	
+		<param name="id" value="1015"/>
+		<param name="onleft" value="1000"/>
+		<param name="onup" value="1014"/>
+		<param name="ondown" value="1016"/>
+		<param name="nom" value="$INFO[skin.string(nom_widget_1015)]"/>
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_1015)]"/>
+		<param name="cible" value="$INFO[skin.string(cible_widget_1015)]"/>
+		<param name="sortby" value="$INFO[skin.string(tri_widget_1015)]"/>
+		<param name="sortorder" value="$INFO[skin.string(ordre_widget_1015)]"/>
+		<param name="progression" value="String.StartsWith(Skin.String(chemin_widget_1015),videodb://movies/)"/>   
+		<param name="visible" value="string.isEqual(Skin.String(type_widget_1015),carre) + string.isEqual(Skin.String(afficher_widget_1015),1)"/>
+	</include>
+	<include content="panneau_tv">	
+		<param name="id" value="1015"/>
+		<param name="onleft" value="1000"/>
+		<param name="onup" value="1014"/>
+		<param name="ondown" value="1016"/>
+		<param name="nom" value="$INFO[skin.string(nom_widget_1015)]"/>
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_1015)]"/>
+		<param name="cible" value="$INFO[skin.string(cible_widget_1015)]"/>
+		<param name="sortby" value="$INFO[skin.string(tri_widget_1015)]"/>
+		<param name="sortorder" value="$INFO[skin.string(ordre_widget_1015)]"/>
+		<param name="progression" value="String.StartsWith(Skin.String(chemin_widget_1015),videodb://movies/)"/>   
+		<param name="visible" value="string.isEqual(Skin.String(type_widget_1015),tv) + string.isEqual(Skin.String(afficher_widget_1015),1)"/>
+	</include>	
+	<include content="panneau_poster">																											<description>widget personnalise n°3</description>	
+		<param name="id" value="1016"/>
+		<param name="onleft" value="1000"/>
+		<param name="onup" value="1015"/>
+		<param name="ondown" value="1017"/>
+		<param name="nom" value="$INFO[skin.string(nom_widget_1016)]"/>
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_1016)]"/>
+		<param name="cible" value="$INFO[skin.string(cible_widget_1016)]"/>
+		<param name="sortby" value="$INFO[skin.string(tri_widget_1016)]"/>
+		<param name="sortorder" value="$INFO[skin.string(ordre_widget_1016)]"/>
+		<param name="progression" value="String.StartsWith(Skin.String(chemin_widget_1016),videodb://movies/)"/>   
+		<param name="visible" value="string.isEqual(Skin.String(type_widget_1016),poster) + string.isEqual(Skin.String(afficher_widget_1016),1)"/>
+	</include>
+	<include content="panneau_fanart">	
+		<param name="id" value="1016"/>
+		<param name="onleft" value="1000"/>
+		<param name="onup" value="1015"/>
+		<param name="ondown" value="1017"/>
+		<param name="nom" value="$INFO[skin.string(nom_widget_1016)]"/>
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_1016)]"/>
+		<param name="cible" value="$INFO[skin.string(cible_widget_1016)]"/>
+		<param name="sortby" value="$INFO[skin.string(tri_widget_1016)]"/>
+		<param name="sortorder" value="$INFO[skin.string(ordre_widget_1016)]"/>
+		<param name="progression" value="String.StartsWith(Skin.String(chemin_widget_1016),videodb://movies/)"/>   
+		<param name="visible" value="string.isEqual(Skin.String(type_widget_1016),fanart) + string.isEqual(Skin.String(afficher_widget_1016),1)"/>
+	</include>
+	<include content="panneau_carre">	
+		<param name="id" value="1016"/>
+		<param name="onleft" value="1000"/>
+		<param name="onup" value="1015"/>
+		<param name="ondown" value="1017"/>
+		<param name="nom" value="$INFO[skin.string(nom_widget_1016)]"/>
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_1016)]"/>
+		<param name="cible" value="$INFO[skin.string(cible_widget_1016)]"/>
+		<param name="sortby" value="$INFO[skin.string(tri_widget_1016)]"/>
+		<param name="sortorder" value="$INFO[skin.string(ordre_widget_1016)]"/>
+		<param name="progression" value="String.StartsWith(Skin.String(chemin_widget_1016),videodb://movies/)"/>  
+		<param name="visible" value="string.isEqual(Skin.String(type_widget_1016),carre) + string.isEqual(Skin.String(afficher_widget_1016),1)"/> 
+	</include>
+	<include content="panneau_tv">	
+		<param name="id" value="1016"/>
+		<param name="onleft" value="1000"/>
+		<param name="onup" value="1015"/>
+		<param name="ondown" value="1017"/>
+		<param name="nom" value="$INFO[skin.string(nom_widget_1016)]"/>
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_1016)]"/>
+		<param name="cible" value="$INFO[skin.string(cible_widget_1016)]"/>
+		<param name="sortby" value="$INFO[skin.string(tri_widget_1016)]"/>
+		<param name="sortorder" value="$INFO[skin.string(ordre_widget_1016)]"/>
+		<param name="progression" value="String.StartsWith(Skin.String(chemin_widget_1016),videodb://movies/)"/>   
+		<param name="visible" value="string.isEqual(Skin.String(type_widget_1016),tv) + string.isEqual(Skin.String(afficher_widget_1016),1)"/>
+	</include>	
+	<include content="panneau_poster">																											<description>widget personnalise n°4</description>	
+		<param name="id" value="1017"/>
+		<param name="onleft" value="1000"/>
+		<param name="onup" value="1016"/>
+		<param name="ondown" value="1018"/>
+		<param name="nom" value="$INFO[skin.string(nom_widget_1017)]"/> 
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_1017)]"/>
+		<param name="cible" value="$INFO[skin.string(cible_widget_1017)]"/>
+		<param name="sortby" value="$INFO[skin.string(tri_widget_1017)]"/>
+		<param name="sortorder" value="$INFO[skin.string(ordre_widget_1017)]"/>
+		<param name="progression" value="String.StartsWith(Skin.String(chemin_widget_1017),videodb://movies/)"/>      
+		<param name="visible" value="string.isEqual(Skin.String(type_widget_1017),poster) + string.isEqual(Skin.String(afficher_widget_1017),1)"/>
+	</include>
+	<include content="panneau_fanart">	
+		<param name="id" value="1017"/>
+		<param name="onleft" value="1000"/>
+		<param name="onup" value="1016"/>
+		<param name="ondown" value="1018"/>
+		<param name="nom" value="$INFO[skin.string(nom_widget_1017)]"/>
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_1017)]"/>
+		<param name="cible" value="$INFO[skin.string(cible_widget_1017)]"/>
+		<param name="sortby" value="$INFO[skin.string(tri_widget_1017)]"/>
+		<param name="sortorder" value="$INFO[skin.string(ordre_widget_1017)]"/>
+		<param name="progression" value="String.StartsWith(Skin.String(chemin_widget_1017),videodb://movies/)"/>       
+		<param name="visible" value="string.isEqual(Skin.String(type_widget_1017),fanart) + string.isEqual(Skin.String(afficher_widget_1017),1)"/> 
+	</include>
+	<include content="panneau_carre">	
+		<param name="id" value="1017"/>
+		<param name="onleft" value="1000"/>
+		<param name="onup" value="1016"/>
+		<param name="ondown" value="1018"/>
+		<param name="nom" value="$INFO[skin.string(nom_widget_1017)]"/>
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_1017)]"/>
+		<param name="cible" value="$INFO[skin.string(cible_widget_1017)]"/>
+		<param name="sortby" value="$INFO[skin.string(tri_widget_1017)]"/>
+		<param name="sortorder" value="$INFO[skin.string(ordre_widget_1017)]"/>
+		<param name="progression" value="String.StartsWith(Skin.String(chemin_widget_1017),videodb://movies/)"/>    
+		<param name="visible" value="string.isEqual(Skin.String(type_widget_1017),carre) + string.isEqual(Skin.String(afficher_widget_1017),1)"/> 
+	</include>
+	<include content="panneau_tv">	
+		<param name="id" value="1017"/>
+		<param name="onleft" value="1000"/>
+		<param name="onup" value="1016"/>
+		<param name="ondown" value="1018"/>
+		<param name="nom" value="$INFO[skin.string(nom_widget_1017)]"/> 
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_1017)]"/>
+		<param name="cible" value="$INFO[skin.string(cible_widget_1017)]"/>
+		<param name="sortby" value="$INFO[skin.string(tri_widget_1017)]"/>
+		<param name="sortorder" value="$INFO[skin.string(ordre_widget_1017)]"/>
+		<param name="progression" value="String.StartsWith(Skin.String(chemin_widget_1017),videodb://movies/)"/>  
+		<param name="visible" value="string.isEqual(Skin.String(type_widget_1017),tv) + string.isEqual(Skin.String(afficher_widget_1017),1)"/>  
+	</include>	
+	<include content="panneau_poster">																											<description>widget personnalise n°5</description>	
+		<param name="id" value="1018"/>
+		<param name="onleft" value="1000"/>
+		<param name="onup" value="1017"/>
+		<param name="ondown" value="1019"/>
+		<param name="nom" value="$INFO[skin.string(nom_widget_1018)]"/>
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_1018)]"/>
+		<param name="cible" value="$INFO[skin.string(cible_widget_1018)]"/>
+		<param name="sortby" value="$INFO[skin.string(tri_widget_1018)]"/>
+		<param name="sortorder" value="$INFO[skin.string(ordre_widget_1018)]"/>
+		<param name="progression" value="String.StartsWith(Skin.String(chemin_widget_1018),videodb://movies/)"/>   
+		<param name="visible" value="string.isEqual(Skin.String(type_widget_1018),poster) + string.isEqual(Skin.String(afficher_widget_1018),1)"/>  
+	</include>
+	<include content="panneau_fanart">	
+		<param name="id" value="1018"/>
+		<param name="onleft" value="1000"/>
+		<param name="onup" value="1017"/>
+		<param name="ondown" value="1019"/>
+		<param name="nom" value="$INFO[skin.string(nom_widget_1018)]"/>
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_1018)]"/>
+		<param name="cible" value="$INFO[skin.string(cible_widget_1018)]"/>
+		<param name="sortby" value="$INFO[skin.string(tri_widget_1018)]"/>
+		<param name="sortorder" value="$INFO[skin.string(ordre_widget_1018)]"/>
+		<param name="progression" value="String.StartsWith(Skin.String(chemin_widget_1018),videodb://movies/)"/>    
+		<param name="visible" value="string.isEqual(Skin.String(type_widget_1018),fanart) + string.isEqual(Skin.String(afficher_widget_1018),1)"/>
+	</include>
+	<include content="panneau_carre">	
+		<param name="id" value="1018"/>
+		<param name="onleft" value="1000"/>
+		<param name="onup" value="1017"/>
+		<param name="ondown" value="1019"/>
+		<param name="nom" value="$INFO[skin.string(nom_widget_1018)]"/>
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_1018)]"/>
+		<param name="cible" value="$INFO[skin.string(cible_widget_1018)]"/>
+		<param name="sortby" value="$INFO[skin.string(tri_widget_1018)]"/>
+		<param name="sortorder" value="$INFO[skin.string(ordre_widget_1018)]"/>
+		<param name="progression" value="String.StartsWith(Skin.String(chemin_widget_1018),videodb://movies/)"/>   
+		<param name="visible" value="string.isEqual(Skin.String(type_widget_1018),carre) + string.isEqual(Skin.String(afficher_widget_1018),1)"/> 
+	</include>
+	<include content="panneau_tv">	
+		<param name="id" value="1018"/>
+		<param name="onleft" value="1000"/>
+		<param name="onup" value="1017"/>
+		<param name="ondown" value="1019"/>
+		<param name="nom" value="$INFO[skin.string(nom_widget_1018)]"/>
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_1018)]"/>
+		<param name="cible" value="$INFO[skin.string(cible_widget_1018)]"/>
+		<param name="sortby" value="$INFO[skin.string(tri_widget_1018)]"/>
+		<param name="sortorder" value="$INFO[skin.string(ordre_widget_1018)]"/>
+		<param name="progression" value="String.StartsWith(Skin.String(chemin_widget_1018),videodb://movies/)"/>   
+		<param name="visible" value="string.isEqual(Skin.String(type_widget_1018),tv) + string.isEqual(Skin.String(afficher_widget_1018),1)"/> 
+	</include>	
+	<include content="panneau_poster">																											<description>widget personnalise n°6</description>	
+		<param name="id" value="1019"/>
+		<param name="onleft" value="1000"/>
+		<param name="onup" value="1018"/>
+		<param name="ondown" value="1020"/>
+		<param name="nom" value="$INFO[skin.string(nom_widget_1019)]"/>
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_1019)]"/>
+		<param name="cible" value="$INFO[skin.string(cible_widget_1019)]"/>
+		<param name="sortby" value="$INFO[skin.string(tri_widget_1019)]"/>
+		<param name="sortorder" value="$INFO[skin.string(ordre_widget_1019)]"/>
+		<param name="progression" value="String.StartsWith(Skin.String(chemin_widget_1019),videodb://movies/)"/>    
+		<param name="visible" value="string.isEqual(Skin.String(type_widget_1019),poster) + string.isEqual(Skin.String(afficher_widget_1019),1)"/>
+	</include>
+	<include content="panneau_fanart">	
+		<param name="id" value="1019"/>
+		<param name="onleft" value="1000"/>
+		<param name="onup" value="1018"/>
+		<param name="ondown" value="1020"/>
+		<param name="nom" value="$INFO[skin.string(nom_widget_1019)]"/>
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_1019)]"/>
+		<param name="cible" value="$INFO[skin.string(cible_widget_1019)]"/>
+		<param name="sortby" value="$INFO[skin.string(tri_widget_1019)]"/>
+		<param name="sortorder" value="$INFO[skin.string(ordre_widget_1019)]"/>
+		<param name="progression" value="String.StartsWith(Skin.String(chemin_widget_1019),videodb://movies/)"/>   
+		<param name="visible" value="string.isEqual(Skin.String(type_widget_1019),fanart) + string.isEqual(Skin.String(afficher_widget_1019),1)"/> 
+	</include>
+	<include content="panneau_carre">	
+		<param name="id" value="1019"/>
+		<param name="onleft" value="1000"/>
+		<param name="onup" value="1018"/>
+		<param name="ondown" value="1020"/>
+		<param name="nom" value="$INFO[skin.string(nom_widget_1019)]"/>
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_1019)]"/>
+		<param name="cible" value="$INFO[skin.string(cible_widget_1019)]"/>
+		<param name="sortby" value="$INFO[skin.string(tri_widget_1019)]"/>
+		<param name="sortorder" value="$INFO[skin.string(ordre_widget_1019)]"/>
+		<param name="progression" value="String.StartsWith(Skin.String(chemin_widget_1019),videodb://movies/)"/>    
+		<param name="visible" value="string.isEqual(Skin.String(type_widget_1019),carre) + string.isEqual(Skin.String(afficher_widget_1019),1)"/>
+	</include>
+	<include content="panneau_tv">	
+		<param name="id" value="1019"/>
+		<param name="onleft" value="1000"/>
+		<param name="onup" value="1018"/>
+		<param name="ondown" value="1020"/>
+		<param name="nom" value="$INFO[skin.string(nom_widget_1019)]"/> 
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_1019)]"/>
+		<param name="cible" value="$INFO[skin.string(cible_widget_1019)]"/>
+		<param name="sortby" value="$INFO[skin.string(tri_widget_1019)]"/>
+		<param name="sortorder" value="$INFO[skin.string(ordre_widget_1019)]"/>
+		<param name="progression" value="String.StartsWith(Skin.String(chemin_widget_1019),videodb://movies/)"/>  
+		<param name="visible" value="string.isEqual(Skin.String(type_widget_1019),tv) + string.isEqual(Skin.String(afficher_widget_1019),1)"/> 
+	</include>	
+	<include content="panneau_poster">																											<description>widget personnalise n°7</description>	
+		<param name="id" value="1020"/>
+		<param name="onleft" value="1000"/>
+		<param name="onup" value="1019"/>
+		<param name="ondown" value="1021"/>
+		<param name="nom" value="$INFO[skin.string(nom_widget_1020)]"/> 
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_1020)]"/>
+		<param name="cible" value="$INFO[skin.string(cible_widget_1020)]"/>
+		<param name="sortby" value="$INFO[skin.string(tri_widget_1020)]"/>
+		<param name="sortorder" value="$INFO[skin.string(ordre_widget_1020)]"/>
+		<param name="progression" value="String.StartsWith(Skin.String(chemin_widget_1020),videodb://movies/)"/>   
+		<param name="visible" value="string.isEqual(Skin.String(type_widget_1020),poster) + string.isEqual(Skin.String(afficher_widget_1020),1)"/>
+	</include>
+	<include content="panneau_fanart">	
+		<param name="id" value="1020"/>
+		<param name="onleft" value="1000"/>
+		<param name="onup" value="1019"/>
+		<param name="ondown" value="1021"/>
+		<param name="nom" value="$INFO[skin.string(nom_widget_1020)]"/>
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_1020)]"/>
+		<param name="cible" value="$INFO[skin.string(cible_widget_1020)]"/>
+		<param name="sortby" value="$INFO[skin.string(tri_widget_1020)]"/>
+		<param name="sortorder" value="$INFO[skin.string(ordre_widget_1020)]"/>
+		<param name="progression" value="String.StartsWith(Skin.String(chemin_widget_1020),videodb://movies/)"/>    
+		<param name="visible" value="string.isEqual(Skin.String(type_widget_1020),fanart) + string.isEqual(Skin.String(afficher_widget_1020),1)"/> 
+	</include>
+	<include content="panneau_carre">	
+		<param name="id" value="1020"/>
+		<param name="onleft" value="1000"/>
+		<param name="onup" value="1019"/>
+		<param name="ondown" value="1021"/>
+		<param name="nom" value="$INFO[skin.string(nom_widget_1020)]"/>
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_1020)]"/>
+		<param name="cible" value="$INFO[skin.string(cible_widget_1020)]"/>
+		<param name="sortby" value="$INFO[skin.string(tri_widget_1020)]"/>
+		<param name="sortorder" value="$INFO[skin.string(ordre_widget_1020)]"/>
+		<param name="progression" value="String.StartsWith(Skin.String(chemin_widget_1020),videodb://movies/)"/>     
+		<param name="visible" value="string.isEqual(Skin.String(type_widget_1020),carre) + string.isEqual(Skin.String(afficher_widget_1020),1)"/>
+	</include>
+	<include content="panneau_tv">	
+		<param name="id" value="1020"/>
+		<param name="onleft" value="1000"/>
+		<param name="onup" value="1019"/>
+		<param name="ondown" value="1021"/>
+		<param name="nom" value="$INFO[skin.string(nom_widget_1020)]"/>
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_1020)]"/>
+		<param name="cible" value="$INFO[skin.string(cible_widget_1020)]"/>
+		<param name="sortby" value="$INFO[skin.string(tri_widget_1020)]"/>
+		<param name="sortorder" value="$INFO[skin.string(ordre_widget_1020)]"/>
+		<param name="progression" value="String.StartsWith(Skin.String(chemin_widget_1020),videodb://movies/)"/>     
+		<param name="visible" value="string.isEqual(Skin.String(type_widget_1020),tv) + string.isEqual(Skin.String(afficher_widget_1020),1)"/>
+	</include>	
+	<include content="panneau_poster">																											<description>widget personnalise n°8</description>	
+		<param name="id" value="1021"/>
+		<param name="onleft" value="1000"/>
+		<param name="onup" value="1020"/>
+		<param name="ondown" value="1022"/>
+		<param name="nom" value="$INFO[skin.string(nom_widget_1021)]"/>
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_1021)]"/>
+		<param name="cible" value="$INFO[skin.string(cible_widget_1021)]"/>
+		<param name="sortby" value="$INFO[skin.string(tri_widget_1021)]"/>
+		<param name="sortorder" value="$INFO[skin.string(ordre_widget_1021)]"/>
+		<param name="progression" value="String.StartsWith(Skin.String(chemin_widget_1021),videodb://movies/)"/>     
+		<param name="visible" value="string.isEqual(Skin.String(type_widget_1021),poster) + string.isEqual(Skin.String(afficher_widget_1021),1)"/>
+	</include>
+	<include content="panneau_fanart">	
+		<param name="id" value="1021"/>
+		<param name="onleft" value="1000"/>
+		<param name="onup" value="1020"/>
+		<param name="ondown" value="1022"/>
+		<param name="nom" value="$INFO[skin.string(nom_widget_1021)]"/>
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_1021)]"/>
+		<param name="cible" value="$INFO[skin.string(cible_widget_1021)]"/>
+		<param name="sortby" value="$INFO[skin.string(tri_widget_1021)]"/>
+		<param name="sortorder" value="$INFO[skin.string(ordre_widget_1021)]"/>
+		<param name="progression" value="String.StartsWith(Skin.String(chemin_widget_1021),videodb://movies/)"/>    
+		<param name="visible" value="string.isEqual(Skin.String(type_widget_1021),fanart) + string.isEqual(Skin.String(afficher_widget_1021),1)"/> 
+	</include>
+	<include content="panneau_carre">	
+		<param name="id" value="1021"/>
+		<param name="onleft" value="1000"/>
+		<param name="onup" value="1020"/>
+		<param name="ondown" value="1022"/>
+		<param name="nom" value="$INFO[skin.string(nom_widget_1021)]"/>
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_1021)]"/>
+		<param name="cible" value="$INFO[skin.string(cible_widget_1021)]"/>
+		<param name="sortby" value="$INFO[skin.string(tri_widget_1021)]"/>
+		<param name="sortorder" value="$INFO[skin.string(ordre_widget_1021)]"/>
+		<param name="progression" value="String.StartsWith(Skin.String(chemin_widget_1021),videodb://movies/)"/>    
+		<param name="visible" value="string.isEqual(Skin.String(type_widget_1021),carre) + string.isEqual(Skin.String(afficher_widget_1021),1)"/> 
+	</include>
+	<include content="panneau_tv">	
+		<param name="id" value="1021"/>
+		<param name="onleft" value="1000"/>
+		<param name="onup" value="1020"/>
+		<param name="ondown" value="1022"/>
+		<param name="nom" value="$INFO[skin.string(nom_widget_1021)]"/>
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_1021)]"/>
+		<param name="cible" value="$INFO[skin.string(cible_widget_1021)]"/>
+		<param name="sortby" value="$INFO[skin.string(tri_widget_1021)]"/>
+		<param name="sortorder" value="$INFO[skin.string(ordre_widget_1021)]"/>
+		<param name="progression" value="String.StartsWith(Skin.String(chemin_widget_1021),videodb://movies/)"/>     
+		<param name="visible" value="string.isEqual(Skin.String(type_widget_1021),tv) + string.isEqual(Skin.String(afficher_widget_1021),1)"/>
+	</include>	
+	<include content="panneau_poster">																											<description>widget personnalise n°9</description>	
+		<param name="id" value="1022"/>
+		<param name="onleft" value="1000"/>
+		<param name="onup" value="1021"/>
+		<param name="ondown" value="1023"/>
+		<param name="nom" value="$INFO[skin.string(nom_widget_1022)]"/>
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_1022)]"/>
+		<param name="cible" value="$INFO[skin.string(cible_widget_1022)]"/>
+		<param name="sortby" value="$INFO[skin.string(tri_widget_1022)]"/>
+		<param name="sortorder" value="$INFO[skin.string(ordre_widget_1022)]"/>
+		<param name="progression" value="String.StartsWith(Skin.String(chemin_widget_1022),videodb://movies/)"/>     
+		<param name="visible" value="string.isEqual(Skin.String(type_widget_1022),poster) + string.isEqual(Skin.String(afficher_widget_1022),1)"/>
+	</include>
+	<include content="panneau_fanart">	
+		<param name="id" value="1022"/>
+		<param name="onleft" value="1000"/>
+		<param name="onup" value="1021"/>
+		<param name="ondown" value="1023"/>
+		<param name="nom" value="$INFO[skin.string(nom_widget_1022)]"/>
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_1022)]"/>
+		<param name="cible" value="$INFO[skin.string(cible_widget_1022)]"/>
+		<param name="sortby" value="$INFO[skin.string(tri_widget_1022)]"/>
+		<param name="sortorder" value="$INFO[skin.string(ordre_widget_1022)]"/>
+		<param name="progression" value="String.StartsWith(Skin.String(chemin_widget_1022),videodb://movies/)"/>     
+		<param name="visible" value="string.isEqual(Skin.String(type_widget_1022),fanart) + string.isEqual(Skin.String(afficher_widget_1022),1)"/>
+	</include>
+	<include content="panneau_carre">	
+		<param name="id" value="1022"/>
+		<param name="onleft" value="1000"/>
+		<param name="onup" value="1021"/>
+		<param name="ondown" value="1023"/>
+		<param name="nom" value="$INFO[skin.string(nom_widget_1022)]"/>
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_1022)]"/>
+		<param name="cible" value="$INFO[skin.string(cible_widget_1022)]"/>
+		<param name="sortby" value="$INFO[skin.string(tri_widget_1022)]"/>
+		<param name="sortorder" value="$INFO[skin.string(ordre_widget_1022)]"/>
+		<param name="progression" value="String.StartsWith(Skin.String(chemin_widget_1022),videodb://movies/)"/>     
+		<param name="visible" value="string.isEqual(Skin.String(type_widget_1022),carre) + string.isEqual(Skin.String(afficher_widget_1022),1)"/>
+	</include>
+	<include content="panneau_tv">	
+		<param name="id" value="1022"/>
+		<param name="onleft" value="1000"/>
+		<param name="onup" value="1021"/>
+		<param name="ondown" value="1023"/> 
+		<param name="nom" value="$INFO[skin.string(nom_widget_1022)]"/>
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_1022)]"/>
+		<param name="cible" value="$INFO[skin.string(cible_widget_1022)]"/>
+		<param name="sortby" value="$INFO[skin.string(tri_widget_1022)]"/>
+		<param name="sortorder" value="$INFO[skin.string(ordre_widget_1022)]"/>
+		<param name="progression" value="String.StartsWith(Skin.String(chemin_widget_1022),videodb://movies/)"/>    
+		<param name="visible" value="string.isEqual(Skin.String(type_widget_1022),tv) + string.isEqual(Skin.String(afficher_widget_1022),1)"/>
+	</include>	
+	<include content="panneau_poster">																											<description>widget personnalise n°10</description>	
+		<param name="id" value="1023"/>
+		<param name="onleft" value="1000"/>
+		<param name="onup" value="1022"/>
+		<param name="ondown" value="1024"/> 
+		<param name="nom" value="$INFO[skin.string(nom_widget_1023)]"/>
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_1023)]"/>
+		<param name="cible" value="$INFO[skin.string(cible_widget_1023)]"/>
+		<param name="sortby" value="$INFO[skin.string(tri_widget_1023)]"/>
+		<param name="sortorder" value="$INFO[skin.string(ordre_widget_1023)]"/>
+		<param name="progression" value="String.StartsWith(Skin.String(chemin_widget_1023),videodb://movies/)"/>    
+		<param name="visible" value="string.isEqual(Skin.String(type_widget_1023),poster) + string.isEqual(Skin.String(afficher_widget_1023),1)"/>
+	</include>
+	<include content="panneau_fanart">	
+		<param name="id" value="1023"/>
+		<param name="onleft" value="1000"/>
+		<param name="onup" value="1022"/>
+		<param name="ondown" value="1024"/> 
+		<param name="nom" value="$INFO[skin.string(nom_widget_1023)]"/>
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_1023)]"/>
+		<param name="cible" value="$INFO[skin.string(cible_widget_1023)]"/>
+		<param name="sortby" value="$INFO[skin.string(tri_widget_1023)]"/>
+		<param name="sortorder" value="$INFO[skin.string(ordre_widget_1023)]"/>
+		<param name="progression" value="String.StartsWith(Skin.String(chemin_widget_1023),videodb://movies/)"/>   
+		<param name="visible" value="string.isEqual(Skin.String(type_widget_1023),fanart) + string.isEqual(Skin.String(afficher_widget_1023),1)"/>
+	</include>
+	<include content="panneau_carre">	
+		<param name="id" value="1023"/>
+		<param name="onleft" value="1000"/>
+		<param name="onup" value="1022"/>
+		<param name="ondown" value="1024"/> 
+		<param name="nom" value="$INFO[skin.string(nom_widget_1023)]"/>
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_1023)]"/>
+		<param name="cible" value="$INFO[skin.string(cible_widget_1023)]"/>
+		<param name="sortby" value="$INFO[skin.string(tri_widget_1023)]"/>
+		<param name="sortorder" value="$INFO[skin.string(ordre_widget_1023)]"/>
+		<param name="progression" value="String.StartsWith(Skin.String(chemin_widget_1023),videodb://movies/)"/>    
+		<param name="visible" value="string.isEqual(Skin.String(type_widget_1023),carre) + string.isEqual(Skin.String(afficher_widget_1023),1)"/>
+	</include>
+	<include content="panneau_tv">	
+		<param name="id" value="1023"/>
+		<param name="onleft" value="1000"/>
+		<param name="onup" value="1022"/>
+		<param name="ondown" value="1024"/>
+		<param name="nom" value="$INFO[skin.string(nom_widget_1023)]"/> 
+		<param name="chemin" value="$INFO[skin.string(chemin_widget_1023)]"/>
+		<param name="cible" value="$INFO[skin.string(cible_widget_1023)]"/>
+		<param name="sortby" value="$INFO[skin.string(tri_widget_1023)]"/>
+		<param name="sortorder" value="$INFO[skin.string(ordre_widget_1023)]"/>
+		<param name="progression" value="String.StartsWith(Skin.String(chemin_widget_1023),videodb://movies/)"/>    
+		<param name="visible" value="string.isEqual(Skin.String(type_widget_1023),tv) + string.isEqual(Skin.String(afficher_widget_1023),1)"/>
+	</include>
+	<control type="group" id="1030">																											<description>boutons parametrage de la page d'accueil</description>
+		<height>190</height>
+	<control type="image">
+		<top>27</top>		
+		<left>60</left>
+		<height>25</height>
+		<width>10</width>
+		<aspectratio>keep</aspectratio>
+		<texture background="true" colordiffuse="80ffffff">commun/3points.png</texture>	
+	</control>
+	<control type="label">
+		<top>15</top>		
+		<left>80</left>
+		<height>50</height>
+		<width>1820</width>
+		<font>titre</font>
+		<textcolor>80ffffff</textcolor>
+		<label>[UPPERCASE]$LOCALIZE[5][/UPPERCASE]</label>		
+	</control>
+	<control type="grouplist">
+		<top>85</top>
+		<left>50</left>		
+		<onleft>1000</onleft>
+		<itemgap>40</itemgap>
+		<orientation>horizontal</orientation>
+	<control type="button" id="1024">
+		<onup>1023</onup>				
+		<onclick>setProperty(numero_parametre_widget,1011,home)</onclick>		
+		<onclick>activatewindow(1201)</onclick>
+		<onclick>control.setFocus(1024)</onclick>				
+	<include content="bouton">																										
+		<param name="width" value="auto"/> 
+		<param name="height" value="80"/>
+		<param name="align" value="center"/>			 
+		<param name="label" value="$LOCALIZE[31190]"/>
+	</include>
+	</control>
+	<control type="button" id="1025">
+		<onup>1015</onup>
+		<include>reinitialiser_widget_accueil</include>		
+	<include content="bouton">																										
+		<param name="width" value="auto"/> 
+		<param name="height" value="80"/>
+		<param name="align" value="center"/>			 
+		<param name="label" value="$LOCALIZE[31191]"/>
+	</include>
+	</control>
+	</control>	
+	
+	
+	
+	</control>
+	</control>
+	
+	<control type="grouplist" id="2001">																										<description>page vidéos</description>
+		<visible>string.isequal(window(home).property(menu),$LOCALIZE[31168])</visible>
+		<animation effect="slide" end="1920,0" time="0" condition="window.isvisible(movieinformation) | window.isvisible(selectdialog) | window.isvisible(contextmenu)" reversible="false">conditional</animation>
+		<animation effect="slide" end="0,0" delay="500" time="0" condition="!window.isvisible(movieinformation) + !window.isvisible(selectdialog) + !window.isvisible(contextmenu)" reversible="false">conditional</animation>		
+		<animation effect="slide" end="-450,0" time="400" condition="!control.hasfocus(1000) + !control.hasfocus(111) + !skin.hassetting(menu_icones)">conditional</animation>
+		<animation effect="slide" end="-150,0" time="150" condition="!control.hasfocus(1000) + !control.hasfocus(111) + skin.hassetting(menu_icones)">conditional</animation>
+		<animation effect="slide" end="-300,0" time="150" condition="skin.hassetting(menu_icones)">conditional</animation>		
+		<left>450</left>
+		<width>1920</width>
+		<scrolltime tween="cubic" easing="out">500</scrolltime>	
+	<control type="group">																														<description>horloge</description>
+		<height>130</height>		
+	<control type="radiobutton" id="999">
+		<left>50</left>
+		<top>35</top>
+		<height>60</height>
+		<width>1500</width>
+		<onleft>1000</onleft>		
+		<ondown>2010</ondown>
+		<texturenofocus colordiffuse="$VAR[couleur_dominante]" border="20">$PARAM[texturenofocus]</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
+		<textureradioonfocus colordiffuse="$VAR[gris]">menus/recherche.png</textureradioonfocus>
+		<textureradioonnofocus colordiffuse="80ffffff">menus/recherche.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="$VAR[gris]">menus/recherche.png</textureradioofffocus>
+		<textureradiooffnofocus colordiffuse="80ffffff">menus/recherche.png</textureradiooffnofocus>
+		<radioposx>1</radioposx>
+		<radiowidth>80</radiowidth>
+		<radioheight>80</radioheight>			
+	</control>	
+	<control type="label">																														<description>horloge</description>
+		<right>60</right>
+		<height>130</height>
+		<font>menu</font>
+		<textcolor>80ffffff</textcolor>
+		<align>right</align>
+		<label>$INFO[system.time(hh:mm)]</label>		
+	</control>
+	<include content="barre_separation_horizontale">																							<description>barre de separation horizontale</description>
+		<param name="left" value="25"/> 
+		<param name="right" value="25"/>
+		<param name="bottom" value="0"/>			
+	</include>
+	</control>
+	<include content="panneau_librairie">																										<description>librairie</description>	
+		<param name="id" value="2010"/>
+		<param name="onup" value="999"/>
+		<param name="ondown" value="2011"/>
+		<param name="onleft" value="1000"/>
+		<param name="nom" value="$LOCALIZE[14022]"/>
+		<param name="chemin" value="library://video/movies/"/>
+		<param name="cible" value="videos"/>
+		<param name="sortby" value=""/>
+		<param name="sortorder" value=""/>				
+	</include>
+	<include content="panneau_fanart">																											<description>widget tv</description>	
+		<param name="id" value="2011"/>
+		<param name="onup" value="2010"/>
+		<param name="ondown" value="2012"/>
+		<param name="onleft" value="1000"/>
+		<param name="nom" value="$LOCALIZE[31208]"/>
+		<param name="chemin" value="special://skin/playlists/films en progression.xsp"/>
+		<param name="cible" value="videos"/>
+		<param name="sortby" value=""/>
+		<param name="sortorder" value=""/>
+		<param name="progression" value="true"/>
+		<param name="visible" value="Integer.IsGreater(Container(2011).NumItems,0) | Container(2011).IsUpdating"/>
+	</include>
+	<include content="panneau_librairie">																										<description>librairie</description>	
+		<param name="id" value="2012"/>
+		<param name="onup" value="2011"/>
+		<param name="ondown" value="2013"/>
+		<param name="onleft" value="1000"/>
+		<param name="nom" value="$LOCALIZE[31148]"/>
+		<param name="chemin" value="videodb://movies/genres/"/>
+		<param name="cible" value="videos"/>
+		<param name="sortby" value="label"/>
+		<param name="sortorder" value="ascending"/>				
+	</include>
+	<include content="panneau_poster">																											<description>films en cours</description>	
+		<param name="id" value="2013"/>
+		<param name="onup" value="2012"/>
+		<param name="ondown" value="2014"/>
+		<param name="onleft" value="1000"/>
+		<param name="nom" value="$LOCALIZE[31203]"/>
+		<param name="chemin" value="special://skin/playlists/films derniers ajouts.xsp"/>
+		<param name="cible" value="videos"/>
+		<param name="sortby" value=""/>
+		<param name="sortorder" value=""/>
+		<param name="progression" value="true"/>
+		<param name="visible" value="Integer.IsGreater(Container(2013).NumItems,0) | Container(2013).IsUpdating"/>		
+	</include>
+	
+	<include content="panneau_fanart">																											<description>widget tv</description>	
+		<param name="id" value="2014"/>
+		<param name="onup" value="2013"/>
+		<param name="ondown" value="2015"/>
+		<param name="onleft" value="1000"/>
+		<param name="nom" value="$LOCALIZE[31209]"/>
+		<param name="chemin" value="videodb://movies/sets/"/>
+		<param name="cible" value="videos"/>
+		<param name="sortby" value=""/>
+		<param name="sortorder" value=""/>
+		<param name="progression" value="false"/>
+		<param name="visible" value="Integer.IsGreater(Container(2014).NumItems,0) | Container(2014).IsUpdating"/>		
+	</include>
+	<include content="panneau_poster">																											<description>widget tv</description>	
+		<param name="id" value="2015"/>
+		<param name="onup" value="2014"/>
+		<param name="ondown" value="2016"/>
+		<param name="onleft" value="1000"/>
+		<param name="nom" value="$LOCALIZE[31211]"/>
+		<param name="chemin" value="special://skin/playlists/films les mieux notes.xsp"/>
+		<param name="cible" value="videos"/>
+		<param name="sortby" value=""/>
+		<param name="sortorder" value=""/>
+		<param name="progression" value="true"/>
+		<param name="visible" value="Integer.IsGreater(Container(2015).NumItems,0) | Container(2015).IsUpdating"/>		
+	</include>
+	<include content="panneau_poster">																											<description>widget tv</description>	
+		<param name="id" value="2016"/>
+		<param name="onup" value="2015"/>
+		<param name="ondown" value="2017"/>
+		<param name="onleft" value="1000"/>
+		<param name="nom" value="$LOCALIZE[31212]"/>
+		<param name="chemin" value="special://skin/playlists/films non vus.xsp"/>
+		<param name="cible" value="videos"/>
+		<param name="sortby" value=""/>
+		<param name="sortorder" value=""/>
+		<param name="progression" value="true"/>		
+		<param name="visible" value="Integer.IsGreater(Container(2016).NumItems,0) | Container(2016).IsUpdating"/>
+	</include>
+	<include content="panneau_librairie">																										<description>librairie</description>	
+		<param name="id" value="2017"/>
+		<param name="onup" value="2016"/>
+		<param name="ondown" value="1030"/>
+		<param name="onleft" value="1000"/>
+		<param name="nom" value="$LOCALIZE[31216]"/>
+		<param name="chemin" value="library://video/"/>
+		<param name="cible" value="videos"/>
+		<param name="sortby" value=""/>
+		<param name="sortorder" value=""/>				
+	</include>
+	<control type="group" id="1030">																											<description>boutons parametrage de la page video</description>
+		<height>190</height>
+	<control type="image">
+		<top>27</top>		
+		<left>60</left>
+		<height>25</height>
+		<width>10</width>
+		<aspectratio>keep</aspectratio>
+		<texture background="true" colordiffuse="80ffffff">commun/3points.png</texture>	
+	</control>
+	<control type="label">
+		<top>15</top>		
+		<left>80</left>
+		<height>50</height>
+		<width>1820</width>
+		<font>titre</font>
+		<textcolor>80ffffff</textcolor>
+		<label>[UPPERCASE]$LOCALIZE[5][/UPPERCASE]</label>		
+	</control>
+	<control type="grouplist">
+		<top>85</top>
+		<left>50</left>		
+		<onleft>1000</onleft>
+		<itemgap>40</itemgap>
+		<orientation>horizontal</orientation>
+	<control type="button" id="1024">
+		<onup>2017</onup>				
+		<onclick>UpdateLibrary(video)</onclick>						
+	<include content="bouton">																										
+		<param name="width" value="auto"/> 
+		<param name="height" value="80"/>
+		<param name="align" value="center"/>			 
+		<param name="label" value="$LOCALIZE[31214]"/>
+	</include>
+	</control>
+	<control type="button" id="1025">
+		<onup>2016</onup>
+		<onclick>CleanLibrary(video)</onclick>		
+	<include content="bouton">																										
+		<param name="width" value="auto"/> 
+		<param name="height" value="80"/>
+		<param name="align" value="center"/>			 
+		<param name="label" value="$LOCALIZE[31215]"/>
+	</include>
+	</control>
+	</control>	
+	
+	
+	
+	</control>
+	</control>
+	
+	
+	
+	
+	
+	
+	
+	<control type="grouplist" id="9001">																										<description>page parametres</description>
+		<visible>string.isequal(window(home).property(menu),$LOCALIZE[31174])</visible>
+		<animation effect="slide" end="1920,0" time="0" condition="window.isvisible(movieinformation) | window.isvisible(selectdialog) | window.isvisible(contextmenu)" reversible="false">conditional</animation>
+		<animation effect="slide" end="0,0" delay="500" time="0" condition="!window.isvisible(movieinformation) + !window.isvisible(selectdialog) + !window.isvisible(contextmenu)" reversible="false">conditional</animation>		
+		<animation effect="slide" end="-450,0" time="400" condition="!control.hasfocus(1000) + !control.hasfocus(111) + !skin.hassetting(menu_icones)">conditional</animation>
+		<animation effect="slide" end="-150,0" time="150" condition="!control.hasfocus(1000) + !control.hasfocus(111) + skin.hassetting(menu_icones)">conditional</animation>
+		<animation effect="slide" end="-300,0" time="150" condition="skin.hassetting(menu_icones)">conditional</animation>	
+		<left>450</left>
+		<width>1920</width>
+		<scrolltime tween="cubic" easing="out">500</scrolltime>	
+	<control type="group">																														<description>horloge</description>
+		<height>130</height>	
+	<control type="radiobutton" id="999">
+		<left>50</left>
+		<top>35</top>
+		<height>60</height>
+		<width>1500</width>
+		<onleft>1000</onleft>
+		<ondown>9002</ondown>
+		<texturenofocus colordiffuse="$VAR[couleur_dominante]" border="20">$PARAM[texturenofocus]</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
+		<textureradioonfocus colordiffuse="$VAR[gris]">menus/recherche.png</textureradioonfocus>
+		<textureradioonnofocus colordiffuse="80ffffff">menus/recherche.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="$VAR[gris]">menus/recherche.png</textureradioofffocus>
+		<textureradiooffnofocus colordiffuse="80ffffff">menus/recherche.png</textureradiooffnofocus>
+		<radioposx>1</radioposx>
+		<radiowidth>80</radiowidth>
+		<radioheight>80</radioheight>			
+	</control>
+	<control type="label">																														<description>horloge</description>
+		<right>60</right>
+		<height>130</height>
+		<font>menu</font>
+		<textcolor>80ffffff</textcolor>
+		<align>right</align>
+		<label>$INFO[system.time(hh:mm)]</label>		
+	</control>
+	<include content="barre_separation_horizontale">																							<description>barre de separation horizontale</description>
+		<param name="left" value="25"/> 
+		<param name="right" value="25"/>
+		<param name="bottom" value="0"/>			
+	</include>
+	</control>
+	<control type="group">																														<description>parametres</description>
+		<height>930</height>				
+	<include content="panneau_gauche_parametres">
+		<param name="titre" value="$LOCALIZE[31178]"/> 
+		<param name="container" value="9002"/>		
+	</include>
+	<control type="panel" id="9002">		
+		<left>980</left>
+		<top>60</top>
+		<width>800</width>
+		<height>800</height>
+		<onright>7001</onright>
+		<onleft>1000</onleft>
+		<onback>1000</onback>
+		<onup>999</onup>
+		<pagecontrol>7001</pagecontrol>
+		<scrolltime tween="linear" easing="out">250</scrolltime>
+		<orientation>vertical</orientation>	
+	<itemlayout height="100" width="800">		
+	<control type="group">
+		<top>10</top>
+	<control type="button">
+	<include content="bouton">																										
+		<param name="width" value="780"/> 
+		<param name="height" value="80"/>
+	</include>
+	</control>
+	<control type="label">
+	<include content="bouton_label">																									
+		<param name="width" value="780"/> 
+		<param name="height" value="80"/> 
+		<param name="label" value="$INFO[listItem.label]"/>
+	</include>		
+	</control>
+	</control>
+	</itemlayout>
+	<focusedlayout height="100" width="800">
+	<control type="group">
+		<top>10</top>
+	<control type="button">
+	<include content="bouton">																										
+		<param name="width" value="780"/> 
+		<param name="height" value="80"/> 
+	</include>
+	</control>
+	<control type="label">
+	<include content="bouton_label">																									
+		<param name="width" value="780"/> 
+		<param name="height" value="80"/> 
+		<param name="label" value="$INFO[listItem.label]"/>
+		<param name="textcolor" value="$VAR[gris]"/> 
+	</include>		
+	</control>
+	</control>
+	</focusedlayout>
+	<content>
+	<item>
+		<label>$LOCALIZE[14200]</label>					
+		<onclick>ActivateWindow(PlayerSettings)</onclick>
+		<icon>icones/settings/player.png</icon>
+	</item>
+	<item>
+		<label>$LOCALIZE[14204]</label>
+		<onclick>ActivateWindow(PVRSettings)</onclick>
+		<icon>icones/settings/livetv.png</icon>
+	</item>
+	<item>
+		<label>$LOCALIZE[14211]</label>
+		<onclick>ActivateWindow(MediaSettings)</onclick>
+		<icon>icones/settings/media.png</icon>
+	</item>
+	<item>
+		<label>$LOCALIZE[31177]</label>
+		<onclick>ActivateWindow(AddonBrowser)</onclick>
+		<icon>icones/settings/addons.png</icon>
+	</item>
+	<item>
+		<label>$LOCALIZE[14036]</label>
+		<onclick>ActivateWindow(ServiceSettings)</onclick>
+		<icon>icones/settings/network.png</icon>
+	</item>
+	<item>
+		<label>$LOCALIZE[14206]</label>
+		<onclick>ActivateWindow(InterfaceSettings)</onclick>
+		<icon>icones/settings/interface.png</icon>
+	</item>
+	<item>
+		<label>$LOCALIZE[13000]</label>
+		<onclick>ActivateWindow(SystemSettings)</onclick>
+		<icon>icones/settings/system.png</icon>
+	</item>
+	<item>
+		<label>$LOCALIZE[166]</label>
+		<onclick>ActivateWindow(SkinSettings)</onclick>
+		<icon>icones/settings/skin.png</icon>
+	</item>
+	<item>
+		<label>$LOCALIZE[10003]</label>
+		<onclick>ActivateWindow(FileManager)</onclick>
+		<icon>defaultnetwork.png</icon>
+	</item>
+	<item>
+		<label>$LOCALIZE[13200]</label>
+		<onclick>ActivateWindow(Profiles)</onclick>
+		<icon>defaultuser.png</icon>
+	</item>
+	<item>
+		<label>$LOCALIZE[138]</label>
+		<onclick>ActivateWindow(SystemInfo)</onclick>
+		<icon>defaultaddoninfoprovider.png</icon>
+	</item>
+	<item>
+		<label>$LOCALIZE[31067]</label>
+		<onclick>ActivateWindow(EventLog)</onclick>
+		<icon>icones/settings/logokodi.png</icon>
+	</item>
+	</content>		
+	</control>	
+	<include content="scrollbar">																												<description>scrollbar</description>
+		<param name="id" value="7001"/> 
+		<param name="top" value="70"/> 
+		<param name="height" value="780"/> 
+		<param name="container" value="9002"/>
+	</include>
+	</control>
+	</control>
+	
+	<control type="grouplist" id="10001">																										<description>page extinction</description>
+		<visible>string.isequal(window(home).property(menu),$LOCALIZE[31175])</visible>
+		<animation effect="slide" end="1920,0" time="0" condition="window.isvisible(movieinformation) | window.isvisible(selectdialog) | window.isvisible(contextmenu)" reversible="false">conditional</animation>
+		<animation effect="slide" end="0,0" delay="500" time="0" condition="!window.isvisible(movieinformation) + !window.isvisible(selectdialog) + !window.isvisible(contextmenu)" reversible="false">conditional</animation>		
+		<animation effect="slide" end="-450,0" time="400" condition="!control.hasfocus(1000) + !control.hasfocus(111) + !skin.hassetting(menu_icones)">conditional</animation>
+		<animation effect="slide" end="-150,0" time="150" condition="!control.hasfocus(1000) + !control.hasfocus(111) + skin.hassetting(menu_icones)">conditional</animation>
+		<animation effect="slide" end="-300,0" time="150" condition="skin.hassetting(menu_icones)">conditional</animation>	
+		<left>450</left>
+		<width>1920</width>
+		<scrolltime tween="cubic" easing="out">500</scrolltime>	
+	<control type="group">																														<description>horloge</description>
+		<height>130</height>	
+	<control type="radiobutton" id="999">
+		<left>50</left>
+		<top>35</top>
+		<height>60</height>
+		<width>1500</width>
+		<onleft>1000</onleft>
+		<ondown>10002</ondown>
+		<texturenofocus colordiffuse="$VAR[couleur_dominante]" border="20">$PARAM[texturenofocus]</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
+		<textureradioonfocus colordiffuse="$VAR[gris]">menus/recherche.png</textureradioonfocus>
+		<textureradioonnofocus colordiffuse="80ffffff">menus/recherche.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="$VAR[gris]">menus/recherche.png</textureradioofffocus>
+		<textureradiooffnofocus colordiffuse="80ffffff">menus/recherche.png</textureradiooffnofocus>
+		<radioposx>1</radioposx>
+		<radiowidth>80</radiowidth>
+		<radioheight>80</radioheight>			
+	</control>
+	<control type="label">																														<description>horloge</description>
+		<right>60</right>
+		<height>130</height>
+		<font>menu</font>
+		<textcolor>80ffffff</textcolor>
+		<align>right</align>
+		<label>$INFO[system.time(hh:mm)]</label>		
+	</control>
+	<include content="barre_separation_horizontale">																							<description>barre de separation horizontale</description>
+		<param name="left" value="25"/> 
+		<param name="right" value="25"/>
+		<param name="bottom" value="0"/>			
+	</include>
+	</control>
+	<control type="group">																														<description>extinction</description>
+		<visible>string.isequal(window(home).property(menu),$LOCALIZE[31175])</visible>
+		<height>930</height>
+	<include content="panneau_gauche_parametres">
+		<param name="titre" value="$LOCALIZE[31187]"/> 
+		<param name="container" value="10002"/>		
+	</include>
+	<control type="panel" id="10002">		
+		<left>980</left>
+		<top>160</top>
+		<width>800</width>
+		<height>800</height>
+		<onright>8001</onright>
+		<onleft>1000</onleft>		
+		<onup>999</onup>
+		<onback>1000</onback>
+		<pagecontrol>8001</pagecontrol>
+		<scrolltime tween="linear" easing="out">250</scrolltime>
+		<orientation>vertical</orientation>	
+	<itemlayout height="100" width="800">		
+	<control type="group">
+		<top>10</top>
+	<control type="button">
+	<include content="bouton">																										
+		<param name="width" value="780"/> 
+		<param name="height" value="80"/>
+	</include>
+	</control>
+	<control type="label">
+	<include content="bouton_label">																									
+		<param name="width" value="780"/> 
+		<param name="height" value="80"/> 
+		<param name="label" value="$INFO[listItem.label]"/>
+	</include>		
+	</control>
+	</control>
+	</itemlayout>
+	<focusedlayout height="100" width="800">
+	<control type="group">
+		<top>10</top>
+	<control type="button">
+	<include content="bouton">																										
+		<param name="width" value="780"/> 
+		<param name="height" value="80"/> 
+	</include>
+	</control>
+	<control type="label">
+	<include content="bouton_label">																									
+		<param name="width" value="780"/> 
+		<param name="height" value="80"/> 
+		<param name="label" value="$INFO[listItem.label]"/>
+		<param name="textcolor" value="$VAR[gris]"/> 
+	</include>		
+	</control>
+	</control>
+	</focusedlayout>
+	<content>
+	<item>
+		<label>$LOCALIZE[31181]</label>
+		<icon>icones/extinction/quitter.png</icon>
+		<onclick>Quit</onclick>	
+	</item>	
+	<item>
+		<label>$LOCALIZE[31182]</label>
+		<icon>icones/extinction/eteindre.png</icon>
+		<onclick>ShutDown</onclick>	
+	</item>
+	<item>
+		<label>$LOCALIZE[31183]</label>
+		<icon>icones/extinction/redemarrer.png</icon>
+		<onclick>Reboot</onclick>	
+	</item>
+	<item>
+		<label>$LOCALIZE[31184]</label>
+		<icon>icones/extinction/veille.png</icon>
+		<onclick>Suspend</onclick>	
+	</item>
+	<item>
+		<label>$LOCALIZE[31185]</label>
+		<icon>icones/extinction/veille prolongee.png</icon>
+		<onclick>Hibernate</onclick>	
+	</item>
+	<item>
+		<label>$LOCALIZE[31186]</label>
+		<icon>icones/extinction/habillage.png</icon>				
+		<onclick>control.setfocus(1001)</onclick>
+		<onclick>ReloadSkin()</onclick>				
+		<onclick>replaceWindow(startup)</onclick>				
+	</item>
+	</content>		
+	</control>		
+	<include content="scrollbar">																												<description>scrollbar</description>
+		<param name="id" value="8001"/> 
+		<param name="top" value="170"/> 
+		<param name="height" value="580"/> 
+		<param name="container" value="10002"/>
+	</include>	
+	</control>
+	</control>
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<control type="label" id="9999">																											<description>label pour les tests</description>
+		<bottom>0</bottom>
+		<label></label>
+	</control>
+</controls>
+</window>

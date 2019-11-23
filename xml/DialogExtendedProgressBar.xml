@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+	<backgroundcolor>00X000000</backgroundcolor>
+<controls>
+	<control type="group">		
+		<animation effect="fade" start="0" end="100" delay="250" time="200">windowopen</animation>
+		<animation effect="fade" start="100" end="0" time="200">windowclose</animation>
+	<control type="image">																														<description>masque arriere plan</description>
+		<aspectratio>scale</aspectratio>
+		<texture colordiffuse="80000000">commun/texture.png</texture>				
+	</control>
+	<control type="image">
+		<top>340</top>
+		<left>590</left>
+		<width>740</width>
+		<height>400</height>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="fff0f0f0" border="50">commun/bouton.png</texture>
+	</control>
+	<control type="image">
+		<top>420</top>
+		<left>595</left>
+		<width>730</width>
+		<height>300</height>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="1a000000" border="50">commun/bouton.png</texture>
+	</control>
+	<control type="label" id="30">																												<description>titre</description>
+		<top>340</top>
+		<left>590</left>
+		<width>740</width>
+		<height>80</height>			
+		<font>menu</font>
+		<textcolor>$VAR[gris]</textcolor>
+		<align>center</align>		
+	</control>	
+	<control type="textbox" id="31">																												<description>texte</description>
+		<top>421</top>
+		<left>605</left>
+		<width>710</width>
+		<height>299</height>
+		<textcolor>$VAR[gris]</textcolor>
+		<font>texte</font>
+		<autoscroll delay="4000" time="4000" repeat="4000">true</autoscroll>
+	</control>	
+	<control type="progress" id="32">
+		<top>725</top>
+		<left>610</left>
+		<width>700</width>
+		<height>8</height>
+		<reveal>true</reveal>
+		<texturebg colordiffuse="1a000000">commun/texture.png</texturebg>
+		<midtexture colordiffuse="$VAR[couleur_dominante]">commun/texture.png</midtexture>
+		<info>System.Progressbar</info>
+	</control>	
+	</control>	
+</controls>
+</window>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<window type="dialog" id="1220">
+	<backgroundcolor>00X000000</backgroundcolor>
+	<defaultcontrol always="true">100</defaultcontrol>
+<controls>
+	<control type="progress" id="1111">
+		<info>Player.Volume</info>
+		<visible>false</visible>
+	</control>
+	<control type="group">
+		<animation effect="fade" start="0" end="100" delay="200" time="200">windowopen</animation>
+		<animation effect="fade" start="100" end="0" time="200">windowclose</animation>		
+		<animation effect="fade" start="100" end="0" time="200" condition="window.isvisible(DialogSelect.xml) | window.isvisible(DialogConfirm.xml) | window.isvisible(dialogsettings.xml) | window.isvisible(DialogNotification.xml)">conditional</animation>
+	<control type="image">																														<description>masque arriere plan</description>
+		<visible>!window.isvisible(VideoFullScreen.xml)</visible>
+		<aspectratio>scale</aspectratio>
+		<texture colordiffuse="80000000">commun/texture.png</texture>				
+	</control>
+	<control type="image">
+		<top>327</top>
+		<left>790</left>
+		<width>340</width>
+		<height>425</height>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="fff0f0f0" border="50">commun/bouton.png</texture>
+	</control>
+	<control type="image">
+		<top>407</top>
+		<left>795</left>
+		<width>330</width>
+		<height>340</height>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="1a000000" border="50">commun/bouton.png</texture>
+	</control>
+	<control type="label">																														<description>titre</description>
+		<top>327</top>
+		<left>790</left>
+		<width>340</width>
+		<height>80</height>			
+		<font>menu</font>
+		<textcolor>$VAR[gris]</textcolor>
+		<align>center</align>	
+		<label>$LOCALIZE[5]</label>
+	</control>
+	<control type="grouplist" id="100">
+		<top>407</top>
+		<left>795</left>
+		<width>330</width>
+		<height>340</height>
+		<itemgap>10</itemgap>
+		<scrolltime tween="Linear" easing="in">250</scrolltime>		
+	<control type="button" id="101">
+	<include content="bouton_dialogue">
+		<param name="height" value="60"/> 
+		<param name="align" value="center"/>
+		<param name="label" value="$LOCALIZE[13396]"/>
+		<param name="textoffsetx" value="20"/>
+		<param name="texturenofocus_colordiffuse" value="00ffffff"/>
+	</include>	
+		<onclick>ActivateWindow(osdaudiosettings)</onclick>
+	</control>
+	<control type="button" id="102">
+	<include content="bouton_dialogue">
+		<param name="height" value="60"/> 
+		<param name="align" value="center"/>
+		<param name="label" value="$LOCALIZE[13395]"/>
+		<param name="textoffsetx" value="20"/>
+		<param name="texturenofocus_colordiffuse" value="00ffffff"/>
+	</include>		
+		<onclick>ActivateWindow(osdvideosettings)</onclick>
+	</control>		
+	<control type="button" id="104">
+	<include content="bouton_dialogue">
+		<param name="height" value="60"/> 
+		<param name="align" value="center"/>
+		<param name="label" value="$LOCALIZE[36560]"/>
+		<param name="textoffsetx" value="20"/>
+		<param name="texturenofocus_colordiffuse" value="00ffffff"/>
+	</include>		
+		<onclick>ActivateWindow(osdcmssettings)</onclick>
+		<visible>System.HasCMS</visible>
+	</control>
+	<control type="button" id="105">		
+	<include content="bouton_dialogue">
+		<param name="height" value="60"/> 
+		<param name="align" value="center"/>
+		<param name="label" value="$LOCALIZE[29932]   [B][$INFO[VideoPlayer.AudioLanguage]][/B]"/>
+		<param name="textoffsetx" value="20"/>
+		<param name="texturenofocus_colordiffuse" value="00ffffff"/>
+	</include>
+		<onclick>AudioNextLanguage</onclick>
+		<visible>!string.isEmpty(VideoPlayer.AudioLanguage)</visible>
+	</control>
+	<control type="button" id="106">
+	<include content="bouton_dialogue">
+		<param name="height" value="60"/>
+		<param name="align" value="center"/>			 
+		<param name="label" value="$LOCALIZE[31171]"/>
+		<param name="textoffsetx" value="20"/>
+		<param name="texturenofocus_colordiffuse" value="00ffffff"/>
+	</include>			
+		<onclick>PlayerProgramSelect</onclick>
+		<visible>Player.HasPrograms</visible>
+	</control>
+	<control type="button" id="107">
+	<include content="bouton_dialogue">
+		<param name="height" value="60"/>
+		<param name="align" value="center"/> 
+		<param name="label" value="$LOCALIZE[21805]"/>
+		<param name="textoffsetx" value="20"/>
+		<param name="texturenofocus_colordiffuse" value="00ffffff"/>
+	</include>			
+		<onclick>PlayerResolutionSelect</onclick>
+		<visible>Player.HasResolutions</visible>
+	</control>	
+	</control>
+	</control>
+</controls>
+</window>

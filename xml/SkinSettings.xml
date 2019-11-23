@@ -1,0 +1,704 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>		
+	<backgroundcolor>00X000000</backgroundcolor>
+	<onunload>clearProperty(focus,home)</onunload>
+	<onunload>clearProperty(focus2,home)</onunload>
+	<onload>setProperty(focus2,1,home)</onload>
+	<onload>control.setFocus(8002,0,absolute)</onload>
+	<onload>control.setFocus(1004)</onload>	
+<controls>			
+	<include>arriere_plan</include>			
+	<control type="group">																														<description>horloge</description>						
+		<height>100</height>	
+	<include>heure</include>	
+	</control>	
+	<control type="label">																														<description>titre</description>
+		<left>10</left>
+		<top>-10</top>
+		<height>120</height>
+		<width>1200</width>
+		<scroll>true</scroll>
+		<font>titre</font>
+		<label>   $INFO[window(home).property(titre_fenetre)]  •  $LOCALIZE[14206]  •  $LOCALIZE[166]</label>		
+	</control>	
+	<include>fond_boutons_fenetre</include>																										<description>fond liste boutons du bas</description>			
+	<control type="group">																														<description>faux boutons du bas pour simuler effet de fading</description>
+	<control type="group">
+		<left>384</left>
+		<top>921</top>
+		<height>98</height>		
+	<include content="bouton_fenetre">			
+	</include>
+		<visible>!string.isEqual(window(home).property(focus),bouton1) | control.hasFocus(1005)</visible>
+	</control>
+	<control type="group">	
+		<left>768</left>
+		<top>921</top>
+		<height>98</height>		
+	<include content="bouton_fenetre">
+	</include>
+		<visible>!string.isEqual(window(home).property(focus),bouton2) | control.hasFocus(1005)</visible>
+	</control>
+	<control type="group">
+		<left>1152</left>
+		<top>921</top>
+		<height>98</height>		
+	<include content="bouton_fenetre">
+	</include>
+		<visible>!string.isEqual(window(home).property(focus),bouton3) | control.hasFocus(1005)</visible>
+	</control>
+	<control type="image">	
+		<top>921</top>
+		<height>98</height>
+		<width>384</width>
+		<texture colordiffuse="$VAR[selection]">fenetres/texture.png</texture>	
+		<animation effect="slide" start="0" end="384" condition="string.isEqual(window(home).property(focus),bouton1)">conditional</animation>
+		<animation effect="slide" start="0" end="768" condition="string.isEqual(window(home).property(focus),bouton2)">conditional</animation>
+		<animation effect="slide" start="0" end="1152" condition="string.isEqual(window(home).property(focus),bouton3)">conditional</animation>		
+		<animation effect="fade" start="100" end="50" condition="true">conditional</animation>
+		<visible>!control.hasFocus(8000) + !control.hasFocus(1005)</visible>
+	</control>
+	</control>
+	<control type="group">																														<description>boutons du bas</description>
+		<top>921</top>
+		<height>98</height>			
+	<control type="grouplist" id="8000">																										<description>liste des boutons</description>
+		<itemgap>0</itemgap>
+		<orientation>horizontal</orientation>
+		<scrolltime tween="Linear" easing="in">250</scrolltime>	
+	<include content="bouton_fenetre">																											<description>bouton personnalisation des menus</description>
+		<param name="id" value="1005"/>
+		<param name="label" value="$LOCALIZE[31210]"/>
+		<param name="texturenofocus" value="00ffffff"/>
+		<param name="ondown" value="close"/>		
+		<param name="onclick1" value="RunScript(script.skinshortcuts,type=manage&amp;nolabels=True&amp;group=mainmenu)"/>					
+	</include>
+	<include content="bouton_fenetre">																											<description>bouton1</description>
+		<param name="id" value="1004"/>
+		<param name="label" value="$LOCALIZE[31207]"/>
+		<param name="onclick1" value="control.setFocus(8004)"/>			
+		<param name="texturenofocus" value="00ffffff"/>
+		<param name="onfocus" value="setProperty(focus,bouton1,home)"/>
+		<param name="ondown" value="close"/>		
+		<param name="onup" value="control.setFocus(8004)"/>		
+	</include>	
+	<include content="bouton_fenetre">																											<description>bouton2</description>
+		<param name="id" value="1000"/>
+		<param name="label" value="$LOCALIZE[31208]"/>
+		<param name="onclick1" value="control.setFocus(8003)"/>			
+		<param name="texturenofocus" value="00ffffff"/>
+		<param name="onfocus" value="setProperty(focus,bouton2,home)"/>
+		<param name="ondown" value="close"/>		
+		<param name="onup" value="control.setFocus(8003)"/>		
+	</include>	
+	<include content="bouton_fenetre">																											<description>bouton3</description>
+		<param name="id" value="1001"/>
+		<param name="label" value="$LOCALIZE[31209]"/>
+		<param name="onclick1" value="control.setFocus(8001)"/>			
+		<param name="texturenofocus" value="00ffffff"/>
+		<param name="onfocus" value="setProperty(focus,bouton3,home)"/>
+		<param name="ondown" value="close"/>		
+		<param name="onup" value="control.setFocus(8001)"/>		
+	</include>
+	</control>	
+	</control>
+	<control type="group">																														<description>parametres</description>
+		<top>120</top>
+		<left>404</left>
+		<height>760</height>
+		<width>1496</width>
+	<control type="image">   	     																									
+		<left>-10</left>
+		<height>770</height>
+		<width>1516</width>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="66000000">fenetres/texture.png</texture>
+		<bordertexture border="12">fenetres/tuiles.png</bordertexture>
+		<bordersize>10,0,10,10</bordersize>			
+	</control>	
+	<control type="grouplist" id="8003">																										<description>widgets par defaut</description>		
+		<top>0</top>
+		<bottom>0</bottom>
+		<right>12</right>
+		<onup>noop</onup>
+		<ondown>8000</ondown>
+		<onright>62</onright>
+		<onleft>8000</onleft>
+		<onback>8000</onback>		
+		<itemgap>0</itemgap>
+		<pagecontrol>62</pagecontrol>
+		<scrolltime tween="Linear" easing="in">250</scrolltime>			
+	<control type="label" id="800301">
+	<include content="bouton_listes_fenetre">
+		<param name="font" value="label"/>
+		<param name="label" value="$LOCALIZE[31211]"/>
+	</include>
+	</control>	
+	<control type="radiobutton" id="800302">
+	<include content="bouton_listes_fenetre">
+		<param name="label" value="- $LOCALIZE[31198]"/>
+	</include>	
+		<onclick>Skin.ToggleSetting(0widget_videos)</onclick>
+		<selected>!Skin.HasSetting(0widget_videos) + Library.HasContent(movies)</selected>
+		<enable>Library.HasContent(movies)</enable>
+	</control>	
+	<control type="radiobutton" id="800303">		
+		<onback>8000</onback>
+	<include content="bouton_listes_fenetre">
+		<param name="label" value="- $LOCALIZE[31212]"/>
+	</include>
+		<onclick>Skin.SetString(type_widget_1005,fanart)</onclick>
+		<selected>String.IsEqual(Skin.String(type_widget_1005),fanart)</selected>
+	</control>
+	<control type="radiobutton" id="800304">		
+		<onback>8000</onback>
+	<include content="bouton_listes_fenetre">
+		<param name="label" value="- $LOCALIZE[31213]"/>
+	</include>
+		<onclick>Skin.SetString(type_widget_1005,poster)</onclick>
+		<selected>String.IsEqual(Skin.String(type_widget_1005),poster)</selected>
+	</control>	
+	<control type="radiobutton" id="800305">		
+		<onback>8000</onback>
+	<include content="bouton_listes_fenetre">
+		<param name="label" value="- $LOCALIZE[31214]"/>
+	</include>
+		<onclick condition="skin.hasSetting(0infos_widget_1005)">Skin.Reset(0infos_widget_1005)</onclick>
+		<onclick condition="!skin.hasSetting(0infos_widget_1005)">Skin.SetBool(0infos_widget_1005)</onclick>
+		<selected>!skin.hasSetting(0infos_widget_1005)</selected>		
+	</control>
+	<control type="label" id="8003012">
+	<include content="bouton_listes_fenetre">
+		<param name="font" value="label"/>
+		<param name="label" value="$LOCALIZE[31223]"/>
+	</include>
+	</control>	
+	<control type="radiobutton" id="800306">
+	<include content="bouton_listes_fenetre">
+		<param name="label" value="- $LOCALIZE[31198]"/>
+	</include>	
+		<onclick>Skin.ToggleSetting(0widget_series)</onclick>
+		<selected>!Skin.HasSetting(0widget_series) + Library.HasContent(TVShows)</selected>
+		<enable>Library.HasContent(TVShows)</enable>
+	</control>	
+	<control type="radiobutton" id="800307">		
+		<onback>8000</onback>
+	<include content="bouton_listes_fenetre">
+		<param name="label" value="- $LOCALIZE[31212]"/>
+	</include>
+		<onclick>Skin.SetString(type_widget_1009,fanart)</onclick>
+		<selected>String.IsEqual(Skin.String(type_widget_1009),fanart)</selected>
+	</control>
+	<control type="radiobutton" id="800308">		
+		<onback>8000</onback>
+	<include content="bouton_listes_fenetre">
+		<param name="label" value="- $LOCALIZE[31213]"/>
+	</include>
+		<onclick>Skin.SetString(type_widget_1008,poster)</onclick>
+		<selected>String.IsEqual(Skin.String(type_widget_1009),poster)</selected>
+	</control>	
+	<control type="radiobutton" id="800309">		
+		<onback>8000</onback>
+	<include content="bouton_listes_fenetre">
+		<param name="label" value="- $LOCALIZE[31214]"/>
+	</include>
+		<onclick condition="skin.hasSetting(0infos_widget_1009)">Skin.Reset(0infos_widget_1009)</onclick>
+		<onclick condition="!skin.hasSetting(0infos_widget_1009)">Skin.SetBool(0infos_widget_1009)</onclick>
+		<selected>!skin.hasSetting(0infos_widget_1009)</selected>
+	</control>
+	<control type="label" id="800310">
+	<include content="bouton_listes_fenetre">
+		<param name="font" value="label"/>
+		<param name="label" value="$LOCALIZE[31215]"/>
+	</include>
+	</control>	
+	<control type="radiobutton" id="800311">
+	<include content="bouton_listes_fenetre">
+		<param name="label" value="- $LOCALIZE[31198]"/>
+	</include>
+		<onclick>Skin.ToggleSetting(0widget_tv)</onclick>
+		<selected>!Skin.HasSetting(0widget_tv) + System.HasPVRAddon</selected>
+		<enable>System.HasPVRAddon</enable>
+	</control>	
+	<control type="radiobutton" id="800312">
+	<include content="bouton_listes_fenetre">
+		<param name="label" value="- $LOCALIZE[31304]"/>
+	</include>
+		<onclick>Skin.ToggleSetting(icones_EPG)</onclick>
+		<selected>Skin.HasSetting(icones_EPG)</selected>
+	</control>	
+	<control type="label" id="800313">
+	<include content="bouton_listes_fenetre">
+		<param name="font" value="label"/>
+		<param name="label" value="$LOCALIZE[31216]"/>
+	</include>
+	</control>	
+	<control type="radiobutton" id="800314">
+	<include content="bouton_listes_fenetre">
+		<param name="label" value="- $LOCALIZE[31198]"/>
+	</include>
+		<onclick>Skin.ToggleSetting(0widget_musique)</onclick>
+		<selected>!Skin.HasSetting(0widget_musique) + Library.HasContent(music)</selected>
+		<enable>Library.HasContent(music)</enable>
+	</control>
+	<control type="radiobutton" id="800315">		
+		<onback>8000</onback>
+	<include content="bouton_listes_fenetre">
+		<param name="label" value="- $LOCALIZE[31217]"/>
+	</include>
+		<onclick>Skin.SetString(type_widget_1008,fanart)</onclick>
+		<selected>String.IsEqual(Skin.String(type_widget_1008),fanart)</selected>
+	</control>
+	<control type="radiobutton" id="800316">		
+		<onback>8000</onback>
+	<include content="bouton_listes_fenetre">
+		<param name="label" value="- $LOCALIZE[31218]"/>
+	</include>
+		<onclick>Skin.SetString(type_widget_1008,carre)</onclick>
+		<selected>String.IsEqual(Skin.String(type_widget_1008),carre)</selected>
+	</control>			
+	<control type="radiobutton" id="800317">		
+		<onback>8000</onback>
+	<include content="bouton_listes_fenetre">
+		<param name="label" value="- $LOCALIZE[31219]"/>
+	</include>
+		<onclick>Skin.SetString(type_widget_1007,fanart)</onclick>
+		<selected>String.IsEqual(Skin.String(type_widget_1007),fanart)</selected>
+	</control>
+	<control type="radiobutton" id="800318">		
+		<onback>8000</onback>
+	<include content="bouton_listes_fenetre">
+		<param name="label" value="- $LOCALIZE[31220]"/>
+	</include>
+		<onclick>Skin.SetString(type_widget_1007,carre)</onclick>
+		<selected>String.IsEqual(Skin.String(type_widget_1007),carre)</selected>
+	</control>				
+	<control type="label" id="800319">
+	<include content="bouton_listes_fenetre">
+		<param name="font" value="label"/>
+		<param name="label" value="$LOCALIZE[31221]"/>
+	</include>
+	</control>	
+	<control type="radiobutton" id="800320">
+	<include content="bouton_listes_fenetre">
+		<param name="label" value="- $LOCALIZE[31198]"/>
+	</include>	
+		<onclick>Skin.ToggleSetting(0widget_meteo)</onclick>
+		<selected>!Skin.HasSetting(0widget_meteo) + !String.IsEmpty(Weather.Plugin)</selected>
+		<enable>!String.IsEmpty(Weather.Plugin)</enable>
+	</control>	
+		<visible>string.isEqual(window(home).property(focus),bouton2)</visible>
+	</control>
+	<control type="group">																														<description>widgets personnalises</description>
+	<control type="grouplist" id="8001">																										<description>widget 1</description>		
+		<visible>string.isEqual(window(home).property(focus),bouton3) + string.isEqual(window(home).property(focus2),1)</visible>
+	<include content="parametres_widget">
+		<param name="id_widget" value="1"/>
+		<param name="afficher_widget" value="afficher_widget_1"/>
+		<param name="chemin_widget" value="chemin_widget_1"/>
+		<param name="cible_widget" value="cible_widget_1"/>
+		<param name="nom_widget" value="nom_widget_1"/>
+		<param name="type_widget" value="type_widget_1"/>
+		<param name="largeur_widget" value="largeur_widget_1"/>
+	</include>				
+	</control>
+	<control type="grouplist" id="8001">																										<description>widget 2</description>	
+		<visible>string.isEqual(window(home).property(focus),bouton3) + string.isEqual(window(home).property(focus2),2)</visible>			
+	<include content="parametres_widget">
+		<param name="id_widget" value="2"/>
+		<param name="afficher_widget" value="afficher_widget_2"/>
+		<param name="chemin_widget" value="chemin_widget_2"/>
+		<param name="cible_widget" value="cible_widget_2"/>
+		<param name="nom_widget" value="nom_widget_2"/>
+		<param name="type_widget" value="type_widget_2"/>
+		<param name="largeur_widget" value="largeur_widget_2"/>	
+	</include>				
+	</control>
+	<control type="grouplist" id="8001">																										<description>widget 3</description>		
+		<visible>string.isEqual(window(home).property(focus),bouton3) + string.isEqual(window(home).property(focus2),3)</visible>
+	<include content="parametres_widget">
+		<param name="id_widget" value="3"/>
+		<param name="afficher_widget" value="afficher_widget_3"/>
+		<param name="chemin_widget" value="chemin_widget_3"/>
+		<param name="cible_widget" value="cible_widget_3"/>
+		<param name="nom_widget" value="nom_widget_3"/>
+		<param name="type_widget" value="type_widget_3"/>
+		<param name="largeur_widget" value="largeur_widget_3"/>
+	</include>				
+	</control>
+	<control type="grouplist" id="8001">																										<description>widget 4</description>	
+		<visible>string.isEqual(window(home).property(focus),bouton3) + string.isEqual(window(home).property(focus2),4)</visible>			
+	<include content="parametres_widget">
+		<param name="id_widget" value="4"/>
+		<param name="afficher_widget" value="afficher_widget_4"/>
+		<param name="chemin_widget" value="chemin_widget_4"/>
+		<param name="cible_widget" value="cible_widget_4"/>
+		<param name="nom_widget" value="nom_widget_4"/>
+		<param name="type_widget" value="type_widget_4"/>
+		<param name="largeur_widget" value="largeur_widget_4"/>
+	</include>				
+	</control>
+	<control type="grouplist" id="8001">																										<description>widget 5</description>		
+		<visible>string.isEqual(window(home).property(focus),bouton3) + string.isEqual(window(home).property(focus2),5)</visible>
+	<include content="parametres_widget">
+		<param name="id_widget" value="5"/>
+		<param name="afficher_widget" value="afficher_widget_5"/>
+		<param name="chemin_widget" value="chemin_widget_5"/>
+		<param name="cible_widget" value="cible_widget_5"/>
+		<param name="nom_widget" value="nom_widget_5"/>
+		<param name="type_widget" value="type_widget_5"/>
+		<param name="largeur_widget" value="largeur_widget_5"/>
+	</include>				
+	</control>
+	<control type="grouplist" id="8001">																										<description>widget 6</description>	
+		<visible>string.isEqual(window(home).property(focus),bouton3) + string.isEqual(window(home).property(focus2),6)</visible>			
+	<include content="parametres_widget">
+		<param name="id_widget" value="6"/>
+		<param name="afficher_widget" value="afficher_widget_6"/>
+		<param name="chemin_widget" value="chemin_widget_6"/>
+		<param name="cible_widget" value="cible_widget_6"/>
+		<param name="nom_widget" value="nom_widget_6"/>
+		<param name="type_widget" value="type_widget_6"/>
+		<param name="largeur_widget" value="largeur_widget_6"/>
+	</include>				
+	</control>
+	<control type="grouplist" id="8001">																										<description>widget 7</description>		
+		<visible>string.isEqual(window(home).property(focus),bouton3) + string.isEqual(window(home).property(focus2),7)</visible>
+	<include content="parametres_widget">
+		<param name="id_widget" value="7"/>
+		<param name="afficher_widget" value="afficher_widget_7"/>
+		<param name="chemin_widget" value="chemin_widget_7"/>
+		<param name="cible_widget" value="cible_widget_7"/>
+		<param name="nom_widget" value="nom_widget_7"/>
+		<param name="type_widget" value="type_widget_7"/>
+		<param name="largeur_widget" value="largeur_widget_7"/>		
+	</include>				
+	</control>
+	<control type="grouplist" id="8001">																										<description>widget 8</description>	
+		<visible>string.isEqual(window(home).property(focus),bouton3) + string.isEqual(window(home).property(focus2),8)</visible>			
+	<include content="parametres_widget">
+		<param name="id_widget" value="8"/>
+		<param name="afficher_widget" value="afficher_widget_8"/>
+		<param name="chemin_widget" value="chemin_widget_8"/>
+		<param name="cible_widget" value="cible_widget_8"/>
+		<param name="nom_widget" value="nom_widget_8"/>
+		<param name="type_widget" value="type_widget_8"/>
+		<param name="largeur_widget" value="largeur_widget_8"/>
+	</include>				
+	</control>
+	<control type="grouplist" id="8001">																										<description>widget 9</description>		
+		<visible>string.isEqual(window(home).property(focus),bouton3) + string.isEqual(window(home).property(focus2),9)</visible>
+	<include content="parametres_widget">
+		<param name="id_widget" value="9"/>
+		<param name="afficher_widget" value="afficher_widget_9"/>
+		<param name="chemin_widget" value="chemin_widget_9"/>
+		<param name="cible_widget" value="cible_widget_9"/>
+		<param name="nom_widget" value="nom_widget_9"/>
+		<param name="type_widget" value="type_widget_9"/>
+		<param name="largeur_widget" value="largeur_widget_9"/>		
+	</include>				
+	</control>
+	<control type="grouplist" id="8001">																										<description>widget 10</description>	
+		<visible>string.isEqual(window(home).property(focus),bouton3) + string.isEqual(window(home).property(focus2),10)</visible>			
+	<include content="parametres_widget">
+		<param name="id_widget" value="10"/>
+		<param name="afficher_widget" value="afficher_widget_10"/>
+		<param name="chemin_widget" value="chemin_widget_10"/>
+		<param name="cible_widget" value="cible_widget_10"/>
+		<param name="nom_widget" value="nom_widget_10"/>
+		<param name="type_widget" value="type_widget_10"/>
+		<param name="largeur_widget" value="largeur_widget_10"/>				
+	</include>				
+	</control>
+	</control>
+	<control type="list" id="8002">																												<description>Numéros des widgets personnalises</description>	
+		<top>3</top>
+		<right>2</right>
+		<left>4</left>
+		<height>70</height>
+		<onup>8000</onup>
+		<onback>8000</onback>		
+		<ondown>control.setFocus(800102)</ondown>		
+		<orientation>horizontal</orientation>
+		<scrolltime tween="Linear" easing="in">250</scrolltime>			
+	<itemlayout height="70" width="149">				
+	<control type="group">    																									
+		<width>146</width>
+		<height>70</height>	
+	<control type="image">				
+		<texture colordiffuse="66000000">fenetres/texture.png</texture>	
+	</control>
+	<control type="label">
+		<height>70</height>	
+		<align>center</align>
+		<control type="image">				
+		<texture colordiffuse="66000000">fenetres/texture.png</texture>	
+	</control><label>$INFO[ListItem.Label]</label>
+	</control>
+	</control>		
+	</itemlayout>
+	<focusedlayout height="70" width="149">				
+	<control type="button">		
+		<onfocus>setProperty(focus2,$INFO[ListItem.Label],home)</onfocus>				
+	</control>	
+	<control type="group"> 																									
+		<width>146</width>
+		<height>70</height>
+	<control type="image">				
+		<texture colordiffuse="66000000">fenetres/texture.png</texture>	
+	</control>
+	<control type="image">				
+		<texture colordiffuse="$VAR[selection]">fenetres/texture.png</texture>
+		<animation effect="fade" start="100" end="50" reversible="false" condition="!control.hasFocus(8002)">conditional</animation>		
+	</control>
+	<control type="label">
+		<height>70</height>	
+		<align>center</align>
+		<label>$INFO[ListItem.Label]</label>
+	</control>
+	</control>
+	</focusedlayout>
+	<content>
+	<item id="101">				
+		<label>$NUMBER[1]</label>
+		<onclick>control.setFocus(800102)</onclick>				
+	</item>
+	<item id="102">
+		<label>$NUMBER[2]</label>
+		<onclick>control.setFocus(800102)</onclick>
+	</item>
+	<item id="103">
+		<label>$NUMBER[3]</label>
+		<onclick>control.setFocus(800102)</onclick>
+	</item>
+	<item id="104">
+		<label>$NUMBER[4]</label>
+		<onclick>control.setFocus(800102)</onclick>
+	</item>
+	<item id="105">
+		<label>$NUMBER[5]</label>
+		<onclick>control.setFocus(800102)</onclick>
+	</item>
+	<item id="106">
+		<label>$NUMBER[6]</label>
+		<onclick>control.setFocus(800102)</onclick>
+	</item>
+	<item id="107">
+		<label>$NUMBER[7]</label>
+		<onclick>control.setFocus(800102)</onclick>
+	</item>
+	<item id="108">
+		<label>$NUMBER[8]</label>
+		<onclick>control.setFocus(800102)</onclick>
+	</item>
+	<item id="109">
+		<label>$NUMBER[9]</label>
+		<onclick>control.setFocus(800102)</onclick>
+	</item>
+	<item id="110">
+		<label>$NUMBER[10]</label>
+		<onclick>control.setFocus(800102)</onclick>
+	</item>					
+	</content>												
+		<visible>string.isEqual(window(home).property(focus),bouton3)</visible>
+	</control>
+	<control type="image">																														<description>ligne de separation numeros des widgets personnalises</description>
+		<top>75</top>
+		<height>1</height>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="80808080">fenetres/texture.png</texture>
+		<visible>string.isEqual(window(home).property(focus),bouton3)</visible>	
+	</control>
+	<control type="grouplist" id="8004">																										<description>personnalisation divers</description>													
+		<top>0</top>
+		<bottom>0</bottom>
+		<right>12</right>
+		<onup>noop</onup>
+		<ondown>8000</ondown>
+		<onright>60</onright>
+		<onleft>8000</onleft>
+		<onback>8000</onback>		
+		<itemgap>0</itemgap>
+		<pagecontrol>60</pagecontrol>
+		<scrolltime tween="Linear" easing="in">250</scrolltime>			
+	<control type="label" id="800401">
+	<include content="bouton_listes_fenetre">		
+		<param name="font" value="label"/>
+		<param name="label" value="$LOCALIZE[31224]"/>
+	</include>		
+	</control>			
+	<control type="radiobutton" id="800402">		
+		<onback>8000</onback>		
+	<include content="bouton_listes_fenetre">
+		<param name="label" value="- $LOCALIZE[31226]"/>
+	</include>
+		<onclick>Skin.ToggleSetting(0fanart_accueil)</onclick>
+		<selected>!Skin.HasSetting(0fanart_accueil)</selected>
+	</control>
+	<control type="group" id="800403">
+		<height>76</height>
+	<control type="button" id="800404">		
+		<onback>8000</onback>
+		<onup>800402</onup>
+		<ondown>800407</ondown>
+		<onleft>8000</onleft>
+		<onright>60</onright>
+	<include content="bouton_listes_fenetre">
+		<param name="label" value="- $LOCALIZE[31227]"/>
+	</include>
+		<onclick>Skin.SetImage(wallpaper,special://skin/media/extras/wallpaper)</onclick>
+	</control>
+	<control type="image">																														<description>wallpaper à modifier</description>
+		<right>15</right>
+		<top>15</top>
+		<width>80</width>
+		<height>45</height>
+		<texture>$VAR[wallpaper]</texture>
+		<aspectratio>scale</aspectratio>					
+	</control>	
+	</control>		
+	<control type="label" id="800405">
+	<include content="bouton_listes_fenetre">
+		<param name="font" value="label"/>
+		<param name="label" value="$LOCALIZE[31237]"/>
+	</include>
+	</control>	
+	<control type="group" id="800406">
+		<height>76</height>
+	<control type="button" id="800407">		
+		<onback>8000</onback>
+		<onup>800404</onup>
+		<ondown>800410</ondown>
+		<onleft>8000</onleft>
+		<onright>60</onright>
+	<include content="bouton_listes_fenetre">
+		<param name="label" value="- $LOCALIZE[31238]"/>
+	</include>
+		<onclick>setProperty(couleur_temp,texte surbrillance,home)</onclick>		
+		<onclick>setProperty(tempcolorvalue,$VAR[selection],home)</onclick>
+		<onclick>activateWindow(1203)</onclick>
+		<onclick>Skin.SetString(selection,$INFO[window(home).property(tempcolorvalue)])</onclick>			
+	</control>
+	<control type="image">																														<description>couleur à modifier</description>
+		<right>15</right>
+		<top>15</top>
+		<width>45</width>
+		<height>45</height>
+		<texture colordiffuse="$VAR[selection]">fenetres/texture.png</texture>
+		<aspectratio>scale</aspectratio>					
+	</control>	
+	</control>	
+	<control type="label" id="800408">
+	<include content="bouton_listes_fenetre">
+		<param name="font" value="label"/>
+		<param name="label" value="$LOCALIZE[31239]"/>
+	</include>
+	</control>	
+	<control type="group" id="800409">
+		<height>76</height>
+	<control type="button" id="800410">		
+		<onback>8000</onback>
+		<onup>800407</onup>
+		<ondown>800413</ondown>
+		<onleft>8000</onleft>
+		<onright>60</onright>
+	<include content="bouton_listes_fenetre">
+		<param name="label" value="- $LOCALIZE[31238]"/>
+	</include>
+		<onclick>setProperty(couleur_temp,texte surbrillance,home)</onclick>		
+		<onclick>setProperty(tempcolorvalue,$VAR[selection_osd],home)</onclick>
+		<onclick>activateWindow(1203)</onclick>
+		<onclick>Skin.SetString(selection_osd,$INFO[window(home).property(tempcolorvalue)])</onclick>			
+	</control>
+	<control type="image">																														<description>couleur à modifier</description>
+		<right>15</right>
+		<top>15</top>
+		<width>45</width>
+		<height>45</height>
+		<texture colordiffuse="$VAR[selection_osd]">fenetres/texture.png</texture>
+		<aspectratio>scale</aspectratio>					
+	</control>	
+	</control>
+	<control type="label" id="800411">
+	<include content="bouton_listes_fenetre">
+		<param name="font" value="label"/>
+		<param name="label" value="$LOCALIZE[31240]"/>
+	</include>
+	</control>	
+	<control type="group" id="800412">
+		<height>76</height>
+	<control type="button" id="800413">		
+		<onback>8000</onback>
+		<onup>800410</onup>
+		<ondown>800417</ondown>
+		<onleft>8000</onleft>
+		<onright>60</onright>
+	<include content="bouton_listes_fenetre">
+		<param name="label" value="- $LOCALIZE[31238]"/>
+	</include>
+		<onclick>setProperty(couleur_temp,texte surbrillance,home)</onclick>		
+		<onclick>setProperty(tempcolorvalue,$VAR[selection_dialogue],home)</onclick>
+		<onclick>activateWindow(1203)</onclick>
+		<onclick>Skin.SetString(selection_dialogue,$INFO[window(home).property(tempcolorvalue)])</onclick>			
+	</control>
+	<control type="image">																														<description>couleur à modifier</description>
+		<right>15</right>
+		<top>15</top>
+		<width>45</width>
+		<height>45</height>
+		<texture colordiffuse="$VAR[selection_dialogue]">fenetres/texture.png</texture>
+		<aspectratio>scale</aspectratio>					
+	</control>	
+	</control>		
+	<control type="label" id="800414">
+	<include content="bouton_listes_fenetre">
+		<param name="font" value="label"/>
+		<param name="label" value="$LOCALIZE[31241]"/>
+	</include>
+	</control>
+	<control type="group" id="800415">
+		<height>76</height>
+	<control type="button" id="800417">		
+		<onup>800413</onup>
+		<ondown>8000</ondown>
+		<onback>8000</onback>
+		<onleft>8000</onleft>
+		<onright>60</onright>
+	<include content="bouton_listes_fenetre">
+		<param name="label" value="- $LOCALIZE[31242]"/>
+	</include>		
+		<onclick>Skin.ResetSettings</onclick>
+		<onclick>ActivateWindow(startup)</onclick>		
+		<onclick>ReloadSkin()</onclick>
+	</control>	
+	</control>
+		<visible>string.isEqual(window(home).property(focus),bouton1)</visible>			
+	</control>		
+	<include content="scrollbar_fenetre">																										<description>scrollbar</description>
+		<param name="id" value="60"/>
+		<param name="onleft" value="8004"/>
+		<param name="onright" value="8000"/>
+		<param name="visible" value="string.isEqual(window(home).property(focus),bouton1)"/> 
+	</include>	
+	<control type="group">																														<description>scrollbar</description>
+		<top>76</top>
+	<include content="scrollbar_fenetre">
+		<param name="id" value="61"/>
+		<param name="onleft" value="8001"/>
+		<param name="onright" value="8000"/>
+		<param name="visible" value="string.isEqual(window(home).property(focus),bouton3)"/> 
+	</include>
+	</control>
+	<include content="scrollbar_fenetre">																										<description>scrollbar</description>
+		<param name="id" value="62"/>
+		<param name="onleft" value="8003"/>
+		<param name="onright" value="8000"/>
+		<param name="visible" value="string.isEqual(window(home).property(focus),bouton2)"/> 
+	</include>
+	</control>
+	<include content="textbox_parametres">																										<description>textbox description</description>
+		<param name="id" value="6"/>
+		<param name="label" value="$VAR[description_parametre]"/>
+	</include>
+</controls>
+</window>

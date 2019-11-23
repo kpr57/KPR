@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<window id="1299">
+	<backgroundcolor>00X000000</backgroundcolor>
+	<onload>cancelalarm(actualiser_widget_tv,silent)</onload>
+	<onload>action(back)</onload>
+<controls>
+</controls>
+</window>

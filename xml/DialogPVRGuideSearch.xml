@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+	<backgroundcolor>00X000000</backgroundcolor>
+	<onload>clearproperty(rechercher,home)</onload>	
+	<defaultcontrol always="true">9</defaultcontrol>
+<controls>
+	<include>animation_dialogue</include>	
+	<include>image_fond</include>																												<description>image de fond</description>	
+	<control type="label">																														<description>horloge</description>
+		<right>60</right>
+		<height>116</height>			
+		<font>menu</font>
+		<textcolor>80ffffff</textcolor>
+		<align>right</align>
+		<label>$INFO[system.time(hh:mm)]</label>		
+	</control>	
+	<control type="label">																														<description>titre</description>	
+		<height>140</height>
+		<align>center</align>
+		<font>titre</font>
+		<label>$LOCALIZE[19142]</label>
+	</control>	
+	<include content="barre_separation_horizontale">																							<description>barre de separation horizontale</description>
+		<param name="left" value="50"/> 
+		<param name="right" value="50"/>
+		<param name="bottom" value="940"/>		
+	</include>
+	<control type="image">
+		<top>200</top>
+		<right>70</right>
+		<left>500</left>
+		<height>800</height>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="20000000" border="50">commun/bouton.png</texture>
+	</control>
+	<control type="edit" id="9">
+		<left>510</left>
+		<top>210</top>
+		<hinttext>$LOCALIZE[19140]</hinttext>
+		<onleft>8000</onleft>
+		<onup>24</onup>
+		<ondown>10</ondown>
+	<include content="bouton">																											
+		<param name="width" value="1330"/> 
+		<param name="height" value="60"/>                     
+		<param name="textoffsetx" value="40"/>
+		<param name="texturenofocus_colordiffuse" value="05ffffff"/>                  	
+	</include>
+	</control>
+	<control type="textbox">
+		<left>610</left>
+		<top>270</top>
+		<width>1130</width>
+		<height>100</height>
+		<textcolor>80ffffff</textcolor>
+		<font>texte_infos</font>
+		<label>$LOCALIZE[19001] $LOCALIZE[19002]</label>
+	</control>
+	<control type="image">
+		<left>10</left>
+		<top>210</top>
+		<width>1460</width>
+		<height>600</height>
+		<texture border="40">boutons/selection.png</texture>
+	</control>	
+	<control type="grouplist" id="7000">																											<description>liste des parametres de gauche</description>				
+		<top>370</top>
+		<left>510</left>
+		<width>660</width>
+		<height>780</height>
+		<onleft>8000</onleft>
+		<itemgap>20</itemgap>
+		<onup>9</onup>
+		<ondown>noop</ondown>
+		<scrolltime tween="Linear" easing="in">250</scrolltime>					
+	<control type="radiobutton" id="10">		
+		<onright>12</onright>		
+		<label>$LOCALIZE[19134]</label>
+	<include content="bouton">																											
+		<param name="width" value="660"/> 
+		<param name="height" value="60"/>           
+		<param name="textoffsetx" value="40"/>
+		<param name="texturenofocus_colordiffuse" value="05ffffff"/>
+		<param name="radioposx" value="580"/>			 		                      	
+	</include>
+	</control>
+	<control type="radiobutton" id="11">
+		<onright>13</onright>
+		<label>$LOCALIZE[19135]</label>
+	<include content="bouton">																											
+		<param name="width" value="660"/> 
+		<param name="height" value="60"/>           
+		<param name="textoffsetx" value="40"/>
+		<param name="texturenofocus_colordiffuse" value="05ffffff"/> 
+		<param name="radioposx" value="580"/>			 		                     	
+	</include>
+	</control>
+	<control type="edit" id="14">
+		<onright>16</onright>
+		<label>$LOCALIZE[19128]</label>
+	<include content="bouton">																											
+		<param name="width" value="660"/> 
+		<param name="height" value="60"/>          
+		<param name="textoffsetx" value="40"/>
+		<param name="texturenofocus_colordiffuse" value="05ffffff"/>                   	
+	</include>
+	</control>
+	<control type="edit" id="15">
+		<onright>17</onright>
+		<label>$LOCALIZE[19129]</label>
+	<include content="bouton">																											
+		<param name="width" value="660"/> 
+		<param name="height" value="60"/>          
+		<param name="textoffsetx" value="40"/>
+		<param name="texturenofocus_colordiffuse" value="05ffffff"/>                   	
+	</include>
+	</control>
+	<control type="spincontrolex" id="18">
+		<onright>19</onright>
+		<label>$LOCALIZE[515]</label>
+	<include content="bouton">																											
+		<param name="width" value="660"/> 
+		<param name="height" value="60"/>           
+		<param name="textoffsetx" value="40"/>
+		<param name="texturenofocus_colordiffuse" value="05ffffff"/>                  	
+	</include>
+	</control>
+	<control type="radiobutton" id="20">
+		<onright>21</onright>
+		<label>$LOCALIZE[19132]</label>
+	<include content="bouton">																											
+		<param name="width" value="660"/> 
+		<param name="height" value="60"/>          
+		<param name="textoffsetx" value="40"/>
+		<param name="texturenofocus_colordiffuse" value="05ffffff"/> 
+		<param name="radioposx" value="580"/>			 		                      	
+	</include>
+	</control>
+	<control type="radiobutton" id="22">
+		<onright>23</onright>
+		<label>$LOCALIZE[19123]</label>
+	<include content="bouton">																											
+		<param name="width" value="660"/> 
+		<param name="height" value="60"/>                    
+		<param name="textoffsetx" value="40"/>
+		<param name="texturenofocus_colordiffuse" value="05ffffff"/>
+		<param name="radioposx" value="580"/>			 		    	
+	</include>
+	</control>
+	<control type="radiobutton" id="24">
+		<onright>27</onright>
+		<label>$LOCALIZE[19124]</label>
+	<include content="bouton">																											
+		<param name="width" value="660"/> 
+		<param name="height" value="60"/>          
+		<param name="textoffsetx" value="40"/>
+		<param name="texturenofocus_colordiffuse" value="05ffffff"/>
+		<param name="radioposx" value="580"/>			 		                   	
+	</include>
+	</control>
+	</control>
+	<control type="grouplist">																													<description>liste des parametres de droite</description>	
+		<top>370</top>
+		<right>80</right>
+		<width>660</width>
+		<height>780</height>
+		<itemgap>20</itemgap>
+		<onup>9</onup>
+		<ondown>noop</ondown>
+		<scrolltime tween="Linear" easing="in">250</scrolltime>	
+	<control type="spincontrolex" id="12">
+		<onleft>10</onleft>
+		<label>$LOCALIZE[19130]</label>
+	<include content="bouton">																											
+		<param name="width" value="660"/> 
+		<param name="height" value="60"/>                     
+		<param name="textoffsetx" value="40"/>
+		<param name="texturenofocus_colordiffuse" value="05ffffff"/>                  	
+	</include>
+	</control>
+	<control type="spincontrolex" id="13">
+		<onleft>11</onleft>
+		<label>$LOCALIZE[19131]</label>
+	<include content="bouton">																											
+		<param name="width" value="660"/> 
+		<param name="height" value="60"/>                    
+		<param name="textoffsetx" value="40"/>
+		<param name="texturenofocus_colordiffuse" value="05ffffff"/>                   	
+	</include>
+	</control>
+	<control type="edit" id="16">
+		<onleft>14</onleft>
+		<label>$LOCALIZE[19126]</label>
+	<include content="bouton">																											
+		<param name="width" value="660"/> 
+		<param name="height" value="60"/>                    
+		<param name="textoffsetx" value="40"/>
+		<param name="texturenofocus_colordiffuse" value="05ffffff"/>                   	
+	</include>
+	</control>
+	<control type="edit" id="17">
+		<onleft>15</onleft>
+		<label>$LOCALIZE[19127]</label>
+	<include content="bouton">																											
+		<param name="width" value="660"/> 
+		<param name="height" value="60"/>                     
+		<param name="textoffsetx" value="40"/>
+		<param name="texturenofocus_colordiffuse" value="05ffffff"/>                  	
+	</include>
+	</control>
+	<control type="radiobutton" id="19">
+		<onleft>18</onleft>
+		<label>$LOCALIZE[19121]</label>
+	<include content="bouton">																											
+		<param name="width" value="660"/> 
+		<param name="height" value="60"/>                      
+		<param name="textoffsetx" value="40"/>
+		<param name="texturenofocus_colordiffuse" value="05ffffff"/>
+		<param name="radioposx" value="580"/>			 		                      	
+	</include>
+	</control>
+	<control type="spincontrolex" id="21">
+		<onleft>20</onleft>
+		<label>$LOCALIZE[19141]</label>
+	<include content="bouton">																											
+		<param name="width" value="660"/> 
+		<param name="height" value="60"/>                     
+		<param name="textoffsetx" value="40"/>
+		<param name="texturenofocus_colordiffuse" value="05ffffff"/>                  	
+	</include>
+	</control>
+	<control type="spincontrolex" id="23">
+		<onleft>22</onleft>
+		<label>$LOCALIZE[19148]</label>
+	<include content="bouton">																											
+		<param name="width" value="660"/> 
+		<param name="height" value="60"/>                      
+		<param name="textoffsetx" value="40"/>
+		<param name="texturenofocus_colordiffuse" value="05ffffff"/>                 	
+	</include>
+	</control>
+	<control type="radiobutton" id="27">
+		<onleft>24</onleft>
+		<label>$LOCALIZE[19125]</label>
+	<include content="bouton">																											
+		<param name="width" value="660"/> 
+		<param name="height" value="60"/>                    
+		<param name="textoffsetx" value="40"/>
+		<param name="texturenofocus_colordiffuse" value="05ffffff"/>  
+		<param name="radioposx" value="580"/>			 		                      	
+	</include>
+	</control>
+	</control>
+	<control type="grouplist" id="8000">																										<description>liste boutons</description>	
+		<top>200</top>
+		<height>800</height>
+		<left>75</left>
+		<width>350</width>
+		<itemgap>10</itemgap>
+		<onright>7000</onright>
+		<orientation>vertical</orientation>			
+	<control type="button" id="26">					
+	<include content="bouton">
+		<param name="align" value="center"/>
+		<param name="label" value="$LOCALIZE[137]"/>	
+	</include>
+	</control>
+	<control type="button" id="28">				
+	<include content="bouton">
+		<param name="align" value="center"/>
+		<param name="label" value="$LOCALIZE[13007]"/>		
+	</include>
+	</control>	
+	<control type="button" id="25">				
+	<include content="bouton">
+		<param name="align" value="center"/>
+		<param name="label" value="$LOCALIZE[222]"/>		
+	</include>
+	</control>	
+	</control>	
+	</controls>
+</window>

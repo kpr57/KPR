@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<window type="dialog" id="1202">
+	<backgroundcolor>00X000000</backgroundcolor>
+	<defaultcontrol always="true">20101</defaultcontrol>																						<description>fenetre de parametrage de la page films</description>			
+	<onunload>clearproperty(numero_parametre_widget,home)</onunload>
+	<onunload>clearproperty(nom_parametre_widget,home)</onunload>	
+	<onunload>skin.setstring(temp,)</onunload>		
+<controls>
+	<include>video</include>																													<description>arriere plan video</description>
+	<include>image_fond</include>
+	<control type="group">		
+	<control type="label">																														<description>titre</description>	
+		<height>140</height>
+		<align>center</align>
+		<font>titre</font>
+		<label>$LOCALIZE[31217]</label>				
+	</control>	
+	<include content="barre_separation_horizontale">																							<description>barre de separation horizontale</description>
+		<param name="left" value="50"/> 
+		<param name="right" value="50"/>
+		<param name="bottom" value="940"/>		
+	</include>	
+	<control type="grouplist" id="9000">																										<description>parametrage des widgets - cote gauche</description>		
+		<top>200</top>
+		<left>220</left>
+		<width>700</width>
+		<height>680</height>
+		<itemgap>20</itemgap>
+		<onup>noop</onup>
+		<ondown>noop</ondown>
+		<scrolltime tween="linear" easing="out">250</scrolltime>
+		<orientation>vertical</orientation>	
+	<include content="parametrage_widget_cote_gauche">
+		<param name="id_widget" value="2010"/>
+		<param name="id_precedent" value=""/>
+		<param name="id_suivant" value="2011"/>	
+		<param name="bouton_haut_visible" value="false"/>		
+	</include>
+	<include content="parametrage_widget_cote_gauche">
+		<param name="id_widget" value="2011"/>
+		<param name="id_precedent" value="2010"/>
+		<param name="id_suivant" value="2012"/>
+	</include>
+	<include content="parametrage_widget_cote_gauche">
+		<param name="id_widget" value="2012"/>
+		<param name="id_precedent" value="2011"/>
+		<param name="id_suivant" value="2013"/>
+	</include>
+	<include content="parametrage_widget_cote_gauche">
+		<param name="id_widget" value="2013"/>
+		<param name="id_precedent" value="2012"/>
+		<param name="id_suivant" value="2014"/>
+	</include>
+	<include content="parametrage_widget_cote_gauche">
+		<param name="id_widget" value="2014"/>
+		<param name="id_precedent" value="2013"/>
+		<param name="id_suivant" value="2015"/>
+	</include>
+	<include content="parametrage_widget_cote_gauche">
+		<param name="id_widget" value="2015"/>
+		<param name="id_precedent" value="2014"/>
+		<param name="id_suivant" value="2016"/>
+	</include>
+	<include content="parametrage_widget_cote_gauche">
+		<param name="id_widget" value="2016"/>
+		<param name="id_precedent" value="2015"/>
+		<param name="id_suivant" value="2017"/>
+	</include>
+	<include content="parametrage_widget_cote_gauche">
+		<param name="id_widget" value="2017"/>
+		<param name="id_precedent" value="2016"/>
+		<param name="id_suivant" value="2018"/>
+	</include>	
+	<include content="parametrage_widget_cote_gauche">
+		<param name="id_widget" value="2018"/>
+		<param name="id_precedent" value="2017"/>
+		<param name="id_suivant" value=""/>
+		<param name="bouton_bas_visible" value="false"/>
+	</include>
+	</control>
+	<control type="group">																														<description>parametrage des widgets - cote droit</description>
+	<include content="parametrage_widget_cote_droit">
+		<param name="id_widget" value="2010"/>
+		<param name="enable" value="false"/>
+	</include>
+	<include content="parametrage_widget_cote_droit">
+		<param name="id_widget" value="2011"/>
+		<param name="enable" value="false"/>
+	</include>
+	<include content="parametrage_widget_cote_droit">
+		<param name="id_widget" value="2012"/>
+		<param name="enable" value="false"/>
+	</include>
+	<include content="parametrage_widget_cote_droit">
+		<param name="id_widget" value="2013"/>
+		<param name="enable" value="false"/>
+	</include>
+	<include content="parametrage_widget_cote_droit">
+		<param name="id_widget" value="2014"/>
+		<param name="enable" value="false"/>
+	</include>
+	<include content="parametrage_widget_cote_droit">
+		<param name="id_widget" value="2015"/>
+		<param name="enable" value="false"/>
+	</include>
+	<include content="parametrage_widget_cote_droit">
+		<param name="id_widget" value="2016"/>
+		<param name="enable" value="false"/>
+	</include>
+	<include content="parametrage_widget_cote_droit">
+		<param name="id_widget" value="2017"/>
+		<param name="enable" value="false"/>
+	</include>
+	<include content="parametrage_widget_cote_droit">
+		<param name="id_widget" value="2018"/>
+		<param name="enable" value="false"/>
+	</include>
+	</control>
+	<include content="barre_separation_horizontale">																							<description>barre de separation horizontale</description>
+		<param name="left" value="50"/> 
+		<param name="right" value="50"/>
+		<param name="bottom" value="140"/>		
+	</include>
+	<control type="label">																														<description>nom de l'element</description>
+		<bottom>0</bottom>
+		<height>140</height>
+		<align>center</align>
+		<font>titre</font>
+		<textcolor>80ffffff</textcolor>
+		<label>$INFO[skin.string(temp)]</label>				
+	</control>	
+	</control>
+</controls>
+</window>

@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+	<backgroundcolor>00X000000</backgroundcolor>
+	<include>animation_dialogue</include>			
+	<onload>cancelalarm(actualiser_widget_tv,silent)</onload>			
+	<onunload condition="window.isvisible(home) + string.isequal(window(home).property(menu),$LOCALIZE[31171])">alarmclock(actualiser_widget_tv,activatewindow(1299),00:02,loop,silent)</onunload>	
+	<onload condition="control.isvisible(6)">control.setfocus(6)</onload>
+	<onload condition="control.isvisible(5)">control.setfocus(5)</onload>	
+<controls>			
+	<include>image_fond</include>
+	<control type="panel" id="6800">
+		<width>0</width>
+		<height>0</height>
+		<orientation>horizontal</orientation>
+	<itemlayout>					
+	</itemlayout>
+	<focusedlayout>
+	</focusedlayout>
+	<content>pvr://channels/tv/*</content>	
+	</control>
+	<control type="group">
+		<animation effect="slide" start="0,0" end="1920,0" time="1" condition="window.isvisible(selectdialog) | window.isvisible(filebrowser)" reversible="false">conditional</animation>
+		<animation effect="slide" start="1920,0" end="0,0" delay="100" time="1" condition="!window.isvisible(selectdialog) + !window.isvisible(filebrowser)" reversible="false">conditional</animation>				
+	<control type="image">																														<description>arriere plan</description>
+		<aspectratio>scale</aspectratio>
+		<texture>commun/fond.png</texture>				
+	</control>
+	<control type="image">																														<description>fanart arriere plan</description>
+		<aspectratio>scale</aspectratio>
+		<texture background="true">$INFO[listitem.epgeventicon]</texture>		
+		<animation effect="fade" start="0" end="100" time="1000" reversible="false">windowopen</animation>
+		<animation effect="fade" start="100" end="0" time="1" reversible="false">windowclose</animation>		
+	</control>	
+	<control type="image">																														<description>masque arriere plan</description>
+		<aspectratio>scale</aspectratio>
+		<texture colordiffuse="ebffffff">commun/fond.png</texture>				
+	</control>
+	<control type="button">																														<description>titre</description>
+		<left>60</left>
+		<top>35</top>
+		<height>60</height>			
+		<width max="1000">auto</width>				
+		<font>menu</font>
+		<textcolor>80ffffff</textcolor>
+		<align>center</align>
+		<label>$INFO[listitem.title]</label>	
+	<include content="bouton">
+		<param name="texturenofocus" value="commun/bouton.png"/>
+		<param name="texturenofocus_colordiffuse" value="1affffff"/>
+	</include>
+	</control>		
+	<control type="image">																														<description>fond heure</description>
+		<right>40</right>
+		<top>35</top>
+		<height>60</height>			
+		<width>140</width>
+		<aspectratio>stretch</aspectratio>
+		<texture border="30" colordiffuse="1affffff">commun/bouton.png</texture>				
+	</control>
+	<control type="label">																														<description>heure</description>
+		<right>40</right>
+		<top>35</top>
+		<height>60</height>			
+		<width>140</width>				
+		<font>menu</font>
+		<textcolor>80ffffff</textcolor>
+		<align>center</align>
+		<label>$INFO[system.time(hh:mm)]</label>		
+	</control>
+	<control type="image">																														<description>panneau gris</description>
+		<top>600</top>
+		<height>400</height>
+		<width>210</width>	
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="bf201f20">commun/texture.png</texture>		
+	</control>
+	<control type="image">																														<description>panneau gris</description>		
+		<top>600</top>
+		<height>400</height>
+		<left>657</left>
+		<width>1263</width>	
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="bf201f20">commun/texture.png</texture>		
+	</control>
+	<control type="image">																														<description>panneau gris</description>		
+		<top>840</top>
+		<height>160</height>
+		<left>210</left>
+		<width>447</width>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="bf201f20">commun/texture.png</texture>		
+	</control>
+	<control type="group">																														<description>icone chaine</description>
+		<top>150</top>		
+		<left>200</left>
+		<height>700</height>
+		<width>467</width>	
+	<control type="image">
+		<aspectratio align="left">scale</aspectratio>
+		<texture background="true" border="10" colordiffuse="$VAR[gris]">commun/texture.png</texture>
+		<bordertexture border="10">commun/tuiles.png</bordertexture>
+		<bordersize>10,0,10,10</bordersize>		
+	</control>
+	<control type="image">
+		<top>40</top>		
+		<left>40</left>
+		<height>620</height>
+		<width>387</width>	
+		<aspectratio align="left">keep</aspectratio>
+		<texture fallback="icones/infos/chaine.png">$INFO[skin.string(chemin_logos_tv)]$INFO[listitem.channelname].png</texture>		
+	</control>	
+	</control>
+	<control type="progress">																													<description>barre de progression</description>
+		<top>855</top>		
+		<height>7</height>		
+		<left>220</left>
+		<width>427</width>
+		<reveal>true</reveal>
+		<texturebg colordiffuse="1affffff">commun/texture.png</texturebg>
+		<midtexture colordiffuse="$VAR[couleur_dominante]">commun/texture.png</midtexture>
+		<info>ListItem.Progress</info>		
+	</control>
+	<control type="label">																														<description>chaine</description>
+		<top>160</top>
+		<left>700</left>
+		<width>1000</width>
+		<height>20</height>
+		<font>texte_infos</font>
+		<textcolor>80ffffff</textcolor>
+		<label>[B]$LOCALIZE[31253][/B]   $INFO[listitem.channelname]</label>
+	</control>
+	<control type="label">																														<description>genre</description>
+		<top>200</top>
+		<left>700</left>
+		<width>1000</width>
+		<height>20</height>
+		<font>texte_infos</font>
+		<textcolor>80ffffff</textcolor>
+		<label>$INFO[listitem.genre]</label>		
+	</control>
+	<control type="grouplist">																													<description>duree/en cours/a venir/termine</description>
+		<top>237</top>
+		<left>700</left>
+		<itemgap>20</itemgap>
+		<orientation>horizontal</orientation>
+	<control type="label">
+		<top>1</top>
+		<width>auto</width>
+		<height>20</height>
+		<font>texte_infos</font>
+		<textcolor>80ffffff</textcolor>
+		<label>$INFO[listitem.duration(hh)] hr $INFO[listitem.duration(mm)] min</label>		
+	</control>
+	<control type="button">	
+		<height>22</height>			
+		<width>auto</width>				
+		<align>center</align>	
+	<include content="petit_bouton">
+		<param name="label" value="[UPPERCASE]$LOCALIZE[575][/UPPERCASE]"/>
+		<param name="textcolor" value="ffffffff"/>
+		<param name="textoffsetx" value="15"/>
+		<param name="texturenofocus" value="commun/bouton.png"/>
+		<param name="texturenofocus_colordiffuse" value="$VAR[couleur_dominante]"/>
+	</include>
+	<visible>!integer.isequal(listitem.progress,0) + !integer.isequal(listitem.progress,100)</visible>
+	</control>
+	<control type="button">	
+		<height>22</height>			
+		<width>auto</width>				
+		<align>center</align>	
+	<include content="petit_bouton">
+		<param name="label" value="[UPPERCASE]$LOCALIZE[31254][/UPPERCASE]"/>
+		<param name="textcolor" value="ffffffff"/>
+		<param name="textoffsetx" value="15"/>
+		<param name="texturenofocus" value="commun/bouton.png"/>
+		<param name="texturenofocus_colordiffuse" value="$VAR[couleur_dominante]"/>
+	</include>
+	<visible>integer.isequal(listitem.progress,100)</visible>
+	</control>
+	<control type="button">	
+		<height>22</height>			
+		<width>auto</width>				
+		<align>center</align>	
+	<include content="petit_bouton">
+		<param name="label" value="[UPPERCASE]$LOCALIZE[31255][/UPPERCASE]"/>
+		<param name="textcolor" value="ffffffff"/>
+		<param name="textoffsetx" value="15"/>
+		<param name="texturenofocus" value="commun/bouton.png"/>
+		<param name="texturenofocus_colordiffuse" value="$VAR[couleur_dominante]"/>
+	</include>
+	<visible>integer.isequal(listitem.progress,0)</visible>
+	</control>	
+	</control>		
+	<control type="grouplist">																													<description>jour/heure de debut/heure de fin</description>
+		<top>360</top>
+		<left>700</left>
+		<width>1180</width>
+		<height>400</height>
+		<itemgap>20</itemgap>
+		<orientation>vertical</orientation>
+	<control type="label">
+		<height>20</height>
+		<font>texte_infos</font>
+		<textcolor>80ffffff</textcolor>
+		<label>[B]$LOCALIZE[552][/B]   $INFO[listitem.StartDate]</label>
+		<visible>!string.isempty(listitem.StartDate)</visible>
+	</control>
+	<control type="label">
+		<height>20</height>
+		<font>texte_infos</font>
+		<textcolor>80ffffff</textcolor>
+		<label>[B]$LOCALIZE[19126][/B]   $INFO[listitem.Starttime]</label>
+		<visible>!string.isempty(listitem.Starttime)</visible>		
+	</control>
+	<control type="label">
+		<height>20</height>
+		<font>texte_infos</font>
+		<textcolor>80ffffff</textcolor>
+		<label>[B]$LOCALIZE[19127][/B]   $INFO[listitem.endtime]</label>		
+		<visible>!string.isempty(listitem.endtime)</visible>		
+	</control>
+	<control type="label">	
+		<height>20</height>
+		<font>texte_infos</font>
+		<textcolor>80ffffff</textcolor>
+		<label>[B]$LOCALIZE[29909][/B]   $INFO[listitem.studio]</label>	
+		<visible>!string.isempty(listitem.studio)</visible>				
+	</control>
+	</control>
+	<control type="textbox">																													<description>resume</description>		
+		<top>601</top>
+		<left>730</left>
+		<height>398</height>
+		<width>1120</width>
+		<font>texte_infos</font>
+		<align>justify</align>
+		<label>$INFO[listitem.plot]</label>	
+		<autoscroll delay="20000" time="3000" repeat="20000"></autoscroll>			
+	</control>	
+	<control type="label">																														<description>aucun resume disponible</description>
+		<top>601</top>
+		<left>730</left>
+		<height>398</height>
+		<width>1120</width>
+		<font>texte_infos</font>
+		<textcolor>80ffffff</textcolor>
+		<align>center</align>
+		<label>$LOCALIZE[31206]</label>		
+		<visible>string.isequal(listitem.plot,)</visible>
+	</control>
+	
+	
+	<control type="grouplist">																													<description>legende boutons</description>																													<description>producteur/casting/realisateur/studio</description>
+		<left>680</left>
+		<top>550</top>
+		<height>60</height>
+		<width>1000</width>
+		<align>left</align>
+		<itemgap>-5</itemgap>
+		<orientation>horizontal</orientation>
+	<control type="image">																														<description>icone info</description>		
+		<width>60</width>
+		<height>60</height>
+		<aspectratio>keep</aspectratio>
+		<texture colordiffuse="80ffffff">icones/infos/info.png</texture>		
+	</control>	
+	<control type="label">			
+		<width>auto</width>
+		<height>60</height>
+		<textcolor>80ffffff</textcolor>
+		<font>infos</font>
+		<label>[I]$VAR[legende_infos][/I]</label>
+	</control>	
+	</control>
+	
+	
+	
+	<control type="image">																														<description>miniature</description>	
+		<top>130</top>		
+		<right>30</right>
+		<height>500</height>
+		<width>600</width>
+		<aspectratio align="right" aligny="bottom">keep</aspectratio>
+		<texture background="true" border="10">$INFO[listitem.epgeventicon]</texture>
+		<bordertexture border="10">commun/tuiles.png</bordertexture>
+		<bordersize>10,0,10,10</bordersize>		
+		<visible>!player.hasvideo</visible>
+	</control>
+	<control type="image">																														<description>fond video en cours</description>	
+		<right>20</right>
+		<top>292</top>
+		<width>620</width>
+		<height>348</height>
+		<aspectratio>stretch</aspectratio>
+		<texture background="true" border="10" colordiffuse="ff000000">commun/texture.png</texture>
+		<bordertexture border="10">commun/tuiles.png</bordertexture>
+		<bordersize>10,0,10,10</bordersize>		
+		<visible>player.hasvideo</visible>
+	</control>
+	<control type="videowindow">																												<description>video en cours</description>	
+		<right>30</right>
+		<top>292</top>
+		<width>600</width>
+		<height>338</height>	
+		<visible>player.hasvideo</visible>
+	</control>
+	<control type="grouplist" id="100">																											<description>boutons</description>				
+		<top>170</top>		
+		<left>60</left>
+		<height>700</height>
+		<width>100</width>
+		<itemgap>10</itemgap>
+		<orientation>vertical</orientation>
+	<control type="radiobutton" id="8">		
+		<height>50</height>
+		<texturenofocus colordiffuse="$VAR[gris]" border="25">commun/bouton.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="25">commun/bouton.png</texturefocus>
+		<textureradioonfocus colordiffuse="ffffffff">icones/infos/play.png</textureradioonfocus>
+		<textureradioonnofocus colordiffuse="ffffffff">icones/infos/play.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="ffffffff">icones/infos/play.png</textureradioofffocus>
+		<textureradiooffnofocus colordiffuse="ffffffff">icones/infos/play.png</textureradiooffnofocus>
+		<radioposx>15</radioposx>
+		<radiowidth>70</radiowidth>
+		<radioheight>70</radioheight>
+	</control>
+	<control type="radiobutton" id="5">		
+		<height>50</height>
+		<texturenofocus colordiffuse="$VAR[gris]" border="25">commun/bouton.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="25">commun/bouton.png</texturefocus>
+		<textureradioonfocus colordiffuse="ffffffff">icones/infos/chaine.png</textureradioonfocus>
+		<textureradioonnofocus colordiffuse="ffffffff">icones/infos/chaine.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="ffffffff">icones/infos/chaine.png</textureradioofffocus>
+		<textureradiooffnofocus colordiffuse="ffffffff">icones/infos/chaine.png</textureradiooffnofocus>
+		<radioposx>15</radioposx>
+		<radiowidth>70</radiowidth>
+		<radioheight>70</radioheight>
+	</control>
+	<control type="radiobutton" id="6">		
+		<height>50</height>
+		<texturenofocus colordiffuse="$VAR[gris]" border="25">commun/bouton.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="25">commun/bouton.png</texturefocus>
+		<textureradioonfocus colordiffuse="ffffffff">icones/infos/enregistrer.png</textureradioonfocus>
+		<textureradioonnofocus colordiffuse="ffffffff">icones/infos/enregistrer.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="ffffffff">icones/infos/enregistrer.png</textureradioofffocus>
+		<textureradiooffnofocus colordiffuse="ffffffff">icones/infos/enregistrer.png</textureradiooffnofocus>
+		<radioposx>15</radioposx>
+		<radiowidth>70</radiowidth>
+		<radioheight>70</radioheight>						
+	</control>
+	<control type="radiobutton" id="9">		
+		<height>50</height>
+		<texturenofocus colordiffuse="$VAR[gris]" border="25">commun/bouton.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="25">commun/bouton.png</texturefocus>
+		<textureradioonfocus colordiffuse="ffffffff">icones/infos/programmation.png</textureradioonfocus>
+		<textureradioonnofocus colordiffuse="ffffffff">icones/infos/programmation.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="ffffffff">icones/infos/programmation.png</textureradioofffocus>
+		<textureradiooffnofocus colordiffuse="ffffffff">icones/infos/programmation.png</textureradiooffnofocus>
+		<radioposx>15</radioposx>
+		<radiowidth>70</radiowidth>
+		<radioheight>70</radioheight>						
+	</control>
+	<control type="radiobutton" id="4">		
+		<height>50</height>
+		<texturenofocus colordiffuse="$VAR[gris]" border="25">commun/bouton.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="25">commun/bouton.png</texturefocus>
+		<textureradioonfocus colordiffuse="ffffffff">menus/recherche.png</textureradioonfocus>
+		<textureradioonnofocus colordiffuse="ffffffff">menus/recherche.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="ffffffff">menus/recherche.png</textureradioofffocus>
+		<textureradiooffnofocus colordiffuse="ffffffff">menus/recherche.png</textureradiooffnofocus>
+		<radioposx>15</radioposx>
+		<radiowidth>70</radiowidth>
+		<radioheight>70</radioheight>						
+	</control>
+	</control>
+	
+	
+	
+	
+	<control type="label">																														<description>nom PVR</description>
+		<bottom>0</bottom>
+		<right>40</right>
+		<width>1840</width>
+		<height>80</height>
+		<font>label</font>
+		<textcolor>80ffffff</textcolor>
+		<align>center</align>
+		<label>$INFO[PVR.BackendName]</label>		
+	</control>
+	<control type="label">																														<description>version PVR</description>
+		<bottom>0</bottom>
+		<right>40</right>
+		<width>1840</width>
+		<height>80</height>
+		<font>label</font>
+		<textcolor>80ffffff</textcolor>
+		<align>right</align>
+		<label>$LOCALIZE[24051] $INFO[PVR.BackendVersion]</label>		
+	</control>
+	<control type="label">																														<description>nombre de chaines</description>
+		<bottom>0</bottom>
+		<right>40</right>
+		<width>1840</width>
+		<height>80</height>
+		<font>label</font>
+		<textcolor>80ffffff</textcolor>
+		<label>$LOCALIZE[253] : $INFO[container(6800).numitems]</label>		
+	</control>
+	
+	
+	
+	</control>																	
+	
+
+</controls>
+</window>

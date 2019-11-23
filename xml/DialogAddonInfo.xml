@@ -1,0 +1,420 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+	<backgroundcolor>00X000000</backgroundcolor>
+	<onload>control.setFocus(6000,0)</onload>
+<controls>		
+	<control type="group">
+		<animation effect="fade" start="0" end="100" delay="150" time="150" reversible="false">windowopen</animation>
+		<animation effect="fade" start="100" end="0" time="250" reversible="false">windowclose</animation>		
+	<control type="image">																														<description>fanart</description>
+		<fadetime>250</fadetime>
+		<aspectratio>scale</aspectratio>	
+		<texture fallback="default_addons.png">$INFO[listitem.art(fanart)]</texture>
+	</control>	
+	<include content="masque_fond_infos"></include>																								<description>masque fond</description>	
+	<control type="label">																														<description>heure</description>
+		<top>-10</top>
+		<right>40</right>
+		<height>120</height>
+		<width>1839</width>
+		<align>right</align>
+		<font>zoom_texte</font>
+		<textcolor>$VAR[blanc]</textcolor>
+		<aligny>center</aligny>
+		<scroll>true</scroll>
+		<scrollspeed>50</scrollspeed>
+		<label>$INFO[System.Time(h:mm)]</label>		
+	</control>
+	<control type="label">																														<description>titre</description>
+       	<align>center</align>
+		<height>100</height>
+		<font>zoom_texte</font>
+		<textcolor>$VAR[blanc]</textcolor>
+		<scroll>true</scroll>
+		<label>[B]$INFO[ListItem.AddonName][/B]</label>	
+	</control>
+	<control type="label">																														<description>sous titre</description>
+        <top>50</top>
+		<right>0</right>
+        <left>10</left>
+		<align>center</align>
+		<height>100</height>
+		<font>texte</font>
+		<textcolor>$VAR[blanc]</textcolor>
+		<scroll>true</scroll>
+		<label>(V$INFO[listitem.AddonVersion]) par $INFO[ListItem.AddonCreator]</label>	
+	</control>	
+	<control type="group">
+		<animation effect="fade" start="0" end="100" delay="150" time="150" reversible="false" condition="!window.isVisible(1208)">conditional</animation>
+		<animation effect="fade" start="100" end="0" time="150" reversible="false" condition="window.isVisible(1208)">conditional</animation>
+	<control type="label">																														<description>description sommaire</description>
+		<bottom>10</bottom>
+		<height>40</height>
+		<label>     $INFO[ListItem.AddonSummary]      [COLOR $VAR[1selection_infos]]$INFO[ListItem.AddonDisclaimer][/COLOR]</label>
+		<align>center</align>
+		<aligny>center</aligny>
+		<font>texte_moyen</font>
+		<textcolor>$VAR[blanc]</textcolor>
+		<scroll>true</scroll>
+	</control>
+	<control type="image">																														<description>miniature</description>
+		<top>380</top>
+		<centerleft>50%</centerleft>
+        <width>410</width>
+        <height>410</height>
+		<aspectratio>scale</aspectratio>
+		<texture fallback="default_addons.jpg">$INFO[listitem.thumb]</texture>
+		<bordertexture border="30">fenetres/tuiles.png</bordertexture>
+		<bordersize>10,0,10,10</bordersize>
+	</control>	
+	<control type="panel" id="51">																												<description>images si liste des images incomplete</description>
+		<top>150</top>
+		<ondown>5999</ondown>
+		<height>214</height>
+		<scrolltime tween="linear" easing="out">250</scrolltime>
+		<orientation>horizontal</orientation>   		
+	<itemlayout height="187" width="384">	
+	<control type="group">		
+	<control type="image">	
+		<left>25</left>
+		<width>334</width>
+        <height>187</height>
+        <aspectratio>scale</aspectratio>
+		<texture colordiffuse="40000000">texture.png</texture>	
+		<bordertexture border="30">fenetres/tuiles.png</bordertexture>
+		<bordersize>10,0,10,10</bordersize>
+	</control>
+	<control type="image">	
+		<left>25</left>
+		<width>334</width>
+        <height>187</height>
+        <aspectratio>scale</aspectratio>
+		<texture>$INFO[listitem.icon]</texture>	
+		<bordersize>10,0,10,10</bordersize>		
+	</control>			
+	</control>
+	</itemlayout>
+	<focusedlayout height="187" width="384">	
+	</focusedlayout>
+	<content>
+	<item>
+		<icon>icones/infos/image.png</icon>		
+	</item>
+	<item>
+		<icon>icones/infos/image.png</icon>		
+	</item>
+	<item>
+		<icon>icones/infos/image.png</icon>	
+	</item>
+	<item>
+		<icon>icones/infos/image.png</icon>
+	</item>
+	<item>
+		<icon>icones/infos/image.png</icon>		
+	</item>
+	</content>
+		<animation effect="slide" end="0" condition="Integer.IsEqual(container(50).numitems,0)">conditional</animation>	
+		<animation effect="slide" end="384" condition="Integer.IsEqual(container(50).numitems,1)">conditional</animation>	
+		<animation effect="slide" end="768" condition="Integer.IsEqual(container(50).numitems,2)">conditional</animation>	
+		<animation effect="slide" end="1152" condition="Integer.IsEqual(container(50).numitems,3)">conditional</animation>	
+		<animation effect="slide" end="1536" condition="Integer.IsEqual(container(50).numitems,4)">conditional</animation>	
+		<animation effect="slide" end="1920" condition="Integer.IsGreaterOrEqual(container(50).numitems,5)">conditional</animation>	
+	</control>	
+	<control type="panel" id="50">																												<description>liste des images</description>
+		<top>150</top>
+		<ondown>5999</ondown>
+		<height>214</height>
+		<scrolltime tween="linear" easing="out">250</scrolltime>
+		<orientation>horizontal</orientation>   		
+	<itemlayout height="187" width="384">	
+	<control type="group">		
+	<control type="image">	
+		<left>25</left>
+		<width>334</width>
+        <height>187</height>
+        <aspectratio>scale</aspectratio>
+		<texture colordiffuse="40000000">texture.png</texture>	
+		<bordertexture border="30">fenetres/tuiles.png</bordertexture>
+		<bordersize>10,0,10,10</bordersize>
+	</control>
+	<control type="image">	
+		<left>25</left>
+		<width>334</width>
+        <height>187</height>
+        <aspectratio>scale</aspectratio>
+		<texture>$INFO[listItem.Icon]</texture>	
+		<bordersize>10,0,10,10</bordersize>		
+	</control>			
+	</control>
+	</itemlayout>
+	<focusedlayout height="214" width="384">
+	<control type="group">		
+	<control type="image">	
+		<left>25</left>
+		<width>334</width>
+        <height>187</height>
+        <aspectratio>scale</aspectratio>
+		<texture colordiffuse="40000000">texture.png</texture>	
+		<bordertexture border="30">fenetres/tuiles.png</bordertexture>
+		<bordersize>10,0,10,10</bordersize>
+	</control>
+	<control type="image">	
+		<left>25</left>
+		<width>334</width>
+        <height>187</height>
+        <aspectratio>scale</aspectratio>
+		<texture>$INFO[listItem.Icon]</texture>	
+		<bordersize>10,0,10,10</bordersize>
+	</control>
+		<animation effect="zoom" start="100" end="115" center="192,107" time="150" reversible="false">focus</animation>
+		<animation effect="zoom" start="115" end="100" center="192,107" time="150" reversible="false">unfocus</animation>	
+	</control>	
+	</focusedlayout>
+	</control>
+	<control type="panel" id="6000">																											<description>liste des boutons</description>  
+		<left>-10</left>
+		<animation effect="slide" end="0" condition="Integer.IsEqual(container(6000).numitems,7)">conditional</animation>	
+		<animation effect="slide" end="135" condition="Integer.IsEqual(container(6000).numitems,6)">conditional</animation>	
+		<animation effect="slide" end="269" condition="Integer.IsEqual(container(6000).numitems,5)">conditional</animation>	
+		<animation effect="slide" end="404" condition="Integer.IsEqual(container(6000).numitems,4)">conditional</animation>	
+		<animation effect="slide" end="539" condition="Integer.IsEqual(container(6000).numitems,3)">conditional</animation>	
+		<animation effect="slide" end="674" condition="Integer.IsEqual(container(6000).numitems,2)">conditional</animation>	
+		<animation effect="slide" end="809" condition="Integer.IsEqual(container(6000).numitems,1)">conditional</animation>	
+		<height>220</height>
+		<bottom>40</bottom>
+		<onup>5999</onup>		
+	<include content="widget_menus">
+		<param name="couleur_tuile" value="$VAR[1tuile_infos]"/>		
+	</include>
+		<content>
+	<item>
+		<id>6001</id>
+		<label>$INFO[control.getLabel(6)]</label>
+		<icon>icones/infos/corbeille.png</icon>
+		<onclick>SendClick(6)</onclick>
+		<visible>Control.IsEnabled(6)</visible>		
+	</item>
+	<item>
+		<id>6002</id>
+		<label>$INFO[control.getLabel(7)]</label>	
+		<onclick>SendClick(7)</onclick>	
+		<icon>icones/infos/desactiver.png</icon>
+		<visible>Control.IsEnabled(7) + !String.StartsWith(Control.GetLabel(7),$LOCALIZE[24022])</visible>		
+	</item>
+	<item>
+		<id>6003</id>
+		<label>$INFO[control.getLabel(7)]</label>	
+		<onclick>SendClick(7)</onclick>	
+		<icon>icones/infos/activer.png</icon>
+		<visible>Control.IsEnabled(7) + String.StartsWith(Control.GetLabel(7),$LOCALIZE[24022])</visible>		
+	</item>	
+	<item>
+		<id>6004</id>
+		<label>24069</label>
+		<onclick>SendClick(8)</onclick>
+		<icon>icones/infos/update.png</icon>
+		<visible>Control.IsEnabled(8)</visible>
+	</item>
+	<item>
+		<id>6005</id>		
+		<label>24020</label>
+		<onclick>SendClick(9)</onclick>
+		<icon>icones/infos/parametres.png</icon>
+		<visible>Control.IsEnabled(9)</visible>
+	</item>	
+	<item>
+		<id>6006</id>
+		<label>39024</label>
+		<onclick>SendClick(10)</onclick>
+		<icon>icones/infos/dependances.png</icon>
+		<visible>Control.IsEnabled(10)</visible>
+	</item>	
+	<item>
+		<id>6007</id>
+		<label>$INFO[control.getLabel(12)]</label>
+		<onclick>SendClick(12)</onclick>
+		<icon>icones/infos/lancer.png</icon>
+		<visible>Control.IsEnabled(12)</visible>
+	</item>	
+		<item>
+		<id>6008</id>
+		<label>Mise à jour auto</label>		
+		<onclick>SetFocus(13)</onclick>
+		<onclick>Action(Select)</onclick>
+		<onclick>SetFocus(6000)</onclick>
+		<icon>icones/infos/radioon.png</icon>		
+		<visible>String.contains(Control.GetLabel(13),*) + ListItem.Property(Addon.IsInstalled)</visible>
+	</item>
+	<item>
+		<id>6009</id>
+		<label>Mise à jour auto</label>		
+		 <onclick>SetFocus(13)</onclick>
+		<onclick>Action(Select)</onclick>
+		<onclick>SetFocus(6000)</onclick>		
+		<icon>icones/infos/radiooff.png</icon>		
+		<visible>!String.contains(Control.GetLabel(13),*) + ListItem.Property(Addon.IsInstalled)</visible>
+	</item>	
+		</content>		
+	</control>
+	<control type="group">																														<description>boutons caches</description>
+		<visible>false</visible>		
+	<control type="button" id="6">		
+    </control>	
+	 <control type="button" id="7">		
+    </control>	
+	<control type="button" id="8">		
+    </control>
+	<control type="button" id="9">		
+    </control>
+    <control type="button" id="10">		
+    </control>	
+	<control type="button" id="12">		
+    </control>
+    <control type="radiobutton" id="13">		
+    </control>		
+	</control>
+	<control type="group">			   	     																									<description>informations du panneau de gauche</description>
+		<left>26</left>
+		<top>380</top>
+		<width>720</width>
+		<height>410</height>				
+	<control type="image">																														<description>cadre</description>
+		<aspectratio>scale</aspectratio>
+		<texture colordiffuse="40000000">texture.png</texture>	
+		<bordertexture border="30">fenetres/tuiles.png</bordertexture>
+		<bordersize>10,0,10,10</bordersize>		
+	</control>
+	<control type="button" id="5999">		
+		<top>0</top>
+		<right>10</right>
+		<left>10</left>
+        <bottom>10</bottom>
+		<texturefocus border="50" colordiffuse="$VAR[1selection_infos]">boutons/selection.png</texturefocus>				
+		<onup condition="!Integer.IsLess(container(50).numitems,1)">control.setFocus(50)</onup>
+		<ondown>control.setFocus(6000)</ondown>		
+		<onclick condition="!string.isEmpty(listitem.AddonDescription)">setProperty(titre,$ESCINFO[listitem.AddonName],home)</onclick>				
+		<onclick condition="!string.isEmpty(listitem.AddonDescription)">setProperty(duree,$ESCINFO[ListItem.AddonSummary],home)</onclick>				
+		<onclick condition="!string.isEmpty(listitem.AddonDescription)">setProperty(plot,$ESCINFO[listitem.AddonDescription],home)</onclick>		
+		<onclick condition="!string.isEmpty(listitem.AddonDescription)">activateWindow(1208)</onclick>		
+		<visible allowhiddenfocus="true">control.hasFocus(5999)</visible>
+	</control>
+	<control type="label">																														<description>status</description>
+		<left>30</left>
+		<right>30</right>
+		<top>10</top>
+		<height>38</height>						
+		<textcolor>$VAR[1selection_infos]</textcolor>
+		<font>texte_moyen</font>		
+		<label>[B][I]$INFO[listItem.addonName][/I][/B]</label>						
+	</control>	
+	<control type="image">																														<description>ligne de separation</description>
+		<left>30</left>
+		<right>30</right>
+		<top>55</top>
+		<aspectratio>scale</aspectratio>
+		<height>1</height>		
+		<texture colordiffuse="40ffffff">texture.png</texture>					
+	</control>  
+	<control type="textbox"> 																													<description>resume</description>      	
+		<top>57</top>		
+		<left>30</left>
+		<right>30</right>
+		<height>341</height>						
+		<align>center</align>
+		<aligny>center</aligny>
+		<textcolor>$VAR[blanc]</textcolor>
+		<label>[I]$VAR[addon_resume][/I]</label>
+		<autoscroll delay="5000" time="4000" repeat="10000">false</autoscroll>
+	</control>			
+	</control>
+	<control type="group">			   	     																									<description>informations du panneau de droite</description>
+		<right>26</right>
+		<top>380</top>
+		<width>720</width>
+		<height>410</height>				
+	<control type="image">																														<description>cadre</description>
+		<aspectratio>scale</aspectratio>
+		<texture colordiffuse="40000000">texture.png</texture>	
+		<bordertexture border="30">fenetres/tuiles.png</bordertexture>
+		<bordersize>10,0,10,10</bordersize>		
+	</control>
+	<control type="group">			   	     														
+		<left>30</left>		
+		<right>30</right>	
+		<top>10</top>
+	<control type="label">																														<description>type</description>
+		<height>38</height>						
+		<font>texte_moyen</font>
+		<scroll>true</scroll>
+		<label>[I]Type : $INFO[ListItem.AddonType][/I]</label>
+	</control>
+	<control type="label">																														<description>auteur</description>
+		<top>40</top>
+		<height>38</height>						
+		<font>texte_moyen</font>		
+		<label>[I]Auteur : $INFO[ListItem.AddonCreator][/I]</label>
+		<scroll>true</scroll>
+	</control>
+	<control type="label">																														<description>version</description>
+		<top>80</top>
+		<height>38</height>						
+		<font>texte_moyen</font>		
+		<label>[I]Version : $INFO[ListItem.AddonVersion][/I]</label>
+		<scroll>true</scroll>
+	</control>
+	<control type="image">																														<description>ligne de separation</description>
+		<top>125</top>
+		<aspectratio>scale</aspectratio>
+		<height>1</height>		
+		<texture colordiffuse="40ffffff">texture.png</texture>					
+	</control>
+	<control type="label">																														<description>date installation</description>
+		<top>130</top>
+		<height>38</height>						
+		<font>texte_moyen</font>		
+		<label>[I]$VAR[addon_installation][/I]</label>
+	</control>	
+	<control type="label">																														<description>date derniere mise a jour</description>
+		<top>170</top>
+		<height>38</height>						
+		<font>texte_moyen</font>		
+		<label>[I]$VAR[addon_miseajour][/I]</label>
+	</control>
+	<control type="label">																														<description>date derniere utilisation</description>
+		<top>210</top>
+		<height>38</height>						
+		<font>texte_moyen</font>		
+		<label>[I]$VAR[addon_utilisation][/I]</label>
+	</control>	
+	<control type="label">																														<description>taille</description>																													
+		<top>250</top>
+		<height>38</height>						
+		<font>texte_moyen</font>		
+		<label>[I]$VAR[addon_taille][/I]</label>						
+	</control>
+	<control type="image">																														<description>ligne de separation</description>
+		<top>295</top>
+		<aspectratio>scale</aspectratio>
+		<height>1</height>		
+		<texture colordiffuse="40ffffff">texture.png</texture>					
+	</control>	
+	<control type="label">																														<description>extension orpheline oui / non</description>
+		<top>300</top>
+		<height>38</height>						
+		<font>texte_moyen</font>		
+		<textcolor>$VAR[addon_couleur_orpheline]</textcolor>
+		<label>[I]$VAR[addon_orpheline][/I]</label>	
+	</control>
+	<control type="label">																														<description>mise à jour disponible oui / non</description>
+		<top>340</top>
+		<height>38</height>						
+		<font>texte_moyen</font>		
+		<textcolor>$VAR[addon_couleur_miseajourdisponible]</textcolor>
+		<label>[I]$VAR[addon_miseajourdisponible][/I]</label>	
+	</control>	
+	</control>		
+	</control>
+	</control>	
+	</control>
+</controls>
+</window>

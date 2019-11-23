@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window type="dialog">
+	<backgroundcolor>00X000000</backgroundcolor>
+	<onload>control.setFocus(150)</onload>
+	<include>animation_dialogue</include>
+<controls>
+	<control type="progress" id="1111">
+		<info>Player.Volume</info>
+		<visible>false</visible>
+	</control>
+	<control type="group">
+		<centertop>50%</centertop>
+		<centerleft>50%</centerleft>
+		<height>680</height>																													<description>((60 + 1) * nombre de boutons) + 18</description>	
+		<width>1245</width>		
+	<include>panneau_dialogue</include>		
+	<control type="label">																														<description>titre de la fenetre</description>
+		<centerleft>50%</centerleft>
+		<width>1170</width>
+		<height>126</height>
+		<font>titre</font>
+		<textcolor>$VAR[gris]</textcolor>
+		<align>center</align>
+		<label>$LOCALIZE[31173]</label>
+		<scroll>true</scroll>
+	</control>	
+	<control type="group">
+		<top>126</top>
+		<left>14</left>
+		<right>14</right>
+		<bottom>14</bottom>			
+	<control type="panel" id="150">
+		<width>300</width>
+		<pagecontrol>61</pagecontrol>
+		<onright>61</onright>		
+		<orientation>vertical</orientation>
+		<scrolltime tween="Linear" easing="in">250</scrolltime>	
+	<itemlayout height="60">
+	<control type="label">
+		<selectedcolor>$VAR[selection_dialogue]</selectedcolor>
+		<textcolor>$VAR[gris]</textcolor>
+		<include content="dialogue_bouton"></include>
+		<label>$INFO[ListItem.Label]</label>
+	</control>
+	</itemlayout>
+	<focusedlayout height="60">
+	<control type="image">		
+		<texture colordiffuse="$VAR[selection_dialogue]">fenetres/texture.png</texture>
+	</control>
+	<control type="label">
+		<textcolor>$VAR[blanc]</textcolor>
+		<include content="dialogue_bouton"></include>		
+		<label>$INFO[ListItem.Label]</label>
+	</control>
+	</focusedlayout>
+	</control>		
+	<control type="panel" id="120">
+		<left>308</left>
+		<width>600</width>
+		<onleft>150</onleft>
+		<pagecontrol>60</pagecontrol>
+		<onright>60</onright>
+		<orientation>vertical</orientation>
+		<scrolltime tween="Linear" easing="in">250</scrolltime>	
+	<itemlayout height="180">
+	<control type="label">
+		<font>bouton</font>
+		<selectedcolor>$VAR[selection_dialogue]</selectedcolor>
+		<textcolor>$VAR[gris]</textcolor>
+		<include content="dialogue_bouton"></include>
+		<label>$INFO[ListItem.Label]</label>
+	</control>
+	<control type="image">
+		<top>10</top>
+		<right>160</right>
+		<width>75</width>
+		<height>32</height>					
+		<texture colordiffuse="$VAR[selection_dialogue]">icones/synchronisation.png</texture>
+		<aspectratio>keep</aspectratio>
+		<visible>ListItem.property(sync)</visible>
+	</control>
+	<control type="image">
+		<top>10</top>
+		<right>20</right>
+		<width>130</width>
+		<height>32</height>
+		<texture colordiffuse="$VAR[selection_dialogue]" fallback="playerflags/rating/empty.png">$INFO[ListItem.ActualIcon,playerflags/rating/soustitre,.png]</texture>
+		<aspectratio>keep</aspectratio>
+	</control>
+	<control type="textbox">
+		<left>10</left>
+		<right>10</right>
+		<top>50</top>
+		<height>127</height>
+		<aligny>center</aligny>
+		<font>petit_texte</font>
+		<selectedcolor>$VAR[selection_dialogue]</selectedcolor>
+		<textcolor>$VAR[gris]</textcolor>
+		<label>$INFO[ListItem.Label2]</label>
+	</control>	
+	</itemlayout>
+	<focusedlayout height="180">
+	<control type="image">		
+		<texture colordiffuse="$VAR[selection_dialogue]" border="10">boutons/selection.png</texture>
+	</control>
+	<control type="label">
+		<font>bouton</font>
+		<selectedcolor>$VAR[selection_dialogue]</selectedcolor>
+		<textcolor>$VAR[gris]</textcolor>
+		<include content="dialogue_bouton"></include>		
+		<label>$INFO[ListItem.Label]</label>
+	</control>
+	<control type="image">
+		<top>10</top>
+		<right>160</right>
+		<width>75</width>
+		<height>32</height>					
+		<texture colordiffuse="$VAR[selection_dialogue]">icones/synchronisation.png</texture>
+		<aspectratio>keep</aspectratio>
+		<visible>ListItem.property(sync)</visible>
+	</control>
+	<control type="image">
+		<top>10</top>
+		<right>20</right>
+		<width>130</width>
+		<height>32</height>
+		<texture colordiffuse="$VAR[selection_dialogue]" fallback="playerflags/rating/empty.png">$INFO[ListItem.ActualIcon,playerflags/rating/soustitre,.png]</texture>
+		<aspectratio>keep</aspectratio>
+	</control>
+	<control type="textbox">
+		<left>10</left>
+		<right>10</right>
+		<top>50</top>
+		<height>127</height>
+		<aligny>center</aligny>
+		<font>petit_texte</font>
+		<textcolor>$VAR[gris]</textcolor>
+		<label>$INFO[ListItem.Label2]</label>
+		<autoscroll delay="3000" time="3000" repeat="5000">true</autoscroll>	
+	</control>
+	</focusedlayout>
+	</control>		
+	<control type="image"> 		          																										<description>separation droite</description>
+		<top>-2</top>
+		<bottom>-2</bottom>
+		<left>304</left>
+		<width>1</width>
+		<aspectratio>scale</aspectratio>
+		<texture colordiffuse="80808080">fenetres/texture.png</texture>	
+	</control>	
+	<control type="scrollbar" id="61">																											<description>image scrollbar</description>
+		<top>0</top>
+		<bottom>0</bottom>
+		<left>302</left>
+		<width>5</width>		
+		<onleft>150</onleft>
+		<onright>120</onright>
+		<texturesliderbackground></texturesliderbackground>		
+		<texturesliderbar colordiffuse="00ffffff">fenetres/texture.png</texturesliderbar>
+		<textureslidernib colordiffuse="00ffffff">fenetres/texture.png</textureslidernib>
+		<texturesliderbarfocus colordiffuse="ffffffff">fenetres/texture.png</texturesliderbarfocus>
+		<textureslidernibfocus colordiffuse="$VAR[selection_dialogue]">fenetres/texture.png</textureslidernibfocus>
+		<showonepage>false</showonepage>		
+	</control>	
+	<control type="image"> 		          																										<description>separation droite</description>
+		<top>-2</top>
+		<bottom>-2</bottom>
+		<right>304</right>
+		<width>1</width>
+		<aspectratio>scale</aspectratio>
+		<texture colordiffuse="80808080">fenetres/texture.png</texture>	
+	</control>	
+	<control type="scrollbar" id="60">																											<description>image scrollbar</description>
+		<top>0</top>
+		<bottom>0</bottom>
+		<right>302</right>
+		<width>5</width>		
+		<onleft>120</onleft>
+		<onright>8000</onright>
+		<texturesliderbackground></texturesliderbackground>		
+		<texturesliderbar colordiffuse="00ffffff">fenetres/texture.png</texturesliderbar>
+		<textureslidernib colordiffuse="00ffffff">fenetres/texture.png</textureslidernib>
+		<texturesliderbarfocus colordiffuse="ffffffff">fenetres/texture.png</texturesliderbarfocus>
+		<textureslidernibfocus colordiffuse="$VAR[selection_dialogue]">fenetres/texture.png</textureslidernibfocus>
+		<showonepage>false</showonepage>		
+	</control>	
+	<control type="group">
+		<visible>control.isvisible(130)</visible>
+		<top>350</top>
+		<right>0</right>
+		<width>300</width>
+		<height>90</height>	
+	<control type="image">		
+		<texture colordiffuse="$VAR[selection_dialogue]">fenetres/texture.png</texture>
+	</control>
+	<control type="image">
+		<top>5</top>
+		<left>5</left>
+		<width>50</width>
+		<height>50</height>
+		<aspectratio>keep</aspectratio>
+		<texture>DefaultIconInfo.png</texture>
+	</control>
+	<control type="label" id="130">																												<description>sous titres locaux</description>
+		<left>50</left>
+		<right>10</right>
+		<height>90</height>
+		<font>texte_moyen</font>
+		<align>center</align>
+		<aligny>center</aligny>
+		<textcolor>$VAR[blanc]</textcolor>
+		<wrapmultiline>true</wrapmultiline>
+		<label>$LOCALIZE[31174]</label>
+	</control>
+	</control>	
+	<control type="group">
+		<top>250</top>
+		<right>0</right>
+		<width>300</width>
+		<height>90</height>	
+	<control type="image">		
+		<texture colordiffuse="$VAR[selection_dialogue]">fenetres/texture.png</texture>
+		<visible>!integer.isEqual(container(120).numItems,0)</visible>
+	</control>
+	<control type="image">		
+		<texture colordiffuse="ffc0392b">fenetres/texture.png</texture>
+		<visible>integer.isEqual(container(120).numItems,0)</visible>
+	</control>
+	<control type="label" id="140">																												<description>nombre de sous titres</description>
+		<left>10</left> 
+		<right>10</right>
+		<height>90</height>	
+		<font>texte_moyen</font>
+		<align>center</align>
+		<aligny>center</aligny>
+		<textcolor>$VAR[blanc]</textcolor>
+		<wrapmultiline>true</wrapmultiline>
+	</control>
+	</control>
+	<control type="label">																														<description>titre du fichier</description>
+		<top>470</top>
+		<right>0</right>
+		<width>300</width>
+		<height>60</height>
+		<font>texte_moyen</font>
+		<align>center</align>
+		<aligny>center</aligny>
+		<textcolor>$VAR[gris]</textcolor>
+		<scroll>true</scroll>
+		<label>$INFO[Player.Filename]</label>		
+	</control>	
+	<control type="grouplist" id="8000">																										<description>liste boutons</description>	
+		<right>0</right>
+		<width>300</width>
+		<itemgap>1</itemgap>
+		<onleft>60</onleft>
+		<orientation>vertical</orientation>		
+	<control type="button" id="160">																												
+		<width>300</width>
+		<align>center</align>
+		<aligny>center</aligny>
+		<label>$LOCALIZE[31175]</label>
+	<include content="dialogue_bouton"></include>		
+	</control>
+	<control type="button" id="29">																												
+		<width>300</width>
+		<align>center</align>
+		<aligny>center</aligny>
+		<label>$LOCALIZE[31176]</label>
+		<onclick>close</onclick>
+	<include content="dialogue_bouton"></include>			
+	</control>		
+	</control>		
+	</control>
+	</control>
+</controls>
+</window>

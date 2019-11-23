@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>			
+	<backgroundcolor>00X000000</backgroundcolor>
+	<onload>cancelalarm(actualiser_widget_tv,silent)</onload>
+	<onunload condition="!player.hasvideo + !string.isempty(window(home).property(osd))">clearproperty(osd,home)</onunload>
+	<views>10</views>
+	<defaultcontrol always="true">10</defaultcontrol>		
+<controls>	
+	<include>image_fond</include>
+	<control type="panel" id="11">
+		<width>0</width>
+		<height>0</height>
+		<orientation>horizontal</orientation>
+	<itemlayout>					
+	</itemlayout>
+	<focusedlayout>
+	</focusedlayout>
+	</control>			
+	<control type="group">
+		<animation effect="slide" start="0,0" end="1920,0" time="1" condition="window.isvisible(movieinformation) | window.isvisible(pvrguideinfo) | window.isvisible(selectdialog) | window.isvisible(contextmenu)" reversible="false">conditional</animation>
+		<animation effect="slide" start="1920,0" end="0,0" delay="100" time="1" condition="!window.isvisible(movieinformation) + !window.isvisible(pvrguideinfo) + !window.isvisible(selectdialog) + !window.isvisible(contextmenu)" reversible="false">conditional</animation>		
+	<control type="label">																														<description>horloge</description>
+		<right>60</right>
+		<height>116</height>			
+		<font>menu</font>
+		<textcolor>80ffffff</textcolor>
+		<align>right</align>
+		<label>$INFO[system.time(hh:mm)]</label>		
+	</control>
+	<control type="group">
+		<top>720</top>
+	<control type="image">																														<description>panneau gris</description>		
+		<width>1920</width>
+		<top>75</top>
+		<height>182</height>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="99201f20">commun/texture.png</texture>
+	</control>
+	<control type="image">																														<description>pas de miniature</description>	
+		<top>65</top>		
+		<right>1470</right>
+		<height>200</height>
+		<width>200</width>
+		<aspectratio align="right" aligny="center">keep</aspectratio>
+		<texture background="true" colordiffuse="40ffffff">commun/noimage.png</texture>			
+	</control>	
+	<control type="image">																														<description>miniature</description>
+		<top>-5</top>		
+		<right>1470</right>
+		<height>350</height>
+		<width>420</width>
+		<aspectratio align="right" aligny="center">keep</aspectratio>
+		<texture background="true" border="10">$INFO[listitem.epgeventicon]</texture>
+		<bordertexture border="10">commun/tuiles.png</bordertexture>
+		<bordersize>10,0,10,10</bordersize>		
+	</control>
+	<control type="image">																														<description>icone detail</description>
+		<top>25</top>
+		<right>20</right>
+		<width>80</width>
+		<height>60</height>
+		<aspectratio>keep</aspectratio>
+		<texture fallback="icones/infos/chaine.png">$INFO[skin.string(chemin_logos_tv)]$INFO[listitem.channelname].png</texture>
+	</control>
+	<control type="label">																														<description>detail</description>
+		<top>45</top>
+		<right>120</right>
+		<width>1320</width>
+		<height>20</height>
+		<font>texte_infos</font>
+		<textcolor>80ffffff</textcolor>
+		<align>right</align>
+		<label>[UPPERCASE]$INFO[listitem.channelname][/UPPERCASE]  •  $INFO[listitem.title]  •  $INFO[listitem.starttime] - $INFO[listitem.endtime]  •  $INFO[listitem.duration(hh)] hr $INFO[listitem.duration(mm)] min  •  $INFO[listitem.genre]</label>		
+	</control>		
+	<control type="textbox">																													<description>resume</description>		
+		<top>76</top>
+		<height>180</height>
+		<left>470</left>
+		<width>1420</width>
+		<font>infos</font>
+		<align>justify</align>
+		<label>$INFO[listitem.plot]</label>	
+		<autoscroll delay="20000" time="3000" repeat="20000">false</autoscroll>		
+	</control>	
+	<control type="label">																														<description>aucun resume disponible</description>
+		<top>86</top>
+		<height>160</height>
+		<left>470</left>
+		<width>1420</width>
+		<font>infos</font>
+		<align>center</align>
+		<label>$LOCALIZE[31206]</label>		
+		<visible>string.isequal(listitem.plot,)</visible>
+	</control>	
+	</control>
+	<control type="label">																														<description>date</description>
+		<height>116</height>
+		<left>60</left>
+		<font>menu</font>
+		<textcolor>80ffffff</textcolor>
+		<label>$INFO[ListItem.startdate]</label>
+	</control>	
+	<control type="button" id="6997">
+		<top>90</top>
+		<left>50</left>
+		<ondown>10</ondown>
+		<textoffsetx>10</textoffsetx>
+		<textcolor>80ffffff</textcolor>
+		<texturenofocus colordiffuse="99201f20">commun/texture.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]">commun/texture.png</texturefocus>
+		<onleft>action(back)</onleft>
+		<onclick>Control.setfocus(11)</onclick>
+		<onclick>action(right)</onclick>
+		<onclick>Control.setfocus(6997)</onclick>					
+	<include content="bouton">																										
+		<param name="width" value="248"/> 
+		<param name="height" value="31"/>
+		<param name="font" value="infos"/>
+		<param name="align" value="center"/>		 
+		<param name="label" value="$INFO[container(11).listitem.label]"/>
+	</include>
+	</control>
+	<control type="epggrid" id="10">																											<description>grille EPG</description>
+		<top>90</top>
+		<height>602</height>
+		<left>50</left>
+		<width>1870</width>
+		<orientation>vertical</orientation>
+		<scrolltime tween="Linear" easing="in">250</scrolltime>	
+		<timeblocks>30</timeblocks>
+		<rulerunit>6</rulerunit>
+		<progresstexture colordiffuse="1affffff">commun/texture.png</progresstexture>	
+		<onup>6997</onup>
+		<onback>6997</onback>		
+	<rulerlayout height="31" width="40">																										<description>liste des horaires</description>
+	
+	<control type="label">																														<description>horaire</description>
+		<top>2</top>
+		<left>-33</left>
+		<width>150</width>
+		<height>20</height>
+		<font>infos</font>
+		<textcolor>80ffffff</textcolor>
+		<aligny>bottom</aligny>
+		<align>left</align>
+		<label>$INFO[ListItem.Label]</label>
+		<visible>string.contains(listitem.label,:)</visible>
+	</control>
+	
+	
+	</rulerlayout>
+	<channellayout height="95" width="250">																										<description>liste des chaines</description>
+	<control type="group">		
+		<width>250</width>	
+	<control type="image">		
+		<top>2</top>
+		<height>93</height>
+        <width>249</width>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="33ffffff">commun/texture.png</texture>		
+	</control>
+	<control type="image">
+		<top>7</top>
+		<left>193</left>
+		<height>50</height>
+        <width>50</width>
+		<aspectratio align="center">keep</aspectratio>
+		<texture fallback="icones/infos/chaine.png">$INFO[skin.string(chemin_logos_tv)]$INFO[listitem.channelname].png</texture>	
+	</control>	
+	<control type="label">
+        <top>10</top>
+		<left>10</left>
+		<width>238</width>
+        <height>42</height>
+		<font>texte_infos</font>
+		<selectedcolor>ffffffff</selectedcolor>
+		<textcolor>80ffffff</textcolor>
+		<label>$LOCALIZE[31253] $INFO[listItem.channelnumberlabel]</label>		
+	</control>
+	<control type="label">
+        <top>50</top>
+		<left>10</left>
+		<width>228</width>
+        <height>42</height>
+		<font>texte_infos</font>
+		<selectedcolor>ffffffff</selectedcolor>
+		<textcolor>80ffffff</textcolor>
+		<label> • [CAPITALIZE][LOWERCASE]$INFO[listItem.label][/LOWERCASE][/CAPITALIZE]</label>
+	</control>	
+	</control>
+	</channellayout>	
+	<focusedchannellayout height="95" width="250">
+	<control type="group">		
+		<width>250</width>		
+	<control type="image">		
+		<top>2</top>
+		<height>93</height>
+        <width>249</width>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="33ffffff">commun/texture.png</texture>		
+	</control>
+	<control type="image">
+		<top>7</top>
+		<left>193</left>
+		<height>50</height>
+        <width>50</width>
+		<aspectratio align="center">keep</aspectratio>
+		<texture fallback="icones/infos/chaine.png">$INFO[skin.string(chemin_logos_tv)]$INFO[listitem.channelname].png</texture>		
+	</control>	
+	<control type="label">
+        <top>10</top>
+		<left>10</left>
+		<width>238</width>
+        <height>42</height>
+		<font>texte_infos</font>
+		<selectedcolor>ffffffff</selectedcolor>
+		<textcolor>80ffffff</textcolor>
+		<label>$LOCALIZE[31253] $INFO[listItem.channelnumberlabel]</label>		
+	</control>
+	<control type="label">
+        <top>50</top>
+		<left>10</left>
+		<width>228</width>
+        <height>42</height>
+		<font>texte_infos</font>
+		<selectedcolor>ffffffff</selectedcolor>
+		<textcolor>80ffffff</textcolor>
+		<label> • [CAPITALIZE][LOWERCASE]$INFO[listItem.label][/LOWERCASE][/CAPITALIZE]</label>
+		<scrollsuffix></scrollsuffix>	
+		<scroll>true</scroll>		
+	</control>
+	
+	</control>
+	</focusedchannellayout>
+	<itemlayout height="95" width="40">
+	<control type="image" id="1">		
+		<top>2</top>
+		<height>93</height>
+        <width>38</width>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="0dffffff">commun/texture.png</texture>		
+	</control>		
+	<control type="label" id="2">																												<description>titre du programme</description>
+		<width>38</width>
+		<height>70</height>
+		<font>texte_infos</font>
+		<aligny>center</aligny>
+		<textcolor>80ffffff</textcolor>
+		<align>left</align>
+		<label>   [B]$INFO[listitem.title][/B]</label>			
+	</control>	
+	<control type="label" id="2">																												<description>titre du programme</description>
+		<top>45</top>
+		<width>38</width>
+		<height>54</height>
+		<font>infos</font>
+		<aligny>center</aligny>
+		<textcolor>80ffffff</textcolor>
+		<align>left</align>
+		<label>      [I]$INFO[listitem.genre]    ($INFO[listitem.duration(hh:mm)])[/I]</label>		
+	</control>		
+	</itemlayout>
+	<focusedlayout height="95" width="40">	
+	<control type="button">
+		<onfocus>setproperty(image,$INFO[listitem.epgeventicon],home)</onfocus>
+		<onfocus>setproperty(label,[CAPITALIZE][LOWERCASE]$INFO[listitem.channelname][/LOWERCASE][/CAPITALIZE] • $INFO[listitem.title],home)</onfocus>				
+	</control>
+	<control type="image" id="1">		
+		<top>2</top>
+		<height>93</height>
+        <width>38</width>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="$VAR[couleur_dominante]">commun/texture.png</texture>
+		<animation effect="fade" start="100" end="50" condition="control.hasfocus(6997)">conditional</animation>
+		<animation effect="fade" start="50" end="100" condition="!control.hasfocus(6997)">conditional</animation>
+	</control>	
+	
+	<control type="label" id="2">																												<description>titre du programme</description>
+		<width>38</width>
+		<height>70</height>
+		<font>texte_infos</font>
+		<textcolor>ffffffff</textcolor>
+		<label>   [B]$INFO[listitem.title][/B]</label>			
+		<scroll>true</scroll>
+	</control>	
+	<control type="label" id="2">																												<description>titre du programme</description>
+		<top>45</top>
+		<width>38</width>
+		<height>54</height>
+		<font>infos</font>
+		<textcolor>ffffffff</textcolor>
+		<label>      [I]$INFO[listitem.genre]    ($INFO[listitem.duration(hh:mm)])[/I]</label>
+		<scroll>true</scroll>		
+	</control>
+	</focusedlayout>	
+	</control>
+	</control>
+</controls>
+</window>

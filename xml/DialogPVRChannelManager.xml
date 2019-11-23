@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+	<backgroundcolor>00X000000</backgroundcolor>
+	<onunload>UpdateLibrary(video,,true)</onunload>
+	<defaultcontrol always="true">9002</defaultcontrol>
+<controls>	
+	<control type="group">
+		<animation effect="fade" start="0" end="100" time="150">WindowOpen</animation>
+		<animation effect="fade" start="100" end="0" time="150">WindowClose</animation>		
+		<left>0</left>
+		<top>0</top>
+		<width>1920</width>
+		<height>1080</height>
+	<control type="image">																			<description>adoucissement du fond</description>
+		<texture colordiffuse="$VAR[masque_fenetres]">texture.png</texture>
+		<visible>!Window.IsVisible(tvchannels) + !Window.IsVisible(tvguide)</visible>
+	</control>	
+	<control type="image">																			<description>adoucissement du fond</description>
+		<texture colordiffuse="80263238">texture.png</texture>
+		<visible>[Window.IsVisible(tvchannels) | Window.IsVisible(tvguide)]</visible>
+	</control>	
+	<control type="group">			
+		<left>427</left>
+		<top>160</top>
+		<width>1066</width>
+		<height>760</height>
+	<include content="fenetre_menu">																<description>fenetre</description>
+		<param name="couleur" value="ccffffff"/>
+	</include>		
+	<control type="label">																			<description>titre menu</description>
+		<left>-427</left>
+		<top>-44</top>
+		<width>1920</width>
+		<height>44</height>
+		<font>petit_texte</font>
+		<textcolor>$VAR[blanc]</textcolor>
+		<align>center</align>
+		<aligny>center</aligny>	
+		<label>Gestionnaire de chaines</label>				
+	</control>			
+	<control type="group">			
+		<left>12</left>
+		<top>12</top>
+	<control type="image">																			<description>panneau de gauche</description>
+		<left>0</left>
+		<top>0</top>
+		<width>342</width>
+		<height>736</height>
+		<aspectratio>scale</aspectratio>
+		<texture colordiffuse="$VAR[gris]">texture.png</texture>
+	</control>	
+	<control type="list" id="20">																	<description>liste des chaines</description>
+		<left>0</left>
+		<top>0</top>
+		<width>342</width>
+		<height>737</height>
+		<onup>20</onup>
+		<ondown>20</ondown>
+		<onleft>60</onleft>
+		<onright>9002</onright>
+	<itemlayout height="67" width="330">
+	<control type="label">																			<description>numero + nom de la chaine</description>
+		<left>15</left>
+		<top>0</top>
+		<width>275</width>
+		<height>66</height>
+		<font>petit_texte</font>
+		<align>left</align>
+		<aligny>center</aligny>
+		<textcolor>$VAR[blanc]</textcolor>
+		<selectedcolor>$VAR[bleu]</selectedcolor>
+		<label>$INFO[ListItem.Property(Number),(,) ]$INFO[ListItem.Property(Name)]</label>
+		<visible>ListItem.Property(ActiveChannel)</visible>
+	</control>
+	<control type="label">																			<description>numero + nom de la chaine</description>
+		<left>15</left>
+		<top>0</top>
+		<width>275</width>
+		<height>66</height>
+		<font>petit_texte</font>
+		<align>left</align>
+		<aligny>center</aligny>
+		<textcolor>$VAR[blanc]</textcolor>
+		<selectedcolor>$VAR[bleu]</selectedcolor>
+		<label>$INFO[ListItem.Property(Number),(,) ]$INFO[ListItem.Property(Name)]</label>
+		<visible>!ListItem.Property(ActiveChannel)</visible>
+	</control>	
+	<control type="image">																			<description>icone ordre modifié</description>
+		<left>300</left>
+		<top>18</top>
+		<width>30</width>
+		<height>30</height>
+		<texture>fenetres/ouinf.png</texture>
+		<visible>ListItem.Property(Changed)</visible>
+	</control>
+	</itemlayout>
+	<focusedlayout height="67" width="330">
+	<control type="image">																			<description>fond numero + nom de la chaine</description>
+		<left>0</left>
+		<top>0</top>
+		<width>342</width>
+		<height>66</height>
+		<texture colordiffuse="$VAR[bleu]">texture.png</texture>
+		<animation effect="fade" start="100" end="50" time="0" condition="!Control.HasFocus(20)">Conditional</animation>	
+	</control>
+	<control type="label">																			<description>numero + nom de la chaine</description>
+		<left>15</left>
+		<top>0</top>
+		<width>275</width>
+		<height>66</height>
+		<font>petit_texte</font>
+		<align>left</align>
+		<aligny>center</aligny>
+		<textcolor>$VAR[blanc]</textcolor>
+		<selectedcolor>$VAR[gris_clair]</selectedcolor>
+		<label>$INFO[ListItem.Property(Number),(,) ]$INFO[ListItem.Property(Name)]</label>
+		<visible>ListItem.Property(ActiveChannel)</visible>
+	</control>
+	<control type="label">																			<description>numero + nom de la chaine</description>
+		<left>15</left>
+		<top>0</top>
+		<width>275</width>
+		<height>66</height>
+		<font>petit_texte</font>
+		<align>left</align>
+		<aligny>center</aligny>
+		<textcolor>$VAR[blanc]</textcolor>
+		<selectedcolor>$VAR[gris_clair]</selectedcolor>
+		<label>$INFO[ListItem.Property(Number),(,) ]$INFO[ListItem.Property(Name)]</label>
+		<visible>!ListItem.Property(ActiveChannel)</visible>
+	</control>
+	<control type="image">																			<description>icone ordre modifié</description>
+		<left>300</left>
+		<top>18</top>
+		<width>30</width>
+		<height>30</height>
+		<texture>fenetres/ouinf.png</texture>
+		<visible>ListItem.Property(Changed)</visible>
+	</control>
+	</focusedlayout>
+	</control>
+	<control type="group" id="9002">
+	<control type="label">																			<description>texte client enregistreur video</description>
+		<left>342</left>
+		<top>700</top>
+		<width>690</width>
+		<height>30</height>
+		<align>right</align>
+		<aligny>center</aligny>
+		<font>petit_texte</font>
+		<textcolor>$VAR[gris]</textcolor>
+		<label>$LOCALIZE[19210]: $INFO[ListItem.Property(ClientName)]</label>
+	</control>
+	<control type="grouplist">																		<description>liste des boutons de droite</description>
+		<left>342</left>
+		<top>0</top>
+		<width>700</width>
+		<height>736</height>
+		<itemgap>1</itemgap>
+		<onleft>20</onleft>
+		<onup>9000</onup>
+		<ondown>9000</ondown>	
+	<control type="radiobutton" id="7">																<description>chaine active</description>
+		<width>700</width>
+		<height>66</height>
+		<label>19074</label>
+		<textoffsetx>20</textoffsetx>
+		<radioposx>640</radioposx>
+	</control>
+	<control type="edit" id="8">																	<description>nom de la chaine</description>
+		<width>700</width>
+		<height>66</height>
+		<textoffsetx>20</textoffsetx>
+		<label>19201</label>
+	</control>
+	<control type="group" id="390">		
+		<height>66</height>
+	<control type="button" id="9">																	<description>bouton logo</description>
+		<width>700</width>
+		<height>66</height>
+		<textoffsetx>20</textoffsetx>
+		<label>19202</label>
+		<onleft>20</onleft>
+		<onup>8</onup>
+		<ondown>12</ondown>
+	</control>
+	<control type="image" id="10">																	<description>logo</description>
+		<left>630</left>
+		<top>3</top>
+		<width>60</width>
+		<height>60</height>
+		<aspectratio>keep</aspectratio>
+		<texture>$INFO[ListItem.Property(icon)]</texture>
+	</control>
+	</control>
+	<control type="radiobutton" id="12">															<description>activer EPG</description>
+		<width>700</width>
+		<height>66</height>
+		<textoffsetx>20</textoffsetx>
+		<radioposx>640</radioposx>
+		<label>19206</label>
+	</control>
+	<control type="spincontrolex" id="13">															<description>source EPG</description>
+		<width>700</width>
+		<height>66</height>
+		<spinposx>17</spinposx>
+		<label>19200</label>
+	</control>
+	<control type="radiobutton" id="14">															<description>control parental</description>
+		<width>700</width>
+		<height>66</height>
+		<textoffsetx>20</textoffsetx>
+		<radioposx>640</radioposx>		
+		<label>19267</label>
+	</control>
+	<control type="label" id="15">																	<description>texte options</description>
+		<width>700</width>
+		<height>66</height>
+		<font>petit_texte</font>
+		<textcolor>$VAR[gris]</textcolor>
+		<textoffsetx>20</textoffsetx>
+		<aligny>center</aligny>
+		<label>$LOCALIZE[31026]</label>
+	</control>
+	<control type="button" id="31">																	<description>bouton nouvelle chaine</description>
+		<width>700</width>
+		<height>66</height>
+		<textoffsetx>20</textoffsetx>
+		<label>19204</label>
+	</control>
+	<control type="button" id="200">																<description>bouton gestion des chaines</description>
+		<width>700</width>
+		<height>66</height>
+		<textoffsetx>20</textoffsetx>
+		<label>Gestion des groupes</label>
+		<onclick>Action(Close)</onclick>
+		<onclick>ActivateWindow(pvrgroupmanager)</onclick>		
+	</control>	
+	<control type="group" id="391">		
+		<height>66</height>
+	<control type="button" id="34">																	<description>bouton TV/Radio</description>
+		<width>700</width>
+		<height>66</height>
+		<textoffsetx>20</textoffsetx>
+		<visible>String.IsEmpty(Window.Property(IsRadio))</visible>
+		<label>19024</label>
+		<onleft>20</onleft>
+		<onup>200</onup>
+		<ondown>9000</ondown>
+	</control>
+	<control type="button" id="34">																	<description>bouton TV/Radio</description>
+		<width>700</width>
+		<height>66</height>
+		<textoffsetx>20</textoffsetx>
+		<visible>!String.IsEmpty(Window.Property(IsRadio))</visible>
+		<label>19023</label>
+		<onleft>20</onleft>
+		<onup>30</onup>
+		<ondown>9000</ondown>
+	</control>
+	</control>
+	</control>
+	</control>				
+	<control type="image">																			<description>ombre du panneau gris de gauche</description>
+		<left>342</left>
+		<top>0</top>
+		<width>20</width>
+		<height>736</height>
+		<aspectratio>stretch</aspectratio>			
+		<texture>fenetres/ombre_droite.png</texture>
+	</control>
+	</control>				
+	<control type="group" id="9000">																<description>liste des boutons du bas</description>	
+	<control type="button" id="5">																	<description>bouton enregistrer</description>
+		<top>754</top>
+		<right>93</right>
+		<onup>34</onup>
+		<onleft>6</onleft>
+		<onright>4</onright>		
+	<include content="bouton_fenetre">
+		<param name="iconef" value="enregistrerf.png"/>
+		<param name="iconenf" value="enregistrernf.png"/>
+		<param name="couleur" value="$VAR[blanc]"/>	
+	</include>
+	</control>
+	<control type="label">																			<description>texte avertissement enregistrer</description>
+		<right>160</right>
+		<top>754</top>
+		<width>800</width>
+		<height>44</height>
+		<font>petit_texte</font>
+		<textcolor>$VAR[blanc]</textcolor>
+		<align>right</align>
+		<aligny>center</aligny>		
+		<label>Enregistrer les modifications sans quitter</label>
+		<visible>Control.HasFocus(5)</visible>
+	</control>	
+	<control type="button" id="4">																	<description>bouton oui</description>
+		<top>754</top>
+		<right>53</right>
+		<onup>34</onup>
+		<onleft>5</onleft>
+		<onright>6</onright>		
+	<include content="bouton_fenetre">
+		<param name="iconef" value="ouif.png"/>
+		<param name="iconenf" value="ouinf.png"/>
+		<param name="couleur" value="$VAR[blanc]"/>	
+	</include>		
+	</control>
+	<control type="label">																			<description>texte avertissement valider</description>
+		<right>160</right>
+		<top>754</top>
+		<width>800</width>
+		<height>44</height>
+		<font>petit_texte</font>
+		<textcolor>$VAR[blanc]</textcolor>
+		<align>right</align>
+		<aligny>center</aligny>		
+		<label>Enregistrer les modifications et quitter</label>
+		<visible>Control.HasFocus(4)</visible>
+	</control>		
+	<control type="button" id="6">																	<description>bouton annuler</description>
+		<top>754</top>
+		<right>13</right>
+		<onup>34</onup>
+		<onleft>4</onleft>
+		<onright>5</onright>	
+	<include content="bouton_fenetre">
+		<param name="iconef" value="nonf.png"/>
+		<param name="iconenf" value="nonnf.png"/>
+		<param name="couleur" value="$VAR[blanc]"/>	
+	</include>
+	</control>
+	<control type="label">																			<description>texte avertissement annuler</description>
+		<right>160</right>
+		<top>754</top>
+		<width>800</width>
+		<height>44</height>
+		<font>petit_texte</font>
+		<textcolor>$VAR[blanc]</textcolor>
+		<align>right</align>
+		<aligny>center</aligny>		
+		<label>Quitter sans enregistrer les modifications</label>
+		<visible>Control.HasFocus(6)</visible>
+	</control>	
+	</control>			
+	</control>
+	</control>	
+</controls>
+</window>

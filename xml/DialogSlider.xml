@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+	<backgroundcolor>00X000000</backgroundcolor>
+	<defaultcontrol>11</defaultcontrol>
+<controls>
+	<control type="progress" id="1111">
+		<info>Player.Volume</info>
+		<visible>false</visible>
+	</control>
+	<control type="group">					
+	<animation type="WindowOpen">
+        <effect type="slide" start="0,-70" end="0,0" time="325"/>
+    </animation>
+	<animation type="WindowClose">
+        <effect type="slide" start="0,0" end="0,-70" time="325"/>
+    </animation>	
+	<control type="label" id="10">																												<description>titre</description>
+		<left>0</left>
+		<top>30</top>
+		<width>1900</width>
+		<height>40</height>
+		<align>right</align>		
+		<aligny>center</aligny>
+		<font>label</font>
+		<textcolor>ffffffff</textcolor>
+	</control>
+	<control type="label" id="12">																												<description>position du slider</description>
+		<left>0</left>
+		<top>30</top>
+		<width>1920</width>
+		<height>40</height>
+		<align>center</align>
+		<aligny>center</aligny>
+		<font>label</font>
+		<textcolor>ffffffff</textcolor>
+	</control>
+	<control type="slider" id="11">																												<description>slider</description>
+		<left>0</left>
+		<top>0</top>
+		<width>1920</width>
+		<height>25</height>
+		<aligny>center</aligny>		
+		<oninfo>noop</oninfo>
+		<onup>11</onup>
+		<ondown>11</ondown>
+		<onleft>11</onleft>
+		<onright>11</onright>
+		<texturesliderbar colordiffuse="ffffffff">boutons/slider_background.png</texturesliderbar>
+		<textureslidernibfocus colordiffuse="$VAR[couleur_dominante]">boutons/slider.png</textureslidernibfocus>			
+	</control>
+	</control>	
+</controls>
+</window>
