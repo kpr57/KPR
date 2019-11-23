@@ -397,7 +397,7 @@
 		<onfocus condition="$EXP[est_un_episode] | [!String.IsEqual(listitem.thumb,) + !string.EndsWith(listitem.thumb,none)]">setproperty(image,$INFO[listitem.thumb],home)</onfocus>
 		<onfocus condition="!$EXP[est_un_episode] + [!String.IsEqual(listitem.art(fanart),) + !string.EndsWith(listitem.art(fanart),none)]">setproperty(image,$INFO[listitem.art(fanart)],home)</onfocus>
 		<onfocus condition="String.IsEqual(listitem.art(fanart),) | string.EndsWith(listitem.art(fanart),none)">clearproperty(image,home)</onfocus>	
-		<onfocus>setproperty(label,$INFO[listItem.label],home)</onfocus>
+		<onfocus>setproperty(label,$ESCINFO[listItem.label],home)</onfocus>
 		<onfocus>cancelalarm(scroll_infos,silent)</onfocus>
 		<onfocus>clearproperty(scroll_infos,home)</onfocus>
 		<onfocus>alarmclock(scroll_infos,setproperty(scroll_infos,1,home),00:03,silent)</onfocus>
@@ -608,7 +608,7 @@
 		<onfocus condition="$EXP[est_un_episode] | [!String.IsEqual(listitem.thumb,) + !string.EndsWith(listitem.thumb,none)]">setproperty(image,$INFO[listitem.thumb],home)</onfocus>
 		<onfocus condition="!$EXP[est_un_episode] + [!String.IsEqual(listitem.art(fanart),) + !string.EndsWith(listitem.art(fanart),none)]">setproperty(image,$INFO[listitem.art(fanart)],home)</onfocus>
 		<onfocus condition="String.IsEqual(listitem.art(fanart),) | string.EndsWith(listitem.art(fanart),none)">clearproperty(image,home)</onfocus>	
-		<onfocus>setproperty(label,$INFO[listItem.label],home)</onfocus>
+		<onfocus>setproperty(label,$ESCINFO[listItem.label],home)</onfocus>
 		<onfocus>cancelalarm(scroll_infos,silent)</onfocus>
 		<onfocus>clearproperty(scroll_infos,home)</onfocus>
 		<onfocus>alarmclock(scroll_infos,setproperty(scroll_infos,1,home),00:03,silent)</onfocus>
@@ -817,7 +817,7 @@
 		<onfocus condition="$EXP[est_un_episode] | [!String.IsEqual(listitem.thumb,) + !string.EndsWith(listitem.thumb,none)]">setproperty(image,$INFO[listitem.thumb],home)</onfocus>
 		<onfocus condition="!$EXP[est_un_episode] + [!String.IsEqual(listitem.art(fanart),) + !string.EndsWith(listitem.art(fanart),none)]">setproperty(image,$INFO[listitem.art(fanart)],home)</onfocus>
 		<onfocus condition="String.IsEqual(listitem.art(fanart),) | string.EndsWith(listitem.art(fanart),none)">clearproperty(image,home)</onfocus>	
-		<onfocus>setproperty(label,$INFO[listItem.label],home)</onfocus>
+		<onfocus>setproperty(label,$ESCINFO[listItem.label],home)</onfocus>
 		<onfocus>cancelalarm(scroll_infos,silent)</onfocus>
 		<onfocus>clearproperty(scroll_infos,home)</onfocus>
 		<onfocus>alarmclock(scroll_infos,setproperty(scroll_infos,1,home),00:03,silent)</onfocus>
@@ -1027,7 +1027,7 @@
 		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>		
 		<onfocus condition="!String.IsEqual(listitem.thumb,) + !string.EndsWith(listitem.thumb,none)">setproperty(image,$INFO[listitem.thumb],home)</onfocus>
 		<onfocus condition="String.IsEqual(listitem.thumb,) | string.EndsWith(listitem.thumb,none)">clearproperty(image,home)</onfocus>	
-		<onfocus>setproperty(label,$INFO[listItem.label],home)</onfocus>
+		<onfocus>setproperty(label,$ESCINFO[listItem.label],home)</onfocus>
 		<onfocus>cancelalarm(scroll_infos,silent)</onfocus>
 		<onfocus>clearproperty(scroll_infos,home)</onfocus>
 		<onfocus>alarmclock(scroll_infos,setproperty(scroll_infos,1,home),00:03,silent)</onfocus>	
@@ -1424,7 +1424,7 @@
 		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus><onfocus condition="!String.IsEqual(listitem.thumb,) + !string.EndsWith(listitem.thumb,none)">setproperty(image,$INFO[listitem.thumb],home)</onfocus>
 		<onfocus condition="!String.IsEqual(listitem.thumb,) + !string.EndsWith(listitem.thumb,none)">setproperty(image,$INFO[listitem.thumb],home)</onfocus>
 		<onfocus condition="String.IsEqual(listitem.thumb,) | string.EndsWith(listitem.thumb,none)">clearproperty(image,home)</onfocus>	
-		<onfocus>setproperty(label,$INFO[listItem.label],home)</onfocus>
+		<onfocus>setproperty(label,$ESCINFO[listItem.label],home)</onfocus>
 		<onfocus>cancelalarm(scroll_infos,silent)</onfocus>
 		<onfocus>clearproperty(scroll_infos,home)</onfocus>
 		<onfocus>alarmclock(scroll_infos,setproperty(scroll_infos,1,home),00:03,silent)</onfocus>		
