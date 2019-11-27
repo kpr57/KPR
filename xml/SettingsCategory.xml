@@ -19,6 +19,20 @@
 		<align>center</align>
 		<font>titre</font>		
 	</control>
+	<control type="button" id="20">				
+		<left>1920</left>	
+	</control>
+	<control type="button" id="19">				
+		<top>45</top>
+		<left>60</left>
+		<width>auto</width>
+		<ondown>3</ondown>
+		<onclick>SettingsLevelChange</onclick>
+		<label>$LOCALIZE[31273] : [LOWERCASE]$INFO[control.getlabel(20)][/LOWERCASE]</label>
+	<include content="bouton">																											
+		<param name="height" value="50"/> 		
+	</include>		
+	</control>
 	<include content="barre_separation_horizontale">																							<description>barre de separation horizontale</description>
 		<param name="left" value="50"/> 
 		<param name="right" value="50"/>
@@ -31,7 +45,7 @@
 		<height>405</height>
 		<onleft>action(back)</onleft>
 		<onright>5</onright>
-		<onup>noop</onup>
+		<onup>19</onup>
 		<ondown>noop</ondown>
 		<itemgap>20</itemgap>		
 	</control>	

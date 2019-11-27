@@ -9,8 +9,8 @@
 	</control>
 	<control type="group">
 		<visible>window.isvisible(VideoFullScreen.xml)</visible>
-		<animation effect="fade" start="0" end="100" delay="200" time="200">windowopen</animation>
-		<animation effect="fade" start="100" end="0" time="200">windowclose</animation>	
+		<animation effect="fade" start="0" end="100" delay="200" time="100">windowopen</animation>
+		<animation effect="fade" start="100" end="0" time="100">windowclose</animation>	
 	<control type="image">
 		<top>257</top>
 		<left>605</left>
@@ -27,7 +27,7 @@
 		<aspectratio>stretch</aspectratio>
 		<texture colordiffuse="1a000000" border="50">commun/bouton.png</texture>
 	</control>
-	<control type="label" id="1">																												<description>titre</description>
+	<control type="label">																														<description>titre</description>
 		<top>257</top>
 		<left>610</left>
 		<width>700</width>
@@ -35,6 +35,7 @@
 		<font>menu</font>
 		<textcolor>$VAR[gris]</textcolor>
 		<align>center</align>
+		<label>$INFO[control.getlabel(1)]</label>
 	</control>	
 	<include condition="window.isvisible(videofullscreen.xml)">dialogselect_videofullscreen</include>
 	</control>
@@ -139,7 +140,7 @@
 		<left>130</left>
 		<right>2</right>
 		<height>70</height>		
-		<textcolor>ff433736</textcolor>
+		<textcolor>$VAR[gris]</textcolor>
 		<label>$INFO[ListItem.Label]</label>
 		<scroll>true</scroll>	
 	</control>		

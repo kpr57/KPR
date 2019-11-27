@@ -3,6 +3,15 @@
 	<backgroundcolor>00X000000</backgroundcolor>
 	<zorder>10</zorder>
 <controls>	
+	<control type="image">																														<description>fond titre OSD</description>
+		<centerleft>50%</centerleft>
+		<top>5</top>
+		<width>140</width>
+		<height>100</height>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="$VAR[couleur_OSD]">commun/texture.png</texture>
+		<visible>!window.isvisible(VideoOSD.xml) + !player.Paused + !Player.Forwarding + !Player.Rewinding + !player.showinfo</visible>
+	</control>
 	<control type="group">
 		<centerleft>50%</centerleft>
 		<top>15</top>
@@ -11,7 +20,7 @@
 	<control type="progress" id="1111">
 		<info>Player.Volume</info>
 		<visible>false</visible>
-	</control>
+	</control>	
 	<control type="image">
 		<texture colordiffuse="ff808080">boutons/volume/p100.png</texture>
 	</control>

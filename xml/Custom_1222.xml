@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<window type="dialog" id="1222">
+	<backgroundcolor>00X000000</backgroundcolor>
+	<defaultcontrol always="true">8000</defaultcontrol>
+<controls>
+	<control type="progress" id="1111">
+		<info>Player.Volume</info>
+		<visible>false</visible>
+	</control>
+	<control type="group">
+		<animation effect="fade" start="0" end="100" delay="200" time="100">windowopen</animation>
+		<animation effect="fade" start="100" end="0" time="100">windowclose</animation>	
+	<control type="image">
+		<top>256</top>
+		<left>700</left>
+		<width>520</width>
+		<height>543</height>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="fff0f0f0" border="50">commun/bouton.png</texture>
+	</control>	
+	<control type="label">																														<description>titre</description>
+		<top>256</top>
+		<left>790</left>
+		<width>340</width>
+		<height>80</height>			
+		<font>menu</font>
+		<textcolor>$VAR[gris]</textcolor>
+		<align>center</align>	
+		<label>$LOCALIZE[31272]</label>
+	</control>
+	<control type="panel" id="8000">																											<description>liste des elements a modifier</description>			
+		<top>336</top>
+		<left>705</left>
+		<width>510</width>
+		<height>408</height>
+		<ondown>8100</ondown>
+		<scrolltime tween="Linear" easing="in">250</scrolltime>
+	<itemlayout width="102" height="102">					
+	<control type="image">	
+		<top>6</top>
+		<left>6</left>
+		<width>90</width>
+		<height>90</height>
+		<texture background="true">commun/couleurs_OSD/$INFO[listitem.property(couleur)].png</texture>
+		<aspectratio>stretch</aspectratio>
+	</control>
+	</itemlayout>
+	<focusedlayout width="102" height="102">					
+	<control type="button" id="$PARAM[id]">
+		<width>102</width>
+		<height>102</height>
+		<aspectratio>stretch</aspectratio>
+		<texturenofocus colordiffuse="00ffffff" border="20">commun/selection.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/selection.png</texturefocus>
+	</control>
+	<control type="image">	
+		<top>6</top>
+		<left>6</left>
+		<width>90</width>
+		<height>90</height>
+		<texture background="true">commun/couleurs_OSD/$INFO[listitem.property(couleur)].png</texture>
+		<aspectratio>stretch</aspectratio>		
+	</control>
+	</focusedlayout>
+	<content>
+	<item><property name="couleur">00000f</property><onclick>skin.setstring(couleur_base_OSD,$INFO[listitem.property(couleur)])</onclick></item>
+	<item><property name="couleur">1abc9c</property><onclick>skin.setstring(couleur_base_OSD,$INFO[listitem.property(couleur)])</onclick></item>
+	<item><property name="couleur">2ecc71</property><onclick>skin.setstring(couleur_base_OSD,$INFO[listitem.property(couleur)])</onclick></item>
+	<item><property name="couleur">3498db</property><onclick>skin.setstring(couleur_base_OSD,$INFO[listitem.property(couleur)])</onclick></item>
+	<item><property name="couleur">9b59b6</property><onclick>skin.setstring(couleur_base_OSD,$INFO[listitem.property(couleur)])</onclick></item>
+	<item><property name="couleur">34495e</property><onclick>skin.setstring(couleur_base_OSD,$INFO[listitem.property(couleur)])</onclick></item>
+	<item><property name="couleur">16a085</property><onclick>skin.setstring(couleur_base_OSD,$INFO[listitem.property(couleur)])</onclick></item>
+	<item><property name="couleur">ffffff</property><onclick>skin.setstring(couleur_base_OSD,$INFO[listitem.property(couleur)])</onclick></item>
+	<item><property name="couleur">2980b9</property><onclick>skin.setstring(couleur_base_OSD,$INFO[listitem.property(couleur)])</onclick></item>
+	<item><property name="couleur">8e44ad</property><onclick>skin.setstring(couleur_base_OSD,$INFO[listitem.property(couleur)])</onclick></item>
+	<item><property name="couleur">2c3e50</property><onclick>skin.setstring(couleur_base_OSD,$INFO[listitem.property(couleur)])</onclick></item>
+	<item><property name="couleur">f1c40f</property><onclick>skin.setstring(couleur_base_OSD,$INFO[listitem.property(couleur)])</onclick></item>
+	<item><property name="couleur">e67e22</property><onclick>skin.setstring(couleur_base_OSD,$INFO[listitem.property(couleur)])</onclick></item>
+	<item><property name="couleur">e74c3c</property><onclick>skin.setstring(couleur_base_OSD,$INFO[listitem.property(couleur)])</onclick></item>
+	<item><property name="couleur">2F3238</property><onclick>skin.setstring(couleur_base_OSD,$INFO[listitem.property(couleur)])</onclick></item>
+	<item><property name="couleur">95a5a6</property><onclick>skin.setstring(couleur_base_OSD,$INFO[listitem.property(couleur)])</onclick></item>
+	<item><property name="couleur">f39c12</property><onclick>skin.setstring(couleur_base_OSD,$INFO[listitem.property(couleur)])</onclick></item>
+	<item><property name="couleur">c0392b</property><onclick>skin.setstring(couleur_base_OSD,$INFO[listitem.property(couleur)])</onclick></item>
+	<item><property name="couleur">bdc3c7</property><onclick>skin.setstring(couleur_base_OSD,$INFO[listitem.property(couleur)])</onclick></item>
+	<item><property name="couleur">7f8c8d</property><onclick>skin.setstring(couleur_base_OSD,$INFO[listitem.property(couleur)])</onclick></item>
+	</content>
+	</control>
+	<control type="grouplist" id="8100">																										<description>liste boutons</description>	
+		<top>749</top>
+		<left>700</left>
+		<width>520</width>
+		<height>40</height>
+		<itemgap>10</itemgap>
+		<onup>8000</onup>
+		<align>center</align>
+		<orientation>horizontal</orientation>		
+	<control type="button" id="8101">
+		<width>auto</width>
+		<onclick>close</onclick>
+		<label>$LOCALIZE[15067]</label>
+	<include content="petit_bouton">
+		<param name="texturenofocus_colordiffuse" value="1a000000"/>
+		<param name="focusedcolor" value="ffffffff"/>
+		<param name="align" value="center"/>
+	</include>			
+	</control>
+	</control>	
+	
+	
+	</control>	
+</controls>
+</window>

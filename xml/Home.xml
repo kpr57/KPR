@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>			
+	
+	<!--
+	
+	- griser les elements de menu non cochable (exemple tv si pas de PVR)
+	- Probleme quand configuratuion menu et retour plein ecran
+	
+	-->
+	
+	
+	
+	
 	<backgroundcolor>00X000000</backgroundcolor>
 	<onload condition="string.isempty(skin.string(skin_start))">ReplaceWindow(startup)</onload>
 	<onload>cancelalarm(scroll_infos,silent)</onload>
@@ -7,6 +18,10 @@
 	<onload condition="string.isempty(window(home).property(chemin_widget_tv))">setproperty(chemin_widget_tv,pvr://channels/tv/*,home)</onload>	
 	<onload condition="!string.isempty(window(home).property(osd))">activatewindow(fullscreenvideo)</onload>
 	<onload condition="!string.isempty(window(home).property(osd))">activatewindow(videoosd)</onload>
+	<onload condition="!window.previous(1299)">clearproperty(parametres_menu,home)</onload>
+	<onload condition="!string.isempty(window(home).property(parametres_menu))">control.setfocus(1555)</onload>
+	<onload condition="string.isequal(window(home).property(parametres_menu),2)">alarmclock(pm,control.setfocus(1556),00:00,silent)</onload>
+	<onload condition="string.isequal(window(home).property(parametres_menu),3)">alarmclock(pm,control.setfocus(1557),00:00,silent)</onload>	
 	<defaultcontrol>1000</defaultcontrol>	
 <controls>
 	<include>image_fond</include>		
@@ -252,31 +267,65 @@
 		
 	
 	<control type="group">																														<description>menu principal</description>
-		<animation effect="slide" end="-450,0" time="400" condition="!control.hasfocus(1000) + !control.hasfocus(111) + !skin.hassetting(menu_icones)">conditional</animation>
-		<animation effect="slide" end="-150,0" time="150" condition="!control.hasfocus(1000) + !control.hasfocus(111) + skin.hassetting(menu_icones)">conditional</animation>
-		<animation effect="slide" end="-300,0" time="150" condition="skin.hassetting(menu_icones)">conditional</animation>
+		<animation effect="slide" end="-450,0" time="400" condition="string.isempty(window(home).property(parametres_menu)) + !control.hasfocus(1000) + !control.hasfocus(111) + !control.hasfocus(112) + !control.hasfocus(113) + !skin.hassetting(menu_icones)">conditional</animation>
+		<animation effect="slide" end="-150,0" time="150" condition="string.isempty(window(home).property(parametres_menu)) + !control.hasfocus(1000) + !control.hasfocus(111) + !control.hasfocus(112) + !control.hasfocus(113) + skin.hassetting(menu_icones)">conditional</animation>
+		<animation effect="slide" end="-300,0" time="150" condition="string.isempty(window(home).property(parametres_menu)) + skin.hassetting(menu_icones)">conditional</animation>
 		<width>450</width>		
 	<control type="image">
 		<width>430</width>
 		<texture colordiffuse="33000000">commun/texture.png</texture>
 	</control>
-	<control type="button" id="111">
+	<control type="image">
 		<top>0</top>
 		<left>0</left>
+		<height>215</height>
+		<width>430</width>
+		<texture colordiffuse="1a000000">commun/texture.png</texture>
+	</control>
+	<control type="button">
+		<top>15</top>
+		<left>25</left>
+		<width>70</width>
+		<height>70</height>
+		<texturenofocus colordiffuse="20ffffff">menus/eteindre.png</texturenofocus>
+		<animation effect="slide" end="300,0" time="150" condition="skin.hassetting(menu_icones)">conditional</animation>
+		<visible>string.isempty(skin.string(extinction_rapide))</visible>		
+	</control>
+	<control type="button" id="113">
+		<top>25</top>
+		<left>25</left>
+		<width>70</width>
+		<height>70</height>
+		<texturenofocus colordiffuse="80ffffff">menus/eteindre.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]">menus/eteindre.png</texturefocus>
+		<ondown>111</ondown>
+		<onclick condition="string.isequal(skin.string(extinction_rapide),1)">Quit</onclick>
+		<onclick condition="string.isequal(skin.string(extinction_rapide),2)">ShutDown</onclick>
+		<onclick condition="string.isequal(skin.string(extinction_rapide),3)">Reboot</onclick>
+		<onclick condition="string.isequal(skin.string(extinction_rapide),4)">Suspend</onclick>
+		<onclick condition="string.isequal(skin.string(extinction_rapide),5)">Hibernate</onclick>
+		<animation effect="slide" end="300,0" time="150" condition="skin.hassetting(menu_icones)">conditional</animation>
+		<visible>!string.isempty(skin.string(extinction_rapide))</visible>		
+	</control>
+	<control type="button" id="111">
+		<top>90</top>
+		<left>20</left>
 		<width>80</width>
 		<height>100</height>
 		<texturenofocus colordiffuse="80ffffff">boutons/menu.png</texturenofocus>
 		<texturefocus colordiffuse="$VAR[couleur_dominante]">boutons/menu.png</texturefocus>
-		<ondown>control.setfocus(1000,0,absolute)</ondown>
-		<onup>control.setfocus(1000,100,absolute)</onup>
+		<ondown>1000</ondown>
+		<onup condition="!string.isempty(skin.string(extinction_rapide))">113</onup>
 		<onclick>skin.togglesetting(menu_icones)</onclick>
-		<animation effect="slide" end="320,0" time="150" condition="skin.hassetting(menu_icones)">conditional</animation>		
+		<animation effect="slide" end="300,0" time="150" condition="skin.hassetting(menu_icones)">conditional</animation>		
 	</control>	
 	<control type="list" id="1000">		
+		<visible allowhiddenfocus="true">string.isempty(window(home).property(parametres_menu))</visible>
 		<itemgap>0</itemgap>
-		<top>130</top>
+		<top>215</top>
 		<height>732</height>
 		<onup>111</onup>			
+		<ondown>112</ondown>			
 		<onfocus condition="!Weather.IsFetched">alarmclock(actualiser_meteo,activatewindow(weather),00:05,silent)</onfocus>		
 		<onright condition="string.isequal(window(home).property(menu),home)">1001</onright>
 		<onright condition="string.isequal(window(home).property(menu),$LOCALIZE[31168])">2001</onright>
@@ -292,7 +341,7 @@
 		<orientation>vertical</orientation>	
 	<itemlayout height="122">	
 	<control type="image">		
-		<right>50</right>
+		<right>45</right>
 		<top>20</top>
 		<height>82</height>
 		<width>82</width>
@@ -314,9 +363,9 @@
 		<onfocus>setproperty(menu,$INFO[container(1000).listitem.label],home)</onfocus>
 	</control>
 	<control type="group">
-		<visible>control.hasfocus(111)</visible>
+		<visible>control.hasfocus(111) | control.hasfocus(112) | control.hasfocus(113)</visible>
 	<control type="image">		
-		<right>50</right>
+		<right>45</right>
 		<top>20</top>
 		<height>82</height>
 		<width>82</width>
@@ -332,7 +381,7 @@
 	</control>	
 	</control>
 	<control type="group">
-		<visible>!control.hasfocus(111)</visible>
+		<visible>!control.hasfocus(111) + !control.hasfocus(112) + !control.hasfocus(113)</visible>
 	<control type="image">		
 		<top>-20</top>
 		<height>162</height>
@@ -341,7 +390,7 @@
 		<bordersize>0,10,10,10</bordersize>
 	</control>
 	<control type="image">		
-		<right>50</right>
+		<right>45</right>
 		<top>20</top>
 		<height>82</height>
 		<width>82</width>
@@ -362,47 +411,55 @@
 		<label>HOME</label>
 		<icon>menus/home.png</icon>
 		<property name="action">action(right)</property>
+		<visible>string.isempty(skin.string(masquer_menu_1))</visible>
 	</item>	
-	<item>	
-		<label>$LOCALIZE[31168]</label>
-		<icon>menus/videos.png</icon>
-		<property name="action">activatewindow(videos,videodb://movies/titles,return)</property>
-		<visible>Library.HasContent(movies)</visible>
-	</item>	
-	<item>	
-		<label>$LOCALIZE[31213]</label>
-		<icon>menus/series.png</icon>
-		<property name="action">activatewindow(videos,videodb://tvshows/titles,return)</property>
-		<visible>Library.HasContent(tvshows)</visible>		
-	</item>		
-	<item>	
-		<label>$LOCALIZE[31169]</label>
-		<icon>menus/music.png</icon>
-		<property name="action">activatewindow(music,musicdb://albums,return)</property>
-		<visible>Library.HasContent(music)</visible>		
-	</item>	
-	<item>	
-		<label>$LOCALIZE[31170]</label>
-		<icon>menus/pictures.png</icon>
-		<property name="action">activatewindow(Pictures)</property>		
-	</item>	
-	<item>	
-		<label>$LOCALIZE[31171]</label>
-		<icon>menus/livetv.png</icon>
-		<property name="action">activatewindow(TVGuide)</property>
-		<visible>System.HasPVRAddon</visible>		
-	</item>	
-	<item>	
-		<label>$LOCALIZE[31172]</label>
-		<icon>menus/radio.png</icon>
-		<property name="action">activatewindow(RadioChannels)</property>
-		<visible>System.HasPVRAddon + Pvr.HasRadioChannels</visible>		
-	</item>		
-	<item>	
-		<label>$LOCALIZE[31173]</label>
-		<icon>menus/weather.png</icon>
-		<property name="action">activatewindow(Weather)</property>
-		<visible>!String.IsEmpty(Weather.Plugin)</visible>			
+	<item>
+	<include condition="string.isequal(skin.string(item_menu_1),videos)">item_menu_1</include>
+	<include condition="string.isequal(skin.string(item_menu_1),series)">item_menu_2</include>
+	<include condition="string.isequal(skin.string(item_menu_1),musique)">item_menu_3</include>
+	<include condition="string.isequal(skin.string(item_menu_1),images)">item_menu_4</include>
+	<include condition="string.isequal(skin.string(item_menu_1),tv)">item_menu_5</include>
+	<include condition="string.isequal(skin.string(item_menu_1),meteo)">item_menu_6</include>	
+	</item>
+	<item>
+	<include condition="string.isequal(skin.string(item_menu_2),videos)">item_menu_1</include>
+	<include condition="string.isequal(skin.string(item_menu_2),series)">item_menu_2</include>
+	<include condition="string.isequal(skin.string(item_menu_2),musique)">item_menu_3</include>
+	<include condition="string.isequal(skin.string(item_menu_2),images)">item_menu_4</include>
+	<include condition="string.isequal(skin.string(item_menu_2),tv)">item_menu_5</include>
+	<include condition="string.isequal(skin.string(item_menu_2),meteo)">item_menu_6</include>	
+	</item>
+	<item>
+	<include condition="string.isequal(skin.string(item_menu_3),videos)">item_menu_1</include>
+	<include condition="string.isequal(skin.string(item_menu_3),series)">item_menu_2</include>
+	<include condition="string.isequal(skin.string(item_menu_3),musique)">item_menu_3</include>
+	<include condition="string.isequal(skin.string(item_menu_3),images)">item_menu_4</include>
+	<include condition="string.isequal(skin.string(item_menu_3),tv)">item_menu_5</include>
+	<include condition="string.isequal(skin.string(item_menu_3),meteo)">item_menu_6</include>	
+	</item>
+	<item>
+	<include condition="string.isequal(skin.string(item_menu_4),videos)">item_menu_1</include>
+	<include condition="string.isequal(skin.string(item_menu_4),series)">item_menu_2</include>
+	<include condition="string.isequal(skin.string(item_menu_4),musique)">item_menu_3</include>
+	<include condition="string.isequal(skin.string(item_menu_4),images)">item_menu_4</include>
+	<include condition="string.isequal(skin.string(item_menu_4),tv)">item_menu_5</include>
+	<include condition="string.isequal(skin.string(item_menu_4),meteo)">item_menu_6</include>	
+	</item>
+	<item>
+	<include condition="string.isequal(skin.string(item_menu_5),videos)">item_menu_1</include>
+	<include condition="string.isequal(skin.string(item_menu_5),series)">item_menu_2</include>
+	<include condition="string.isequal(skin.string(item_menu_5),musique)">item_menu_3</include>
+	<include condition="string.isequal(skin.string(item_menu_5),images)">item_menu_4</include>
+	<include condition="string.isequal(skin.string(item_menu_5),tv)">item_menu_5</include>
+	<include condition="string.isequal(skin.string(item_menu_5),meteo)">item_menu_6</include>	
+	</item>
+	<item>
+	<include condition="string.isequal(skin.string(item_menu_6),videos)">item_menu_1</include>
+	<include condition="string.isequal(skin.string(item_menu_6),series)">item_menu_2</include>
+	<include condition="string.isequal(skin.string(item_menu_6),musique)">item_menu_3</include>
+	<include condition="string.isequal(skin.string(item_menu_6),images)">item_menu_4</include>
+	<include condition="string.isequal(skin.string(item_menu_6),tv)">item_menu_5</include>
+	<include condition="string.isequal(skin.string(item_menu_6),meteo)">item_menu_6</include>	
 	</item>
 	<item>	
 		<label>$LOCALIZE[31174]</label>
@@ -416,10 +473,371 @@
 	</item>		
 	</content>	
 	</control>	
+	<control type="list" id="1555">		
+		<visible allowhiddenfocus="true">!string.isempty(window(home).property(parametres_menu))</visible>
+		<itemgap>0</itemgap>
+		<top>215</top>
+		<height>732</height>
+		<ondown>112</ondown>		
+		<onleft condition="!container(1555).row(0)">control.setfocus(1556)</onleft>
+		<onleft condition="container(1555).row(0)">control.setfocus(1557)</onleft>		
+		<onclick condition="string.isempty(skin.string(masquer_menu_1)) + string.isequal(listitem.label,home)">skin.setstring(masquer_menu_1,1)</onclick>
+		<onclick condition="!string.isempty(skin.string(masquer_menu_1)) + string.isequal(listitem.label,home)">skin.setstring(masquer_menu_1,)</onclick>		
+		<onclick condition="string.isempty(skin.string(masquer_menu_2)) + string.isequal(listitem.label,$LOCALIZE[31168])">skin.setstring(masquer_menu_2,1)</onclick>
+		<onclick condition="!string.isempty(skin.string(masquer_menu_2)) + string.isequal(listitem.label,$LOCALIZE[31168])">skin.setstring(masquer_menu_2,)</onclick>		
+		<onclick condition="string.isempty(skin.string(masquer_menu_3)) + string.isequal(listitem.label,$LOCALIZE[31213])">skin.setstring(masquer_menu_3,1)</onclick>
+		<onclick condition="!string.isempty(skin.string(masquer_menu_3)) + string.isequal(listitem.label,$LOCALIZE[31213])">skin.setstring(masquer_menu_3,)</onclick>		
+		<onclick condition="string.isempty(skin.string(masquer_menu_4)) + string.isequal(listitem.label,$LOCALIZE[31169])">skin.setstring(masquer_menu_4,1)</onclick>
+		<onclick condition="!string.isempty(skin.string(masquer_menu_4)) + string.isequal(listitem.label,$LOCALIZE[31169])">skin.setstring(masquer_menu_4,)</onclick>		
+		<onclick condition="string.isempty(skin.string(masquer_menu_5)) + string.isequal(listitem.label,$LOCALIZE[31170])">skin.setstring(masquer_menu_5,1)</onclick>
+		<onclick condition="!string.isempty(skin.string(masquer_menu_5)) + string.isequal(listitem.label,$LOCALIZE[31170])">skin.setstring(masquer_menu_5,)</onclick>		
+		<onclick condition="string.isempty(skin.string(masquer_menu_6)) + string.isequal(listitem.label,$LOCALIZE[31171])">skin.setstring(masquer_menu_6,1)</onclick>
+		<onclick condition="!string.isempty(skin.string(masquer_menu_6)) + string.isequal(listitem.label,$LOCALIZE[31171])">skin.setstring(masquer_menu_6,)</onclick>
+		<onclick condition="string.isempty(skin.string(masquer_menu_7)) + string.isequal(listitem.label,$LOCALIZE[31173])">skin.setstring(masquer_menu_7,1)</onclick>
+		<onclick condition="!string.isempty(skin.string(masquer_menu_7)) + string.isequal(listitem.label,$LOCALIZE[31173])">skin.setstring(masquer_menu_7,)</onclick>		
+		<scrolltime tween="cubic" easing="out">500</scrolltime>
+		<orientation>vertical</orientation>	
+	<itemlayout height="122">		
+	<control type="image">		
+		<right>50</right>
+		<top>20</top>
+		<height>82</height>
+		<width>82</width>
+		<aspectratio>keep</aspectratio>
+		<texture colordiffuse="80ffffff">$INFO[listitem.icon]</texture>				
+	</control>
+	<control type="label">
+		<right>150</right>
+		<align>right</align>
+		<font>menu</font>
+		<textcolor>80ffffff</textcolor>
+		<label>$INFO[listitem.label]</label>
+	</control>
+	<control type="image">
+		<left>70</left>
+		<top>41</top>
+		<height>40</height>
+		<width>40</width>
+		<aspectratio>keep</aspectratio>
+		<texture colordiffuse="80ffffff">boutons/radiobutton_off.png</texture>
+		<visible>[!string.isempty(skin.string(masquer_menu_1)) + string.isequal(listitem.label,home)] | [!string.isempty(skin.string(masquer_menu_2)) + string.isequal(listitem.label,$LOCALIZE[31168])] | [!string.isempty(skin.string(masquer_menu_3)) + string.isequal(listitem.label,$LOCALIZE[31213])] | [!string.isempty(skin.string(masquer_menu_4)) + string.isequal(listitem.label,$LOCALIZE[31169])] | [!string.isempty(skin.string(masquer_menu_5)) + string.isequal(listitem.label,$LOCALIZE[31170])] | [!string.isempty(skin.string(masquer_menu_6)) + string.isequal(listitem.label,$LOCALIZE[31171])] | [!string.isempty(skin.string(masquer_menu_7)) + string.isequal(listitem.label,$LOCALIZE[31173])]</visible>
+	</control>
+	<control type="image">
+		<left>70</left>
+		<top>41</top>
+		<height>40</height>
+		<width>40</width>
+		<aspectratio>keep</aspectratio>
+		<texture colordiffuse="80ffffff">boutons/radiobutton_on.png</texture>
+		<visible>[string.isempty(skin.string(masquer_menu_1)) + string.isequal(listitem.label,home)] | [string.isempty(skin.string(masquer_menu_2)) + string.isequal(listitem.label,$LOCALIZE[31168])] | [string.isempty(skin.string(masquer_menu_3)) + string.isequal(listitem.label,$LOCALIZE[31213])] | [string.isempty(skin.string(masquer_menu_4)) + string.isequal(listitem.label,$LOCALIZE[31169])] | [string.isempty(skin.string(masquer_menu_5)) + string.isequal(listitem.label,$LOCALIZE[31170])] | [string.isempty(skin.string(masquer_menu_6)) + string.isequal(listitem.label,$LOCALIZE[31171])] | [string.isempty(skin.string(masquer_menu_7)) + string.isequal(listitem.label,$LOCALIZE[31173])]</visible>
+	</control>
+	</itemlayout>
+	<focusedlayout height="122">	
+	<control type="group">
+		<visible>!control.hasfocus(112)</visible>
+	<control type="image">		
+		<top>-20</top>
+		<height>162</height>
+		<aspectratio>stretch</aspectratio>
+		<texture border="10" colordiffuse="$VAR[couleur_dominante]">boutons/bouton_menu_cd.png</texture>				
+		<bordersize>0,10,10,10</bordersize>
+	</control>
+	<control type="image">		
+		<right>50</right>
+		<top>20</top>
+		<height>82</height>
+		<width>82</width>
+		<aspectratio>keep</aspectratio>
+		<texture colordiffuse="$VAR[gris]">$INFO[listitem.icon]</texture>				
+	</control>
+	<control type="label">
+		<right>150</right>
+		<align>right</align>
+		<font>menu</font>
+		<textcolor>$VAR[gris]</textcolor>
+		<label>$INFO[listitem.label]</label>
+	</control>		
+	<control type="image">
+		<left>70</left>
+		<top>41</top>
+		<height>40</height>
+		<width>40</width>
+		<aspectratio>keep</aspectratio>
+		<texture colordiffuse="$VAR[gris]">boutons/radiobutton_off.png</texture>
+		<visible>[!string.isempty(skin.string(masquer_menu_1)) + string.isequal(listitem.label,home)] | [!string.isempty(skin.string(masquer_menu_2)) + string.isequal(listitem.label,$LOCALIZE[31168])] | [!string.isempty(skin.string(masquer_menu_3)) + string.isequal(listitem.label,$LOCALIZE[31213])] | [!string.isempty(skin.string(masquer_menu_4)) + string.isequal(listitem.label,$LOCALIZE[31169])] | [!string.isempty(skin.string(masquer_menu_5)) + string.isequal(listitem.label,$LOCALIZE[31170])] | [!string.isempty(skin.string(masquer_menu_6)) + string.isequal(listitem.label,$LOCALIZE[31171])] | [!string.isempty(skin.string(masquer_menu_7)) + string.isequal(listitem.label,$LOCALIZE[31173])]</visible>
+	</control>
+	<control type="image">
+		<left>70</left>
+		<top>41</top>
+		<height>40</height>
+		<width>40</width>
+		<aspectratio>keep</aspectratio>
+		<texture colordiffuse="$VAR[gris]">boutons/radiobutton_on.png</texture>
+		<visible>[string.isempty(skin.string(masquer_menu_1)) + string.isequal(listitem.label,home)] | [string.isempty(skin.string(masquer_menu_2)) + string.isequal(listitem.label,$LOCALIZE[31168])] | [string.isempty(skin.string(masquer_menu_3)) + string.isequal(listitem.label,$LOCALIZE[31213])] | [string.isempty(skin.string(masquer_menu_4)) + string.isequal(listitem.label,$LOCALIZE[31169])] | [string.isempty(skin.string(masquer_menu_5)) + string.isequal(listitem.label,$LOCALIZE[31170])] | [string.isempty(skin.string(masquer_menu_6)) + string.isequal(listitem.label,$LOCALIZE[31171])] | [string.isempty(skin.string(masquer_menu_7)) + string.isequal(listitem.label,$LOCALIZE[31173])]</visible>
+	</control>	
+	<control type="image">
+		<left>32</left>
+		<top>35</top>
+		<height>25</height>
+		<width>25</width>
+		<aspectratio>keep</aspectratio>
+		<texture colordiffuse="$VAR[gris]">boutons/haut2.png</texture>
+		<visible>!control.hasfocus(1556) + !container(1555).row(0) + !container(1555).row(5)</visible>
+	</control>
+	<control type="image">
+		<left>32</left>
+		<top>48</top>
+		<height>25</height>
+		<width>25</width>
+		<aspectratio>keep</aspectratio>
+		<texture colordiffuse="$VAR[gris]">boutons/haut2.png</texture>		
+		<visible>!control.hasfocus(1556) + container(1555).row(5)</visible>
+	</control>		
+	<control type="image">
+		<left>32</left>
+		<top>35</top>
+		<height>25</height>
+		<width>25</width>
+		<aspectratio>keep</aspectratio>
+		<texture>boutons/haut2.png</texture>
+		<visible>control.hasfocus(1556) + !container(1555).row(0) + !container(1555).row(5)</visible>
+	</control>
+	<control type="image">
+		<left>32</left>
+		<top>48</top>
+		<height>25</height>
+		<width>25</width>
+		<aspectratio>keep</aspectratio>
+		<texture>boutons/haut2.png</texture>		
+		<visible>control.hasfocus(1556) + container(1555).row(5)</visible>
+	</control>	
+	<control type="image">
+		<left>32</left>
+		<top>62</top>
+		<height>25</height>
+		<width>25</width>
+		<aspectratio>keep</aspectratio>
+		<texture colordiffuse="$VAR[gris]">boutons/bas2.png</texture>		
+		<visible>!control.hasfocus(1557) + !container(1555).row(5) + !container(1555).row(0)</visible>
+	</control>
+	<control type="image">
+		<left>32</left>
+		<top>48</top>
+		<height>25</height>
+		<width>25</width>
+		<aspectratio>keep</aspectratio>
+		<texture colordiffuse="$VAR[gris]">boutons/bas2.png</texture>		
+		<visible>!control.hasfocus(1557) + container(1555).row(0)</visible>
+	</control>
+	<control type="image">
+		<left>32</left>
+		<top>62</top>
+		<height>25</height>
+		<width>25</width>
+		<aspectratio>keep</aspectratio>
+		<texture>boutons/bas2.png</texture>		
+		<visible>control.hasfocus(1557) + !container(1555).row(5) + !container(1555).row(0)</visible>
+	</control>
+	<control type="image">
+		<left>32</left>
+		<top>48</top>
+		<height>25</height>
+		<width>25</width>
+		<aspectratio>keep</aspectratio>
+		<texture>boutons/bas2.png</texture>		
+		<visible>control.hasfocus(1557) + container(1555).row(0)</visible>
+	</control>
+	</control>
+	<control type="group">
+		<visible>control.hasfocus(112)</visible>
+	<control type="image">		
+		<right>50</right>
+		<top>20</top>
+		<height>82</height>
+		<width>82</width>
+		<aspectratio>keep</aspectratio>
+		<texture colordiffuse="80ffffff">$INFO[listitem.icon]</texture>				
+	</control>
+	<control type="label">
+		<right>150</right>
+		<align>right</align>
+		<font>menu</font>
+		<textcolor>80ffffff</textcolor>
+		<label>$INFO[listitem.label]</label>
+	</control>		
+	<control type="image">
+		<left>70</left>
+		<top>41</top>
+		<height>40</height>
+		<width>40</width>
+		<aspectratio>keep</aspectratio>
+		<texture colordiffuse="80ffffff">boutons/radiobutton_off.png</texture>
+		<visible>[!string.isempty(skin.string(masquer_menu_1)) + string.isequal(listitem.label,home)] | [!string.isempty(skin.string(masquer_menu_2)) + string.isequal(listitem.label,$LOCALIZE[31168])] | [!string.isempty(skin.string(masquer_menu_3)) + string.isequal(listitem.label,$LOCALIZE[31213])] | [!string.isempty(skin.string(masquer_menu_4)) + string.isequal(listitem.label,$LOCALIZE[31169])] | [!string.isempty(skin.string(masquer_menu_5)) + string.isequal(listitem.label,$LOCALIZE[31170])] | [!string.isempty(skin.string(masquer_menu_6)) + string.isequal(listitem.label,$LOCALIZE[31171])] | [!string.isempty(skin.string(masquer_menu_7)) + string.isequal(listitem.label,$LOCALIZE[31173])]</visible>
+	</control>
+	<control type="image">
+		<left>70</left>
+		<top>41</top>
+		<height>40</height>
+		<width>40</width>
+		<aspectratio>keep</aspectratio>
+		<texture colordiffuse="80ffffff">boutons/radiobutton_on.png</texture>
+		<visible>[string.isempty(skin.string(masquer_menu_1)) + string.isequal(listitem.label,home)] | [string.isempty(skin.string(masquer_menu_2)) + string.isequal(listitem.label,$LOCALIZE[31168])] | [string.isempty(skin.string(masquer_menu_3)) + string.isequal(listitem.label,$LOCALIZE[31213])] | [string.isempty(skin.string(masquer_menu_4)) + string.isequal(listitem.label,$LOCALIZE[31169])] | [string.isempty(skin.string(masquer_menu_5)) + string.isequal(listitem.label,$LOCALIZE[31170])] | [string.isempty(skin.string(masquer_menu_6)) + string.isequal(listitem.label,$LOCALIZE[31171])] | [string.isempty(skin.string(masquer_menu_7)) + string.isequal(listitem.label,$LOCALIZE[31173])]</visible>
+	</control>
+	</control>
+	</focusedlayout>
+	<content>
+	<item>
+	<include condition="string.isequal(skin.string(item_menu_1),videos)">item_menu_10</include>
+	<include condition="string.isequal(skin.string(item_menu_1),series)">item_menu_20</include>
+	<include condition="string.isequal(skin.string(item_menu_1),musique)">item_menu_30</include>
+	<include condition="string.isequal(skin.string(item_menu_1),images)">item_menu_40</include>
+	<include condition="string.isequal(skin.string(item_menu_1),tv)">item_menu_50</include>
+	<include condition="string.isequal(skin.string(item_menu_1),meteo)">item_menu_60</include>	
+	</item>
+	<item>
+	<include condition="string.isequal(skin.string(item_menu_2),videos)">item_menu_10</include>
+	<include condition="string.isequal(skin.string(item_menu_2),series)">item_menu_20</include>
+	<include condition="string.isequal(skin.string(item_menu_2),musique)">item_menu_30</include>
+	<include condition="string.isequal(skin.string(item_menu_2),images)">item_menu_40</include>
+	<include condition="string.isequal(skin.string(item_menu_2),tv)">item_menu_50</include>
+	<include condition="string.isequal(skin.string(item_menu_2),meteo)">item_menu_60</include>	
+	</item>
+	<item>
+	<include condition="string.isequal(skin.string(item_menu_3),videos)">item_menu_10</include>
+	<include condition="string.isequal(skin.string(item_menu_3),series)">item_menu_20</include>
+	<include condition="string.isequal(skin.string(item_menu_3),musique)">item_menu_30</include>
+	<include condition="string.isequal(skin.string(item_menu_3),images)">item_menu_40</include>
+	<include condition="string.isequal(skin.string(item_menu_3),tv)">item_menu_50</include>
+	<include condition="string.isequal(skin.string(item_menu_3),meteo)">item_menu_60</include>	
+	</item>
+	<item>
+	<include condition="string.isequal(skin.string(item_menu_4),videos)">item_menu_10</include>
+	<include condition="string.isequal(skin.string(item_menu_4),series)">item_menu_20</include>
+	<include condition="string.isequal(skin.string(item_menu_4),musique)">item_menu_30</include>
+	<include condition="string.isequal(skin.string(item_menu_4),images)">item_menu_40</include>
+	<include condition="string.isequal(skin.string(item_menu_4),tv)">item_menu_50</include>
+	<include condition="string.isequal(skin.string(item_menu_4),meteo)">item_menu_60</include>	
+	</item>
+	<item>
+	<include condition="string.isequal(skin.string(item_menu_5),videos)">item_menu_10</include>
+	<include condition="string.isequal(skin.string(item_menu_5),series)">item_menu_20</include>
+	<include condition="string.isequal(skin.string(item_menu_5),musique)">item_menu_30</include>
+	<include condition="string.isequal(skin.string(item_menu_5),images)">item_menu_40</include>
+	<include condition="string.isequal(skin.string(item_menu_5),tv)">item_menu_50</include>
+	<include condition="string.isequal(skin.string(item_menu_5),meteo)">item_menu_60</include>	
+	</item>
+	<item>
+	<include condition="string.isequal(skin.string(item_menu_6),videos)">item_menu_10</include>
+	<include condition="string.isequal(skin.string(item_menu_6),series)">item_menu_20</include>
+	<include condition="string.isequal(skin.string(item_menu_6),musique)">item_menu_30</include>
+	<include condition="string.isequal(skin.string(item_menu_6),images)">item_menu_40</include>
+	<include condition="string.isequal(skin.string(item_menu_6),tv)">item_menu_50</include>
+	<include condition="string.isequal(skin.string(item_menu_6),meteo)">item_menu_60</include>	
+	</item>	
+	</content>	
+	</control>	
+	<control type="image">
+		<top>215</top>
+		<height>366</height>
+		<width>430</width>
+		<texture flipy="true" colordiffuse="bf000000">commun/degrade.png</texture>
+	</control>
+	<control type="image">
+		<bottom>133</bottom>
+		<height>366</height>
+		<width>430</width>
+		<texture colordiffuse="bf000000">commun/degrade.png</texture>
+	</control>
+	<control type="image">
+		<bottom>0</bottom>
+		<left>0</left>
+		<height>133</height>
+		<width>430</width>
+		<texture colordiffuse="1a000000">commun/texture.png</texture>
+	</control>
+	<control type="button" id="112">
+		<bottom>0</bottom>
+		<left>20</left>
+		<width>80</width>
+		<height>80</height>
+		<onup condition="string.isempty(window(home).property(parametres_menu))">control.setfocus(1000,100,absolute)</onup>			
+		<onup condition="!string.isempty(window(home).property(parametres_menu))">control.setfocus(1555,100,absolute)</onup>			
+		<texturenofocus colordiffuse="80ffffff">boutons/parametres_menu.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]">boutons/parametres_menu.png</texturefocus>
+		<onclick condition="string.isempty(window(home).property(parametres_menu))">setproperty(parametres_menu,1,home)</onclick>		
+		<onclick condition="!string.isempty(window(home).property(parametres_menu))">clearproperty(parametres_menu,home)</onclick>
+		<animation effect="slide" end="300,0" time="150" condition="skin.hassetting(menu_icones)">conditional</animation>		
+	</control>	
 	<control type="image">
 		<left>430</left>
 		<width>20</width>		
 		<texture flipx="true">commun/ombre_gauche.png</texture>
+	</control>
+	<control type="button" id="1556">																										<description>bouton pour deplacer un item menu vers le haut</description>		
+		<top>0</top>
+		<left>5</left>
+		<width>40</width>
+		<height>40</height>		
+		<onright>setproperty(parametres_menu,1,home)</onright>
+		<onright>1555</onright>
+		<ondown condition="!container(1555).row(5)">1557</ondown>
+		<onclick condition="container(1555).row(1)">skin.setstring(temp,$INFO[skin.string(item_menu_1)])</onclick>
+		<onclick condition="container(1555).row(1)">skin.setstring(item_menu_1,$INFO[skin.string(item_menu_2)])</onclick>		
+		<onclick condition="container(1555).row(1)">skin.setstring(item_menu_2,$INFO[skin.string(temp)])</onclick>		
+		<onclick condition="container(1555).row(2)">skin.setstring(temp,$INFO[skin.string(item_menu_2)])</onclick>
+		<onclick condition="container(1555).row(2)">skin.setstring(item_menu_2,$INFO[skin.string(item_menu_3)])</onclick>		
+		<onclick condition="container(1555).row(2)">skin.setstring(item_menu_3,$INFO[skin.string(temp)])</onclick>		
+		<onclick condition="container(1555).row(3)">skin.setstring(temp,$INFO[skin.string(item_menu_3)])</onclick>
+		<onclick condition="container(1555).row(3)">skin.setstring(item_menu_3,$INFO[skin.string(item_menu_4)])</onclick>		
+		<onclick condition="container(1555).row(3)">skin.setstring(item_menu_4,$INFO[skin.string(temp)])</onclick>		
+		<onclick condition="container(1555).row(4)">skin.setstring(temp,$INFO[skin.string(item_menu_4)])</onclick>
+		<onclick condition="container(1555).row(4)">skin.setstring(item_menu_4,$INFO[skin.string(item_menu_5)])</onclick>		
+		<onclick condition="container(1555).row(4)">skin.setstring(item_menu_5,$INFO[skin.string(temp)])</onclick>		
+		<onclick condition="container(1555).row(5)">skin.setstring(temp,$INFO[skin.string(item_menu_5)])</onclick>
+		<onclick condition="container(1555).row(5)">skin.setstring(item_menu_5,$INFO[skin.string(item_menu_6)])</onclick>		
+		<onclick condition="container(1555).row(5)">skin.setstring(item_menu_6,$INFO[skin.string(temp)])</onclick>		
+		<onclick condition="container(1555).row(6)">skin.setstring(temp,$INFO[skin.string(item_menu_6)])</onclick>
+		<onclick condition="container(1555).row(6)">skin.setstring(item_menu_6,$INFO[skin.string(item_menu_7)])</onclick>		
+		<onclick condition="container(1555).row(6)">skin.setstring(item_menu_7,$INFO[skin.string(temp)])</onclick>
+		<onclick>control.setfocus(1555)</onclick>
+		<onclick>alarmclock(up,action(up),00:00,silent)</onclick>
+		<onclick condition="!container(1555).row(1)">setproperty(parametres_menu,2,home)</onclick>		
+		<onclick condition="container(1555).row(1)">setproperty(parametres_menu,3,home)</onclick>		
+		<onclick>activatewindow(1299)</onclick>
+		
+	</control>
+	<control type="button" id="1557">																										<description>bouton pour deplacer un item menu vers le bas</description>				
+		<top>0</top>
+		<left>5</left>
+		<width>40</width>
+		<height>40</height>		
+		<onright>setproperty(parametres_menu,1,home)</onright>
+		<onright>1555</onright>
+		<onup condition="!container(1555).row(0)">1556</onup>
+		<onclick condition="container(1555).row(0)">skin.setstring(temp,$INFO[skin.string(item_menu_2)])</onclick>
+		<onclick condition="container(1555).row(0)">skin.setstring(item_menu_2,$INFO[skin.string(item_menu_1)])</onclick>		
+		<onclick condition="container(1555).row(0)">skin.setstring(item_menu_1,$INFO[skin.string(temp)])</onclick>		
+		<onclick condition="container(1555).row(1)">skin.setstring(temp,$INFO[skin.string(item_menu_3)])</onclick>
+		<onclick condition="container(1555).row(1)">skin.setstring(item_menu_3,$INFO[skin.string(item_menu_2)])</onclick>		
+		<onclick condition="container(1555).row(1)">skin.setstring(item_menu_2,$INFO[skin.string(temp)])</onclick>		
+		<onclick condition="container(1555).row(2)">skin.setstring(temp,$INFO[skin.string(item_menu_4)])</onclick>
+		<onclick condition="container(1555).row(2)">skin.setstring(item_menu_4,$INFO[skin.string(item_menu_3)])</onclick>		
+		<onclick condition="container(1555).row(2)">skin.setstring(item_menu_3,$INFO[skin.string(temp)])</onclick>		
+		<onclick condition="container(1555).row(3)">skin.setstring(temp,$INFO[skin.string(item_menu_5)])</onclick>
+		<onclick condition="container(1555).row(3)">skin.setstring(item_menu_5,$INFO[skin.string(item_menu_4)])</onclick>		
+		<onclick condition="container(1555).row(3)">skin.setstring(item_menu_4,$INFO[skin.string(temp)])</onclick>		
+		<onclick condition="container(1555).row(4)">skin.setstring(temp,$INFO[skin.string(item_menu_6)])</onclick>
+		<onclick condition="container(1555).row(4)">skin.setstring(item_menu_6,$INFO[skin.string(item_menu_5)])</onclick>		
+		<onclick condition="container(1555).row(4)">skin.setstring(item_menu_5,$INFO[skin.string(temp)])</onclick>		
+		<onclick condition="container(1555).row(5)">skin.setstring(temp,$INFO[skin.string(item_menu_7)])</onclick>
+		<onclick condition="container(1555).row(5)">skin.setstring(item_menu_7,$INFO[skin.string(item_menu_6)])</onclick>		
+		<onclick condition="container(1555).row(5)">skin.setstring(item_menu_6,$INFO[skin.string(temp)])</onclick>
+		<onclick>control.setfocus(1555)</onclick>
+		<onclick>alarmclock(up,action(down),00:00,silent)</onclick>
+		<onclick condition="!container(1555).row(4)">setproperty(parametres_menu,3,home)</onclick>		
+		<onclick condition="container(1555).row(4)">setproperty(parametres_menu,2,home)</onclick>
+		<onclick>activatewindow(1299)</onclick>
+		
 	</control>
 	</control>
 	
@@ -1516,7 +1934,7 @@
 		<param name="onup" value="6999"/>
 	</include>	
 	<control type="group" id="6004">																											<description>acces rapide</description>
-		<height>70</height>
+		<height>75</height>
 	<control type="image">
 		<top>27</top>		
 		<left>60</left>
@@ -1537,13 +1955,13 @@
 	</control>
 	<control type="list" id="6008">
 		<width>1920</width>
-		<height>100</height>
+		<height>95</height>
 		<onleft>1000</onleft>
 		<onback>control.setFocus(6008,0,absolute)</onback>		
 		<preloaditems>2</preloaditems>
 		<scrolltime tween="cubic" easing="out">500</scrolltime>
 		<orientation>horizontal</orientation>	
-	<itemlayout height="170" width="350">
+	<itemlayout height="100" width="350">
 	<control type="group">
 		<left>-10</left>
 		<right>10</right>
@@ -1569,7 +1987,7 @@
 	</control>
 	</control>
 	</itemlayout>
-	<focusedlayout height="170" width="350">		
+	<focusedlayout height="100" width="350">		
 	<control type="group">
 		<left>-10</left>
 		<right>10</right>
@@ -2986,9 +3404,9 @@
 	</include>
 	<control type="panel" id="10002">		
 		<left>980</left>
-		<top>160</top>
+		<top>110</top>
 		<width>800</width>
-		<height>800</height>
+		<height>700</height>
 		<onright>8001</onright>
 		<onleft>1000</onleft>		
 		<onup>10999</onup>
@@ -3009,7 +3427,7 @@
 	<include content="bouton_label">																									
 		<param name="width" value="780"/> 
 		<param name="height" value="80"/> 
-		<param name="label" value="$INFO[listItem.label]"/>
+		<param name="label" value="$INFO[listItem.label]$INFO[listitem.property(extinction_rapide)]"/>
 	</include>		
 	</control>
 	</control>
@@ -3066,12 +3484,17 @@
 		<onclick>ReloadSkin()</onclick>				
 		<onclick>replaceWindow(startup)</onclick>				
 	</item>
+	<item>
+		<label>$LOCALIZE[31274]</label>
+		<icon>icones/extinction/extinction rapide.png</icon>
+		<onclick>activatewindow(1223)</onclick>				
+	</item>
 	</content>		
 	</control>		
 	<include content="scrollbar">																												<description>scrollbar</description>
 		<param name="id" value="8001"/> 
-		<param name="top" value="170"/> 
-		<param name="height" value="580"/> 
+		<param name="top" value="120"/> 
+		<param name="height" value="680"/> 
 		<param name="container" value="10002"/>
 	</include>	
 	</control>

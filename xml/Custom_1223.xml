@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window type="dialog" id="1223">
+	<backgroundcolor>00X000000</backgroundcolor>
+	<defaultcontrol always="true">3</defaultcontrol>
+<controls>						
+	<include>animation_dialogue</include>	
+	<include>image_fond</include>																												<description>image de fond</description>	
+	<control type="label">																														<description>horloge</description>
+		<right>60</right>
+		<height>116</height>			
+		<font>menu</font>
+		<textcolor>80ffffff</textcolor>
+		<align>right</align>
+		<label>$INFO[system.time(hh:mm)]</label>		
+	</control>	
+	<control type="label">																														<description>titre</description>	
+		<height>140</height>
+		<align>center</align>
+		<font>titre</font>
+		<label>$LOCALIZE[31274]</label>		
+	</control>	
+	<include content="barre_separation_horizontale">																							<description>barre de separation horizontale</description>
+		<param name="left" value="50"/> 
+		<param name="right" value="50"/>
+		<param name="bottom" value="940"/>		
+	</include>			
+	<control type="group">																														<description>groupe qui se place en fonction du nombre d'options</description>
+		<animation effect="slide" start="0,0" end="0,540" time="1" condition="Integer.isequal(Container(3).NumAllItems,1)">conditional</animation>
+		<animation effect="slide" start="0,0" end="0,490" time="1" condition="Integer.isequal(Container(3).NumAllItems,2)">conditional</animation>
+		<animation effect="slide" start="0,0" end="0,440" time="1" condition="Integer.isequal(Container(3).NumAllItems,3)">conditional</animation>
+		<animation effect="slide" start="0,0" end="0,390" time="1" condition="Integer.isequal(Container(3).NumAllItems,4)">conditional</animation>
+		<animation effect="slide" start="0,0" end="0,340" time="1" condition="Integer.isequal(Container(3).NumAllItems,5)">conditional</animation>
+		<animation effect="slide" start="0,0" end="0,290" time="1" condition="Integer.isequal(Container(3).NumAllItems,6)">conditional</animation>
+		<animation effect="slide" start="0,0" end="0,240" time="1" condition="Integer.isequal(Container(3).NumAllItems,7)">conditional</animation>
+		<animation effect="slide" start="0,0" end="0,190" time="1" condition="Integer.IsGreaterOrEqual(Container(3).NumAllItems,8)">conditional</animation>
+	<control type="list" id="3">																												<description>listes simple</description>		
+		<left>500</left>
+		<width>700</width>
+		<height>810</height>		
+		<onleft>8000</onleft>
+		<onright>61</onright>
+		<pagecontrol>61</pagecontrol>
+		<scrolltime tween="linear" easing="out">250</scrolltime>
+		<orientation>vertical</orientation>	
+	<itemlayout height="100">		
+	<control type="group">
+		<top>10</top>	
+	<control type="button">
+	<include content="bouton">																											
+		<param name="width" value="700"/> 
+		<param name="height" value="80"/> 		
+	</include>		
+	</control>
+	<control type="label">
+		<height>80</height>
+		<textoffsetx>20</textoffsetx>
+		<label>$INFO[ListItem.Label]</label>
+		<visible>[!string.isequal(skin.string(extinction_rapide),1) + string.isequal(listitem.label,$LOCALIZE[31181])] | [!string.isequal(skin.string(extinction_rapide),2) + string.isequal(listitem.label,$LOCALIZE[31182])] | [!string.isequal(skin.string(extinction_rapide),3) + string.isequal(listitem.label,$LOCALIZE[31183])] | [!string.isequal(skin.string(extinction_rapide),4) + string.isequal(listitem.label,$LOCALIZE[31184])] | [!string.isequal(skin.string(extinction_rapide),5) + string.isequal(listitem.label,$LOCALIZE[31185])]</visible>
+	</control>
+	<control type="label">
+		<height>80</height>
+		<textoffsetx>20</textoffsetx>
+		<label>$INFO[ListItem.Label]</label>
+		<textcolor>$VAR[gris]</textcolor>
+		<visible>[string.isequal(skin.string(extinction_rapide),1) + string.isequal(listitem.label,$LOCALIZE[31181])] | [string.isequal(skin.string(extinction_rapide),2) + string.isequal(listitem.label,$LOCALIZE[31182])] | [string.isequal(skin.string(extinction_rapide),3) + string.isequal(listitem.label,$LOCALIZE[31183])] | [string.isequal(skin.string(extinction_rapide),4) + string.isequal(listitem.label,$LOCALIZE[31184])] | [string.isequal(skin.string(extinction_rapide),5) + string.isequal(listitem.label,$LOCALIZE[31185])]</visible>
+	</control>
+	</control>
+	</itemlayout>
+	<focusedlayout height="100">		
+	<control type="group">
+		<top>10</top>
+	<control type="button">
+	<include content="bouton">																											
+		<param name="width" value="700"/> 
+		<param name="height" value="80"/> 		
+	</include>		
+	</control>
+	<control type="button">
+	<include content="bouton">
+		<param name="width" value="700"/> 
+		<param name="height" value="80"/>
+		<param name="texturenofocus_colordiffuse" value="$VAR[couleur_dominante]"/>
+	</include>
+		<visible>!control.hasfocus(3)</visible>
+		<animation effect="fade" start="100" end="75" condition="true">conditional</animation>
+	</control>
+	<control type="label">
+		<height>80</height>
+		<textoffsetx>20</textoffsetx>
+		<textcolor>$VAR[gris]</textcolor>
+		<label>$INFO[ListItem.Label]</label>
+		<scroll>true</scroll>
+	</control>
+	</control>	
+	</focusedlayout>
+	<content>
+	<item>
+		<label>$LOCALIZE[31181]</label>
+		<icon>icones/extinction/quitter.png</icon>
+		<onclick>skin.setstring(extinction_rapide,1)</onclick>
+		<onclick>close</onclick>		
+	</item>	
+	<item>
+		<label>$LOCALIZE[31182]</label>
+		<icon>icones/extinction/eteindre.png</icon>
+		<onclick>skin.setstring(extinction_rapide,2)</onclick>
+		<onclick>close</onclick>			
+	</item>
+	<item>
+		<label>$LOCALIZE[31183]</label>
+		<icon>icones/extinction/redemarrer.png</icon>
+		<onclick>skin.setstring(extinction_rapide,3)</onclick>
+		<onclick>close</onclick>			
+	</item>
+	<item>
+		<label>$LOCALIZE[31184]</label>
+		<icon>icones/extinction/veille.png</icon>
+		<onclick>skin.setstring(extinction_rapide,4)</onclick>
+		<onclick>close</onclick>			
+	</item>
+	<item>
+		<label>$LOCALIZE[31185]</label>
+		<icon>icones/extinction/veille prolongee.png</icon>
+		<onclick>skin.setstring(extinction_rapide,5)</onclick>
+		<onclick>close</onclick>			
+	</item>
+	</content>
+	</control>		
+	</control>	
+	<include content="scrollbar">																												<description>scrollbar</description>
+		<param name="id" value="61"/> 
+		<param name="top" value="200"/> 
+		<param name="height" value="780"/> 
+		<param name="container" value="3"/>
+		<param name="right" value="694"/>
+	</include>		
+	<control type="image">																														<description>grande icone de droite</description>
+		<fadetime>50</fadetime>
+		<top>200</top>
+		<bottom>60</bottom>
+		<left>1320</left>
+		<right>100</right>
+		<aspectratio align="center" aligny="center">keep</aspectratio>
+		<texture background="true" border="10" fallback="defaultfolder.png">$INFO[container(3).ListItem.Icon]</texture>
+		<bordertexture border="10">commun/tuiles.png</bordertexture>
+		<bordersize>10,0,10,10</bordersize>	
+	</control>	
+	<control type="grouplist" id="8000">																										<description>liste boutons</description>	
+		<top>200</top>
+		<height>800</height>
+		<left>75</left>
+		<width>350</width>
+		<itemgap>10</itemgap>
+		<onright>3</onright>	
+		<orientation>vertical</orientation>			
+	<control type="button" id="5">																												<description>bouton fermer</description>			
+		<onclick>close</onclick>
+	<include content="bouton">
+		<param name="align" value="center"/>
+		<param name="label" value="$LOCALIZE[222]"/>		
+	</include>
+	</control>
+	</control>	
+</controls>
+</window>

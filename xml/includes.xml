@@ -34,6 +34,33 @@
 	<variable name="couleur_dominante">																											<description>couleur de selection dominante</description>
 		<value>ffd99006</value>
 	</variable>
+
+	<variable name="couleur_OSD">																												<description>couleur OSD (opacite + base)</description>
+		<value>$INFO[skin.string(opacite_OSD)]$INFO[skin.string(couleur_base_OSD)]</value>		
+	</variable>		
+	
+	<variable name="opacite_OSD">																												<description>opacite OSD</description>
+		<value condition="string.isequal(skin.string(opacite_OSD),00ffffff)">0 %</value>		
+		<value condition="string.isequal(skin.string(opacite_OSD),0d)">5 %</value>		
+		<value condition="string.isequal(skin.string(opacite_OSD),1a)">10 %</value>		
+		<value condition="string.isequal(skin.string(opacite_OSD),26)">15 %</value>				
+		<value condition="string.isequal(skin.string(opacite_OSD),33)">20 %</value>		
+		<value condition="string.isequal(skin.string(opacite_OSD),40)">25 %</value>		
+		<value condition="string.isequal(skin.string(opacite_OSD),4d)">30 %</value>		
+		<value condition="string.isequal(skin.string(opacite_OSD),59)">35 %</value>		
+		<value condition="string.isequal(skin.string(opacite_OSD),66)">40 %</value>		
+		<value condition="string.isequal(skin.string(opacite_OSD),73)">45 %</value>				
+		<value condition="string.isequal(skin.string(opacite_OSD),80)">50 %</value>		
+		<value condition="string.isequal(skin.string(opacite_OSD),8c)">55 %</value>		
+		<value condition="string.isequal(skin.string(opacite_OSD),99)">60 %</value>		
+		<value condition="string.isequal(skin.string(opacite_OSD),a6)">65 % ($LOCALIZE[31271])</value>		
+		<value condition="string.isequal(skin.string(opacite_OSD),b3)">70 %</value>		
+		<value condition="string.isequal(skin.string(opacite_OSD),bf)">75 %</value>
+		<value condition="string.isequal(skin.string(opacite_OSD),cc)">80 %</value>		
+		<value condition="string.isequal(skin.string(opacite_OSD),d9)">85 %</value>		
+		<value condition="string.isequal(skin.string(opacite_OSD),e6)">90 %</value>		
+		<value condition="string.isequal(skin.string(opacite_OSD),f2)">95 %</value>	
+	</variable>		
 	
 	<variable name="couleur_encours">																											<description>couleur de fond des indications encours</description>
 		<value>ffd50401</value>
@@ -92,10 +119,80 @@
 	<include name="style_et_cacher_page_accueil">
 		<animation effect="slide" start="0,0" end="1920,0" time="1" condition="window.isvisible(movieinformation) | window.isvisible(pvrguideinfo) | window.isvisible(selectdialog) | window.isvisible(contextmenu)" reversible="false">conditional</animation>
 		<animation effect="slide" start="1920,0" end="0,0" delay="100" time="1" condition="!window.isvisible(movieinformation) + !window.isvisible(pvrguideinfo) + !window.isvisible(selectdialog) + !window.isvisible(contextmenu)" reversible="false">conditional</animation>		
-		<animation effect="slide" end="-430,0" time="400" condition="!control.hasfocus(1000) + !control.hasfocus(111) + !skin.hassetting(menu_icones)">conditional</animation>
-		<animation effect="slide" end="-130,0" time="150" condition="!control.hasfocus(1000) + !control.hasfocus(111) + skin.hassetting(menu_icones)">conditional</animation>
-		<animation effect="slide" end="-300,0" time="150" condition="skin.hassetting(menu_icones)">conditional</animation>	
+		<animation effect="slide" end="-430,0" time="400" condition="string.isempty(window(home).property(parametres_menu)) + !control.hasfocus(1000) + !control.hasfocus(111) + !control.hasfocus(112) + !control.hasfocus(113) + !skin.hassetting(menu_icones)">conditional</animation>
+		<animation effect="slide" end="-130,0" time="150" condition="string.isempty(window(home).property(parametres_menu)) + !control.hasfocus(1000) + !control.hasfocus(111) + !control.hasfocus(112) + !control.hasfocus(113) + skin.hassetting(menu_icones)">conditional</animation>
+		<animation effect="slide" end="-300,0" time="150" condition="string.isempty(window(home).property(parametres_menu)) + skin.hassetting(menu_icones)">conditional</animation>	
 	</include>	
+	
+	
+	
+	
+	
+	<include name="item_menu_1">
+		<label>$LOCALIZE[31168]</label>
+		<icon>menus/videos.png</icon>
+		<property name="action">activatewindow(videos,videodb://movies/titles,return)</property>
+		<visible>string.isempty(skin.string(masquer_menu_2)) + Library.HasContent(movies)</visible>
+	</include>
+	<include name="item_menu_2">
+	<label>$LOCALIZE[31213]</label>
+		<icon>menus/series.png</icon>
+		<property name="action">activatewindow(videos,videodb://tvshows/titles,return)</property>
+		<visible>string.isempty(skin.string(masquer_menu_3)) + Library.HasContent(tvshows)</visible>	
+	</include>
+	<include name="item_menu_3">
+	<label>$LOCALIZE[31169]</label>
+		<icon>menus/music.png</icon>
+		<property name="action">activatewindow(music,musicdb://albums,return)</property>
+		<visible>string.isempty(skin.string(masquer_menu_4)) + Library.HasContent(music)</visible>	
+	</include>
+	<include name="item_menu_4">
+	<label>$LOCALIZE[31170]</label>
+		<icon>menus/pictures.png</icon>
+		<property name="action">activatewindow(Pictures)</property>
+		<visible>string.isempty(skin.string(masquer_menu_5))</visible>
+	</include>
+	<include name="item_menu_5">
+	<label>$LOCALIZE[31171]</label>
+		<icon>menus/livetv.png</icon>
+		<property name="action">activatewindow(TVGuide)</property>
+		<visible>string.isempty(skin.string(masquer_menu_6)) + System.HasPVRAddon</visible>	
+	</include>
+	<include name="item_menu_6">
+	<label>$LOCALIZE[31173]</label>
+		<icon>menus/weather.png</icon>
+		<property name="action">action(right)</property>
+		<visible>string.isempty(skin.string(masquer_menu_7)) + !String.IsEmpty(Weather.Plugin)</visible>
+	</include>
+	
+	<include name="item_menu_10">	
+		<label>$LOCALIZE[31168]</label>
+		<icon>menus/videos.png</icon>		
+	</include>	
+	<include name="item_menu_20">	
+		<label>$LOCALIZE[31213]</label>
+		<icon>menus/series.png</icon>			
+	</include>		
+	<include name="item_menu_30">	
+		<label>$LOCALIZE[31169]</label>
+		<icon>menus/music.png</icon>				
+	</include>	
+	<include name="item_menu_40">	
+		<label>$LOCALIZE[31170]</label>
+		<icon>menus/pictures.png</icon>						
+	</include>	
+	<include name="item_menu_50">	
+		<label>$LOCALIZE[31171]</label>
+		<icon>menus/livetv.png</icon>				
+	</include>		
+	<include name="item_menu_60">	
+		<label>$LOCALIZE[31173]</label>
+		<icon>menus/weather.png</icon>
+	</include>
+	
+	
+	
+	
 	
 	<include name="titre">																														<description>titre de la section + heure</description>
 	<control type="image">
@@ -2573,17 +2670,19 @@
 	</include>
 	
 	<include name="barre_separation_verticale">																									<description>barre de separation verticale</description>
+		<param name="id"/> 
 		<param name="left"/> 
 		<param name="width" default="2"/>
 		<param name="top"/>		
 		<param name="bottom"/>
 		<param name="colordiffuse" default="20000000"/>			
 	<definition>
-	<control type="image">		
+	<control type="image" id="$PARAM[id]">		
 		<top>$PARAM[top]</top>
 		<bottom>$PARAM[bottom]</bottom>
 		<left>$PARAM[left]</left>
 		<width>$PARAM[width]</width>
+		<aspectratio>stretch</aspectratio>
 		<texture colordiffuse="$PARAM[colordiffuse]">commun/texture.png</texture>
 	</control>	
 	</definition>	
@@ -2613,7 +2712,7 @@
 		<scroll>true</scroll>
 		<scrollspeed>50</scrollspeed>
 		<textcolor>ffffffff</textcolor>
-		<selectedcolor>ff2b3536</selectedcolor>
+		<selectedcolor>$VAR[gris]</selectedcolor>
 		<focusedcolor>$VAR[gris]</focusedcolor>
 		<disabledcolor>40ffffff</disabledcolor>				
 		<texturenofocus colordiffuse="$PARAM[texturenofocus_colordiffuse]" border="20">$PARAM[texturenofocus]</texturenofocus>
@@ -2701,8 +2800,9 @@
 		<param name="enable"/>
 	<definition>
 	<control type="radiobutton" id="$PARAM[id]">
-		<height>70</height>
-		<width>70</width>
+		<top>15</top>
+		<height>60</height>
+		<width>60</width>
 		<onclick>$PARAM[onclick]</onclick>
 		<onclick>$PARAM[onclick2]</onclick>
 		<onclick>$PARAM[onclick3]</onclick>
@@ -2715,8 +2815,8 @@
 		<textureradiooffnofocus>boutons/OSD/$PARAM[icone2].png</textureradiooffnofocus>
 		<textureradiooffdisabled colordiffuse="40ffffff">boutons/OSD/$PARAM[icone2].png</textureradiooffdisabled>
 		<radioposx>5</radioposx>
-		<radiowidth>60</radiowidth>
-		<radioheight>60</radioheight>		
+		<radiowidth>50</radiowidth>
+		<radioheight>50</radioheight>		
 		<selected>$PARAM[selected]</selected>
 		<enable>$PARAM[enable]</enable>
 	</control>

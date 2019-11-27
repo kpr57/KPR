@@ -8,9 +8,9 @@
 		<visible>false</visible>
 	</control>
 	<control type="group">
-		<animation effect="fade" start="0" end="100" delay="200" time="200">windowopen</animation>
-		<animation effect="fade" start="100" end="0" time="200">windowclose</animation>		
-		<animation effect="fade" start="100" end="0" time="200" condition="window.isvisible(DialogConfirm.xml) | window.isvisible(dialogselect.xml)">conditional</animation>
+		<animation effect="fade" start="0" end="100" delay="200" time="100">windowopen</animation>
+		<animation effect="fade" start="100" end="0" time="100">windowclose</animation>		
+		<animation effect="fade" start="100" end="0" time="100" condition="window.isvisible(DialogConfirm.xml) | window.isvisible(dialogselect.xml)">conditional</animation>
 	<control type="image">																														<description>masque arriere plan</description>
 		<visible>!window.isvisible(VideoFullScreen.xml)</visible>
 		<aspectratio>scale</aspectratio>

@@ -1,168 +1,237 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
 	<backgroundcolor>00X000000</backgroundcolor>
-	<defaultcontrol always="true">8000</defaultcontrol>
-<include>animation_dialogue</include>
-<controls>	
-	<include content="masque_fond"></include>		
+	<onload>control.setfocus(2)</onload>
+<controls>		
 	<control type="group">
-		<centertop>50%</centertop>
-		<centerleft>50%</centerleft>
-		<height>690</height>																													<description>((60 + 1) * nombre de boutons) + 18</description>	
-		<width>1053</width>		
-	<include>panneau_dialogue</include>		
-	<control type="label">																														<description>titre de la fenetre</description>
-		<centerleft>50%</centerleft>
-		<width>1000</width>
-		<height>126</height>
-		<font>titre</font>
-		<textcolor>$VAR[gris]</textcolor>
-		<align>center</align>
-		<scroll>true</scroll>
-		<label>$LOCALIZE[31177]</label>
-	</control>
-	<control type="group">
-		<top>126</top>
-		<left>14</left>
-		<right>14</right>
-		<bottom>14</bottom>
-	<control type="panel" id="11">																												<description>liste des signets</description>
-		<top>0</top>		
-		<bottom>0</bottom>		
-		<right>290</right>		
-		<onright>60</onright>
-		<onleft>noop</onleft>		
-		<pagecontrol>60</pagecontrol>
-		<orientation>vertical</orientation>		
-		<scrolltime tween="linear" easing="out">250</scrolltime>
-	<itemlayout height="270" width="365">
-	<control type="image">
-		<top>80</top>
-		<width>360</width>
-		<height>202</height>
+		<animation effect="fade" start="0" end="100" time="250" reversible="false">windowopen</animation>
+		<animation effect="fade" start="100" end="0" time="250" reversible="false">windowclose</animation>
+		<animation effect="slide" time="500" start="0,0" end="0,-222" condition="string.isequal(skin.string(position_signets),haut)">conditional</animation>
+		<animation effect="slide" time="500" start="0,0" end="0,242" condition="string.isequal(skin.string(position_signets),bas)">conditional</animation>
+		<top>332</top>
+		<height>416</height>
+	<control type="image">																														<description>fond signets</description>
 		<aspectratio>scale</aspectratio>
-		<texture fallback="fenetres/noimage.png">$INFO[ListItem.Icon]</texture>
+		<texture colordiffuse="$VAR[couleur_OSD]">commun/texture.png</texture>				
+	</control>			
+	<control type="group">
+		<visible>string.isequal(skin.string(position_signets),haut)</visible>
+	<include content="barre_separation_horizontale">
+		<param name="left" value="25"/> 
+		<param name="right" value="25"/>
+		<param name="bottom" value="414"/>
+		<param name="colordiffuse" value="20ffffff"/>	
+	</include>
+	</control>
+	<include content="barre_separation_horizontale">
+		<param name="left" value="25"/> 
+		<param name="right" value="25"/>
+		<param name="bottom" value="315"/>
+		<param name="colordiffuse" value="20ffffff"/>	
+	</include>
+	<control type="group">
+		<visible>string.isequal(skin.string(position_signets),bas)</visible>
+	<include content="barre_separation_horizontale">
+		<param name="left" value="25"/> 
+		<param name="right" value="25"/>
+		<param name="bottom" value="0"/>
+		<param name="colordiffuse" value="20ffffff"/>	
+	</include>
+	</control>	
+	<control type="panel" id="11">																												<description>liste des signets</description>
+		<top>110</top>		
+		<height>300</height>		
+		<right>0</right>		
+		<left>0</left>
+		<onup>7000</onup>
+		<ondown>action(back)</ondown>
+		<orientation>horizontal</orientation>		
+		<scrolltime tween="cubic" easing="out">500</scrolltime>
+	<itemlayout height="300" width="480">
+	<control type="image">
+		<top>10</top>		
+		<left>30</left>
+		<width>420</width>
+		<height>235</height>
+		<aspectratio>stretch</aspectratio>
+		<texture background="true" colordiffuse="03000000" border="10">commun/texture.png</texture>
+		<bordertexture border="10">commun/tuiles.png</bordertexture>
+		<bordersize>10,0,10,10</bordersize>		
+	</control>
+	<control type="image">
+		<top>10</top>
+		<left>40</left>
+		<width>400</width>
+		<height>225</height>
+		<aspectratio>scale</aspectratio>
+		<texture>$INFO[ListItem.Icon]</texture>
 		<visible>!string.isEmpty(ListItem.Icon)</visible>
 	</control>
 	<control type="image">
-		<top>80</top>
-		<width>360</width>
-		<height>202</height>
+		<top>10</top>
+		<left>40</left>
+		<width>400</width>
+		<height>225</height>
 		<aspectratio>scale</aspectratio>
 		<texture>fenetres/noimage.png</texture>
 		<visible>string.isEmpty(ListItem.Icon)</visible>
 	</control>	
 	<control type="label">																														<description>titre du signet</description>
-		<top>16</top>
-		<width>360</width>
-		<height>60</height>
-		<font>texte_moyen</font>
+		<top>250</top>
+		<left>40</left>
+		<width>400</width>
 		<align>center</align>
-		<aligny>center</aligny>
-		<textcolor>$VAR[gris]</textcolor>
-		<label>$INFO[ListItem.Label] · $INFO[ListItem.Label2]</label>
+		<height>40</height>
+		<font>texte</font>
+		<textoffsetx>2</textoffsetx>
+		<label>$INFO[ListItem.Label] • $INFO[ListItem.Label2]</label>
 	</control>	
 	</itemlayout>
-	<focusedlayout height="270" width="365">	
+	<focusedlayout height="300" width="480">	
 	<control type="image">
-		<top>80</top>
-		<width>360</width>
-		<height>202</height>
+		<top>10</top>		
+		<left>30</left>
+		<width>420</width>
+		<height>235</height>
+		<aspectratio>stretch</aspectratio>
+		<texture background="true" colordiffuse="03000000" border="10">commun/texture.png</texture>
+		<bordertexture border="10">commun/tuiles.png</bordertexture>
+		<bordersize>10,0,10,10</bordersize>		
+	</control>
+	<control type="image">
+		<top>10</top>
+		<left>40</left>
+		<width>400</width>
+		<height>225</height>
 		<aspectratio>scale</aspectratio>
-		<texture fallback="fenetres/noimage.png">$INFO[ListItem.Icon]</texture>
+		<texture>$INFO[ListItem.Icon]</texture>
 		<visible>!string.isEmpty(ListItem.Icon)</visible>
 	</control>
 	<control type="image">
-		<top>80</top>
-		<width>360</width>
-		<height>202</height>
+		<top>10</top>
+		<left>40</left>
+		<width>400</width>
+		<height>225</height>
 		<aspectratio>scale</aspectratio>
 		<texture>fenetres/noimage.png</texture>
 		<visible>string.isEmpty(ListItem.Icon)</visible>
 	</control>	
-	<control type="image">
-		<top>16</top>
-		<width>360</width>
-		<height>60</height>
-		<aspectratio>scale</aspectratio>
-		<texture colordiffuse="$VAR[selection_dialogue]">fenetres/texture.png</texture>
-		<visible>control.hasFocus(11)</visible>
-	</control>
-	<control type="label">																														<description>titre du signet</description>
-		<top>16</top>
-		<width>360</width>
-		<height>60</height>
-		<font>texte_moyen</font>
+	<control type="button">
+		<top>250</top>
+		<left>40</left>
+		<width>400</width>
+		<height>40</height>		
+		<font>texte</font>
+		<textoffsetx>2</textoffsetx>		
 		<align>center</align>
-		<aligny>center</aligny>
-		<textcolor>$VAR[blanc]</textcolor>
-		<label>$INFO[ListItem.Label] · $INFO[ListItem.Label2]</label>
-	</control>		
+		<label>$INFO[ListItem.Label] • $INFO[ListItem.Label2]</label>
+		<texturenofocus colordiffuse="$VAR[couleur_dominante]" border="20">$PARAM[texturenofocus]</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>			
+	</control>
 	</focusedlayout>
-	</control>
-	<control type="image">           																											<description>separation gauche</description>
-		<top>-2</top>
-		<bottom>-2</bottom>
-		<right>294</right>
-		<width>1</width>
-		<aspectratio>scale</aspectratio>
-		<texture colordiffuse="80808080">fenetres/texture.png</texture>	
-	</control>	
-	<control type="scrollbar" id="60">																											<description>image scrollbar</description>
-		<top>0</top>
-		<bottom>0</bottom>
-		<right>292</right>
-		<width>5</width>		
-		<onleft>11</onleft>
-		<onright>8000</onright>
-		<texturesliderbackground></texturesliderbackground>		
-		<texturesliderbar colordiffuse="00ffffff">fenetres/texture.png</texturesliderbar>
-		<textureslidernib colordiffuse="00ffffff">fenetres/texture.png</textureslidernib>
-		<texturesliderbarfocus colordiffuse="ffffffff">fenetres/texture.png</texturesliderbarfocus>
-		<textureslidernibfocus colordiffuse="$VAR[selection_dialogue]">fenetres/texture.png</textureslidernibfocus>
-		<showonepage>false</showonepage>		
-	</control>	
+	</control>		
+	<control type="group" id="7000">
 	<control type="grouplist" id="8000">																										<description>liste boutons</description>	
-		<right>0</right>
-		<width>290</width>
-		<itemgap>1</itemgap>
-		<onleft>60</onleft>
-		<orientation>vertical</orientation>		
+		<top>20</top>	
+		<left>60</left>
+		<itemgap>20</itemgap>
+		<onright>50</onright>
+		<onleft>52</onleft>
+		<ondown>11</ondown>
+		<orientation>horizontal</orientation>		
 	<control type="button" id="2">																												
-		<width>290</width>
-		<align>center</align>
-		<aligny>center</aligny>
-	<include content="dialogue_bouton">
-		<param name="label" value="$LOCALIZE[31178]"/>
+	<include content="bouton">																										
+		<param name="width" value="auto"/> 
+		<param name="height" value="60"/>
+		<param name="align" value="center"/>			 
+		<param name="texturenofocus_colordiffuse" value="20ffffff"/>			 
+		<param name="label" value="$LOCALIZE[294]"/>
 	</include>		
 	</control>
 	<control type="button" id="3">																												
-		<width>290</width>
-		<align>center</align>
-		<aligny>center</aligny>
-	<include content="dialogue_bouton">
-		<param name="label" value="$LOCALIZE[31179]"/>
+		<include content="bouton">																										
+		<param name="width" value="auto"/> 
+		<param name="height" value="60"/>
+		<param name="align" value="center"/>			 
+		<param name="texturenofocus_colordiffuse" value="20ffffff"/>
+		<param name="label" value="$LOCALIZE[296]"/>
+	</include>	
+	</control>
+	<control type="button" id="4">
+		<visible>control.isenabled(4)</visible>
+	<include content="bouton">																										
+		<param name="width" value="auto"/> 
+		<param name="height" value="60"/>
+		<param name="align" value="center"/>			 
+		<param name="texturenofocus_colordiffuse" value="20ffffff"/>			 
+		<param name="label" value="$LOCALIZE[20406]"/>
 	</include>		
 	</control>
-	<control type="button" id="4">																												
-		<width>290</width>
-		<align>center</align>
-		<aligny>center</aligny>
-	<include content="dialogue_bouton">
-		<param name="label" value="$LOCALIZE[31180]"/>
-	</include>		
-	</control>	
-	<control type="button" id="30">																												
-		<width>290</width>
-		<align>center</align>
-		<aligny>center</aligny>
-		<onclick>action(close)</onclick>
-	<include content="dialogue_bouton">
-		<param name="label" value="$LOCALIZE[31176]"/>
-	</include>		
-	</control>	
-	</control>			
 	</control>
+	<control type="grouplist" id="8001">																										<description>liste boutons de position</description>	
+		<top>20</top>	
+		<right>60</right>
+		<align>right</align>
+		<itemgap>20</itemgap>
+		<ondown>11</ondown>
+		<onright>2</onright>
+		<onleft>4</onleft>
+		<orientation>horizontal</orientation>	
+	<control type="button" id="53">																												
+		<disabledcolor>ffffffff</disabledcolor>						
+		<enable>false</enable>
+	<include content="bouton">																										
+		<param name="width" value="auto"/> 
+		<param name="height" value="60"/>
+		<param name="align" value="center"/>			 
+		<param name="texturenofocus_colordiffuse" value="00ffffff"/>
+		<param name="label" value="$LOCALIZE[31269]"/>
+	</include>	
 	</control>	
+	<control type="radiobutton" id="50">
+		<height>60</height>
+		<width>80</width>																									
+		<onclick>skin.setstring(position_signets,haut)</onclick>
+		<texturenofocus colordiffuse="20ffffff" border="20">commun/bouton.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
+		<textureradioonfocus colordiffuse="$VAR[gris]">boutons/haut.png</textureradioonfocus>
+		<textureradioonnofocus>boutons/haut.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="$VAR[gris]">boutons/haut.png</textureradioofffocus>
+		<textureradiooffnofocus>boutons/haut.png</textureradiooffnofocus>
+		<radioposx>20</radioposx>
+		<radiowidth>40</radiowidth>
+		<radioheight>40</radioheight>			
+	</control>
+	<control type="radiobutton" id="51">
+		<height>60</height>
+		<width>80</width>																									
+		<onclick>skin.setstring(position_signets,centre)</onclick>
+		<texturenofocus colordiffuse="20ffffff" border="20">commun/bouton.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
+		<textureradioonfocus colordiffuse="$VAR[gris]">boutons/menu.png</textureradioonfocus>
+		<textureradioonnofocus>boutons/menu.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="$VAR[gris]">boutons/menu.png</textureradioofffocus>
+		<textureradiooffnofocus>boutons/menu.png</textureradiooffnofocus>
+		<radioposx>1</radioposx>
+		<radiowidth>80</radiowidth>
+		<radioheight>80</radioheight>			
+	</control>
+	<control type="radiobutton" id="52">
+		<height>60</height>
+		<width>80</width>																									
+		<onclick>skin.setstring(position_signets,bas)</onclick>
+		<texturenofocus colordiffuse="20ffffff" border="20">commun/bouton.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
+		<textureradioonfocus colordiffuse="$VAR[gris]">boutons/bas.png</textureradioonfocus>
+		<textureradioonnofocus>boutons/bas.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="$VAR[gris]">boutons/bas.png</textureradioofffocus>
+		<textureradiooffnofocus>boutons/bas.png</textureradiooffnofocus>
+		<radioposx>20</radioposx>
+		<radiowidth>40</radiowidth>
+		<radioheight>40</radioheight>			
+	</control>
+	</control>
+	</control>
+	</control>		
 </controls>
 </window>
