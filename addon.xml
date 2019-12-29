@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <addon
 	id="skin.KPR"
-	version="0.1.0"
+	version="1.0.0"
 	name="KPR"
-	provider-name="Michel">
+	provider-name="Bidaine Michel">
 	<requires>
 		<import addon="xbmc.gui" version="5.14.0"/>
-		<import addon="script.skinshortcuts" version="1.0.8"/>
-		<import addon="script.skin.helper.service" version="1.0.11"/>
 		<import addon="script.module.autocompletion" version="1.0.1"/>
 	</requires>
 	<extension
@@ -22,23 +20,18 @@
 		<res width="2560" height="1080" aspect="21:9" default="false" folder="xml" />
 	</extension>
 	<extension point="xbmc.addon.metadata">
-		<summary lang="en_AU">A new skin for Kodi par Michel</summary>
-		<summary lang="en_GB">A new skin for Kodi par Michel</summary>
-		<summary lang="en_NZ">A new skin for Kodi par Michel</summary>
-		<summary lang="en_US">A new skin for Kodi par Michel</summary>
-		<description lang="en_AU">Simple et efficace</description>
-		<description lang="en_GB">Simple et efficace</description>
-		<description lang="en_NZ">Simple et efficace</description>
-		<description lang="en_US">Simple et efficace</description>
-		<disclaimer lang="en_AU"></disclaimer>
-		<disclaimer lang="en_GB"></disclaimer>
-		<disclaimer lang="en_NZ"></disclaimer>
+		<summary lang="en_US">KPR, an elegant and easy-to-use skin for Kodi Leia (from Bidaine Michel)</summary>
+		<summary lang="fr_FR">KPR, un habillage élégant et facile d'utilisation pour Kodi Leia (de Bidaine Michel)</summary>
+		<description lang="en_US">KPR is an elegant and simple to use skin, it is customizable according to the needs of each. KPR is also fast and very light since it uses almost no additional script.</description>
+		<description lang="fr_FR">KPR est un habillage élégant et simple à utiliser, il est customizable selon les besoins de chacun. KPR est également rapide et très léger car il n'utilise quasiment aucun script additionnel.</description>
 		<disclaimer lang="en_US"></disclaimer>
-		<license></license>
-		<forum></forum>
+		<license>Creative Commons Corporation - Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)</license>
+		<forum>https://forum.kodi.tv/showthread.php?tid=348586</forum>
 		<source></source>
 		<platform>all</platform>
 	<assets>
+		<icon>ressources/icon.png</icon>
+		<fanart>ressources/screenshot01.png</fanart>
 		<screenshot>ressources/screenshot01.png</screenshot>
 		<screenshot>ressources/screenshot02.png</screenshot>
 		<screenshot>ressources/screenshot03.png</screenshot>
