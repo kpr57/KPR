@@ -1,7 +1,7 @@
 # Kodi Media Center language file
-# Addon Name: kodroid2
-# Addon id: skin.kodroid2
-# Addon Provider: kodroid57
+# Addon Name: kKPR
+# Addon id: skin.KPR
+# Addon Provider: Bidaine Michel
 msgid ""
 msgstr ""
 "MIME-Version: 1.0\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Language: fr_FR\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: --------------------------mainmenudata.xml
+#: --------------------------kodi KPR (31168 - 31999)
 msgctxt "#31168"
 msgid "Movies"
 msgstr ""
@@ -168,7 +168,7 @@ msgid "season"
 msgstr ""
 
 msgctxt "#31206"
-msgid "No summary available"
+msgid "No information available"
 msgstr ""
 
 msgctxt "#31207"
@@ -414,6 +414,322 @@ msgstr ""
 msgctxt "#31268"
 msgid "Pause"
 msgstr ""
+
+msgctxt "#31269"
+msgid "Bookmark position"
+msgstr ""
+
+msgctxt "#31270"
+msgid "OSD Opacity"
+msgstr ""
+
+msgctxt "#31271"
+msgid "default value"
+msgstr ""
+
+msgctxt "#31272"
+msgid "OSD color"
+msgstr ""
+
+msgctxt "#31273"
+msgid "Setting level"
+msgstr ""
+
+msgctxt "#31274"
+msgid "Fast stop button action"
+msgstr ""
+
+msgctxt "#31275"
+msgid "Sorted by"
+msgstr ""
+
+msgctxt "#31276"
+msgid "Item"
+msgstr ""
+
+msgctxt "#31277"
+msgid "Main roles"
+msgstr ""
+
+msgctxt "#31278"
+msgid "Select sort direction"
+msgstr ""
+
+msgctxt "#31279"
+msgid "Filter the items"
+msgstr ""
+
+msgctxt "#31280"
+msgid "Check for available updates"
+msgstr ""
+
+msgctxt "#31281"
+msgid "Access extensions settings"
+msgstr ""
+
+msgctxt "#31282"
+msgid "Select the default background for this category"
+msgstr ""
+
+msgctxt "#31283"
+msgid "Search in the name of items"
+msgstr ""
+
+msgctxt "#31284"
+msgid "Search the entire library"
+msgstr ""
+
+msgctxt "#31285"
+msgid "Widget selection"
+msgstr ""
+
+msgctxt "#31286"
+msgid "per year"
+msgstr ""
+
+msgctxt "#31287"
+msgid "Video widget"
+msgstr ""
+
+msgctxt "#31288"
+msgid "Music widget"
+msgstr ""
+
+msgctxt "#31289"
+msgid "Use as widget"
+msgstr ""
+
+msgctxt "#31290"
+msgid "Gender"
+msgstr ""
+
+msgctxt "#31291"
+msgid "Music style"
+msgstr ""
+
+msgctxt "#31292"
+msgid "Number of tracks"
+msgstr ""
+
+msgctxt "#31293"
+msgid "Number of albums"
+msgstr ""
+
+msgctxt "#31294"
+msgid "Record company"
+msgstr ""
+
+msgctxt "#31295"
+msgid "Show the album informations"
+msgstr ""
+
+msgctxt "#31296"
+msgid "Show the artist informations"
+msgstr ""
+
+msgctxt "#31297"
+msgid "Play album"
+msgstr ""
+
+msgctxt "#31298"
+msgid "This album is not available"
+msgstr ""
+
+msgctxt "#31299"
+msgid "Last use"
+msgstr ""
+
+msgctxt "#31300"
+msgid "In use"
+msgstr ""
+
+msgctxt "#31301"
+msgid "No update available"
+msgstr ""
+
+msgctxt "#31302"
+msgid "Uninstall this extension"
+msgstr ""
+
+msgctxt "#31303"
+msgid "Install this extension"
+msgstr ""
+
+msgctxt "#31304"
+msgid "Enable this extension"
+msgstr ""
+
+msgctxt "#31305"
+msgid "Disable this extension"
+msgstr ""
+
+msgctxt "#31306"
+msgid "Update this extension"
+msgstr ""
+
+msgctxt "#31307"
+msgid "Access extension settings"
+msgstr ""
+
+msgctxt "#31308"
+msgid "Access the dependencies of the extension"
+msgstr ""
+
+msgctxt "#31309"
+msgid "Use this extension"
+msgstr ""
+
+msgctxt "#31310"
+msgid "Enable automatic updates"
+msgstr ""
+
+msgctxt "#31311"
+msgid "Disable automatic updates"
+msgstr ""
+
+msgctxt "#31312"
+msgid "Play the recording"
+msgstr ""
+
+msgctxt "#31313"
+msgid "Group items by folders"
+msgstr ""
+
+msgctxt "#31314"
+msgid "Connected with the profile"
+msgstr ""
+
+msgctxt "#31315"
+msgid "is"
+msgstr ""
+
+msgctxt "#31316"
+msgid "Show thumbnail"
+msgstr ""
+
+msgctxt "#31317"
+msgid "Channels not included :"
+msgstr ""
+
+msgctxt "#31318"
+msgid "Channels included :"
+msgstr ""
+
+msgctxt "#31319"
+msgid "Please note, in KPR only the TV guide is affected by hidden groups, the TV widget and the channel guide will continue to display all groups !"
+msgstr ""
+
+msgctxt "#31320"
+msgid "Click to display"
+msgstr ""
+
+msgctxt "#31321"
+msgid "in group"
+msgstr ""
+
+msgctxt "#31322"
+msgid "Click to not diplay"
+msgstr ""
+
+msgctxt "#31323"
+msgid "You cannot use the parental control lock function ![CR][CR]Parental control and pin code must first be configured in the settings of the video recorder ![CR][CR]Remember to switch the settings in advanced mode or in expert mode to access these options !"
+msgstr ""
+
+msgctxt "#31324"
+msgid "Click to move"
+msgstr ""
+
+msgctxt "#31325"
+msgid "You cannot change the order of channels ![CR][CR]The options [Use channel order from backend] and [Use channel numbers from backend] must be disabled in the settings of the video recorder ![CR][CR]Remember to switch the settings to advanced mode or expert mode to access these options !"
+msgstr ""
+
+msgctxt "#31326"
+msgid "Apply without leaving"
+msgstr ""
+
+msgctxt "#31327"
+msgid "Apply and exit"
+msgstr ""
+
+msgctxt "#31328"
+msgid "In KPR the channels icons are managed independently of the channel manager ![CR][CR]Modifying a channel icon in the channel manager will not affect the display of channel icons in KPR, the icons will continue to display as defined in the skin !"
+msgstr ""
+
+msgctxt "#31329"
+msgid "Manual search"
+msgstr ""
+
+msgctxt "#31330"
+msgid "System CPU usage"
+msgstr ""
+
+msgctxt "#31331"
+msgid "Next"
+msgstr ""
+
+msgctxt "#31332"
+msgid "Display fanart"
+msgstr ""
+
+msgctxt "#31333"
+msgid "Animate the cover and the title"
+msgstr ""
+
+msgctxt "#31334"
+msgid "Use visualization"
+msgstr ""
+
+msgctxt "#31335"
+msgid "Use a color cycle as mask"
+msgstr ""
+
+msgctxt "#31336"
+msgid "Lyrics add-on"
+msgstr ""
+
+msgctxt "#31337"
+msgid "Lyrics add-on settings"
+msgstr ""
+
+msgctxt "#31338"
+msgid "Visualization"
+msgstr ""
+
+msgctxt "#31339"
+msgid "Visualisation settings"
+msgstr ""
+
+msgctxt "#31340"
+msgid "Choose visualisation presets"
+msgstr ""
+
+msgctxt "#31341"
+msgid "Animate the fanart"
+msgstr ""
+
+msgctxt "#31342"
+msgid "no title (end of playlist)"
+msgstr ""
+
+msgctxt "#31343"
+msgid "Repeat all"
+msgstr ""
+
+msgctxt "#31344"
+msgid "Repeat one"
+msgstr ""
+
+msgctxt "#31345"
+msgid "No repetition"
+msgstr ""
+
+msgctxt "#31346"
+msgid "Lyrics search ..."
+msgstr ""
+
+
+
+
 
 
 #: --------------------------kodi estuary (31001 - 31167)
