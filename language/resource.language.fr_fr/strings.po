@@ -1,7 +1,7 @@
 # Kodi Media Center language file
-# Addon Name: kodroid2
-# Addon id: skin.kodroid2
-# Addon Provider: kodroid57
+# Addon Name: kKPR
+# Addon id: skin.KPR
+# Addon Provider: Bidaine Michel
 msgid ""
 msgstr ""
 "MIME-Version: 1.0\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Language: fr_FR\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: --------------------------mainmenudata.xml
+#: --------------------------kodi KPR (31168 - 31999)
 msgctxt "#31168"
 msgid "Movies"
 msgstr "Films"
@@ -168,8 +168,8 @@ msgid "season"
 msgstr "saison"
 
 msgctxt "#31206"
-msgid "No summary available"
-msgstr "Aucun résumé disponible"
+msgid "No information available"
+msgstr "Aucune information disponible"
 
 msgctxt "#31207"
 msgid "minutes"
@@ -414,6 +414,322 @@ msgstr "Modifier le type de prévisions"
 msgctxt "#31268"
 msgid "Pause"
 msgstr "Pause"
+
+msgctxt "#31269"
+msgid "Bookmark position"
+msgstr "Position des signets"
+
+msgctxt "#31270"
+msgid "OSD Opacity"
+msgstr "Opacité OSD"
+msgstr ""
+
+msgctxt "#31271"
+msgid "default value"
+msgstr "valeur par défaut"
+
+msgctxt "#31272"
+msgid "OSD color"
+msgstr "Couleur OSD"
+
+msgctxt "#31273"
+msgid "Setting level"
+msgstr "Niveau de parametrage"
+
+msgctxt "#31274"
+msgid "Fast stop button action"
+msgstr "Action du bouton d'arrêt rapide"
+
+msgctxt "#31275"
+msgid "Sorted by"
+msgstr "Trié par"
+
+msgctxt "#31276"
+msgid "Item"
+msgstr "Element"
+
+msgctxt "#31277"
+msgid "Main roles"
+msgstr "Rôles principaux"
+
+msgctxt "#31278"
+msgid "Select sort direction"
+msgstr "Sélectionner l'ordre de tri"
+
+msgctxt "#31279"
+msgid "Filter the items"
+msgstr "Filtrer les éléments"
+
+msgctxt "#31280"
+msgid "Check for available updates"
+msgstr "Verifier les mises à jour disponibles"
+
+msgctxt "#31281"
+msgid "Access extensions settings"
+msgstr "Accéder aux paramêtres d'extensions"
+
+msgctxt "#31282"
+msgid "Select the default background for this category"
+msgstr "Sélectionner l'arrière plan par défaut pour cette catégorie"
+
+msgctxt "#31283"
+msgid "Search in the name of items"
+msgstr "Rechercher dans le nom des éléments"
+
+msgctxt "#31284"
+msgid "Search the entire library"
+msgstr "Rechercher dans toute la bibliothèque"
+
+msgctxt "#31285"
+msgid "Widget selection"
+msgstr "Sélection de widget"
+
+msgctxt "#31286"
+msgid "per year"
+msgstr "par année"
+
+msgctxt "#31287"
+msgid "Video widget"
+msgstr "Widget vidéo"
+
+msgctxt "#31288"
+msgid "Music widget"
+msgstr "Widget musique"
+
+msgctxt "#31289"
+msgid "Use as widget"
+msgstr "Utiliser comme widget"
+
+msgctxt "#31290"
+msgid "Gender"
+msgstr "Sexe"
+
+msgctxt "#31291"
+msgid "Music style"
+msgstr "Style de musique"
+
+msgctxt "#31292"
+msgid "Number of tracks"
+msgstr "Nombre de pistes"
+
+msgctxt "#31293"
+msgid "Number of albums"
+msgstr "Nombre d'albums"
+
+msgctxt "#31294"
+msgid "Record company"
+msgstr "Maison de disques"
+
+msgctxt "#31295"
+msgid "Show the album informations"
+msgstr "Afficher les informations l'album"
+
+msgctxt "#31296"
+msgid "Show the artist informations"
+msgstr "Afficher les informations de l'artiste"
+
+msgctxt "#31297"
+msgid "Play album"
+msgstr "Lire l'album"
+
+msgctxt "#31298"
+msgid "This album is not available"
+msgstr "Cet album n'est pas disponible"
+
+msgctxt "#31299"
+msgid "Last use"
+msgstr "Dernière utilisation"
+
+msgctxt "#31300"
+msgid "In use"
+msgstr "Utilisé"
+
+msgctxt "#31301"
+msgid "No update available"
+msgstr "Aucune mise à jour disponible"
+
+msgctxt "#31302"
+msgid "Uninstall this extension"
+msgstr "Désinstaller cette extension"
+
+msgctxt "#31303"
+msgid "Install this extension"
+msgstr "Installer cette extension"
+
+msgctxt "#31304"
+msgid "Enable this extension"
+msgstr "Désactiver cette extension"
+
+msgctxt "#31305"
+msgid "Disable this extension"
+msgstr "Activer cette extension"
+
+msgctxt "#31306"
+msgid "Update this extension"
+msgstr "Mettre à jour cette extension"
+
+msgctxt "#31307"
+msgid "Access extension settings"
+msgstr "Accéder aux paramètres de l'extension"
+
+msgctxt "#31308"
+msgid "Access the dependencies of the extension"
+msgstr "Accéder aux dépendances de l'extension"
+
+msgctxt "#31309"
+msgid "Use this extension"
+msgstr "Utiliser cette extension"
+
+msgctxt "#31310"
+msgid "Enable automatic updates"
+msgstr "Activer les mises à jour automatiques"
+
+msgctxt "#31311"
+msgid "Disable automatic updates"
+msgstr "Désactiver les mises à jour automatiques"
+
+msgctxt "#31312"
+msgid "Play the recording"
+msgstr "Lire l'enregistrement"
+
+msgctxt "#31313"
+msgid "Group items by folders"
+msgstr "Grouper les éléments par dossiers"
+
+msgctxt "#31314"
+msgid "Connected with the profile"
+msgstr "Connécté avec le profil"
+
+msgctxt "#31315"
+msgid "is"
+msgstr "est"
+
+msgctxt "#31316"
+msgid "Show thumbnail"
+msgstr "Afficher la vignette"
+
+msgctxt "#31317"
+msgid "Channels not included :"
+msgstr "Chaines non incluses :"
+
+msgctxt "#31318"
+msgid "Channels included :"
+msgstr "Chaines incluses :"
+
+msgctxt "#31319"
+msgid "Please note, in KPR only the TV guide is affected by hidden groups, the TV widget and the channel guide will continue to display all groups !"
+msgstr "Attention, dans KPR seul le guide TV est affecté par les groupes cachés, le widget TV et le guide des chaines continueront à afficher tous les groupes !"
+
+msgctxt "#31320"
+msgid "Click to display"
+msgstr "Cliquer pour afficher"
+
+msgctxt "#31321"
+msgid "in group"
+msgstr "dans le groupe"
+
+msgctxt "#31322"
+msgid "Click to not diplay"
+msgstr "Cliquer pour ne pas afficher"
+
+msgctxt "#31323"
+msgid "You cannot use the parental control lock function ![CR][CR]Parental control and pin code must first be configured in the settings of the video recorder ![CR][CR]Remember to switch the settings in advanced mode or in expert mode to access these options !"
+msgstr "Vous ne pouvez pas utiliser la fonction de vérouillage par controle parental ![CR][CR]Le controle parental et le code pin doivent d'abbord être configurés dans les paramêtres de l'enregistreur vidéo ![CR][CR]Pensez à passer les réglages en mode avancé ou en mode expert pour accéder à ces options !"
+
+msgctxt "#31324"
+msgid "Click to move"
+msgstr "Cliquer pour déplacer"
+
+msgctxt "#31325"
+msgid "You cannot change the order of channels ![CR][CR]The options [Use channel order from backend] and [Use channel numbers from backend] must be disabled in the settings of the video recorder ![CR][CR]Remember to switch the settings to advanced mode or expert mode to access these options !"
+msgstr "Vous ne pouvez pas modifier l'ordre des chaines ![CR][CR]Les options [Utiliser l'ordre des chaines du serveur] et [Utiliser les numéros de chaines du serveur] doivent être désactivées dans les paramêtres de l'enregistreur vidéo ![CR][CR]Pensez à passer les réglages en mode avancé ou en mode expert pour accéder à ces options !"
+
+msgctxt "#31326"
+msgid "Apply without leaving"
+msgstr "Appliquer sans quitter"
+
+msgctxt "#31327"
+msgid "Apply and exit"
+msgstr "Appliquer et quitter"
+
+msgctxt "#31328"
+msgid "In KPR the channels icons are managed independently of the channel manager ![CR][CR]Modifying a channel icon in the channel manager will not affect the display of channel icons in KPR, the icons will continue to display as defined in the skin !"
+msgstr "Dans KPR les icones de chaines sont gérées indépendamment du géstionnaire de chaines ![CR][CR]Modifier une icone de chaine dans le gestionnaire de chaines n'affectera pas l'affichage des icones de chaine dans KPR, les icones continueront à s'afficher telles qu'elles ont été définies dans l'habillage !"
+
+msgctxt "#31329"
+msgid "Manual search"
+msgstr "Recherche manuelle"
+
+msgctxt "#31330"
+msgid "System CPU usage"
+msgstr "Usage CPU du système"
+
+msgctxt "#31331"
+msgid "Next"
+msgstr "A suivre"
+
+msgctxt "#31332"
+msgid "Display fanart"
+msgstr "Afficher le fanart"
+
+msgctxt "#31333"
+msgid "Animate the cover and the title"
+msgstr "Animer la pochette et le titre"
+
+msgctxt "#31334"
+msgid "Use visualization"
+msgstr "Utiliser la visualisation"
+
+msgctxt "#31335"
+msgid "Use a color cycle as mask"
+msgstr "Utiliser un cycle de couleur en masque"
+
+msgctxt "#31336"
+msgid "Lyrics add-on"
+msgstr "Extension de paroles"
+
+msgctxt "#31337"
+msgid "Lyrics add-on settings"
+msgstr "Paramètres des extensions de paroles"
+
+msgctxt "#31338"
+msgid "Visualization"
+msgstr "Visualisation"
+
+msgctxt "#31339"
+msgid "Visualisation settings"
+msgstr "Paramètres de visualisation"
+
+msgctxt "#31340"
+msgid "Choose visualisation presets"
+msgstr "Choisir les préréglages de visualisation"
+
+msgctxt "#31341"
+msgid "Animate the fanart"
+msgstr "Animer le fanart"
+
+msgctxt "#31342"
+msgid "no title (end of playlist)"
+msgstr "aucun titre (fin de la liste de lecture)"
+
+msgctxt "#31343"
+msgid "Repeat all"
+msgstr "Répeter tout"
+
+msgctxt "#31344"
+msgid "Repeat one"
+msgstr "Répeter une fois"
+
+msgctxt "#31345"
+msgid "No repetition"
+msgstr "Aucune répétition"
+
+msgctxt "#31346"
+msgid "Lyrics search ..."
+msgstr "Recherche de paroles ..."
+
+
+
 
 
 #: --------------------------kodi estuary (31001 - 31167)
