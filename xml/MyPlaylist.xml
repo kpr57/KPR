@@ -63,7 +63,7 @@
 	</control>
 	<control type="image">																														<description>fanart</description>
 		<top>-100</top>
-		<texture background="true" colordiffuse="ccffffff">$INFO[skin.string(arriere_plan_musique)]</texture>
+		<texture background="true" colordiffuse="ccffffff">extras/fallback/cd.jpg</texture>
 		<aspectratio>keep</aspectratio>
 		<animation effect="zoom" start="65" end="20" center="auto" time="30000" tween="sine" easing="inout" pulse="true" condition="!Skin.HasSetting(0animation_music_pochette)">Conditional</animation>
 		<animation effect="rotatex" start="-22,-22" end="22,22" center="auto" time="5000" tween="sine" easing="inout" pulse="true" condition="!Skin.HasSetting(0animation_music_pochette)">Conditional</animation>		

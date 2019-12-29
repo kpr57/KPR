@@ -3299,8 +3299,17 @@
 		<aspectratio>keep</aspectratio>
 		<animation effect="zoom" start="70" end="10" center="auto" time="30000" tween="sine" easing="inout" pulse="true" condition="!Player.Paused">conditional</animation>
 		<animation effect="rotatex" start="-15,-15" end="15,15" center="auto" time="5000" tween="sine" easing="inout" pulse="true" condition="!Player.Paused">conditional</animation>		
-		<animation effect="rotatey" start="-15,-15" end="15,15" center="auto" time="7500" tween="sine" easing="inout" pulse="true" condition="!Player.Paused">conditional</animation>		
-	</control>		
+		<animation effect="rotatey" start="-15,-15" end="15,15" center="auto" time="7500" tween="sine" easing="inout" pulse="true" condition="!Player.Paused">conditional</animation>
+		<visible>!string.isequal(MusicPlayer.Cover,defaultalbumcover.png)</visible>		
+	</control>	
+	<control type="image">
+		<texture background="true" colordiffuse="ccffffff">extras/fallback/cd.jpg</texture>
+		<aspectratio>keep</aspectratio>
+		<animation effect="zoom" start="70" end="10" center="auto" time="30000" tween="sine" easing="inout" pulse="true" condition="!Player.Paused">conditional</animation>
+		<animation effect="rotatex" start="-15,-15" end="15,15" center="auto" time="5000" tween="sine" easing="inout" pulse="true" condition="!Player.Paused">conditional</animation>		
+		<animation effect="rotatey" start="-15,-15" end="15,15" center="auto" time="7500" tween="sine" easing="inout" pulse="true" condition="!Player.Paused">conditional</animation>
+		<visible>string.isequal(MusicPlayer.Cover,defaultalbumcover.png)</visible>		
+	</control>
 	<control type="label">
 		<top>133</top>
 		<left>160</left>
