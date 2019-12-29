@@ -875,7 +875,7 @@
 		<height>118</height>			
 		<onleft>1000</onleft>		
 		<orientation>horizontal</orientation>
-		<itemgap>50</itemgap>
+		<itemgap>25</itemgap>
 	<control type="radiobutton" id="998">
 		<left>50</left>
 		<top>30</top>
@@ -1268,7 +1268,7 @@
 		<height>118</height>			
 		<onleft>1000</onleft>
 		<orientation>horizontal</orientation>
-		<itemgap>50</itemgap>
+		<itemgap>25</itemgap>
 	<control type="radiobutton" id="1998">
 		<left>50</left>
 		<top>30</top>
@@ -1302,8 +1302,7 @@
 		<top>30</top>		
 		<height>60</height>
 		<width>auto</width>
-		<ondown>2000</ondown>
-		<onright>1992</onright>		
+		<ondown>2000</ondown>		
 		<onclick>CleanLibrary(video)</onclick>		
 	<include content="bouton">																										
 		<param name="width" value="auto"/> 
@@ -1311,6 +1310,43 @@
 		<param name="align" value="center"/>			 
 		<param name="label" value="$LOCALIZE[31215]"/>
 	</include>
+	</control>	
+	<control type="radiobutton" id="19961">
+		<top>30</top>
+		<height>60</height>
+		<width>80</width>		
+		<ondown>2000</ondown>
+		<onclick>PlayDisc</onclick>
+		<texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
+		<textureradioonfocus colordiffuse="$VAR[gris]">icones/lire_disque.png</textureradioonfocus>
+		<textureradioonnofocus colordiffuse="d9ffffff">icones/lire_disque.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="$VAR[gris]">icones/lire_disque.png</textureradioofffocus>
+		<textureradiooffnofocus colordiffuse="d9ffffff">icones/lire_disque.png</textureradiooffnofocus>
+		<radioposx>6</radioposx>
+		<radiowidth>70</radiowidth>
+		<radioheight>70</radioheight>
+		<visible>!string.isempty(control.getlabel(123456))</visible>
+	</control>
+	<control type="radiobutton" id="19962">
+		<top>30</top>
+		<height>60</height>
+		<width>80</width>		
+		<ondown>2000</ondown>
+		<onright>1993</onright>
+		<onclick>control.setfocus(1998)</onclick>
+		<onclick>PlayerControl(stop)</onclick>
+		<onclick>EjectTray()</onclick>		
+		<texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
+		<textureradioonfocus colordiffuse="$VAR[gris]">icones/ejecter_disque.png</textureradioonfocus>
+		<textureradioonnofocus colordiffuse="d9ffffff">icones/ejecter_disque.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="$VAR[gris]">icones/ejecter_disque.png</textureradioofffocus>
+		<textureradiooffnofocus colordiffuse="d9ffffff">icones/ejecter_disque.png</textureradiooffnofocus>
+		<radioposx>6</radioposx>
+		<radiowidth>70</radiowidth>
+		<radioheight>70</radioheight>
+		<visible>!string.isempty(control.getlabel(123456))</visible>
 	</control>		
 	<control type="group" id="1993">
 		<top>30</top>
@@ -1329,7 +1365,7 @@
 		<height>60</height>
 		<width>60</width>
 		<ondown>2000</ondown>
-		<onleft>1996</onleft>
+		<onleft>19962</onleft>
 		<onright>1991</onright>		
 		<onclick>PlayerControl(Play)</onclick>		
 		<texturenofocus colordiffuse="ccffffff">boutons/OSD/pause.png</texturenofocus>
@@ -1468,7 +1504,7 @@
 		<height>118</height>			
 		<onleft>1000</onleft>
 		<orientation>horizontal</orientation>
-		<itemgap>50</itemgap>
+		<itemgap>25</itemgap>
 	<control type="radiobutton" id="3998">
 		<left>50</left>
 		<top>30</top>
@@ -1502,8 +1538,7 @@
 		<top>30</top>		
 		<height>60</height>
 		<width>auto</width>
-		<ondown>3000</ondown>
-		<onright>3992</onright>		
+		<ondown>3000</ondown>		
 		<onclick>CleanLibrary(video)</onclick>		
 	<include content="bouton">																										
 		<param name="width" value="auto"/> 
@@ -1511,7 +1546,44 @@
 		<param name="align" value="center"/>			 
 		<param name="label" value="$LOCALIZE[31215]"/>
 	</include>
-	</control>		
+	</control>	
+	<control type="radiobutton" id="39961">
+		<top>30</top>
+		<height>60</height>
+		<width>80</width>		
+		<ondown>3000</ondown>
+		<onclick>PlayDisc</onclick>
+		<texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
+		<textureradioonfocus colordiffuse="$VAR[gris]">icones/lire_disque.png</textureradioonfocus>
+		<textureradioonnofocus colordiffuse="d9ffffff">icones/lire_disque.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="$VAR[gris]">icones/lire_disque.png</textureradioofffocus>
+		<textureradiooffnofocus colordiffuse="d9ffffff">icones/lire_disque.png</textureradiooffnofocus>
+		<radioposx>6</radioposx>
+		<radiowidth>70</radiowidth>
+		<radioheight>70</radioheight>
+		<visible>!string.isempty(control.getlabel(123456))</visible>
+	</control>
+	<control type="radiobutton" id="39962">
+		<top>30</top>
+		<height>60</height>
+		<width>80</width>		
+		<ondown>3000</ondown>
+		<onright>3992</onright>
+		<onclick>control.setfocus(3998)</onclick>
+		<onclick>PlayerControl(stop)</onclick>
+		<onclick>EjectTray()</onclick>		
+		<texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
+		<textureradioonfocus colordiffuse="$VAR[gris]">icones/ejecter_disque.png</textureradioonfocus>
+		<textureradioonnofocus colordiffuse="d9ffffff">icones/ejecter_disque.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="$VAR[gris]">icones/ejecter_disque.png</textureradioofffocus>
+		<textureradiooffnofocus colordiffuse="d9ffffff">icones/ejecter_disque.png</textureradiooffnofocus>
+		<radioposx>6</radioposx>
+		<radiowidth>70</radiowidth>
+		<radioheight>70</radioheight>
+		<visible>!string.isempty(control.getlabel(123456))</visible>
+	</control>			
 	<control type="group" id="3993">
 		<top>30</top>
 		<height>60</height>
@@ -1529,7 +1601,7 @@
 		<height>60</height>
 		<width>60</width>
 		<ondown>3000</ondown>
-		<onleft>3996</onleft>
+		<onleft>39962</onleft>
 		<onright>3991</onright>		
 		<onclick>PlayerControl(Play)</onclick>		
 		<texturenofocus colordiffuse="ccffffff">boutons/OSD/pause.png</texturenofocus>
@@ -1662,7 +1734,7 @@
 		<height>118</height>			
 		<onleft>1000</onleft>
 		<orientation>horizontal</orientation>
-		<itemgap>50</itemgap>
+		<itemgap>25</itemgap>
 	<control type="radiobutton" id="4998">
 		<left>50</left>
 		<top>30</top>
@@ -1710,7 +1782,6 @@
 		<height>60</height>
 		<width>auto</width>
 		<ondown>4000</ondown>
-		<onright>4993</onright>		
 		<onclick>playercontrol(partymode)</onclick>		
 	<include content="bouton">																										
 		<param name="width" value="auto"/> 
@@ -1718,6 +1789,43 @@
 		<param name="align" value="center"/>			 
 		<param name="label" value="$LOCALIZE[31231]"/>
 	</include>
+	</control>		
+	<control type="radiobutton" id="49961">
+		<top>30</top>
+		<height>60</height>
+		<width>80</width>		
+		<ondown>4000</ondown>
+		<onclick>PlayDisc</onclick>
+		<texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
+		<textureradioonfocus colordiffuse="$VAR[gris]">icones/lire_disque.png</textureradioonfocus>
+		<textureradioonnofocus colordiffuse="d9ffffff">icones/lire_disque.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="$VAR[gris]">icones/lire_disque.png</textureradioofffocus>
+		<textureradiooffnofocus colordiffuse="d9ffffff">icones/lire_disque.png</textureradiooffnofocus>
+		<radioposx>6</radioposx>
+		<radiowidth>70</radiowidth>
+		<radioheight>70</radioheight>
+		<visible>!string.isempty(control.getlabel(123456))</visible>
+	</control>
+	<control type="radiobutton" id="49962">
+		<top>30</top>
+		<height>60</height>
+		<width>80</width>		
+		<ondown>4000</ondown>
+		<onright>4993</onright>
+		<onclick>control.setfocus(4998)</onclick>
+		<onclick>PlayerControl(stop)</onclick>
+		<onclick>EjectTray()</onclick>		
+		<texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
+		<textureradioonfocus colordiffuse="$VAR[gris]">icones/ejecter_disque.png</textureradioonfocus>
+		<textureradioonnofocus colordiffuse="d9ffffff">icones/ejecter_disque.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="$VAR[gris]">icones/ejecter_disque.png</textureradioofffocus>
+		<textureradiooffnofocus colordiffuse="d9ffffff">icones/ejecter_disque.png</textureradiooffnofocus>
+		<radioposx>6</radioposx>
+		<radiowidth>70</radiowidth>
+		<radioheight>70</radioheight>
+		<visible>!string.isempty(control.getlabel(123456))</visible>
 	</control>	
 	<control type="group" id="4993">
 		<top>30</top>
@@ -1736,7 +1844,7 @@
 		<height>60</height>
 		<width>60</width>
 		<ondown>4000</ondown>
-		<onleft>4990</onleft>
+		<onleft>49962</onleft>
 		<onright>4991</onright>		
 		<onclick>PlayerControl(Play)</onclick>		
 		<texturenofocus colordiffuse="ccffffff">boutons/OSD/pause.png</texturenofocus>
@@ -1869,7 +1977,7 @@
 		<height>118</height>			
 		<onleft>1000</onleft>
 		<orientation>horizontal</orientation>
-		<itemgap>50</itemgap>
+		<itemgap>20</itemgap>
 	<control type="radiobutton" id="5998">
 		<left>50</left>
 		<top>30</top>
@@ -1885,6 +1993,43 @@
 		<radioposx>1</radioposx>
 		<radiowidth>80</radiowidth>
 		<radioheight>80</radioheight>			
+	</control>			
+	<control type="radiobutton" id="59961">
+		<top>30</top>
+		<height>60</height>
+		<width>80</width>		
+		<ondown>5000</ondown>
+		<onclick>PlayDisc</onclick>
+		<texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
+		<textureradioonfocus colordiffuse="$VAR[gris]">icones/lire_disque.png</textureradioonfocus>
+		<textureradioonnofocus colordiffuse="d9ffffff">icones/lire_disque.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="$VAR[gris]">icones/lire_disque.png</textureradioofffocus>
+		<textureradiooffnofocus colordiffuse="d9ffffff">icones/lire_disque.png</textureradiooffnofocus>
+		<radioposx>6</radioposx>
+		<radiowidth>70</radiowidth>
+		<radioheight>70</radioheight>
+		<visible>!string.isempty(control.getlabel(123456))</visible>
+	</control>
+	<control type="radiobutton" id="59962">
+		<top>30</top>
+		<height>60</height>
+		<width>80</width>		
+		<ondown>5000</ondown>
+		<onright>5992</onright>
+		<onclick>control.setfocus(5998)</onclick>
+		<onclick>PlayerControl(stop)</onclick>
+		<onclick>EjectTray()</onclick>		
+		<texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
+		<textureradioonfocus colordiffuse="$VAR[gris]">icones/ejecter_disque.png</textureradioonfocus>
+		<textureradioonnofocus colordiffuse="d9ffffff">icones/ejecter_disque.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="$VAR[gris]">icones/ejecter_disque.png</textureradioofffocus>
+		<textureradiooffnofocus colordiffuse="d9ffffff">icones/ejecter_disque.png</textureradiooffnofocus>
+		<radioposx>6</radioposx>
+		<radiowidth>70</radiowidth>
+		<radioheight>70</radioheight>
+		<visible>!string.isempty(control.getlabel(123456))</visible>
 	</control>	
 	<control type="group" id="5993">
 		<top>30</top>
@@ -1903,7 +2048,7 @@
 		<height>60</height>
 		<width>60</width>
 		<ondown>5000</ondown>
-		<onleft>5998</onleft>
+		<onleft>59962</onleft>
 		<onright>5991</onright>		
 		<onclick>PlayerControl(Play)</onclick>		
 		<texturenofocus colordiffuse="ccffffff">boutons/OSD/pause.png</texturenofocus>
@@ -2036,7 +2181,7 @@
 		<height>118</height>		
 		<onleft>1000</onleft>
 		<orientation>horizontal</orientation>
-		<itemgap>50</itemgap>
+		<itemgap>25</itemgap>
 	<control type="radiobutton" id="6998">
 		<left>50</left>
 		<top>30</top>
@@ -2080,14 +2225,50 @@
 		<onfocus>cancelalarm(actualiser_widget_tv,silent)</onfocus>	
 		<onfocus>alarmclock(actualiser_widget_tv,activatewindow(1299),00:02,loop,silent)</onfocus>			
 		<onclick>skin.setpath(chemin_logos_tv)</onclick>
-		<onright>6992</onright>	
 	<include content="bouton">																										
 		<param name="width" value="auto"/> 
 		<param name="height" value="80"/>
 		<param name="align" value="center"/>			 
 		<param name="label" value="$LOCALIZE[31260]"/>
 	</include>
+	</control>			
+	<control type="radiobutton" id="69961">
+		<top>30</top>
+		<height>60</height>
+		<width>80</width>		
+		<ondown>6000</ondown>
+		<onclick>PlayDisc</onclick>
+		<texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
+		<textureradioonfocus colordiffuse="$VAR[gris]">icones/lire_disque.png</textureradioonfocus>
+		<textureradioonnofocus colordiffuse="d9ffffff">icones/lire_disque.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="$VAR[gris]">icones/lire_disque.png</textureradioofffocus>
+		<textureradiooffnofocus colordiffuse="d9ffffff">icones/lire_disque.png</textureradiooffnofocus>
+		<radioposx>6</radioposx>
+		<radiowidth>70</radiowidth>
+		<radioheight>70</radioheight>
+		<visible>!string.isempty(control.getlabel(123456))</visible>
 	</control>
+	<control type="radiobutton" id="69962">
+		<top>30</top>
+		<height>60</height>
+		<width>80</width>		
+		<ondown>6000</ondown>
+		<onright>6993</onright>
+		<onclick>control.setfocus(6998)</onclick>
+		<onclick>PlayerControl(stop)</onclick>
+		<onclick>EjectTray()</onclick>		
+		<texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
+		<textureradioonfocus colordiffuse="$VAR[gris]">icones/ejecter_disque.png</textureradioonfocus>
+		<textureradioonnofocus colordiffuse="d9ffffff">icones/ejecter_disque.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="$VAR[gris]">icones/ejecter_disque.png</textureradioofffocus>
+		<textureradiooffnofocus colordiffuse="d9ffffff">icones/ejecter_disque.png</textureradiooffnofocus>
+		<radioposx>6</radioposx>
+		<radiowidth>70</radiowidth>
+		<radioheight>70</radioheight>
+		<visible>!string.isempty(control.getlabel(123456))</visible>
+	</control>	
 	<control type="group" id="6993">
 		<top>30</top>
 		<height>60</height>
@@ -2105,7 +2286,7 @@
 		<height>60</height>
 		<width>60</width>
 		<ondown>6000</ondown>
-		<onleft>6997</onleft>
+		<onleft>69962</onleft>
 		<onright>6991</onright>		
 		<onfocus>cancelalarm(actualiser_widget_tv,silent)</onfocus>	
 		<onfocus>alarmclock(actualiser_widget_tv,activatewindow(1299),00:02,loop,silent)</onfocus><onclick>PlayerControl(Play)</onclick>		
@@ -2780,7 +2961,7 @@
 		<height>118</height>			
 		<onleft>1000</onleft>
 		<orientation>horizontal</orientation>
-		<itemgap>50</itemgap>
+		<itemgap>25</itemgap>
 	<control type="radiobutton" id="7998">
 		<left>50</left>
 		<top>30</top>
@@ -2810,7 +2991,44 @@
 		<param name="align" value="center"/>			 
 		<param name="label" value="$LOCALIZE[31267]"/>
 	</include>
+	</control>			
+	<control type="radiobutton" id="79961">
+		<top>30</top>
+		<height>60</height>
+		<width>80</width>		
+		<ondown>7000</ondown>
+		<onclick>PlayDisc</onclick>
+		<texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
+		<textureradioonfocus colordiffuse="$VAR[gris]">icones/lire_disque.png</textureradioonfocus>
+		<textureradioonnofocus colordiffuse="d9ffffff">icones/lire_disque.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="$VAR[gris]">icones/lire_disque.png</textureradioofffocus>
+		<textureradiooffnofocus colordiffuse="d9ffffff">icones/lire_disque.png</textureradiooffnofocus>
+		<radioposx>6</radioposx>
+		<radiowidth>70</radiowidth>
+		<radioheight>70</radioheight>
+		<visible>!string.isempty(control.getlabel(123456))</visible>
 	</control>
+	<control type="radiobutton" id="79962">
+		<top>30</top>
+		<height>60</height>
+		<width>80</width>		
+		<ondown>7000</ondown>
+		<onright>7992</onright>
+		<onclick>control.setfocus(7998)</onclick>
+		<onclick>PlayerControl(stop)</onclick>
+		<onclick>EjectTray()</onclick>		
+		<texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
+		<textureradioonfocus colordiffuse="$VAR[gris]">icones/ejecter_disque.png</textureradioonfocus>
+		<textureradioonnofocus colordiffuse="d9ffffff">icones/ejecter_disque.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="$VAR[gris]">icones/ejecter_disque.png</textureradioofffocus>
+		<textureradiooffnofocus colordiffuse="d9ffffff">icones/ejecter_disque.png</textureradiooffnofocus>
+		<radioposx>6</radioposx>
+		<radiowidth>70</radiowidth>
+		<radioheight>70</radioheight>
+		<visible>!string.isempty(control.getlabel(123456))</visible>
+	</control>	
 	<control type="group" id="7993">
 		<top>30</top>
 		<height>60</height>
@@ -2828,7 +3046,7 @@
 		<height>60</height>
 		<width>60</width>
 		<ondown>7000</ondown>
-		<onleft>7997</onleft>
+		<onleft>79962</onleft>
 		<onright>7991</onright>		
 		<onclick>PlayerControl(Play)</onclick>		
 		<texturenofocus colordiffuse="ccffffff">boutons/OSD/pause.png</texturenofocus>
@@ -2844,7 +3062,7 @@
 		<height>60</height>
 		<width>80</width>
 		<ondown>7000</ondown>
-		<onleft>7992</onleft>
+		<onleft>79962</onleft>
 		<onclick>control.setfocus(7998)</onclick>
 		<onclick>alarmclock(alarme,PlayerControl(stop),00:00,silent)</onclick>
 		<texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
@@ -3435,16 +3653,6 @@
 	</control>
 	</control>
 
-
-	
-
-
-
-
-
-
-
-	
 	<control type="grouplist" id="9001">																										<description>page parametres</description>
 		<visible>string.isequal(window(home).property(menu),$LOCALIZE[31174])</visible>
 		<include>style_et_cacher_page_accueil</include>		
@@ -3461,7 +3669,7 @@
 		<height>118</height>			
 		<onleft>1000</onleft>
 		<orientation>horizontal</orientation>
-		<itemgap>50</itemgap>
+		<itemgap>25</itemgap>
 	<control type="radiobutton" id="9998">
 		<left>50</left>
 		<top>30</top>
@@ -3478,7 +3686,43 @@
 		<radioposx>1</radioposx>
 		<radiowidth>80</radiowidth>
 		<radioheight>80</radioheight>	
-	</control>		
+	</control>					
+	<control type="radiobutton" id="79961">
+		<top>30</top>
+		<height>60</height>
+		<width>80</width>		
+		<ondown>9002</ondown>
+		<onclick>PlayDisc</onclick>
+		<texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
+		<textureradioonfocus colordiffuse="$VAR[gris]">icones/lire_disque.png</textureradioonfocus>
+		<textureradioonnofocus colordiffuse="d9ffffff">icones/lire_disque.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="$VAR[gris]">icones/lire_disque.png</textureradioofffocus>
+		<textureradiooffnofocus colordiffuse="d9ffffff">icones/lire_disque.png</textureradiooffnofocus>
+		<radioposx>6</radioposx>
+		<radiowidth>70</radiowidth>
+		<radioheight>70</radioheight>
+		<visible>!string.isempty(control.getlabel(123456))</visible>
+	</control>
+	<control type="radiobutton" id="79962">
+		<top>30</top>
+		<height>60</height>
+		<width>80</width>		
+		<ondown>9002</ondown>
+		<onclick>control.setfocus(9998)</onclick>
+		<onclick>PlayerControl(stop)</onclick>
+		<onclick>EjectTray()</onclick>		
+		<texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
+		<textureradioonfocus colordiffuse="$VAR[gris]">icones/ejecter_disque.png</textureradioonfocus>
+		<textureradioonnofocus colordiffuse="d9ffffff">icones/ejecter_disque.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="$VAR[gris]">icones/ejecter_disque.png</textureradioofffocus>
+		<textureradiooffnofocus colordiffuse="d9ffffff">icones/ejecter_disque.png</textureradiooffnofocus>
+		<radioposx>6</radioposx>
+		<radiowidth>70</radiowidth>
+		<radioheight>70</radioheight>
+		<visible>!string.isempty(control.getlabel(123456))</visible>
+	</control>	
 	</control>
 	<control type="group" id="9995">																											<description>barre de separation horizontale</description>
 		<height>2</height>
@@ -3632,7 +3876,7 @@
 		<height>118</height>			
 		<onleft>1000</onleft>
 		<orientation>horizontal</orientation>
-		<itemgap>50</itemgap>
+		<itemgap>25</itemgap>
 	<control type="radiobutton" id="10998">
 		<left>50</left>
 		<top>30</top>
@@ -3649,7 +3893,43 @@
 		<radioposx>1</radioposx>
 		<radiowidth>80</radiowidth>
 		<radioheight>80</radioheight>	
-	</control>		
+	</control>
+		<control type="radiobutton" id="79961">
+		<top>30</top>
+		<height>60</height>
+		<width>80</width>		
+		<ondown>10002</ondown>
+		<onclick>PlayDisc</onclick>
+		<texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
+		<textureradioonfocus colordiffuse="$VAR[gris]">icones/lire_disque.png</textureradioonfocus>
+		<textureradioonnofocus colordiffuse="d9ffffff">icones/lire_disque.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="$VAR[gris]">icones/lire_disque.png</textureradioofffocus>
+		<textureradiooffnofocus colordiffuse="d9ffffff">icones/lire_disque.png</textureradiooffnofocus>
+		<radioposx>6</radioposx>
+		<radiowidth>70</radiowidth>
+		<radioheight>70</radioheight>
+		<visible>!string.isempty(control.getlabel(123456))</visible>
+	</control>
+	<control type="radiobutton" id="79962">
+		<top>30</top>
+		<height>60</height>
+		<width>80</width>		
+		<ondown>10002</ondown>
+		<onclick>control.setfocus(10998)</onclick>
+		<onclick>PlayerControl(stop)</onclick>
+		<onclick>EjectTray()</onclick>		
+		<texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
+		<textureradioonfocus colordiffuse="$VAR[gris]">icones/ejecter_disque.png</textureradioonfocus>
+		<textureradioonnofocus colordiffuse="d9ffffff">icones/ejecter_disque.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="$VAR[gris]">icones/ejecter_disque.png</textureradioofffocus>
+		<textureradiooffnofocus colordiffuse="d9ffffff">icones/ejecter_disque.png</textureradiooffnofocus>
+		<radioposx>6</radioposx>
+		<radiowidth>70</radiowidth>
+		<radioheight>70</radioheight>
+		<visible>!string.isempty(control.getlabel(123456))</visible>
+	</control>	
 	</control>
 	<control type="group" id="10995">																											<description>barre de separation horizontale</description>
 		<height>2</height>
@@ -3764,18 +4044,7 @@
 	</include>	
 	</control>
 	</control>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+		
 	<control type="label">																														<description>label pour les tests</description>
 		<bottom>0</bottom>
 		<label>$INFO[]</label>
