@@ -21,8 +21,17 @@
 		<animation effect="rotatey" start="-10,-10" end="10,10" center="auto" time="10000" tween="sine" easing="inout" pulse="true" condition="!Skin.HasSetting(0animation_fanart)">Conditional</animation>		
 		<texture background="true" colordiffuse="80ffffff">$INFO[MusicPlayer.Property(Fanart_Image)]</texture>
 		<aspectratio>scale</aspectratio>
-		<visible>!Skin.HasSetting(0music_fanart)</visible>
-	</control>		
+		<visible>!Skin.HasSetting(0music_fanart) + !string.isempty(MusicPlayer.Property(Fanart_Image))</visible>
+	</control>	
+	<control type="image">																														<description>fanart</description>
+		<animation effect="zoom" start="130" end="160" center="auto" time="20000" tween="sine" easing="inout" pulse="true" condition="!Skin.HasSetting(0animation_fanart)">Conditional</animation>
+		<animation effect="slide" start="-50,-50" end="50,50" time="30000" tween="sine" easing="inout" pulse="true" condition="!Skin.HasSetting(0animation_fanart)">Conditional</animation>
+		<animation effect="rotatex" start="-10,-10" end="10,10" center="auto" time="20000" tween="sine" easing="inout" pulse="true" condition="!Skin.HasSetting(0animation_fanart)">Conditional</animation>		
+		<animation effect="rotatey" start="-10,-10" end="10,10" center="auto" time="10000" tween="sine" easing="inout" pulse="true" condition="!Skin.HasSetting(0animation_fanart)">Conditional</animation>		
+		<texture background="true" colordiffuse="80ffffff">$INFO[skin.string(arriere_plan_musique)]</texture>
+		<aspectratio>scale</aspectratio>
+		<visible>!Skin.HasSetting(0music_fanart) + string.isempty(MusicPlayer.Property(Fanart_Image))</visible>
+	</control>	
 	<control type="image">																														<description>masque</description>
 		<texture background="true" colordiffuse="20000000">commun/texture.png</texture>
 		<aspectratio>scale</aspectratio>
