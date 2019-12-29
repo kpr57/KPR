@@ -69,10 +69,10 @@
 		<texture colordiffuse="ebffffff">commun/fond.png</texture>
 		<visible>control.isVisible(67890)</visible>	
 	</control>
-	
-	
-	
-	
+	<control type="label" id="123456">																											<description>label pour tester si dvd ou pas</description>
+		<bottom>3000</bottom>
+		<label>$INFO[System.DVDLabel]</label>
+	</control>	
 	<control type="group">																														<description>faux panels pour verifier si vide ou pas</description>
 		<left>-3000</left>
 	<control type="panel" id="6800">
@@ -914,7 +914,6 @@
 		<height>60</height>
 		<width>80</width>		
 		<ondown>900</ondown>
-		<onright>997</onright>
 		<onclick>activatewindow(addonbrowser,return)</onclick>
 		<texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
 		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
@@ -926,6 +925,43 @@
 		<radiowidth>70</radiowidth>
 		<radioheight>70</radioheight>
 	</control>
+	<control type="radiobutton" id="9911">
+		<top>30</top>
+		<height>60</height>
+		<width>80</width>		
+		<ondown>900</ondown>
+		<onclick>PlayDisc</onclick>
+		<texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
+		<textureradioonfocus colordiffuse="$VAR[gris]">icones/lire_disque.png</textureradioonfocus>
+		<textureradioonnofocus colordiffuse="d9ffffff">icones/lire_disque.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="$VAR[gris]">icones/lire_disque.png</textureradioofffocus>
+		<textureradiooffnofocus colordiffuse="d9ffffff">icones/lire_disque.png</textureradiooffnofocus>
+		<radioposx>6</radioposx>
+		<radiowidth>70</radiowidth>
+		<radioheight>70</radioheight>
+		<visible>!string.isempty(control.getlabel(123456))</visible>
+	</control>
+	<control type="radiobutton" id="9912">
+		<top>30</top>
+		<height>60</height>
+		<width>80</width>		
+		<ondown>900</ondown>
+		<onright>997</onright>
+		<onclick>control.setfocus(998)</onclick>
+		<onclick>PlayerControl(stop)</onclick>
+		<onclick>EjectTray()</onclick>		
+		<texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
+		<textureradioonfocus colordiffuse="$VAR[gris]">icones/ejecter_disque.png</textureradioonfocus>
+		<textureradioonnofocus colordiffuse="d9ffffff">icones/ejecter_disque.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="$VAR[gris]">icones/ejecter_disque.png</textureradioofffocus>
+		<textureradiooffnofocus colordiffuse="d9ffffff">icones/ejecter_disque.png</textureradiooffnofocus>
+		<radioposx>6</radioposx>
+		<radiowidth>70</radiowidth>
+		<radioheight>70</radioheight>
+		<visible>!string.isempty(control.getlabel(123456))</visible>
+	</control>	
 	<control type="group" id="993">
 		<top>30</top>
 		<height>60</height>
@@ -943,7 +979,7 @@
 		<height>60</height>
 		<width>60</width>
 		<ondown>900</ondown>
-		<onleft>991</onleft>
+		<onleft>9912</onleft>
 		<onright>996</onright>		
 		<onclick>PlayerControl(Play)</onclick>		
 		<texturenofocus colordiffuse="ccffffff">boutons/OSD/pause.png</texturenofocus>
@@ -3741,7 +3777,7 @@
 	
 	<control type="label">																														<description>label pour les tests</description>
 		<bottom>0</bottom>
-		<label>$INFO[]</label>
+		<label>$INFO[System.DVDLabel]</label>
 	</control>
 </controls>
 </window>
