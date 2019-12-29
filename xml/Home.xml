@@ -70,7 +70,8 @@
 		<visible>control.isVisible(67890)</visible>	
 	</control>
 	<control type="label" id="123456">																											<description>label pour tester si dvd ou pas</description>
-		<bottom>3000</bottom>
+		<left>-3000</left>
+		<width>100</width>
 		<label>$INFO[System.DVDLabel]</label>
 	</control>	
 	<control type="group">																														<description>faux panels pour verifier si vide ou pas</description>
