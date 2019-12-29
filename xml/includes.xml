@@ -3276,7 +3276,15 @@
 		<height>266</height>
 		<texture background="true">$INFO[MusicPlayer.Property(Fanart_Image)]</texture>
 		<aspectratio>scale</aspectratio>		
+		<visible>!string.isempty(MusicPlayer.Property(Fanart_Image))</visible>
 	</control>
+	<control type="image">	
+		<width>473</width>
+		<height>266</height>
+		<texture background="true">$INFO[skin.string(arriere_plan_musique)]</texture>
+		<aspectratio>scale</aspectratio>		
+		<visible>string.isempty(MusicPlayer.Property(Fanart_Image))</visible>
+	</control>	
 	<control type="image">
 		<width>473</width>
 		<height>266</height>
