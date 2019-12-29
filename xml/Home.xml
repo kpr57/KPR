@@ -3778,7 +3778,7 @@
 	
 	<control type="label">																														<description>label pour les tests</description>
 		<bottom>0</bottom>
-		<label>$INFO[System.DVDLabel]</label>
+		<label>$INFO[]</label>
 	</control>
 </controls>
 </window>
