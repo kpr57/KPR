@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window type="dialog">	
 	<backgroundcolor>00X000000</backgroundcolor>
+	<onload condition="window.isvisible(pvrchannelmanager) + [system.getbool(pvrmanager.backendchannelorder) | system.getbool(pvrmanager.usebackendchannelnumbers)]">action(back)</onload>		
+	<onload condition="window.isvisible(pvrchannelmanager) + !system.getbool(pvrmanager.backendchannelorder) + !system.getbool(pvrmanager.usebackendchannelnumbers)">action(select)</onload>		
+	<onload>cancelalarm(actualiser_widget_tv,silent)</onload>			
+	<onload>cancelalarm(actualiser_widget_tv2,silent)</onload>
+	<onload condition="window.isvisible(home) + string.isequal(window(home).property(menu),$LOCALIZE[31171]) + !string.isempty(window(home).property(guide_widget_tv))">action(back)</onload>	
+	<onload condition="window.isvisible(MyPVRChannels.xml) + !string.isempty(window(home).property(guide_widget_tv2))">action(back)</onload>	
+	<onunload condition="window.isvisible(MyPVRChannels.xml)">alarmclock(actualiser_widget_tv2,control.setfocus(1299),00:02,loop,silent)</onunload>	
+	<onunload condition="window.isvisible(home) + string.isequal(window(home).property(menu),$LOCALIZE[31171])">alarmclock(actualiser_widget_tv,activatewindow(1299),00:02,loop,silent)</onunload>		
 	<include>animation_dialogue</include>	
-	<defaultcontrol>996</defaultcontrol>		
+	<defaultcontrol>996</defaultcontrol>				
 <controls>
 	<include>image_fond</include>																												<description>image de fond</description>	
 	<control type="label">																														<description>titre</description>	
@@ -39,22 +47,23 @@
 		<param name="width" value="780"/> 
 		<param name="height" value="80"/> 	
 	</include>
-	</control>
+	</control>			
 	<control type="image">																														<description>si aucune vignette</description>
 		<top>350</top>
 		<bottom>350</bottom>
 		<left>125</left>
 		<right>1085</right>
 		<aspectratio align="center" aligny="center">keep</aspectratio>
-		<texture background="true" colordiffuse="40000000">commun/noimage.png</texture>		
-	</control>
-	<control type="image">																														<description>vignette</description>
+		<texture background="true" colordiffuse="40000000">commun/noimage.png</texture>
+		<visible>string.isempty(window(home).property(image)) | string.isequal(control.getlabel(156),empty.png)</visible>
+	</control>	
+	<control type="image" id="156">																												<description>vignette</description>
 		<top>250</top>
 		<bottom>250</bottom>
 		<left>125</left>
 		<right>1085</right>
 		<aspectratio align="center" aligny="center">keep</aspectratio>
-		<texture background="true">$INFO[window(home).property(image)]</texture>
+		<texture background="true" fallback="empty.png">$INFO[window(home).property(image)]</texture>
 		<bordertexture border="10">commun/tuiles.png</bordertexture>
 		<bordersize>10,0,10,10</bordersize>			
 	</control>
@@ -70,6 +79,6 @@
 		<font>titre</font>
 		<textcolor>80ffffff</textcolor>
 		<label>$INFO[window(home).property(label)]</label>				
-	</control>	
+	</control>
 </controls>
 </window>

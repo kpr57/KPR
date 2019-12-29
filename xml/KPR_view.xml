@@ -1,0 +1,765 @@
+<?xml version="1.0" encoding="utf-8"?>
+<includes>
+	<include name="KPR_view">	
+	<control type="group">
+		<animation effect="fade" start="100" end="0" time="100" condition="window.isvisible(addoninformation) | window.isvisible(musicinformation) | window.isvisible(movieinformation) | window.isvisible(pvrguideinfo) | window.isvisible(selectdialog) | window.isvisible(contextmenu)" reversible="false">Conditional</animation>
+		<animation effect="fade" start="0" end="100" delay="100" time="100" condition="!window.isvisible(addoninformation) + !window.isvisible(musicinformation) + !window.isvisible(movieinformation) + !window.isvisible(pvrguideinfo) + !window.isvisible(selectdialog) + !window.isvisible(contextmenu)" reversible="false">Conditional</animation>
+	<control type="label">																														<description>horloge</description>
+		<right>15</right>
+		<height>116</height>			
+		<font>menu</font>
+		<textcolor>80ffffff</textcolor>
+		<align>right</align>
+		<label>$INFO[system.time(hh:mm)]</label>		
+	</control>		
+	<control type="label">																														<description>nombre elements</description>	
+		<left>60</left>
+		<top>90</top>
+		<height>50</height>
+		<textcolor>80ffffff</textcolor>
+		<font>texte_resume</font>
+		<label>$INFO[container.numitems] $LOCALIZE[31036] │ $LOCALIZE[31276] $INFO[container.currentitem]</label>
+	</control>
+	<control type="image">																														<description>notation</description>
+		<centerleft>50%</centerleft>
+		<top>95</top>		
+		<width>151</width>
+		<height>32</height>
+		<aspectratio align="center">keep</aspectratio>
+		<texture colordiffuse="80ffffff">flags/rating/$INFO[listitem.rating].png</texture>
+		<visible>!string.isempty(listitem.rating)</visible>
+	</control>	
+	<control type="label">																														<description>methode de tri</description>	
+		<right>15</right>
+		<top>90</top>
+		<height>50</height>
+		<align>right</align>
+		<textcolor>80ffffff</textcolor>
+		<font>texte_resume</font>
+		<label>$LOCALIZE[31275] [LOWERCASE]$INFO[container.sortmethod][/LOWERCASE] │ $INFO[container.sortorder]</label>
+	</control>
+	<control type="group">																														<description>encours 701</description>
+		<visible>control.isvisible(701)</visible>
+		<top>43</top>		
+		<left>60</left>	
+		<width>30</width>
+		<height>30</height>		
+	<control type="image">
+		<width>30</width>
+		<height>30</height>
+		<aspectratio>stretch</aspectratio>
+		<texture>$VAR[icone_status]</texture>
+	</control>	
+	</control>	
+	<control type="image">																														<description>3 points titre</description>
+		<top>45</top>		
+		<left>60</left>
+		<height>25</height>
+		<width>10</width>
+		<aspectratio>keep</aspectratio>
+		<texture background="true" colordiffuse="80ffffff">commun/3points.png</texture>
+		<visible>control.isvisible(700)</visible>
+	</control>
+	<control type="label">																														<description>titre</description>	
+		<left>90</left>
+		<width>1620</width>
+		<height>116</height>
+		<textcolor>80ffffff</textcolor>
+		<font>titre</font>
+		<label>$VAR[vues_titre]$VAR[vues_titre_bis]</label>
+		<animation effect="slide" start="0,0" end="10,0" condition="control.isvisible(701)">Conditional</animation>
+		<visible>control.hasfocus(700) | control.hasfocus(701) | control.hasfocus(60) | control.hasfocus(61)</visible>
+	</control>
+	<control type="label">																														<description>titre</description>	
+		<left>90</left>
+		<width>1020</width>
+		<height>116</height>
+		<textcolor>80ffffff</textcolor>
+		<font>titre</font>
+		<label>$VAR[vues_titre]$VAR[vues_titre_bis]</label>
+		<animation effect="slide" start="0,0" end="10,0" condition="control.isvisible(701)">Conditional</animation>
+		<visible>!control.hasfocus(700) + !control.hasfocus(701) + !control.hasfocus(60) + !control.hasfocus(61)</visible>
+	</control>
+	<include content="barre_separation_horizontale">																							<description>barre de separation horizontale</description>
+		<param name="left" value="20"/> 
+		<param name="right" value="20"/>
+		<param name="bottom" value="940"/>		
+	</include>	
+	<control type="image">																														<description>fond liste</description>		
+		<top>200</top>
+		<right>0</right>
+		<width>850</width>	
+		<texture colordiffuse="20ffffff" border="30">commun/texture.png</texture>
+		<visible>control.isvisible(700)</visible>
+	</control>
+	<control type="group">																														<description>lignes de separation si liste incomplete</description>	
+		<visible>control.isvisible(700)</visible>
+	<control type="image">
+		<right>15</right>
+		<height>1</height>
+		<width>780</width>
+		<top>599</top>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="20000000">commun/texture.png</texture>
+		<visible>integer.isequal(container.NumAllItems,1) | integer.isequal(container.NumAllItems,0)</visible>
+	</control>
+	<control type="image">
+		<right>15</right>
+		<height>1</height>
+		<width>780</width>
+		<top>559</top>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="20000000">commun/texture.png</texture>
+		<visible>integer.isequal(container.NumAllItems,2)</visible>
+	</control>
+	<control type="image">
+		<right>15</right>
+		<height>1</height>
+		<width>780</width>
+		<top>519</top>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="20000000">commun/texture.png</texture>
+		<visible>integer.isequal(container.NumAllItems,3)</visible>
+	</control>
+	<control type="image">
+		<right>15</right>
+		<height>1</height>
+		<width>780</width>
+		<top>479</top>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="20000000">commun/texture.png</texture>
+		<visible>integer.isequal(container.NumAllItems,4)</visible>
+	</control>
+	<control type="image">
+		<right>15</right>
+		<height>1</height>
+		<width>780</width>
+		<top>439</top>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="20000000">commun/texture.png</texture>
+		<visible>integer.isequal(container.NumAllItems,5)</visible>
+	</control>
+	<control type="image">
+		<right>15</right>
+		<height>1</height>
+		<width>780</width>
+		<top>399</top>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="20000000">commun/texture.png</texture>
+		<visible>integer.isequal(container.NumAllItems,6)</visible>
+	</control>
+	<control type="image">
+		<right>15</right>
+		<height>1</height>
+		<width>780</width>
+		<top>359</top>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="20000000">commun/texture.png</texture>
+		<visible>integer.isequal(container.NumAllItems,7)</visible>
+	</control>
+	<control type="image">
+		<right>15</right>
+		<height>1</height>
+		<width>780</width>
+		<top>319</top>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="20000000">commun/texture.png</texture>
+		<visible>integer.isequal(container.NumAllItems,8)</visible>
+	</control>
+	<control type="image">
+		<right>15</right>
+		<height>1</height>
+		<width>780</width>
+		<top>279</top>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="20000000">commun/texture.png</texture>
+		<visible>integer.isequal(container.NumAllItems,9)</visible>
+	</control>
+	<control type="image">
+		<right>15</right>
+		<height>1</height>
+		<width>780</width>
+		<top>239</top>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="20000000">commun/texture.png</texture>
+		<visible>integer.isequal(container.NumAllItems,10)</visible>
+	</control>
+	</control>
+	<control type="group">																														<description>liste 700</description>
+		<animation effect="slide" end="0,400" condition="integer.isequal(container.NumAllItems,1) | integer.isequal(container.NumAllItems,0)">conditional</animation>
+		<animation effect="slide" end="0,360" condition="integer.isequal(container.NumAllItems,2)">conditional</animation>
+		<animation effect="slide" end="0,320" condition="integer.isequal(container.NumAllItems,3)">conditional</animation>
+		<animation effect="slide" end="0,280" condition="integer.isequal(container.NumAllItems,4)">conditional</animation>
+		<animation effect="slide" end="0,240" condition="integer.isequal(container.NumAllItems,5)">conditional</animation>
+		<animation effect="slide" end="0,200" condition="integer.isequal(container.NumAllItems,6)">conditional</animation>
+		<animation effect="slide" end="0,160" condition="integer.isequal(container.NumAllItems,7)">conditional</animation>
+		<animation effect="slide" end="0,120" condition="integer.isequal(container.NumAllItems,8)">conditional</animation>
+		<animation effect="slide" end="0,80" condition="integer.isequal(container.NumAllItems,9)">conditional</animation>
+		<animation effect="slide" end="0,40" condition="integer.isequal(container.NumAllItems,10)">conditional</animation>
+	<control type="panel" id="700">			
+		<top>200</top>
+		<right>0</right>
+		<width>850</width>
+		<height>880</height>		
+		<onright>60</onright>
+		<onleft>800</onleft>
+		<pagecontrol>60</pagecontrol>
+		<scrolltime tween="cubic" easing="out">500</scrolltime>		
+	<itemlayout height="80">					
+	<control type="image">
+		<right>15</right>
+		<height>1</height>
+		<width>780</width>		
+		<bottom>0</bottom>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="20000000">commun/texture.png</texture>		
+	</control>
+	<control type="label">
+		<right>15</right>
+		<top>0</top>
+		<width>780</width>		
+		<bottom>1</bottom>
+		<textoffsetx>1</textoffsetx>
+		<label>$VAR[vues_infos_1]</label>
+	</control>		
+	<control type="image">
+		<top>25</top>
+		<left>15</left>
+		<width>30</width>
+		<height>30</height>
+		<aspectratio>stretch</aspectratio>
+		<texture>$VAR[icone_status]</texture>
+	</control>
+	</itemlayout>	
+	<focusedlayout height="80">		
+	<control type="button">
+		<onfocus condition="!String.IsEqual(listitem.icon,) + !string.EndsWith(listitem.icon,none)">setproperty(image,$INFO[listitem.icon],home)</onfocus>
+		<onfocus condition="String.IsEqual(listitem.icon,) | string.EndsWith(listitem.icon,none)">clearproperty(image,home)</onfocus>	
+		<onfocus condition="!string.isempty(listitem.title)">setproperty(label,$ESCINFO[listitem.title],home)</onfocus>
+		<onfocus condition="string.isempty(listitem.title)">setproperty(label,$ESCINFO[listitem.label],home)</onfocus>		
+	</control>	
+	<control type="image">
+		<right>15</right>
+		<top>0</top>
+		<width>780</width>		
+		<bottom>1</bottom>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="$VAR[couleur_dominante]">commun/texture.png</texture>
+	</control>
+	<control type="image">
+		<right>15</right>
+		<height>1</height>
+		<width>780</width>		
+		<bottom>0</bottom>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="20000000">commun/texture.png</texture>		
+	</control>
+	<control type="label">
+		<right>15</right>
+		<top>0</top>
+		<width>780</width>		
+		<bottom>1</bottom>
+		<textoffsetx>1</textoffsetx>
+		<textcolor>$VAR[gris]</textcolor>
+		<label>$VAR[vues_infos_1]</label>
+		<scroll>true</scroll>	
+	</control>	
+	<control type="image">
+		<top>25</top>
+		<left>15</left>
+		<width>30</width>
+		<height>30</height>
+		<aspectratio>stretch</aspectratio>
+		<texture>$VAR[icone_status]</texture>
+	</control>
+	</focusedlayout>	
+	</control>	
+	</control>
+	<control type="group">																														<description>scrollbar vue 700</description>
+		<visible>control.isvisible(700)</visible>
+	<control type="image">																														<description>fond scrollbar</description>
+		<top>200</top>
+		<right>0</right>
+		<width>15</width>
+		<height>880</height>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="1affffff">commun/texture.png</texture>		
+	</control>
+	<control type="scrollbar" id="60">
+		<top>203</top>
+		<height>874</height>
+		<right>5</right>
+		<width>5</width>		
+		<onleft>700</onleft>
+		<texturesliderbackground colordiffuse="2000ffffff">commun/texture.png</texturesliderbackground>		
+		<texturesliderbar colordiffuse="4000ffffff">commun/texture.png</texturesliderbar>
+		<textureslidernib colordiffuse="ffffffff">commun/texture.png</textureslidernib>
+		<texturesliderbarfocus colordiffuse="4000ffffff">commun/texture.png</texturesliderbarfocus>
+		<textureslidernibfocus colordiffuse="$VAR[couleur_dominante]">commun/texture.png</textureslidernibfocus>
+		<showonepage>true</showonepage>
+		<visible>true</visible>
+	</control>	
+	</control>
+	<control type="group">																														<description>informations vue 700</description>
+		<visible>control.isvisible(700)</visible>
+	<control type="image">																														<description>grande icone de gauche</description>
+		<top>180</top>
+		<height>500</height>
+		<left>240</left>
+		<right>1090</right>
+		<aspectratio align="center" aligny="center">keep</aspectratio>
+		<texture background="true" border="10" fallback="defaultfile.png">$INFO[ListItem.Icon]</texture>
+		<bordertexture border="10">commun/tuiles_grises.png</bordertexture>
+		<bordersize>10,0,10,10</bordersize>
+	</control>
+	<control type="image">																														<description>grande icone de gauche</description>
+		<top>180</top>
+		<height>500</height>
+		<left>240</left>
+		<right>1090</right>
+		<aspectratio align="center" aligny="center">keep</aspectratio>
+		<texture background="true" border="10">defaultvideo.png</texture>
+		<bordertexture border="10">commun/tuiles_grises.png</bordertexture>
+		<bordersize>10,0,10,10</bordersize>
+		<visible>[window.isvisible(MyVideoNav.xml) | window.isvisible(MyPVRRecordings.xml)] + [String.IsEqual(listitem.icon,) | string.EndsWith(listitem.icon,none)]</visible>	
+	</control>
+	<control type="image">																														<description>grande icone de gauche</description>
+		<top>180</top>
+		<height>500</height>
+		<left>240</left>
+		<right>1090</right>
+		<aspectratio align="center" aligny="center">keep</aspectratio>
+		<texture background="true" border="10">defaultaddon.png</texture>
+		<bordertexture border="10">commun/tuiles_grises.png</bordertexture>
+		<bordersize>10,0,10,10</bordersize>
+		<visible>window.isvisible(AddonBrowser.xml) + [String.IsEqual(listitem.icon,) | string.EndsWith(listitem.icon,none)]</visible>	
+	</control>	
+	<control type="image">																														<description>grande icone de gauche</description>
+		<top>180</top>
+		<height>500</height>
+		<left>240</left>
+		<right>1090</right>
+		<aspectratio align="center" aligny="center">keep</aspectratio>
+		<texture background="true" border="10">defaultaddonmusic.png</texture>
+		<bordertexture border="10">commun/tuiles_grises.png</bordertexture>
+		<bordersize>10,0,10,10</bordersize>
+		<visible>window.isvisible(MyMusicNav.xml) + [String.IsEqual(listitem.icon,) | string.EndsWith(listitem.icon,none)]</visible>	
+	</control>
+	<control type="label">																														<description>informations</description>
+		<bottom>346</bottom>
+		<right>870</right>
+		<left>20</left>
+		<height>50</height>
+		<textcolor>80ffffff</textcolor>
+		<font>infos</font>
+		<align>center</align>		
+		<label>$VAR[vues_infos_2]$VAR[vues_infos_separation_2]$VAR[vues_infos_3]$VAR[vues_infos_separation_3]$VAR[vues_infos_4]$VAR[vues_infos_separation_4]$VAR[vues_infos_5]</label>		
+	</control>
+	<include content="barre_separation_horizontale">																							<description>barre de separation horizontale</description>
+		<param name="left" value="20"/> 
+		<param name="right" value="870"/>
+		<param name="bottom" value="346"/>		
+	</include>	
+	<control type="textbox">																													<description>resume</description>		
+		<top>755</top>
+		<height>240</height>
+		<right>890</right>
+		<left>40</left>	
+		<font>infos</font>
+		<textcolor>80ffffff</textcolor>
+		<align>justify</align>
+		<label>$VAR[vues_infos_resume]</label>	
+		<autoscroll>false</autoscroll>			
+	</control>
+	<include content="barre_separation_horizontale">																							<description>barre de separation horizontale</description>
+		<param name="left" value="20"/> 
+		<param name="right" value="870"/>
+		<param name="bottom" value="50"/>		
+	</include>		
+	<control type="label">																														<description>genre</description>
+		<bottom>0</bottom>
+		<right>870</right>
+		<left>20</left>
+		<height>50</height>
+		<font>infos</font>
+		<textcolor>80ffffff</textcolor>
+		<align>center</align>		
+		<label>$VAR[vues_infos_6]</label>		
+	</control>	
+	</control>
+	<control type="panel" id="701">																												<description>liste 701</description>			
+		<top>140</top>
+		<left>170</left>
+		<width>1680</width>
+		<height>740</height>		
+		<onright>61</onright>
+		<onleft>800</onleft>
+		<pagecontrol>61</pagecontrol>
+		<scrolltime tween="cubic" easing="out">500</scrolltime>		
+	<itemlayout height="370" width="336">					
+	<control type="image">
+		<right>10</right>
+		<left>10</left>
+		<top>30</top>	
+		<bottom>20</bottom>
+		<aspectratio>keep</aspectratio>
+		<texture background="true" border="10" fallback="defaultfile.png">$INFO[listitem.icon]</texture>
+		<bordertexture border="10">commun/tuiles_grises.png</bordertexture>
+		<bordersize>10,0,10,10</bordersize>		
+	</control>
+	<control type="image">
+		<right>10</right>
+		<left>10</left>
+		<top>30</top>	
+		<bottom>20</bottom>
+		<aspectratio>keep</aspectratio>
+		<texture background="true" border="10">defaultvideo.png</texture>	
+		<bordertexture border="10">commun/tuiles_grises.png</bordertexture>		
+		<bordersize>10,0,10,10</bordersize>
+		<visible>window.isvisible(MyVideoNav.xml) + [String.IsEqual(listitem.icon,) | string.EndsWith(listitem.icon,none)]</visible>		
+	</control>
+	<control type="image">
+		<right>10</right>
+		<left>10</left>
+		<top>30</top>	
+		<bottom>20</bottom>
+		<aspectratio>keep</aspectratio>
+		<texture background="true" border="10">defaultaddon.png</texture>	
+		<bordertexture border="10">commun/tuiles_grises.png</bordertexture>		
+		<bordersize>10,0,10,10</bordersize>
+		<visible>window.isvisible(AddonBrowser.xml) + [String.IsEqual(listitem.icon,) | string.EndsWith(listitem.icon,none)]</visible>		
+	</control>	
+	<control type="image">
+		<right>10</right>
+		<left>10</left>
+		<top>30</top>	
+		<bottom>20</bottom>
+		<aspectratio>keep</aspectratio>
+		<texture background="true" border="10">defaultaddonmusic.png</texture>	
+		<bordertexture border="10">commun/tuiles_grises.png</bordertexture>		
+		<bordersize>10,0,10,10</bordersize>
+		<visible>window.isvisible(MyMusicNav.xml) + [String.IsEqual(listitem.icon,) | string.EndsWith(listitem.icon,none)]</visible>		
+	</control>
+	</itemlayout>	
+	<focusedlayout height="370" width="336">		
+	<control type="button">
+		<onfocus condition="!String.IsEqual(listitem.icon,) + !string.EndsWith(listitem.icon,none)">setproperty(image,$INFO[listitem.icon],home)</onfocus>
+		<onfocus condition="String.IsEqual(listitem.icon,) | string.EndsWith(listitem.icon,none)">clearproperty(image,home)</onfocus>	
+		<onfocus condition="!string.isempty(listitem.title)">setproperty(label,$ESCINFO[listitem.title],home)</onfocus>
+		<onfocus condition="string.isempty(listitem.title)">setproperty(label,$ESCINFO[listitem.label],home)</onfocus>		
+	</control>
+	<control type="image">
+		<right>0</right>
+		<left>0</left>
+		<top>10</top>	
+		<bottom>10</bottom>
+		<aspectratio>keep</aspectratio>
+		<texture background="true" border="5" fallback="defaultfile.png">$INFO[listitem.icon]</texture>	
+		<bordertexture border="5" colordiffuse="$VAR[couleur_dominante]">commun/selection_grise.png</bordertexture>		
+		<bordersize>5,5,5,5</bordersize>		
+	</control>
+	<control type="image">
+		<right>0</right>
+		<left>0</left>
+		<top>10</top>	
+		<bottom>10</bottom>
+		<aspectratio>keep</aspectratio>
+		<texture background="true" border="5">defaultvideo.png</texture>	
+		<bordertexture border="5" colordiffuse="$VAR[couleur_dominante]">commun/selection_grise.png</bordertexture>		
+		<bordersize>5,5,5,5</bordersize>
+		<visible>window.isvisible(MyVideoNav.xml) + [String.IsEqual(listitem.icon,) | string.EndsWith(listitem.icon,none)]</visible>		
+	</control>
+	<control type="image">
+		<right>0</right>
+		<left>0</left>
+		<top>10</top>	
+		<bottom>10</bottom>
+		<aspectratio>keep</aspectratio>
+		<texture background="true" border="5">defaultaddon.png</texture>	
+		<bordertexture border="5" colordiffuse="$VAR[couleur_dominante]">commun/selection_grise.png</bordertexture>		
+		<bordersize>5,5,5,5</bordersize>
+		<visible>window.isvisible(AddonBrowser.xml) + [String.IsEqual(listitem.icon,) | string.EndsWith(listitem.icon,none)]</visible>		
+	</control>
+	<control type="image">
+		<right>0</right>
+		<left>0</left>
+		<top>10</top>	
+		<bottom>10</bottom>
+		<aspectratio>keep</aspectratio>
+		<texture background="true" border="5">defaultaddonmusic.png</texture>	
+		<bordertexture border="5" colordiffuse="$VAR[couleur_dominante]">commun/selection_grise.png</bordertexture>		
+		<bordersize>5,5,5,5</bordersize>
+		<visible>window.isvisible(MyMusicNav.xml) + [String.IsEqual(listitem.icon,) | string.EndsWith(listitem.icon,none)]</visible>		
+	</control>
+	</focusedlayout>	
+	</control>	
+	<control type="group">																														<description>scrollbar vue 701</description>
+		<visible>control.isvisible(701)</visible>
+	<control type="image">																														<description>fond scrollbar</description>
+		<top>140</top>
+		<right>0</right>
+		<width>15</width>
+		<height>740</height>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="1affffff">commun/texture.png</texture>		
+	</control>
+	<control type="scrollbar" id="61">
+		<top>143</top>
+		<height>734</height>
+		<right>5</right>
+		<width>5</width>		
+		<onleft>701</onleft>
+		<texturesliderbackground colordiffuse="2000ffffff">commun/texture.png</texturesliderbackground>		
+		<texturesliderbar colordiffuse="4000ffffff">commun/texture.png</texturesliderbar>
+		<textureslidernib colordiffuse="ffffffff">commun/texture.png</textureslidernib>
+		<texturesliderbarfocus colordiffuse="4000ffffff">commun/texture.png</texturesliderbarfocus>
+		<textureslidernibfocus colordiffuse="$VAR[couleur_dominante]">commun/texture.png</textureslidernibfocus>
+		<showonepage>true</showonepage>
+		<visible>true</visible>
+	</control>	
+	</control>
+	<control type="group">																														<description>informations vue 701</description>
+		<visible>control.isvisible(701)</visible>
+	<include content="barre_separation_horizontale">																							<description>barre de separation horizontale</description>
+		<param name="left" value="20"/> 
+		<param name="right" value="20"/>
+		<param name="bottom" value="198"/>		
+	</include>	
+	<control type="textbox">																													<description>resume</description>		
+		<top>882</top>
+		<height>138</height>
+		<right>20</right>
+		<left>20</left>	
+		<font>infos</font>
+		<textcolor>80ffffff</textcolor>
+		<align>justify</align>
+		<label>$VAR[vues_infos_resume]</label>	
+		<autoscroll>false</autoscroll>			
+	</control>
+	<include content="barre_separation_horizontale">																							<description>barre de separation horizontale</description>
+		<param name="left" value="20"/> 
+		<param name="right" value="20"/>
+		<param name="bottom" value="50"/>		
+	</include>	
+	<control type="label">																														<description>genre</description>
+		<bottom>0</bottom>
+		<right>955</right>
+		<left>20</left>
+		<height>50</height>
+		<font>infos</font>
+		<textcolor>80ffffff</textcolor>
+		<label>$VAR[vues_infos_6]</label>		
+	</control>
+	<control type="label">																														<description>informations</description>
+		<bottom>0</bottom>
+		<right>20</right>
+		<left>955</left>
+		<height>50</height>
+		<textcolor>80ffffff</textcolor>
+		<font>infos</font>
+		<align>right</align>		
+		<label>$VAR[vues_infos_2]$VAR[vues_infos_separation_2]$VAR[vues_infos_3]$VAR[vues_infos_separation_3]$VAR[vues_infos_4]$VAR[vues_infos_separation_4]$VAR[vues_infos_5]</label>		
+	</control>
+	</control>
+	<control type="grouplist" id="800">																											<description>boutons</description>				
+		<top>170</top>		
+		<left>40</left>
+		<height>700</height>
+		<width>100</width>
+		<onright>700</onright>
+		<itemgap>10</itemgap>
+		<orientation>vertical</orientation>
+	<control type="radiobutton" id="3">		
+		<height>50</height>
+		<texturenofocus colordiffuse="$VAR[gris]" border="25">commun/bouton.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="25">commun/bouton.png</texturefocus>
+		<textureradioonfocus colordiffuse="ffffffff">boutons/parametres_menu.png</textureradioonfocus>
+		<textureradioonnofocus colordiffuse="ffffffff">boutons/parametres_menu.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="ffffffff">boutons/parametres_menu.png</textureradioofffocus>
+		<textureradiooffnofocus colordiffuse="ffffffff">boutons/parametres_menu.png</textureradiooffnofocus>
+		<radioposx>15</radioposx>
+		<radiowidth>70</radiowidth>
+		<radioheight>70</radioheight>			
+		<visible>control.isenabled(3)</visible>
+	</control>
+	<control type="radiobutton" id="4">		
+		<height>50</height>
+		<texturenofocus colordiffuse="$VAR[gris]" border="25">commun/bouton.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="25">commun/bouton.png</texturefocus>
+		<textureradioonfocus colordiffuse="ffffffff">boutons/az.png</textureradioonfocus>
+		<textureradioonnofocus colordiffuse="ffffffff">boutons/az.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="ffffffff">boutons/az.png</textureradioofffocus>
+		<textureradiooffnofocus colordiffuse="ffffffff">boutons/az.png</textureradiooffnofocus>
+		<radioposx>15</radioposx>
+		<radiowidth>70</radiowidth>
+		<radioheight>70</radioheight>
+		<visible>control.isenabled(3)</visible>
+	</control>
+	<control type="radiobutton" id="801">		
+		<height>50</height>
+		<texturenofocus colordiffuse="$VAR[gris]" border="25">commun/bouton.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="25">commun/bouton.png</texturefocus>
+		<textureradioonfocus colordiffuse="ffffffff">icones/infos/filtre.png</textureradioonfocus>
+		<textureradioonnofocus colordiffuse="ffffffff">icones/infos/filtre.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="ffffffff">icones/infos/filtre.png</textureradioofffocus>
+		<textureradiooffnofocus colordiffuse="ffffffff">icones/infos/filtre.png</textureradiooffnofocus>
+		<radioposx>15</radioposx>
+		<radiowidth>70</radiowidth>
+		<radioheight>70</radioheight>
+		<onclick>Filter</onclick>
+        <selected>Container.Filtered</selected>
+        <visible>Container.CanFilterAdvanced</visible>
+	</control>
+	<control type="radiobutton" id="19">		
+		<height>50</height>
+		<texturenofocus colordiffuse="$VAR[gris]" border="25">commun/bouton.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="25">commun/bouton.png</texturefocus>
+		<textureradioonfocus colordiffuse="ffffffff">menus/recherche.png</textureradioonfocus>
+		<textureradioonnofocus colordiffuse="ffffffff">menus/recherche.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="ffffffff">menus/recherche.png</textureradioofffocus>
+		<textureradiooffnofocus colordiffuse="ffffffff">menus/recherche.png</textureradiooffnofocus>
+		<radioposx>15</radioposx>
+		<radiowidth>70</radiowidth>
+		<radioheight>70</radioheight>
+		<visible>control.isenabled(19)</visible>
+	</control>
+	<control type="radiobutton" id="8">		
+		<height>50</height>
+		<texturenofocus colordiffuse="$VAR[gris]" border="25">commun/bouton.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="25">commun/bouton.png</texturefocus>
+		<textureradioonfocus colordiffuse="ffffffff">icones/infos/recherche+.png</textureradioonfocus>
+		<textureradioonnofocus colordiffuse="ffffffff">icones/infos/recherche+.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="ffffffff">icones/infos/recherche+.png</textureradioofffocus>
+		<textureradiooffnofocus colordiffuse="ffffffff">icones/infos/recherche+.png</textureradiooffnofocus>
+		<radioposx>15</radioposx>
+		<radiowidth>70</radiowidth>
+		<radioheight>70</radioheight>
+		<visible>control.isenabled(8) + !window.isvisible(addonbrowser.xml) + !window.isvisible(MyPVRRecordings.xml) + !window.isvisible(MyPVRTimers.xml)</visible>
+	</control>
+	<control type="radiobutton" id="9">		
+		<height>50</height>
+		<texturenofocus colordiffuse="$VAR[gris]" border="25">commun/bouton.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="25">commun/bouton.png</texturefocus>
+		<textureradioonfocus colordiffuse="ffffffff">icones/infos/update.png</textureradioonfocus>
+		<textureradioonnofocus colordiffuse="ffffffff">icones/infos/update.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="ffffffff">icones/infos/update.png</textureradioofffocus>
+		<textureradiooffnofocus colordiffuse="ffffffff">icones/infos/update.png</textureradiooffnofocus>
+		<radioposx>15</radioposx>
+		<radiowidth>70</radiowidth>
+		<radioheight>70</radioheight>
+		<visible>window.isvisible(addonbrowser.xml)</visible>
+	</control>
+	<control type="radiobutton" id="5">		
+		<height>50</height>
+		<texturenofocus colordiffuse="$VAR[gris]" border="25">commun/bouton.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="25">commun/bouton.png</texturefocus>
+		<textureradioonfocus colordiffuse="ffffffff">icones/settings/system.png</textureradioonfocus>
+		<textureradioonnofocus colordiffuse="ffffffff">icones/settings/system.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="ffffffff">icones/settings/system.png</textureradioofffocus>
+		<textureradiooffnofocus colordiffuse="ffffffff">icones/settings/system.png</textureradiooffnofocus>
+		<radioposx>15</radioposx>
+		<radiowidth>70</radiowidth>
+		<radioheight>70</radioheight>
+		<visible>window.isvisible(addonbrowser.xml)</visible>
+	</control>
+	<control type="radiobutton" id="15">		
+		<height>50</height>
+		<texturenofocus colordiffuse="$VAR[gris]" border="25">commun/bouton.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="25">commun/bouton.png</texturefocus>
+		<textureradioonfocus colordiffuse="ffffffff">icones/infos/dossier_on.png</textureradioonfocus>
+		<textureradioonnofocus colordiffuse="ffffffff">icones/infos/dossier_on.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="ffffffff">icones/infos/dossier_off.png</textureradioofffocus>
+		<textureradiooffnofocus colordiffuse="ffffffff">icones/infos/dossier_off.png</textureradiooffnofocus>
+		<radioposx>15</radioposx>
+		<radiowidth>70</radiowidth>
+		<radioheight>70</radioheight>
+		<onclick>sendclick(5)</onclick>
+		<visible>window.isvisible(MyPVRRecordings.xml)</visible>
+	</control>
+	<control type="radiobutton" id="803">		
+		<height>50</height>
+		<texturenofocus colordiffuse="$VAR[gris]" border="25">commun/bouton.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="25">commun/bouton.png</texturefocus>
+		<textureradioonfocus colordiffuse="ffffffff">icones/infos/fanart.png</textureradioonfocus>
+		<textureradioonnofocus colordiffuse="ffffffff">icones/infos/fanart.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="ffffffff">icones/infos/fanart.png</textureradioofffocus>
+		<textureradiooffnofocus colordiffuse="ffffffff">icones/infos/fanart.png</textureradiooffnofocus>
+		<radioposx>15</radioposx>
+		<radiowidth>70</radiowidth>
+		<radioheight>70</radioheight>
+		<onclick condition="window.isvisible(addonbrowser.xml)">skin.setimage(arriere_plan_addon,special://skin/media/extras/fallback)</onclick>
+		<onclick condition="window.isvisible(myvideonav.xml)">skin.setimage(arriere_plan_video,special://skin/media/extras/fallback)</onclick>
+		<onclick condition="window.isvisible(mymusicnav.xml)">skin.setimage(arriere_plan_musique,special://skin/media/extras/fallback)</onclick>
+		<onclick condition="window.isvisible(MyPVRRecordings.xml) | window.isvisible(MyPVRTimers.xml)">skin.setimage(arriere_plan_tv,special://skin/media/extras/fallback)</onclick>
+	</control>
+	<control type="radiobutton" id="802">		
+		<height>50</height>
+		<texturenofocus colordiffuse="$VAR[gris]" border="25">commun/bouton.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="25">commun/bouton.png</texturefocus>
+		<textureradioonfocus colordiffuse="ffffffff">icones/701.png</textureradioonfocus>
+		<textureradioonnofocus colordiffuse="ffffffff">icones/701.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="ffffffff">icones/700.png</textureradioofffocus>
+		<textureradiooffnofocus colordiffuse="ffffffff">icones/700.png</textureradiooffnofocus>
+		<radioposx>15</radioposx>
+		<radiowidth>70</radiowidth>
+		<radioheight>70</radioheight>
+		<onclick>Container.nextViewMode</onclick>
+		<selected>control.isvisible(700)</selected>
+	</control>
+	</control>
+	<control type="grouplist">																													<description>legende boutons</description>																													<description>producteur/casting/realisateur/studio</description>		
+		<visible>!control.hasfocus(700) + !control.hasfocus(701) + !control.hasfocus(60) + !control.hasfocus(61)</visible>
+		<right>120</right>
+		<top>30</top>
+		<height>60</height>
+		<width>1000</width>
+		<align>right</align>
+		<itemgap>-5</itemgap>
+		<orientation>horizontal</orientation>
+	<control type="image">																														<description>mpaa</description>		
+		<width>60</width>
+		<height>60</height>
+		<aspectratio>keep</aspectratio>
+		<texture colordiffuse="80ffffff">icones/infos/info.png</texture>		
+	</control>	
+	<control type="label">			
+		<width>auto</width>
+		<height>60</height>
+		<textcolor>80ffffff</textcolor>
+		<font>infos</font>
+		<label>[I]$VAR[legende_infos][/I]</label>
+	</control>	
+	</control>
+	</control>	
+	<control type="label" id="770">																												<description>label pour tester si infos vides</description>
+		<top>2000</top>
+		<height>10</height>	
+		<label>$VAR[vues_infos_resume]</label>
+	</control>
+	<control type="label" id="772">																												<description>label pour tester si infos vides</description>
+		<top>2000</top>
+		<height>10</height>	
+		<label>$VAR[vues_infos_2]</label>
+	</control>
+	<control type="label" id="773">																												<description>label pour tester si infos vides</description>
+		<top>2000</top>
+		<height>10</height>	
+		<label>$VAR[vues_infos_3]</label>
+	</control>
+	<control type="label" id="774">																												<description>label pour tester si infos vides</description>
+		<top>2000</top>
+		<height>10</height>	
+		<label>$VAR[vues_infos_4]</label>
+	</control>
+	<control type="label" id="775">																												<description>label pour tester si infos vides</description>
+		<top>2000</top>
+		<height>10</height>	
+		<label>$VAR[vues_infos_5]</label>
+	</control>
+	<control type="label">																														<description>label pour tests</description>
+		<top>1000</top>
+		<height>80</height>	
+		<label></label>
+	</control>	
+	</include>
+</includes>

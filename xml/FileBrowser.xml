@@ -24,16 +24,8 @@
 		<param name="right" value="50"/>
 		<param name="bottom" value="940"/>		
 	</include>	
-	<control type="group">																														<description>groupe qui se place en fonction du nombre d'options</description>
-		<animation effect="slide" start="0,0" end="0,540" time="1" condition="Integer.isequal(Container(450).NumAllItems,1)">conditional</animation>
-		<animation effect="slide" start="0,0" end="0,490" time="1" condition="Integer.isequal(Container(450).NumAllItems,2)">conditional</animation>
-		<animation effect="slide" start="0,0" end="0,440" time="1" condition="Integer.isequal(Container(450).NumAllItems,3)">conditional</animation>
-		<animation effect="slide" start="0,0" end="0,390" time="1" condition="Integer.isequal(Container(450).NumAllItems,4)">conditional</animation>
-		<animation effect="slide" start="0,0" end="0,340" time="1" condition="Integer.isequal(Container(450).NumAllItems,5)">conditional</animation>
-		<animation effect="slide" start="0,0" end="0,290" time="1" condition="Integer.isequal(Container(450).NumAllItems,6)">conditional</animation>
-		<animation effect="slide" start="0,0" end="0,240" time="1" condition="Integer.isequal(Container(450).NumAllItems,7)">conditional</animation>
-		<animation effect="slide" start="0,0" end="0,190" time="1" condition="Integer.IsGreaterOrEqual(Container(450).NumAllItems,8)">conditional</animation>
 	<control type="list" id="450">																												<description>listes simple</description>		
+		<top>190</top>
 		<left>500</left>
 		<width>700</width>
 		<height>810</height>		
@@ -83,7 +75,6 @@
 		<param name="height" value="80"/>
 		<param name="texturenofocus_colordiffuse" value="$VAR[couleur_dominante]"/>
 	</include>
-		<visible>!control.hasfocus(3)</visible>
 		<animation effect="fade" start="100" end="75" condition="true">conditional</animation>
 	</control>
 	<control type="image">	
@@ -99,13 +90,12 @@
 		<right>0</right>
 		<height>80</height>
 		<textoffsetx>20</textoffsetx>
-		<textcolor>ff433736</textcolor>
+		<textcolor>$VAR[gris]</textcolor>
 		<label>$INFO[ListItem.Label]</label>
 		<scroll>true</scroll>
 	</control>
 	</control>	
 	</focusedlayout>	
-	</control>		
 	</control>	
 	<include content="scrollbar">																												<description>scrollbar</description>
 		<param name="id" value="61"/> 

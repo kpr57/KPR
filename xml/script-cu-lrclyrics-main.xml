@@ -1,69 +1,97 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>	
-	<backgroundcolor>00X000000</backgroundcolor>
-	<onload condition="window.isVisible(1206)">dialog.close(script-cu-lrclyrics-main.xml)</onload>
-	<controls>
-	<!-- ** Required ** Do not change <id> or <type> (Lyrics, will autoscroll if lrc based lyrics are shown) -->
+	<backgroundcolor>00X000000</backgroundcolor>	
+<controls>
 	<control type="group">
+		<visible>!player.showinfo</visible>
+		<animation effect="fade" start="0" end="100" time="250" delay="500" reversible="false">visible</animation>
+		<animation effect="fade" start="100" end="0" time="250" reversible="false">hidden</animation>		
 		<animation effect="fade" start="0" end="100" time="250" delay="500" reversible="false">windowopen</animation>
-		<animation effect="fade" start="100" end="0" time="250" reversible="false">windowclose</animation>				
+		<animation effect="fade" start="100" end="0" time="250" reversible="false">windowclose</animation>		
 	<control type="list" id="110">						
-		<top>450</top>
-		<bottom>450</bottom>		
+		<top>280</top>
+		<bottom>280</bottom>		
+		<onleft>111</onleft>
+		<onright>111</onright>
 		<onup>110</onup>
 		<ondown>110</ondown>
 		<pagecontrol>111</pagecontrol>
 		<scrolltime>200</scrolltime>
 	<itemlayout height="60">	
-	<control type="label" id="111">
-		<height>60</height>
-		<font>textbox</font>
-		<aligny>center</aligny>
+	<control type="label">
+		<top>2</top>
+		<left>2</left>
+		<height>55</height>
+		<font>label_parametres</font>
 		<align>center</align>
-		<shadowcolor>cc000000</shadowcolor>
-		<label>[B]$INFO[ListItem.Label][/B]</label>
-		<visible>!string.isEmpty(ListItem.Label)</visible>
+		<label>[B]$INFO[ListItem.Label][/B]</label>		
 	</control>
 	<control type="label">
-		<height>60</height>
-		<font>textbox</font>
-		<aligny>center</aligny>
+		<height>55</height>
+		<font>label_parametres</font>
 		<align>center</align>
-		<shadowcolor>cc000000</shadowcolor>
-		<label>----------------</label>
-		<visible>string.isEmpty(ListItem.Label)</visible>
+		<textcolor>$VAR[gris]</textcolor>
+		<label>[B]$INFO[ListItem.Label][/B]</label>
+	</control>
+	<control type="label">
+		<top>2</top>
+		<left>2</left>
+		<height>55</height>
+		<font>label_parametres</font>
+		<align>center</align>
+		<label>[B]•••••[/B]</label>
+		<visible>string.isempty(ListItem.Label)</visible>		
+	</control>
+	<control type="label">
+		<height>55</height>
+		<font>label_parametres</font>
+		<align>center</align>
+		<textcolor>$VAR[gris]</textcolor>
+		<label>[B]•••••[/B]</label>
+		<visible>string.isempty(ListItem.Label)</visible>
 	</control>
 	</itemlayout>
 	<focusedlayout height="60">		
 	<control type="group">
-		<animation effect="zoom" start="100" end="130,130" time="250" center="auto" reversible="false">focus</animation>
-		<animation effect="zoom" start="130,130" end="100" time="250" center="auto" reversible="false">unfocus</animation>	
+		<animation effect="zoom" start="100,100" end="130,130" time="250" center="auto" reversible="false">focus</animation>
+		<animation effect="zoom" start="130,130" end="100,100" time="250" center="auto" reversible="false">unfocus</animation>	
 	<control type="label">
-		<height>60</height>
-		<font>textbox</font>
-		<aligny>center</aligny>
+		<top>2</top>
+		<left>2</left>
+		<height>55</height>
+		<font>label_parametres</font>
 		<align>center</align>
-		<textcolor>$VAR[1selection_osd]</textcolor>
-		<shadowcolor>cc000000</shadowcolor>
+		<textcolor>$VAR[gris]</textcolor>
 		<label>[B]$INFO[ListItem.Label][/B]</label>
-		<visible>!string.isEmpty(ListItem.Label)</visible>
 	</control>
 	<control type="label">
-		<height>60</height>
-		<font>textbox</font>
-		<aligny>center</aligny>
+		<height>55</height>
+		<font>label_parametres</font>
 		<align>center</align>
-		<textcolor>$VAR[1selection_osd]</textcolor>
-		<shadowcolor>cc000000</shadowcolor>
-		<label>----------------</label>
-		<visible>string.isEmpty(ListItem.Label)</visible>
+		<label>[B]$INFO[ListItem.Label][/B]</label>
+	</control>
+	<control type="label">
+		<top>2</top>
+		<left>2</left>
+		<height>55</height>
+		<font>label_parametres</font>
+		<align>center</align>
+		<textcolor>$VAR[gris]</textcolor>
+		<label>[B]•••••[/B]</label>
+		<visible>string.isempty(ListItem.Label)</visible>
+	</control>
+	<control type="label">
+		<height>55</height>
+		<font>label_parametres</font>
+		<align>center</align>
+		<label>[B]•••••[/B]</label>
+		<visible>string.isempty(ListItem.Label)</visible>
 	</control>
 	</control>
 	</focusedlayout>
 	</control>
 	</control>
-		
-		<!-- ** Required ** Do not change <id> or <type> (Lyrics Chooser, if multiple lyrics are available) -->
+	<!-- ** Required ** Do not change <id> or <type> (Lyrics Chooser, if multiple lyrics are available) -->
 		<control type="list" id="120">
 			<left>10</left>
 			<top>110</top>
@@ -82,7 +110,7 @@
 					<top>0</top>
 					<width>530</width>
 					<height>40</height>
-					<font>textbox</font>
+					<font>label_parametres</font>
 					<aligny>center</aligny>
 					<label>$INFO[ListItem.Label]</label>
 				</control>
@@ -93,17 +121,16 @@
 					<top>0</top>
 					<width>530</width>
 					<height>40</height>
-					<font>textbox</font>
+					<font>label_parametres</font>
 					<aligny>center</aligny>
 					<label>$INFO[ListItem.Label]</label>
-					<textcolor>FF12B2E7</textcolor>
 				</control>
 			</focusedlayout>
 		</control>		
-		<!-- ** Required ** Do not change <id> or <type> (name of the used scraper and optionally the number of found lyrics) -->
-		<control type="label" id="200">
-			<description>Scraper label</description>
-			<visible>false</visible>
-		</control>
-	</controls>
+	<!-- ** Required ** Do not change <id> or <type> (name of the used scraper and optionally the number of found lyrics) -->
+	<control type="label" id="200">
+		<description>Scraper label</description>
+		<visible>false</visible>
+	</control>
+</controls>
 </window>

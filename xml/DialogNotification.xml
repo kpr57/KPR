@@ -6,7 +6,7 @@
 		<animation effect="fade" start="0" end="100" delay="200" time="200">windowopen</animation>
 		<animation effect="fade" start="100" end="0" time="200">windowclose</animation>
 	<control type="image">																														<description>masque arriere plan</description>
-		<visible>!window.isvisible(VideoFullScreen.xml)</visible>
+		<visible>!window.isvisible(VideoFullScreen.xml) | window.isvisible(DialogSubtitles.xml)</visible>
 		<aspectratio>scale</aspectratio>
 		<texture colordiffuse="80000000">commun/texture.png</texture>				
 	</control>
@@ -44,6 +44,6 @@
 		<font>texte</font>
 		<autoscroll delay="4000" time="4000" repeat="4000">true</autoscroll>
 	</control>
-	</control>	
+	</control>
 </controls>
 </window>

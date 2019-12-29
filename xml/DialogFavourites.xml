@@ -1,45 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<window type="dialog">
-	<backgroundcolor>00X000000</backgroundcolor>
-	<onload>clearProperty(place_favoris,home)</onload>
-	<onload>control.setFocus(1000)</onload>
-	<onunload condition="Skin.HasSetting(0widget_favoris) + Integer.IsGreater(Container(1011).NumItems,0)">Skin.Reset(0widget_favoris)</onunload>	
-	<onunload condition="Integer.IsGreater(Container(1011).NumItems,0)">alarmclock(name1,control.setFocus(2003,$INFO[window(home).property(place_favoris)],absolute),00:00,silent)</onunload>	
+<window>
+	<onload>action(back)</onload>
 <controls>	
-	<control type="button" id="1000">				
-		<onfocus>setProperty(place_favoris,$INFO[container(2013).numitems],home)</onfocus>
-		<onfocus>dialog.close(favourites)</onfocus>
-	</control>
-	<control type="panel" id="1011">																											<description>panneau cache pour recuperer les favoris</description>
-		<content>favourites://</content>
-	</control>	
-	<control type="grouplist" id="2013">
-		<top>1100</top>			
-	<control type="button" id="100">						
-	<include content="dialogue_bouton">
-	</include>			
-		<visible>Library.HasContent(movies) + !Skin.HasSetting(0widget_videos)</visible>
-	</control>	
-	<control type="button" id="101">				
-	<include content="dialogue_bouton">
-	</include>			
-		<visible>Library.HasContent(movies) + !Skin.HasSetting(0widget_tv)</visible>
-	</control>
-	<control type="button" id="102">				
-	<include content="dialogue_bouton">
-	</include>			
-		<visible>Library.HasContent(movies) + !Skin.HasSetting(0widget_musique)</visible>
-	</control>
-	<control type="button" id="103">				
-	<include content="dialogue_bouton">
-	</include>			
-		<visible>Library.HasContent(movies) + !Skin.HasSetting(0widget_musique)</visible>
-	</control>
-	<control type="button" id="104">				
-	<include content="dialogue_bouton">
-	</include>			
-		<visible>Library.HasContent(movies) + !Skin.HasSetting(0widget_meteo)</visible>
-	</control>
-	</control>
 </controls>
 </window>

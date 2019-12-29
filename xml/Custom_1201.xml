@@ -6,9 +6,10 @@
 	<onunload>clearproperty(nom_parametre_widget,home)</onunload>	
 	<onunload>skin.setstring(temp,)</onunload>		
 <controls>
-	<include>video</include>																													<description>arriere plan video</description>
 	<include>image_fond</include>
 	<control type="group">								
+		<animation effect="fade" start="100" end="0" time="1" condition="window.isvisible(DialogSelect.xml) | window.isvisible(DialogConfirm.xml)" reversible="false">conditional</animation>
+		<animation effect="fade" start="0" end="100" delay="100" time="1" condition="!window.isvisible(DialogSelect.xml) + !window.isvisible(DialogConfirm.xml)" reversible="false">conditional</animation>		
 	<control type="label">																														<description>titre</description>	
 		<height>140</height>
 		<align>center</align>

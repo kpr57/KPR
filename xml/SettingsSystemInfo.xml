@@ -3,178 +3,259 @@
 	<backgroundcolor>00X000000</backgroundcolor>
 	<defaultcontrol always="true">211</defaultcontrol>	
 <controls>				
-	<include>fenetre</include>		
 	<control type="group">
-		<top>106</top>	
-	<control type="group">																														<description>boutons du haut</description>
-		<top>0</top>
-		<height>60</height>			
-	<control type="grouplist" id="211">																											<description>liste des boutons</description>				
-		<bottom>0</bottom>
-		<top>0</top>
-		<left>463</left>
-		<ondown>570</ondown>
-		<onleft>400</onleft>
-		<itemgap>3</itemgap>
-		<orientation>horizontal</orientation>
-		<scrolltime tween="Linear" easing="in">250</scrolltime>			
-	<include content="boutons_hauts_fenetre">
-		<param name="id" value="95"/>
+	<include>image_fond</include>																												<description>image de fond</description>		
+	<control type="group">																														<description>horloge</description>
+		<right>40</right>					
+	<include>titre</include>
+	</control>
+	<control type="button" id="40">
+		<top>35</top>		
+		<left>50</left>
+		<height>60</height>
+		<width>auto</width>
+	<include content="bouton">																										
+		<param name="width" value="auto"/> 
+		<param name="height" value="80"/>
+		<param name="align" value="center"/>			
+	</include>
+	</control>		
+	<include content="barre_separation_horizontale">																							<description>barre de separation horizontale</description>
+		<param name="left" value="25"/> 
+		<param name="right" value="25"/>
+		<param name="bottom" value="950"/>		
+	</include>
+	<control type="grouplist" id="211">																											<description>liste des boutons de gauche</description>		
+		<top>200</top>
+		<left>60</left>
+		<width>600</width>
+		<height>800</height>
+		<onleft>action(back)</onleft>
+		<onright>2</onright>		
+		<itemgap>20</itemgap>				
+	<control type="button" id="95">
+	<include content="bouton">
+		<param name="height" value="65"/>
 		<param name="label" value="20037"/>			
 	</include>
-	<include content="boutons_hauts_fenetre">
-		<param name="id" value="94"/>
+	</control>
+	<control type="button" id="94">
+	<include content="bouton">
+		<param name="height" value="65"/>
 		<param name="label" value="13277"/>	
 	</include>
-	<include content="boutons_hauts_fenetre">
-		<param name="id" value="96"/>
+	</control>
+	<control type="button" id="96">
+	<include content="bouton">
+		<param name="height" value="65"/>
 		<param name="label" value="13279"/>	
 	</include>
-	<include content="boutons_hauts_fenetre">
-		<param name="id" value="97"/>
+	</control>
+	<control type="button" id="97">
+	<include content="bouton">
+		<param name="height" value="65"/>
 		<param name="label" value="13280"/>	
 	</include>
-	<include content="boutons_hauts_fenetre">
-		<param name="id" value="98"/>	
+	</control>
+	<control type="button" id="98">
+	<include content="bouton">
+		<param name="height" value="65"/>	
 		<param name="label" value="13281"/>	
 	</include>
-	<include content="boutons_hauts_fenetre">
-		<param name="id" value="99"/>
+	</control>
+	<control type="button" id="99">
+	<include content="bouton">
+		<param name="height" value="65"/>
 		<param name="label" value="19191"/>	
 	</include>
-	<include content="boutons_hauts_fenetre">
+	</control>
+	<control type="button" id="100">
+	<include content="bouton">
 		<param name="onclick" value="control.setFocus(60)"/>
-		<param name="id" value="100"/>
+		<param name="height" value="65"/>
 		<param name="label" value="12389"/>	
 	</include>
+	</control>
 	</control>	
-	<include content="bouton_gauche_fenetre">																									<description>bouton niveau de parametrage</description>
-		<param name="id" value="400"/>
-		<param name="label" value="Fermer"/>
-		<param name="onclick1" value="Close"/>			
-		<param name="onright" value="211"/>	
-		<param name="ondown" value="120"/>			
+	<include content="barre_separation_horizontale">																							<description>barre de separation horizontale</description>
+		<param name="left" value="25"/> 
+		<param name="right" value="1205"/>
+		<param name="bottom" value="285"/>		
 	</include>
+	<control type="label">
+		<top>795</top>
+		<left>40</left>
+		<width>880</width>
+		<height>90</height>
+		<font>texte</font>
+		<textcolor>80ffffff</textcolor>
+		<label>$INFO[System.FriendlyName]</label>		
+	</control>	
+	<include content="barre_separation_horizontale">																							<description>barre de separation horizontale</description>
+		<param name="left" value="25"/> 
+		<param name="right" value="1205"/>
+		<param name="bottom" value="195"/>		
+	</include>	
+	<control type="label">
+		<top>905</top>
+		<left>40</left>
+		<width>880</width>
+		<height>50</height>
+		<font>texte</font>
+		<textcolor>80ffffff</textcolor>
+		<label>$LOCALIZE[144] $INFO[System.BuildVersion]</label>		
+	</control>
+	<control type="label">
+		<top>945</top>
+		<left>40</left>
+		<width>880</width>
+		<height>50</height>
+		<font>texte</font>
+		<textcolor>80ffffff</textcolor>
+		<label>$LOCALIZE[31030]: $INFO[system.memory(used)] / $INFO[system.memory(total)] ($INFO[system.memory(used.percent)])</label>		
+	</control>
+	<control type="label">
+		<top>985</top>
+		<left>40</left>
+		<width>880</width>
+		<height>50</height>
+		<font>texte</font>
+		<textcolor>80ffffff</textcolor>
+		<label>$LOCALIZE[13271] $INFO[System.CpuUsage]</label>		
+	</control>	
+	<control type="image">																														<description>fond liste des informations</description>
+		<top>200</top>
+		<right>50</right>
+		<width>1140</width>
+		<height>800</height>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="20000000" border="50">commun/bouton.png</texture>
 	</control>	
 	<control type="grouplist" id="8000">																										<description>liste des informations</description>				
-		<top>62</top>
-		<bottom>0</bottom>
-		<right>10</right>
-		<left>460</left>
-		<pagecontrol>61</pagecontrol>
-		<itemgap>0</itemgap>		
+		<top>210</top>
+		<right>80</right>
+		<width>1100</width>
+		<height>780</height>
+		<onleft>211</onleft>
+		<onright>60</onright>
+		<pagecontrol>60</pagecontrol>
+		<itemgap>20</itemgap>		
 		<scrolltime tween="Linear" easing="in">250</scrolltime>		
-	<control type="label" id="2">
-		<include content="bouton_listes_fenetre"></include>
-		<textcolor>$VAR[1fenetre_bouton_texte]</textcolor>		
+	<control type="button" id="2">		
+	<include content="bouton">																											
+		<param name="width" value="1100"/> 
+		<param name="height" value="60"/> 
+		<param name="textoffsetx" value="40"/>
+		<param name="texturenofocus_colordiffuse" value="05ffffff"/>
+	</include>	
 	</control>
-	<control type="label" id="3">
-		<include content="bouton_listes_fenetre"></include>
-		<textcolor>$VAR[1fenetre_bouton_texte]</textcolor>		
+	<control type="button" id="3">		
+	<include content="bouton">																											
+		<param name="width" value="1100"/> 
+		<param name="height" value="60"/> 
+		<param name="textoffsetx" value="40"/>
+		<param name="texturenofocus_colordiffuse" value="05ffffff"/>
+	</include>	
 	</control>
-	<control type="label" id="4">
-		<include content="bouton_listes_fenetre"></include>
-		<textcolor>$VAR[1fenetre_bouton_texte]</textcolor>		
+	<control type="button" id="4">
+	<include content="bouton">																											
+		<param name="width" value="1100"/> 
+		<param name="height" value="60"/> 
+		<param name="textoffsetx" value="40"/>
+		<param name="texturenofocus_colordiffuse" value="05ffffff"/>
+	</include>			
 	</control>
-	<control type="label" id="5">
-		<include content="bouton_listes_fenetre"></include>
-		<textcolor>$VAR[1fenetre_bouton_texte]</textcolor>		
-	</control>
-	<control type="label" id="6">
-		<include content="bouton_listes_fenetre"></include>
-		<textcolor>$VAR[1fenetre_bouton_texte]</textcolor>		
-	</control>
-	<control type="label" id="7">
-		<include content="bouton_listes_fenetre"></include>
-		<textcolor>$VAR[1fenetre_bouton_texte]</textcolor>		
-	</control>
-	<control type="label" id="8">
-		<include content="bouton_listes_fenetre"></include>
-		<textcolor>$VAR[1fenetre_bouton_texte]</textcolor>		
-	</control>
-	<control type="label" id="9">
-		<include content="bouton_listes_fenetre"></include>
-		<textcolor>$VAR[1fenetre_bouton_texte]</textcolor>		
-	</control>
-	<control type="label" id="10">
-		<include content="bouton_listes_fenetre"></include>
-		<textcolor>$VAR[1fenetre_bouton_texte]</textcolor>		
-	</control>
-	<control type="label" id="11">
-		<include content="bouton_listes_fenetre"></include>
-		<textcolor>$VAR[1fenetre_bouton_texte]</textcolor>		
+	<control type="button" id="5">				
+	<include content="bouton">																											
+		<param name="width" value="1100"/> 
+		<param name="height" value="60"/> 
+		<param name="textoffsetx" value="40"/>
+		<param name="texturenofocus_colordiffuse" value="05ffffff"/>
+	</include>			
 	</control>	
-	</control>
-	<control type="progress">																													<description>ajout utilisation CPU sous forme de graphique</description>
-		<left>1200</left>
-		<right>50</right>
-		<top>324</top>
-		<height>10</height>
-		<texturebg colordiffuse="$VAR[panneau_fenetre]">texture.png</texturebg>
-		<midtexture colordiffuse="$VAR[focus_bouton_fenetre]">texture.png</midtexture>
-		<info>System.CPUUsage</info>
-		<visible>String.Contains(Control.GetLabel(2),CPU)</visible>
-	</control>
-	<control type="progress">																													<description>ajout memoire utilisee sous forme de graphique</description>
-		<left>1200</left>
-		<right>50</right>
-		<top>400</top>
-		<height>10</height>
-		<texturebg colordiffuse="$VAR[panneau_fenetre]">texture.png</texturebg>
-		<midtexture colordiffuse="$VAR[focus_bouton_fenetre]">texture.png</midtexture>
-		<info>system.memory(used)</info>
+	<control type="button" id="15">																												<description>ajout pourcentage de memoire utilisée</description>				
+		<label>$LOCALIZE[31030]: $INFO[system.memory(used)] [B]/[/B] $INFO[system.memory(total)] ($INFO[system.memory(used.percent)])</label>
+	<include content="bouton">																											
+		<param name="width" value="1100"/> 
+		<param name="height" value="60"/> 
+		<param name="textoffsetx" value="40"/>
+		<param name="texturenofocus_colordiffuse" value="05ffffff"/>
+	</include>	
 		<visible>String.Contains(Control.GetLabel(2),CPU)</visible>
 	</control>	
-	<control type="label">																														<description>ajout pourcentage de memoire utilisée</description>				
-		<left>460</left>
-		<top>366</top>
-	<label>$LOCALIZE[31030]: $INFO[system.memory(used)] [B]/[/B] $INFO[system.memory(total)] ($INFO[system.memory(used.percent)])</label>
-	<include content="bouton_listes_fenetre"></include>	
-		<visible>String.Contains(Control.GetLabel(2),CPU)</visible>
+	<control type="button" id="6">			
+	<include content="bouton">																											
+		<param name="width" value="1100"/> 
+		<param name="height" value="60"/> 
+		<param name="textoffsetx" value="40"/>
+		<param name="texturenofocus_colordiffuse" value="05ffffff"/>
+	</include>		
+	</control>	
+	<control type="button" id="7">			
+	<include content="bouton">																											
+		<param name="width" value="1100"/> 
+		<param name="height" value="60"/> 
+		<param name="textoffsetx" value="40"/>
+		<param name="texturenofocus_colordiffuse" value="05ffffff"/>
+	</include>		
 	</control>
-	<control type="label">																														<description>ajout version et date de Kodi</description>				
-		<left>460</left>
-		<bottom>-10</bottom>
-		<font>bouton</font>
-		<label>$INFO[System.FriendlyName]  -  $LOCALIZE[144] $INFO[System.BuildVersion] $LOCALIZE[174] $INFO[System.BuildDate]</label>
-	<include content="bouton_listes_fenetre"></include>			
-		<visible>!control.hasFocus(100) + !control.hasFocus(60)</visible>
+	<control type="button" id="8">			
+	<include content="bouton">																											
+		<param name="width" value="1100"/> 
+		<param name="height" value="60"/> 
+		<param name="textoffsetx" value="40"/>
+		<param name="texturenofocus_colordiffuse" value="05ffffff"/>
+	</include>		
+	</control>
+	<control type="button" id="9">		
+	<include content="bouton">																											
+		<param name="width" value="1100"/> 
+		<param name="height" value="60"/> 
+		<param name="textoffsetx" value="40"/>
+		<param name="texturenofocus_colordiffuse" value="05ffffff"/>
+	</include>			
+	</control>
+	<control type="button" id="10">			
+	<include content="bouton">																											
+		<param name="width" value="1100"/> 
+		<param name="height" value="60"/> 
+		<param name="textoffsetx" value="40"/>
+		<param name="texturenofocus_colordiffuse" value="05ffffff"/>
+	</include>		
+	</control>
+	<control type="button" id="11">		
+	<include content="bouton">																											
+		<param name="width" value="1100"/> 
+		<param name="height" value="60"/> 
+		<param name="textoffsetx" value="40"/>
+		<param name="texturenofocus_colordiffuse" value="05ffffff"/>
+	</include>			
+	</control>	
+	<control type="button" id="12">		
+	<include content="bouton">																											
+		<param name="width" value="1100"/> 
+		<param name="height" value="60"/> 
+		<param name="textoffsetx" value="40"/>
+		<param name="texturenofocus_colordiffuse" value="05ffffff"/>
+	</include>			
+	</control>	
+		<visible>!control.isvisible(30)</visible>
 	</control>
 	<control type="textbox" id="30">																											<description>textbox respect de la vie privée</description>
-		<top>72</top>
-		<bottom>0</bottom>
-		<right>30</right>
-		<left>500</left>
+		<top>202</top>
+		<right>70</right>
+		<width>1100</width>
+		<height>796</height>
 		<font>texte_moyen</font>
-		<textcolor>$VAR[texte_bouton_fenetre]</textcolor>
 		<pagecontrol>60</pagecontrol>
 		<autoscroll delay="5000" repeat="7500" time="2000">!Control.HasFocus(60)</autoscroll>				
 	</control>	
-	<include content="scrollbar_fenetre">																										<description>scrollbar</description>
-		<param name="id" value="60"/>
-		<param name="onleft" value="211"/>
-		<param name="onright" value="211"/>
+	<include content="scrollbar_parametres">																									<description>scrollbar</description>
+		<param name="id" value="60"/> 
+		<param name="top" value="210"/> 
+		<param name="height" value="780"/> 
+		<param name="container" value="8000"/>		
 	</include>
-	<include content="scrollbar_fenetre">																										<description>scrollbar</description>
-		<param name="id" value="61"/>
-		<param name="visible" value="!control.hasFocus(100) + !control.hasFocus(60)"/>		
-	</include>	
-	<include content="video_fenetre">																											<description>video</description>
-		<param name="onup" value="400"/>
-		<param name="onright" value="211"/>
-		<param name="onclick1" value="alarmClock(name1,activatewindow(fullscreenvideo),00:00,silent)"/>		
-	</include>
-	<include content="textbox_parametres">																										<description>textbox description</description>		
-		<param name="label" value="$VAR[description_parametre]"/>
-	</include>
-	<control type="image">           																											<description>ombre cadre gauche</description>
-		<top>63</top>
-		<left>460</left>
-		<width>20</width>
-		<height>1000</height>
-		<aspectratio>stretch</aspectratio>
-		<texture>fenetres/ombre_droite.png</texture>	
-	</control>
 	</control>
 </controls>
 </window>

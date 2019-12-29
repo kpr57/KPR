@@ -1,251 +1,248 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
 	<backgroundcolor>00X000000</backgroundcolor>
-	<onload>control.setFocus(412)</onload>
-	<controls>
+	<defaultcontrol>406</defaultcontrol>
+	<onunload condition="Player.ShowInfo">action(info)</onunload>
+	<onload>alarmclock(alarme2,clearProperty(playlist,home),00:00,silent)</onload>	
+<controls>
 	<control type="group">      																												<description>lecteur</description>
-		<animation effect="fade" start="0" end="100" time="250" delay="250" reversible="false">windowopen</animation>
-		<animation effect="fade" start="100" end="0" time="250" reversible="false">windowclose</animation>		
-	<control type="label">																														<description>titre</description>
-		<bottom>35</bottom>
-		<left>340</left>
-		<height>120</height>
-		<width>1000</width>
-		<font>petit_texte</font>
-		<align>left</align>
-		<aligny>center</aligny>
-		<textcolor>$VAR[1selection_osd]</textcolor>
-		<label>$LOCALIZE[31260]</label>
-		<visible>control.hasfocus(402) + Playlist.IsRepeat</visible>
-	</control>	
-	<control type="label">																														<description>titre</description>
-		<bottom>35</bottom>
-		<left>340</left>
-		<height>120</height>
-		<width>1000</width>
-		<font>petit_texte</font>
-		<align>left</align>
-		<aligny>center</aligny>
-		<textcolor>$VAR[1selection_osd]</textcolor>
-		<label>$LOCALIZE[31261]</label>
-		<visible>control.hasfocus(402) + Playlist.IsRepeatOne</visible>
-	</control>	
-	<control type="label">																														<description>titre</description>
-		<bottom>35</bottom>
-		<left>340</left>
-		<height>120</height>
-		<width>1000</width>
-		<font>petit_texte</font>
-		<align>left</align>
-		<aligny>center</aligny>
-		<textcolor>$VAR[1selection_osd]</textcolor>
-		<label>$LOCALIZE[31262]</label>
-		<visible>control.hasfocus(402) + !Playlist.IsRepeat + !Playlist.IsRepeatOne</visible>
-	</control>	
-	<control type="label">																														<description>titre</description>
-		<bottom>35</bottom>
-		<left>340</left>
-		<height>120</height>
-		<width>1000</width>
-		<font>petit_texte</font>
-		<align>left</align>
-		<aligny>center</aligny>
-		<textcolor>$VAR[1selection_osd]</textcolor>
-		<label>$LOCALIZE[31263]</label>
-		<visible>control.hasfocus(404) + Playlist.IsRandom</visible>
-	</control>	
-	<control type="label">																														<description>titre</description>
-		<bottom>35</bottom>
-		<left>340</left>
-		<height>120</height>
-		<width>1000</width>
-		<font>petit_texte</font>
-		<align>left</align>
-		<aligny>center</aligny>
-		<textcolor>$VAR[1selection_osd]</textcolor>
-		<label>$LOCALIZE[31264]</label>
-		<visible>control.hasfocus(404) + !Playlist.IsRandom</visible>
-	</control>	
-	<control type="grouplist" id="400">																											<description>controles lecteur</description>				
-		<bottom>5</bottom>
+		<animation type="WindowOpen" condition="string.isEmpty(window(home).property(playlist))"> 
+		<effect type="fade" start="0" end="100" time="250" delay="250" reversible="false"/>
+		</animation>
+		<animation effect="fade" start="100" end="0" time="250" reversible="false">windowclose</animation>			
+	<control type="image">																														<description>fond lecteur OSD</description>
+		<bottom>0</bottom>
 		<centerleft>50%</centerleft>
-        <width>1920</width> 
-		<height>70</height>
-		<itemgap>0</itemgap>
+		<width>1920</width>
+		<height>90</height>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="$VAR[couleur_OSD]">commun/texture.png</texture>
+	</control>
+	<control type="image">																														<description>fond barres de progression</description>
+		<left>39</left>
+		<bottom>34</bottom>		
+        <height>12</height>		
+		<width>402</width>	
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="40ffffff">commun/texture.png</texture>
+	</control>
+	<control type="group">																														<description>progression video</description>
+	<control type="progress">																																		
+		<left>40</left>
+		<bottom>35</bottom>		
+        <height>10</height>		
+		<width>400</width>	
+		<reveal>true</reveal>
+		<texturebg colordiffuse="00ffffff">commun/texture.png</texturebg>
+		<midtexture colordiffuse="$VAR[couleur_dominante]">commun/texture.png</midtexture>
+		<info>player.progress</info>
+	</control>
+	<control type="label">
+		<bottom>8</bottom>		
+        <height>20</height>
+		<width>440</width>
+		<font>petit_texte</font>
+		<textcolor>ffffffff</textcolor>
 		<align>center</align>
-		<orientation>horizontal</orientation>	
-	<control type="group" id="401">																												<description>bouton lecture / pause</description>
-		<width>70</width>
-		<height>70</height>			
-	<include content="bouton_OSD">
-		<param name="bouton" value="button"/>
-		<param name="id" value="402"/>
-		<param name="onleft1" value="424"/>
-		<param name="onright1" value="404"/>
-		<param name="onclick1" value="PlayerControl(repeat)"/>
-		<param name="visible1" value="Control.IsEnabled(402)"/>
-		<param name="visible3" value=""/>
-		<param name="visible2" value="!Control.IsEnabled(402)"/>
-		<param name="enable" value="!MusicPartyMode.Enabled"/>
-		<param name="icone" value="boutons\OSD\$VAR[repeat_icone].png"/>		
-	</include>	
+		<label>$INFO[player.Time]</label>		
 	</control>	
-	<control type="group" id="403">																												<description>bouton lecture / pause</description>
-		<width>70</width>
-		<height>70</height>			
-	<include content="bouton_OSD">
-		<param name="bouton" value="togglebutton"/>
-		<param name="id" value="404"/>
-		<param name="usealttexture" value="Playlist.IsRandom"/>
-		<param name="onleft1" value="402"/>
-		<param name="onright1" value="408"/>
-		<param name="onclick1" value="PlayerControl(Random)"/>
-		<param name="visible1" value="Playlist.IsRandom + Control.IsEnabled(404)"/>
-		<param name="visible3" value="!Playlist.IsRandom + Control.IsEnabled(404)"/>
-		<param name="visible2" value="!Control.IsEnabled(404)"/>
-		<param name="enable" value="!MusicPartyMode.Enabled + !string.isEqual(Playlist.Length,1)"/>
-		<param name="icone" value="boutons\OSD\random-on.png"/>
-		<param name="icone2" value="boutons\OSD\random-off.png"/>
-	</include>
-	</control>		
-	<control type="group" id="407">																												<description>bouton retour rapide</description>
-		<width>70</width>
-		<height>70</height>
-	<include content="bouton_OSD">
-		<param name="bouton" value="button"/>
-		<param name="id" value="408"/>
-		<param name="onleft1" value="404"/>
-		<param name="onright1" value="410"/>
-		<param name="onclick1" value="PlayerControl(previous)"/>				
-		<param name="onclick2" value="control.setFocus(412)"/>				
-		<param name="visible1" value="Control.IsEnabled(408)"/>
-		<param name="visible3" value=""/>
-		<param name="visible2" value="!Control.IsEnabled(408)"/>
-		<param name="enable" value="MusicPlayer.hasPrevious"/>
-		<param name="icone" value="boutons\OSD\previous.png"/>
-	</include>
+	<control type="label">
+		<bottom>8</bottom>		
+        <height>20</height>
+		<width>440</width>
+		<align>right</align>
+		<font>petit_texte</font>
+		<textcolor>ffffffff</textcolor>
+		<aligny>center</aligny>
+		<label>$INFO[player.duration]</label>		
+	</control>
+	</control>
+	<control type="grouplist" id="400">																											<description>controles lecteur</description>				
+		<usecontrolcoords>true</usecontrolcoords>
+		<bottom>5</bottom>
+		<left>480</left>
+        <width>1920</width> 
+		<height>80</height>
+		<itemgap>0</itemgap>
+		<orientation>horizontal</orientation>
+	<control type="image" id="401">																												<description>separation verticale</description>	
+		<height>80</height>
+		<bottom>0</bottom>
+		<width>20</width>
+		<aspectratio>keep</aspectratio>
+		<texture colordiffuse="20fffffff">commun/separation_OSD.png</texture>
 	</control>	
-	<control type="group" id="409">																												<description>bouton retour rapide</description>
-		<width>70</width>
-		<height>70</height>
-	<include content="bouton_OSD">
-		<param name="bouton" value="button"/>
-		<param name="id" value="410"/>
-		<param name="onleft1" value="408"/>
-		<param name="onright1" value="412"/>
-		<param name="onclick1" value="PlayerControl(Rewind)"/>				
-		<param name="enable" value="true"/>
-		<param name="icone" value="boutons\OSD\reward.png"/>
-	</include>
-	</control>		
-	<control type="group" id="411">																												<description>bouton lecture / pause</description>
-		<width>70</width>
-		<height>70</height>			
-	<include content="bouton_OSD">
-		<param name="bouton" value="togglebutton"/>
-		<param name="id" value="412"/>
-		<param name="usealttexture" value="Player.Paused | Player.Forwarding | Player.Rewinding"/>
-		<param name="onleft1" value="410"/>
-		<param name="onright1" value="414"/>
-		<param name="onclick1" value="PlayerControl(Play)"/>
-		<param name="visible1" value="!Player.Paused + !Player.Forwarding + !Player.Rewinding"/>
-		<param name="visible3" value="Player.Paused | Player.Forwarding | Player.Rewinding"/>
-		<param name="enable" value="true"/>
-		<param name="icone" value="boutons\OSD\pause.png"/>
-		<param name="icone2" value="boutons\OSD\play.png"/>
-	</include>
-	</control>
-	<control type="group" id="413">																												<description>bouton stop</description>
-		<width>70</width>
-		<height>70</height>
-	<include content="bouton_OSD">
-		<param name="bouton" value="button"/>
-		<param name="id" value="414"/>
-		<param name="onleft1" value="412"/>
-		<param name="onright1" value="416"/>
-		<param name="onclick1" value="PlayerControl(stop)"/>
-		<param name="enable" value="true"/>
-		<param name="icone" value="boutons\OSD\stop.png"/>
-	</include>
-	</control>
-	<control type="group" id="415">																												<description>bouton avance rapide</description>
-		<width>70</width>
-		<height>70</height>
-	<include content="bouton_OSD">
-		<param name="bouton" value="button"/>
-		<param name="id" value="416"/>
-		<param name="onleft1" value="414"/>
-		<param name="onright1" value="418"/>
-		<param name="onclick1" value="PlayerControl(Forward)"/>				
-		<param name="enable" value="true"/>
-		<param name="icone" value="boutons\OSD\forward.png"/>
-	</include>
-	</control>
-	<control type="group" id="417">																												<description>bouton avance rapide</description>
-		<width>70</width>
-		<height>70</height>
-	<include content="bouton_OSD">
-		<param name="bouton" value="button"/>
-		<param name="id" value="418"/>
-		<param name="onleft1" value="416"/>
-		<param name="onright1" value="420"/>
-		<param name="onclick1" value="PlayerControl(Next)"/>				
-		<param name="onclick2" value="control.setFocus(412)"/>				
-		<param name="enable" value="MusicPlayer.HasNext"/>
-		<param name="visible1" value="Control.IsEnabled(418)"/>
-		<param name="visible3" value=""/>
-		<param name="visible2" value="!Control.IsEnabled(418)"/>		
-		<param name="icone" value="boutons\OSD\next.png"/>
-	</include>		
-	</control>
-	<control type="group" id="419">																												<description>bouton parametres</description>
-		<width>70</width>
-		<height>70</height>
-	<include content="bouton_OSD">
-		<param name="bouton" value="button"/>
-		<param name="id" value="420"/>
-		<param name="onleft1" value="418"/>
-		<param name="onright1" value="422"/>
-		<param name="onclick1" value="activateWindow(1206)"/>
-		<param name="condition_onclick1" value=""/>
-		<param name="enable" value="true"/>
-		<param name="icone" value="defaultaddonservice.png"/>	
+	<control type="radiobutton" id="402">
+		<top>15</top>
+		<height>60</height>
+		<width>60</width>
+		<onclick>PlayerControl(Repeat)</onclick>
+		<texturenofocus colordiffuse="00ffffff">commun/visage.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]">commun/visage.png</texturefocus>		
+		<radioposx>5</radioposx>
+		<radiowidth>50</radiowidth>
+		<radioheight>50</radioheight>
+		<enable>!MusicPartyMode.Enabled</enable>
+	</control>	
+	<include content="bouton_lecteur">																											<description>bouton aleatoire</description>
+		<param name="id" value="403"/> 
+		<param name="onclick" value="PlayerControl(Random)"/>
+		<param name="icone1" value="random-on"/>	
+		<param name="icone2" value="random-off"/>
+		<param name="enable" value="!MusicPartyMode.Enabled"/>	
+		<param name="selected" value="Playlist.IsRandom"/>	
 	</include>	
+	<control type="image" id="404">																												<description>separation verticale</description>	
+		<height>80</height>
+		<bottom>0</bottom>
+		<width>20</width>
+		<aspectratio>keep</aspectratio>
+		<texture colordiffuse="20fffffff">commun/separation_OSD.png</texture>
 	</control>
-	<control type="group" id="421">																												<description>bouton sous titres</description>
-		<width>70</width>
-		<height>70</height>
-	<include content="bouton_OSD">
-		<param name="bouton" value="button"/>
-		<param name="id" value="422"/>
-		<param name="onleft1" value="420"/>
-		<param name="onright1" value="424"/>
-		<param name="onclick1" value="Close"/>
-		<param name="onclick2" value="Skin.SetAddon(LyricScript_Path,xbmc.python.lyrics)"/>
-		<param name="onclick3" value="RunScript($INFO[Skin.String(LyricScript_Path)])"/>
-		<param name="condition_onclick1" value=""/>		
-		<param name="condition_onclick2" value="String.IsEmpty(Skin.String(LyricScript_Path))"/>
-		<param name="condition_onclick3" value="!String.IsEmpty(Skin.String(LyricScript_Path))"/>
-		<param name="enable" value="true"/>
-		<param name="icone" value="defaultaddonsubtitles.png"/>	
-	</include>		
+	<include content="bouton_lecteur">																											<description>bouton precedent</description>
+		<param name="id" value="405"/> 
+		<param name="onclick" value="PlayerControl(previous)"/>
+		<param name="icone1" value="previous"/>	
+		<param name="icone2" value="previous"/>
+		<param name="enable" value="MusicPlayer.hasprevious"/>	
+	</include>
+	<include content="bouton_lecteur">																											<description>bouton retour</description>
+		<param name="id" value="406"/> 
+		<param name="onclick" value="PlayerControl(Rewind)"/>
+		<param name="icone1" value="rewind"/>	
+		<param name="icone2" value="rewind"/>	
+	</include>
+	<include content="bouton_lecteur">																											<description>bouton lecture/pause</description>
+		<param name="id" value="407"/> 
+		<param name="onclick" value="PlayerControl(Play)"/>
+		<param name="icone1" value="play"/>	
+		<param name="icone2" value="pause"/>	
+		<param name="selected" value="Player.Paused | Player.Forwarding | Player.Rewinding"/>	
+	</include>
+	<include content="bouton_lecteur">																											<description>bouton stop</description>
+		<param name="id" value="408"/> 
+		<param name="onclick" value="PlayerControl(stop)"/>
+		<param name="icone1" value="stop"/>	
+		<param name="icone2" value="stop"/>
+	</include>
+	<include content="bouton_lecteur">																											<description>bouton avance</description>
+		<param name="id" value="409"/> 
+		<param name="onclick" value="PlayerControl(forward)"/>
+		<param name="icone1" value="forward"/>	
+		<param name="icone2" value="forward"/>
+	</include>
+	<include content="bouton_lecteur">																											<description>bouton suivant</description>
+		<param name="id" value="410"/> 
+		<param name="onclick" value="PlayerControl(Next)"/>
+		<param name="icone1" value="next"/>	
+		<param name="icone2" value="next"/>
+		<param name="enable" value="MusicPlayer.hasnext"/>	
+	</include>
+	<include content="bouton_lecteur">																											<description>bouton parametres</description>
+		<param name="id" value="411"/> 
+		<param name="onclick" value="activateWindow(1206)"/>
+		<param name="icone1" value="settings"/>	
+		<param name="icone2" value="settings"/>	
+	</include>
+	<control type="image" id="412">																												<description>separation verticale</description>	
+		<height>80</height>
+		<bottom>0</bottom>
+		<width>20</width>
+		<aspectratio>keep</aspectratio>
+		<texture colordiffuse="20fffffff">commun/separation_OSD.png</texture>
 	</control>
-	<control type="group" id="423">																												<description>bouton sous titres</description>
-		<width>70</width>
-		<height>70</height>
-	<include content="bouton_OSD">
-		<param name="bouton" value="button"/>
-		<param name="id" value="424"/>
-		<param name="onleft1" value="422"/>
-		<param name="onright1" value="402"/>
-		<param name="onclick1" value="dialog.close(musicosd)"/>
+	<include content="bouton_lecteur">																											<description>bouton paroles</description>
+		<param name="id" value="413"/> 
+		<param name="onclick" value="RunScript(script.cu.lrclyrics)"/>
+		<param name="onclick2" value="InstallAddon(script.cu.lrclyrics)"/>
+		<param name="onclick3" value="Close"/>
+		<param name="condition_onclick" value="System.HasAddon(script.cu.lrclyrics)"/>
+		<param name="condition_onclick2" value="!System.HasAddon(script.cu.lrclyrics)"/>
+		<param name="icone1" value="soustitres"/>	
+		<param name="icone2" value="soustitres"/>	
+	</include>
+	<include content="bouton_lecteur">																											<description>bouton playlist</description>
+		<param name="id" value="414"/> 
+		<param name="onclick" value="Close"/>
 		<param name="onclick2" value="setProperty(playlist,1,home)"/>
 		<param name="onclick3" value="ActivateWindow(musicplaylist)"/>
-		<param name="enable" value="true"/>
-		<param name="icone" value="defaultmusicplaylists.png"/>	
-	</include>	
+		<param name="icone1" value="playlists"/>	
+		<param name="icone2" value="playlists"/>	
+	</include>
+	<control type="image" id="415">																												<description>separation verticale</description>	
+		<height>80</height>
+		<bottom>0</bottom>
+		<width>20</width>
+		<aspectratio>keep</aspectratio>
+		<texture colordiffuse="20fffffff">commun/separation_OSD.png</texture>
 	</control>		
+	</control>	
+	<control type="image">
+		<left>505</left>
+		<bottom>15</bottom>
+		<height>50</height>
+		<width>50</width>
+		<texture colordiffuse="40ffffff">$VAR[repeat_icone]</texture>
+		<visible>!control.hasfocus(402) + MusicPartyMode.Enabled</visible>
 	</control>
+	<control type="image">
+		<left>505</left>
+		<bottom>15</bottom>
+		<height>50</height>
+		<width>50</width>
+		<texture>$VAR[repeat_icone]</texture>
+		<visible>!control.hasfocus(402) + !MusicPartyMode.Enabled</visible>
+	</control>
+	<control type="image">
+		<left>505</left>
+		<bottom>15</bottom>
+		<height>50</height>
+		<width>50</width>
+		<texture colordiffuse="$VAR[gris]">$VAR[repeat_icone]</texture>		
+		<visible>control.hasfocus(402)</visible>
+	</control>
+	<control type="grouplist">		
+		<usecontrolcoords>true</usecontrolcoords>
+		<bottom>29</bottom>
+		<left>1150</left>
+		<right>150</right>
+		<height>22</height>			
+		<itemgap>10</itemgap>
+		<align>center</align>
+		<orientation>horizontal</orientation>
+	<control type="button">			
+		<height>22</height>			
+		<width>auto</width>				
+		<align>center</align>	
+	<include content="petit_bouton">
+		<param name="label" value="[UPPERCASE]$VAR[repeat_texte][/UPPERCASE]"/>
+		<param name="textcolor" value="ffffffff"/>
+		<param name="textoffsetx" value="15"/>
+		<param name="texturenofocus" value="commun/bouton.png"/>
+		<param name="texturenofocus_colordiffuse" value="$VAR[couleur_dominante]"/>
+	</include>
+	</control>
+	<control type="button">			
+		<height>22</height>			
+		<width>auto</width>				
+		<align>center</align>	
+	<include content="petit_bouton">
+		<param name="label" value="[UPPERCASE]$VAR[random_texte][/UPPERCASE]"/>
+		<param name="textcolor" value="ffffffff"/>
+		<param name="textoffsetx" value="15"/>
+		<param name="texturenofocus" value="commun/bouton.png"/>
+		<param name="texturenofocus_colordiffuse" value="$VAR[couleur_dominante]"/>
+	</include>
+	</control>
+	</control>	
+	<control type="image">																												<description>separation verticale</description>	
+		<right>182</right>
+		<height>80</height>
+		<bottom>0</bottom>
+		<width>20</width>
+		<aspectratio>keep</aspectratio>
+		<texture colordiffuse="20fffffff">commun/separation_OSD.png</texture>
+	</control>	
 	<control type="grouplist">																													<description>flags lecteur</description>				
 		<right>10</right>
 		<bottom>17</bottom>
@@ -257,14 +254,14 @@
 	<control type="image">
 		<width>71</width>
 		<height>48</height>
-		<texture colordiffuse="ffffffff">$INFO[VideoPlayer.AudioCodec,playerflags/audiocodec/,.png]</texture>			
+		<texture colordiffuse="ffffffff">$INFO[VideoPlayer.AudioCodec,flags/audiocodec/,.png]</texture>			
 	</control>
 	<control type="image">
 		<width>71</width>
 		<height>48</height>
-		<texture fallback="playerflags/audiochannel/2.png" colordiffuse="ffffffff">$INFO[VideoPlayer.AudioChannels,playerflags/audiochannel/,.png]</texture>
+		<texture fallback="playerflags/audiochannel/2.png" colordiffuse="ffffffff">$INFO[VideoPlayer.AudioChannels,flags/audiochannel/,.png]</texture>
 	</control>				
 	</control>
-	</control>	
-	</controls>
+	</control>
+</controls>
 </window>

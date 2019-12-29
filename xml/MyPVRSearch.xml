@@ -64,10 +64,11 @@
 	<control type="label">
 		<left>130</left>
 		<right>2</right>
-		<height>70</height>
+		<height>70</height>		
 		<label>$INFO[ListItem.Label]</label>
-		<visible>!string.isempty(ListItem.Label2)</visible>		
-	</control>		
+		<visible>!string.isempty(ListItem.Label2)</visible>
+		<scroll>true</scroll>	
+	</control>	
 	<control type="textbox">
 		<top>50</top>
 		<left>150</left>
@@ -93,6 +94,9 @@
 	<control type="group">
 		<top>10</top>
 	<control type="button">
+		<onfocus condition="!String.IsEqual(listitem.Icon,) + !string.EndsWith(listitem.Icon,none)">setproperty(image,$INFO[listitem.Icon],home)</onfocus>
+		<onfocus condition="String.IsEqual(listitem.Icon,) | string.EndsWith(listitem.Icon,none)">clearproperty(image,home)</onfocus>			
+		<onfocus>setproperty(label,$INFO[ListItem.ChannelName] • $INFO[ListItem.Label2] • $INFO[ListItem.Label],home)</onfocus>
 	<include content="bouton">
 		<param name="height" value="120"/> 
 	</include>

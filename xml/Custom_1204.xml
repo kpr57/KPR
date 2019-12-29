@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <window type="dialog" id="1204">
 	<backgroundcolor>00X000000</backgroundcolor>
-	<defaultcontrol always="true">40101</defaultcontrol>																						<description>fenetre de parametrage de la page series</description>			
+	<defaultcontrol always="true">40101</defaultcontrol>																						<description>fenetre de parametrage de la page musique</description>			
 	<onunload>clearproperty(numero_parametre_widget,home)</onunload>
 	<onunload>clearproperty(nom_parametre_widget,home)</onunload>	
 	<onunload>skin.setstring(temp,)</onunload>		
@@ -9,6 +9,8 @@
 	<include>video</include>																													<description>arriere plan video</description>
 	<include>image_fond</include>
 	<control type="group">		
+		<animation effect="fade" start="100" end="0" time="1" condition="window.isvisible(DialogSelect.xml) | window.isvisible(DialogConfirm.xml)" reversible="false">conditional</animation>
+		<animation effect="fade" start="0" end="100" delay="100" time="1" condition="!window.isvisible(DialogSelect.xml) + !window.isvisible(DialogConfirm.xml)" reversible="false">conditional</animation>		
 	<control type="label">																														<description>titre</description>	
 		<height>140</height>
 		<align>center</align>

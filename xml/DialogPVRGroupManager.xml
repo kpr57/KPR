@@ -1,623 +1,347 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
 	<backgroundcolor>00X000000</backgroundcolor>
-	<onunload>UpdateLibrary(video,,true)</onunload>
-	<defaultcontrol always="true">10</defaultcontrol>
+	<onload>alarmclock(alarme,control.setfocus(13),00:00,silent)</onload>
+	<onunload>clearproperty(groupes_tv,home)</onunload>
+	<onunload>clearproperty(groupes_tv2,home)</onunload>
+	<onunload>clearproperty(chemin_widget_tv,home)</onunload>
+	<onunload>clearproperty(chemin_widget_tv2,home)</onunload>	
+	<onunload>reloadskin()</onunload>	
 <controls>
-	<control type="label" id="20">																	<description>label cache pour recuperer le nom du groupe selectionne</description>
-		<visible>false</visible>
+	<control type="group">
+	<include>animation_dialogue</include>	
+	<include>image_fond</include>																												<description>image de fond</description>		
+	<control type="label">																														<description>horloge</description>
+		<right>60</right>
+		<height>116</height>			
+		<font>menu</font>
+		<textcolor>80ffffff</textcolor>
+		<align>right</align>
+		<label>$INFO[system.time(hh:mm)]</label>		
+	</control>
+	<control type="label">																														<description>titre</description>	
+		<height>140</height>
+		<align>center</align>
+		<font>titre</font>		
+		<label>$LOCALIZE[19048]</label>
+	</control>
+	<include content="barre_separation_horizontale">																							<description>barre de separation horizontale</description>
+		<param name="left" value="50"/> 
+		<param name="right" value="50"/>
+		<param name="bottom" value="940"/>		
+	</include>		
+	<control type="grouplist" id="8000">																										<description>liste des boutons</description>		
+		<top>225</top>
+		<left>50</left>
+		<width>405</width>
+		<height>710</height>
+		<onright>13</onright>
+		<itemgap>10</itemgap>
+		<orientation>vertical</orientation>
+	<control type="button" id="26">				
+		<label>$LOCALIZE[31044]</label>	
+	<include content="bouton">																											
+		<param name="width" value="405"/> 
+		<param name="height" value="65"/> 		
+	</include>		
+	</control>
+	<control type="button" id="27">
+		<label>$LOCALIZE[31045]</label>				
+	<include content="bouton">																											
+		<param name="width" value="405"/> 
+		<param name="height" value="65"/> 		
+	</include>		
+	</control>
+	<control type="radiobutton" id="25">
+		<label>$LOCALIZE[19289]</label>				
+	<include content="bouton">																											
+		<param name="width" value="405"/> 
+		<param name="height" value="65"/> 		
+	</include>		
+	</control>
+	<control type="button" id="28">
+		<label>$LOCALIZE[31046]</label>			
+	<include content="bouton">																											
+		<param name="width" value="405"/> 
+		<param name="height" value="65"/> 		
+	</include>		
+	</control>
+	<control type="button" id="29">
+		<label>$LOCALIZE[15067]</label>				
+	<include content="bouton">																											
+		<param name="width" value="405"/> 
+		<param name="height" value="65"/> 		
+	</include>		
+	</control>			
+	</control>		
+	<control type="image">
+		<top>225</top>
+		<left>475</left>
+		<width>390</width>
+		<height>730</height>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="20000000" border="50">commun/bouton.png</texture>
+	</control>
+	<control type="label">
+		<left>475</left>
+		<top>175</top>
+		<width>390</width>
+		<height>40</height>
+		<align>center</align>
+		<textcolor>80ffffff</textcolor>
+        <label>$LOCALIZE[31089] : $INFO[Container(13).NumItems]</label>		
+	</control>	
+	<control type="list" id="13">																												<description>liste des groupes de chaines</description>		
+		<top>230</top>
+		<left>480</left>
+		<width>380</width>
+		<height>720</height>
+		<onleft>8000</onleft>
+		<onright>12</onright>
+		<scrolltime tween="cubic" easing="out">500</scrolltime>
+		<orientation>vertical</orientation>
+	<itemlayout height="60" width="380">	
+	<control type="group">
+		<top>5</top>
+		<left>5</left>
+		<right>5</right>
+		<height>50</height>
+	<control type="image">
+		<texture colordiffuse="05ffffff" border="10">commun/bouton.png</texture>
+	</control>	
+	<control type="label">	
+		<textoffsetx>10</textoffsetx>
+        <label>$INFO[listitem.label]</label>					
+	</control>					
+	</control>
+	</itemlayout>
+	<focusedlayout height="60" width="380">
+	<control type="button">
+		<onfocus>action(select)</onfocus>
 	</control>
 	<control type="group">
-		<animation effect="fade" start="0" end="100" time="150">WindowOpen</animation>
-		<animation effect="fade" start="100" end="0" time="150">WindowClose</animation>		
-		<left>0</left>
-		<top>0</top>
-		<width>1920</width>
-		<height>1080</height>
-	<control type="image">																			<description>adoucissement du fond</description>
-		<texture colordiffuse="$VAR[masque_fenetres]">texture.png</texture>
-		<visible>!Window.IsVisible(tvchannels) + !Window.IsVisible(tvguide)</visible>
-	</control>
-	<control type="image">																			<description>adoucissement du fond</description>
-		<texture colordiffuse="80263238">texture.png</texture>
-		<visible>[Window.IsVisible(tvchannels) | Window.IsVisible(tvguide)]</visible>
-	</control>	
-	<control type="group">			
-		<left>282</left>
-		<top>160</top>
-		<width>1357</width>
-		<height>760</height>
-	<include content="fenetre_menu">																<description>fenetre</description>
-		<param name="couleur" value="ccffffff"/>
-	</include>		
-	<control type="label">																			<description>titre menu</description>
-		<left>-282</left>
-		<top>-44</top>
-		<width>1920</width>
-		<height>44</height>
-		<font>petit_texte</font>
-		<textcolor>$VAR[blanc]</textcolor>
-		<align>center</align>
-		<aligny>center</aligny>	
-		<label>Gestionnaire de groupes</label>	
-	</control>			
-	<control type="group">			
-		<left>12</left>
-		<top>14</top>
-	<control type="image">																			<description>panneau du haut</description>
-		<top>-2</top>
-		<left>0</left>
-		<width>1333</width>
-		<height>66</height>
-		<aspectratio>scale</aspectratio>
-		<texture colordiffuse="$VAR[gris]">texture.png</texture>
-	</control>
-	<control type="grouplist" id="10">																<description>rangee des boutons</description>
-		<left>0</left>
-		<top>64</top>
-		<width>250</width>
-		<itemgap>1</itemgap>
-		<onright>13</onright>
-		<ondown>29</ondown>
-	<control type="button" id="26">																	<description>bouton ajouter un groupe</description>
-		<height>66</height>
-		<font>petit_texte</font>
-		<textcolor>$VAR[gris]</textcolor>
-		<textoffsetx>15</textoffsetx>
-		<label>Nouveau groupe</label>
-	</control>
-	<control type="button" id="27">																	<description>bouton renommer un groupe</description>
-		<height>66</height>
-		<font>petit_texte</font>
-		<textcolor>$VAR[gris]</textcolor>
-		<textoffsetx>15</textoffsetx>
-		<label>Renommer le groupe</label>		
-	</control>
-	<control type="button" id="28">																	<description>bouton supprimmer un groupe</description>
-		<height>66</height>
-		<font>petit_texte</font>
-		<textcolor>$VAR[gris]</textcolor>
-		<textoffsetx>15</textoffsetx>
-		<label>Supprimmer le groupe</label>		
-	</control>	
-	<control type="radiobutton" id="25">															<description>bouton cacher un groupe</description>
-		<height>66</height>
-		<font>petit_texte</font>
-		<textcolor>$VAR[gris]</textcolor>
-		<textoffsetx>15</textoffsetx>
-		<radioposx>205</radioposx>
-		<label>Cacher le groupe</label>		
-	</control>	
-	<control type="button" id="200">																<description>bouton gestion des chaines</description>
-		<height>66</height>
-		<font>petit_texte</font>
-		<textcolor>$VAR[gris]</textcolor>
-		<textoffsetx>15</textoffsetx>
-		<label>Gestion des chaines</label>
-		<onclick>Action(Close)</onclick>
-		<onclick>ActivateWindow(pvrchannelmanager)</onclick>		
-	</control>	
-	</control>
-	<control type="group">																			<description>remplissage des lignes vides</description>
-		<width>250</width>
-		<top>64</top>			
-	<include content="remplissage_menu">															
-		<param name="id" value="10"/>
-		<param name="nombre" value="5"/>
-		<param name="top" value="268"/>	
-		<param name="height" value="66"/>	
-		<param name="left" value="0"/>	
-	</include>
-	<include content="remplissage_menu">															
-		<param name="id" value="10"/>
-		<param name="nombre" value="6"/>
-		<param name="top" value="335"/>	
-		<param name="height" value="66"/>	
-		<param name="left" value="0"/>	
-	</include>
-	<include content="remplissage_menu">															
-		<param name="id" value="10"/>
-		<param name="nombre" value="7"/>	
-		<param name="top" value="402"/>	
-		<param name="height" value="66"/>	
-		<param name="left" value="0"/>	
-	</include>
-	<include content="remplissage_menu">															
-		<param name="id" value="10"/>
-		<param name="nombre" value="8"/>	
-		<param name="top" value="469"/>	
-		<param name="height" value="66"/>	
-		<param name="left" value="0"/>	
-	</include>
-	<include content="remplissage_menu">															
-		<param name="id" value="10"/>
-		<param name="nombre" value="9"/>	
-		<param name="top" value="536"/>	
-		<param name="height" value="66"/>	
-		<param name="left" value="0"/>	
-	</include>
-	<include content="remplissage_menu">															
-		<param name="id" value="10"/>
-		<param name="nombre" value="10"/>	
-		<param name="top" value="603"/>	
-		<param name="height" value="66"/>	
-		<param name="left" value="0"/>	
-	</include>
-	</control>
-	<control type="group">																			<description>rangee groupes de chaines</description>
-		<left>250</left>	
-	<control type="image">																			<description>panneau</description>
-		<left>0</left>
-		<top>0</top>
-		<width>342</width>
-		<height>736</height>
-		<aspectratio>scale</aspectratio>
-		<texture colordiffuse="$VAR[gris]">texture.png</texture>
-	</control>	
-	<control type="label">																			<description>texte nom du groupe selectionne</description>
-		<left>30</left>
-		<top>0</top>
-		<width>350</width>
-		<height>66</height>
-		<font>petit_texte</font>
-		<textcolor>$VAR[blanc]</textcolor>
-		<aligny>center</aligny>
-		<label>Groupe de chaines</label>
-	</control>
-	<control type="list" id="13">																	<description>liste groupes de chaines</description>		
-		<left>0</left>
-		<top>64</top>
-		<width>342</width>
-		<height>670</height>
-		<onup>-</onup>
-		<ondown>29</ondown>
-		<onright>11</onright>
-		<onleft>10</onleft>
-	<itemlayout height="67" width="330">	
-	<control type="image">																			<description>fond numero + nom de la chaine</description>
-		<left>0</left>
-		<top>0</top>
-		<width>342</width>
-		<height>66</height>
-		<texture colordiffuse="$VAR[bleu]">texture.png</texture>
-		<animation effect="fade" start="100" end="50" time="0" condition="!Control.HasFocus(13)">Conditional</animation>
-		<visible>!Control.HasFocus(13) + String.IsEqual(Control.GetLabel(20),ListItem.Label)</visible>		
-	</control>
-	<control type="label">																			<description>nom du groupe</description>
-		<left>15</left>
-		<top>0</top>
-		<width>275</width>
-		<height>66</height>
-		<font>petit_texte</font>
-		<align>left</align>
-		<aligny>center</aligny>
-		<textcolor>$VAR[blanc]</textcolor>
-		<selectedcolor>$VAR[bleu]</selectedcolor>
-		<label>$INFO[ListItem.Label]</label>		
-	</control>	
-	</itemlayout>
-	<focusedlayout height="67" width="330">
-	<control type="image">																			<description>fond numero + nom de la chaine</description>
-		<left>0</left>
-		<top>0</top>
-		<width>342</width>
-		<height>66</height>
-		<texture colordiffuse="$VAR[bleu]">texture.png</texture>
-		<animation effect="fade" start="100" end="50" time="0" condition="!Control.HasFocus(13)">Conditional</animation>
-		<visible>Control.HasFocus(13) | String.IsEqual(Control.GetLabel(20),ListItem.Label)</visible>		
-	</control>
-	<control type="label">																			<description>numero + nom de la chaine</description>
-		<left>15</left>
-		<top>0</top>
-		<width>275</width>
-		<height>66</height>
-		<font>petit_texte</font>
-		<align>left</align>
-		<aligny>center</aligny>
-		<textcolor>$VAR[blanc]</textcolor>
-		<selectedcolor>$VAR[gris_clair]</selectedcolor>
-		<label>$INFO[ListItem.Label]</label>		
-	</control>
-	</focusedlayout>
-	</control>
-	</control>
-	<control type="group">																			<description>rangee chaines non visibles</description>																			
-		<left>592</left>
-	<control type="label">																			<description>texte chaines non visibles</description>
-		<top>0</top>
-		<left>30</left>
-		<width>350</width>
-		<height>64</height>
-		<font>petit_texte</font>
-		<aligny>center</aligny>
-		<textcolor>$VAR[blanc]</textcolor>
-		<label>Chaines hors du groupe</label>
-	</control>
-	<control type="list" id="11">																	<description>liste chaines non groupees</description>
-		<left>0</left>
-		<top>64</top>
-		<width>370</width>
-		<height>670</height>
-		<onup>11</onup>
-		<ondown>11</ondown>
-		<onleft>13</onleft>
-		<onright>12</onright>
-	<itemlayout height="67" width="370">
-	<control type="image">																			<description>fond numero + nom de la chaine</description>
-		<left>0</left>
-		<top>0</top>
-		<width>370</width>
-		<height>66</height>
-		<texture colordiffuse="$VAR[gris_clair]">texture.png</texture>		
-	</control>
-	<control type="label">																			<description>numero + nom de la chaine</description>
-		<left>20</left>
-		<top>0</top>
-		<width>280</width>
-		<height>66</height>
-		<font>petit_texte</font>
-		<textcolor>$VAR[gris]</textcolor>
-		<selectedcolor>$VAR[bleu]</selectedcolor>		
-		<aligny>center</aligny>
-		<label>$INFO[ListItem.ChannelNumberLabel,(,) - ]$INFO[ListItem.ChannelName]</label>
-	</control>
-	<control type="image">
-		<left>310</left>
-		<top>8</top>
-		<width>50</width>
+		<top>5</top>
+		<left>5</left>
+		<right>5</right>
 		<height>50</height>
-		<aspectratio>keep</aspectratio>
-		<texture background="true">$INFO[ListItem.Icon]</texture>
-	</control>
-	</itemlayout>
-	<focusedlayout height="67" width="370">
-	<control type="image">																			<description>fond numero + nom de la chaine</description>
-		<left>0</left>
-		<top>0</top>
-		<width>370</width>
-		<height>66</height>
-		<texture colordiffuse="$VAR[bleu]">texture.png</texture>
-		<visible>Control.HasFocus(11)</visible>
-	</control>
-	<control type="image">																			<description>fond numero + nom de la chaine</description>
-		<left>0</left>
-		<top>0</top>
-		<width>370</width>
-		<height>66</height>
-		<texture colordiffuse="$VAR[gris_clair]">texture.png</texture>
-		<visible>!Control.HasFocus(11)</visible>	
-	</control>
-	<control type="label">																			<description>numero + nom de la chaine</description>
-		<left>20</left>
-		<top>0</top>
-		<width>280</width>
-		<height>66</height>
-		<font>petit_texte</font>
-		<textcolor>$VAR[blanc]</textcolor>
-		<selectedcolor>$VAR[gris_clair]</selectedcolor>
-		<aligny>center</aligny>
-		<label>$INFO[ListItem.ChannelNumberLabel,(,) - ]$INFO[ListItem.ChannelName]</label>
-		<scroll>true</scroll>
-		<visible>Control.HasFocus(11)</visible>
-	</control>
-	<control type="label">																			<description>numero + nom de la chaine</description>
-		<left>20</left>
-		<top>0</top>
-		<width>280</width>
-		<height>66</height>
-		<font>petit_texte</font>
-		<textcolor>$VAR[gris]</textcolor>
-		<selectedcolor>$VAR[bleu]</selectedcolor>		
-		<aligny>center</aligny>
-		<label>$INFO[ListItem.ChannelNumberLabel,(,) - ]$INFO[ListItem.ChannelName]</label>
-		<scroll>false</scroll>
-		<visible>!Control.HasFocus(11)</visible>
-	</control>
 	<control type="image">
-		<left>310</left>
-		<top>8</top>
-		<width>50</width>
-		<height>50</height>
-		<aspectratio>keep</aspectratio>
-		<texture background="true">$INFO[ListItem.Icon]</texture>
-	</control>
-	</focusedlayout>
-	</control>
-	<control type="group">																			<description>remplissage des lignes vides</description>
-		<width>370</width>
-		<top>64</top>	
-	<include content="remplissage_menu">															
-		<param name="id" value="11"/>
-		<param name="nombre" value="1"/>
-		<param name="top" value="0"/>
-		<param name="height" value="66"/>	
-		<param name="left" value="0"/>		
-	</include>
-	<include content="remplissage_menu">															
-		<param name="id" value="11"/>
-		<param name="nombre" value="2"/>
-		<param name="top" value="67"/>
-		<param name="height" value="66"/>	
-		<param name="left" value="0"/>		
-	</include>	
-	<include content="remplissage_menu">															
-		<param name="id" value="11"/>
-		<param name="nombre" value="3"/>	
-		<param name="top" value="134"/>
-		<param name="height" value="66"/>	
-		<param name="left" value="0"/>		
-	</include>	
-	<include content="remplissage_menu">															
-		<param name="id" value="11"/>
-		<param name="nombre" value="4"/>	
-		<param name="top" value="201"/>	
-		<param name="height" value="66"/>	
-		<param name="left" value="0"/>	
-	</include>
-	<include content="remplissage_menu">															
-		<param name="id" value="11"/>
-		<param name="nombre" value="5"/>	
-		<param name="top" value="268"/>	
-		<param name="height" value="66"/>	
-		<param name="left" value="0"/>	
-	</include>
-	<include content="remplissage_menu">															
-		<param name="id" value="11"/>
-		<param name="nombre" value="6"/>
-		<param name="top" value="335"/>	
-		<param name="height" value="66"/>	
-		<param name="left" value="0"/>	
-	</include>
-	<include content="remplissage_menu">															
-		<param name="id" value="11"/>
-		<param name="nombre" value="7"/>	
-		<param name="top" value="402"/>	
-		<param name="height" value="66"/>	
-		<param name="left" value="0"/>	
-	</include>
-	<include content="remplissage_menu">															
-		<param name="id" value="11"/>
-		<param name="nombre" value="8"/>	
-		<param name="top" value="469"/>	
-		<param name="height" value="66"/>	
-		<param name="left" value="0"/>	
-	</include>
-	<include content="remplissage_menu">															
-		<param name="id" value="11"/>
-		<param name="nombre" value="9"/>	
-		<param name="top" value="536"/>	
-		<param name="height" value="66"/>	
-		<param name="left" value="0"/>	
-	</include>
-	<include content="remplissage_menu">															
-		<param name="id" value="11"/>
-		<param name="nombre" value="9"/>	
-		<param name="top" value="603"/>	
-		<param name="height" value="66"/>	
-		<param name="left" value="0"/>	
-	</include>
+		<texture colordiffuse="$VAR[couleur_dominante]" border="10">commun/bouton.png</texture>
+		<animation effect="fade" start="100" end="50" condition="!control.hasfocus(13)">conditional</animation>
 	</control>	
+	<control type="label">	
+		<textoffsetx>10</textoffsetx>
+        <label>$INFO[listitem.label]</label>					
+	</control>					
 	</control>
-	<control type="group">																			<description>rangee chaines visibles</description>																					
-		<left>963</left>																		
-	<control type="label">																			<description>texte chaines visibles</description>
-		<top>0</top>
-		<left>30</left>
-		<width>350</width>
-		<height>64</height>
-		<font>petit_texte</font>
-		<aligny>center</aligny>
-		<textcolor>$VAR[blanc]</textcolor>
-		<label>Chaines du groupe</label>
-	</control>	
-	<control type="list" id="12">																	<description>liste chaines groupees</description>
-		<left>0</left>
-		<top>64</top>
-		<width>370</width>
-		<height>670</height>
-		<onleft>11</onleft>
-		<onup>12</onup>
-		<ondown>12</ondown>
-	<itemlayout height="67" width="370">
-	<control type="image">																			<description>fond numero + nom de la chaine</description>
-		<left>0</left>
-		<top>0</top>
-		<width>370</width>
-		<height>66</height>
-		<texture colordiffuse="$VAR[gris_clair]">texture.png</texture>		
-	</control>
-	<control type="label">
-		<left>20</left>
-		<top>0</top>
-		<width>280</width>
-		<height>66</height>
-		<font>petit_texte</font>
-		<textcolor>$VAR[gris]</textcolor>
-		<selectedcolor>$VAR[bleu]</selectedcolor>		
-		<aligny>center</aligny>
-		<label>$INFO[ListItem.ChannelNumberLabel,(,) - ]$INFO[ListItem.ChannelName]</label>		
-	</control>
-	<control type="image">
-		<left>310</left>
-		<top>8</top>
-		<width>50</width>
-		<height>50</height>
-		<aspectratio>keep</aspectratio>
-		<texture background="true">$INFO[ListItem.Icon]</texture>
-	</control>
-	</itemlayout>
-	<focusedlayout height="67" width="370">
-	<control type="image">																			<description>fond numero + nom de la chaine</description>
-		<left>0</left>
-		<top>0</top>
-		<width>370</width>
-		<height>66</height>
-		<texture colordiffuse="$VAR[bleu]">texture.png</texture>		
-		<visible>Control.HasFocus(12)</visible>
-	</control>
-	<control type="image">																			<description>fond numero + nom de la chaine</description>
-		<left>0</left>
-		<top>0</top>
-		<width>370</width>
-		<height>66</height>
-		<texture colordiffuse="$VAR[gris_clair]">texture.png</texture>		
-		<visible>!Control.HasFocus(12)</visible>
-	</control>
-	<control type="label">
-		<left>20</left>
-		<top>0</top>
-		<width>280</width>
-		<height>66</height>
-		<font>petit_texte</font>
-		<textcolor>$VAR[blanc]</textcolor>
-		<selectedcolor>$VAR[gris_clair]</selectedcolor>
-		<aligny>center</aligny>
-		<label>$INFO[ListItem.ChannelNumberLabel,(,) - ]$INFO[ListItem.ChannelName]</label>		
-		<scroll>true</scroll>
-		<visible>Control.HasFocus(12)</visible>	
-	</control>
-	<control type="label">
-		<left>20</left>
-		<top>0</top>
-		<width>280</width>
-		<height>66</height>
-		<font>petit_texte</font>
-		<textcolor>$VAR[gris]</textcolor>
-		<selectedcolor>$VAR[bleu]</selectedcolor>
-		<aligny>center</aligny>
-		<label>$INFO[ListItem.ChannelNumberLabel,(,) - ]$INFO[ListItem.ChannelName]</label>		
-		<scroll>false</scroll>
-		<visible>!Control.HasFocus(12)</visible>		
-	</control>	
-	<control type="image">
-		<left>310</left>
-		<top>8</top>
-		<width>50</width>
-		<height>50</height>
-		<aspectratio>keep</aspectratio>
-		<texture background="true">$INFO[ListItem.Icon]</texture>
-	</control>
-	</focusedlayout>
-	</control>
-	<control type="group">																			<description>remplissage des lignes vides</description>
-		<width>370</width>
-		<top>64</top>	
-	<include content="remplissage_menu">															
-		<param name="id" value="12"/>
-		<param name="nombre" value="1"/>
-		<param name="top" value="0"/>
-		<param name="height" value="66"/>	
-		<param name="left" value="0"/>		
-	</include>
-	<include content="remplissage_menu">															
-		<param name="id" value="12"/>
-		<param name="nombre" value="2"/>
-		<param name="top" value="67"/>
-		<param name="height" value="66"/>	
-		<param name="left" value="0"/>		
-	</include>	
-	<include content="remplissage_menu">															
-		<param name="id" value="12"/>
-		<param name="nombre" value="3"/>	
-		<param name="top" value="134"/>
-		<param name="height" value="66"/>	
-		<param name="left" value="0"/>		
-	</include>	
-	<include content="remplissage_menu">															
-		<param name="id" value="12"/>
-		<param name="nombre" value="4"/>	
-		<param name="top" value="201"/>	
-		<param name="height" value="66"/>	
-		<param name="left" value="0"/>	
-	</include>
-	<include content="remplissage_menu">															
-		<param name="id" value="12"/>
-		<param name="nombre" value="5"/>	
-		<param name="top" value="268"/>	
-		<param name="height" value="66"/>	
-		<param name="left" value="0"/>	
-	</include>
-	<include content="remplissage_menu">															
-		<param name="id" value="12"/>
-		<param name="nombre" value="6"/>
-		<param name="top" value="335"/>	
-		<param name="height" value="66"/>	
-		<param name="left" value="0"/>	
-	</include>
-	<include content="remplissage_menu">															
-		<param name="id" value="12"/>
-		<param name="nombre" value="7"/>	
-		<param name="top" value="402"/>	
-		<param name="height" value="66"/>	
-		<param name="left" value="0"/>	
-	</include>
-	<include content="remplissage_menu">															
-		<param name="id" value="12"/>
-		<param name="nombre" value="8"/>	
-		<param name="top" value="469"/>	
-		<param name="height" value="66"/>	
-		<param name="left" value="0"/>	
-	</include>
-	<include content="remplissage_menu">															
-		<param name="id" value="12"/>
-		<param name="nombre" value="9"/>	
-		<param name="top" value="536"/>	
-		<param name="height" value="66"/>	
-		<param name="left" value="0"/>	
-	</include>
-	<include content="remplissage_menu">															
-		<param name="id" value="12"/>
-		<param name="nombre" value="9"/>	
-		<param name="top" value="603"/>	
-		<param name="height" value="66"/>	
-		<param name="left" value="0"/>	
-	</include>
-	</control>	
-	</control>
-	<control type="image">																			<description>masque pour les groupes cachés</description>
-		<top>63</top>
-		<left>592</left>
-		<width>741</width>
-		<height>671</height>
-		<texture colordiffuse="$VAR[masque]">texture.png</texture>
-		<visible>SubString(Control.GetLabel(25),*)</visible>
-	</control>
-	<control type="image">																			<description>ligne de separation</description>
-		<top>63</top>
-		<left>0</left>
-		<width>1333</width>
-		<height>1</height>
-		<aspectratio>scale</aspectratio>
-		<texture colordiffuse="$VAR[gris_clair]">texture.png</texture>
-	</control>
-	<control type="image">																			<description>ombre rangee liste des groupes cote gauche</description>
-		<top>64</top>
-		<left>230</left>
-		<width>20</width>
-		<height>670</height>
-		<aspectratio>stretch</aspectratio>			
-		<texture flipx="true">fenetres/ombre_droite.png</texture>
-	</control>
-	<control type="image">																			<description>ombre rangee liste des groupes cote droit</description>
-		<top>64</top>
-		<left>592</left>
-		<width>20</width>
-		<height>670</height>
-		<aspectratio>stretch</aspectratio>			
-		<texture>fenetres/ombre_droite.png</texture>
-	</control>
-	</control>
-	<control type="button" id="29">																	<description>bouton annuler</description>
-		<top>754</top>
-		<right>13</right>
-		<onup>25</onup>
-	<include content="bouton_fenetre">
-		<param name="iconef" value="nonf.png"/>
-		<param name="iconenf" value="nonnf.png"/>
-		<param name="couleur" value="$VAR[blanc]"/>	
-	</include>
-	</control>
-	</control>	
+	</focusedlayout>	
 	</control>		
+	<control type="image">
+		<top>225</top>
+		<left>875</left>
+		<width>500</width>
+		<height>730</height>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="20000000" border="50">commun/bouton.png</texture>
+	</control>
+	<control type="label">
+		<left>875</left>
+		<top>175</top>
+		<width>500</width>
+		<height>40</height>
+		<align>center</align>
+		<textcolor>80ffffff</textcolor>
+        <label>$LOCALIZE[31318] $INFO[Container(12).NumItems]</label>		
+	</control>
+	<control type="panel" id="12">																												<description>liste des chaines groupees</description>		
+		<top>230</top>
+		<left>880</left>
+		<width>490</width>
+		<height>720</height>
+		<onleft>13</onleft>
+		<onright>11</onright>
+		<scrolltime tween="cubic" easing="out">500</scrolltime>
+		<orientation>vertical</orientation>
+	<itemlayout height="60" width="490">	
+	<control type="group">
+		<top>5</top>
+		<left>5</left>
+		<right>5</right>
+		<height>50</height>
+	<control type="image">
+		<texture colordiffuse="05ffffff" border="10">commun/bouton.png</texture>
+	</control>	
+	<control type="label">	
+		<textoffsetx>10</textoffsetx>
+        <label>$INFO[listitem.label]</label>					
+	</control>
+	<control type="image">		
+		<right>5</right>
+		<top>5</top>
+		<height>40</height>
+		<width>40</width>
+		<aspectratio>keep</aspectratio>
+		<texture>$INFO[listitem.icon]</texture>				
+	</control>					
+	</control>
+	</itemlayout>
+	<focusedlayout height="60" width="490">
+	<control type="group">
+		<top>5</top>
+		<left>5</left>
+		<right>5</right>
+		<height>50</height>
+	<control type="image">
+		<texture colordiffuse="$VAR[couleur_dominante]" border="10">commun/bouton.png</texture>
+	</control>	
+	<control type="label">	
+		<textoffsetx>10</textoffsetx>
+        <label>$INFO[listitem.label]</label>					
+	</control>	
+	<control type="image">		
+		<right>5</right>
+		<top>5</top>
+		<height>40</height>
+		<width>40</width>
+		<aspectratio>keep</aspectratio>
+		<texture>$INFO[listitem.icon]</texture>				
+	</control>				
+	</control>
+	</focusedlayout>	
+	</control>		
+	<control type="image">
+		<top>225</top>
+		<left>1385</left>
+		<width>500</width>
+		<height>730</height>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="20000000" border="50">commun/bouton.png</texture>
+	</control>
+	<control type="label">
+		<left>1385</left>
+		<top>175</top>
+		<width>500</width>
+		<height>40</height>
+		<align>center</align>
+		<textcolor>80ffffff</textcolor>
+        <label>$LOCALIZE[31317] $INFO[Container(11).NumItems]</label>		
+	</control>
+	<control type="panel" id="11">																												<description>liste des chaines non groupees</description>		
+		<top>230</top>
+		<left>1390</left>
+		<width>490</width>
+		<height>720</height>
+		<onleft>12</onleft>
+		<scrolltime tween="cubic" easing="out">500</scrolltime>
+		<orientation>vertical</orientation>
+	<itemlayout height="60" width="490">	
+	<control type="group">
+		<top>5</top>
+		<left>5</left>
+		<right>5</right>
+		<height>50</height>
+	<control type="image">
+		<texture colordiffuse="05ffffff" border="10">commun/bouton.png</texture>
+	</control>	
+	<control type="label">	
+		<textoffsetx>10</textoffsetx>
+        <label>$INFO[listitem.label]</label>					
+	</control>
+	<control type="image">		
+		<right>5</right>
+		<top>5</top>
+		<height>40</height>
+		<width>40</width>
+		<aspectratio>keep</aspectratio>
+		<texture>$INFO[listitem.icon]</texture>				
+	</control>
+	</control>
+	</itemlayout>
+	<focusedlayout height="60" width="490">
+	<control type="group">
+		<top>5</top>
+		<left>5</left>
+		<right>5</right>
+		<height>50</height>
+	<control type="image">
+		<texture colordiffuse="$VAR[couleur_dominante]" border="10">commun/bouton.png</texture>
+	</control>	
+	<control type="label">	
+		<textoffsetx>10</textoffsetx>
+        <label>$INFO[listitem.label]</label>					
+	</control>
+	<control type="image">		
+		<right>5</right>
+		<top>5</top>
+		<height>40</height>
+		<width>40</width>
+		<aspectratio>keep</aspectratio>
+		<texture>$INFO[listitem.icon]</texture>				
+	</control>					
+	</control>
+	</focusedlayout>	
+	</control>	
+	<include content="barre_separation_horizontale">																							<description>barre de separation horizontale</description>
+		<param name="left" value="50"/> 
+		<param name="right" value="50"/>
+		<param name="bottom" value="80"/>		
+	</include>
+	<control type="label">
+		<right>40</right>
+		<left>40</left>
+		<bottom>0</bottom>
+		<height>80</height>
+		<align>center</align>
+		<textcolor>80ffffff</textcolor>
+        <label>$LOCALIZE[31320] [B][I]$INFO[container(11).listitem.label][/I][/B] $LOCALIZE[31321] [B][I]$INFO[container(13).listitem.label][/I][/B]</label>
+		<visible>control.hasfocus(11)</visible>
+		<animation effect="fade" time="100">visiblechange</animation>		
+	</control>	
+	<control type="label">
+		<right>40</right>
+		<left>40</left>
+		<bottom>0</bottom>
+		<height>80</height>
+		<align>center</align>
+		<textcolor>80ffffff</textcolor>
+        <label>$LOCALIZE[31322] [B][I]$INFO[container(12).listitem.label][/I][/B] $LOCALIZE[31321] [B][I]$INFO[container(13).listitem.label][/I][/B]</label>
+		<visible>control.hasfocus(12)</visible>
+		<animation effect="fade" time="100">visiblechange</animation>		
+	</control>	
+	<control type="group">
+		<visible>control.hasfocus(25)</visible>
+		<animation effect="fade" time="100">visiblechange</animation>
+	<control type="image">
+		<top>602</top>
+		<left>50</left>
+		<width>405</width>
+		<height>355</height>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="20ffffff" border="50">commun/bouton.png</texture>
+	</control>	
+	<control type="image">
+		<top>602</top>
+		<left>50</left>
+		<width>405</width>
+		<height>140</height>
+		<aspectratio align="center">keep</aspectratio>
+		<texture colordiffuse="80ffffff">commun/warning.png</texture>
+	</control>
+	<control type="textbox">	
+		<top>680</top>
+		<left>70</left>
+		<width>365</width>
+		<height>325</height>
+		<textcolor>80ffffff</textcolor>
+		<font>infos</font>
+		<align>justify</align>
+		<label>$LOCALIZE[31319]</label>
+		<autoscroll delay="20000" time="3000" repeat="20000">false</autoscroll>		
+	</control>
+	</control>
+	</control>
+	<control type="label">																											<description>label pour les tests</description>
+		<bottom>0</bottom>
+		<label>$INFO[System.GetBool(pvrmenu.iconpath)]</label>
+	</control>	
 </controls>
 </window>

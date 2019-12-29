@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<window type="dialog" id="1206">
+	<backgroundcolor>00X000000</backgroundcolor>
+	<defaultcontrol always="true">100</defaultcontrol>
+<controls>
+	<control type="progress" id="1111">
+		<info>Player.Volume</info>
+		<visible>false</visible>
+	</control>	
+	<control type="group">
+		<animation effect="fade" start="0" end="100" delay="200" time="100">windowopen</animation>
+		<animation effect="fade" start="100" end="0" time="100">windowclose</animation>		
+		<animation effect="fade" start="100" end="0" time="100" condition="window.isvisible(DialogSelect.xml) | window.isvisible(DialogConfirm.xml) | window.isvisible(dialogsettings.xml) | window.isvisible(DialogNotification.xml)">conditional</animation>
+	<control type="image">																														<description>masque arriere plan</description>
+		<aspectratio>scale</aspectratio>
+		<texture colordiffuse="80000000">commun/texture.png</texture>				
+	</control>
+	<control type="image">
+		<top>152</top>
+		<left>640</left>
+		<width>640</width>
+		<height>775</height>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="fff0f0f0" border="50">commun/bouton.png</texture>
+	</control>
+	<control type="image">
+		<top>232</top>
+		<left>645</left>
+		<width>630</width>
+		<height>690</height>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="1a000000" border="50">commun/bouton.png</texture>
+	</control>
+	<control type="label">																														<description>titre</description>
+		<top>152</top>
+		<left>640</left>
+		<width>640</width>
+		<height>80</height>			
+		<font>menu</font>
+		<textcolor>$VAR[gris]</textcolor>
+		<align>center</align>	
+		<label>$LOCALIZE[5]</label>
+	</control>
+	<control type="grouplist" id="100">
+		<top>232</top>
+		<left>645</left>
+		<width>630</width>
+		<height>690</height>
+		<itemgap>10</itemgap>
+		<scrolltime tween="Linear" easing="in">250</scrolltime>		
+	<control type="radiobutton" id="102">
+	<include content="bouton_dialogue">
+		<param name="height" value="60"/> 
+		<param name="label" value="$LOCALIZE[31332]"/>
+		<param name="textoffsetx" value="20"/>
+		<param name="texturenofocus_colordiffuse" value="00ffffff"/>
+	</include>	
+		<onclick>Skin.ToggleSetting(0music_fanart)</onclick>
+		<selected>!Skin.hassetting(0music_fanart)</selected>
+	</control>	
+	<control type="radiobutton" id="1022">
+	<include content="bouton_dialogue">
+		<param name="height" value="60"/> 
+		<param name="label" value="$LOCALIZE[31341]"/>
+		<param name="textoffsetx" value="20"/>
+		<param name="texturenofocus_colordiffuse" value="00ffffff"/>
+	</include>	
+		<onclick>Skin.ToggleSetting(0animation_fanart)</onclick>
+		<selected>!Skin.hassetting(0animation_fanart)</selected>
+		<enable>!Skin.hassetting(0music_fanart)</enable>	
+	</control>
+	<control type="radiobutton" id="103">
+	<include content="bouton_dialogue">
+		<param name="height" value="60"/> 
+		<param name="label" value="$LOCALIZE[31333]"/>
+		<param name="textoffsetx" value="20"/>
+		<param name="texturenofocus_colordiffuse" value="00ffffff"/>
+	</include>	
+		<onclick>Skin.ToggleSetting(0animation_music_pochette)</onclick>
+		<selected>!Skin.hassetting(0animation_music_pochette)</selected>	
+	</control>
+	<control type="radiobutton" id="104">
+	<include content="bouton_dialogue">
+		<param name="height" value="60"/> 
+		<param name="label" value="$LOCALIZE[31334]"/>
+		<param name="textoffsetx" value="20"/>
+		<param name="texturenofocus_colordiffuse" value="00ffffff"/>
+	</include>	
+		<onclick>Skin.ToggleSetting(0visualisation_music)</onclick>
+		<selected>!Skin.hassetting(0visualisation_music)</selected>
+		<enable>!string.isEmpty(Visualisation.Name)</enable>
+	</control>
+	<control type="radiobutton" id="105">
+	<include content="bouton_dialogue">
+		<param name="height" value="60"/> 
+		<param name="label" value="$LOCALIZE[31335]"/>
+		<param name="textoffsetx" value="20"/>
+		<param name="texturenofocus_colordiffuse" value="00ffffff"/>
+	</include>	
+		<onclick>Skin.ToggleSetting(0cycle_couleur_music)</onclick>
+		<selected>!Skin.hassetting(0cycle_couleur_music)</selected>
+	</control>
+	<control type="button" id="106">
+	<include content="bouton_dialogue">
+		<param name="height" value="60"/> 
+		<param name="label" value="$LOCALIZE[31336]"/>
+		<param name="label2" value="[B]$INFO[Skin.String(LyricScript_Path)][/B]"/>
+		<param name="textoffsetx" value="20"/>
+		<param name="texturenofocus_colordiffuse" value="00ffffff"/>
+	</include>	
+		<onclick>Skin.SetAddon(LyricScript_Path,xbmc.python.lyrics)</onclick>
+	</control>
+	<control type="button" id="107">
+	<include content="bouton_dialogue">
+		<param name="height" value="60"/> 
+		<param name="label" value="$LOCALIZE[31337]"/>
+		<param name="textoffsetx" value="20"/>
+		<param name="texturenofocus_colordiffuse" value="00ffffff"/>
+	</include>	
+		<onclick>Addon.OpenSettings($INFO[Skin.String(LyricScript_Path)])</onclick>
+		<enable>!String.IsEmpty(Skin.String(LyricScript_Path))</enable>
+	</control>
+	<control type="button" id="108">
+	<include content="bouton_dialogue">
+		<param name="height" value="60"/> 
+		<param name="label" value="$LOCALIZE[31338]"/>
+		<param name="label2" value="[B]$INFO[Visualisation.Name][/B]"/>
+		<param name="textoffsetx" value="20"/>
+		<param name="texturenofocus_colordiffuse" value="00ffffff"/>
+	</include>	
+		<onclick>SendClick(500)</onclick>
+	</control>
+	<control type="button" id="109">
+	<include content="bouton_dialogue">
+		<param name="height" value="60"/> 
+		<param name="label" value="$LOCALIZE[31339]"/>
+		<param name="textoffsetx" value="20"/>
+		<param name="texturenofocus_colordiffuse" value="00ffffff"/>
+	</include>	
+		<onclick>Addon.Default.OpenSettings(xbmc.player.musicviz)</onclick>
+		<enable>!String.IsEmpty(Visualisation.Name)</enable>
+	</control>
+	<control type="button" id="110">
+	<include content="bouton_dialogue">
+		<param name="height" value="60"/> 
+		<param name="label" value="$LOCALIZE[31340]"/>
+		<param name="textoffsetx" value="20"/>
+		<param name="texturenofocus_colordiffuse" value="00ffffff"/>
+	</include>	
+		<onclick>ActivateWindow(visualisationpresetlist)</onclick>
+		<enable>Visualisation.HasPresets</enable>
+	</control>
+	</control>
+	</control>
+</controls>
+</window>

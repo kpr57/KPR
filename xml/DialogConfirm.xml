@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>					
 	<backgroundcolor>00X000000</backgroundcolor>
+	<onload>cancelalarm(actualiser_widget_tv,silent)</onload>			
+	<onload>cancelalarm(actualiser_widget_tv2,silent)</onload>
+	<onunload condition="window.isvisible(MyPVRChannels.xml)">alarmclock(actualiser_widget_tv2,control.setfocus(1299),00:02,loop,silent)</onunload>	
+	<onunload condition="window.isvisible(home) + string.isequal(window(home).property(menu),$LOCALIZE[31171])">alarmclock(actualiser_widget_tv,activatewindow(1299),00:02,loop,silent)</onunload>		
 	<defaultcontrol always="true">8000</defaultcontrol>	
 <controls>	
 	<control type="progress" id="1111">

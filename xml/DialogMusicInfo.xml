@@ -1,484 +1,634 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>	
 	<backgroundcolor>00X000000</backgroundcolor>
-	<onload condition="!String.IsEqual(ListItem.DBType,song)">control.setFocus(102)</onload>		
-	<onload condition="String.IsEqual(ListItem.DBType,song) + Control.IsEnabled(104)">control.setFocus(104)</onload>
-	<onload condition="String.IsEqual(ListItem.DBType,song) + !Control.IsEnabled(104)">control.setFocus(108)</onload>		
-<controls>	
-	<control type="group">   	
-	<include>animation_ouverture_fermeture_250</include>																						<description>animation ouverture/fermeture</description>
-	<include content="masque_fond"> 	     																									<description>masque de fond</description>
-		<param name="visibilite" value="!window.isActive(home) + !window.isActive(music)"/>
-	</include>
-	<include content="heure"></include> 	     																								<description>heure + volume</description>
-	<control type="label">       																												<description>titre</description>
-		<top>-10</top>
-		<align>left</align>
-		<height>120</height>
-		<width>1200</width>
-		<scroll>true</scroll>
-		<font>titre</font>
-		<textcolor>$VAR[blanc]</textcolor>
-		<aligny>center</aligny>
-		<label>   $VAR[dialogmusicinfo_titre]</label>		
-	</control>
-	<control type="image">       																												<description>notation</description>
-		<bottom>20</bottom>
-		<align>center</align>
-		<height>50</height>
-		<aspectratio>keep</aspectratio>
-		<texture fallback="playerflags/rating/0.png" colordiffuse="$VAR[1selection_osd]">$INFO[listitem.userrating,playerflags/rating/,.png]</texture>		
-	</control>
-	<control type="label">       																												<description>pays / studio</description>
-		<bottom>60</bottom>
-		<align>center</align>
-		<height>60</height>
-		<font>titre</font>
-		<textcolor>$VAR[blanc]</textcolor>
-		<aligny>center</aligny>
-		<label>[B]$VAR[dialogmusicinfo_genre][/B]</label>	
-	</control>		
-	<control type="group">       
-		<animation effect="fade" start="0" end="100" time="150" reversible="false" condition="!window.isVisible(1208) + string.isEmpty(window(home).property(casting)) + !window.isVisible(playerprocessinfo)">conditional</animation>
-		<animation effect="fade" start="100" end="0" time="150" reversible="false" condition="window.isVisible(1208) | !string.isEmpty(window(home).property(casting)) | window.isVisible(playerprocessinfo)">conditional</animation>
-		<centertop>50%</centertop>
-		<height>615</height>			
-	<control type="image">       																												<description>cadre gauche</description>
-		<centertop>50%</centertop>
-		<left>50</left>
-        <width>600</width>
-        <height>615</height>
-		<aspectratio aligny="top">scale</aspectratio>
-		<texture colordiffuse="$VAR[panneau_fenetre]">fenetres/texture.png</texture>			
-	</control>
-	<control type="image">       																												<description>poster</description>
-		<top>25</top>
-		<left>75</left>
-        <width>550</width>       
-        <height>565</height>
-		<aspectratio aligny="center" align="center">keep</aspectratio>
-		<texture background="true">$VAR[dialogmusicinfo_image]</texture>		
-	</control>	
-	<control type="image">       																												<description>cadre centre</description>
-		<centerleft>50%</centerleft>
-        <width>560</width>
-        <height>395</height>
-		<aspectratio aligny="top">scale</aspectratio>
-		<texture colordiffuse="$VAR[panneau_fenetre]">fenetres/texture.png</texture>			
-	</control>
-	<control type="group">																														<description>informations</description>		   	     														
-		<top>10</top>
-		<centerleft>50%</centerleft>
-        <width>530</width>
-        <height>270</height>						
-	<control type="label">																														<description>ligne 1</description>
-		<height>38</height>						
-		<font>texte_moyen</font>
-		<scroll>true</scroll>
-		<textcolor>$VAR[texte_fenetre]</textcolor>	
-		<label>$VAR[dialogmusicinfo_ligne1]</label>		
-	</control>		
-	<control type="label">																														<description>ligne 2</description>
-		<top>30</top>
-		<height>38</height>						
-		<font>texte_moyen</font>
-		<scroll>true</scroll>
-		<textcolor>$VAR[texte_fenetre]</textcolor>	
-		<label>$VAR[dialogmusicinfo_ligne2]</label>
-	</control>	
-	<control type="image">																														<description>ligne de separation</description>
-		<top>75</top>		
+	<include>animation_dialogue</include>			
+	<onload condition="control.isvisible(7)">control.setfocus(7)</onload>
+	<onload condition="control.isvisible(12)">control.setfocus(12)</onload>
+	<onload condition="control.isvisible(10)">control.setfocus(10)</onload>
+	<onload condition="control.isvisible(6)">control.setfocus(6)</onload>
+<controls>		
+	<include>image_fond</include>
+	<control type="group">
+		<animation effect="slide" start="0,0" end="1920,0" time="1" condition="window.isvisible(selectdialog) | window.isvisible(filebrowser)" reversible="false">conditional</animation>
+		<animation effect="slide" start="1920,0" end="0,0" delay="100" time="1" condition="!window.isvisible(selectdialog) + !window.isvisible(filebrowser)" reversible="false">conditional</animation>				
+	<control type="image" id="703">																												<description>fanart arriere plan</description>
 		<aspectratio>scale</aspectratio>
-		<height>1</height>		
-		<texture colordiffuse="80808080">fenetres/texture.png</texture>					
+		<texture background="true">$INFO[listitem.art(fanart)]</texture>		
+		<animation effect="fade" start="0" end="100" time="1000" reversible="false">windowopen</animation>
+		<animation effect="fade" start="100" end="0" time="1" reversible="false">windowclose</animation>
+		<visible>!string.isempty(listitem.art(fanart)) + !string.endswith(listitem.art(fanart),none)</visible>
+	</control>
+	<control type="image" id="704">																												<description>fanart arriere plan</description>
+		<aspectratio>scale</aspectratio>
+		<texture background="true">$INFO[listitem.art(thumb)]</texture>		
+		<animation effect="fade" start="0" end="100" time="1000" reversible="false">windowopen</animation>
+		<animation effect="fade" start="100" end="0" time="1" reversible="false">windowclose</animation>
+		<visible>!control.isvisible(703) + !string.isempty(listitem.art(thumb)) + !string.endswith(listitem.art(thumb),none)</visible>
+	</control>
+	<control type="image">																														<description>fanart arriere plan</description>
+		<aspectratio>scale</aspectratio>
+		<texture background="true">$INFO[skin.string(arriere_plan_musique)]</texture>		
+		<animation effect="fade" start="0" end="100" time="1000" reversible="false">windowopen</animation>
+		<animation effect="fade" start="100" end="0" time="1" reversible="false">windowclose</animation>
+		<visible>!control.isvisible(703) + !control.isvisible(704)</visible>
+	</control>
+	<control type="image">																														<description>masque arriere plan</description>
+		<aspectratio>scale</aspectratio>
+		<texture colordiffuse="ebffffff">commun/fond.png</texture>				
+	</control>
+	<control type="button">																														<description>titre</description>
+		<visible>!string.isempty(listitem.title)</visible>
+		<left>40</left>
+		<top>35</top>
+		<height>60</height>			
+		<width max="1020">auto</width>				
+		<font>menu</font>
+		<textcolor>ffffffff</textcolor>
+		<align>center</align>
+		<label>$INFO[listitem.title]</label>
+		<scroll>true</scroll>
+	<include content="bouton">
+		<param name="texturenofocus" value="commun/bouton.png"/>
+		<param name="texturenofocus_colordiffuse" value="$VAR[gris]"/>
+	</include>
+	</control>
+	<control type="button">																														<description>titre</description>
+		<visible>string.isempty(listitem.title)</visible>
+		<left>40</left>
+		<top>35</top>
+		<height>60</height>			
+		<width max="1020">auto</width>				
+		<font>menu</font>
+		<textcolor>ffffffff</textcolor>
+		<align>center</align>
+		<label>$INFO[listitem.label]</label>
+		<scroll>true</scroll>
+	<include content="bouton">
+		<param name="texturenofocus" value="commun/bouton.png"/>
+		<param name="texturenofocus_colordiffuse" value="$VAR[gris]"/>
+	</include>
+	</control>		
+	<control type="image">																														<description>fond heure</description>
+		<right>40</right>
+		<top>35</top>
+		<height>60</height>			
+		<width>140</width>
+		<aspectratio>stretch</aspectratio>
+		<texture border="30" colordiffuse="1affffff">commun/bouton.png</texture>				
+	</control>
+	<control type="label">																														<description>heure</description>
+		<right>40</right>
+		<top>35</top>
+		<height>60</height>			
+		<width>140</width>				
+		<font>menu</font>
+		<textcolor>80ffffff</textcolor>
+		<align>center</align>
+		<label>$INFO[system.time(hh:mm)]</label>		
 	</control>	
-	<control type="fixedlist" id="50">																											<description>liste des disques</description>
-		<top>77</top>			
-		<height>218</height>
-		<focusposition>0</focusposition>
-        <movement>3</movement>
+	<control type="image">																														<description>panneau gris</description>
+		<top>600</top>
+		<height>400</height>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="bf201f20">commun/texture.png</texture>		
+	</control>
+	<control type="group">																														<description>poster</description>
+		<top>150</top>		
+		<left>200</left>
+		<height>700</height>
+		<width>567</width>			
+	<control type="image">
+		<bottom>100</bottom>
+		<aspectratio align="center" aligny="bottom">keep</aspectratio>
+		<texture background="true" border="10">$INFO[listitem.icon]</texture>
+		<bordertexture border="10">commun/tuiles_grises.png</bordertexture>
+		<bordersize>10,0,10,10</bordersize>
+	</control>	
+	</control>			
+	<control type="grouplist">																													<description>informations</description>
+		<top>220</top>
+		<left>800</left>
+		<width>1080</width>
+		<height>auto</height>
+		<itemgap>20</itemgap>
+        <orientation>vertical</orientation>		
+	<control type="button">	
+		<height>22</height>			
+		<width>auto</width>				
+		<align>center</align>	
+	<include content="petit_bouton">
+		<param name="label" value="[UPPERCASE]$VAR[type_info_musique][/UPPERCASE]"/>
+		<param name="textcolor" value="ffffffff"/>
+		<param name="textoffsetx" value="15"/>
+		<param name="texturenofocus" value="commun/bouton.png"/>
+		<param name="texturenofocus_colordiffuse" value="$VAR[couleur_dominante]"/>
+	</include>
+	</control>	
+	<control type="label">																														<description>annee</description>
+		<height>20</height>
+		<font>texte_infos</font>
+		<textcolor>80ffffff</textcolor><label>[B]$LOCALIZE[345][/B]   $INFO[listitem.year]</label>
+		<visible>!string.isempty(listitem.year)</visible>			
+	</control>
+	<control type="image">																														<description>notation</description>
+		<width>200</width>
+		<height>30</height>
+		<aspectratio align="left">keep</aspectratio>
+		<texture colordiffuse="80ffffff">flags/rating/$INFO[listitem.rating].png</texture>
+		<visible>!string.isempty(listitem.rating)</visible>		
+	</control>
+	<control type="label">																														<description>naissance</description>
+		<height>20</height>
+		<font>texte_infos</font>
+		<textcolor>80ffffff</textcolor>
+		<label>[B]$LOCALIZE[21893][/B]   $INFO[ListItem.Property(Artist_Born)]</label>
+		<visible>string.isequal(listitem.DBTYPE,artist) + !string.isempty(ListItem.Property(Artist_Born))</visible>
+	</control>		
+	<control type="label">																														<description>deces</description>
+		<height>20</height>
+		<font>texte_infos</font>
+		<textcolor>80ffffff</textcolor>
+		<label>[B]$LOCALIZE[21897][/B]   $INFO[ListItem.Property(Artist_Died)]</label>
+		<visible>string.isequal(listitem.DBTYPE,artist) + !string.isempty(ListItem.Property(Artist_Died))</visible>		
+	</control>
+	<control type="label">																														<description>artiste</description>
+		<height>20</height>
+		<font>texte_infos</font>
+		<textcolor>80ffffff</textcolor>
+		<label>[B]$LOCALIZE[557][/B]   $INFO[ListItem.artist]</label>
+		<visible>string.isequal(listitem.DBTYPE,album) | string.isequal(listitem.DBTYPE,song)</visible>
+	</control>		
+	<control type="label">																														<description>sexe</description>
+		<height>20</height>
+		<font>texte_infos</font>
+		<textcolor>80ffffff</textcolor>
+		<label>[B]$LOCALIZE[31290][/B]   $INFO[listitem.Property(Artist_Gender)]</label>
+		<visible>string.isequal(listitem.DBTYPE,artist) + !string.isempty(listitem.Property(Artist_Gender))</visible>
+	</control>	
+	<control type="label">																														<description>album</description>
+		<height>20</height>
+		<font>texte_infos</font>
+		<textcolor>80ffffff</textcolor>
+		<label>[B]$LOCALIZE[558][/B]   $INFO[ListItem.album]</label>
+		<visible>string.isequal(listitem.DBTYPE,song)</visible>
+	</control>	
+	<control type="label">																														<description>genre</description>
+		<height>20</height>
+		<font>texte_infos</font>
+		<textcolor>80ffffff</textcolor>
+		<label>[B]$LOCALIZE[31291][/B]   $INFO[listitem.genre]</label>
+		<visible>!string.isempty(listitem.genre)</visible>
+	</control>
+	<control type="label">																														<description>studio</description>
+		<height>20</height>
+		<font>texte_infos</font>
+		<textcolor>80ffffff</textcolor>
+		<label>[B]$LOCALIZE[31294][/B]   $INFO[listitem.Property(Album_Label)]</label>
+		<visible>!string.isempty(listitem.Property(Album_Label))</visible>
+	</control>		
+	<control type="label">																														<description>nombre de disques</description>
+		<height>20</height>
+		<font>texte_infos</font>
+		<textcolor>80ffffff</textcolor>
+		<label>[B]$LOCALIZE[31293][/B]   $INFO[container(50).numallitems]</label>		
+		<visible>string.isequal(listitem.DBTYPE,artist) + !integer.isequal(container(50).numallitems,0)</visible>		
+	</control>
+	<control type="label">																														<description>nombre de pistes</description>
+		<height>20</height>
+		<font>texte_infos</font>
+		<textcolor>80ffffff</textcolor>
+		<label>[B]$LOCALIZE[31292][/B]   $INFO[container(50).numallitems]</label>		
+		<visible>string.isequal(listitem.DBTYPE,album) + !integer.isequal(container(50).numallitems,0)</visible>		
+	</control>
+	<control type="label">																														<description>numero de piste</description>
+		<height>20</height>
+		<font>texte_infos</font>
+		<textcolor>80ffffff</textcolor>
+		<label>[B]$LOCALIZE[31225][/B]   $INFO[listitem.tracknumber]</label>		
+		<visible>string.isequal(listitem.DBTYPE,song)</visible>		
+	</control>
+	<control type="label">																														<description>duree</description>
+		<height>20</height>
+		<font>texte_infos</font>
+		<textcolor>80ffffff</textcolor>
+		<label>[B]$LOCALIZE[31220][/B]   $INFO[listitem.duration]</label>		
+		<visible>string.isequal(listitem.DBTYPE,song)</visible>		
+	</control>
+	</control>	
+	<control type="label">																														<description>titre 50</description>
+		<top>166</top>
+		<right>40</right>
+		<width>500</width>
+		<height>20</height>
+		<align>right</align>
+		<font>texte_infos</font>
+		<label>[CAPITALIZE][B]$LOCALIZE[36919][/B][/CAPITALIZE]</label>
+		<visible>string.isequal(listitem.DBTYPE,artist) + !integer.isequal(container(50).numallitems,0)</visible>		
+	</control>
+	<control type="label">																														<description>titre 50</description>
+		<top>166</top>
+		<right>40</right>
+		<width>500</width>
+		<height>20</height>
+		<align>right</align>
+		<font>texte_infos</font>
+		<label>[CAPITALIZE][B]$LOCALIZE[182][/B][/CAPITALIZE]</label>
+		<visible>string.isequal(listitem.DBTYPE,album) + !integer.isequal(container(50).numallitems,0)</visible>		
+	</control>
+	<control type="image" id="1">																												<description>ligne de separation liste des disques</description>
+		<top>196</top>
+		<right>40</right>
+		<width>550</width>
+		<height>1</height>
+		<aspectratio align="right">stretch</aspectratio>
+		<texture colordiffuse="80ffffff">commun/texture.png</texture>
+		<visible>[string.isequal(listitem.DBTYPE,album) | string.isequal(listitem.DBTYPE,artist)] + !integer.isequal(container(50).numallitems,0)</visible>		
+	</control>
+	<control type="image" id="1">																												<description>ligne de separation liste des disques</description>
+		<top>499</top>
+		<right>40</right>
+		<width>550</width>
+		<height>1</height>
+		<aspectratio align="right">stretch</aspectratio>
+		<texture colordiffuse="80ffffff">commun/texture.png</texture>
+		<visible>[string.isequal(listitem.DBTYPE,album) | string.isequal(listitem.DBTYPE,artist)] + !integer.isequal(container(50).numallitems,0)</visible>		
+	</control>	
+	<control type="list" id="50">																												<description>liste des disques</description>
+		<visible>string.isequal(listitem.DBTYPE,album) | string.isequal(listitem.DBTYPE,artist)</visible>	
+		<top>198</top>
+		<right>40</right>
+		<width>550</width>
+		<height>300</height>
+		<align>right</align>		
+		<onleft>100</onleft>
 		<scrolltime tween="linear" easing="out">250</scrolltime>
 		<orientation>vertical</orientation>	
-	<itemlayout height="54">		
+	<itemlayout height="50">		
+	<control type="group">
+		<width>450</width>
+		<visible>!string.isEmpty(listItem.tracknumber)</visible>
 	<control type="label">
-        <height>54</height>
-		<align>left</align>
-		<font>texte_moyen</font>
-		<textcolor>$VAR[texte_fenetre]</textcolor>
-		<selectedcolor>$VAR[1selection_osd]</selectedcolor>	
-		<textoffsetx>5</textoffsetx>
+        <font>infos</font>
+		<textcolor>80ffffff</textcolor>
+		<label> $LOCALIZE[554] $INFO[listItem.tracknumber]   $INFO[listItem.label] </label>
+		<visible>string.isEmpty(listItem.DBID)</visible>
+	</control>
+	<control type="label">
+        <left>44</left>
+		<font>infos</font>
+		<textcolor>80ffffff</textcolor>
+		<label> $LOCALIZE[554] $INFO[listItem.tracknumber]   $INFO[listItem.label] </label>
+		<visible>!string.isEmpty(listItem.DBID)</visible>
+	</control>	
+	</control>
+	<control type="group">
+		<width>450</width>
+		<visible>string.isEmpty(listItem.tracknumber)</visible>
+	<control type="label">
+        <font>infos</font>
+		<textcolor>80ffffff</textcolor>
 		<label> $INFO[listItem.label] </label>
 		<visible>string.isEmpty(listItem.DBID)</visible>
 	</control>
 	<control type="label">
         <left>44</left>
-		<height>54</height>
-		<align>left</align>
-		<font>texte_moyen</font>
-		<textcolor>$VAR[texte_fenetre]</textcolor>
-		<selectedcolor>$VAR[1selection_osd]</selectedcolor>	
-		<textoffsetx>5</textoffsetx>
+		<font>infos</font>
+		<textcolor>80ffffff</textcolor>
 		<label> $INFO[listItem.label] </label>
 		<visible>!string.isEmpty(listItem.DBID)</visible>
 	</control>	
+	</control>	
 	<control type="label">
-        <height>54</height>
 		<align>right</align>
-		<font>texte_moyen</font>
-		<selectedcolor>$VAR[1selection_osd]</selectedcolor>	
-		<textcolor>$VAR[texte_fenetre]</textcolor>
+		<font>infos</font>
+		<textcolor>80ffffff</textcolor>
 		<label>$INFO[listItem.label2] </label>
 		<visible>string.isEmpty(listItem.TrackNumber) + !string.isEqual(listItem.label2,0)</visible>
 	</control>
 	<control type="label">
-        <height>54</height>
-		<align>right</align>
-		<font>texte_moyen</font>
-		<selectedcolor>$VAR[1selection_osd]</selectedcolor>	
-		<textcolor>$VAR[texte_fenetre]</textcolor>
+        <align>right</align>
+		<font>infos</font>
+		<textcolor>80ffffff</textcolor>
 		<label> ($INFO[listItem.duration]) </label>
 		<visible>!string.isEmpty(listItem.TrackNumber)</visible>
 	</control>
 	<control type="image">
-		<height>54</height>
-		<width>54</width>
-		<texture colordiffuse="$VAR[texte_fenetre]">icones/lancer.png</texture>
+		<height>50</height>
+		<width>50</width>
+		<texture>icones/infos/play.png</texture>
 		<visible>!String.IsEmpty(ListItem.DBID)</visible>
 	</control>
 	</itemlayout>
-	<focusedlayout height="54">
+	<focusedlayout height="50">
+	<control type="group">
+		<visible>control.hasfocus(800)</visible>
 	<control type="image">		
-		<texture colordiffuse="$VAR[1selection_osd]">fenetres/texture.png</texture>
-		<animation effect="fade" start="100" end="50" condition="!control.hasFocus(800)" reversible="false">conditional</animation>
-		<animation effect="fade" start="50" end="100" condition="control.hasFocus(800)" reversible="false">conditional</animation>
+		<texture colordiffuse="$VAR[couleur_dominante]" border="10">commun/bouton.png</texture>				
+	</control>
+	<control type="group">
+		<width>450</width>
+		<visible>!string.isEmpty(listItem.tracknumber)</visible>
+	<control type="label">
+        <font>infos</font>
+		<textcolor>$VAR[gris]</textcolor>
+		<label> $LOCALIZE[554] $INFO[listItem.tracknumber]   $INFO[listItem.label] </label>
+		<visible>string.isEmpty(listItem.DBID)</visible>
+		<scroll>true</scroll>
 	</control>
 	<control type="label">
         <left>44</left>
-		<height>54</height>
-		<align>left</align>
-		<font>texte_moyen</font>
-		<textcolor>$VAR[blanc]</textcolor>
-		<textoffsetx>5</textoffsetx>
-		<label> $INFO[listItem.label] </label>
+		<font>infos</font>
+		<textcolor>$VAR[gris]</textcolor>
+		<label> $LOCALIZE[554] $INFO[listItem.tracknumber]   $INFO[listItem.label] </label>
+		<visible>!string.isEmpty(listItem.DBID)</visible>
 		<scroll>true</scroll>
-		<visible>!string.isEmpty(listItem.DBID)</visible>		
+	</control>	
+	</control>
+	<control type="group">
+		<width>450</width>
+		<visible>string.isEmpty(listItem.tracknumber)</visible>
+	<control type="label">
+        <font>infos</font>
+		<textcolor>$VAR[gris]</textcolor>
+		<label> $INFO[listItem.label] </label>
+		<visible>string.isEmpty(listItem.DBID)</visible>
+		<scroll>true</scroll>
 	</control>
 	<control type="label">
-        <height>54</height>
-		<align>left</align>
-		<font>texte_moyen</font>
-		<textcolor>$VAR[blanc]</textcolor>
-		<textoffsetx>5</textoffsetx>
+        <left>44</left>
+		<font>infos</font>
+		<textcolor>$VAR[gris]</textcolor>
 		<label> $INFO[listItem.label] </label>
+		<visible>!string.isEmpty(listItem.DBID)</visible>
 		<scroll>true</scroll>
-		<visible>string.isEmpty(listItem.DBID)</visible>		
+	</control>	
 	</control>
 	<control type="label">
-        <height>54</height>
 		<align>right</align>
-		<font>texte_moyen</font>
-		<textcolor>$VAR[blanc]</textcolor>
+		<font>infos</font>
+		<textcolor>$VAR[gris]</textcolor>
 		<label> $INFO[listItem.label2] </label>
 		<visible>string.isEmpty(listItem.TrackNumber) + !string.isEqual(listItem.label2,0)</visible>
 	</control>
 	<control type="label">
-		<height>54</height>
 		<align>right</align>
-		<font>texte_moyen</font>
-		<textcolor>$VAR[blanc]</textcolor>
+		<font>infos</font>
+		<textcolor>$VAR[gris]</textcolor>
 		<label> ($INFO[listItem.duration]) </label>
 		<visible>!string.isEmpty(listItem.TrackNumber)</visible>
 	</control>
 	<control type="image">
-		<height>54</height>
-		<width>54</width>
-		<texture>icones/lancer.png</texture>
+		<height>50</height>
+		<width>50</width>
+		<texture>icones/infos/play.png</texture>
 		<visible>!String.IsEmpty(ListItem.DBID)</visible>
 	</control>
+	</control>	
+	<control type="group">
+		<visible>!control.hasfocus(800)</visible>
+	<control type="group">
+		<width>450</width>
+		<visible>!string.isEmpty(listItem.tracknumber)</visible>
+	<control type="label">
+        <font>infos</font>
+		<textcolor>80ffffff</textcolor>
+		<label> $LOCALIZE[554] $INFO[listItem.tracknumber]   $INFO[listItem.label] </label>
+		<visible>string.isEmpty(listItem.DBID)</visible>
+		<scroll>true</scroll>
+	</control>
+	<control type="label">
+        <left>44</left>
+		<font>infos</font>
+		<textcolor>80ffffff</textcolor>
+		<label> $LOCALIZE[554] $INFO[listItem.tracknumber]   $INFO[listItem.label] </label>
+		<visible>!string.isEmpty(listItem.DBID)</visible>
+		<scroll>true</scroll>
+	</control>	
+	</control>
+	<control type="group">
+		<width>450</width>
+		<visible>string.isEmpty(listItem.tracknumber)</visible>
+	<control type="label">
+        <font>infos</font>
+		<textcolor>80ffffff</textcolor>
+		<label> $INFO[listItem.label] </label>
+		<visible>string.isEmpty(listItem.DBID)</visible>
+		<scroll>true</scroll>
+	</control>
+	<control type="label">
+        <left>44</left>
+		<font>infos</font>
+		<textcolor>80ffffff</textcolor>
+		<label> $INFO[listItem.label] </label>
+		<visible>!string.isEmpty(listItem.DBID)</visible>
+		<scroll>true</scroll>
+	</control>	
+	</control>
+	<control type="label">
+		<align>right</align>
+		<font>infos</font>
+		<textcolor>80ffffff</textcolor>
+		<label> $INFO[listItem.label2] </label>
+		<visible>string.isEmpty(listItem.TrackNumber) + !string.isEqual(listItem.label2,0)</visible>
+	</control>
+	<control type="label">
+		<align>right</align>
+		<font>infos</font>
+		<textcolor>80ffffff</textcolor>
+		<label> ($INFO[listItem.duration]) </label>
+		<visible>!string.isEmpty(listItem.TrackNumber)</visible>
+	</control>
+	<control type="image">
+		<height>50</height>
+		<width>50</width>
+		<texture>icones/infos/play.png</texture>
+		<visible>!String.IsEmpty(ListItem.DBID)</visible>
+	</control>
+	</control>
 	</focusedlayout>
-	</control>
-	<control type="image">																														<description>ligne de separation</description>
-		<top>295</top>		
-		<aspectratio>scale</aspectratio>
-		<height>1</height>		
-		<texture colordiffuse="80808080">fenetres/texture.png</texture>					
-	</control>		
-	<control type="label">																														<description>ligne 9</description>
-		<top>300</top>
-		<height>38</height>						
-		<font>texte_moyen</font>
-		<scroll>true</scroll>
-		<textcolor>$VAR[texte_fenetre]</textcolor>	
-		<label>[B]$LOCALIZE[31044][/B]</label>
-		<visible>!String.IsEqual(ListItem.DBType,song)</visible>
-	</control>
-	<control type="label">																														<description>ligne 9</description>
-		<top>300</top>
-		<height>38</height>						
-		<font>texte_moyen</font>
-		<scroll>true</scroll>
-		<textcolor>$VAR[texte_fenetre]</textcolor>	
-		<label>[B]$INFO[ListItem.title][/B]</label>
-		<visible>String.IsEqual(ListItem.DBType,song)</visible>
-	</control>
-	<control type="label">																														<description>ligne 10</description>
-		<top>330</top>
-		<height>38</height>						
-		<font>texte_moyen</font>
-		<scroll>true</scroll>
-		<textcolor>$VAR[texte_fenetre]</textcolor>	
-		<label>  $VAR[dialogmusicinfo_genre]</label>
+	</control>	
+	<control type="grouplist">																													<description>legende boutons</description>																													<description>producteur/casting/realisateur/studio</description>
+		<right>30</right>
+		<top>550</top>
+		<height>60</height>
+		<width>1000</width>
+		<align>right</align>
+		<itemgap>-5</itemgap>
+		<orientation>horizontal</orientation>
+	<control type="image">
+		<width>60</width>
+		<height>60</height>
+		<aspectratio>keep</aspectratio>
+		<texture colordiffuse="80ffffff">icones/infos/info.png</texture>		
+	</control>	
+	<control type="label">			
+		<width>auto</width>
+		<height>60</height>
+		<textcolor>80ffffff</textcolor>
+		<font>infos</font>
+		<label>[I]$VAR[legende_infos][/I]</label>
 	</control>	
 	</control>	
-	<control type="image">       																												<description>cadre resume</description>
-		<centertop>50%</centertop>
-		<right>50</right>
-        <width>600</width>
-        <height>615</height>
-		<aspectratio aligny="top">scale</aspectratio>
-		<texture colordiffuse="$VAR[panneau_fenetre]">fenetres/texture.png</texture>			
+	<control type="grouplist">																													<description>ma notation</description>	
+		<top>901</top>
+		<left>60</left>
+		<itemgap>30</itemgap>
+		<orientation>horizontal</orientation>
+	<control type="label">
+		<width>auto</width>
+		<height>30</height>
+		<font>texte_infos</font>
+		<textcolor>80ffffff</textcolor>
+		<label>[B]$LOCALIZE[38018][/B]</label>		
 	</control>
-	<control type="textbox"> 																													<description>resume</description>      	
-		<centertop>50%</centertop>
-		<right>70</right>
-        <height>607</height>		
-		<width>560</width>
-        <align>center</align>
-		<aligny>center</aligny>
-		<font>texte_moyen</font>
-		<textcolor>$VAR[texte_fenetre]</textcolor>
-		<label>$VAR[dialogmusicinfo_resume]</label>
-		<autoscroll>false</autoscroll>		
+	<control type="image">
+		<width>200</width>
+		<height>30</height>
+		<aspectratio align="left">keep</aspectratio>
+		<texture colordiffuse="80ffffff">flags/rating/$INFO[listitem.userrating].png</texture>		
 	</control>
-	<control type="grouplist" id="100">																											<description>controles 1er rang</description>				
-		<bottom>110</bottom>
-		<centerleft>50%</centerleft>
-        <width>560</width> 
-		<height>100</height>
-		<itemgap>10</itemgap>		
-		<orientation>horizontal</orientation>	
-	<control type="group" id="101">																												<description>bouton acces albums</description>
-		<width>145</width>
-		<height>100</height>
-	<include condition="String.IsEqual(ListItem.DBType,artist)" content="bouton_info_musique">
-		<param name="bouton" value="button"/>
-		<param name="id" value="102"/>
-		<param name="label" value="$LOCALIZE[31043]"/>
-		<param name="onleft1" value="108"/>
-		<param name="onright1" value="104"/>
-		<param name="onclick1" value="action(close)"/>
-		<param name="onclick2" value="action(select,home)"/>
-		<param name="onclick3" value="action(select,music)"/>
-		<param name="condition_onclick2" value="window.isVisible(home)"/>
-		<param name="condition_onclick3" value="window.isVisible(music)"/>
-		<param name="visible1" value="!control.hasFocus(102)"/>
-		<param name="visible2" value="false"/>
-		<param name="visible3" value="control.hasFocus(102)"/>
-		<param name="enable" value="true"/>
-		<param name="icone" value="defaultmusicalbums.png"/>	
-	</include>	
-	<include condition="String.IsEqual(ListItem.DBType,album) | String.IsEqual(ListItem.DBType,song)" content="bouton_info_musique">
-		<param name="bouton" value="button"/>
-		<param name="id" value="102"/>
-		<param name="label" value="$LOCALIZE[31142]"/>
-		<param name="onleft1" value="108"/>
-		<param name="onright1" value="104"/>
-		<param name="onclick1" value="action(close)"/>
-		<param name="onclick2" value="action(select,home)"/>
-		<param name="onclick3" value="action(select,music)"/>
-		<param name="condition_onclick2" value="window.isVisible(home)"/>
-		<param name="condition_onclick3" value="window.isVisible(music)"/>
-		<param name="visible1" value="control.isEnabled(102) + !control.hasFocus(102)"/>
-		<param name="visible2" value="!control.isEnabled(102)"/>
-		<param name="visible3" value="control.isEnabled(102) + control.hasFocus(102)"/>
-		<param name="enable" value="!String.IsEqual(ListItem.DBType,song)"/>
-		<param name="icone" value="defaultcdda.png"/>	
-	</include>	
-	</control>
-	<control type="group" id="103">																												<description>bouton resume</description>
-		<width>104</width>
-		<height>100</height>
-	<include content="bouton_info_musique">
-		<param name="bouton" value="button"/>
-		<param name="id" value="104"/>
-		<param name="label" value="$LOCALIZE[31125]"/>
-		<param name="onleft1" value="102"/>
-		<param name="onright1" value="106"/>
-		<param name="onclick1" value="setProperty(plot,$ESCINFO[ListItem.Property(Album_Description)],home)"/>
-		<param name="onclick2" value="setProperty(plot,$ESCINFO[ListItem.Property(Artist_Description)],home)"/>		
-		<param name="onclick3" value="activateWindow(1208)"/>
-		<param name="condition_onclick1" value="!string.isEmpty(listitem.Property(Album_Description))  + !String.IsEqual(ListItem.DBType,artist)"/>
-		<param name="condition_onclick2" value="!string.isEmpty(listitem.Property(Artist_Description)) + String.IsEqual(ListItem.DBType,artist)"/>
-		<param name="visible1" value="!control.hasFocus(104) + Control.IsEnabled(104)"/>
-		<param name="visible2" value="!Control.IsEnabled(104)"/>
-		<param name="visible3" value="control.hasFocus(104) + Control.IsEnabled(104)"/>
-		<param name="enable" value="[!string.isEmpty(listitem.Property(Album_Description)) + [String.IsEqual(ListItem.DBType,album) | String.IsEqual(ListItem.DBType,song)]] | [!string.isEmpty(ListItem.Property(Artist_Description)) + String.IsEqual(ListItem.DBType,artist)]"/>
-		<param name="icone" value="defaultaddonsubtitles.png"/>
-	</include>
-	</control>
-	<control type="group" id="105">																												<description>bouton contenu</description>
-		<width>138</width>
-		<height>100</height>
-	<include condition="String.IsEqual(ListItem.DBType,artist)" content="bouton_info_musique">
-		<param name="bouton" value="button"/>
-		<param name="id" value="106"/>
-		<param name="label" value="$LOCALIZE[31141]"/>
-		<param name="onleft1" value="104"/>
-		<param name="onright1" value="108"/>
-		<param name="onclick1" value="control.setFocus(800)"/>
-		<param name="visible1" value="!control.hasFocus(106) + Control.IsEnabled(106)"/>
-		<param name="visible2" value="!Control.IsEnabled(106)"/>
-		<param name="visible3" value="control.hasFocus(106)"/>
-		<param name="enable" value="Integer.isGreater(container(50).numItems,0)"/>
-		<param name="icone" value="defaultsets.png"/>	
-	</include>
-	<include condition="String.IsEqual(ListItem.DBType,album) | String.IsEqual(ListItem.DBType,song)" content="bouton_info_musique">
-		<param name="bouton" value="button"/>
-		<param name="id" value="106"/>
-		<param name="label" value="$LOCALIZE[31140]"/>
-		<param name="onleft1" value="104"/>
-		<param name="onright1" value="108"/>
-		<param name="onclick1" value="control.setFocus(800)"/>		
-		<param name="visible1" value="!control.hasFocus(106) + Control.IsEnabled(106)"/>
-		<param name="visible2" value="!Control.IsEnabled(106)"/>
-		<param name="visible3" value="control.hasFocus(106) + Control.IsEnabled(106)"/>
-		<param name="enable" value="!String.IsEqual(ListItem.DBType,song)"/>
-		<param name="icone" value="defaultplaylist.png"/>	
-	</include>	
-	</control>
-	<control type="group" id="107">																												<description>bouton fanart</description>
-		<width>143</width>
-		<height>100</height>
-	<include content="bouton_info_musique">
-		<param name="bouton" value="button"/>
-		<param name="id" value="108"/>
-		<param name="label" value="$LOCALIZE[31127]"/>
-		<param name="onleft1" value="106"/>
-		<param name="onright1" value="102"/>
-		<param name="onclick1" value="setProperty(fanart,$INFO[listitem.art(fanart)],home)"/>
-		<param name="onclick2" value="activateWindow(1207)"/>
-		<param name="visible1" value="!control.hasFocus(108) + Control.IsEnabled(108)"/>
-		<param name="visible2" value="!Control.IsEnabled(108)"/>
-		<param name="visible3" value="control.hasFocus(108)"/>
-		<param name="enable" value="!String.EndsWith(listitem.art(fanart),None) + !String.isEmpty(listitem.art(fanart))"/>
-		<param name="icone" value="defaultaddonimages.png"/>
-	</include>	
+		<visible>!string.isempty(listitem.userrating)</visible>
 	</control>	
+	<control type="textbox">																													<description>resume</description>		
+		<top>601</top>
+		<left>830</left>
+		<height>398</height>
+		<width>1020</width>
+		<font>texte_resume</font>
+		<align>justify</align>
+		<label>$INFO[listitem.Property(Artist_Description)]</label>	
+		<autoscroll delay="20000" time="3000" repeat="20000"></autoscroll>
+		<visible>string.isempty(listitem.Property(Album_Description))</visible>		
 	</control>	
-	<control type="grouplist" id="200">																											<description>controles 2eme rang</description>				
-		<bottom>0</bottom>
-		<centerleft>50%</centerleft>
-        <width>560</width> 
-		<height>100</height>
+	<control type="textbox">																													<description>resume</description>		
+		<top>601</top>
+		<left>830</left>
+		<height>398</height>
+		<width>1020</width>
+		<font>texte_resume</font>
+		<align>justify</align>
+		<label>$INFO[listitem.Property(Album_Description)]</label>	
+		<autoscroll delay="20000" time="3000" repeat="20000"></autoscroll>			
+	</control>
+	<control type="label">																														<description>aucun resume disponible</description>
+		<top>601</top>
+		<left>830</left>
+		<height>398</height>
+		<width>1020</width>
+		<font>texte_resume</font>
+		<align>center</align>
+		<textcolor>80ffffff</textcolor>
+		<label>$LOCALIZE[31206]</label>		
+		<visible>string.isequal(listitem.Property(Artist_Description),) + string.isequal(listitem.Property(Album_Description),)</visible>
+	</control>	
+	<control type="grouplist" id="100">																											<description>boutons</description>				
+		<top>190</top>		
+		<left>40</left>
+		<height>700</height>
+		<width>100</width>
+		<onright condition="control.isvisible(50)">800</onright>
 		<itemgap>10</itemgap>
-		<orientation>horizontal</orientation>	
-	<control type="group" id="198">																												<description>bouton lecture album</description>
-		<width>160</width>
-		<height>100</height>
-	<include content="bouton_info_musique">
-		<param name="bouton" value="togglebutton"/>
-		<param name="id" value="199"/>
-		<param name="label" value="$LOCALIZE[31138]"/>
-		<param name="altlabel" value="$LOCALIZE[31139]"/>
-		<param name="usealttexture" value="Player.HasAudio"/>
-		<param name="onleft1" value="206"/>
-		<param name="onright1" value="202"/>
-		<param name="onclick1" value="PlayMedia(musicdb://artists/$INFO[ListItem.DBID]/-1/)"/>
-		<param name="onclick2" value="playmedia(musicdb://albums/$INFO[ListItem.DBID]/)"/>
-		<param name="onclick6" value="playmedia($INFO[listitem.FileNameAndPath])"/>			
-		<param name="onclick3" value="action(close)"/>
-		<param name="onclick4" value="setProperty(playlist,1,home)"/>		
-		<param name="onclick5" value="alarmclock(name1,action(select,musicplaylist),00:00,silent)"/>				
-		<param name="onclick7" value="PlayerControl(stop)"/>		
-		<param name="condition_onclick1" value="!player.HasAudio + String.IsEqual(ListItem.DBType,artist)"/>
-		<param name="condition_onclick2" value="!player.HasAudio + String.IsEqual(ListItem.DBType,album)"/>
-		<param name="condition_onclick6" value="!player.HasAudio + !window.isVisible(musicplaylist) + String.IsEqual(ListItem.DBType,song)"/>		
-		<param name="condition_onclick3" value="!player.HasAudio + window.isVisible(musicplaylist)"/>
-		<param name="condition_onclick4" value="!player.HasAudio + window.isVisible(musicplaylist)"/>
-		<param name="condition_onclick5" value="!player.HasAudio + window.isVisible(musicplaylist)"/>
-		<param name="condition_onclick7" value="player.HasAudio"/>
-		<param name="visible1" value="Control.IsEnabled(199) + !control.hasFocus(199) + Player.HasAudio"/>
-		<param name="visible2" value="!Control.IsEnabled(199) + Player.HasAudio"/>
-		<param name="visible3" value="Control.IsEnabled(199) + control.hasFocus(199) + Player.HasAudio"/>
-		<param name="visible4" value="Control.IsEnabled(199) + !control.hasFocus(199) + !Player.HasAudio"/>
-		<param name="visible5" value="!Control.IsEnabled(199) + !Player.HasAudio"/>
-		<param name="visible6" value="Control.IsEnabled(199) + control.hasFocus(199) + !Player.HasAudio"/>		
-		<param name="enable" value=""/>
-		<param name="icone" value="boutons\OSD\stop.png"/>	
-		<param name="icone2" value="boutons\OSD\play.png"/>	
-	</include>		
-	</control>	
-	<control type="group" id="201">																												<description>bouton actualiser</description>
-		<width>110</width>
-		<height>100</height>
-	<include content="bouton_info_musique">
-		<param name="bouton" value="button"/>
-		<param name="id" value="202"/>
-		<param name="label" value="$LOCALIZE[31129]"/>
-		<param name="onleft1" value="199"/>
-		<param name="onright1" value="204"/>
-		<param name="onclick1" value="sendClick(6)"/>
-		<param name="visible1" value="!control.hasFocus(202) + Control.IsEnabled(202)"/>
-		<param name="visible2" value="!Control.IsEnabled(202)"/>
-		<param name="visible3" value="control.hasFocus(202)"/>
-		<param name="enable" value="!String.IsEqual(ListItem.DBType,song)"/>
-		<param name="icone" value="icones/infos/update.png"/>
-	</include>
+		<orientation>vertical</orientation>	
+	<control type="radiobutton" id="6">		
+		<height>50</height>
+		<texturenofocus colordiffuse="$VAR[gris]" border="25">commun/bouton.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="25">commun/bouton.png</texturefocus>
+		<textureradioonfocus colordiffuse="ffffffff">icones/infos/update.png</textureradioonfocus>
+		<textureradioonnofocus colordiffuse="ffffffff">icones/infos/update.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="ffffffff">icones/infos/update.png</textureradioofffocus>
+		<textureradiooffnofocus colordiffuse="ffffffff">icones/infos/update.png</textureradiooffnofocus>
+		<radioposx>20</radioposx>
+		<radiowidth>60</radiowidth>
+		<radioheight>60</radioheight>				
 	</control>
-	<control type="group" id="203">																												<description>bouton illustrations</description>
-		<width>130</width>
-		<height>100</height>
-	<include content="bouton_info_musique">
-		<param name="bouton" value="button"/>
-		<param name="id" value="204"/>
-		<param name="label" value="$LOCALIZE[31130]"/>
-		<param name="onleft1" value="202"/>
-		<param name="onright1" value="206"/>
-		<param name="onclick1" value="sendClick(10)"/>		
-		<param name="visible1" value="!control.hasFocus(204) + Control.IsEnabled(204)"/>
-		<param name="visible2" value="!Control.IsEnabled(204)"/>
-		<param name="visible3" value="control.hasFocus(204)"/>
-		<param name="enable" value="Control.IsEnabled(10)"/>
-		<param name="icone" value="icones/infos/illustration.png"/>	
-	</include>		
+	<control type="radiobutton" id="10">		
+		<height>50</height>
+		<texturenofocus colordiffuse="$VAR[gris]" border="25">commun/bouton.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="25">commun/bouton.png</texturefocus>
+		<textureradioonfocus colordiffuse="ffffffff">icones/infos/illustration.png</textureradioonfocus>
+		<textureradioonnofocus colordiffuse="ffffffff">icones/infos/illustration.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="ffffffff">icones/infos/illustration.png</textureradioofffocus>
+		<textureradiooffnofocus colordiffuse="ffffffff">icones/infos/illustration.png</textureradiooffnofocus>
+		<radioposx>20</radioposx>
+		<radiowidth>60</radiowidth>
+		<radioheight>60</radioheight>				
 	</control>
-	<control type="group" id="205">																												<description>bouton note</description>
-		<width>130</width>
-		<height>100</height>
-	<include content="bouton_info_musique">
-		<param name="bouton" value="button"/>
-		<param name="id" value="206"/>
-		<param name="label" value="$LOCALIZE[31131]"/>
-		<param name="onleft1" value="204"/>
-		<param name="onright1" value="199"/>
-		<param name="onclick1" value="sendClick(7)"/>		
-		<param name="visible1" value="!control.hasFocus(206) + Control.IsEnabled(206)"/>
-		<param name="visible2" value="!Control.IsEnabled(206)"/>
-		<param name="visible3" value="control.hasFocus(206)"/>
-		<param name="enable" value="!String.IsEqual(ListItem.DBType,artist)"/>
-		<param name="icone" value="$VAR[dialogvideoinfo_userrating,playerflags/notes/,.png]"/>
-	</include>	
+	<control type="radiobutton" id="12">		
+		<height>50</height>
+		<texturenofocus colordiffuse="$VAR[gris]" border="25">commun/bouton.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="25">commun/bouton.png</texturefocus>
+		<textureradioonfocus colordiffuse="ffffffff">icones/infos/artiste.png</textureradioonfocus>
+		<textureradioonnofocus colordiffuse="ffffffff">icones/infos/artiste.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="ffffffff">icones/infos/artiste.png</textureradioofffocus>
+		<textureradiooffnofocus colordiffuse="ffffffff">icones/infos/artiste.png</textureradiooffnofocus>
+		<radioposx>20</radioposx>
+		<radiowidth>60</radiowidth>
+		<radioheight>60</radioheight>
+		<visible>string.isequal(listitem.DBTYPE,album)</visible>
+	</control>	
+	<control type="radiobutton" id="120">		
+		<height>50</height>
+		<texturenofocus colordiffuse="$VAR[gris]" border="25">commun/bouton.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="25">commun/bouton.png</texturefocus>
+		<textureradioonfocus colordiffuse="ffffffff">icones/infos/cd.png</textureradioonfocus>
+		<textureradioonnofocus colordiffuse="ffffffff">icones/infos/cd.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="ffffffff">icones/infos/cd.png</textureradioofffocus>
+		<textureradiooffnofocus colordiffuse="ffffffff">icones/infos/cd.png</textureradiooffnofocus>
+		<radioposx>20</radioposx>
+		<radiowidth>60</radiowidth>
+		<radioheight>60</radioheight>
+		<visible>!string.isempty(listitem.duration)</visible>
+		<onclick>sendclick(12)</onclick>
 	</control>
+	<control type="radiobutton" id="7">		
+		<height>50</height>
+		<texturenofocus colordiffuse="$VAR[gris]" border="25">commun/bouton.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="25">commun/bouton.png</texturefocus>
+		<textureradioonfocus colordiffuse="ffffffff">icones/infos/note.png</textureradioonfocus>
+		<textureradioonnofocus colordiffuse="ffffffff">icones/infos/note.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="ffffffff">icones/infos/note.png</textureradioofffocus>
+		<textureradiooffnofocus colordiffuse="ffffffff">icones/infos/note.png</textureradiooffnofocus>
+		<radioposx>20</radioposx>
+		<radiowidth>60</radiowidth>
+		<radioheight>60</radioheight>				
+	</control>
+	<control type="radiobutton" id="14">
+		<onclick>control.setfocus(16)</onclick>
+		<height>50</height>
+		<texturenofocus colordiffuse="$VAR[gris]" border="25">commun/bouton.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="25">commun/bouton.png</texturefocus>
+		<textureradioonfocus colordiffuse="ffffffff">icones/infos/fanart.png</textureradioonfocus>
+		<textureradioonnofocus colordiffuse="ffffffff">icones/infos/fanart.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="ffffffff">icones/infos/fanart.png</textureradioofffocus>
+		<textureradiooffnofocus colordiffuse="ffffffff">icones/infos/fanart.png</textureradiooffnofocus>
+		<radioposx>20</radioposx>
+		<radiowidth>60</radiowidth>
+		<radioheight>60</radioheight>	
+		<visible>!String.isequal(ListItem.art(fanart),) + !string.EndsWith(listitem.art(fanart),none)</visible>
+	</control>
+	</control>
+	</control>
+	<control type="button" id="16">																												<description>bouton fanart plein ecran</description>			
+		<onback>control.setfocus(14)</onback>
+		<onclick>control.setfocus(14)</onclick>		
+		<onup>control.setfocus(14)</onup>
+		<ondown>control.setfocus(14)</ondown>
+		<onleft>control.setfocus(14)</onleft>
+		<onright>control.setfocus(14)</onright>		
 	</control>	
-	</control>	
-	</control>	
+	<control type="image">																														<description>affichage fanart plein ecran</description>
+		<aspectratio>scale</aspectratio>
+		<texture background="true">$INFO[listitem.art(fanart)]</texture>		
+		<visible>control.hasfocus(16)</visible>
+		<animation effect="fade" start="0" end="100" time="150" reversible="false">visible</animation>
+		<animation effect="fade" start="100" end="0" time="150" reversible="false">hidden</animation>
+	</control>
 	<control type="button" id="800">
 		<onup>Control.Move(50,-1)</onup>
 		<ondown>Control.Move(50,1)</ondown>
-		<onleft>100</onleft>
-		<onright>100</onright>		
-		<onback>100</onback>
-		<onclick condition="String.IsEqual(ListItem.DBType,album) + !string.isEmpty(container(50).ListItem.FileNameAndPath)">playmedia($INFO[container(50).ListItem.FileNameAndPath])</onclick> 
+		<onleft>100</onleft>	
+		<onclick condition="String.IsEqual(ListItem.DBType,album) + !string.isEmpty(container(50).ListItem.FileNameAndPath)">playmedia($ESCINFO[container(50).ListItem.FileNameAndPath])</onclick> 
 		<onclick condition="String.IsEqual(ListItem.DBType,artist) + !string.isEmpty(ListItem.DBID) + !string.isEmpty(container(50).ListItem.DBID)">playmedia(musicdb://artists/$INFO[ListItem.DBID]/$INFO[container(50).ListItem.DBID]/)</onclick>
-	</control>	
-	<control type="group">																														<description>boutons caches</description>
-		<visible>false</visible>		
-	<control type="button" id="7">		
-    </control>		 
-	<control type="button" id="6">		
-    </control>
-	<control type="button" id="10">		
-    </control>  		
-	</control>	
+	</control>		
 </controls>
 </window>

@@ -2,6 +2,7 @@
 <window>
 	<backgroundcolor>00X000000</backgroundcolor>
 	<include>animation_dialogue</include>
+	<onload condition="!System.HasAddon(plugin.program.autocompletion)">InstallAddon(plugin.program.autocompletion)</onload>
 	<defaultcontrol always="true">300</defaultcontrol>	
 <controls>
 	<include>image_fond</include>
@@ -20,6 +21,8 @@
 		<centerleft>50%</centerleft>		
 		<width>1180</width>
 		<height>60</height>
+	    <ondown></ondown>
+		<onup></onup>
 	<include>bouton_clavier</include>
 	</control>
 	<control type="edit" id="312">																												<description>texte entré</description>
@@ -39,42 +42,68 @@
 		<itemgap>20</itemgap>
 		<orientation>horizontal</orientation>	
 	<control type="button" id="100">
+		<ondown>120</ondown>
+		<onup></onup>
 	<include>bouton_clavier</include>
 	</control>
 	<control type="button" id="101">
+		<ondown>121</ondown>
+		<onup></onup>
 	<include>bouton_clavier</include>
 	</control>
 	<control type="button" id="102">
+		<ondown>122</ondown>
+		<onup></onup>
 	<include>bouton_clavier</include>
 	</control>
 	<control type="button" id="103">
+	    <ondown>123</ondown>
+		<onup></onup>
 	<include>bouton_clavier</include>
 	</control>
 	<control type="button" id="104">
+	    <ondown>124</ondown>
+		<onup></onup>
 	<include>bouton_clavier</include>
 	</control>
 	<control type="button" id="105">
+	    <ondown>125</ondown>
+		<onup></onup>
 	<include>bouton_clavier</include>
 	</control>
 	<control type="button" id="106">
+	    <ondown>126</ondown>
+		<onup></onup>
 	<include>bouton_clavier</include>
 	</control>
 	<control type="button" id="107">
+	    <ondown>127</ondown>
+		<onup></onup>
 	<include>bouton_clavier</include>
 	</control>
 	<control type="button" id="108">
+	    <ondown>128</ondown>
+		<onup></onup>
 	<include>bouton_clavier</include>
 	</control>
 	<control type="button" id="109">
+	    <ondown>129</ondown>
+		<onup></onup>
 	<include>bouton_clavier</include>
 	</control>
 	<control type="button" id="110">
+	    <ondown>130</ondown>
+		<onup></onup>
 	<include>bouton_clavier</include>
 	</control>
 	<control type="button" id="111">
+	    <ondown>131</ondown>
+		<onup></onup>
 	<include>bouton_clavier</include>
 	</control>
 	<control type="button" id="112">
+	    <ondown>132</ondown>
+		<onup></onup>
 	<include>bouton_clavier</include>
 	</control>	
 	</control>
@@ -88,42 +117,68 @@
 		<itemgap>20</itemgap>
 		<orientation>horizontal</orientation>	
 	<control type="button" id="120">
+	    <ondown>140</ondown>
+		<onup>100</onup>
 	<include>bouton_clavier</include>
 	</control>
 	<control type="button" id="121">
+	    <ondown>141</ondown>
+		<onup>101</onup>
 	<include>bouton_clavier</include>
 	</control>
 	<control type="button" id="122">
+	    <ondown>142</ondown>
+		<onup>102</onup>
 	<include>bouton_clavier</include>
 	</control>
 	<control type="button" id="123">
+	    <ondown>143</ondown>
+		<onup>103</onup>
 	<include>bouton_clavier</include>
 	</control>
 	<control type="button" id="124">
+	    <ondown>144</ondown>
+		<onup>104</onup>
 	<include>bouton_clavier</include>
 	</control>
 	<control type="button" id="125">
+	    <ondown>145</ondown>
+		<onup>105</onup>
 	<include>bouton_clavier</include>
 	</control>
 	<control type="button" id="126">
+	    <ondown>146</ondown>
+		<onup>106</onup>
 	<include>bouton_clavier</include>
 	</control>
 	<control type="button" id="127">
+	    <ondown>147</ondown>
+		<onup>107</onup>
 	<include>bouton_clavier</include>
 	</control>
 	<control type="button" id="128">
+	    <ondown>148</ondown>
+		<onup>108</onup>
 	<include>bouton_clavier</include>
 	</control>
 	<control type="button" id="129">
+	    <ondown>149</ondown>
+		<onup>109</onup>
 	<include>bouton_clavier</include>
 	</control>
 	<control type="button" id="130">
+	    <ondown>150</ondown>
+		<onup>110</onup>
 	<include>bouton_clavier</include>
 	</control>
 	<control type="button" id="131">
+	    <ondown>151</ondown>
+		<onup>111</onup>
 	<include>bouton_clavier</include>
 	</control>
 	<control type="button" id="132">
+	    <ondown>152</ondown>
+		<onup>112</onup>
 	<include>bouton_clavier</include>
 	</control>
 	</control>
@@ -137,42 +192,68 @@
 		<itemgap>20</itemgap>
 		<orientation>horizontal</orientation>	
 	<control type="button" id="140">
+	    <ondown>160</ondown>
+		<onup>120</onup>
 	<include>bouton_clavier</include>
 	</control>
 	<control type="button" id="141">
+	    <ondown>161</ondown>
+		<onup>121</onup>
 	<include>bouton_clavier</include>
 	</control>
 	<control type="button" id="142">
+	    <ondown>162</ondown>
+		<onup>122</onup>
 	<include>bouton_clavier</include>
 	</control>
 	<control type="button" id="143">
+	    <ondown>163</ondown>
+		<onup>123</onup>
 	<include>bouton_clavier</include>
 	</control>
 	<control type="button" id="144">
+	    <ondown>164</ondown>
+		<onup>124</onup>
 	<include>bouton_clavier</include>
 	</control>
 	<control type="button" id="145">
+	    <ondown>165</ondown>
+		<onup>125</onup>
 	<include>bouton_clavier</include>
 	</control>
 	<control type="button" id="146">
+	    <ondown>166</ondown>
+		<onup>126</onup>
 	<include>bouton_clavier</include>
 	</control>
 	<control type="button" id="147">
+	    <ondown>167</ondown>
+		<onup>127</onup>
 	<include>bouton_clavier</include>
 	</control>
 	<control type="button" id="148">
+	    <ondown>168</ondown>
+		<onup>128</onup>
 	<include>bouton_clavier</include>
 	</control>
 	<control type="button" id="149">
+	    <ondown>169</ondown>
+		<onup>129</onup>
 	<include>bouton_clavier</include>
 	</control>
 	<control type="button" id="150">
+	    <ondown>170</ondown>
+		<onup>130</onup>
 	<include>bouton_clavier</include>
 	</control>
 	<control type="button" id="151">
+	    <ondown>171</ondown>
+		<onup>131</onup>
 	<include>bouton_clavier</include>
 	</control>
 	<control type="button" id="152">
+	    <ondown>172</ondown>
+		<onup>132</onup>
 	<include>bouton_clavier</include>
 	</control>
 	</control>
@@ -186,42 +267,68 @@
 		<itemgap>20</itemgap>
 		<orientation>horizontal</orientation>	
 	<control type="button" id="160">
+	    <ondown>304</ondown>
+		<onup>140</onup>
 	<include>bouton_clavier</include>
 	</control>
 	<control type="button" id="161">
+	    <ondown>304</ondown>
+		<onup>141</onup>
 	<include>bouton_clavier</include>
 	</control>
 	<control type="button" id="162">
+	    <ondown>303</ondown>
+		<onup>142</onup>
 	<include>bouton_clavier</include>
 	</control>
 	<control type="button" id="163">
+	    <ondown>302</ondown>
+		<onup>143</onup>
 	<include>bouton_clavier</include>
 	</control>
 	<control type="button" id="164">
+	    <ondown>32</ondown>
+		<onup>144</onup>
 	<include>bouton_clavier</include>
 	</control>
 	<control type="button" id="165">
+	    <ondown>32</ondown>
+		<onup>145</onup>
 	<include>bouton_clavier</include>
 	</control>
 	<control type="button" id="166">
+	    <ondown>32</ondown>
+		<onup>146</onup>
 	<include>bouton_clavier</include>
 	</control>
 	<control type="button" id="167">
+	    <ondown>32</ondown>
+		<onup>147</onup>
 	<include>bouton_clavier</include>
 	</control>
 	<control type="button" id="168">
+	    <ondown>305</ondown>
+		<onup>148</onup>
 	<include>bouton_clavier</include>
 	</control>
 	<control type="button" id="169">
+	    <ondown>306</ondown>
+		<onup>149</onup>
 	<include>bouton_clavier</include>
 	</control>
 	<control type="button" id="170">
+	    <ondown>8</ondown>
+		<onup>150</onup>
 	<include>bouton_clavier</include>
 	</control>
 	<control type="button" id="171">
+	    <ondown>8</ondown>
+		<onup>151</onup>
 	<include>bouton_clavier</include>
 	</control>
 	<control type="button" id="172">
+	    <ondown>8</ondown>
+		<onup>152</onup>
 	<include>bouton_clavier</include>
 	</control>
 	</control>
@@ -243,6 +350,8 @@
 		<radioposy>10</radioposy>
 		<radiowidth>40</radiowidth>
 		<radioheight>40</radioheight>
+	    <ondown>300</ondown>
+		<onup>161</onup>
 	<include>bouton_clavier</include>
 	</control>
 	<control type="radiobutton" id="303">	
@@ -254,6 +363,8 @@
 		<radioposy>10</radioposy>
 		<radiowidth>40</radiowidth>
 		<radioheight>40</radioheight>
+	    <ondown>300</ondown>
+		<onup>162</onup>
 	<include>bouton_clavier</include>
 	</control>
 	<control type="radiobutton" id="302">	
@@ -265,6 +376,8 @@
 		<radioposy>10</radioposy>
 		<radiowidth>40</radiowidth>
 		<radioheight>40</radioheight>
+	    <ondown>300</ondown>
+		<onup>163</onup>
 	<include>bouton_clavier</include>
 	</control>
 	<control type="button" id="32">
@@ -272,6 +385,8 @@
 		<label>$LOCALIZE[31202]</label>
 		<width>380</width>
 		<height>60</height>
+	    <ondown>300</ondown>
+		<onup>164</onup>
 	<include>bouton_clavier</include>
 	</control>	
 	<control type="radiobutton" id="305">	
@@ -283,6 +398,8 @@
 		<radioposy>10</radioposy>
 		<radiowidth>40</radiowidth>
 		<radioheight>40</radioheight>
+	    <ondown>300</ondown>
+		<onup>168</onup>
 	<include>bouton_clavier</include>
 	</control>
 	<control type="radiobutton" id="306">	
@@ -294,6 +411,8 @@
 		<radioposy>10</radioposy>
 		<radiowidth>40</radiowidth>
 		<radioheight>40</radioheight>
+	    <ondown>300</ondown>
+		<onup>169</onup>
 	<include>bouton_clavier</include>
 	</control>
 	<control type="radiobutton" id="8">	
@@ -305,6 +424,8 @@
 		<radioposy>10</radioposy>
 		<radiowidth>40</radiowidth>
 		<radioheight>40</radioheight>
+	    <ondown>300</ondown>
+		<onup>170</onup>
 	<include>bouton_clavier</include>
 	</control>		
 	</control>
@@ -327,6 +448,8 @@
 		<radioposy>10</radioposy>
 		<radiowidth>40</radiowidth>
 		<radioheight>40</radioheight>
+	    <ondown></ondown>
+		<onup></onup>
 	<include>bouton_clavier</include>
 	</control>
 	<control type="radiobutton" id="301">
@@ -338,6 +461,8 @@
 		<radioposy>10</radioposy>
 		<radiowidth>40</radiowidth>
 		<radioheight>40</radioheight>
+	    <ondown></ondown>
+		<onup></onup>
 	<include>bouton_clavier</include>
 	</control>
 	<control type="radiobutton" id="307">	
@@ -349,11 +474,15 @@
 		<radioposy>10</radioposy>
 		<radiowidth>40</radiowidth>
 		<radioheight>40</radioheight>
+	    <ondown></ondown>
+		<onup></onup>
 	<include>bouton_clavier</include>
 	</control>
 	<control type="button" id="309">
 		<textoffsetx>20</textoffsetx>		
 		<width min="280">auto</width>		
+	    <ondown></ondown>
+		<onup></onup>
 	<include>bouton_clavier</include>
 	</control>
 	</control>
@@ -364,6 +493,7 @@
 		<param name="bottom" value="300"/>		
 	</include>	
 	<control type="panel">																														<description>cases du panneau de suggestions</description>
+		<visible>System.HasAddon(plugin.program.autocompletion)</visible>
 		<left>30</left>
 		<bottom>30</bottom>
 		<width>1920</width>

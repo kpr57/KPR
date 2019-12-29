@@ -70,14 +70,8 @@
 		<param name="right" value="694"/>
 		<param name="visible" value="control.isvisible(3)"/>
 	</include>	
-	<control type="group">																														<description>groupe qui se place en fonction du nombre d'options</description>
-		<animation effect="slide" start="0,0" end="0,540" time="1" condition="Integer.isequal(Container(6).NumAllItems,1)">conditional</animation>
-		<animation effect="slide" start="0,0" end="0,470" time="1" condition="Integer.isequal(Container(6).NumAllItems,2)">conditional</animation>
-		<animation effect="slide" start="0,0" end="0,400" time="1" condition="Integer.isequal(Container(6).NumAllItems,3)">conditional</animation>
-		<animation effect="slide" start="0,0" end="0,330" time="1" condition="Integer.isequal(Container(6).NumAllItems,4)">conditional</animation>
-		<animation effect="slide" start="0,0" end="0,260" time="1" condition="Integer.isequal(Container(6).NumAllItems,5)">conditional</animation>					
-		<animation effect="slide" start="0,0" end="0,190" time="1" condition="integer.IsGreaterOrEqual(Container(6).NumAllItems,6)">conditional</animation>
 	<control type="list" id="6">																												<description>listes complexe</description>		
+		<top>190</top>
 		<left>500</left>
 		<width>700</width>
 		<height>840</height>		
@@ -164,7 +158,6 @@
 	</control>
 	</control>
 	</focusedlayout>	
-	</control>
 	</control>	
 	<include content="scrollbar">																												<description>scrollbar</description>
 		<param name="id" value="60"/> 

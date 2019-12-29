@@ -1,237 +1,143 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>	
 	<backgroundcolor>00X000000</backgroundcolor>
-	<include>animation_dialogue</include>
-	<onload>control.setFocus(7000,0,absolute)</onload>
+	<defaultcontrol always="true">52</defaultcontrol>
+	<onunload>setproperty(activer_profil,1,home)</onunload>
 <controls>
-	<include>image_fond</include>	
+	<control type="group">
+	<include>image_fond</include>																												<description>image de fond</description>		
+	<control type="group">																														<description>horloge</description>
+		<right>40</right>					
 	<control type="image">
-		<top>300</top>
-		<left>280</left>
-		<height>400</height>
-		<width>400</width>
-		<aspectratio>scale</aspectratio>
-		<texture>$INFO[container(52).Listitem.Icon]</texture>
-		<visible>!String.IsEqual(container(52).Listitem.Icon,"DefaultUser.png")</visible>
-	</control>
-	<control type="image">
-		<top>300</top>
-		<left>280</left>
-		<height>400</height>
-		<width>400</width>
-		<aspectratio>scale</aspectratio>
-		<texture>$INFO[Listitem.Icon]</texture>
-		<visible>!String.IsEqual(Listitem.Icon,"DefaultUser.png")</visible>
-	</control>
-
-		
-	<control type="panel" id="7000">		
-		<left>980</left>
-		<top>140</top>
-		<width>800</width>
-		<height>800</height>
-		<onleft>52</onleft>
-		<onback>activatewindow(home)</onback>		
-		<pagecontrol>7001</pagecontrol>
-		<scrolltime tween="linear" easing="out">250</scrolltime>
-		<orientation>vertical</orientation>	
-	<itemlayout height="100" width="800">		
-	<control type="button">
-	<include content="bouton">
-		<param name="width" value="780"/> 
-		<param name="height" value="80"/>
-	</include>
+		<right>0</right>
+		<top>35</top>
+		<height>60</height>			
+		<width>140</width>
+		<aspectratio>stretch</aspectratio>
+		<texture border="30" colordiffuse="$VAR[gris]">commun/bouton.png</texture>				
 	</control>
 	<control type="label">
-	<include content="bouton_label">
-		<param name="width" value="780"/> 
-		<param name="height" value="80"/> 
-		<param name="label" value="$INFO[listItem.label]"/>
-	</include>		
+		<right>0</right>
+		<top>35</top>
+		<height>60</height>			
+		<width>140</width>				
+		<font>menu</font>
+		<textcolor>$VAR[couleur_dominante]</textcolor>
+		<align>center</align>
+		<label>$INFO[system.time(hh:mm)]</label>		
+	</control>
+	</control>
+	<control type="button" id="2">
+		<top>35</top>		
+		<left>50</left>
+		<height>60</height>
+		<width>auto</width>
+	<include content="bouton">																										
+		<param name="width" value="auto"/> 
+		<param name="height" value="80"/>
+		<param name="align" value="center"/>			
+	</include>
+	</control>		
+	<include content="barre_separation_horizontale">																							<description>barre de separation horizontale</description>
+		<param name="left" value="25"/> 
+		<param name="right" value="25"/>
+		<param name="bottom" value="950"/>		
+	</include>	
+	<control type="group">
+		<animation effect="slide" end="720,0" condition="integer.isequal(container(52).NumAllItems,1)">conditional</animation>
+		<animation effect="slide" end="480,0" condition="integer.isequal(container(52).NumAllItems,2)">conditional</animation>
+		<animation effect="slide" end="240,0" condition="integer.isequal(container(52).NumAllItems,3)">conditional</animation>
+	<control type="list" id="52">																												<description>liste des profils</description>
+		<centertop>50%</centertop>
+		<height>410</height>		
+		<orientation>horizontal</orientation>
+		<scrolltime tween="Linear" easing="in">250</scrolltime>	
+	<itemlayout width="480" height="410">	
+	<control type="group">
+		<top>30</top>
+	<control type="image">	
+		<left>97</left>
+		<width>256</width>
+		<height>256</height>
+		<aspectratio scalediffuse="false">scale</aspectratio>
+		<texture diffuse="commun/visage.png">commun/inconnu.png</texture>
+		<visible>string.isequal(ListItem.Icon,defaultuser.png)</visible>
+	</control>
+	<control type="image">	
+		<left>97</left>
+		<width>256</width>
+		<height>256</height>
+		<aspectratio scalediffuse="false">scale</aspectratio>
+		<texture diffuse="commun/visage.png" fallback="commun/inconnu.png">$INFO[ListItem.Icon]</texture>
+		<visible>!string.isequal(ListItem.Icon,defaultuser.png)</visible>
+	</control>	
+	<control type="label">
+		<top>270</top>
+		<left>10</left>
+		<width>430</width>
+		<height>30</height>		
+		<align>center</align>
+		<label>$INFO[ListItem.Label]</label>
+	</control>	
 	</control>
 	</itemlayout>
-	<focusedlayout height="100" width="800">
+	<focusedlayout width="480" height="410">	
+	<control type="group">
+		<top>30</top>
 	<control type="button">
-	<include content="bouton">
-		<param name="width" value="780"/> 
-		<param name="height" value="80"/> 
-	</include>
+		<onfocus condition="!String.IsEqual(listitem.icon,) + !string.EndsWith(listitem.icon,none)">setproperty(image,$INFO[listitem.icon],home)</onfocus>
+		<onfocus condition="String.IsEqual(listitem.icon,) | string.EndsWith(listitem.icon,none)">clearproperty(image,home)</onfocus>
+		<onfocus>setproperty(label,$ESCINFO[listitem.label],home)</onfocus>	
 	</control>
+	<control type="image">
+		<top>-5</top>
+		<left>92</left>
+		<width>266</width>
+		<height>266</height>
+		<aspectratio>keep</aspectratio>
+		<texture colordiffuse="$VAR[couleur_dominante]">commun/visage.png</texture>				
+	</control>
+	<control type="image">	
+		<left>97</left>
+		<width>256</width>
+		<height>256</height>
+		<aspectratio scalediffuse="false">scale</aspectratio>
+		<texture diffuse="commun/visage.png">commun/inconnu.png</texture>
+		<visible>string.isequal(ListItem.Icon,defaultuser.png)</visible>
+	</control>
+	<control type="image">	
+		<left>97</left>
+		<width>256</width>
+		<height>256</height>
+		<aspectratio scalediffuse="false">scale</aspectratio>
+		<texture diffuse="commun/visage.png" fallback="commun/inconnu.png">$INFO[ListItem.Icon]</texture>
+		<visible>!string.isequal(ListItem.Icon,defaultuser.png)</visible>
+	</control>	
 	<control type="label">
-	<include content="bouton_label">
-		<param name="width" value="780"/> 
-		<param name="height" value="80"/> 
-		<param name="label" value="$INFO[listItem.label]"/>
-	</include>		
+		<top>270</top>
+		<left>10</left>
+		<width>430</width>
+		<height>30</height>		
+		<align>center</align>
+		<label>$INFO[ListItem.Label]</label>
+	</control>	
 	</control>
-	</focusedlayout>
-	<content>
-	<item>
-		<label>$LOCALIZE[20092]</label>					
-		<onclick></onclick>		
-	</item>
-	<item>
-		<label>$LOCALIZE[10130]</label>		
-	</item>
-	<item>
-		<label>$LOCALIZE[14211]</label>
-		<onclick>ActivateWindow(MediaSettings)</onclick>
-		<icon>icones/settings/media.png</icon>
-	</item>
-	<item>
-		<label>$LOCALIZE[31177]</label>
-		<onclick>ActivateWindow(AddonBrowser)</onclick>
-		<icon>icones/settings/addons.png</icon>
-	</item>
-	<item>
-		<label>$LOCALIZE[14036]</label>
-		<onclick>ActivateWindow(ServiceSettings)</onclick>
-		<icon>icones/settings/network.png</icon>
-	</item>
-	<item>
-		<label>$LOCALIZE[14206]</label>
-		<onclick>ActivateWindow(InterfaceSettings)</onclick>
-		<icon>icones/settings/interface.png</icon>
-	</item>
-	<item>
-		<label>$LOCALIZE[13000]</label>
-		<onclick>ActivateWindow(SystemSettings)</onclick>
-		<icon>icones/settings/system.png</icon>
-	</item>
-	<item>
-		<label>$LOCALIZE[166]</label>
-		<onclick>ActivateWindow(SkinSettings)</onclick>
-		<icon>icones/settings/skin.png</icon>
-	</item>
-	<item>
-		<label>$LOCALIZE[10003]</label>
-		<onclick>ActivateWindow(FileManager)</onclick>
-		<icon>defaultnetwork.png</icon>
-	</item>
-	<item>
-		<label>$LOCALIZE[13200]</label>
-		<onclick>ActivateWindow(Profiles)</onclick>
-		<icon>defaultuser.png</icon>
-	</item>
-	<item>
-		<label>$LOCALIZE[138]</label>
-		<onclick>ActivateWindow(SystemInfo)</onclick>
-		<icon>defaultaddoninfoprovider.png</icon>
-	</item>
-	<item>
-		<label>$LOCALIZE[31067]</label>
-		<onclick>ActivateWindow(EventLog)</onclick>
-		<icon>icones/settings/logokodi.png</icon>
-	</item>
-	</content>		
-	</control>		
-		
-		
-		
-		
-		
-		
-		
-	
-			<control type="list" id="52">
-				<left>0</left>
-		<top>200</top>
-		<width>800</width>
-		<height>800</height>
-				<onright>7000</onright>
-				<pagecontrol>60</pagecontrol>
-				<scrolltime>200</scrolltime>
-				<itemlayout height="150" width="790">
-					<control type="image">
-						<left>15</left>
-						<top>15</top>
-						<width>120</width>
-						<height>112</height>
-						<texture>$INFO[Listitem.Icon]</texture>
-						<visible>!String.IsEqual(Listitem.Icon,"DefaultUser.png")</visible>
-					</control>
-					<control type="image">
-						<left>15</left>
-						<top>15</top>
-						<width>120</width>
-						<height>112</height>
-						<texture colordiffuse="text.primary">DefaultUser.png</texture>
-						<visible>String.IsEqual(Listitem.Icon,"DefaultUser.png")</visible>
-					</control>
-					<control type="label">
-						<left>165</left>
-						<top>15</top>
-						<width>605</width>
-						<height>60</height>
-						<font>font24_title</font>
-						<selectedcolor>selected</selectedcolor>
-						<align>left</align>
-						<aligny>center</aligny>
-						<label>$INFO[ListItem.Label]</label>
-					</control>
-					<control type="label">
-						<left>165</left>
-						<top>75</top>
-						<width>605</width>
-						<height>38</height>
-						<font>label</font>
-						<selectedcolor>selected</selectedcolor>
-						<align>left</align>
-						<aligny>center</aligny>
-						<label>$INFO[ListItem.Label2]</label>
-					</control>
-				</itemlayout>
-				<focusedlayout height="150" width="790">
-					<control type="image">
-						<left>0</left>
-						<top>0</top>
-						<width>1035</width>
-						<height>145</height>
-						<texture colordiffuse="$VAR[Colour.500]">backgrounds/white.png</texture>
-						<animation effect="fade" start="100" end="50" time="200" condition="!Control.HasFocus(52)">Conditional</animation>
-					</control>
-					<control type="image">
-						<left>15</left>
-						<top>15</top>
-						<width>120</width>
-						<height>112</height>
-						<texture>$INFO[ListItem.Icon]</texture>
-					</control>
-					<control type="label">
-						<left>165</left>
-						<top>15</top>
-						<width>605</width>
-						<height>60</height>
-						<font>font24_title</font>
-						<textcolor>white</textcolor>
-						<selectedcolor>selected</selectedcolor>
-						<align>left</align>
-						<aligny>center</aligny>
-						<label>$INFO[ListItem.Label]</label>
-					</control>
-					<control type="label">
-						<left>165</left>
-						<top>75</top>
-						<width>605</width>
-						<height>38</height>
-						<font>label</font>
-						<textcolor>white</textcolor>
-						<selectedcolor>selected</selectedcolor>
-						<align>left</align>
-						<aligny>center</aligny>
-						<label>$INFO[ListItem.Label2]</label>
-					</control>
-				</focusedlayout>
-			</control>
-			<control type="image">
-				<description>LOGO</description>
-				<centerleft>50%</centerleft>
-				<bottom>20</bottom>
-				<width>330</width>
-				<height>120</height>
-				<aspectratio>keep</aspectratio>
-				<texture>Unity_Logo.png</texture>
-			</control>
-		
+	</focusedlayout>				
+	</control>				
+	</control>
+	<include content="barre_separation_horizontale">																							<description>barre de separation horizontale</description>
+		<param name="left" value="25"/> 
+		<param name="right" value="25"/>
+		<param name="bottom" value="128"/>		
+	</include>		
+	<control type="label">
+		<bottom>0</bottom>
+		<width>1920</width>
+		<height>128</height>				
+		<align>center</align>
+		<font>infos</font>
+		<label>$INFO[ListItem.Label2]</label>		
+	</control>
+	</control>
 </controls>
 </window>

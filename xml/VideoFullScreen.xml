@@ -14,23 +14,13 @@
 	<focusedlayout>
 	</focusedlayout>
 	<content>pvr://channels/tv/*</content>	
-	</control>
-	<control type="panel" id="50">																												<description>liste des acteurs</description>
-		<width>0</width>
-		<height>0</height>
-		<orientation>horizontal</orientation>
-	<itemlayout>		
-	</itemlayout>
-	<focusedlayout>		
-	</focusedlayout>
-	<content>plugin://script.skin.helper.service/?action=getcast&amp;movie=$INFO[videoplayer.title]</content>
 	</control>	
 	<control type="image" id="1">																												<description>masque arriere plan video</description>
 		<top>110</top>
 		<bottom>90</bottom>
 		<animation effect="fade" start="100" end="0" delay="200" time="1">hidden</animation>		
 		<animation effect="fade" start="100" end="0" condition="player.showinfo">conditional</animation>		
-		<visible>!videoplayer.content(livetv) + [window.isvisible(1222) | window.isvisible(1220) | window.isvisible(DialogSelect.xml) | window.isvisible(DialogConfirm.xml) | window.isvisible(dialogsettings.xml) | window.isvisible(DialogNotification.xml)]</visible>
+		<visible>!videoplayer.content(livetv) + window.isvisible(VideoOSD.xml) + [window.isvisible(1222) | window.isvisible(1220) | window.isvisible(DialogSelect.xml) | window.isvisible(DialogConfirm.xml) | window.isvisible(dialogsettings.xml) | window.isvisible(DialogNotification.xml)]</visible>
 		<aspectratio>scale</aspectratio>
 		<texture colordiffuse="$VAR[couleur_OSD]">commun/texture.png</texture>				
 	</control>	
@@ -39,10 +29,20 @@
 		<bottom>150</bottom>
 		<animation effect="fade" start="100" end="0" delay="200" time="1">hidden</animation>		
 		<animation effect="fade" start="100" end="0" condition="player.showinfo">conditional</animation>		
-		<visible>videoplayer.content(livetv) + [window.isvisible(1222) | window.isvisible(1220) | window.isvisible(DialogSelect.xml) | window.isvisible(DialogConfirm.xml) | window.isvisible(dialogsettings.xml) | window.isvisible(DialogNotification.xml)]</visible>
+		<visible>videoplayer.content(livetv) + window.isvisible(VideoOSD.xml) + [window.isvisible(1222) | window.isvisible(1220) | window.isvisible(DialogSelect.xml) | window.isvisible(DialogConfirm.xml) | window.isvisible(dialogsettings.xml) | window.isvisible(DialogNotification.xml)]</visible>
 		<aspectratio>scale</aspectratio>
 		<texture colordiffuse="$VAR[couleur_OSD]">commun/texture.png</texture>				
-	</control>	
+	</control>
+	<control type="image" id="1">																												<description>masque arriere plan tv</description>
+		<centerleft>50%</centerleft>
+		<width>1920</width>
+		<height>1080</height>
+		<animation effect="fade" start="100" end="0" delay="200" time="1">hidden</animation>		
+		<animation effect="fade" start="100" end="0" condition="player.showinfo">conditional</animation>		
+		<visible>!window.isvisible(VideoOSD.xml) + [window.isvisible(1222) | window.isvisible(1220) | window.isvisible(DialogSelect.xml) | window.isvisible(DialogConfirm.xml) | window.isvisible(dialogsettings.xml) | window.isvisible(DialogNotification.xml)]</visible>
+		<aspectratio>scale</aspectratio>
+		<texture colordiffuse="$VAR[couleur_OSD]">commun/texture.png</texture>				
+	</control>
 	<control type="image" id="1">																												<description>masque de fond</description>
 		<centerleft>50%</centerleft>
 		<width>1920</width>
@@ -188,6 +188,7 @@
 		<animation effect="fade" start="100" end="0" time="100" condition="window.isvisible(1222) | window.isvisible(1220) | window.isvisible(VideoOSDBookmarks.xml) | window.isvisible(DialogSelect.xml) | window.isvisible(DialogConfirm.xml) | window.isvisible(dialogsettings.xml) | window.isvisible(DialogNotification.xml)">conditional</animation>
 		<animation effect="fade" start="0" end="100" time="100" condition="!window.isvisible(1222) + !window.isvisible(1220) + !window.isvisible(VideoOSDBookmarks.xml) + !window.isvisible(DialogSelect.xml) + !window.isvisible(DialogConfirm.xml) + !window.isvisible(dialogsettings.xml) + !window.isvisible(DialogNotification.xml)">conditional</animation>			
 	<control type="group" id="1">																												<description>poster</description>
+		<visible>!string.contains(Player.Filenameandpath,pvr://)</visible>
 		<top>190</top>		
 		<left>100</left>
 		<height>700</height>
@@ -224,6 +225,91 @@
 		<aspectratio>keep</aspectratio>
 		<texture background="true" colordiffuse="40000000">commun/noimage.png</texture>		
 		<visible>String.IsEmpty(player.Art(poster)) + String.IsEmpty(player.Art(season.poster)) + String.IsEmpty(player.Art(tvshow.poster))</visible>	
+	</control>	
+	</control>	
+	<control type="group" id="1">																												<description>infos pour les enregistrements</description>
+		<visible>string.contains(Player.Filenameandpath,pvr://)</visible>	
+	<control type="grouplist" id="1">
+		<top>520</top>
+		<left>630</left>
+		<width>1180</width>
+		<height>400</height>
+		<itemgap>20</itemgap>
+		<orientation>vertical</orientation>
+	<control type="grouplist" id="1">
+		<height>22</height>
+		<itemgap>20</itemgap>
+		<orientation>horizontal</orientation>	
+	<control type="label" id="1">
+		<width>auto</width>
+		<height>22</height>
+		<font>texte_infos</font>
+		<label>[B]PVR[/B]</label>		
+	</control>
+	<control type="button" id="1">	
+		<height>22</height>			
+		<width>auto</width>				
+		<align>center</align>	
+	<include content="petit_bouton">
+		<param name="label" value="[UPPERCASE]$INFO[PVR.BackendName][/UPPERCASE]"/>
+		<param name="textcolor" value="ffffffff"/>
+		<param name="textoffsetx" value="10"/>
+		<param name="texturenofocus" value="commun/bouton.png"/>
+		<param name="texturenofocus_colordiffuse" value="$VAR[couleur_dominante]"/>
+	</include>	
+	</control>
+	<control type="label" id="1">
+		<width>auto</width>
+		<height>22</height>
+		<font>texte_infos</font>
+		<label>[B]$LOCALIZE[19114][/B]</label>		
+	</control>
+	<control type="button" id="1">	
+		<height>22</height>			
+		<width>auto</width>				
+		<align>center</align>	
+	<include content="petit_bouton">
+		<param name="label" value="[UPPERCASE]$INFO[PVR.BackendVersion][/UPPERCASE]"/>
+		<param name="textcolor" value="ffffffff"/>
+		<param name="textoffsetx" value="10"/>
+		<param name="texturenofocus" value="commun/bouton.png"/>
+		<param name="texturenofocus_colordiffuse" value="$VAR[couleur_dominante]"/>
+	</include>	
+	</control>
+	</control>		
+	<control type="label" id="1">																												<description>nombre de chaines</description>
+		<height>20</height>
+		<font>texte_infos</font>
+		<label>[B]$LOCALIZE[253][/B]   $INFO[container(6800).numitems]</label>		
+	</control>	
+	</control>	
+	<control type="image" id="1">
+		<top>190</top>		
+		<left>100</left>
+		<height>700</height>
+		<width>467</width>
+		<aspectratio align="left">scale</aspectratio>
+		<texture background="true" border="10" colordiffuse="$VAR[gris]">commun/texture.png</texture>
+		<bordertexture border="10">commun/tuiles.png</bordertexture>
+		<bordersize>10,0,10,10</bordersize>		
+	</control>	
+	<control type="image" id="1">
+		<top>190</top>		
+		<left>100</left>
+		<height>700</height>
+		<width>467</width>	
+		<aspectratio align="left">keep</aspectratio>
+		<texture fallback="icones/infos/chaine.png">$INFO[skin.string(chemin_logos_tv)]$INFO[player.channelname].png</texture>		
+	</control>
+	<control type="image" id="1">																												<description>miniature</description>	
+		<top>110</top>		
+		<right>100</right>
+		<height>500</height>
+		<width>600</width>
+		<aspectratio align="right" aligny="bottom">keep</aspectratio>
+		<texture background="true" border="10">$INFO[player.icon]</texture>
+		<bordertexture border="10">commun/tuiles.png</bordertexture>
+		<bordersize>10,0,10,10</bordersize>			
 	</control>	
 	</control>
 	<control type="group" id="1">																												<description>barre de progression</description>
@@ -274,7 +360,16 @@
 		<height>20</height>
 		<font>texte_infos</font>
 		<label>[B]$LOCALIZE[31252][/B]</label>
-		<visible>string.isempty(videoplayer.originaltitle) + string.isempty(videoplayer.TVShowTitle)</visible>
+		<visible>string.isempty(videoplayer.originaltitle) + string.isempty(videoplayer.TVShowTitle) + !string.contains(Player.Filenameandpath,pvr://)</visible>
+	</control>
+	<control type="label" id="1">																												<description>titre original</description>
+		<top>260</top>
+		<left>630</left>
+		<width>1000</width>
+		<height>20</height>
+		<font>texte_infos</font>
+		<label>[B]$LOCALIZE[10701][/B]</label>
+		<visible>string.contains(Player.Filenameandpath,pvr://)</visible>
 	</control>
 	<control type="label" id="1">																												<description>titre serie/numero saison/numero episode</description>
 		<top>260</top>
@@ -367,8 +462,7 @@
 		<aspectratio align="left">keep</aspectratio>
 		<texture>flags/rating/$INFO[videoplayer.userrating].png</texture>
 		<visible>!string.isempty(videoplayer.userrating)</visible>	
-	</control>
-	
+	</control>	
 	</control>	
 	<control type="image" id="1">																												<description>mpaa</description>
 		<top>335</top>
@@ -385,18 +479,28 @@
 		<height>400</height>
 		<itemgap>20</itemgap>
 		<orientation>vertical</orientation>
+	<control type="label" id="1">
+		<top>1</top>
+		<width>auto</width>
+		<height>20</height>
+		<font>texte_infos</font>
+		<label>[B]$LOCALIZE[19076] :[/B]</label>
+		<visible>string.contains(Player.Filenameandpath,pvr://)</visible>
+	</control>
+	<control type="label" id="1">
+		<top>1</top>
+		<width>auto</width>
+		<height>20</height>
+		<font>texte_infos</font>
+		<label>$INFO[player.Folderpath]</label>
+		<visible>string.contains(Player.Filenameandpath,pvr://)</visible>
+	</control>	
 	<control type="label" id="1">																												<description>producteur</description>
 		<height>20</height>
 		<font>texte_infos</font>
 		<label>[B]$LOCALIZE[20339][/B]   $INFO[videoplayer.director]</label>
 		<visible>!string.isempty(videoplayer.director)</visible>
-	</control>
-	<control type="label" id="1">																												<description>casting</description>
-		<height>20</height>
-		<font>texte_infos</font>
-		<label>[B]$LOCALIZE[206][/B]   $INFO[container(50).ListItemAbsolute(0).label], $INFO[container(50).ListItemAbsolute(1).label], $INFO[container(50).ListItemAbsolute(2).label], $INFO[container(50).ListItemAbsolute(3).label], $INFO[container(50).ListItemAbsolute(4).label], $INFO[container(50).ListItemAbsolute(5).label], $INFO[container(50).ListItemAbsolute(6).label]</label>
-		<visible>!string.isempty(container(50).ListItemAbsolute(0).label)</visible>		
-	</control>
+	</control>	
 	<control type="label" id="1">																												<description>realisateur</description>
 		<height>20</height>
 		<font>texte_infos</font>
@@ -410,6 +514,35 @@
 		<visible>!string.isempty(videoplayer.studio)</visible>				
 	</control>
 	</control>
+	<control type="label" id="1">																												<description>titre casting</description>
+		<top>390</top>
+		<right>100</right>
+		<width>500</width>
+		<height>20</height>
+		<align>right</align>
+		<font>texte_infos</font>
+		<label>[B]$LOCALIZE[31277][/B]</label>
+		<visible>!string.isempty(videoplayer.cast)</visible>		
+	</control>
+	<control type="image" id="1">																												<description>ligne de separation</description>
+		<top>420</top>
+		<right>100</right>
+		<width>300</width>
+		<height>1</height>
+		<aspectratio align="right">stretch</aspectratio>
+		<texture colordiffuse="80ffffff">commun/texture.png</texture>
+		<visible>!string.isempty(videoplayer.cast)</visible>		
+	</control>
+	<control type="textbox" id="1">																												<description>casting</description>
+		<top>420</top>
+		<right>100</right>
+		<width>500</width>
+		<height>160</height>
+		<align>right</align>
+		<textcolor>ffffffff</textcolor>
+		<font>infos</font>
+		<label>$INFO[videoplayer.cast]</label>				
+	</control>	
 	<control type="textbox" id="1">																												<description>resume</description>		
 		<top>551</top>
 		<left>630</left>
@@ -430,8 +563,8 @@
 		<align>center</align>
 		<label>$LOCALIZE[31206]</label>		
 		<visible>string.isequal(videoplayer.plot,)</visible>
-	</control>
-	</control>
+	</control>	
+	</control>	
 	<control type="group" id="1">																												<description>infos tv</description>
 		<visible>player.showinfo + videoplayer.content(liveTV)</visible>
 		<animation effect="fade" start="0" end="100" time="100" reversible="false">visible</animation>
@@ -489,10 +622,7 @@
 		<font>petit_texte</font>
 		<label>$INFO[videoplayer.endTime(hh:mm)]</label>
 	</control>
-	</control>
-	
-	
-	
+	</control>	
 	<control type="label" id="1">																												<description>chaine</description>
 		<top>200</top>
 		<left>630</left>
@@ -606,14 +736,12 @@
 		<param name="texturenofocus_colordiffuse" value="$VAR[couleur_dominante]"/>
 	</include>	
 	</control>
-	</control>	
-	
+	</control>		
 	<control type="label" id="1">																												<description>nombre de chaines</description>
 		<height>20</height>
 		<font>texte_infos</font>
 		<label>[B]$LOCALIZE[253][/B]   $INFO[container(6800).numitems]</label>		
-	</control>
-	
+	</control>	
 	</control>
 	<control type="textbox" id="1">																												<description>resume</description>		
 		<top>551</top>

@@ -1,53 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
-	<backgroundcolor>00X000000</backgroundcolor>
-	<defaultcontrol>2</defaultcontrol>
-	<controls>
-		<control type="group" id="13">
-			<left>195r</left>
-			<top>15</top>
-			<visible>!Skin.HasSetting(Show_SlideShow_Paused)</visible>
-			<control type="label">
-				<description>paused label</description>
-				<left>15</left>
-				<top>0</top>
-				<width>150</width>
-				<height>52</height>
-				<align>center</align>
-				<aligny>center</aligny>
-				<font>label</font>
-				<textcolor>white</textcolor>
-				<label>31043</label>
-			</control>
-		</control>
-		<!-- media infos -->
-		<control type="group">
-			<left>465</left>
-			<top>190r</top>
-			<visible>Player.ShowInfo + Player.HasMedia</visible>
-			<include>VisibleFadeEffect</include>
-			<!--background-->
-			<control type="image">
-				<left>-465</left>
-				<top>200r</top>
-				<width>100%</width>
-				<height>200</height>
-				<texture colordiffuse="tertiary">backgrounds/white.png</texture>
-				<animation effect="fade" start="100" end="75" time="0" condition="true">Conditional</animation>
-			</control>
-			<include>SmallMusicInfo</include>
-		</control>
-		<control type="button">
-			<visible>SlideShow.IsVideo + [!SlideShow.IsActive | SlideShow.IsPaused]</visible>
-			<description>Video Play Button</description>
-			<left>810</left>
-			<top>390</top>
-			<width>300</width>
-			<height>300</height>
-			<font>-</font>
-			<onclick>play</onclick>
-			<texturefocus>arrow-big-right.png</texturefocus>
-			<texturenofocus>arrow-big-right.png</texturenofocus>
-		</control>
-	</controls>
+	<backgroundcolor>00X000000</backgroundcolor>		
+	<animation effect="fade" start="100" end="99" time="200" reversible="false">windowclose</animation>
+	<onload condition="string.isequal(window(home).property(infos_diaporama),1)">alarmclock(alar,action(info),00:00,silent)</onload>		
+	<onunload>alarmclock(alarme,control.setfocus(1225),00:00,silent)</onunload>
+<controls>
+	<control type="image">																												<description>masque arriere plan video</description>
+		<aspectratio>scale</aspectratio>
+		<texture colordiffuse="$VAR[gris]">commun/texture.png</texture>	
+		<visible>!Slideshow.IsActive + !Slideshow.IsPaused</visible>		
+	</control>
+	<control type="image">																												<description>masque arriere plan video</description>
+		<aspectratio>keep</aspectratio>
+		<texture>$INFO[window(home).property(photo)]</texture>		
+		<visible>!Slideshow.IsActive + !Slideshow.IsPaused + !string.isequal(window(home).property(zoom_diaporama),1)</visible>				
+	</control>
+	<control type="image">																												<description>masque arriere plan video</description>
+		<aspectratio>scale</aspectratio>
+		<texture>$INFO[window(home).property(photo)]</texture>		
+		<visible>!Slideshow.IsActive + !Slideshow.IsPaused + string.isequal(window(home).property(zoom_diaporama),1)</visible>					
+	</control>
+	<control type="image">																												<description>masque arriere plan video</description>
+		<top>10</top>
+		<left>10</left>
+		<height>150</height>
+		<width>150</width>
+		<aspectratio>keep</aspectratio>
+		<texture colordiffuse="$VAR[couleur_dominante]">commun/zoom.png</texture>		
+		<visible>!Slideshow.IsActive + !Slideshow.IsPaused + string.isequal(window(home).property(zoom_diaporama),1)</visible>					
+	</control>
+	<control type="image">																												<description>masque arriere plan video</description>
+		<animation effect="slide" start="0,0" end="170,0" condition="!Slideshow.IsActive + !Slideshow.IsPaused + string.isequal(window(home).property(zoom_diaporama),1)">conditional</animation>
+		<top>10</top>
+		<left>10</left>
+		<height>150</height>
+		<width>150</width>
+		<aspectratio>keep</aspectratio>
+		<texture colordiffuse="$VAR[couleur_dominante]">commun/infos.png</texture>		
+		<visible>string.isequal(window(home).property(infos_diaporama),1)</visible>					
+	</control>
+</controls>
 </window>

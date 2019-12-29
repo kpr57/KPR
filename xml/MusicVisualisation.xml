@@ -1,31 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<window>
-	<backgroundcolor>00X000000</backgroundcolor>
+<window>				
 <controls>			
+	<control type="image">
+		<texture>commun/fond.png</texture>
+	</control>	
+	<control type="group">
+		<animation effect="slide" start="0,0" end="3000,0" time="1" condition="window.isvisible(DialogMusicInfo.xml) | window.isvisible(selectdialog) | window.isvisible(contextmenu)" reversible="false">conditional</animation>
+		<animation effect="slide" end="0,0" time="1" condition="!window.isvisible(DialogMusicInfo.xml) + !window.isvisible(selectdialog) + !window.isvisible(contextmenu)" reversible="false">conditional</animation>		
 	<control type="visualisation" id="2">																										<description>visualisation</description>
 		<left>0</left>
 		<right>0</right>
 		<top>0</top>
 		<bottom>0</bottom>	
-		<visible>Player.HasAudio + !Skin.hassetting(0visualisation_music)</visible>
+		<visible>Player.HasAudio + !Skin.hassetting(0visualisation_music) + !window.isvisible(DialogMusicInfo.xml) + !window.isvisible(selectdialog) + !window.isvisible(contextmenu)</visible>
 	</control>			
 	<control type="image">																														<description>fanart</description>
-		<texture background="true" colordiffuse="40ffffff">$INFO[MusicPlayer.Property(Fanart_Image)]</texture>
+		<animation effect="zoom" start="130" end="160" center="auto" time="20000" tween="sine" easing="inout" pulse="true" condition="!Skin.HasSetting(0animation_fanart)">Conditional</animation>
+		<animation effect="slide" start="-50,-50" end="50,50" time="30000" tween="sine" easing="inout" pulse="true" condition="!Skin.HasSetting(0animation_fanart)">Conditional</animation>
+		<animation effect="rotatex" start="-10,-10" end="10,10" center="auto" time="20000" tween="sine" easing="inout" pulse="true" condition="!Skin.HasSetting(0animation_fanart)">Conditional</animation>		
+		<animation effect="rotatey" start="-10,-10" end="10,10" center="auto" time="10000" tween="sine" easing="inout" pulse="true" condition="!Skin.HasSetting(0animation_fanart)">Conditional</animation>		
+		<texture background="true" colordiffuse="80ffffff">$INFO[MusicPlayer.Property(Fanart_Image)]</texture>
 		<aspectratio>scale</aspectratio>
 		<visible>!Skin.HasSetting(0music_fanart)</visible>
 	</control>		
 	<control type="image">																														<description>masque</description>
-		<texture background="true" colordiffuse="80000000">fenetres/texture.png</texture>
+		<texture background="true" colordiffuse="20000000">commun/texture.png</texture>
 		<aspectratio>scale</aspectratio>
 		<visible>Skin.hassetting(0cycle_couleur_music)</visible>
 	</control>	
 	<control type="multiimage">																													<description>fanart</description>
 		<timeperimage>3000</timeperimage>
 		<randomize>true</randomize>
-		<fadetime>1500</fadetime>
+		<fadetime>3000</fadetime>
 		<loop>yes</loop>
 		<aspectratio>scale</aspectratio>
-		<imagepath background="true" colordiffuse="40ffffff">fenetres/couleurs/</imagepath>				
+		<imagepath background="true" colordiffuse="80ffffff">commun/couleurs_OSD/</imagepath>				
 		<visible>!Skin.hassetting(0cycle_couleur_music)</visible>
 	</control>
 	<control type="image">																														<description>fanart</description>
@@ -35,6 +44,8 @@
 		<animation effect="zoom" start="65" end="20" center="auto" time="30000" tween="sine" easing="inout" pulse="true" condition="!Skin.HasSetting(0animation_music_pochette)">Conditional</animation>
 		<animation effect="rotatex" start="-22,-22" end="22,22" center="auto" time="5000" tween="sine" easing="inout" pulse="true" condition="!Skin.HasSetting(0animation_music_pochette)">Conditional</animation>		
 		<animation effect="rotatey" start="-22,-22" end="22,22" center="auto" time="7500" tween="sine" easing="inout" pulse="true" condition="!Skin.HasSetting(0animation_music_pochette)">Conditional</animation>		
+		<animation effect="fade" start="100" end="0" time="1500" reversible="false" condition="window.isvisible(script-cu-lrclyrics-main.xml) + !player.showinfo">conditional</animation>
+		<animation effect="fade" start="0" end="100" time="1500" reversible="false" condition="!window.isvisible(script-cu-lrclyrics-main.xml) | player.showinfo">conditional</animation>
 		<visible>!Skin.HasSetting(0animation_music_pochette)</visible>
 	</control>	
 	<control type="label">																														<description>titre</description>
@@ -44,16 +55,14 @@
 		<width>1920</width>
 		<font>textbox</font>
 		<align>center</align>
-		<aligny>center</aligny>
-		<textcolor>ffffffff</textcolor>
 		<shadowcolor>cc000000</shadowcolor>
 		<label>[B]$INFO[MusicPlayer.Artist][/B][CR]$INFO[MusicPlayer.Album]</label>		
 		<animation effect="zoom" start="150" end="175" time="5000" tween="sine" easing="inout" pulse="true" condition="!Skin.HasSetting(0animation_music_pochette)">Conditional</animation>
 		<animation effect="slide" start="-700,-200" end="0,200" time="30000" tween="sine" easing="inout" pulse="true" condition="!Skin.HasSetting(0animation_music_pochette)">Conditional</animation>		
 		<animation effect="rotatex" start="50" end="-50" center="420,0" time="7500" tween="sine" easing="inout" pulse="true" condition="!Skin.HasSetting(0animation_music_pochette)">Conditional</animation>		
 		<animation effect="rotatey" start="-50" end="50" center="960,0" time="15000" tween="sine" easing="inout" pulse="true" condition="!Skin.HasSetting(0animation_music_pochette)">Conditional</animation>				
-		<animation effect="fade" start="100" end="0" time="3000" reversible="false" condition="window.isvisible(script-cu-lrclyrics-main.xml)">conditional</animation>
-		<animation effect="fade" start="0" end="100" time="3000" reversible="false" condition="!window.isvisible(script-cu-lrclyrics-main.xml)">conditional</animation>
+		<animation effect="fade" start="100" end="0" time="1500" reversible="false" condition="window.isvisible(script-cu-lrclyrics-main.xml) + !player.showinfo">conditional</animation>
+		<animation effect="fade" start="0" end="100" time="1500" reversible="false" condition="!window.isvisible(script-cu-lrclyrics-main.xml) | player.showinfo">conditional</animation>
 		<visible>!Skin.HasSetting(0animation_music_pochette)</visible>
 	</control>
 	<control type="label">																														<description>titre</description>
@@ -63,16 +72,14 @@
 		<width>1920</width>
 		<font>bouton</font>
 		<align>center</align>
-		<aligny>center</aligny>
-		<textcolor>ffffffff</textcolor>
 		<shadowcolor>cc000000</shadowcolor>
 		<label>[B]$INFO[MusicPlayer.Title][/B]</label>		
 		<animation effect="zoom" start="150" end="175" time="3000" tween="sine" easing="inout" pulse="true" condition="!Skin.HasSetting(0animation_music_pochette)">Conditional</animation>
 		<animation effect="slide" start="0,200" end="-700,-200" time="20000" tween="sine" easing="inout" pulse="true" condition="!Skin.HasSetting(0animation_music_pochette)">Conditional</animation>		
 		<animation effect="rotatex" start="-50" end="50" center="420,0" time="5000" tween="sine" easing="inout" pulse="true" condition="!Skin.HasSetting(0animation_music_pochette)">Conditional</animation>		
 		<animation effect="rotatey" start="-50" end="50" center="960,0" time="10000" tween="sine" easing="inout" pulse="true" condition="!Skin.HasSetting(0animation_music_pochette)">Conditional</animation>				
-		<animation effect="fade" start="100" end="0" time="3000" reversible="false" condition="window.isvisible(script-cu-lrclyrics-main.xml)">conditional</animation>
-		<animation effect="fade" start="0" end="100" time="3000" reversible="false" condition="!window.isvisible(script-cu-lrclyrics-main.xml)">conditional</animation>
+		<animation effect="fade" start="100" end="0" time="1500" reversible="false" condition="window.isvisible(script-cu-lrclyrics-main.xml) + !player.showinfo">conditional</animation>
+		<animation effect="fade" start="0" end="100" time="1500" reversible="false" condition="!window.isvisible(script-cu-lrclyrics-main.xml) | player.showinfo">conditional</animation>
 		<visible>!Skin.HasSetting(0animation_music_pochette)</visible>
 	</control>	
 	<control type="group">	
@@ -85,7 +92,7 @@
 		<width>2500</width>
 		<height>700</height>
 		<aspectratio>stretch</aspectratio>
-		<texture flipy="true" colordiffuse="ff000000">fenetres/degrade.png</texture>
+		<texture flipy="true" colordiffuse="ff000000">commun/degrade.png</texture>
 	</control>
 	<control type="image">																														<description>degrade fond lecteur OSD</description>
 		<bottom>0</bottom>
@@ -93,7 +100,7 @@
 		<width>2500</width>
 		<height>700</height>
 		<aspectratio>stretch</aspectratio>
-		<texture colordiffuse="ff000000">fenetres/degrade.png</texture>
+		<texture colordiffuse="ff000000">commun/degrade.png</texture>
 	</control>
 	<include content="heure">																													<description>heure + volume</description>
 	</include>		
@@ -102,69 +109,82 @@
 		<height>120</height>
 		<font>titre</font>
 		<align>left</align>
-		<aligny>center</aligny>
 		<label>   $INFO[MusicPlayer.Artist] : $INFO[MusicPlayer.Album]</label>
-		<textcolor>ffffffff</textcolor>
 		<visible>player.hasAudio + !window.isVisible(DialogMusicInfo.xml)</visible>
 	</control>
+	<control type="label">																														<description>titre</description>
+		<top>-10</top>
+		<height>120</height>
+		<font>titre</font>
+		<align>right</align>
+		<label>$INFO[MusicPlayer.title]   </label>
+	</control>
 	<control type="group">
+		<animation effect="slide" start="0,0" end="0,-90" time="250" condition="window.isVisible(musicosd)" reversible="false">conditional</animation>
+		<animation effect="slide" start="0,-90" end="0,0" time="250" delay ="250" condition="!window.isVisible(musicosd)" reversible="false">conditional</animation>
 		<left>0</left>			
-		<bottom>0</bottom>
+		<bottom>10</bottom>
 		<height>256</height>	
 	<control type="image">																														<description>album</description>
+		<animation effect="fade" start="0" end="100" delay ="250" time="250" reversible="false">windowopen</animation>
 		<bottom>10</bottom>
-		<left>10</left>
+		<left>20</left>
 		<width>256</width>
 		<height>256</height>
 		<texture fallback="default_album.jpg">$INFO[MusicPlayer.Cover]</texture>
 		<aspectratio aligny="center">keep</aspectratio>
 	</control>
-	<control type="group">
-		<animation effect="slide" start="0,0" end="0,-90" time="250" condition="window.isVisible(musicosd)" reversible="false">conditional</animation>
-		<animation effect="slide" start="0,-90" end="0,0" time="250" delay ="250" condition="!window.isVisible(musicosd)" reversible="false">conditional</animation>
 	<control type="label">																														<description>titre</description>
 		<left>340</left>
 		<bottom>80</bottom>
-		<height>40</height>
+		<height>60</height>
 		<font>texte_moyen</font>
 		<align>left</align>
 		<aligny>bottom</aligny>
-		<label>[I]$LOCALIZE[31259] : $INFO[MusicPlayer.offset(1).Artist] - $INFO[MusicPlayer.offset(1).Album] - $INFO[MusicPlayer.offset(1).Title] ($INFO[MusicPlayer.offset(1).duration])[/I]</label>
-		<textcolor>ffffffff</textcolor>
+		<label>[B][I]$LOCALIZE[31331][/B] : $INFO[MusicPlayer.offset(1).Artist] • $INFO[MusicPlayer.offset(1).Album] • $INFO[MusicPlayer.offset(1).Title] ($INFO[MusicPlayer.offset(1).duration])[/I]</label>
 		<visible>!string.isEmpty(MusicPlayer.offset(1).Title)</visible>
-	</control>			
+		<animation effect="fade" start="0" end="100" delay ="250" time="250" reversible="false">windowopen</animation>
+		<animation effect="slide" start="0,0" end="0,70" time="250" condition="window.isVisible(musicosd)" reversible="false">conditional</animation>
+		<animation effect="slide" start="0,70" end="0,0" time="250" delay ="250" condition="!window.isVisible(musicosd)" reversible="false">conditional</animation>
+	</control>
 	<control type="label">																														<description>titre</description>
 		<left>340</left>
-		<bottom>10</bottom>
+		<bottom>80</bottom>
 		<height>60</height>
-		<font>textbox</font>
+		<font>texte_moyen</font>
 		<align>left</align>
-		<aligny>center</aligny>
-		<label>[I]$INFO[MusicPlayer.title][/I]</label>
-		<textcolor>ffffffff</textcolor>
-	</control>	
+		<aligny>bottom</aligny>
+		<label>[B][I]$LOCALIZE[31331][/B] : $LOCALIZE[31342][/I]</label>
+		<visible>string.isEmpty(MusicPlayer.offset(1).Title)</visible>
+		<animation effect="fade" start="0" end="100" delay ="250" time="250" reversible="false">windowopen</animation>
+		<animation effect="slide" start="0,0" end="0,70" time="250" condition="window.isVisible(musicosd)" reversible="false">conditional</animation>
+		<animation effect="slide" start="0,70" end="0,0" time="250" delay ="250" condition="!window.isVisible(musicosd)" reversible="false">conditional</animation>
+	</control>
 	<control type="label">																														<description>titre</description>
 		<right>60</right>
 		<bottom>10</bottom>
 		<height>60</height>
 		<font>textbox</font>
 		<align>right</align>
-		<aligny>center</aligny>
 		<label>$INFO[MusicPlayer.Time]/$INFO[MusicPlayer.duration]</label>
-		<textcolor>ffffffff</textcolor>		
+		<animation effect="fade" start="0" end="100" delay ="250" time="250" reversible="false">windowopen</animation>
+		<animation effect="fade" start="0" end="100" delay="500" time="1" reversible="false" condition="!window.isvisible(musicosd)">conditional</animation>
+		<animation effect="fade" start="100" end="0" time="1" reversible="false" condition="window.isvisible(musicosd)">conditional</animation>	
 	</control>
 	<control type="progress">				
 		<left>330</left>
 		<right>50</right>
-		<bottom>70</bottom>		
-        <height>5</height>	
+		<bottom>68</bottom>		
+        <height>9</height>	
 		<reveal>true</reveal>
-		<texturebg colordiffuse="80808080">fenetres/texture.png</texturebg>
-		<midtexture colordiffuse="$VAR[1selection_osd]">fenetres/texture.png</midtexture>
-		<info>player.Progress</info>				
+		<texturebg colordiffuse="80808080">commun/texture.png</texturebg>
+		<midtexture colordiffuse="$VAR[couleur_dominante]">commun/texture.png</midtexture>
+		<info>player.Progress</info>
+		<animation effect="fade" start="0" end="100" delay="500" time="1" reversible="false" condition="!window.isvisible(musicosd)">conditional</animation>
+		<animation effect="fade" start="100" end="0" time="1" reversible="false" condition="window.isvisible(musicosd) | !string.isEmpty(window(home).property(playlist))">conditional</animation>			
 	</control>
 	</control>
 	</control>
-	</control>	
-	</controls>
+	</control>		
+</controls>
 </window>

@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="utf-8"?>
+<window type="dialog" id="1298">
+	<backgroundcolor>00X000000</backgroundcolor>	
+	<onload>control.setfocus(21,0,absolute)</onload>
+	<onload>control.setfocus(20,0,absolute)</onload>
+	<onload>clearproperty(nom_temporaire,home)</onload>
+	<onload>clearproperty(chemin_temporaire_bis,home)</onload>
+	<onload>clearproperty(chemin_temporaire1,home)</onload>
+	<onload>clearproperty(chemin_temporaire2,home)</onload>
+	<onload>clearproperty(chemin_temporaire3,home)</onload>
+	<onload>clearproperty(chemin_temporaire4,home)</onload>
+	<onload>clearproperty(chemin_temporaire5,home)</onload>
+	<onload>clearproperty(chemin_temporaire6,home)</onload>
+	<onload>clearproperty(chemin_temporaire7,home)</onload>
+	<onload>clearproperty(chemin_temporaire8,home)</onload>
+	<onload>clearproperty(chemin_temporaire9,home)</onload>
+	<onload>clearproperty(chemin_temporaire10,home)</onload>	
+	<onload>setproperty(chemin_temporaire,library://video/,home)</onload>
+	<onunload>clearproperty(nom_temporaire,home)</onunload>
+	<onunload>clearproperty(chemin_temporaire_bis,home)</onunload>
+	<onunload>clearproperty(chemin_temporaire1,home)</onunload>
+	<onunload>clearproperty(chemin_temporaire2,home)</onunload>
+	<onunload>clearproperty(chemin_temporaire3,home)</onunload>
+	<onunload>clearproperty(chemin_temporaire4,home)</onunload>
+	<onunload>clearproperty(chemin_temporaire5,home)</onunload>
+	<onunload>clearproperty(chemin_temporaire6,home)</onunload>
+	<onunload>clearproperty(chemin_temporaire7,home)</onunload>
+	<onunload>clearproperty(chemin_temporaire8,home)</onunload>
+	<onunload>clearproperty(chemin_temporaire9,home)</onunload>
+	<onunload>clearproperty(chemin_temporaire10,home)</onunload>	
+	<onunload>setproperty(chemin_temporaire,library://video/,home)</onunload>
+<controls>
+	<include>image_fond</include>
+	<control type="label">																														<description>titre</description>	
+		<height>140</height>
+		<align>center</align>
+		<font>titre</font>
+		<label>$LOCALIZE[31285]</label>				
+	</control>	
+	<include content="barre_separation_horizontale">																							<description>barre de separation horizontale</description>
+		<param name="left" value="50"/> 
+		<param name="right" value="50"/>
+		<param name="bottom" value="940"/>		
+	</include>		
+	<control type="image">
+		<top>190</top>
+		<left>210</left>
+		<width>720</width>
+		<height>700</height>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="20000000" border="50">commun/bouton.png</texture>
+	</control>
+	<control type="list" id="20">																												<description>liste de gauche</description>		
+		<top>190</top>
+		<left>220</left>
+		<width>700</width>
+		<height>700</height>
+		<itemgap>20</itemgap>
+		<onright>21</onright>
+		<scrolltime tween="Linear" easing="in">250</scrolltime>
+	<itemlayout height="100">
+	<control type="button">		
+		<top>10</top>
+	<include content="bouton">																											
+		<param name="width" value="700"/> 
+		<param name="height" value="80"/> 
+		<param name="texturenofocus_colordiffuse" value="05ffffff"/>
+	</include>	
+	</control>	
+	<control type="image">
+		<left>10</left>
+		<top>17</top>
+		<width>66</width>
+		<height>66</height>
+		<texture>$INFO[ListItem.Icon]</texture>
+		<aspectratio>keep</aspectratio>
+	</control>
+	<control type="label">
+		<top>10</top>
+		<left>90</left>
+		<height>80</height>
+		<label>$INFO[ListItem.Label]</label>
+	</control>
+	</itemlayout>
+	<focusedlayout height="100">
+	<control type="button">	
+		<top>10</top>			
+		<onfocus condition="!String.IsEqual(listitem.icon,) + !string.EndsWith(listitem.icon,none)">setproperty(image,$INFO[listitem.icon],home)</onfocus>
+		<onfocus condition="String.IsEqual(listitem.icon,) | string.EndsWith(listitem.icon,none)">clearproperty(image,home)</onfocus>	
+		<onfocus>setproperty(label,$ESCINFO[ListItem.Label],home)</onfocus>
+		<onfocus>clearproperty(chemin_temporaire_bis,home)</onfocus>
+		<onfocus>clearproperty(chemin_temporaire1,home)</onfocus>
+		<onfocus>clearproperty(chemin_temporaire2,home)</onfocus>
+		<onfocus>clearproperty(chemin_temporaire3,home)</onfocus>
+		<onfocus>clearproperty(chemin_temporaire4,home)</onfocus>
+		<onfocus>clearproperty(chemin_temporaire5,home)</onfocus>
+		<onfocus>clearproperty(chemin_temporaire6,home)</onfocus>
+		<onfocus>clearproperty(chemin_temporaire7,home)</onfocus>
+		<onfocus>clearproperty(chemin_temporaire8,home)</onfocus>
+		<onfocus>clearproperty(chemin_temporaire9,home)</onfocus>
+		<onfocus>clearproperty(chemin_temporaire10,home)</onfocus>	
+		<onfocus>clearproperty(chemin_temporaire,home)</onfocus>
+		<onfocus condition="string.isequal(listitem.label,$LOCALIZE[31287])">setproperty(chemin_temporaire,library://video/,home)</onfocus>
+		<onfocus condition="string.isequal(listitem.label,$LOCALIZE[31287])">setproperty(chemin_gauche,library://video/,home)</onfocus>
+		<onfocus condition="string.isequal(listitem.label,$LOCALIZE[31287])">setproperty(nom_temporaire,$LOCALIZE[14022],home)</onfocus>
+		<onfocus condition="string.isequal(listitem.label,$LOCALIZE[31288])">setproperty(chemin_temporaire,library://music/,home)</onfocus>	
+		<onfocus condition="string.isequal(listitem.label,$LOCALIZE[31288])">setproperty(chemin_gauche,library://music/,home)</onfocus>	
+		<onfocus condition="string.isequal(listitem.label,$LOCALIZE[31288])">setproperty(nom_temporaire,$LOCALIZE[14022],home)</onfocus>
+	</control>
+	<control type="image">		
+		<top>10</top>
+		<height>80</height>
+		<texture colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texture>
+		<aspectratio>stretch</aspectratio>
+		<visible>control.hasfocus(20)</visible>
+	</control>
+	<control type="image">		
+		<top>10</top>
+		<height>80</height>
+		<texture colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texture>
+		<aspectratio>stretch</aspectratio>
+		<animation effect="fade" start="100" end="25" condition="true">conditional</animation>
+		<visible>!control.hasfocus(20)</visible>
+	</control>	
+	<control type="image">
+		<left>10</left>
+		<top>17</top>
+		<width>66</width>
+		<height>66</height>
+		<texture>$INFO[ListItem.Icon]</texture>
+		<aspectratio>keep</aspectratio>
+	</control>
+	<control type="label">
+		<top>10</top>
+		<left>90</left>
+		<height>80</height>
+		<label>$INFO[ListItem.Label]</label>
+	</control>	
+	</focusedlayout>
+	<content>
+	<item>
+		<label>$LOCALIZE[31287]</label>
+		<icon>defaultvideo.png</icon>
+	</item>	
+	<item>
+		<label>$LOCALIZE[31288]</label>
+		<icon>defaultaudio.png</icon>
+	</item>
+	</content>	
+	</control>
+	<control type="image">
+		<top>190</top>
+		<left>990</left>
+		<width>720</width>
+		<height>700</height>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="20000000" border="50">commun/bouton.png</texture>
+	</control>
+	<control type="list" id="21">																												<description>liste de droite</description>		
+		<top>190</top>
+		<left>1000</left>
+		<width>700</width>
+		<height>700</height>
+		<itemgap>20</itemgap>
+		<onleft>20</onleft>		
+		<scrolltime tween="linear" easing="out">250</scrolltime>			
+		<onclick condition="!string.isequal(listitem.label,..) + !string.isequal(listitem.label,$LOCALIZE[31289]) + !string.isempty(listitem.FileNameAndPath) + !string.isempty(ListItem.FileExtension)">noop</onclick>
+		<onclick condition="!string.isequal(listitem.label,..) + !string.isequal(listitem.label,$LOCALIZE[31289]) + string.isempty(window(home).property(chemin_temporaire1)) + !string.isempty(listitem.FileNameAndPath) + string.isempty(ListItem.FileExtension)">setproperty(chemin_temporaire1,$INFO[listitem.FileNameAndPath],home)</onclick>
+		<onclick condition="!string.isequal(listitem.label,..) + !string.isequal(listitem.label,$LOCALIZE[31289]) + string.isempty(window(home).property(chemin_temporaire1)) + !string.isempty(listitem.FileNameAndPath) + string.isempty(ListItem.FileExtension)">setproperty(chemin_temporaire,$INFO[listitem.FileNameAndPath],home)</onclick>
+		<onclick condition="!string.isequal(listitem.label,..) + !string.isequal(listitem.label,$LOCALIZE[31289]) + !string.isempty(window(home).property(chemin_temporaire1)) + !string.isempty(listitem.FileNameAndPath) + string.isempty(ListItem.FileExtension) + string.isempty(window(home).property(chemin_temporaire2))">setproperty(chemin_temporaire2,$INFO[listitem.FileNameAndPath],home)</onclick>		
+		<onclick condition="!string.isequal(listitem.label,..) + !string.isequal(listitem.label,$LOCALIZE[31289]) + !string.isempty(window(home).property(chemin_temporaire1)) + !string.isempty(listitem.FileNameAndPath) + string.isempty(ListItem.FileExtension)">setproperty(chemin_temporaire,$INFO[listitem.FileNameAndPath],home)</onclick>
+		<onclick condition="!string.isequal(listitem.label,..) + !string.isequal(listitem.label,$LOCALIZE[31289]) + !string.isempty(window(home).property(chemin_temporaire2)) + !string.isempty(listitem.FileNameAndPath) + string.isempty(ListItem.FileExtension) + string.isempty(window(home).property(chemin_temporaire3))">setproperty(chemin_temporaire3,$INFO[listitem.FileNameAndPath],home)</onclick>
+		<onclick condition="!string.isequal(listitem.label,..) + !string.isequal(listitem.label,$LOCALIZE[31289]) + !string.isempty(window(home).property(chemin_temporaire2)) + !string.isempty(listitem.FileNameAndPath) + string.isempty(ListItem.FileExtension)">setproperty(chemin_temporaire,$INFO[listitem.FileNameAndPath],home)</onclick>
+		<onclick condition="!string.isequal(listitem.label,..) + !string.isequal(listitem.label,$LOCALIZE[31289]) + !string.isempty(window(home).property(chemin_temporaire3)) + !string.isempty(listitem.FileNameAndPath) + string.isempty(ListItem.FileExtension) + string.isempty(window(home).property(chemin_temporaire4))">setproperty(chemin_temporaire4,$INFO[listitem.FileNameAndPath],home)</onclick>
+		<onclick condition="!string.isequal(listitem.label,..) + !string.isequal(listitem.label,$LOCALIZE[31289]) + !string.isempty(window(home).property(chemin_temporaire3)) + !string.isempty(listitem.FileNameAndPath) + string.isempty(ListItem.FileExtension)">setproperty(chemin_temporaire,$INFO[listitem.FileNameAndPath],home)</onclick>
+		<onclick condition="!string.isequal(listitem.label,..) + !string.isequal(listitem.label,$LOCALIZE[31289]) + !string.isempty(window(home).property(chemin_temporaire4)) + !string.isempty(listitem.FileNameAndPath) + string.isempty(ListItem.FileExtension) + string.isempty(window(home).property(chemin_temporaire5))">setproperty(chemin_temporaire5,$INFO[listitem.FileNameAndPath],home)</onclick>
+		<onclick condition="!string.isequal(listitem.label,..) + !string.isequal(listitem.label,$LOCALIZE[31289]) + !string.isempty(window(home).property(chemin_temporaire4)) + !string.isempty(listitem.FileNameAndPath) + string.isempty(ListItem.FileExtension)">setproperty(chemin_temporaire,$INFO[listitem.FileNameAndPath],home)</onclick>
+		<onclick condition="!string.isequal(listitem.label,..) + !string.isequal(listitem.label,$LOCALIZE[31289]) + !string.isempty(window(home).property(chemin_temporaire5)) + !string.isempty(listitem.FileNameAndPath) + string.isempty(ListItem.FileExtension) + string.isempty(window(home).property(chemin_temporaire6))">setproperty(chemin_temporaire6,$INFO[listitem.FileNameAndPath],home)</onclick>
+		<onclick condition="!string.isequal(listitem.label,..) + !string.isequal(listitem.label,$LOCALIZE[31289]) + !string.isempty(window(home).property(chemin_temporaire5)) + !string.isempty(listitem.FileNameAndPath) + string.isempty(ListItem.FileExtension)">setproperty(chemin_temporaire,$INFO[listitem.FileNameAndPath],home)</onclick>
+		<onclick condition="!string.isequal(listitem.label,..) + !string.isequal(listitem.label,$LOCALIZE[31289]) + !string.isempty(window(home).property(chemin_temporaire6)) + !string.isempty(listitem.FileNameAndPath) + string.isempty(ListItem.FileExtension) + string.isempty(window(home).property(chemin_temporaire7))">setproperty(chemin_temporaire7,$INFO[listitem.FileNameAndPath],home)</onclick>
+		<onclick condition="!string.isequal(listitem.label,..) + !string.isequal(listitem.label,$LOCALIZE[31289]) + !string.isempty(window(home).property(chemin_temporaire6)) + !string.isempty(listitem.FileNameAndPath) + string.isempty(ListItem.FileExtension)">setproperty(chemin_temporaire,$INFO[listitem.FileNameAndPath],home)</onclick>
+		<onclick condition="!string.isequal(listitem.label,..) + !string.isequal(listitem.label,$LOCALIZE[31289]) + !string.isempty(window(home).property(chemin_temporaire7)) + !string.isempty(listitem.FileNameAndPath) + string.isempty(ListItem.FileExtension) + string.isempty(window(home).property(chemin_temporaire8))">setproperty(chemin_temporaire8,$INFO[listitem.FileNameAndPath],home)</onclick>
+		<onclick condition="!string.isequal(listitem.label,..) + !string.isequal(listitem.label,$LOCALIZE[31289]) + !string.isempty(window(home).property(chemin_temporaire7)) + !string.isempty(listitem.FileNameAndPath) + string.isempty(ListItem.FileExtension)">setproperty(chemin_temporaire,$INFO[listitem.FileNameAndPath],home)</onclick>
+		<onclick condition="!string.isequal(listitem.label,..) + !string.isequal(listitem.label,$LOCALIZE[31289]) + !string.isempty(window(home).property(chemin_temporaire8)) + !string.isempty(listitem.FileNameAndPath) + string.isempty(ListItem.FileExtension) + string.isempty(window(home).property(chemin_temporaire9))">setproperty(chemin_temporaire9,$INFO[listitem.FileNameAndPath],home)</onclick>
+		<onclick condition="!string.isequal(listitem.label,..) + !string.isequal(listitem.label,$LOCALIZE[31289]) + !string.isempty(window(home).property(chemin_temporaire8)) + !string.isempty(listitem.FileNameAndPath) + string.isempty(ListItem.FileExtension)">setproperty(chemin_temporaire,$INFO[listitem.FileNameAndPath],home)</onclick>
+		<onclick condition="!string.isequal(listitem.label,..) + !string.isequal(listitem.label,$LOCALIZE[31289]) + !string.isempty(window(home).property(chemin_temporaire9)) + !string.isempty(listitem.FileNameAndPath) + string.isempty(ListItem.FileExtension) + string.isempty(window(home).property(chemin_temporaire10))">setproperty(chemin_temporaire10,$INFO[listitem.FileNameAndPath],home)</onclick>
+		<onclick condition="!string.isequal(listitem.label,..) + !string.isequal(listitem.label,$LOCALIZE[31289]) + !string.isempty(window(home).property(chemin_temporaire9)) + !string.isempty(listitem.FileNameAndPath) + string.isempty(ListItem.FileExtension)">setproperty(chemin_temporaire,$INFO[listitem.FileNameAndPath],home)</onclick>
+		<onclick condition="!string.isequal(listitem.label,..) + !string.isequal(listitem.label,$LOCALIZE[31289]) + !string.isempty(listitem.FileNameAndPath) + string.isempty(ListItem.FileExtension)">setproperty(nom_temporaire,$INFO[listitem.label],home)</onclick>
+		<onclick condition="!string.isequal(listitem.label,..) + !string.isequal(listitem.label,$LOCALIZE[31289]) + !string.isempty(listitem.FileNameAndPath) + string.isempty(ListItem.FileExtension)">control.setfocus(23)</onclick>		
+		<onclick condition="!string.isequal(listitem.label,..) + !string.isequal(listitem.label,$LOCALIZE[31289]) + string.contains(window(home).property(chemin_temporaire),movies/genres)">skin.setstring(chemin_widget_$INFO[window(home).property(id_widget)],videodb://movies/genres/$INFO[listitem.dbid])</onclick>
+		<onclick condition="!string.isequal(listitem.label,..) + !string.isequal(listitem.label,$LOCALIZE[31289]) + string.contains(window(home).property(chemin_temporaire),movies/genres)">skin.setstring(nom_widget_$INFO[window(home).property(id_widget)],$LOCALIZE[31168] │ $INFO[listitem.label])</onclick>
+		<onclick condition="!string.isequal(listitem.label,..) + !string.isequal(listitem.label,$LOCALIZE[31289]) + string.contains(window(home).property(chemin_temporaire),movies/genres)">skin.setstring(temp,$LOCALIZE[31168] │ $INFO[listitem.label])</onclick>				
+		<onclick condition="!string.isequal(listitem.label,..) + !string.isequal(listitem.label,$LOCALIZE[31289]) + string.contains(window(home).property(chemin_temporaire),movies/genres)">skin.setstring(cible_widget_$INFO[window(home).property(id_widget)],videos)</onclick>
+		<onclick condition="!string.isequal(listitem.label,..) + !string.isequal(listitem.label,$LOCALIZE[31289]) + string.contains(window(home).property(chemin_temporaire),movies/genres)">skin.setString(afficher_widget_$INFO[window(home).property(id_widget)],1)</onclick>
+		<onclick condition="!string.isequal(listitem.label,..) + !string.isequal(listitem.label,$LOCALIZE[31289]) + string.contains(window(home).property(chemin_temporaire),movies/genres)">action(back)</onclick>
+		<onclick condition="!string.isequal(listitem.label,..) + !string.isequal(listitem.label,$LOCALIZE[31289]) + string.contains(window(home).property(chemin_temporaire),movies/years)">skin.setstring(chemin_widget_$INFO[window(home).property(id_widget)],videodb://movies/years/$INFO[listitem.label])</onclick>
+		<onclick condition="!string.isequal(listitem.label,..) + !string.isequal(listitem.label,$LOCALIZE[31289]) + string.contains(window(home).property(chemin_temporaire),movies/years)">skin.setstring(nom_widget_$INFO[window(home).property(id_widget)],$LOCALIZE[31168] │ $INFO[listitem.label])</onclick>
+		<onclick condition="!string.isequal(listitem.label,..) + !string.isequal(listitem.label,$LOCALIZE[31289]) + string.contains(window(home).property(chemin_temporaire),movies/years)">skin.setstring(temp,$LOCALIZE[31168] │ $INFO[listitem.label])</onclick>				
+		<onclick condition="!string.isequal(listitem.label,..) + !string.isequal(listitem.label,$LOCALIZE[31289]) + string.contains(window(home).property(chemin_temporaire),movies/years)">skin.setstring(cible_widget_$INFO[window(home).property(id_widget)],videos)</onclick>
+		<onclick condition="!string.isequal(listitem.label,..) + !string.isequal(listitem.label,$LOCALIZE[31289]) + string.contains(window(home).property(chemin_temporaire),movies/years)">skin.setString(afficher_widget_$INFO[window(home).property(id_widget)],1)</onclick>
+		<onclick condition="!string.isequal(listitem.label,..) + !string.isequal(listitem.label,$LOCALIZE[31289]) + string.contains(window(home).property(chemin_temporaire),movies/years)">action(back)</onclick>
+		<onclick condition="!string.isequal(listitem.label,..) + !string.isequal(listitem.label,$LOCALIZE[31289]) + string.contains(window(home).property(chemin_temporaire),tvshows/genres)">skin.setstring(chemin_widget_$INFO[window(home).property(id_widget)],videodb://tvshows/genres/$INFO[listitem.dbid])</onclick>
+		<onclick condition="!string.isequal(listitem.label,..) + !string.isequal(listitem.label,$LOCALIZE[31289]) + string.contains(window(home).property(chemin_temporaire),tvshows/genres)">skin.setstring(nom_widget_$INFO[window(home).property(id_widget)],$LOCALIZE[31213] │ $INFO[listitem.label])</onclick>	
+		<onclick condition="!string.isequal(listitem.label,..) + !string.isequal(listitem.label,$LOCALIZE[31289]) + string.contains(window(home).property(chemin_temporaire),tvshows/genres)">skin.setstring(temp,$LOCALIZE[31213] │ $INFO[listitem.label])</onclick>			
+		<onclick condition="!string.isequal(listitem.label,..) + !string.isequal(listitem.label,$LOCALIZE[31289]) + string.contains(window(home).property(chemin_temporaire),tvshows/genres)">skin.setstring(cible_widget_$INFO[window(home).property(id_widget)],videos)</onclick>
+		<onclick condition="!string.isequal(listitem.label,..) + !string.isequal(listitem.label,$LOCALIZE[31289]) + string.contains(window(home).property(chemin_temporaire),tvshows/genres)">skin.setString(afficher_widget_$INFO[window(home).property(id_widget)],1)</onclick>
+		<onclick condition="!string.isequal(listitem.label,..) + !string.isequal(listitem.label,$LOCALIZE[31289]) + string.contains(window(home).property(chemin_temporaire),tvshows/genres)">action(back)</onclick>
+		<onclick condition="!string.isequal(listitem.label,..) + !string.isequal(listitem.label,$LOCALIZE[31289]) + string.contains(window(home).property(chemin_temporaire),tvshows/years)">skin.setstring(chemin_widget_$INFO[window(home).property(id_widget)],videodb://tvshows/years/$INFO[listitem.label])</onclick>
+		<onclick condition="!string.isequal(listitem.label,..) + !string.isequal(listitem.label,$LOCALIZE[31289]) + string.contains(window(home).property(chemin_temporaire),tvshows/years)">skin.setstring(nom_widget_$INFO[window(home).property(id_widget)],$LOCALIZE[31213] │ $INFO[listitem.label])</onclick>	
+		<onclick condition="!string.isequal(listitem.label,..) + !string.isequal(listitem.label,$LOCALIZE[31289]) + string.contains(window(home).property(chemin_temporaire),tvshows/years)">skin.setstring(temp,$LOCALIZE[31213] │ $INFO[listitem.label])</onclick>			
+		<onclick condition="!string.isequal(listitem.label,..) + !string.isequal(listitem.label,$LOCALIZE[31289]) + string.contains(window(home).property(chemin_temporaire),tvshows/years)">skin.setstring(cible_widget_$INFO[window(home).property(id_widget)],videos)</onclick>
+		<onclick condition="!string.isequal(listitem.label,..) + !string.isequal(listitem.label,$LOCALIZE[31289]) + string.contains(window(home).property(chemin_temporaire),tvshows/years)">skin.setString(afficher_widget_$INFO[window(home).property(id_widget)],1)</onclick>
+		<onclick condition="!string.isequal(listitem.label,..) + !string.isequal(listitem.label,$LOCALIZE[31289]) + string.contains(window(home).property(chemin_temporaire),tvshows/years)">action(back)</onclick>
+		<onclick condition="!string.isequal(listitem.label,..) + !string.isequal(listitem.label,$LOCALIZE[31289]) + string.contains(window(home).property(chemin_temporaire),music/genres)">skin.setstring(chemin_widget_$INFO[window(home).property(id_widget)],musicdb://genres/$INFO[listitem.dbid])</onclick>
+		<onclick condition="!string.isequal(listitem.label,..) + !string.isequal(listitem.label,$LOCALIZE[31289]) + string.contains(window(home).property(chemin_temporaire),music/genres)">skin.setstring(nom_widget_$INFO[window(home).property(id_widget)],$LOCALIZE[31180] │ $INFO[listitem.label])</onclick>
+		<onclick condition="!string.isequal(listitem.label,..) + !string.isequal(listitem.label,$LOCALIZE[31289]) + string.contains(window(home).property(chemin_temporaire),music/genres)">skin.setstring(temp,$LOCALIZE[31180] │ $INFO[listitem.label])</onclick>			
+		<onclick condition="!string.isequal(listitem.label,..) + !string.isequal(listitem.label,$LOCALIZE[31289]) + string.contains(window(home).property(chemin_temporaire),music/genres)">skin.setstring(cible_widget_$INFO[window(home).property(id_widget)],music)</onclick>
+		<onclick condition="!string.isequal(listitem.label,..) + !string.isequal(listitem.label,$LOCALIZE[31289]) + string.contains(window(home).property(chemin_temporaire),music/genres)">skin.setString(afficher_widget_$INFO[window(home).property(id_widget)],1)</onclick>
+		<onclick condition="!string.isequal(listitem.label,..) + !string.isequal(listitem.label,$LOCALIZE[31289]) + string.contains(window(home).property(chemin_temporaire),music/genres)">action(back)</onclick>
+		<onclick condition="!string.isequal(listitem.label,..) + !string.isequal(listitem.label,$LOCALIZE[31289]) + string.contains(window(home).property(chemin_temporaire),music/years)">skin.setstring(chemin_widget_$INFO[window(home).property(id_widget)],musicdb://years/$INFO[listitem.label])</onclick>
+		<onclick condition="!string.isequal(listitem.label,..) + !string.isequal(listitem.label,$LOCALIZE[31289]) + string.contains(window(home).property(chemin_temporaire),music/years)">skin.setstring(nom_widget_$INFO[window(home).property(id_widget)],$LOCALIZE[31179] │ $INFO[listitem.label])</onclick>
+		<onclick condition="!string.isequal(listitem.label,..) + !string.isequal(listitem.label,$LOCALIZE[31289]) + string.contains(window(home).property(chemin_temporaire),music/years)">skin.setstring(temp,$LOCALIZE[31179] │ $INFO[listitem.label])</onclick>			
+		<onclick condition="!string.isequal(listitem.label,..) + !string.isequal(listitem.label,$LOCALIZE[31289]) + string.contains(window(home).property(chemin_temporaire),music/years)">skin.setstring(cible_widget_$INFO[window(home).property(id_widget)],music)</onclick>
+		<onclick condition="!string.isequal(listitem.label,..) + !string.isequal(listitem.label,$LOCALIZE[31289]) + string.contains(window(home).property(chemin_temporaire),music/years)">skin.setString(afficher_widget_$INFO[window(home).property(id_widget)],1)</onclick>
+		<onclick condition="!string.isequal(listitem.label,..) + !string.isequal(listitem.label,$LOCALIZE[31289]) + string.contains(window(home).property(chemin_temporaire),music/years)">action(back)</onclick>
+		<onclick condition="!string.isequal(listitem.label,..) + !string.isequal(listitem.label,$LOCALIZE[31289]) + string.contains(window(home).property(chemin_temporaire),playlists.xml) + string.isequal(window(home).property(chemin_gauche),library://video/)">skin.setstring(chemin_widget_$INFO[window(home).property(id_widget)],special://userdata/playlists/video/$INFO[listitem.FileName]).$INFO[listitem.FileExtension]</onclick>
+		<onclick condition="!string.isequal(listitem.label,..) + !string.isequal(listitem.label,$LOCALIZE[31289]) + string.contains(window(home).property(chemin_temporaire),playlists.xml) + string.isequal(window(home).property(chemin_gauche),library://music/)">skin.setstring(chemin_widget_$INFO[window(home).property(id_widget)],special://userdata/playlists/music/$INFO[listitem.FileName]).$INFO[listitem.FileExtension]</onclick>
+		<onclick condition="!string.isequal(listitem.label,..) + !string.isequal(listitem.label,$LOCALIZE[31289]) + string.contains(window(home).property(chemin_temporaire),playlists.xml)">skin.setstring(nom_widget_$INFO[window(home).property(id_widget)],$INFO[listitem.label])</onclick>
+		<onclick condition="!string.isequal(listitem.label,..) + !string.isequal(listitem.label,$LOCALIZE[31289]) + string.contains(window(home).property(chemin_temporaire),playlists.xml)">skin.setstring(temp,$INFO[listitem.label])</onclick>		
+		<onclick condition="!string.isequal(listitem.label,..) + !string.isequal(listitem.label,$LOCALIZE[31289]) + string.contains(window(home).property(chemin_temporaire),playlists.xml) + string.isequal(window(home).property(chemin_gauche),library://video/)">skin.setstring(cible_widget_$INFO[window(home).property(id_widget)],videos)</onclick>
+		<onclick condition="!string.isequal(listitem.label,..) + !string.isequal(listitem.label,$LOCALIZE[31289]) + string.contains(window(home).property(chemin_temporaire),playlists.xml) + string.isequal(window(home).property(chemin_gauche),library://music/)">skin.setstring(cible_widget_$INFO[window(home).property(id_widget)],music)</onclick>
+		<onclick condition="!string.isequal(listitem.label,..) + !string.isequal(listitem.label,$LOCALIZE[31289]) + string.contains(window(home).property(chemin_temporaire),playlists.xml)">skin.setString(afficher_widget_$INFO[window(home).property(id_widget)],1)</onclick>
+		<onclick condition="!string.isequal(listitem.label,..) + !string.isequal(listitem.label,$LOCALIZE[31289]) + string.contains(window(home).property(chemin_temporaire),playlists.xml)">action(back)</onclick>
+		<onclick condition="string.isequal(listitem.label,..) + !string.isempty(window(home).property(chemin_temporaire10))">setproperty(chemin_temporaire_bis,$INFO[window(home).property(chemin_temporaire9)],home)</onclick>
+		<onclick condition="string.isequal(listitem.label,..) + !string.isempty(window(home).property(chemin_temporaire10))">setproperty(chemin_temporaire10,,home)</onclick>		
+		<onclick condition="string.isequal(listitem.label,..) + !string.isempty(window(home).property(chemin_temporaire9)) + string.isempty(window(home).property(chemin_temporaire10))">setproperty(chemin_temporaire_bis,$INFO[window(home).property(chemin_temporaire8)],home)</onclick>
+		<onclick condition="string.isequal(listitem.label,..) + !string.isempty(window(home).property(chemin_temporaire9)) + string.isempty(window(home).property(chemin_temporaire10))">clearproperty(chemin_temporaire9,home)</onclick>		
+		<onclick condition="string.isequal(listitem.label,..) + !string.isempty(window(home).property(chemin_temporaire8)) + string.isempty(window(home).property(chemin_temporaire9))">setproperty(chemin_temporaire_bis,$INFO[window(home).property(chemin_temporaire7)],home)</onclick>
+		<onclick condition="string.isequal(listitem.label,..) + !string.isempty(window(home).property(chemin_temporaire8)) + string.isempty(window(home).property(chemin_temporaire9))">clearproperty(chemin_temporaire8,home)</onclick>		
+		<onclick condition="string.isequal(listitem.label,..) + !string.isempty(window(home).property(chemin_temporaire7)) + string.isempty(window(home).property(chemin_temporaire8))">setproperty(chemin_temporaire_bis,$INFO[window(home).property(chemin_temporaire6)],home)</onclick>
+		<onclick condition="string.isequal(listitem.label,..) + !string.isempty(window(home).property(chemin_temporaire7)) + string.isempty(window(home).property(chemin_temporaire8))">clearproperty(chemin_temporaire7,home)</onclick>		
+		<onclick condition="string.isequal(listitem.label,..) + !string.isempty(window(home).property(chemin_temporaire6)) + string.isempty(window(home).property(chemin_temporaire7))">setproperty(chemin_temporaire_bis,$INFO[window(home).property(chemin_temporaire5)],home)</onclick>
+		<onclick condition="string.isequal(listitem.label,..) + !string.isempty(window(home).property(chemin_temporaire6)) + string.isempty(window(home).property(chemin_temporaire7))">clearproperty(chemin_temporaire6,home)</onclick>		
+		<onclick condition="string.isequal(listitem.label,..) + !string.isempty(window(home).property(chemin_temporaire5)) + string.isempty(window(home).property(chemin_temporaire6))">setproperty(chemin_temporaire_bis,$INFO[window(home).property(chemin_temporaire4)],home)</onclick>
+		<onclick condition="string.isequal(listitem.label,..) + !string.isempty(window(home).property(chemin_temporaire5)) + string.isempty(window(home).property(chemin_temporaire6))">clearproperty(chemin_temporaire5,home)</onclick>		
+		<onclick condition="string.isequal(listitem.label,..) + !string.isempty(window(home).property(chemin_temporaire4)) + string.isempty(window(home).property(chemin_temporaire5))">setproperty(chemin_temporaire_bis,$INFO[window(home).property(chemin_temporaire3)],home)</onclick>
+		<onclick condition="string.isequal(listitem.label,..) + !string.isempty(window(home).property(chemin_temporaire4)) + string.isempty(window(home).property(chemin_temporaire5))">clearproperty(chemin_temporaire4,home)</onclick>		
+		<onclick condition="string.isequal(listitem.label,..) + !string.isempty(window(home).property(chemin_temporaire3)) + string.isempty(window(home).property(chemin_temporaire4))">setproperty(chemin_temporaire_bis,$INFO[window(home).property(chemin_temporaire2)],home)</onclick>
+		<onclick condition="string.isequal(listitem.label,..) + !string.isempty(window(home).property(chemin_temporaire3)) + string.isempty(window(home).property(chemin_temporaire4))">clearproperty(chemin_temporaire3,home)</onclick>		
+		<onclick condition="string.isequal(listitem.label,..) + !string.isempty(window(home).property(chemin_temporaire2)) + string.isempty(window(home).property(chemin_temporaire3))">setproperty(chemin_temporaire_bis,$INFO[window(home).property(chemin_temporaire1)],home)</onclick>
+		<onclick condition="string.isequal(listitem.label,..) + !string.isempty(window(home).property(chemin_temporaire2)) + string.isempty(window(home).property(chemin_temporaire3))">clearproperty(chemin_temporaire2,home)</onclick>		
+		<onclick condition="string.isequal(listitem.label,..) + !string.isempty(window(home).property(chemin_temporaire1)) + string.isempty(window(home).property(chemin_temporaire2))">setproperty(chemin_temporaire_bis,$INFO[window(home).property(chemin_gauche)],home)</onclick>
+		<onclick condition="string.isequal(listitem.label,..) + !string.isempty(window(home).property(chemin_temporaire1)) + string.isempty(window(home).property(chemin_temporaire2))">clearproperty(chemin_temporaire1,home)</onclick>		
+		<onclick condition="string.isequal(listitem.label,..)">setproperty(chemin_temporaire,$INFO[window(home).property(chemin_temporaire_bis)],home)</onclick>		
+		<onclick condition="string.isequal(listitem.label,$LOCALIZE[31289])">skin.setstring(chemin_widget_$INFO[window(home).property(id_widget)],$INFO[window(home).property(chemin_temporaire)])</onclick>
+		<onclick condition="string.isequal(listitem.label,$LOCALIZE[31289])">skin.setstring(nom_widget_$INFO[window(home).property(id_widget)],$INFO[window(home).property(nom_temporaire)])</onclick>
+		<onclick condition="string.isequal(listitem.label,$LOCALIZE[31289])">skin.setstring(temp,$INFO[window(home).property(nom_temporaire)])</onclick>		
+		<onclick condition="string.isequal(listitem.label,$LOCALIZE[31289]) + string.contains(window(home).property(chemin_temporaire),movies)">skin.setstring(nom_widget_$INFO[window(home).property(id_widget)],$LOCALIZE[31168] │ $INFO[window(home).property(nom_temporaire)])</onclick>
+		<onclick condition="string.isequal(listitem.label,$LOCALIZE[31289]) + string.contains(window(home).property(chemin_temporaire),movies)">skin.setstring(temp,$LOCALIZE[31168] │ $INFO[window(home).property(nom_temporaire)])</onclick>
+		<onclick condition="string.isequal(listitem.label,$LOCALIZE[31289]) + string.isequal(window(home).property(chemin_temporaire),library://video/)">skin.setstring(nom_widget_$INFO[window(home).property(id_widget)],$LOCALIZE[31168] │ $INFO[window(home).property(nom_temporaire)])</onclick>
+		<onclick condition="string.isequal(listitem.label,$LOCALIZE[31289]) + string.isequal(window(home).property(chemin_temporaire),library://video/)">skin.setstring(temp,$LOCALIZE[31168] │ $INFO[window(home).property(nom_temporaire)])</onclick>
+		<onclick condition="string.isequal(listitem.label,$LOCALIZE[31289]) + string.contains(window(home).property(chemin_temporaire),tvshows)">skin.setstring(nom_widget_$INFO[window(home).property(id_widget)],$LOCALIZE[31213] │ $INFO[window(home).property(nom_temporaire)])</onclick>
+		<onclick condition="string.isequal(listitem.label,$LOCALIZE[31289]) + string.contains(window(home).property(chemin_temporaire),tvshows)">skin.setstring(temp,$LOCALIZE[31213] │ $INFO[window(home).property(nom_temporaire)])</onclick>
+		<onclick condition="string.isequal(listitem.label,$LOCALIZE[31289]) + string.contains(window(home).property(chemin_temporaire),music)">skin.setstring(nom_widget_$INFO[window(home).property(id_widget)],$LOCALIZE[31169] │ $INFO[window(home).property(nom_temporaire)])</onclick>
+		<onclick condition="string.isequal(listitem.label,$LOCALIZE[31289]) + string.contains(window(home).property(chemin_temporaire),music)">skin.setstring(temp,$LOCALIZE[31169] │ $INFO[window(home).property(nom_temporaire)])</onclick>		
+		<onclick condition="string.isequal(listitem.label,$LOCALIZE[31289]) + string.contains(window(home).property(chemin_temporaire),movies/years)">skin.setstring(nom_widget_$INFO[window(home).property(id_widget)],$LOCALIZE[31168] │ $LOCALIZE[652])</onclick>
+		<onclick condition="string.isequal(listitem.label,$LOCALIZE[31289]) + string.contains(window(home).property(chemin_temporaire),movies/years)">skin.setstring(temp,$LOCALIZE[31168] │ $LOCALIZE[652])</onclick>
+		<onclick condition="string.isequal(listitem.label,$LOCALIZE[31289]) + string.contains(window(home).property(chemin_temporaire),movies/genres)">skin.setstring(nom_widget_$INFO[window(home).property(id_widget)],$LOCALIZE[31168] │ $INFO[window(home).property(nom_temporaire)])</onclick>
+		<onclick condition="string.isequal(listitem.label,$LOCALIZE[31289]) + string.contains(window(home).property(chemin_temporaire),movies/genres)">skin.setstring(temp,$LOCALIZE[31168] │ $INFO[window(home).property(nom_temporaire)])</onclick>
+		<onclick condition="string.isequal(listitem.label,$LOCALIZE[31289]) + string.contains(window(home).property(chemin_temporaire),tvshows/years)">skin.setstring(nom_widget_$INFO[window(home).property(id_widget)],$LOCALIZE[31213] │ $LOCALIZE[652])</onclick>
+		<onclick condition="string.isequal(listitem.label,$LOCALIZE[31289]) + string.contains(window(home).property(chemin_temporaire),tvshows/years)">skin.setstring(temp,$LOCALIZE[31213] │ $LOCALIZE[652])</onclick>
+		<onclick condition="string.isequal(listitem.label,$LOCALIZE[31289]) + string.contains(window(home).property(chemin_temporaire),tvshows/genres)">skin.setstring(nom_widget_$INFO[window(home).property(id_widget)],$LOCALIZE[31213] │ $INFO[window(home).property(nom_temporaire)])</onclick>
+		<onclick condition="string.isequal(listitem.label,$LOCALIZE[31289]) + string.contains(window(home).property(chemin_temporaire),tvshows/genres)">skin.setstring(temp,$LOCALIZE[31213] │ $INFO[window(home).property(nom_temporaire)])</onclick>
+		<onclick condition="string.isequal(listitem.label,$LOCALIZE[31289]) + string.contains(window(home).property(chemin_temporaire),music/years)">skin.setstring(nom_widget_$INFO[window(home).property(id_widget)],$LOCALIZE[31179] │ $LOCALIZE[652])</onclick>
+		<onclick condition="string.isequal(listitem.label,$LOCALIZE[31289]) + string.contains(window(home).property(chemin_temporaire),music/years)">skin.setstring(temp,$LOCALIZE[31179] │ $LOCALIZE[652])</onclick>
+		<onclick condition="string.isequal(listitem.label,$LOCALIZE[31289]) + string.contains(window(home).property(chemin_temporaire),music/genres)">skin.setstring(nom_widget_$INFO[window(home).property(id_widget)],$LOCALIZE[31180] │ $INFO[window(home).property(nom_temporaire)])</onclick>
+		<onclick condition="string.isequal(listitem.label,$LOCALIZE[31289]) + string.contains(window(home).property(chemin_temporaire),music/genres)">skin.setstring(temp,$LOCALIZE[31180] │ $INFO[window(home).property(nom_temporaire)])</onclick>
+		<onclick condition="string.isequal(listitem.label,$LOCALIZE[31289]) + string.isequal(window(home).property(chemin_gauche),library://video/)">skin.setstring(cible_widget_$INFO[window(home).property(id_widget)],videos)</onclick>
+		<onclick condition="string.isequal(listitem.label,$LOCALIZE[31289]) + string.isequal(window(home).property(chemin_gauche),library://music/)">skin.setstring(cible_widget_$INFO[window(home).property(id_widget)],music)</onclick>
+		<onclick condition="string.isequal(listitem.label,$LOCALIZE[31289])">skin.setString(afficher_widget_$INFO[window(home).property(id_widget)],1)</onclick>
+		<onclick condition="string.isequal(listitem.label,$LOCALIZE[31289])">action(back)</onclick>
+	<itemlayout height="100">
+	<control type="button">		
+		<top>10</top>
+	<include content="bouton">																											
+		<param name="width" value="720"/> 
+		<param name="height" value="80"/> 
+		<param name="texturenofocus_colordiffuse" value="05ffffff"/>
+	</include>	
+	</control>	
+	<control type="image">
+		<left>10</left>
+		<top>17</top>
+		<width>66</width>
+		<height>66</height>
+		<texture fallback="defaultfolder.png">$INFO[ListItem.Icon]</texture>
+		<aspectratio>keep</aspectratio>
+	</control>
+	<control type="label">
+		<top>10</top>
+		<left>90</left>
+		<height>80</height>
+		<label>$INFO[ListItem.Label]</label>
+	</control>
+	</itemlayout>
+	<focusedlayout height="100">
+	<control type="button">	
+		<top>10</top>			
+		<onfocus condition="!String.IsEqual(listitem.icon,) + !string.EndsWith(listitem.icon,none)">setproperty(image,$INFO[listitem.icon],home)</onfocus>
+		<onfocus condition="String.IsEqual(listitem.icon,) | string.EndsWith(listitem.icon,none)">clearproperty(image,home)</onfocus>	
+		<onfocus>setproperty(label,$ESCINFO[ListItem.Label],home)</onfocus>		
+	</control>
+	<control type="image">		
+		<top>10</top>
+		<height>80</height>
+		<texture colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texture>
+		<aspectratio>stretch</aspectratio>
+		<visible>control.hasfocus(21)</visible>
+	</control>
+	<control type="image">		
+		<top>10</top>
+		<height>80</height>
+		<texture colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texture>
+		<aspectratio>stretch</aspectratio>
+		<animation effect="fade" start="100" end="25" condition="true">conditional</animation>
+		<visible>!control.hasfocus(21)</visible>
+	</control>	
+	<control type="image">
+		<left>10</left>
+		<top>17</top>
+		<width>66</width>
+		<height>66</height>
+		<texture fallback="defaultfolder.png">$INFO[ListItem.Icon]</texture>
+		<aspectratio>keep</aspectratio>
+	</control>
+	<control type="label">
+		<top>10</top>
+		<left>90</left>
+		<height>80</height>
+		<label>$INFO[ListItem.Label]</label>
+	</control>	
+	</focusedlayout>
+	<content>
+	<item>
+		<label>..</label>		
+	</item>
+	<item>
+		<label>$LOCALIZE[31289]</label>
+		<visible>integer.IsGreater(container(21).NumAllItems,2)</visible>
+	</item>
+	</content>	
+		<content>$INFO[window(home).property(chemin_temporaire)]</content>
+	</control>		
+	<include content="barre_separation_horizontale">																							<description>barre de separation horizontale</description>
+		<param name="left" value="50"/> 
+		<param name="right" value="50"/>
+		<param name="bottom" value="140"/>		
+	</include>
+	<control type="label">																														<description>chemin du widget</description>
+		<bottom>0</bottom>
+		<height>140</height>
+		<align>center</align>
+		<font>titre</font>
+		<textoffsetx>60</textoffsetx>
+		<textcolor>80ffffff</textcolor>
+		<label>$INFO[window(home).property(chemin_temporaire)]</label>
+		<scroll>true</scroll>
+	</control>		
+	<control type="group" id="22">
+		<visible>container(21).IsUpdating</visible>
+	<control type="image">																														<description>degrade haut</description>
+		<top>0</top>
+		<width>2500</width>
+		<height>2000</height>
+		<aspectratio>stretch</aspectratio>
+		<texture flipy="true">commun/degrade.png</texture>
+	</control>
+	<control type="image">																														<description>degrade fond lecteur OSD</description>
+		<bottom>0</bottom>		
+		<width>2500</width>
+		<height>2000</height>
+		<aspectratio>stretch</aspectratio>
+		<texture>commun/degrade.png</texture>
+	</control>		
+	<control type="image">																														<description>fond animation</description>				
+		<centerleft>50%</centerleft>
+		<centertop>50%</centertop>
+		<width>160</width>
+		<height>160</height>
+		<texture>commun/fond_occupe.png</texture>
+		<aspectratio>keep</aspectratio>		
+	</control>
+	<control type="image">																														<description>animation</description>				
+		<centerleft>50%</centerleft>
+		<centertop>50%</centertop>
+		<width>160</width>
+		<height>160</height>
+		<texture colordiffuse="$VAR[couleur_dominante]">commun/occupe.png</texture>
+		<aspectratio>keep</aspectratio>
+		<animation effect="rotate" center="auto" start="360" end="0" time="1500" loop="true" condition="true">Conditional</animation>
+	</control>
+	</control>
+	<control type="button" id="23">
+		<onfocus>alarmclock(busy,control.setfocus(24),00:00,silent)</onfocus>
+	</control>
+	<control type="button" id="24">
+		<onfocus condition="control.isvisible(22)">control.setfocus(23)</onfocus>
+		<onfocus condition="!control.isvisible(22)">control.setfocus(21,0,absolute)</onfocus>
+	</control>
+</controls>
+</window>

@@ -5,17 +5,8 @@
 	<onload condition="string.isequal(window(home).property(osd),2) + player.hasvideo">control.setfocus(399)</onload>
 	<onload condition="string.isempty(window(home).property(osd)) + player.hasvideo">control.setfocus(405)</onload>
 	<onload>clearproperty(osd,home)</onload>
-<controls>
-	<control type="panel" id="50">																												<description>liste des acteurs</description>
-		<width>0</width>
-		<height>0</height>
-		<orientation>horizontal</orientation>
-	<itemlayout>		
-	</itemlayout>
-	<focusedlayout>		
-	</focusedlayout>
-		<content>plugin://script.skin.helper.service/?action=getcast&amp;movie=$INFO[videoplayer.title]</content>
-	</control>
+	<onunload>clearproperty(infos_process,home)</onunload>
+<controls>	
 	<control type="progress" id="1111">
 		<info>Player.Volume</info>
 		<visible>false</visible>
@@ -62,7 +53,7 @@
 		<aspectratio>stretch</aspectratio>
 		<texture colordiffuse="$VAR[couleur_OSD]">commun/texture.png</texture>
 		<visible>!videoplayer.content(liveTV) + [!player.showinfo | window.isvisible(VideoOSDBookmarks.xml)]</visible>
-		</control>
+	</control>
 	<control type="image">																														<description>fond lecteur OSD tv</description>
 		<bottom>0</bottom>
 		<centerleft>50%</centerleft>
@@ -191,8 +182,20 @@
 		<texture colordiffuse="20fffffff">commun/separation_OSD.png</texture>
 	</control>	
 	<include content="bouton_lecteur">																											<description>bouton infos</description>
-		<param name="id" value="399"/> 
+		<param name="id" value="3982"/> 
+		<param name="condition_onclick" value="!string.isequal(window(home).property(infos_process),1) + player.showinfo"/>
 		<param name="onclick" value="action(info)"/>
+		<param name="condition_onclick2" value="!string.isequal(window(home).property(infos_process),1)"/>
+		<param name="onclick2" value="setproperty(infos_process,1,home)"/>
+		<param name="condition_onclick3" value="string.isequal(window(home).property(infos_process),1)"/>
+		<param name="onclick3" value="clearproperty(infos_process,home)"/>
+		<param name="icone1" value="infos_process"/>	
+		<param name="icone2" value="infos_process"/>
+	</include>
+	<include content="bouton_lecteur">																											<description>bouton infos</description>
+		<param name="id" value="399"/> 
+		<param name="onclick" value="clearproperty(infos_process,home)"/>
+		<param name="onclick2" value="action(info)"/>
 		<param name="icone1" value="info"/>	
 		<param name="icone2" value="info"/>
 	</include>
@@ -341,7 +344,219 @@
 		<height>48</height>
 		<texture>$INFO[VideoPlayer.VideoResolution,flags/videoresolution/,.png]</texture>
 	</control>			
+	</control>	
+	<control type="group">       																												<description>informations lecteur et decoderur TV</description>
+		<visible>!player.showinfo + !window.isvisible(1222) + !window.isvisible(1220) + !window.isvisible(VideoOSDBookmarks.xml) + !window.isvisible(osdsubtitlesettings) + !window.isvisible(DialogSelect.xml) + !window.isvisible(DialogConfirm.xml) + !window.isvisible(dialogsettings.xml) + !window.isvisible(DialogNotification.xml)</visible>
+		<animation effect="slide" start="0" end="443" time="0" reversible="false" condition="!videoplayer.content(liveTV)">condtitional</animation>
+		<animation effect="fade" start="0" end="100" time="100" reversible="false" condition="string.isequal(window(home).property(infos_process),1)">conditional</animation>
+		<animation effect="fade" start="100" end="0" time="100" reversible="false" condition="!string.isequal(window(home).property(infos_process),1)">conditional</animation>	
+	<control type="group">       																												<description>cadre gauche</description>
+		<top>275</top>
+		<right>985</right>
+		<left>100</left>
+		<bottom>275</bottom>
+	<control type="image">       																											
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="$VAR[couleur_OSD]" border="50">commun/bouton.png</texture>
+	</control>
+	<control type="image">
+		<top>-30</top>
+		<right>-30</right>
+		<height>100</height>
+		<width>100</width>
+		<texture colordiffuse="$VAR[couleur_dominante]">commun/visage.png</texture>		
+	</control>
+	<control type="image">
+		<top>-40</top>
+		<right>-40</right>
+		<height>120</height>
+		<width>120</width>
+		<texture colordiffuse="$VAR[gris]">defaultvideo.png</texture>		
+	</control>	
+	<control type="grouplist">
+		<top>20</top>
+		<right>20</right>
+		<left>20</left>
+		<bottom>20</bottom>				
+	<control type="label">
+		<height>40</height>
+		<font>texte_infos</font>
+		<label>[B]  $LOCALIZE[31139]  :  [/B][COLOR 80ffffff]$INFO[Player.Process(videodecoder)][/COLOR]</label>		
+	</control>
+	<control type="label">
+		<height>40</height>
+		<font>texte_infos</font>
+		<label>[B]  $LOCALIZE[31140]  :  [/B][COLOR 80ffffff]$INFO[Player.Process(pixformat)][/COLOR]</label>		
+	</control>
+	<include content="barre_separation_horizontale">
+		<param name="left" value="30"/> 
+		<param name="right" value="-70"/>
+		<param name="bottom" value="140"/>		
+	</include>	
+	<control type="label">
+		<height>30</height>
+		<font>texte_infos</font>
+		<label>[B]  $LOCALIZE[16038][/B]</label>		
+	</control>
+	<control type="label">
+		<height>30</height>
+		<font>texte_infos</font>
+		<textcolor>80ffffff</textcolor>
+		<label>    • $INFO[Player.Process(deintmethod)]</label>		
+	</control>
+	<include content="barre_separation_horizontale">
+		<param name="left" value="30"/> 
+		<param name="right" value="-70"/>
+		<param name="bottom" value="100"/>		
+	</include>
+	<control type="label">
+		<height>30</height>
+		<font>texte_infos</font>
+		<label>[B]  $LOCALIZE[38031][/B]</label>		
+	</control>
+	<control type="label">
+		<height>30</height>
+		<font>texte_infos</font>
+		<textcolor>80ffffff</textcolor>
+		<label>    • $INFO[Player.Process(videowidth)] X $INFO[Player.Process(videoheight)] - $INFO[Player.Process(videodar)] - $INFO[Player.Process(videofps)] fps</label>		
+	</control>
+	<include content="barre_separation_horizontale">
+		<param name="left" value="30"/> 
+		<param name="right" value="-70"/>
+		<param name="bottom" value="60"/>		
+	</include>
+	<control type="label">
+		<height>30</height>
+		<font>texte_infos</font>
+		<label>[B]  $LOCALIZE[460][/B]</label>		
+	</control>
+	<control type="label">
+		<height>30</height>
+		<font>texte_infos</font>
+		<textcolor>80ffffff</textcolor>
+		<label>    • $INFO[Player.Process(audiochannels)] - $INFO[Player.Process(audiodecoder)] - $INFO[Player.Process(audiobitspersample)] bits - $INFO[Player.Process(audiosamplerate)] Hz</label>		
+	</control>
+	<include content="barre_separation_horizontale">
+		<param name="left" value="30"/> 
+		<param name="right" value="-70"/>
+		<param name="bottom" value="20"/>		
+	</include>
+	<control type="label">
+		<height>40</height>
+		<font>texte_infos</font>
+		<label>[B]  $LOCALIZE[31330]  :  [/B][COLOR 80ffffff]$INFO[System.CpuUsage][/COLOR]</label>		
+	</control>
+	<control type="label">
+		<height>40</height>
+		<font>texte_infos</font>
+		<label>[B]  $LOCALIZE[31030]  :  [/B][COLOR 80ffffff]$INFO[System.Memory(used.percent)][/COLOR]</label>		
+	</control>	
+	</control>	
+	</control>	
+	<control type="group">       																												<description>cadre droite</description>
+		<visible>videoplayer.content(liveTV)</visible>
+		<top>275</top>
+		<right>100</right>
+		<left>985</left>
+		<bottom>275</bottom>	
+	<control type="image"> 
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="$VAR[couleur_OSD]" border="50">commun/bouton.png</texture>		
+	</control>
+	<control type="image">
+		<top>-30</top>
+		<right>-30</right>
+		<height>100</height>
+		<width>100</width>
+		<texture colordiffuse="$VAR[couleur_dominante]">commun/visage.png</texture>		
+	</control>
+	<control type="image">
+		<top>-30</top>
+		<right>-30</right>
+		<height>100</height>
+		<width>100</width>
+		<texture colordiffuse="$VAR[gris]">icones/infos/chaine.png</texture>		
+	</control>	
+	<control type="grouplist">
+		<top>20</top>
+		<right>20</right>
+		<left>20</left>
+		<bottom>20</bottom>
+		<visible>VideoPlayer.content(liveTV)</visible>
+	<control type="label">
+		<height>40</height>
+		<font>texte_infos</font>
+		<label>[B]  $LOCALIZE[19099]  :  [/B][COLOR 80ffffff]$INFO[PVR.ActStreamServiceName][/COLOR]</label>
+	</control>
+	<control type="label">
+		<height>40</height>
+		<font>texte_infos</font>
+		<label>[B]  $LOCALIZE[19101]  :  [/B][COLOR 80ffffff]$INFO[PVR.ActStreamProviderName][/COLOR]</label>
+	</control>
+	<include content="barre_separation_horizontale">
+		<param name="left" value="30"/> 
+		<param name="right" value="-70"/>
+		<param name="bottom" value="140"/>		
+	</include>
+	<control type="label">
+		<height>30</height>
+		<font>texte_infos</font>
+		<label>[B]  $LOCALIZE[19012][/B]</label>
+	</control>
+	<control type="label">
+		<height>30</height>
+		<font>texte_infos</font>
+		<textcolor>80ffffff</textcolor>
+		<label>    • $INFO[PVR.ActStreamClient]</label>
+	</control>
+	<include content="barre_separation_horizontale">
+		<param name="left" value="30"/> 
+		<param name="right" value="-70"/>
+		<param name="bottom" value="120"/>		
+	</include>
+	<control type="label">
+		<height>40</height>
+		<font>texte_infos</font>
+		<label>[B]  $LOCALIZE[19006]  :  [/B][COLOR 80ffffff]$INFO[PVR.ActStreamDevice][/COLOR]</label>
+	</control>
+	<control type="label">
+		<height>40</height>
+		<font>texte_infos</font>
+		<label>[B]  $LOCALIZE[19007]  :  [/B][COLOR 80ffffff]$INFO[PVR.ActStreamStatus][/COLOR]</label>
+	</control>
+	<control type="label">
+		<height>40</height>
+		<font>texte_infos</font>
+		<label>[B]  $LOCALIZE[19015]  :  [/B][COLOR 80ffffff]$INFO[PVR.ActStreamEncryptionName][/COLOR]</label>
+	</control>
+	<control type="label">
+		<height>40</height>
+		<font>texte_infos</font>
+		<label>[B]  $LOCALIZE[19010]  :  [/B][COLOR 80ffffff]$INFO[PVR.ActStreamBer][/COLOR]</label>
+	</control>
+	<control type="label">
+		<height>40</height>
+		<font>texte_infos</font>
+		<label>[B]  $LOCALIZE[19011]  :  [/B][COLOR 80ffffff]$INFO[PVR.ActStreamUnc][/COLOR]</label>
+	</control>
+	<include content="barre_separation_horizontale">
+		<param name="left" value="30"/> 
+		<param name="right" value="-70"/>
+		<param name="bottom" value="40"/>		
+	</include>
+	<control type="label">
+		<height>40</height>
+		<font>texte_infos</font>
+		<label>[B]  $LOCALIZE[19100]  :  [/B][COLOR 80ffffff]$INFO[PVR.ActStreamMux][/COLOR]</label>
+	</control>
+	<control type="label">
+		<height>40</height>
+		<font>texte_infos</font>
+		<label>[B]  $LOCALIZE[19008]  :  [/B][COLOR 80ffffff]$INFO[PVR.ActStreamSignal][/COLOR]  •  [B]$LOCALIZE[19009]  :  [/B][COLOR 80ffffff]$INFO[PVR.ActStreamSNR][/COLOR]</label>
 	</control>
 	</control>
+	</control>	
+	</control>	
+	</control>	
 </controls>
 </window>

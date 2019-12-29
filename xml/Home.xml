@@ -1,27 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<window>			
+<window>	
+	<!--  A FAIRE IMPERATIVEMENT 
 	
-	<!--
-	
-	- griser les elements de menu non cochable (exemple tv si pas de PVR)
-	- Probleme quand configuratuion menu et retour plein ecran
-	
-	-->
-	
-	
+		
+	-->	
 	
 	
 	<backgroundcolor>00X000000</backgroundcolor>
-	<onload condition="string.isempty(skin.string(skin_start))">ReplaceWindow(startup)</onload>
+	<onload condition="string.isempty(window(home).property(groupes_tv))">setproperty(groupes_tv,pvr://channels/tv/123456,home)</onload>	
+	<onload condition="string.isempty(window(home).property(groupes_tv))">setproperty(groupes_tv,pvr://channels/tv/,home)</onload>		
+	<onload condition="string.isempty(window(home).property(groupes_tv2))">setproperty(groupes_tv2,pvr://channels/tv/123456,home)</onload>	
+	<onload condition="string.isempty(window(home).property(groupes_tv2))">setproperty(groupes_tv2,pvr://channels/tv/,home)</onload>	
+	<onload condition="!string.isempty(window(home).property(activer_profil))">clearproperty(activer_profil,home)</onload>		
+	<onload condition="!string.isempty(window(home).property(activer_profil))">alarmclock(al,reloadskin(),00:01,silent)</onload>		
+	<onload condition="previous.window(SettingsProfile.xml)">ReplaceWindow(startup)</onload>
+	<onload condition="string.isempty(skin.string(skin_start))">ReplaceWindow(startup)</onload>		
+	<onload condition="!string.isequal(window(home).property(profil),System.ProfileName)">alarmclock(ae,action(left),00:01,silent)</onload>	
+	<onload condition="!string.isequal(window(home).property(profil),System.ProfileName)">setproperty(profil,$INFO[System.ProfileName],home)</onload>		
 	<onload>cancelalarm(scroll_infos,silent)</onload>
-	<onload>clearproperty(scroll_infos,home)</onload>
+	<onload>clearproperty(scroll_infos,home)</onload>	
 	<onload condition="string.isempty(window(home).property(chemin_widget_tv))">setproperty(chemin_widget_tv,pvr://channels/tv/*,home)</onload>	
+	<onload condition="string.isempty(window(home).property(chemin_widget_tv2))">setproperty(chemin_widget_tv2,pvr://channels/tv/*,home)</onload>	
 	<onload condition="!string.isempty(window(home).property(osd))">activatewindow(fullscreenvideo)</onload>
 	<onload condition="!string.isempty(window(home).property(osd))">activatewindow(videoosd)</onload>
-	<onload condition="!window.previous(1299)">clearproperty(parametres_menu,home)</onload>
 	<onload condition="!string.isempty(window(home).property(parametres_menu))">control.setfocus(1555)</onload>
 	<onload condition="string.isequal(window(home).property(parametres_menu),2)">alarmclock(pm,control.setfocus(1556),00:00,silent)</onload>
-	<onload condition="string.isequal(window(home).property(parametres_menu),3)">alarmclock(pm,control.setfocus(1557),00:00,silent)</onload>	
+	<onload condition="string.isequal(window(home).property(parametres_menu),3)">alarmclock(pm,control.setfocus(1557),00:00,silent)</onload>
+	
+	
 	<defaultcontrol>1000</defaultcontrol>	
 <controls>
 	<include>image_fond</include>		
@@ -77,7 +83,17 @@
 	</itemlayout>
 	<focusedlayout>
 	</focusedlayout>
-	<content>pvr://channels/tv/</content>	
+	<content>$INFO[window(home).property(groupes_tv)]</content>	
+	</control>
+	<control type="panel" id="12340">
+		<width>0</width>
+		<height>0</height>
+		<orientation>horizontal</orientation>
+	<itemlayout>					
+	</itemlayout>
+	<focusedlayout>
+	</focusedlayout>
+	<content>favourites://</content>	
 	</control>
 	<include content="widget_fake">
 		<param name="chemin" value="$INFO[skin.string(chemin_widget_1010)]"/>
@@ -282,30 +298,21 @@
 		<width>430</width>
 		<texture colordiffuse="1a000000">commun/texture.png</texture>
 	</control>
-	<control type="button">
-		<top>15</top>
-		<left>25</left>
-		<width>70</width>
-		<height>70</height>
-		<texturenofocus colordiffuse="20ffffff">menus/eteindre.png</texturenofocus>
-		<animation effect="slide" end="300,0" time="150" condition="skin.hassetting(menu_icones)">conditional</animation>
-		<visible>string.isempty(skin.string(extinction_rapide))</visible>		
-	</control>
 	<control type="button" id="113">
 		<top>25</top>
 		<left>25</left>
 		<width>70</width>
 		<height>70</height>
 		<texturenofocus colordiffuse="80ffffff">menus/eteindre.png</texturenofocus>
-		<texturefocus colordiffuse="$VAR[couleur_dominante]">menus/eteindre.png</texturefocus>
+		<texturefocus colordiffuse="red">menus/eteindre.png</texturefocus>
 		<ondown>111</ondown>
+		<onclick condition="string.isempty(skin.string(extinction_rapide))">activatewindow(1223)</onclick>
 		<onclick condition="string.isequal(skin.string(extinction_rapide),1)">Quit</onclick>
 		<onclick condition="string.isequal(skin.string(extinction_rapide),2)">ShutDown</onclick>
 		<onclick condition="string.isequal(skin.string(extinction_rapide),3)">Reboot</onclick>
 		<onclick condition="string.isequal(skin.string(extinction_rapide),4)">Suspend</onclick>
 		<onclick condition="string.isequal(skin.string(extinction_rapide),5)">Hibernate</onclick>
-		<animation effect="slide" end="300,0" time="150" condition="skin.hassetting(menu_icones)">conditional</animation>
-		<visible>!string.isempty(skin.string(extinction_rapide))</visible>		
+		<animation effect="slide" end="300,0" time="150" condition="skin.hassetting(menu_icones)">conditional</animation>		
 	</control>
 	<control type="button" id="111">
 		<top>90</top>
@@ -315,7 +322,7 @@
 		<texturenofocus colordiffuse="80ffffff">boutons/menu.png</texturenofocus>
 		<texturefocus colordiffuse="$VAR[couleur_dominante]">boutons/menu.png</texturefocus>
 		<ondown>1000</ondown>
-		<onup condition="!string.isempty(skin.string(extinction_rapide))">113</onup>
+		<onup>113</onup>
 		<onclick>skin.togglesetting(menu_icones)</onclick>
 		<animation effect="slide" end="300,0" time="150" condition="skin.hassetting(menu_icones)">conditional</animation>		
 	</control>	
@@ -326,7 +333,6 @@
 		<height>732</height>
 		<onup>111</onup>			
 		<ondown>112</ondown>			
-		<onfocus condition="!Weather.IsFetched">alarmclock(actualiser_meteo,activatewindow(weather),00:05,silent)</onfocus>		
 		<onright condition="string.isequal(window(home).property(menu),home)">1001</onright>
 		<onright condition="string.isequal(window(home).property(menu),$LOCALIZE[31168])">2001</onright>
 		<onright condition="string.isequal(window(home).property(menu),$LOCALIZE[31213])">3001</onright>		
@@ -411,7 +417,6 @@
 		<label>HOME</label>
 		<icon>menus/home.png</icon>
 		<property name="action">action(right)</property>
-		<visible>string.isempty(skin.string(masquer_menu_1))</visible>
 	</item>	
 	<item>
 	<include condition="string.isequal(skin.string(item_menu_1),videos)">item_menu_1</include>
@@ -481,20 +486,18 @@
 		<ondown>112</ondown>		
 		<onleft condition="!container(1555).row(0)">control.setfocus(1556)</onleft>
 		<onleft condition="container(1555).row(0)">control.setfocus(1557)</onleft>		
-		<onclick condition="string.isempty(skin.string(masquer_menu_1)) + string.isequal(listitem.label,home)">skin.setstring(masquer_menu_1,1)</onclick>
-		<onclick condition="!string.isempty(skin.string(masquer_menu_1)) + string.isequal(listitem.label,home)">skin.setstring(masquer_menu_1,)</onclick>		
-		<onclick condition="string.isempty(skin.string(masquer_menu_2)) + string.isequal(listitem.label,$LOCALIZE[31168])">skin.setstring(masquer_menu_2,1)</onclick>
-		<onclick condition="!string.isempty(skin.string(masquer_menu_2)) + string.isequal(listitem.label,$LOCALIZE[31168])">skin.setstring(masquer_menu_2,)</onclick>		
-		<onclick condition="string.isempty(skin.string(masquer_menu_3)) + string.isequal(listitem.label,$LOCALIZE[31213])">skin.setstring(masquer_menu_3,1)</onclick>
-		<onclick condition="!string.isempty(skin.string(masquer_menu_3)) + string.isequal(listitem.label,$LOCALIZE[31213])">skin.setstring(masquer_menu_3,)</onclick>		
-		<onclick condition="string.isempty(skin.string(masquer_menu_4)) + string.isequal(listitem.label,$LOCALIZE[31169])">skin.setstring(masquer_menu_4,1)</onclick>
-		<onclick condition="!string.isempty(skin.string(masquer_menu_4)) + string.isequal(listitem.label,$LOCALIZE[31169])">skin.setstring(masquer_menu_4,)</onclick>		
-		<onclick condition="string.isempty(skin.string(masquer_menu_5)) + string.isequal(listitem.label,$LOCALIZE[31170])">skin.setstring(masquer_menu_5,1)</onclick>
-		<onclick condition="!string.isempty(skin.string(masquer_menu_5)) + string.isequal(listitem.label,$LOCALIZE[31170])">skin.setstring(masquer_menu_5,)</onclick>		
-		<onclick condition="string.isempty(skin.string(masquer_menu_6)) + string.isequal(listitem.label,$LOCALIZE[31171])">skin.setstring(masquer_menu_6,1)</onclick>
-		<onclick condition="!string.isempty(skin.string(masquer_menu_6)) + string.isequal(listitem.label,$LOCALIZE[31171])">skin.setstring(masquer_menu_6,)</onclick>
-		<onclick condition="string.isempty(skin.string(masquer_menu_7)) + string.isequal(listitem.label,$LOCALIZE[31173])">skin.setstring(masquer_menu_7,1)</onclick>
-		<onclick condition="!string.isempty(skin.string(masquer_menu_7)) + string.isequal(listitem.label,$LOCALIZE[31173])">skin.setstring(masquer_menu_7,)</onclick>		
+		<onclick condition="string.isempty(skin.string(masquer_menu_2)) + string.isequal(container(1555).listitem.label,$LOCALIZE[31168]) + Library.HasContent(movies)">skin.setstring(masquer_menu_2,1)</onclick>
+		<onclick condition="!string.isempty(skin.string(masquer_menu_2)) + string.isequal(container(1555).listitem.label,$LOCALIZE[31168]) + Library.HasContent(movies)">skin.setstring(masquer_menu_2,)</onclick>		
+		<onclick condition="string.isempty(skin.string(masquer_menu_3)) + string.isequal(container(1555).listitem.label,$LOCALIZE[31213]) + Library.HasContent(tvshows)">skin.setstring(masquer_menu_3,1)</onclick>
+		<onclick condition="!string.isempty(skin.string(masquer_menu_3)) + string.isequal(container(1555).listitem.label,$LOCALIZE[31213]) + Library.HasContent(tvshows)">skin.setstring(masquer_menu_3,)</onclick>		
+		<onclick condition="string.isempty(skin.string(masquer_menu_4)) + string.isequal(container(1555).listitem.label,$LOCALIZE[31169]) + Library.HasContent(music)">skin.setstring(masquer_menu_4,1)</onclick>
+		<onclick condition="!string.isempty(skin.string(masquer_menu_4)) + string.isequal(container(1555).listitem.label,$LOCALIZE[31169]) + Library.HasContent(music)">skin.setstring(masquer_menu_4,)</onclick>		
+		<onclick condition="string.isempty(skin.string(masquer_menu_5)) + string.isequal(container(1555).listitem.label,$LOCALIZE[31170])">skin.setstring(masquer_menu_5,1)</onclick>
+		<onclick condition="!string.isempty(skin.string(masquer_menu_5)) + string.isequal(container(1555).listitem.label,$LOCALIZE[31170])">skin.setstring(masquer_menu_5,)</onclick>		
+		<onclick condition="string.isempty(skin.string(masquer_menu_6)) + string.isequal(container(1555).listitem.label,$LOCALIZE[31171]) + System.HasPVRAddon">skin.setstring(masquer_menu_6,1)</onclick>
+		<onclick condition="!string.isempty(skin.string(masquer_menu_6)) + string.isequal(container(1555).listitem.label,$LOCALIZE[31171]) + System.HasPVRAddon">skin.setstring(masquer_menu_6,)</onclick>
+		<onclick condition="string.isempty(skin.string(masquer_menu_7)) + string.isequal(container(1555).listitem.label,$LOCALIZE[31173]) + !String.IsEmpty(Weather.Plugin) + !string.isempty(Weather.Location)">skin.setstring(masquer_menu_7,1)</onclick>
+		<onclick condition="!string.isempty(skin.string(masquer_menu_7)) + string.isequal(listitem.label,$LOCALIZE[31173]) + !String.IsEmpty(Weather.Plugin) + !string.isempty(Weather.Location)">skin.setstring(masquer_menu_7,)</onclick>		
 		<scrolltime tween="cubic" easing="out">500</scrolltime>
 		<orientation>vertical</orientation>	
 	<itemlayout height="122">		
@@ -520,7 +523,7 @@
 		<width>40</width>
 		<aspectratio>keep</aspectratio>
 		<texture colordiffuse="80ffffff">boutons/radiobutton_off.png</texture>
-		<visible>[!string.isempty(skin.string(masquer_menu_1)) + string.isequal(listitem.label,home)] | [!string.isempty(skin.string(masquer_menu_2)) + string.isequal(listitem.label,$LOCALIZE[31168])] | [!string.isempty(skin.string(masquer_menu_3)) + string.isequal(listitem.label,$LOCALIZE[31213])] | [!string.isempty(skin.string(masquer_menu_4)) + string.isequal(listitem.label,$LOCALIZE[31169])] | [!string.isempty(skin.string(masquer_menu_5)) + string.isequal(listitem.label,$LOCALIZE[31170])] | [!string.isempty(skin.string(masquer_menu_6)) + string.isequal(listitem.label,$LOCALIZE[31171])] | [!string.isempty(skin.string(masquer_menu_7)) + string.isequal(listitem.label,$LOCALIZE[31173])]</visible>
+		<visible>[!string.isempty(skin.string(masquer_menu_2)) + string.isequal(listitem.label,$LOCALIZE[31168]) + Library.HasContent(movies)] | [!string.isempty(skin.string(masquer_menu_3)) + string.isequal(listitem.label,$LOCALIZE[31213]) + Library.HasContent(tvshows)] | [!string.isempty(skin.string(masquer_menu_4)) + string.isequal(listitem.label,$LOCALIZE[31169]) + Library.HasContent(music)] | [!string.isempty(skin.string(masquer_menu_5)) + string.isequal(listitem.label,$LOCALIZE[31170])] | [!string.isempty(skin.string(masquer_menu_6)) + string.isequal(listitem.label,$LOCALIZE[31171]) + System.HasPVRAddon] | [!string.isempty(skin.string(masquer_menu_7)) + string.isequal(listitem.label,$LOCALIZE[31173]) + !String.IsEmpty(Weather.Plugin) + !string.isempty(Weather.Location)]</visible>
 	</control>
 	<control type="image">
 		<left>70</left>
@@ -529,7 +532,7 @@
 		<width>40</width>
 		<aspectratio>keep</aspectratio>
 		<texture colordiffuse="80ffffff">boutons/radiobutton_on.png</texture>
-		<visible>[string.isempty(skin.string(masquer_menu_1)) + string.isequal(listitem.label,home)] | [string.isempty(skin.string(masquer_menu_2)) + string.isequal(listitem.label,$LOCALIZE[31168])] | [string.isempty(skin.string(masquer_menu_3)) + string.isequal(listitem.label,$LOCALIZE[31213])] | [string.isempty(skin.string(masquer_menu_4)) + string.isequal(listitem.label,$LOCALIZE[31169])] | [string.isempty(skin.string(masquer_menu_5)) + string.isequal(listitem.label,$LOCALIZE[31170])] | [string.isempty(skin.string(masquer_menu_6)) + string.isequal(listitem.label,$LOCALIZE[31171])] | [string.isempty(skin.string(masquer_menu_7)) + string.isequal(listitem.label,$LOCALIZE[31173])]</visible>
+		<visible>[string.isempty(skin.string(masquer_menu_2)) + string.isequal(listitem.label,$LOCALIZE[31168]) + Library.HasContent(movies)] | [string.isempty(skin.string(masquer_menu_3)) + string.isequal(listitem.label,$LOCALIZE[31213]) + Library.HasContent(tvshows)] | [string.isempty(skin.string(masquer_menu_4)) + string.isequal(listitem.label,$LOCALIZE[31169]) + Library.HasContent(music)] | [string.isempty(skin.string(masquer_menu_5)) + string.isequal(listitem.label,$LOCALIZE[31170])] | [string.isempty(skin.string(masquer_menu_6)) + string.isequal(listitem.label,$LOCALIZE[31171]) + System.HasPVRAddon] | [string.isempty(skin.string(masquer_menu_7)) + string.isequal(listitem.label,$LOCALIZE[31173]) + !String.IsEmpty(Weather.Plugin) + !string.isempty(Weather.Location)]</visible>
 	</control>
 	</itemlayout>
 	<focusedlayout height="122">	
@@ -558,13 +561,22 @@
 		<label>$INFO[listitem.label]</label>
 	</control>		
 	<control type="image">
+		<left>68</left>
+		<top>39</top>
+		<height>44</height>
+		<width>44</width>
+		<aspectratio>keep</aspectratio>
+		<texture colordiffuse="ffffffff">boutons/radiobutton_off.png</texture>
+		<visible>[!control.hasfocus(1556) + !control.hasfocus(1557)] + [string.isequal(listitem.label,$LOCALIZE[31168]) + Library.HasContent(movies)] | [string.isequal(listitem.label,$LOCALIZE[31213]) + Library.HasContent(tvshows)] | [string.isequal(listitem.label,$LOCALIZE[31169]) + Library.HasContent(music)] | [string.isequal(listitem.label,$LOCALIZE[31170])] | [string.isequal(listitem.label,$LOCALIZE[31171]) + System.HasPVRAddon] | [string.isequal(listitem.label,$LOCALIZE[31173]) + !String.IsEmpty(Weather.Plugin) + !string.isempty(Weather.Location)]</visible>
+	</control>
+	<control type="image">
 		<left>70</left>
 		<top>41</top>
 		<height>40</height>
 		<width>40</width>
 		<aspectratio>keep</aspectratio>
 		<texture colordiffuse="$VAR[gris]">boutons/radiobutton_off.png</texture>
-		<visible>[!string.isempty(skin.string(masquer_menu_1)) + string.isequal(listitem.label,home)] | [!string.isempty(skin.string(masquer_menu_2)) + string.isequal(listitem.label,$LOCALIZE[31168])] | [!string.isempty(skin.string(masquer_menu_3)) + string.isequal(listitem.label,$LOCALIZE[31213])] | [!string.isempty(skin.string(masquer_menu_4)) + string.isequal(listitem.label,$LOCALIZE[31169])] | [!string.isempty(skin.string(masquer_menu_5)) + string.isequal(listitem.label,$LOCALIZE[31170])] | [!string.isempty(skin.string(masquer_menu_6)) + string.isequal(listitem.label,$LOCALIZE[31171])] | [!string.isempty(skin.string(masquer_menu_7)) + string.isequal(listitem.label,$LOCALIZE[31173])]</visible>
+		<visible>[!string.isempty(skin.string(masquer_menu_2)) + string.isequal(listitem.label,$LOCALIZE[31168]) + Library.HasContent(movies)] | [!string.isempty(skin.string(masquer_menu_3)) + string.isequal(listitem.label,$LOCALIZE[31213]) + Library.HasContent(tvshows)] | [!string.isempty(skin.string(masquer_menu_4)) + string.isequal(listitem.label,$LOCALIZE[31169]) + Library.HasContent(music)] | [!string.isempty(skin.string(masquer_menu_5)) + string.isequal(listitem.label,$LOCALIZE[31170])] | [!string.isempty(skin.string(masquer_menu_6)) + string.isequal(listitem.label,$LOCALIZE[31171]) + System.HasPVRAddon] | [!string.isempty(skin.string(masquer_menu_7)) + string.isequal(listitem.label,$LOCALIZE[31173]) + !String.IsEmpty(Weather.Plugin) + !string.isempty(Weather.Location)]</visible>
 	</control>
 	<control type="image">
 		<left>70</left>
@@ -573,78 +585,78 @@
 		<width>40</width>
 		<aspectratio>keep</aspectratio>
 		<texture colordiffuse="$VAR[gris]">boutons/radiobutton_on.png</texture>
-		<visible>[string.isempty(skin.string(masquer_menu_1)) + string.isequal(listitem.label,home)] | [string.isempty(skin.string(masquer_menu_2)) + string.isequal(listitem.label,$LOCALIZE[31168])] | [string.isempty(skin.string(masquer_menu_3)) + string.isequal(listitem.label,$LOCALIZE[31213])] | [string.isempty(skin.string(masquer_menu_4)) + string.isequal(listitem.label,$LOCALIZE[31169])] | [string.isempty(skin.string(masquer_menu_5)) + string.isequal(listitem.label,$LOCALIZE[31170])] | [string.isempty(skin.string(masquer_menu_6)) + string.isequal(listitem.label,$LOCALIZE[31171])] | [string.isempty(skin.string(masquer_menu_7)) + string.isequal(listitem.label,$LOCALIZE[31173])]</visible>
-	</control>	
+		<visible>[string.isempty(skin.string(masquer_menu_2)) + string.isequal(listitem.label,$LOCALIZE[31168]) + Library.HasContent(movies)] | [string.isempty(skin.string(masquer_menu_3)) + string.isequal(listitem.label,$LOCALIZE[31213]) + Library.HasContent(tvshows)] | [string.isempty(skin.string(masquer_menu_4)) + string.isequal(listitem.label,$LOCALIZE[31169]) + Library.HasContent(music)] | [string.isempty(skin.string(masquer_menu_5)) + string.isequal(listitem.label,$LOCALIZE[31170])] | [string.isempty(skin.string(masquer_menu_6)) + string.isequal(listitem.label,$LOCALIZE[31171]) + System.HasPVRAddon] | [string.isempty(skin.string(masquer_menu_7)) + string.isequal(listitem.label,$LOCALIZE[31173]) + !String.IsEmpty(Weather.Plugin) + !string.isempty(Weather.Location)]</visible>
+	</control>		
 	<control type="image">
 		<left>32</left>
-		<top>35</top>
-		<height>25</height>
-		<width>25</width>
+		<top>30</top>
+		<height>30</height>
+		<width>30</width>
 		<aspectratio>keep</aspectratio>
-		<texture colordiffuse="$VAR[gris]">boutons/haut2.png</texture>
+		<texture colordiffuse="$VAR[gris]">boutons/haut.png</texture>
 		<visible>!control.hasfocus(1556) + !container(1555).row(0) + !container(1555).row(5)</visible>
 	</control>
 	<control type="image">
 		<left>32</left>
-		<top>48</top>
-		<height>25</height>
-		<width>25</width>
+		<top>45</top>
+		<height>30</height>
+		<width>30</width>
 		<aspectratio>keep</aspectratio>
-		<texture colordiffuse="$VAR[gris]">boutons/haut2.png</texture>		
+		<texture colordiffuse="$VAR[gris]">boutons/haut.png</texture>		
 		<visible>!control.hasfocus(1556) + container(1555).row(5)</visible>
 	</control>		
 	<control type="image">
 		<left>32</left>
-		<top>35</top>
-		<height>25</height>
-		<width>25</width>
+		<top>30</top>
+		<height>30</height>
+		<width>30</width>
 		<aspectratio>keep</aspectratio>
-		<texture>boutons/haut2.png</texture>
+		<texture>boutons/haut.png</texture>
 		<visible>control.hasfocus(1556) + !container(1555).row(0) + !container(1555).row(5)</visible>
 	</control>
 	<control type="image">
 		<left>32</left>
-		<top>48</top>
-		<height>25</height>
-		<width>25</width>
+		<top>45</top>
+		<height>30</height>
+		<width>30</width>
 		<aspectratio>keep</aspectratio>
-		<texture>boutons/haut2.png</texture>		
+		<texture>boutons/haut.png</texture>		
 		<visible>control.hasfocus(1556) + container(1555).row(5)</visible>
 	</control>	
 	<control type="image">
 		<left>32</left>
-		<top>62</top>
-		<height>25</height>
-		<width>25</width>
+		<top>60</top>
+		<height>30</height>
+		<width>30</width>
 		<aspectratio>keep</aspectratio>
-		<texture colordiffuse="$VAR[gris]">boutons/bas2.png</texture>		
+		<texture colordiffuse="$VAR[gris]">boutons/bas.png</texture>		
 		<visible>!control.hasfocus(1557) + !container(1555).row(5) + !container(1555).row(0)</visible>
 	</control>
 	<control type="image">
 		<left>32</left>
-		<top>48</top>
-		<height>25</height>
-		<width>25</width>
+		<top>45</top>
+		<height>30</height>
+		<width>30</width>
 		<aspectratio>keep</aspectratio>
-		<texture colordiffuse="$VAR[gris]">boutons/bas2.png</texture>		
+		<texture colordiffuse="$VAR[gris]">boutons/bas.png</texture>		
 		<visible>!control.hasfocus(1557) + container(1555).row(0)</visible>
 	</control>
 	<control type="image">
 		<left>32</left>
-		<top>62</top>
-		<height>25</height>
-		<width>25</width>
+		<top>60</top>
+		<height>30</height>
+		<width>30</width>
 		<aspectratio>keep</aspectratio>
-		<texture>boutons/bas2.png</texture>		
+		<texture>boutons/bas.png</texture>		
 		<visible>control.hasfocus(1557) + !container(1555).row(5) + !container(1555).row(0)</visible>
 	</control>
 	<control type="image">
 		<left>32</left>
-		<top>48</top>
-		<height>25</height>
-		<width>25</width>
+		<top>45</top>
+		<height>30</height>
+		<width>30</width>
 		<aspectratio>keep</aspectratio>
-		<texture>boutons/bas2.png</texture>		
+		<texture>boutons/bas.png</texture>		
 		<visible>control.hasfocus(1557) + container(1555).row(0)</visible>
 	</control>
 	</control>
@@ -672,7 +684,7 @@
 		<width>40</width>
 		<aspectratio>keep</aspectratio>
 		<texture colordiffuse="80ffffff">boutons/radiobutton_off.png</texture>
-		<visible>[!string.isempty(skin.string(masquer_menu_1)) + string.isequal(listitem.label,home)] | [!string.isempty(skin.string(masquer_menu_2)) + string.isequal(listitem.label,$LOCALIZE[31168])] | [!string.isempty(skin.string(masquer_menu_3)) + string.isequal(listitem.label,$LOCALIZE[31213])] | [!string.isempty(skin.string(masquer_menu_4)) + string.isequal(listitem.label,$LOCALIZE[31169])] | [!string.isempty(skin.string(masquer_menu_5)) + string.isequal(listitem.label,$LOCALIZE[31170])] | [!string.isempty(skin.string(masquer_menu_6)) + string.isequal(listitem.label,$LOCALIZE[31171])] | [!string.isempty(skin.string(masquer_menu_7)) + string.isequal(listitem.label,$LOCALIZE[31173])]</visible>
+		<visible>[!string.isempty(skin.string(masquer_menu_2)) + string.isequal(listitem.label,$LOCALIZE[31168]) + Library.HasContent(movies)] | [!string.isempty(skin.string(masquer_menu_3)) + string.isequal(listitem.label,$LOCALIZE[31213]) + Library.HasContent(tvshows)] | [!string.isempty(skin.string(masquer_menu_4)) + string.isequal(listitem.label,$LOCALIZE[31169]) + Library.HasContent(music)] | [!string.isempty(skin.string(masquer_menu_5)) + string.isequal(listitem.label,$LOCALIZE[31170])] | [!string.isempty(skin.string(masquer_menu_6)) + string.isequal(listitem.label,$LOCALIZE[31171]) + System.HasPVRAddon] | [!string.isempty(skin.string(masquer_menu_7)) + string.isequal(listitem.label,$LOCALIZE[31173]) + !String.IsEmpty(Weather.Plugin) + !string.isempty(Weather.Location)]</visible>
 	</control>
 	<control type="image">
 		<left>70</left>
@@ -681,7 +693,7 @@
 		<width>40</width>
 		<aspectratio>keep</aspectratio>
 		<texture colordiffuse="80ffffff">boutons/radiobutton_on.png</texture>
-		<visible>[string.isempty(skin.string(masquer_menu_1)) + string.isequal(listitem.label,home)] | [string.isempty(skin.string(masquer_menu_2)) + string.isequal(listitem.label,$LOCALIZE[31168])] | [string.isempty(skin.string(masquer_menu_3)) + string.isequal(listitem.label,$LOCALIZE[31213])] | [string.isempty(skin.string(masquer_menu_4)) + string.isequal(listitem.label,$LOCALIZE[31169])] | [string.isempty(skin.string(masquer_menu_5)) + string.isequal(listitem.label,$LOCALIZE[31170])] | [string.isempty(skin.string(masquer_menu_6)) + string.isequal(listitem.label,$LOCALIZE[31171])] | [string.isempty(skin.string(masquer_menu_7)) + string.isequal(listitem.label,$LOCALIZE[31173])]</visible>
+		<visible>[string.isempty(skin.string(masquer_menu_2)) + string.isequal(listitem.label,$LOCALIZE[31168]) + Library.HasContent(movies)] | [string.isempty(skin.string(masquer_menu_3)) + string.isequal(listitem.label,$LOCALIZE[31213]) + Library.HasContent(tvshows)] | [string.isempty(skin.string(masquer_menu_4)) + string.isequal(listitem.label,$LOCALIZE[31169]) + Library.HasContent(music)] | [string.isempty(skin.string(masquer_menu_5)) + string.isequal(listitem.label,$LOCALIZE[31170])] | [string.isempty(skin.string(masquer_menu_6)) + string.isequal(listitem.label,$LOCALIZE[31171]) + System.HasPVRAddon] | [string.isempty(skin.string(masquer_menu_7)) + string.isequal(listitem.label,$LOCALIZE[31173]) + !String.IsEmpty(Weather.Plugin) + !string.isempty(Weather.Location)]</visible>
 	</control>
 	</control>
 	</focusedlayout>
@@ -854,13 +866,13 @@
 		<scrolltime tween="cubic" easing="out">500</scrolltime>	
 	<control type="group" id="994">																												<description>horloge</description>
 		<usecontrolcoords>true</usecontrolcoords>
-		<right>40</right>					
+		<right>40</right>		
 	<include>titre</include>
-	</control>	
+	</control>		
 	<control type="grouplist" id="999">																											<description>boutons recherche et parametres</description>
 		<usecontrolcoords>true</usecontrolcoords>
 		<height>118</height>			
-		<onleft>1000</onleft>
+		<onleft>1000</onleft>		
 		<orientation>horizontal</orientation>
 		<itemgap>50</itemgap>
 	<control type="radiobutton" id="998">
@@ -869,7 +881,6 @@
 		<height>60</height>
 		<width>80</width>
 		<ondown>900</ondown>
-		<onright>997</onright>
 		<texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
 		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
 		<textureradioonfocus colordiffuse="$VAR[gris]">menus/recherche.png</textureradioonfocus>
@@ -879,6 +890,41 @@
 		<radioposx>1</radioposx>
 		<radiowidth>80</radiowidth>
 		<radioheight>80</radioheight>			
+	</control>
+	<control type="radiobutton" id="992">
+		<top>30</top>
+		<height>60</height>
+		<width>80</width>		
+		<ondown>900</ondown>
+		<onclick>skin.togglesetting(favoris)</onclick>
+		<texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
+		<textureradioonfocus colordiffuse="$VAR[gris]">icones/favoris_visibles.png</textureradioonfocus>
+		<textureradioonnofocus colordiffuse="d9ffffff">icones/favoris_visibles.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="$VAR[gris]">icones/favoris.png</textureradioofffocus>
+		<textureradiooffnofocus colordiffuse="d9ffffff">icones/favoris.png</textureradiooffnofocus>
+		<radioposx>6</radioposx>
+		<radiowidth>70</radiowidth>
+		<radioheight>70</radioheight>
+		<selected>skin.hassetting(favoris)</selected>
+		<visible>!integer.isequal(container(12340).numitems,0)</visible>
+	</control>
+	<control type="radiobutton" id="991">
+		<top>30</top>
+		<height>60</height>
+		<width>80</width>		
+		<ondown>900</ondown>
+		<onright>997</onright>
+		<onclick>activatewindow(addonbrowser,return)</onclick>
+		<texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
+		<textureradioonfocus colordiffuse="$VAR[gris]">icones/kodi.png</textureradioonfocus>
+		<textureradioonnofocus colordiffuse="d9ffffff">icones/kodi.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="$VAR[gris]">icones/kodi.png</textureradioofffocus>
+		<textureradiooffnofocus colordiffuse="d9ffffff">icones/kodi.png</textureradiooffnofocus>
+		<radioposx>6</radioposx>
+		<radiowidth>70</radiowidth>
+		<radioheight>70</radioheight>
 	</control>
 	<control type="group" id="993">
 		<top>30</top>
@@ -897,7 +943,7 @@
 		<height>60</height>
 		<width>60</width>
 		<ondown>900</ondown>
-		<onleft>998</onleft>
+		<onleft>991</onleft>
 		<onright>996</onright>		
 		<onclick>PlayerControl(Play)</onclick>		
 		<texturenofocus colordiffuse="ccffffff">boutons/OSD/pause.png</texturenofocus>
@@ -939,9 +985,143 @@
 	<include content="video_en_cours">																											<description>incrustation de la video en cours</description>
 		<param name="id" value="900"/>
 		<param name="id2" value="100"/>		
-		<param name="ondown" value="1010"/>
+		<param name="ondown" value="1234"/>
 		<param name="onup" value="999"/>
 	</include>		
+	<control type="group" id="1233">																											<description>titre widget des favoris</description>
+		<top>70</top>				
+	<control type="image">
+		<top>27</top>		
+		<left>60</left>
+		<height>25</height>
+		<width>10</width>
+		<aspectratio>keep</aspectratio>
+		<texture background="true" colordiffuse="80ffffff">commun/3points.png</texture>	
+	</control>
+	<control type="label">
+		<top>15</top>		
+		<left>80</left>
+		<height>50</height>
+		<width>595</width>
+		<font>titre</font>
+		<textcolor>80ffffff</textcolor>
+		<label>[UPPERCASE]$LOCALIZE[1036][/UPPERCASE]</label>		
+	</control>
+		<visible>skin.HasSetting(favoris) + !integer.isequal(container(12340).numitems,0)</visible>
+	</control>
+	<control type="panel" id="1234">																											<description>panneau widget des favoris</description>
+		<width>1920</width>
+		<height>520</height>
+		<onleft>1000</onleft>
+		<preloaditems>2</preloaditems>
+		<scrolltime tween="cubic" easing="out">500</scrolltime>
+		<orientation>horizontal</orientation>	
+	<itemlayout height="550" width="400">
+	<control type="group">
+		<top>70</top>		
+		<left>-10</left>
+		<right>10</right>
+	<control type="image">
+		<top>5</top>		
+		<left>50</left>
+		<right>-10</right>
+		<bottom>105</bottom>
+		<aspectratio aligny="bottom">keep</aspectratio>
+		<texture background="true" border="10">$INFO[listitem.icon]</texture>
+		<bordertexture border="10">commun/tuiles.png</bordertexture>
+		<bordersize>10,0,10,10</bordersize>	
+		<visible>!String.IsEqual(listitem.icon,) + !string.EndsWith(listitem.icon,none)</visible>
+	</control>	
+	<control type="image">
+		<top>5</top>		
+		<left>50</left>
+		<right>-10</right>
+		<bottom>105</bottom>
+		<aspectratio aligny="bottom">keep</aspectratio>
+		<texture background="true" border="10" colordiffuse="40000000">commun/noimage.png</texture>
+		<bordertexture border="10">commun/tuiles.png</bordertexture>
+		<bordersize>10,0,10,10</bordersize>	
+		<visible>String.IsEqual(listitem.icon,) | string.EndsWith(listitem.icon,none)</visible>
+	</control>
+	<control type="label">
+		<bottom>55</bottom>
+		<left>60</left>
+		<right>0</right>
+		<height>40</height>
+		<font>label</font>
+		<textoffsetx>2</textoffsetx>
+		<align>center</align>
+		<textcolor>80ffffff</textcolor>
+		<label>$INFO[listitem.label]</label>
+	</control>	
+	</control>
+	</itemlayout>
+	<focusedlayout height="550" width="400">
+	<control type="group">
+		<top>70</top>		
+		<left>-10</left>
+		<right>10</right>
+	<control type="button">
+		<bottom>55</bottom>
+		<left>60</left>
+		<right>0</right>
+		<height>40</height>
+		<font>label</font>
+		<textoffsetx>2</textoffsetx>		
+		<align>center</align>
+		<texturenofocus colordiffuse="$VAR[couleur_dominante]" border="20">$PARAM[texturenofocus]</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
+		<onfocus condition="!String.IsEqual(listitem.icon,) + !string.EndsWith(listitem.icon,none)">setproperty(image,$INFO[listitem.icon],home)</onfocus>
+		<onfocus condition="String.IsEqual(listitem.icon,) | string.EndsWith(listitem.icon,none)">clearproperty(image,home)</onfocus>	
+		<onfocus>setproperty(label,$ESCINFO[listItem.label],home)</onfocus>			
+	</control>	
+	<control type="image">
+		<top>5</top>		
+		<left>50</left>
+		<right>-10</right>
+		<bottom>105</bottom>
+		<aspectratio aligny="bottom">keep</aspectratio>
+		<texture background="true" border="10">$INFO[listitem.icon]</texture>
+		<bordertexture border="10">commun/tuiles.png</bordertexture>
+		<bordersize>10,0,10,10</bordersize>	
+		<visible>!String.IsEqual(listitem.icon,) + !string.EndsWith(listitem.icon,none)</visible>
+	</control>	
+	<control type="image">
+		<top>5</top>		
+		<left>50</left>
+		<right>-10</right>
+		<bottom>105</bottom>
+		<aspectratio aligny="bottom">keep</aspectratio>
+		<texture background="true" border="10" colordiffuse="40000000">commun/noimage.png</texture>
+		<bordertexture border="10">commun/tuiles.png</bordertexture>
+		<bordersize>10,0,10,10</bordersize>	
+		<visible>String.IsEqual(listitem.icon,) | string.EndsWith(listitem.icon,none)</visible>
+	</control>
+	<control type="label">
+		<bottom>55</bottom>
+		<left>60</left>
+		<right>0</right>
+		<height>40</height>
+		<font>label</font>
+		<textoffsetx>2</textoffsetx>
+		<align>center</align>
+		<textcolor>$VAR[gris]</textcolor>
+		<label>$INFO[listitem.label]</label>
+		<scroll>true</scroll>
+	</control>	
+	</control>
+	</focusedlayout>
+		<content>favourites://</content>		
+		<visible>skin.HasSetting(favoris) + !integer.isequal(container(12340).numitems,0)</visible>
+	</control>	
+	<control type="group" id="1235">																											<description>separation widget des favoris</description>
+	<include content="barre_separation_horizontale">																							<description>barre de separation horizontale</description>
+		<param name="left" value="25"/> 
+		<param name="right" value="25"/>
+		<param name="bottom" value="10"/>			
+	</include>
+		<visible>skin.HasSetting(favoris) + !integer.isequal(container(12340).numitems,0)</visible>
+	</control>
 	<include content="widget">	
 		<param name="id" value="1010"/>
 	</include>
@@ -1827,7 +2007,8 @@
 		<width>80</width>
 		<ondown>6000</ondown>
 		<onfocus>cancelalarm(actualiser_widget_tv,silent)</onfocus>	
-		<onfocus>alarmclock(actualiser_widget_tv,activatewindow(1299),00:02,loop,silent)</onfocus><texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
+		<onfocus>alarmclock(actualiser_widget_tv,activatewindow(1299),00:02,loop,silent)</onfocus>
+		<texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
 		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
 		<textureradioonfocus colordiffuse="$VAR[gris]">menus/recherche.png</textureradioonfocus>
 		<textureradioonnofocus>menus/recherche.png</textureradioonnofocus>
@@ -1843,7 +2024,8 @@
 		<width>auto</width>
 		<ondown>6000</ondown>
 		<onfocus>cancelalarm(actualiser_widget_tv,silent)</onfocus>	
-		<onfocus>alarmclock(actualiser_widget_tv,activatewindow(1299),00:02,loop,silent)</onfocus><onclick>Control.Move(6800,1)</onclick>			
+		<onfocus>alarmclock(actualiser_widget_tv,activatewindow(1299),00:02,loop,silent)</onfocus>
+		<onclick>Control.Move(6800,1)</onclick>			
 		<onclick>setproperty(chemin_widget_tv,pvr://channels/tv/123456,home)</onclick>
 		<onclick>alarmclock(alarme,setproperty(chemin_widget_tv,pvr://channels/tv/$INFO[container(6800).listitem.label],home),00:00,silent)</onclick>		
 	<include content="bouton">																										
@@ -2090,9 +2272,10 @@
 		<height>350</height>
 		<width>420</width>
 		<aspectratio align="right" aligny="center">keep</aspectratio>
-		<texture background="true" border="10">$VAR[poster_widget_tv]</texture>
+		<texture background="true" border="10">$INFO[container(6012).listitem.epgeventicon]</texture>
 		<bordertexture border="10">commun/tuiles.png</bordertexture>
-		<bordersize>10,0,10,10</bordersize>		
+		<bordersize>10,0,10,10</bordersize>	
+		<visible>string.isempty(window(home).property(guide_widget_tv))</visible>
 	</control>
 	<control type="image">																														<description>icone detail</description>
 		<top>25</top>
@@ -2110,11 +2293,12 @@
 		<font>texte_infos</font>
 		<textcolor>80ffffff</textcolor>
 		<align>right</align>
-		<label>$VAR[detail_widget_tv]</label>		
+		<label>$VAR[detail_widget_tv]</label>
+		<visible>!string.isempty(listitem.title)</visible>		
 	</control>		
 	<control type="textbox">																													<description>resume</description>		
-		<top>76</top>
-		<height>180</height>
+		<top>70</top>
+		<height>190</height>
 		<left>470</left>
 		<width>1420</width>
 		<font>infos</font>
@@ -2128,6 +2312,7 @@
 		<left>470</left>
 		<width>1420</width>
 		<font>infos</font>
+		<textcolor>80ffffff</textcolor>
 		<align>center</align>
 		<label>$LOCALIZE[31206]</label>		
 		<visible>[string.isempty(window(home).property(guide_widget_tv)) + string.isequal(container(6012).listitem.plot,)] | [!string.isempty(window(home).property(guide_widget_tv)) + string.isequal(container(6012).listitem.nextplot,)]</visible>
@@ -2263,7 +2448,8 @@
 		<selectedcolor>$VAR[couleur_dominante]</selectedcolor>
 		<textcolor>80ffffff</textcolor>
 		<align>left</align>
-		<label>   [B]$INFO[listitem.title][/B]</label>			
+		<label>   [B]$INFO[listitem.title][/B]</label>
+		<visible>!string.isempty(listitem.title)</visible>			
 	</control>	
 	<control type="label">
 		<top>45</top>
@@ -2274,8 +2460,16 @@
 		<selectedcolor>$VAR[couleur_dominante]</selectedcolor>
 		<textcolor>80ffffff</textcolor>
 		<align>left</align>
-		<label>      [I]$INFO[listitem.genre]  •  $INFO[listitem.starttime] - $INFO[listitem.endtime] ($INFO[listitem.duration(hh:mm)])[/I]</label>		
+		<label>      [I]$INFO[listitem.genre]  •  $INFO[listitem.starttime] - $INFO[listitem.endtime] ($INFO[listitem.duration(hh:mm)])[/I]</label>	
+		<visible>!string.isempty(listitem.title)</visible>	
 	</control>		
+	<control type="image">
+		<left>5</left>
+		<top>60</top>
+		<width>24</width>
+		<height>24</height>
+		<texture colordiffuse="80ffffff">$VAR[icone_enregistrement]</texture>
+	</control>
 	</control>
 	<control type="group">																														<description>programmes suivants</description>
 		<left>1036</left>
@@ -2295,7 +2489,8 @@
 		<selectedcolor>80ffffff</selectedcolor>
 		<textcolor>80ffffff</textcolor>
 		<align>left</align>
-		<label>   [B]$INFO[listitem.nexttitle][/B]</label>			
+		<label>   [B]$INFO[listitem.nexttitle][/B]</label>
+		<visible>!string.isempty(listitem.nexttitle)</visible>
 	</control>	
 	<control type="label">
 		<top>45</top>
@@ -2307,6 +2502,7 @@
 		<textcolor>80ffffff</textcolor>
 		<align>left</align>
 		<label>      [I]$INFO[listitem.nextgenre]  •  $INFO[listitem.nextstarttime] - $INFO[listitem.nextendtime] ($INFO[listitem.nextduration(hh:mm)])[/I]</label>
+		<visible>!string.isempty(listitem.nexttitle)</visible>
 	</control>				
 	</control>
 	</itemlayout>		
@@ -2383,7 +2579,8 @@
 		<font>texte_infos</font>
 		<aligny>center</aligny>
 		<align>left</align>
-		<label>   [B]$INFO[listitem.title][/B]</label>			
+		<label>   [B]$INFO[listitem.title][/B]</label>
+		<visible>!string.isempty(listitem.title)</visible>			
 	</control>
 	<control type="label">
 		<top>45</top>
@@ -2392,7 +2589,15 @@
 		<font>infos</font>
 		<aligny>center</aligny>
 		<align>left</align>
-		<label>      [I]$INFO[listitem.genre]  •  $INFO[listitem.starttime] - $INFO[listitem.endtime] ($INFO[listitem.duration(hh:mm)])[/I]</label>		
+		<label>      [I]$INFO[listitem.genre]  •  $INFO[listitem.starttime] - $INFO[listitem.endtime] ($INFO[listitem.duration(hh:mm)])[/I]</label>
+		<visible>!string.isempty(listitem.title)</visible>		
+	</control>	
+	<control type="image">
+		<left>5</left>
+		<top>60</top>
+		<width>24</width>
+		<height>24</height>
+		<texture colordiffuse="80ffffff">$VAR[icone_enregistrement]</texture>
 	</control>			
 		<visible>string.isempty(window(home).property(guide_widget_tv))</visible>
 	</control>	
@@ -2412,7 +2617,8 @@
 		<selectedcolor>$VAR[couleur_dominante]</selectedcolor>
 		<textcolor>80ffffff</textcolor>
 		<align>left</align>
-		<label>   [B]$INFO[listitem.title][/B]</label>			
+		<label>   [B]$INFO[listitem.title][/B]</label>
+		<visible>!string.isempty(listitem.title)</visible>			
 	</control>
 	<control type="label">
 		<top>45</top>
@@ -2423,7 +2629,15 @@
 		<selectedcolor>$VAR[couleur_dominante]</selectedcolor>
 		<textcolor>80ffffff</textcolor>
 		<align>left</align>
-		<label>      [I]$INFO[listitem.genre]  •  $INFO[listitem.starttime] - $INFO[listitem.endtime] ($INFO[listitem.duration(hh:mm)])[/I]</label>		
+		<label>      [I]$INFO[listitem.genre]  •  $INFO[listitem.starttime] - $INFO[listitem.endtime] ($INFO[listitem.duration(hh:mm)])[/I]</label>
+		<visible>!string.isempty(listitem.title)</visible>		
+	</control>	
+	<control type="image">
+		<left>5</left>
+		<top>60</top>
+		<width>24</width>
+		<height>24</height>
+		<texture colordiffuse="80ffffff">$VAR[icone_enregistrement]</texture>
 	</control>
 		<visible>!string.isempty(window(home).property(guide_widget_tv))</visible>
 	</control>		
@@ -2439,6 +2653,14 @@
 		<aspectratio>stretch</aspectratio>
 		<texture colordiffuse="$VAR[couleur_dominante]">commun/texture.png</texture>
 		<animation effect="fade" start="100" end="25" condition="!control.hasfocus(6012)">conditional</animation>				
+	</control>	
+	<control type="image">		
+		<top>1</top>
+		<height>93</height>
+        <width>783</width>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="$VAR[couleur_dominante]">commun/texture.png</texture>
+		<visible>window.isvisible(pvrguideinfo) | window.isvisible(contextmenu)</visible>				
 	</control>
 	<control type="label">
 		<width>775</width>
@@ -2447,7 +2669,8 @@
 		<aligny>center</aligny>
 		<align>left</align>
 		<selectedcolor>ffffffff</selectedcolor>
-		<label>   [B]$INFO[listitem.nexttitle][/B]</label>			
+		<label>   [B]$INFO[listitem.nexttitle][/B]</label>
+		<visible>!string.isempty(listitem.nexttitle)</visible>			
 	</control>
 	<control type="label">
 		<top>45</top>
@@ -2457,7 +2680,8 @@
 		<aligny>center</aligny>
 		<align>left</align>
 		<selectedcolor>ffffffff</selectedcolor>
-		<label>      [I]$INFO[listitem.nextgenre]  •  $INFO[listitem.nextstarttime] - $INFO[listitem.nextendtime] ($INFO[listitem.nextduration(hh:mm)])[/I]</label>		
+		<label>      [I]$INFO[listitem.nextgenre]  •  $INFO[listitem.nextstarttime] - $INFO[listitem.nextendtime] ($INFO[listitem.nextduration(hh:mm)])[/I]</label>
+		<visible>!string.isempty(listitem.nexttitle)</visible>		
 	</control>	
 		<visible>!string.isempty(window(home).property(guide_widget_tv))</visible>
 	</control>	
@@ -2477,7 +2701,8 @@
 		<selectedcolor>80ffffff</selectedcolor>
 		<textcolor>80ffffff</textcolor>
 		<align>left</align>
-		<label>   [B]$INFO[listitem.nexttitle][/B]</label>			
+		<label>   [B]$INFO[listitem.nexttitle][/B]</label>	
+		<visible>!string.isempty(listitem.nexttitle)</visible>		
 	</control>
 	<control type="label">
 		<top>45</top>
@@ -2488,7 +2713,8 @@
 		<selectedcolor>80ffffff</selectedcolor>
 		<textcolor>80ffffff</textcolor>
 		<align>left</align>
-		<label>      [I]$INFO[listitem.nextgenre]  •  $INFO[listitem.nextstarttime] - $INFO[listitem.nextendtime] ($INFO[listitem.nextduration(hh:mm)])[/I]</label>		
+		<label>      [I]$INFO[listitem.nextgenre]  •  $INFO[listitem.nextstarttime] - $INFO[listitem.nextendtime] ($INFO[listitem.nextduration(hh:mm)])[/I]</label>
+		<visible>!string.isempty(listitem.nexttitle)</visible>		
 	</control>
 		<visible>string.isempty(window(home).property(guide_widget_tv))</visible>
 	</control>			
@@ -2611,7 +2837,7 @@
 		<param name="onup" value="7999"/>
 	</include>
 	<control type="group" id="7004">																											<description>acces rapide</description>
-		<height>70</height>
+		<height>75</height>
 	<control type="image">
 		<top>27</top>		
 		<left>60</left>
@@ -2632,7 +2858,7 @@
 	</control>	
 	<control type="list" id="7008">
 		<width>1920</width>
-		<height>100</height>
+		<height>95</height>
 		<onleft>1000</onleft>
 		<onback>control.setFocus(7008,0,absolute)</onback>		
 		<preloaditems>2</preloaditems>
@@ -3240,6 +3466,7 @@
 		<onleft>1000</onleft>
 		<onback>1000</onback>
 		<onup>9999</onup>
+		<ondown>noop</ondown>
 		<pagecontrol>7001</pagecontrol>
 		<scrolltime tween="linear" easing="out">250</scrolltime>
 		<orientation>vertical</orientation>	
@@ -3410,6 +3637,7 @@
 		<onright>8001</onright>
 		<onleft>1000</onleft>		
 		<onup>10999</onup>
+		<ondown>noop</ondown>
 		<onback>1000</onback>
 		<pagecontrol>8001</pagecontrol>
 		<scrolltime tween="linear" easing="out">250</scrolltime>
@@ -3453,6 +3681,11 @@
 	</focusedlayout>
 	<content>
 	<item>
+		<label>$LOCALIZE[31274]</label>
+		<icon>icones/extinction/extinction rapide.png</icon>
+		<onclick>activatewindow(1223)</onclick>				
+	</item>
+	<item>
 		<label>$LOCALIZE[31181]</label>
 		<icon>icones/extinction/quitter.png</icon>
 		<onclick>Quit</onclick>	
@@ -3484,11 +3717,6 @@
 		<onclick>ReloadSkin()</onclick>				
 		<onclick>replaceWindow(startup)</onclick>				
 	</item>
-	<item>
-		<label>$LOCALIZE[31274]</label>
-		<icon>icones/extinction/extinction rapide.png</icon>
-		<onclick>activatewindow(1223)</onclick>				
-	</item>
 	</content>		
 	</control>		
 	<include content="scrollbar">																												<description>scrollbar</description>
@@ -3511,11 +3739,7 @@
 	
 	
 	
-	
-	
-	
-	
-	<control type="label" id="9999">																											<description>label pour les tests</description>
+	<control type="label">																														<description>label pour les tests</description>
 		<bottom>0</bottom>
 		<label>$INFO[]</label>
 	</control>

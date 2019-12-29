@@ -1,16 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
 	<backgroundcolor>00X000000</backgroundcolor>
-	<onload>setProperty(retour,1,home)</onload> 
+	<include>animation_dialogue</include>			
 	<defaultcontrol always="true">700</defaultcontrol>
-	<views>700</views>
-<controls>	
-	<include>video</include>																													<description>arriere plan video</description>
-	<include>image_fond</include>		
+	<views>700,701</views>
+<controls>		
+	<include>image_fond</include>
 	<control type="group">
-		<animation effect="slide" end="1920,0" time="0" condition="window.isvisible(movieinformation) | window.isvisible(selectdialog) | window.isvisible(contextmenu)" reversible="false">conditional</animation>
-		<animation effect="slide" end="0,0" delay="500" time="0" condition="!window.isvisible(movieinformation) + !window.isvisible(selectdialog) + !window.isvisible(contextmenu)" reversible="false">conditional</animation>		
-	<include>kodroid_view</include>
+		<animation effect="fade" start="100" end="0" time="100" condition="window.isvisible(pvrguideinfo) | window.isvisible(selectdialog) | window.isvisible(contextmenu)" reversible="false">Conditional</animation>
+		<animation effect="fade" start="0" end="100" delay="100" time="100" condition="!window.isvisible(pvrguideinfo) + !window.isvisible(selectdialog) + !window.isvisible(contextmenu)" reversible="false">Conditional</animation>
+	<control type="image" id="703">																												<description>fanart arriere plan</description>
+		<fadetime>200</fadetime>
+		<aspectratio>scale</aspectratio>
+		<texture background="true" fallback="empty.jpg">$INFO[listitem.art(fanart)]</texture>		
+		<animation effect="fade" time="200">visiblechange</animation>
+		<animation effect="fade" start="0" end="100" time="1000" reversible="false">windowopen</animation>
+		<animation effect="fade" start="100" end="0" time="1" reversible="false">windowclose</animation>
+		<visible>[!$EXP[est_un_episode] | $EXP[est_une_serie]] + !string.isempty(listitem.art(fanart)) + !string.endswith(listitem.art(fanart),none)</visible>
 	</control>
+	<control type="image" id="704">																												<description>fanart arriere plan</description>
+		<fadetime>200</fadetime>
+		<aspectratio>scale</aspectratio>
+		<texture background="true">$INFO[listitem.art(thumb)]</texture>		
+		<animation effect="fade" time="200">visiblechange</animation>
+		<animation effect="fade" start="0" end="100" time="1000" reversible="false">windowopen</animation>
+		<animation effect="fade" start="100" end="0" time="1" reversible="false">windowclose</animation>
+		<visible>[$EXP[est_un_episode] + !$EXP[est_une_serie]] + !string.isempty(listitem.art(thumb)) + !string.endswith(listitem.art(thumb),none)</visible>
+	</control>
+	<control type="image">																														<description>fanart arriere plan</description>
+		<fadetime>200</fadetime>
+		<aspectratio>scale</aspectratio>
+		<texture background="true" fallback="extras/fallback/film.jpg">$INFO[skin.string(arriere_plan_video)]</texture>		
+		<animation effect="fade" time="200">visiblechange</animation>
+		<animation effect="fade" start="0" end="100" time="1000" reversible="false">windowopen</animation>
+		<animation effect="fade" start="100" end="0" time="1" reversible="false">windowclose</animation>
+		<visible>[!control.isvisible(703) + !control.isvisible(704)] | [String.isequal(Control.GetLabel(703),empty.jpg) + !control.isvisible(704)]</visible>
+	</control>
+	</control>
+	<control type="image">																														<description>masque arriere plan</description>
+		<aspectratio>scale</aspectratio>
+		<texture colordiffuse="ebffffff">commun/fond.png</texture>				
+	</control>
+	<include>KPR_view</include>	
 </controls>
 </window>

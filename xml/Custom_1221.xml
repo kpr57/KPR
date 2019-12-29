@@ -107,10 +107,7 @@
 		<onleft condition="string.isequal(skin.string(opacite_OSD),33)">skin.setstring(opacite_OSD,26)</onleft>		
 		<onleft condition="string.isequal(skin.string(opacite_OSD),26)">skin.setstring(opacite_OSD,1a)</onleft>								
 		<onleft condition="string.isequal(skin.string(opacite_OSD),1a)">skin.setstring(opacite_OSD,0d)</onleft>				
-		<onleft condition="string.isequal(skin.string(opacite_OSD),0d)">skin.setstring(opacite_OSD,00)</onleft>	
-		
-		
-		
+		<onleft condition="string.isequal(skin.string(opacite_OSD),0d)">skin.setstring(opacite_OSD,00)</onleft>			
 		<texturesliderbar colordiffuse="ffffffff">boutons/slider_background.png</texturesliderbar>
 		<textureslidernibfocus colordiffuse="$VAR[couleur_dominante]">boutons/slider.png</textureslidernibfocus>			
 	</control>

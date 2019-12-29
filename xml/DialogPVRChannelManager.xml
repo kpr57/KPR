@@ -1,350 +1,382 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
 	<backgroundcolor>00X000000</backgroundcolor>
-	<onunload>UpdateLibrary(video,,true)</onunload>
-	<defaultcontrol always="true">9002</defaultcontrol>
+	<onload>alarmclock(alarme,control.setfocus(20),00:00,silent)</onload>
+	<onunload>clearproperty(actualiser_chaine,home)</onunload>
+	<onunload condition="string.isequal(window(home).property(actualiser_chaine),1)">reloadskin()</onunload>
 <controls>	
 	<control type="group">
-		<animation effect="fade" start="0" end="100" time="150">WindowOpen</animation>
-		<animation effect="fade" start="100" end="0" time="150">WindowClose</animation>		
-		<left>0</left>
-		<top>0</top>
-		<width>1920</width>
-		<height>1080</height>
-	<control type="image">																			<description>adoucissement du fond</description>
-		<texture colordiffuse="$VAR[masque_fenetres]">texture.png</texture>
-		<visible>!Window.IsVisible(tvchannels) + !Window.IsVisible(tvguide)</visible>
-	</control>	
-	<control type="image">																			<description>adoucissement du fond</description>
-		<texture colordiffuse="80263238">texture.png</texture>
-		<visible>[Window.IsVisible(tvchannels) | Window.IsVisible(tvguide)]</visible>
-	</control>	
-	<control type="group">			
-		<left>427</left>
-		<top>160</top>
-		<width>1066</width>
-		<height>760</height>
-	<include content="fenetre_menu">																<description>fenetre</description>
-		<param name="couleur" value="ccffffff"/>
-	</include>		
-	<control type="label">																			<description>titre menu</description>
-		<left>-427</left>
-		<top>-44</top>
-		<width>1920</width>
-		<height>44</height>
-		<font>petit_texte</font>
-		<textcolor>$VAR[blanc]</textcolor>
-		<align>center</align>
-		<aligny>center</aligny>	
-		<label>Gestionnaire de chaines</label>				
-	</control>			
-	<control type="group">			
-		<left>12</left>
-		<top>12</top>
-	<control type="image">																			<description>panneau de gauche</description>
-		<left>0</left>
-		<top>0</top>
-		<width>342</width>
-		<height>736</height>
-		<aspectratio>scale</aspectratio>
-		<texture colordiffuse="$VAR[gris]">texture.png</texture>
-	</control>	
-	<control type="list" id="20">																	<description>liste des chaines</description>
-		<left>0</left>
-		<top>0</top>
-		<width>342</width>
-		<height>737</height>
-		<onup>20</onup>
-		<ondown>20</ondown>
-		<onleft>60</onleft>
-		<onright>9002</onright>
-	<itemlayout height="67" width="330">
-	<control type="label">																			<description>numero + nom de la chaine</description>
-		<left>15</left>
-		<top>0</top>
-		<width>275</width>
-		<height>66</height>
-		<font>petit_texte</font>
-		<align>left</align>
-		<aligny>center</aligny>
-		<textcolor>$VAR[blanc]</textcolor>
-		<selectedcolor>$VAR[bleu]</selectedcolor>
-		<label>$INFO[ListItem.Property(Number),(,) ]$INFO[ListItem.Property(Name)]</label>
-		<visible>ListItem.Property(ActiveChannel)</visible>
+	<include>animation_dialogue</include>	
+	<include>image_fond</include>																												<description>image de fond</description>		
+	<control type="label">																														<description>horloge</description>
+		<right>60</right>
+		<height>116</height>			
+		<font>menu</font>
+		<textcolor>80ffffff</textcolor>
+		<align>right</align>
+		<label>$INFO[system.time(hh:mm)]</label>		
 	</control>
-	<control type="label">																			<description>numero + nom de la chaine</description>
-		<left>15</left>
-		<top>0</top>
-		<width>275</width>
-		<height>66</height>
-		<font>petit_texte</font>
-		<align>left</align>
-		<aligny>center</aligny>
-		<textcolor>$VAR[blanc]</textcolor>
-		<selectedcolor>$VAR[bleu]</selectedcolor>
-		<label>$INFO[ListItem.Property(Number),(,) ]$INFO[ListItem.Property(Name)]</label>
-		<visible>!ListItem.Property(ActiveChannel)</visible>
+	<control type="label">																														<description>titre</description>	
+		<height>140</height>
+		<align>center</align>
+		<font>titre</font>		
+		<label>$LOCALIZE[10604]</label>
+	</control>
+	<include content="barre_separation_horizontale">																							<description>barre de separation horizontale</description>
+		<param name="left" value="50"/> 
+		<param name="right" value="50"/>
+		<param name="bottom" value="940"/>		
+	</include>		
+	<control type="grouplist" id="8000">																										<description>liste des boutons de gauche</description>		
+		<top>165</top>
+		<left>50</left>
+		<width>405</width>
+		<height>710</height>
+		<onright>20</onright>
+		<itemgap>10</itemgap>
+		<orientation>vertical</orientation>
+	<control type="button" id="4">
+		<onclick>clearproperty(groupes_tv,home)</onclick>
+		<onclick>clearproperty(groupes_tv2,home)</onclick>
+		<onclick>clearproperty(chemin_widget_tv,home)</onclick>
+		<onclick>clearproperty(chemin_widget_tv2,home)</onclick>	
+		<onclick>setproperty(actualiser_chaine,1,home)</onclick>	
+		<label>$LOCALIZE[31327]</label>
+	<include content="bouton">																											
+		<param name="width" value="405"/> 
+		<param name="height" value="65"/> 		
+	</include>		
+	</control>
+	<control type="button" id="5">
+		<onclick>clearproperty(groupes_tv,home)</onclick>
+		<onclick>clearproperty(groupes_tv2,home)</onclick>
+		<onclick>clearproperty(chemin_widget_tv,home)</onclick>
+		<onclick>clearproperty(chemin_widget_tv2,home)</onclick>	
+		<onclick>setproperty(actualiser_chaine,1,home)</onclick>
+		<label>$LOCALIZE[31326]</label>				
+	<include content="bouton">																											
+		<param name="width" value="405"/> 
+		<param name="height" value="65"/> 		
+	</include>		
+	</control>
+	<control type="button" id="6">
+		<label>$LOCALIZE[222]</label>				
+	<include content="bouton">																											
+		<param name="width" value="405"/> 
+		<param name="height" value="65"/> 		
+	</include>		
 	</control>	
-	<control type="image">																			<description>icone ordre modifié</description>
-		<left>300</left>
-		<top>18</top>
-		<width>30</width>
-		<height>30</height>
-		<texture>fenetres/ouinf.png</texture>
-		<visible>ListItem.Property(Changed)</visible>
+	</control>		
+	<control type="image">
+		<top>165</top>
+		<left>475</left>
+		<width>697</width>
+		<height>790</height>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="20000000" border="50">commun/bouton.png</texture>
+	</control>
+	<control type="list" id="20">																												<description>liste des chaines</description>		
+		<top>170</top>
+		<left>480</left>
+		<width>687</width>
+		<height>780</height>
+		<onleft>8000</onleft>
+		<onright>9000</onright>
+		<scrolltime tween="cubic" easing="out">500</scrolltime>
+		<orientation>vertical</orientation>
+	<itemlayout height="60" width="687">	
+	<control type="group">
+		<top>5</top>
+		<left>5</left>
+		<right>5</right>
+		<height>50</height>
+	<control type="image">
+		<texture colordiffuse="05ffffff" border="10">commun/bouton.png</texture>
+	</control>	
+	<control type="label">	
+		<textoffsetx>10</textoffsetx>
+        <label>$INFO[ListItem.Property(Number)] • $INFO[listitem.Property(Name)]</label>		
+		<visible>ListItem.Property(ActiveChannel)</visible>				
+	</control>	
+	<control type="label">	
+		<textoffsetx>10</textoffsetx>
+        <textcolor>80ffffff</textcolor>
+		<label>$INFO[listitem.Property(Name)]</label>		
+		<visible>!ListItem.Property(ActiveChannel)</visible>				
+	</control>	
+	<control type="image">		
+		<right>50</right>
+		<top>5</top>
+		<height>40</height>
+		<width>40</width>
+		<aspectratio>keep</aspectratio>
+		<texture>icones/cadenas.png</texture>
+		<visible>ListItem.Property(ParentalLocked)</visible>
+	</control>	
+	<control type="image">		
+		<right>5</right>
+		<top>5</top>
+		<height>40</height>
+		<width>40</width>
+		<aspectratio>keep</aspectratio>
+		<texture>$INFO[listitem.icon]</texture>				
+	</control>					
 	</control>
 	</itemlayout>
-	<focusedlayout height="67" width="330">
-	<control type="image">																			<description>fond numero + nom de la chaine</description>
-		<left>0</left>
-		<top>0</top>
-		<width>342</width>
-		<height>66</height>
-		<texture colordiffuse="$VAR[bleu]">texture.png</texture>
-		<animation effect="fade" start="100" end="50" time="0" condition="!Control.HasFocus(20)">Conditional</animation>	
-	</control>
-	<control type="label">																			<description>numero + nom de la chaine</description>
-		<left>15</left>
-		<top>0</top>
-		<width>275</width>
-		<height>66</height>
-		<font>petit_texte</font>
-		<align>left</align>
-		<aligny>center</aligny>
-		<textcolor>$VAR[blanc]</textcolor>
-		<selectedcolor>$VAR[gris_clair]</selectedcolor>
-		<label>$INFO[ListItem.Property(Number),(,) ]$INFO[ListItem.Property(Name)]</label>
+	<focusedlayout height="60" width="687">
+	<control type="button">		
+		<onfocus>setproperty(image,$INFO[listitem.icon],home)</onfocus>
+		<onfocus>setproperty(label,$ESCINFO[listItem.Property(Name)],home)</onfocus>	
+	</control>	
+	<control type="group">
+		<top>5</top>
+		<left>5</left>
+		<right>5</right>
+		<height>50</height>
+	<control type="image">
+		<texture colordiffuse="$VAR[couleur_dominante]" border="10">commun/bouton.png</texture>
+		<animation effect="fade" start="100" end="50" condition="!control.hasfocus(20)">conditional</animation>
+	</control>	
+	<control type="label">	
+		<textoffsetx>10</textoffsetx>
+        <label>$INFO[ListItem.Property(Number)] • $INFO[listitem.Property(Name)]</label>	
 		<visible>ListItem.Property(ActiveChannel)</visible>
 	</control>
-	<control type="label">																			<description>numero + nom de la chaine</description>
-		<left>15</left>
-		<top>0</top>
-		<width>275</width>
-		<height>66</height>
-		<font>petit_texte</font>
-		<align>left</align>
-		<aligny>center</aligny>
-		<textcolor>$VAR[blanc]</textcolor>
-		<selectedcolor>$VAR[gris_clair]</selectedcolor>
-		<label>$INFO[ListItem.Property(Number),(,) ]$INFO[ListItem.Property(Name)]</label>
-		<visible>!ListItem.Property(ActiveChannel)</visible>
-	</control>
-	<control type="image">																			<description>icone ordre modifié</description>
-		<left>300</left>
-		<top>18</top>
-		<width>30</width>
-		<height>30</height>
-		<texture>fenetres/ouinf.png</texture>
-		<visible>ListItem.Property(Changed)</visible>
-	</control>
-	</focusedlayout>
-	</control>
-	<control type="group" id="9002">
-	<control type="label">																			<description>texte client enregistreur video</description>
-		<left>342</left>
-		<top>700</top>
-		<width>690</width>
-		<height>30</height>
-		<align>right</align>
-		<aligny>center</aligny>
-		<font>petit_texte</font>
-		<textcolor>$VAR[gris]</textcolor>
-		<label>$LOCALIZE[19210]: $INFO[ListItem.Property(ClientName)]</label>
-	</control>
-	<control type="grouplist">																		<description>liste des boutons de droite</description>
-		<left>342</left>
-		<top>0</top>
-		<width>700</width>
-		<height>736</height>
-		<itemgap>1</itemgap>
-		<onleft>20</onleft>
-		<onup>9000</onup>
-		<ondown>9000</ondown>	
-	<control type="radiobutton" id="7">																<description>chaine active</description>
-		<width>700</width>
-		<height>66</height>
-		<label>19074</label>
-		<textoffsetx>20</textoffsetx>
-		<radioposx>640</radioposx>
-	</control>
-	<control type="edit" id="8">																	<description>nom de la chaine</description>
-		<width>700</width>
-		<height>66</height>
-		<textoffsetx>20</textoffsetx>
-		<label>19201</label>
-	</control>
-	<control type="group" id="390">		
-		<height>66</height>
-	<control type="button" id="9">																	<description>bouton logo</description>
-		<width>700</width>
-		<height>66</height>
-		<textoffsetx>20</textoffsetx>
-		<label>19202</label>
-		<onleft>20</onleft>
-		<onup>8</onup>
-		<ondown>12</ondown>
-	</control>
-	<control type="image" id="10">																	<description>logo</description>
-		<left>630</left>
-		<top>3</top>
-		<width>60</width>
-		<height>60</height>
+	<control type="label">	
+		<textoffsetx>10</textoffsetx>
+        <textcolor>80ffffff</textcolor>
+		<label>$INFO[listitem.Property(Name)]</label>		
+		<visible>!ListItem.Property(ActiveChannel)</visible>				
+	</control>	
+	<control type="image">		
+		<right>50</right>
+		<top>5</top>
+		<height>40</height>
+		<width>40</width>
 		<aspectratio>keep</aspectratio>
-		<texture>$INFO[ListItem.Property(icon)]</texture>
+		<texture colordiffuse="$VAR[gris]">icones/cadenas.png</texture>
+		<visible>ListItem.Property(ParentalLocked)</visible>
+	</control>		
+	<control type="image">		
+		<right>5</right>
+		<top>5</top>
+		<height>40</height>
+		<width>40</width>
+		<aspectratio>keep</aspectratio>
+		<texture>$INFO[listitem.icon]</texture>				
 	</control>
 	</control>
-	<control type="radiobutton" id="12">															<description>activer EPG</description>
-		<width>700</width>
-		<height>66</height>
-		<textoffsetx>20</textoffsetx>
-		<radioposx>640</radioposx>
-		<label>19206</label>
+	</focusedlayout>	
 	</control>
-	<control type="spincontrolex" id="13">															<description>source EPG</description>
-		<width>700</width>
-		<height>66</height>
-		<spinposx>17</spinposx>
-		<label>19200</label>
+	<control type="image">
+		<right>40</right>
+		<top>165</top>
+		<width>697</width>
+		<height>790</height>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="20000000" border="50">commun/bouton.png</texture>
 	</control>
-	<control type="radiobutton" id="14">															<description>control parental</description>
-		<width>700</width>
-		<height>66</height>
-		<textoffsetx>20</textoffsetx>
-		<radioposx>640</radioposx>		
-		<label>19267</label>
-	</control>
-	<control type="label" id="15">																	<description>texte options</description>
-		<width>700</width>
-		<height>66</height>
-		<font>petit_texte</font>
-		<textcolor>$VAR[gris]</textcolor>
-		<textoffsetx>20</textoffsetx>
-		<aligny>center</aligny>
-		<label>$LOCALIZE[31026]</label>
-	</control>
-	<control type="button" id="31">																	<description>bouton nouvelle chaine</description>
-		<width>700</width>
-		<height>66</height>
-		<textoffsetx>20</textoffsetx>
-		<label>19204</label>
-	</control>
-	<control type="button" id="200">																<description>bouton gestion des chaines</description>
-		<width>700</width>
-		<height>66</height>
-		<textoffsetx>20</textoffsetx>
-		<label>Gestion des groupes</label>
-		<onclick>Action(Close)</onclick>
-		<onclick>ActivateWindow(pvrgroupmanager)</onclick>		
-	</control>	
-	<control type="group" id="391">		
-		<height>66</height>
-	<control type="button" id="34">																	<description>bouton TV/Radio</description>
-		<width>700</width>
-		<height>66</height>
-		<textoffsetx>20</textoffsetx>
-		<visible>String.IsEmpty(Window.Property(IsRadio))</visible>
-		<label>19024</label>
+	<control type="grouplist" id="9000">																										<description>liste des boutons de droite</description>		
+		<right>50</right>
+		<top>175</top>
+		<width>677</width>
+		<height>710</height>
 		<onleft>20</onleft>
-		<onup>200</onup>
-		<ondown>9000</ondown>
-	</control>
-	<control type="button" id="34">																	<description>bouton TV/Radio</description>
-		<width>700</width>
-		<height>66</height>
-		<textoffsetx>20</textoffsetx>
-		<visible>!String.IsEmpty(Window.Property(IsRadio))</visible>
-		<label>19023</label>
-		<onleft>20</onleft>
-		<onup>30</onup>
-		<ondown>9000</ondown>
-	</control>
-	</control>
-	</control>
-	</control>				
-	<control type="image">																			<description>ombre du panneau gris de gauche</description>
-		<left>342</left>
-		<top>0</top>
-		<width>20</width>
-		<height>736</height>
-		<aspectratio>stretch</aspectratio>			
-		<texture>fenetres/ombre_droite.png</texture>
-	</control>
-	</control>				
-	<control type="group" id="9000">																<description>liste des boutons du bas</description>	
-	<control type="button" id="5">																	<description>bouton enregistrer</description>
-		<top>754</top>
-		<right>93</right>
-		<onup>34</onup>
-		<onleft>6</onleft>
-		<onright>4</onright>		
-	<include content="bouton_fenetre">
-		<param name="iconef" value="enregistrerf.png"/>
-		<param name="iconenf" value="enregistrernf.png"/>
-		<param name="couleur" value="$VAR[blanc]"/>	
-	</include>
-	</control>
-	<control type="label">																			<description>texte avertissement enregistrer</description>
-		<right>160</right>
-		<top>754</top>
-		<width>800</width>
-		<height>44</height>
-		<font>petit_texte</font>
-		<textcolor>$VAR[blanc]</textcolor>
-		<align>right</align>
-		<aligny>center</aligny>		
-		<label>Enregistrer les modifications sans quitter</label>
-		<visible>Control.HasFocus(5)</visible>
-	</control>	
-	<control type="button" id="4">																	<description>bouton oui</description>
-		<top>754</top>
-		<right>53</right>
-		<onup>34</onup>
-		<onleft>5</onleft>
-		<onright>6</onright>		
-	<include content="bouton_fenetre">
-		<param name="iconef" value="ouif.png"/>
-		<param name="iconenf" value="ouinf.png"/>
-		<param name="couleur" value="$VAR[blanc]"/>	
+		<itemgap>10</itemgap>
+		<orientation>vertical</orientation>
+	<control type="radiobutton" id="7">				
+		<label>$LOCALIZE[19074]</label>
+	<include content="bouton">																											
+		<param name="width" value="677"/> 
+		<param name="height" value="65"/> 		
 	</include>		
 	</control>
-	<control type="label">																			<description>texte avertissement valider</description>
-		<right>160</right>
-		<top>754</top>
-		<width>800</width>
-		<height>44</height>
-		<font>petit_texte</font>
-		<textcolor>$VAR[blanc]</textcolor>
-		<align>right</align>
-		<aligny>center</aligny>		
-		<label>Enregistrer les modifications et quitter</label>
-		<visible>Control.HasFocus(4)</visible>
+	<control type="edit" id="8">
+		<label>$LOCALIZE[19201]</label>				
+	<include content="bouton">																											
+		<param name="width" value="677"/> 
+		<param name="height" value="65"/> 		
+	</include>		
+	</control>
+	<control type="button" id="9">				
+		<label>$LOCALIZE[19202]</label>
+	<include content="bouton">																											
+		<param name="width" value="677"/> 
+		<param name="height" value="65"/> 		
+	</include>		
+	</control>
+	<control type="radiobutton" id="12">
+		<label>$LOCALIZE[19206]</label>				
+	<include content="bouton">																											
+		<param name="width" value="677"/> 
+		<param name="height" value="65"/> 		
+	</include>		
+	</control>
+	<control type="spincontrolex" id="13">				
+		<label>$LOCALIZE[19200]</label>
+		<spinposx>10</spinposx>		
+	<include content="bouton">																											
+		<param name="width" value="677"/> 
+		<param name="height" value="65"/> 		
+	</include>		
+	</control>
+	<control type="radiobutton" id="14">
+		<visible>system.getbool(pvrparental.enabled)</visible>
+		<label>$LOCALIZE[19266]</label>				
+	<include content="bouton">																											
+		<param name="width" value="677"/> 
+		<param name="height" value="65"/> 		
+	</include>		
+	</control>
+	<control type="group" id="140">
+		<visible>!system.getbool(pvrparental.enabled)</visible>
+	<control type="button" id="141">
+		<onup>13</onup>
+		<ondown>7</ondown>
+		<onleft>20</onleft>
+		<label>$LOCALIZE[19266]</label>				
+	<include content="bouton">																											
+		<param name="width" value="677"/> 
+		<param name="height" value="65"/> 		
+	</include>		
+	</control>
+	<control type="image">		
+		<right>10</right>
+		<top>12</top>
+		<height>40</height>
+		<width>40</width>
+		<aspectratio>keep</aspectratio>
+		<texture colordiffuse="80ffffff">boutons/radiobutton_off.png</texture>
+		<visible>!control.hasfocus(141)</visible>		
+	</control>	
+	<control type="image">		
+		<right>10</right>
+		<top>12</top>
+		<height>40</height>
+		<width>40</width>
+		<aspectratio>keep</aspectratio>
+		<texture colordiffuse="$VAR[gris]">boutons/radiobutton_off.png</texture>
+		<visible>control.hasfocus(141)</visible>		
+	</control>
+	</control>
+	</control>
+	<control type="image">		
+		<right>60</right>
+		<top>332</top>
+		<height>51</height>
+		<width>51</width>
+		<aspectratio>keep</aspectratio>
+		<texture>$INFO[listitem.icon]</texture>				
 	</control>		
-	<control type="button" id="6">																	<description>bouton annuler</description>
-		<top>754</top>
-		<right>13</right>
-		<onup>34</onup>
-		<onleft>4</onleft>
-		<onright>5</onright>	
-	<include content="bouton_fenetre">
-		<param name="iconef" value="nonf.png"/>
-		<param name="iconenf" value="nonnf.png"/>
-		<param name="couleur" value="$VAR[blanc]"/>	
-	</include>
-	</control>
-	<control type="label">																			<description>texte avertissement annuler</description>
-		<right>160</right>
-		<top>754</top>
-		<width>800</width>
-		<height>44</height>
-		<font>petit_texte</font>
-		<textcolor>$VAR[blanc]</textcolor>
-		<align>right</align>
-		<aligny>center</aligny>		
-		<label>Quitter sans enregistrer les modifications</label>
-		<visible>Control.HasFocus(6)</visible>
+	<include content="barre_separation_horizontale">																							<description>barre de separation horizontale</description>
+		<param name="left" value="50"/> 
+		<param name="right" value="50"/>
+		<param name="bottom" value="80"/>		
+	</include>	
+	<control type="label">
+		<left>275</left>
+		<width>1097</width>
+		<bottom>0</bottom>
+		<height>80</height>
+		<align>center</align>
+		<textcolor>80ffffff</textcolor>
+        <label>$LOCALIZE[31324] [B][I]$INFO[container(20).listitem.Property(Name)][/I][/B] $LOCALIZE[31321]</label>
+		<visible>control.hasfocus(20) + !system.getbool(pvrmanager.backendchannelorder) + !system.getbool(pvrmanager.usebackendchannelnumbers)</visible>
+		<animation effect="fade" time="100">visiblechange</animation>		
 	</control>	
-	</control>			
+	<control type="group">
+		<visible>control.hasfocus(141)</visible>
+		<animation effect="fade" time="100">visiblechange</animation>
+	<control type="image">
+		<top>425</top>
+		<left>50</left>
+		<width>405</width>
+		<height>530</height>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="20ffffff" border="50">commun/bouton.png</texture>
+	</control>
+	<control type="image">
+		<top>425</top>
+		<left>50</left>
+		<width>405</width>
+		<height>140</height>
+		<aspectratio align="center">keep</aspectratio>
+		<texture colordiffuse="80ffffff">commun/warning.png</texture>
+	</control>
+	<control type="textbox">	
+		<top>506</top>
+		<left>70</left>
+		<width>365</width>
+		<height>500</height>
+		<textcolor>80ffffff</textcolor>
+		<font>infos</font>
+		<align>justify</align>
+		<label>$LOCALIZE[31323]</label>
+		<autoscroll delay="20000" time="3000" repeat="20000">false</autoscroll>		
+	</control>
+	</control>
+	<control type="group">
+		<visible>control.hasfocus(20) + [system.getbool(pvrmanager.backendchannelorder) | system.getbool(pvrmanager.usebackendchannelnumbers)]</visible>
+		<animation effect="fade" time="100">visiblechange</animation>
+	<control type="image">
+		<top>425</top>
+		<left>50</left>
+		<width>405</width>
+		<height>530</height>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="20ffffff" border="50">commun/bouton.png</texture>
+	</control>
+	<control type="image">
+		<top>425</top>
+		<left>50</left>
+		<width>405</width>
+		<height>140</height>
+		<aspectratio align="center">keep</aspectratio>
+		<texture colordiffuse="80ffffff">commun/warning.png</texture>
+	</control>
+	<control type="textbox">	
+		<top>506</top>
+		<left>70</left>
+		<width>365</width>
+		<height>500</height>
+		<textcolor>80ffffff</textcolor>
+		<font>infos</font>
+		<align>justify</align>
+		<label>$LOCALIZE[31325]</label>
+		<autoscroll delay="20000" time="3000" repeat="20000">false</autoscroll>		
+	</control>
+	</control>
+	<control type="group">
+		<visible>control.hasfocus(9)</visible>
+		<animation effect="fade" time="100">visiblechange</animation>
+	<control type="image">
+		<top>425</top>
+		<left>50</left>
+		<width>405</width>
+		<height>530</height>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="20ffffff" border="50">commun/bouton.png</texture>
+	</control>
+	<control type="image">
+		<top>425</top>
+		<left>50</left>
+		<width>405</width>
+		<height>140</height>
+		<aspectratio align="center">keep</aspectratio>
+		<texture colordiffuse="80ffffff">commun/warning.png</texture>
+	</control>
+	<control type="textbox">	
+		<top>506</top>
+		<left>70</left>
+		<width>365</width>
+		<height>500</height>
+		<textcolor>80ffffff</textcolor>
+		<font>infos</font>
+		<align>justify</align>
+		<label>$LOCALIZE[31328]</label>
+		<autoscroll delay="20000" time="3000" repeat="20000">false</autoscroll>		
 	</control>
 	</control>	
+	</control>
 </controls>
 </window>

@@ -34,7 +34,7 @@
 		<textcolor>$VAR[gris]</textcolor>
 		<align>center</align>		
 	</control>	
-	<control type="textbox" id="31">																												<description>texte</description>
+	<control type="textbox" id="31">																											<description>texte</description>
 		<top>421</top>
 		<left>605</left>
 		<width>710</width>

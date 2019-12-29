@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
 	<backgroundcolor>00X000000</backgroundcolor>
-	<onunload>Skin.SetString(couleur_de_fond,$VAR[gris])</onunload>		
-	<defaultcontrol always="true">700</defaultcontrol>
-	<views>700</views>
-	<controls>
-	<control type="group">
-		<include>MBView</include>		
-	</control>
-	<include>window_animation</include>
-	</controls>	
+	<onload>close</onload>	
+<controls>			
+</controls>
 </window>

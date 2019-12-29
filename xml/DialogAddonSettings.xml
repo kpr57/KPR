@@ -48,12 +48,7 @@
 		<height>800</height>
 		<aspectratio>stretch</aspectratio>
 		<texture colordiffuse="20000000" border="50">commun/bouton.png</texture>
-	</control>
-
-
-
-
-	
+	</control>	
 	<control type="grouplist" id="5">																											<description>menu de droite</description>
 		<top>210</top>
 		<right>410</right>
@@ -120,9 +115,7 @@
 		<height>80</height>
 		<textcolor>80ffffff</textcolor>
 		<font>label_parametres</font>
-	</control>
-	
-	
+	</control>	
 	<control type="grouplist" id="8000">																										<description>liste boutons</description>	
 		<top>200</top>
 		<height>800</height>

@@ -1,263 +1,431 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
 	<backgroundcolor>00X000000</backgroundcolor>
-	<onload>control.setFocus(6000,0)</onload>
-<controls>		
+	<include>animation_dialogue</include>
+	<onload condition="control.isvisible(109)">control.setfocus(109)</onload>
+	<onload condition="control.isvisible(108)">control.setfocus(108)</onload>
+	<onload condition="control.isvisible(107)">control.setfocus(107)</onload>
+	<onload condition="control.isvisible(106)">control.setfocus(106)</onload>	
+<controls>	
+	<include>image_fond</include>
 	<control type="group">
-		<animation effect="fade" start="0" end="100" delay="150" time="150" reversible="false">windowopen</animation>
-		<animation effect="fade" start="100" end="0" time="250" reversible="false">windowclose</animation>		
-	<control type="image">																														<description>fanart</description>
-		<fadetime>250</fadetime>
-		<aspectratio>scale</aspectratio>	
-		<texture fallback="default_addons.png">$INFO[listitem.art(fanart)]</texture>
-	</control>	
-	<include content="masque_fond_infos"></include>																								<description>masque fond</description>	
-	<control type="label">																														<description>heure</description>
-		<top>-10</top>
-		<right>40</right>
-		<height>120</height>
-		<width>1839</width>
-		<align>right</align>
-		<font>zoom_texte</font>
-		<textcolor>$VAR[blanc]</textcolor>
-		<aligny>center</aligny>
-		<scroll>true</scroll>
-		<scrollspeed>50</scrollspeed>
-		<label>$INFO[System.Time(h:mm)]</label>		
-	</control>
-	<control type="label">																														<description>titre</description>
-       	<align>center</align>
-		<height>100</height>
-		<font>zoom_texte</font>
-		<textcolor>$VAR[blanc]</textcolor>
-		<scroll>true</scroll>
-		<label>[B]$INFO[ListItem.AddonName][/B]</label>	
-	</control>
-	<control type="label">																														<description>sous titre</description>
-        <top>50</top>
-		<right>0</right>
-        <left>10</left>
-		<align>center</align>
-		<height>100</height>
-		<font>texte</font>
-		<textcolor>$VAR[blanc]</textcolor>
-		<scroll>true</scroll>
-		<label>(V$INFO[listitem.AddonVersion]) par $INFO[ListItem.AddonCreator]</label>	
-	</control>	
-	<control type="group">
-		<animation effect="fade" start="0" end="100" delay="150" time="150" reversible="false" condition="!window.isVisible(1208)">conditional</animation>
-		<animation effect="fade" start="100" end="0" time="150" reversible="false" condition="window.isVisible(1208)">conditional</animation>
-	<control type="label">																														<description>description sommaire</description>
-		<bottom>10</bottom>
-		<height>40</height>
-		<label>     $INFO[ListItem.AddonSummary]      [COLOR $VAR[1selection_infos]]$INFO[ListItem.AddonDisclaimer][/COLOR]</label>
-		<align>center</align>
-		<aligny>center</aligny>
-		<font>texte_moyen</font>
-		<textcolor>$VAR[blanc]</textcolor>
-		<scroll>true</scroll>
-	</control>
-	<control type="image">																														<description>miniature</description>
-		<top>380</top>
-		<centerleft>50%</centerleft>
-        <width>410</width>
-        <height>410</height>
+		<animation effect="slide" start="0,0" end="1920,0" time="1" condition="window.isvisible(selectdialog) | window.isvisible(filebrowser)" reversible="false">conditional</animation>
+		<animation effect="slide" start="1920,0" end="0,0" delay="100" time="1" condition="!window.isvisible(selectdialog) + !window.isvisible(filebrowser)" reversible="false">conditional</animation>				
+	<control type="image" id="703">																												<description>fanart arriere plan</description>
 		<aspectratio>scale</aspectratio>
-		<texture fallback="default_addons.jpg">$INFO[listitem.thumb]</texture>
-		<bordertexture border="30">fenetres/tuiles.png</bordertexture>
+		<texture background="true">$INFO[listitem.art(fanart)]</texture>		
+		<animation effect="fade" start="0" end="100" time="1000" reversible="false">windowopen</animation>
+		<animation effect="fade" start="100" end="0" time="1" reversible="false">windowclose</animation>
+		<visible>!string.isempty(listitem.art(fanart)) + !string.endswith(listitem.art(fanart),none)</visible>
+	</control>
+	<control type="image" id="704">																												<description>fanart arriere plan</description>
+		<aspectratio>scale</aspectratio>
+		<texture background="true">$INFO[listitem.art(thumb)]</texture>		
+		<animation effect="fade" start="0" end="100" time="1000" reversible="false">windowopen</animation>
+		<animation effect="fade" start="100" end="0" time="1" reversible="false">windowclose</animation>
+		<visible>!control.isvisible(703) + !string.isempty(listitem.art(thumb)) + !string.endswith(listitem.art(thumb),none)</visible>
+	</control>
+	<control type="image">																														<description>fanart arriere plan</description>
+		<aspectratio>scale</aspectratio>
+		<texture background="true">$INFO[skin.string(arriere_plan_addon)]</texture>		
+		<animation effect="fade" start="0" end="100" time="1000" reversible="false">windowopen</animation>
+		<animation effect="fade" start="100" end="0" time="1" reversible="false">windowclose</animation>
+		<visible>!control.isvisible(703) + !control.isvisible(704)</visible>
+	</control>
+	<control type="image">																														<description>masque arriere plan</description>
+		<aspectratio>scale</aspectratio>
+		<texture colordiffuse="ebffffff">commun/fond.png</texture>				
+	</control>	
+	<control type="button">																														<description>titre</description>
+		<left>40</left>
+		<top>35</top>
+		<height>60</height>			
+		<width max="1020">auto</width>				
+		<font>menu</font>
+		<textcolor>ffffffff</textcolor>
+		<align>center</align>
+		<label>$INFO[listitem.AddonName]</label>
+		<scroll>true</scroll>
+	<include content="bouton">
+		<param name="texturenofocus" value="commun/bouton.png"/>
+		<param name="texturenofocus_colordiffuse" value="$VAR[gris]"/>
+	</include>
+	</control>		
+	<control type="image">																														<description>fond heure</description>
+		<right>40</right>
+		<top>35</top>
+		<height>60</height>			
+		<width>140</width>
+		<aspectratio>stretch</aspectratio>
+		<texture border="30" colordiffuse="1affffff">commun/bouton.png</texture>				
+	</control>
+	<control type="label">																														<description>heure</description>
+		<right>40</right>
+		<top>35</top>
+		<height>60</height>			
+		<width>140</width>				
+		<font>menu</font>
+		<textcolor>80ffffff</textcolor>
+		<align>center</align>
+		<label>$INFO[system.time(hh:mm)]</label>		
+	</control>
+	<control type="image">																														<description>panneau gris</description>
+		<top>600</top>
+		<height>400</height>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="bf201f20">commun/texture.png</texture>		
+	</control>
+	<control type="group">																														<description>poster</description>
+		<top>150</top>		
+		<left>200</left>
+		<height>700</height>
+		<width>567</width>			
+	<control type="image">
+		<bottom>100</bottom>
+		<aspectratio align="center" aligny="bottom">keep</aspectratio>
+		<texture background="true" fallback="DefaultAddon.png" border="10">$INFO[listitem.icon]</texture>
+		<bordertexture border="10">commun/tuiles_grises.png</bordertexture>
 		<bordersize>10,0,10,10</bordersize>
 	</control>	
-	<control type="panel" id="51">																												<description>images si liste des images incomplete</description>
-		<top>150</top>
-		<ondown>5999</ondown>
-		<height>214</height>
-		<scrolltime tween="linear" easing="out">250</scrolltime>
-		<orientation>horizontal</orientation>   		
-	<itemlayout height="187" width="384">	
-	<control type="group">		
-	<control type="image">	
-		<left>25</left>
-		<width>334</width>
-        <height>187</height>
-        <aspectratio>scale</aspectratio>
-		<texture colordiffuse="40000000">texture.png</texture>	
-		<bordertexture border="30">fenetres/tuiles.png</bordertexture>
-		<bordersize>10,0,10,10</bordersize>
+	</control>	
+	<control type="grouplist">																													<description>informations</description>
+		<top>220</top>
+		<left>800</left>
+		<width>500</width>
+		<height>auto</height>
+		<itemgap>20</itemgap>
+        <orientation>vertical</orientation>		
+	<control type="button">	
+		<height>22</height>			
+		<width>auto</width>				
+		<align>center</align>	
+	<include content="petit_bouton">
+		<param name="label" value="[UPPERCASE]$INFO[ListItem.AddonType][/UPPERCASE]"/>
+		<param name="textcolor" value="ffffffff"/>
+		<param name="textoffsetx" value="15"/>
+		<param name="texturenofocus" value="commun/bouton.png"/>
+		<param name="texturenofocus_colordiffuse" value="$VAR[couleur_dominante]"/>
+	</include>
 	</control>
-	<control type="image">	
-		<left>25</left>
-		<width>334</width>
-        <height>187</height>
-        <aspectratio>scale</aspectratio>
-		<texture>$INFO[listitem.icon]</texture>	
-		<bordersize>10,0,10,10</bordersize>		
-	</control>			
+	<control type="label">
+		<height>20</height>
+		<font>texte_infos</font>
+		<textcolor>80ffffff</textcolor><label>[B]$LOCALIZE[31150][/B]   $INFO[listitem.AddonOrigin]</label>
+		<visible>!string.isempty(listitem.AddonOrigin) + !string.isequal(listitem.AddonOrigin,$LOCALIZE[1446])</visible>			
 	</control>
-	</itemlayout>
-	<focusedlayout height="187" width="384">	
-	</focusedlayout>
-	<content>
-	<item>
-		<icon>icones/infos/image.png</icon>		
-	</item>
-	<item>
-		<icon>icones/infos/image.png</icon>		
-	</item>
-	<item>
-		<icon>icones/infos/image.png</icon>	
-	</item>
-	<item>
-		<icon>icones/infos/image.png</icon>
-	</item>
-	<item>
-		<icon>icones/infos/image.png</icon>		
-	</item>
-	</content>
-		<animation effect="slide" end="0" condition="Integer.IsEqual(container(50).numitems,0)">conditional</animation>	
-		<animation effect="slide" end="384" condition="Integer.IsEqual(container(50).numitems,1)">conditional</animation>	
-		<animation effect="slide" end="768" condition="Integer.IsEqual(container(50).numitems,2)">conditional</animation>	
-		<animation effect="slide" end="1152" condition="Integer.IsEqual(container(50).numitems,3)">conditional</animation>	
-		<animation effect="slide" end="1536" condition="Integer.IsEqual(container(50).numitems,4)">conditional</animation>	
-		<animation effect="slide" end="1920" condition="Integer.IsGreaterOrEqual(container(50).numitems,5)">conditional</animation>	
+	<control type="label">
+		<height>20</height>
+		<font>texte_infos</font>
+		<textcolor>80ffffff</textcolor><label>[B]$LOCALIZE[21863][/B]   $INFO[listitem.AddonCreator]</label>
+		<visible>!string.isempty(listitem.AddonCreator)</visible>			
+	</control>
+	<control type="label">
+		<height>20</height>
+		<font>texte_infos</font>
+		<textcolor>80ffffff</textcolor><label>[B]$LOCALIZE[19114][/B]   $INFO[listitem.AddonVersion]</label>
+		<visible>!string.isempty(listitem.AddonVersion)</visible>			
+	</control>
+	<control type="label">
+		<height>20</height>
+		<font>texte_infos</font>
+		<textcolor>80ffffff</textcolor><label>[B]$LOCALIZE[35257][/B]   $INFO[listitem.AddonInstallDate]</label>
+		<visible>!string.isEmpty(ListItem.AddonInstallDate) + !string.contains(ListItem.AddonInstallDate,1601)</visible>			
+	</control>
+	<control type="label">
+		<height>20</height>
+		<font>texte_infos</font>
+		<textcolor>80ffffff</textcolor><label>[B]$LOCALIZE[12014][/B]   $INFO[listitem.AddonLastUpdated]</label>
+		<visible>!string.isEmpty(ListItem.AddonLastUpdated)</visible>			
+	</control>
+	<control type="label">
+		<height>20</height>
+		<font>texte_infos</font>
+		<textcolor>80ffffff</textcolor><label>[B]$LOCALIZE[31299][/B]   $INFO[listitem.AddonLastUsed]</label>
+		<visible>!string.isEmpty(ListItem.AddonLastUsed)</visible>			
+	</control>
+	<control type="label">
+		<height>20</height>
+		<font>texte_infos</font>
+		<textcolor>80ffffff</textcolor><label>[B]$LOCALIZE[21802][/B]   $INFO[listitem.AddonSize]</label>
+		<visible>!string.isEmpty(ListItem.AddonSize)</visible>			
+	</control>	
+	<control type="button">	
+		<height>22</height>			
+		<width>auto</width>				
+		<align>center</align>	
+	<include content="petit_bouton">
+		<param name="label" value="[UPPERCASE]$LOCALIZE[24995][/UPPERCASE]"/>
+		<param name="textcolor" value="ffffffff"/>
+		<param name="textoffsetx" value="15"/>
+		<param name="texturenofocus" value="commun/bouton.png"/>
+		<param name="texturenofocus_colordiffuse" value="ff8d0204"/>
+	</include>
+		<visible>ListItem.Property(Addon.Orphaned)</visible>
+	</control>
+	<control type="button">	
+		<height>22</height>			
+		<width>auto</width>				
+		<align>center</align>	
+	<include content="petit_bouton">
+		<param name="label" value="[UPPERCASE]$LOCALIZE[305][/UPPERCASE]"/>
+		<param name="textcolor" value="ffffffff"/>
+		<param name="textoffsetx" value="15"/>
+		<param name="texturenofocus" value="commun/bouton.png"/>
+		<param name="texturenofocus_colordiffuse" value="$VAR[couleur_dominante]"/>
+	</include>
+		<visible>!String.StartsWith(Control.GetLabel(7),$LOCALIZE[24022])</visible>
+	</control>
+	<control type="button">	
+		<height>22</height>			
+		<width>auto</width>				
+		<align>center</align>	
+	<include content="petit_bouton">
+		<param name="label" value="[UPPERCASE]$LOCALIZE[24144][/UPPERCASE]"/>
+		<param name="textcolor" value="ffffffff"/>
+		<param name="textoffsetx" value="15"/>
+		<param name="texturenofocus" value="commun/bouton.png"/>
+		<param name="texturenofocus_colordiffuse" value="ff8d0204"/>
+	</include>
+		<visible>String.StartsWith(Control.GetLabel(6),$LOCALIZE[24038])</visible>
+	</control>
+	<control type="button">	
+		<height>22</height>			
+		<width>auto</width>				
+		<align>center</align>	
+	<include content="petit_bouton">
+		<param name="label" value="[UPPERCASE]$LOCALIZE[1223][/UPPERCASE]"/>
+		<param name="textcolor" value="ffffffff"/>
+		<param name="textoffsetx" value="15"/>
+		<param name="texturenofocus" value="commun/bouton.png"/>
+		<param name="texturenofocus_colordiffuse" value="ff8d0204"/>
+	</include>
+		<visible>String.StartsWith(Control.GetLabel(7),$LOCALIZE[24022]) + !String.StartsWith(Control.GetLabel(6),$LOCALIZE[24038])</visible>
+	</control>
+	<control type="label">
+		<height>20</height>
+		<font>texte_infos</font>
+		<textcolor>80ffffff</textcolor><label>[B]$LOCALIZE[24068][/B]</label>
+		<visible>ListItem.Property(Addon.HasUpdate)</visible>			
+	</control>
+	<control type="label">
+		<height>20</height>
+		<font>texte_infos</font>
+		<textcolor>80ffffff</textcolor><label>[B]$LOCALIZE[31301][/B]</label>
+		<visible>!ListItem.Property(Addon.HasUpdate)</visible>			
+	</control>	
+	</control>
+	<control type="label">																														<description>titre 50</description>
+		<top>166</top>
+		<right>40</right>
+		<width>500</width>
+		<height>20</height>
+		<align>right</align>
+		<font>texte_infos</font>
+		<label>[CAPITALIZE][B]$LOCALIZE[21371][/B][/CAPITALIZE]</label>
+		<visible>!integer.isequal(container(50).numallitems,0)</visible>		
+	</control>
+	<control type="image" id="1">																												<description>ligne de separation liste des images</description>
+		<top>196</top>
+		<right>40</right>
+		<width>550</width>
+		<height>1</height>
+		<aspectratio align="right">stretch</aspectratio>
+		<texture colordiffuse="80ffffff">commun/texture.png</texture>
+		<visible>!integer.isequal(container(50).numallitems,0)</visible>		
+	</control>	
+	<control type="image" id="1">																												<description>ligne de separation liste des disques</description>
+		<top>538</top>
+		<right>40</right>
+		<width>550</width>
+		<height>1</height>
+		<aspectratio align="right">stretch</aspectratio>
+		<texture colordiffuse="80ffffff">commun/texture.png</texture>
+		<visible>!integer.isequal(container(50).numallitems,0)</visible>		
 	</control>	
 	<control type="panel" id="50">																												<description>liste des images</description>
-		<top>150</top>
-		<ondown>5999</ondown>
-		<height>214</height>
-		<scrolltime tween="linear" easing="out">250</scrolltime>
-		<orientation>horizontal</orientation>   		
-	<itemlayout height="187" width="384">	
-	<control type="group">		
+		<top>198</top>
+		<right>30</right>
+		<width>560</width>
+		<onleft>100</onleft>
+		<height>340</height>
+		<scrolltime tween="linear" easing="out">250</scrolltime>		   		
+	<itemlayout height="170" width="280">	
 	<control type="image">	
-		<left>25</left>
-		<width>334</width>
-        <height>187</height>
-        <aspectratio>scale</aspectratio>
-		<texture colordiffuse="40000000">texture.png</texture>	
-		<bordertexture border="30">fenetres/tuiles.png</bordertexture>
-		<bordersize>10,0,10,10</bordersize>
-	</control>
-	<control type="image">	
-		<left>25</left>
-		<width>334</width>
-        <height>187</height>
-        <aspectratio>scale</aspectratio>
-		<texture>$INFO[listItem.Icon]</texture>	
-		<bordersize>10,0,10,10</bordersize>		
-	</control>			
+		<top>10</top>
+		<width>280</width>
+        <height>160</height>
+        <aspectratio>keep</aspectratio>
+		<texture background="true" border="10">$INFO[listItem.Icon]</texture>
+		<bordertexture border="10">commun/tuiles.png</bordertexture>
+		<bordersize>10,0,10,10</bordersize>			
 	</control>
 	</itemlayout>
-	<focusedlayout height="214" width="384">
-	<control type="group">		
+	<focusedlayout height="170" width="280">
 	<control type="image">	
-		<left>25</left>
-		<width>334</width>
-        <height>187</height>
-        <aspectratio>scale</aspectratio>
-		<texture colordiffuse="40000000">texture.png</texture>	
-		<bordertexture border="30">fenetres/tuiles.png</bordertexture>
-		<bordersize>10,0,10,10</bordersize>
-	</control>
-	<control type="image">	
-		<left>25</left>
-		<width>334</width>
-        <height>187</height>
-        <aspectratio>scale</aspectratio>
-		<texture>$INFO[listItem.Icon]</texture>	
-		<bordersize>10,0,10,10</bordersize>
-	</control>
-		<animation effect="zoom" start="100" end="115" center="192,107" time="150" reversible="false">focus</animation>
-		<animation effect="zoom" start="115" end="100" center="192,107" time="150" reversible="false">unfocus</animation>	
-	</control>	
+		<top>5</top>
+		<width>280</width>
+        <height>160</height>
+        <aspectratio>keep</aspectratio>
+		<texture background="true" border="5">$INFO[listitem.icon]</texture>	
+		<bordertexture border="5" colordiffuse="$VAR[couleur_dominante]">commun/selection_grise.png</bordertexture>		
+		<bordersize>5,5,5,5</bordersize>			
+	</control>		
 	</focusedlayout>
 	</control>
-	<control type="panel" id="6000">																											<description>liste des boutons</description>  
-		<left>-10</left>
-		<animation effect="slide" end="0" condition="Integer.IsEqual(container(6000).numitems,7)">conditional</animation>	
-		<animation effect="slide" end="135" condition="Integer.IsEqual(container(6000).numitems,6)">conditional</animation>	
-		<animation effect="slide" end="269" condition="Integer.IsEqual(container(6000).numitems,5)">conditional</animation>	
-		<animation effect="slide" end="404" condition="Integer.IsEqual(container(6000).numitems,4)">conditional</animation>	
-		<animation effect="slide" end="539" condition="Integer.IsEqual(container(6000).numitems,3)">conditional</animation>	
-		<animation effect="slide" end="674" condition="Integer.IsEqual(container(6000).numitems,2)">conditional</animation>	
-		<animation effect="slide" end="809" condition="Integer.IsEqual(container(6000).numitems,1)">conditional</animation>	
-		<height>220</height>
-		<bottom>40</bottom>
-		<onup>5999</onup>		
-	<include content="widget_menus">
-		<param name="couleur_tuile" value="$VAR[1tuile_infos]"/>		
-	</include>
-		<content>
-	<item>
-		<id>6001</id>
-		<label>$INFO[control.getLabel(6)]</label>
-		<icon>icones/infos/corbeille.png</icon>
+	<control type="grouplist" id="100">																											<description>boutons</description>				
+		<top>190</top>		
+		<left>40</left>
+		<height>700</height>
+		<width>100</width>
+		<onright condition="control.isvisible(50)">50</onright>
+		<itemgap>8</itemgap>
+		<orientation>vertical</orientation>	
+	<control type="radiobutton" id="106">
+		<height>50</height>
+		<texturenofocus colordiffuse="$VAR[gris]" border="25">commun/bouton.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="25">commun/bouton.png</texturefocus>
+		<textureradioonfocus colordiffuse="ffffffff">icones/infos/corbeille.png</textureradioonfocus>
+		<textureradioonnofocus colordiffuse="ffffffff">icones/infos/corbeille.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="ffffffff">icones/infos/install.png</textureradioofffocus>
+		<textureradiooffnofocus colordiffuse="ffffffff">icones/infos/install.png</textureradiooffnofocus>
+		<radioposx>20</radioposx>
+		<radiowidth>60</radiowidth>
+		<radioheight>60</radioheight>
+		<selected>!String.StartsWith(Control.GetLabel(6),$LOCALIZE[24038])</selected>
 		<onclick>SendClick(6)</onclick>
-		<visible>Control.IsEnabled(6)</visible>		
-	</item>
-	<item>
-		<id>6002</id>
-		<label>$INFO[control.getLabel(7)]</label>	
-		<onclick>SendClick(7)</onclick>	
-		<icon>icones/infos/desactiver.png</icon>
-		<visible>Control.IsEnabled(7) + !String.StartsWith(Control.GetLabel(7),$LOCALIZE[24022])</visible>		
-	</item>
-	<item>
-		<id>6003</id>
-		<label>$INFO[control.getLabel(7)]</label>	
-		<onclick>SendClick(7)</onclick>	
-		<icon>icones/infos/activer.png</icon>
-		<visible>Control.IsEnabled(7) + String.StartsWith(Control.GetLabel(7),$LOCALIZE[24022])</visible>		
-	</item>	
-	<item>
-		<id>6004</id>
-		<label>24069</label>
-		<onclick>SendClick(8)</onclick>
-		<icon>icones/infos/update.png</icon>
-		<visible>Control.IsEnabled(8)</visible>
-	</item>
-	<item>
-		<id>6005</id>		
-		<label>24020</label>
-		<onclick>SendClick(9)</onclick>
-		<icon>icones/infos/parametres.png</icon>
-		<visible>Control.IsEnabled(9)</visible>
-	</item>	
-	<item>
-		<id>6006</id>
-		<label>39024</label>
-		<onclick>SendClick(10)</onclick>
-		<icon>icones/infos/dependances.png</icon>
-		<visible>Control.IsEnabled(10)</visible>
-	</item>	
-	<item>
-		<id>6007</id>
-		<label>$INFO[control.getLabel(12)]</label>
-		<onclick>SendClick(12)</onclick>
-		<icon>icones/infos/lancer.png</icon>
-		<visible>Control.IsEnabled(12)</visible>
-	</item>	
-		<item>
-		<id>6008</id>
-		<label>Mise à jour auto</label>		
-		<onclick>SetFocus(13)</onclick>
-		<onclick>Action(Select)</onclick>
-		<onclick>SetFocus(6000)</onclick>
-		<icon>icones/infos/radioon.png</icon>		
-		<visible>String.contains(Control.GetLabel(13),*) + ListItem.Property(Addon.IsInstalled)</visible>
-	</item>
-	<item>
-		<id>6009</id>
-		<label>Mise à jour auto</label>		
-		 <onclick>SetFocus(13)</onclick>
-		<onclick>Action(Select)</onclick>
-		<onclick>SetFocus(6000)</onclick>		
-		<icon>icones/infos/radiooff.png</icon>		
-		<visible>!String.contains(Control.GetLabel(13),*) + ListItem.Property(Addon.IsInstalled)</visible>
-	</item>	
-		</content>		
 	</control>
+	<control type="radiobutton" id="107">
+		<height>50</height>
+		<texturenofocus colordiffuse="$VAR[gris]" border="25">commun/bouton.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="25">commun/bouton.png</texturefocus>
+		<textureradioonfocus colordiffuse="ffffffff">icones/infos/activer.png</textureradioonfocus>
+		<textureradioonnofocus colordiffuse="ffffffff">icones/infos/activer.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="ffffffff">icones/infos/desactiver.png</textureradioofffocus>
+		<textureradiooffnofocus colordiffuse="ffffffff">icones/infos/desactiver.png</textureradiooffnofocus>
+		<radioposx>20</radioposx>
+		<radiowidth>60</radiowidth>
+		<radioheight>60</radioheight>
+		<selected>String.StartsWith(Control.GetLabel(7),$LOCALIZE[24022])</selected>
+		<onclick>SendClick(7)</onclick>
+		<visible>!String.StartsWith(Control.GetLabel(6),$LOCALIZE[24038])</visible>
+	</control>
+	<control type="radiobutton" id="108">
+		<height>50</height>
+		<texturenofocus colordiffuse="$VAR[gris]" border="25">commun/bouton.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="25">commun/bouton.png</texturefocus>
+		<textureradioonfocus colordiffuse="ffffffff">icones/infos/update.png</textureradioonfocus>
+		<textureradioonnofocus colordiffuse="ffffffff">icones/infos/update.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="ffffffff">icones/infos/update.png</textureradioofffocus>
+		<textureradiooffnofocus colordiffuse="ffffffff">icones/infos/update.png</textureradiooffnofocus>
+		<radioposx>20</radioposx>
+		<radiowidth>60</radiowidth>
+		<radioheight>60</radioheight>
+		<onclick>SendClick(8)</onclick>
+		<visible>!String.StartsWith(Control.GetLabel(6),$LOCALIZE[24038])</visible>
+	</control>
+	<control type="radiobutton" id="109">
+		<height>50</height>
+		<texturenofocus colordiffuse="$VAR[gris]" border="25">commun/bouton.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="25">commun/bouton.png</texturefocus>
+		<textureradioonfocus colordiffuse="ffffffff">icones/infos/parametres.png</textureradioonfocus>
+		<textureradioonnofocus colordiffuse="ffffffff">icones/infos/parametres.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="ffffffff">icones/infos/parametres.png</textureradioofffocus>
+		<textureradiooffnofocus colordiffuse="ffffffff">icones/infos/parametres.png</textureradiooffnofocus>
+		<radioposx>20</radioposx>
+		<radiowidth>60</radiowidth>
+		<radioheight>60</radioheight>
+		<onclick>SendClick(9)</onclick>
+		<visible>!String.StartsWith(Control.GetLabel(6),$LOCALIZE[24038])</visible>
+	</control>
+	<control type="radiobutton" id="110">
+		<height>50</height>
+		<texturenofocus colordiffuse="$VAR[gris]" border="25">commun/bouton.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="25">commun/bouton.png</texturefocus>
+		<textureradioonfocus colordiffuse="ffffffff">icones/infos/dependances.png</textureradioonfocus>
+		<textureradioonnofocus colordiffuse="ffffffff">icones/infos/dependances.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="ffffffff">icones/infos/dependances.png</textureradioofffocus>
+		<textureradiooffnofocus colordiffuse="ffffffff">icones/infos/dependances.png</textureradiooffnofocus>
+		<radioposx>20</radioposx>
+		<radiowidth>60</radiowidth>
+		<radioheight>60</radioheight>
+		<onclick>SendClick(10)</onclick>
+		<visible>control.isenabled(10) + !String.StartsWith(Control.GetLabel(6),$LOCALIZE[24038])</visible>
+	</control>
+	<control type="radiobutton" id="112">
+		<height>50</height>
+		<texturenofocus colordiffuse="$VAR[gris]" border="25">commun/bouton.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="25">commun/bouton.png</texturefocus>
+		<textureradioonfocus colordiffuse="ffffffff">icones/infos/play.png</textureradioonfocus>
+		<textureradioonnofocus colordiffuse="ffffffff">icones/infos/play.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="ffffffff">icones/infos/play.png</textureradioofffocus>
+		<textureradiooffnofocus colordiffuse="ffffffff">icones/infos/play.png</textureradiooffnofocus>
+		<radioposx>20</radioposx>
+		<radiowidth>60</radiowidth>
+		<radioheight>60</radioheight>
+		<onclick>SendClick(12)</onclick>
+		<visible>!String.StartsWith(Control.GetLabel(6),$LOCALIZE[24038]) + !String.StartsWith(Control.GetLabel(7),$LOCALIZE[24022])</visible>
+	</control>
+	<control type="radiobutton" id="13">
+		<height>50</height>
+		<texturenofocus colordiffuse="$VAR[gris]" border="25">commun/bouton.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="25">commun/bouton.png</texturefocus>
+		<textureradioonfocus colordiffuse="ffffffff">icones/infos/auto_update.png</textureradioonfocus>
+		<textureradioonnofocus colordiffuse="ffffffff">icones/infos/auto_update.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="ffffffff">icones/infos/no_auto_update.png</textureradioofffocus>
+		<textureradiooffnofocus colordiffuse="ffffffff">icones/infos/no_auto_update.png</textureradiooffnofocus>
+		<radioposx>20</radioposx>
+		<radiowidth>60</radiowidth>
+		<radioheight>60</radioheight>
+		<selected>String.contains(Control.GetLabel(13),*)</selected>
+		<visible>Control.IsEnabled(13)</visible>
+	</control>
+	</control>		
+	<control type="textbox">																													<description>resume</description>		
+		<top>601</top>
+		<left>830</left>
+		<height>398</height>
+		<width>1020</width>
+		<font>texte_resume</font>
+		<align>justify</align>
+		<label>[B]$INFO[ListItem.AddonSummary][/B][CR][CR]$INFO[listitem.AddonDescription][CR][CR][I]$INFO[ListItem.AddonDisclaimer][/I]</label>	
+		<autoscroll delay="20000" time="3000" repeat="20000"></autoscroll>			
+	</control>
+	<control type="label">																														<description>aucun resume disponible</description>
+		<top>601</top>
+		<left>830</left>
+		<height>398</height>
+		<width>1020</width>
+		<font>texte_resume</font>
+		<align>center</align>
+		<textcolor>80ffffff</textcolor>
+		<label>$LOCALIZE[31206]</label>		
+		<visible>string.isempty(listitem.AddonDescription) + string.isempty(listitem.AddonSummary) + string.isempty(listitem.AddonDisclaimer)</visible>
+	</control>
+	<control type="grouplist">																													<description>legende boutons</description>																													<description>producteur/casting/realisateur/studio</description>
+		<right>30</right>
+		<top>550</top>
+		<height>60</height>
+		<width>1000</width>
+		<align>right</align>
+		<itemgap>-5</itemgap>
+		<orientation>horizontal</orientation>
+	<control type="image">																														<description>mpaa</description>		
+		<width>60</width>
+		<height>60</height>
+		<aspectratio>keep</aspectratio>
+		<texture colordiffuse="80ffffff">icones/infos/info.png</texture>		
+	</control>	
+	<control type="label">			
+		<width>auto</width>
+		<height>60</height>
+		<textcolor>80ffffff</textcolor>
+		<font>infos</font>
+		<label>[I]$VAR[legende_infos][/I]</label>
+	</control>	
+	</control>
+	</control>	
 	<control type="group">																														<description>boutons caches</description>
-		<visible>false</visible>		
+		<top>1100</top>		
 	<control type="button" id="6">		
     </control>	
 	 <control type="button" id="7">		
@@ -269,152 +437,7 @@
     <control type="button" id="10">		
     </control>	
 	<control type="button" id="12">		
-    </control>
-    <control type="radiobutton" id="13">		
-    </control>		
-	</control>
-	<control type="group">			   	     																									<description>informations du panneau de gauche</description>
-		<left>26</left>
-		<top>380</top>
-		<width>720</width>
-		<height>410</height>				
-	<control type="image">																														<description>cadre</description>
-		<aspectratio>scale</aspectratio>
-		<texture colordiffuse="40000000">texture.png</texture>	
-		<bordertexture border="30">fenetres/tuiles.png</bordertexture>
-		<bordersize>10,0,10,10</bordersize>		
-	</control>
-	<control type="button" id="5999">		
-		<top>0</top>
-		<right>10</right>
-		<left>10</left>
-        <bottom>10</bottom>
-		<texturefocus border="50" colordiffuse="$VAR[1selection_infos]">boutons/selection.png</texturefocus>				
-		<onup condition="!Integer.IsLess(container(50).numitems,1)">control.setFocus(50)</onup>
-		<ondown>control.setFocus(6000)</ondown>		
-		<onclick condition="!string.isEmpty(listitem.AddonDescription)">setProperty(titre,$ESCINFO[listitem.AddonName],home)</onclick>				
-		<onclick condition="!string.isEmpty(listitem.AddonDescription)">setProperty(duree,$ESCINFO[ListItem.AddonSummary],home)</onclick>				
-		<onclick condition="!string.isEmpty(listitem.AddonDescription)">setProperty(plot,$ESCINFO[listitem.AddonDescription],home)</onclick>		
-		<onclick condition="!string.isEmpty(listitem.AddonDescription)">activateWindow(1208)</onclick>		
-		<visible allowhiddenfocus="true">control.hasFocus(5999)</visible>
-	</control>
-	<control type="label">																														<description>status</description>
-		<left>30</left>
-		<right>30</right>
-		<top>10</top>
-		<height>38</height>						
-		<textcolor>$VAR[1selection_infos]</textcolor>
-		<font>texte_moyen</font>		
-		<label>[B][I]$INFO[listItem.addonName][/I][/B]</label>						
-	</control>	
-	<control type="image">																														<description>ligne de separation</description>
-		<left>30</left>
-		<right>30</right>
-		<top>55</top>
-		<aspectratio>scale</aspectratio>
-		<height>1</height>		
-		<texture colordiffuse="40ffffff">texture.png</texture>					
-	</control>  
-	<control type="textbox"> 																													<description>resume</description>      	
-		<top>57</top>		
-		<left>30</left>
-		<right>30</right>
-		<height>341</height>						
-		<align>center</align>
-		<aligny>center</aligny>
-		<textcolor>$VAR[blanc]</textcolor>
-		<label>[I]$VAR[addon_resume][/I]</label>
-		<autoscroll delay="5000" time="4000" repeat="10000">false</autoscroll>
-	</control>			
-	</control>
-	<control type="group">			   	     																									<description>informations du panneau de droite</description>
-		<right>26</right>
-		<top>380</top>
-		<width>720</width>
-		<height>410</height>				
-	<control type="image">																														<description>cadre</description>
-		<aspectratio>scale</aspectratio>
-		<texture colordiffuse="40000000">texture.png</texture>	
-		<bordertexture border="30">fenetres/tuiles.png</bordertexture>
-		<bordersize>10,0,10,10</bordersize>		
-	</control>
-	<control type="group">			   	     														
-		<left>30</left>		
-		<right>30</right>	
-		<top>10</top>
-	<control type="label">																														<description>type</description>
-		<height>38</height>						
-		<font>texte_moyen</font>
-		<scroll>true</scroll>
-		<label>[I]Type : $INFO[ListItem.AddonType][/I]</label>
-	</control>
-	<control type="label">																														<description>auteur</description>
-		<top>40</top>
-		<height>38</height>						
-		<font>texte_moyen</font>		
-		<label>[I]Auteur : $INFO[ListItem.AddonCreator][/I]</label>
-		<scroll>true</scroll>
-	</control>
-	<control type="label">																														<description>version</description>
-		<top>80</top>
-		<height>38</height>						
-		<font>texte_moyen</font>		
-		<label>[I]Version : $INFO[ListItem.AddonVersion][/I]</label>
-		<scroll>true</scroll>
-	</control>
-	<control type="image">																														<description>ligne de separation</description>
-		<top>125</top>
-		<aspectratio>scale</aspectratio>
-		<height>1</height>		
-		<texture colordiffuse="40ffffff">texture.png</texture>					
-	</control>
-	<control type="label">																														<description>date installation</description>
-		<top>130</top>
-		<height>38</height>						
-		<font>texte_moyen</font>		
-		<label>[I]$VAR[addon_installation][/I]</label>
-	</control>	
-	<control type="label">																														<description>date derniere mise a jour</description>
-		<top>170</top>
-		<height>38</height>						
-		<font>texte_moyen</font>		
-		<label>[I]$VAR[addon_miseajour][/I]</label>
-	</control>
-	<control type="label">																														<description>date derniere utilisation</description>
-		<top>210</top>
-		<height>38</height>						
-		<font>texte_moyen</font>		
-		<label>[I]$VAR[addon_utilisation][/I]</label>
-	</control>	
-	<control type="label">																														<description>taille</description>																													
-		<top>250</top>
-		<height>38</height>						
-		<font>texte_moyen</font>		
-		<label>[I]$VAR[addon_taille][/I]</label>						
-	</control>
-	<control type="image">																														<description>ligne de separation</description>
-		<top>295</top>
-		<aspectratio>scale</aspectratio>
-		<height>1</height>		
-		<texture colordiffuse="40ffffff">texture.png</texture>					
-	</control>	
-	<control type="label">																														<description>extension orpheline oui / non</description>
-		<top>300</top>
-		<height>38</height>						
-		<font>texte_moyen</font>		
-		<textcolor>$VAR[addon_couleur_orpheline]</textcolor>
-		<label>[I]$VAR[addon_orpheline][/I]</label>	
-	</control>
-	<control type="label">																														<description>mise à jour disponible oui / non</description>
-		<top>340</top>
-		<height>38</height>						
-		<font>texte_moyen</font>		
-		<textcolor>$VAR[addon_couleur_miseajourdisponible]</textcolor>
-		<label>[I]$VAR[addon_miseajourdisponible][/I]</label>	
-	</control>	
-	</control>		
-	</control>
-	</control>	
+    </control>	
 	</control>
 </controls>
 </window>

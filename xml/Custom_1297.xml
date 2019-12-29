@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<window type="dialog" id="1297">
+	<backgroundcolor>00X000000</backgroundcolor>
+	<onload>action(back)</onload>
+	<onload condition="!player.hasaudio">alarmclock(close,action(back),00:00,silent)</onload>
+<controls>
+</controls>
+</window>

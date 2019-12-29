@@ -3,7 +3,12 @@
 	<backgroundcolor>00X000000</backgroundcolor>
 	<include>animation_dialogue</include>			
 	<onload>cancelalarm(actualiser_widget_tv,silent)</onload>			
+	<onload>cancelalarm(actualiser_widget_tv2,silent)</onload>
+	<onload condition="window.isvisible(home) + string.isequal(window(home).property(menu),$LOCALIZE[31171]) + !string.isempty(window(home).property(guide_widget_tv))">action(back)</onload>	
+	<onload condition="window.isvisible(MyPVRChannels.xml) + !string.isempty(window(home).property(guide_widget_tv2))">action(back)</onload>	
+	<onunload condition="window.isvisible(MyPVRChannels.xml)">alarmclock(actualiser_widget_tv2,control.setfocus(1299),00:02,loop,silent)</onunload>	
 	<onunload condition="window.isvisible(home) + string.isequal(window(home).property(menu),$LOCALIZE[31171])">alarmclock(actualiser_widget_tv,activatewindow(1299),00:02,loop,silent)</onunload>	
+	<onload condition="control.isvisible(8)">control.setfocus(8)</onload>
 	<onload condition="control.isvisible(6)">control.setfocus(6)</onload>
 	<onload condition="control.isvisible(5)">control.setfocus(5)</onload>	
 <controls>			
@@ -27,10 +32,10 @@
 	</control>
 	<control type="image">																														<description>fanart arriere plan</description>
 		<aspectratio>scale</aspectratio>
-		<texture background="true">$INFO[listitem.epgeventicon]</texture>		
+		<texture background="true">$INFO[listitem.icon]</texture>		
 		<animation effect="fade" start="0" end="100" time="1000" reversible="false">windowopen</animation>
 		<animation effect="fade" start="100" end="0" time="1" reversible="false">windowclose</animation>		
-	</control>	
+	</control>
 	<control type="image">																														<description>masque arriere plan</description>
 		<aspectratio>scale</aspectratio>
 		<texture colordiffuse="ebffffff">commun/fond.png</texture>				
@@ -118,7 +123,8 @@
 		<reveal>true</reveal>
 		<texturebg colordiffuse="1affffff">commun/texture.png</texturebg>
 		<midtexture colordiffuse="$VAR[couleur_dominante]">commun/texture.png</midtexture>
-		<info>ListItem.Progress</info>		
+		<info>ListItem.Progress</info>
+		<visible>!window.isvisible(MyPVRRecordings.xml)</visible>
 	</control>
 	<control type="label">																														<description>chaine</description>
 		<top>160</top>
@@ -128,6 +134,17 @@
 		<font>texte_infos</font>
 		<textcolor>80ffffff</textcolor>
 		<label>[B]$LOCALIZE[31253][/B]   $INFO[listitem.channelname]</label>
+		<visible>!window.isvisible(MyPVRRecordings.xml)</visible>
+	</control>
+	<control type="label">																														<description>chaine</description>
+		<top>160</top>
+		<left>700</left>
+		<width>1000</width>
+		<height>20</height>
+		<font>texte_infos</font>
+		<textcolor>80ffffff</textcolor>
+		<label>[B]$LOCALIZE[19076][/B]   $INFO[listitem.FolderName]</label>
+		<visible>window.isvisible(MyPVRRecordings.xml) + !string.isempty(listitem.FolderName)</visible>
 	</control>
 	<control type="label">																														<description>genre</description>
 		<top>200</top>
@@ -156,13 +173,29 @@
 		<width>auto</width>				
 		<align>center</align>	
 	<include content="petit_bouton">
+		<param name="label" value="[UPPERCASE]$LOCALIZE[19043][/UPPERCASE]"/>
+		<param name="textcolor" value="ffffffff"/>
+		<param name="textoffsetx" value="15"/>
+		<param name="texturenofocus" value="commun/bouton.png"/>
+		<param name="texturenofocus_colordiffuse" value="$VAR[couleur_dominante]"/>
+	</include>
+		<visible>window.isvisible(MyPVRRecordings.xml)</visible>
+	</control>
+	
+	<control type="group">
+		<visible>!window.isvisible(MyPVRRecordings.xml)</visible>
+	<control type="button">	
+		<height>22</height>			
+		<width>auto</width>				
+		<align>center</align>	
+	<include content="petit_bouton">
 		<param name="label" value="[UPPERCASE]$LOCALIZE[575][/UPPERCASE]"/>
 		<param name="textcolor" value="ffffffff"/>
 		<param name="textoffsetx" value="15"/>
 		<param name="texturenofocus" value="commun/bouton.png"/>
 		<param name="texturenofocus_colordiffuse" value="$VAR[couleur_dominante]"/>
 	</include>
-	<visible>!integer.isequal(listitem.progress,0) + !integer.isequal(listitem.progress,100)</visible>
+		<visible>!integer.isequal(listitem.progress,0) + !integer.isequal(listitem.progress,100)</visible>
 	</control>
 	<control type="button">	
 		<height>22</height>			
@@ -175,7 +208,7 @@
 		<param name="texturenofocus" value="commun/bouton.png"/>
 		<param name="texturenofocus_colordiffuse" value="$VAR[couleur_dominante]"/>
 	</include>
-	<visible>integer.isequal(listitem.progress,100)</visible>
+		<visible>integer.isequal(listitem.progress,100)</visible>
 	</control>
 	<control type="button">	
 		<height>22</height>			
@@ -188,9 +221,10 @@
 		<param name="texturenofocus" value="commun/bouton.png"/>
 		<param name="texturenofocus_colordiffuse" value="$VAR[couleur_dominante]"/>
 	</include>
-	<visible>integer.isequal(listitem.progress,0)</visible>
+		<visible>integer.isequal(listitem.progress,0)</visible>
 	</control>	
-	</control>		
+	</control>
+	</control>
 	<control type="grouplist">																													<description>jour/heure de debut/heure de fin</description>
 		<top>360</top>
 		<left>700</left>
@@ -276,29 +310,10 @@
 		<height>500</height>
 		<width>600</width>
 		<aspectratio align="right" aligny="bottom">keep</aspectratio>
-		<texture background="true" border="10">$INFO[listitem.epgeventicon]</texture>
+		<texture background="true" border="10">$INFO[listitem.icon]</texture>
 		<bordertexture border="10">commun/tuiles.png</bordertexture>
-		<bordersize>10,0,10,10</bordersize>		
-		<visible>!player.hasvideo</visible>
-	</control>
-	<control type="image">																														<description>fond video en cours</description>	
-		<right>20</right>
-		<top>292</top>
-		<width>620</width>
-		<height>348</height>
-		<aspectratio>stretch</aspectratio>
-		<texture background="true" border="10" colordiffuse="ff000000">commun/texture.png</texture>
-		<bordertexture border="10">commun/tuiles.png</bordertexture>
-		<bordersize>10,0,10,10</bordersize>		
-		<visible>player.hasvideo</visible>
-	</control>
-	<control type="videowindow">																												<description>video en cours</description>	
-		<right>30</right>
-		<top>292</top>
-		<width>600</width>
-		<height>338</height>	
-		<visible>player.hasvideo</visible>
-	</control>
+		<bordersize>10,0,10,10</bordersize>	
+	</control>	
 	<control type="grouplist" id="100">																											<description>boutons</description>				
 		<top>170</top>		
 		<left>60</left>
@@ -329,6 +344,7 @@
 		<radioposx>15</radioposx>
 		<radiowidth>70</radiowidth>
 		<radioheight>70</radioheight>
+		<visible>!window.isvisible(MyPVRRecordings.xml)</visible>
 	</control>
 	<control type="radiobutton" id="6">		
 		<height>50</height>
@@ -340,7 +356,8 @@
 		<textureradiooffnofocus colordiffuse="ffffffff">icones/infos/enregistrer.png</textureradiooffnofocus>
 		<radioposx>15</radioposx>
 		<radiowidth>70</radiowidth>
-		<radioheight>70</radioheight>						
+		<radioheight>70</radioheight>
+		<visible>!window.isvisible(MyPVRRecordings.xml)</visible>						
 	</control>
 	<control type="radiobutton" id="9">		
 		<height>50</height>
@@ -352,7 +369,8 @@
 		<textureradiooffnofocus colordiffuse="ffffffff">icones/infos/programmation.png</textureradiooffnofocus>
 		<radioposx>15</radioposx>
 		<radiowidth>70</radiowidth>
-		<radioheight>70</radioheight>						
+		<radioheight>70</radioheight>
+		<visible>!window.isvisible(MyPVRRecordings.xml)</visible>						
 	</control>
 	<control type="radiobutton" id="4">		
 		<height>50</height>
@@ -364,7 +382,8 @@
 		<textureradiooffnofocus colordiffuse="ffffffff">menus/recherche.png</textureradiooffnofocus>
 		<radioposx>15</radioposx>
 		<radiowidth>70</radiowidth>
-		<radioheight>70</radioheight>						
+		<radioheight>70</radioheight>
+		<visible>!window.isvisible(MyPVRRecordings.xml)</visible>						
 	</control>
 	</control>
 	<control type="label">																														<description>nom PVR</description>
@@ -396,6 +415,11 @@
 		<textcolor>80ffffff</textcolor>
 		<label>$LOCALIZE[253] : $INFO[container(6800).numitems]</label>		
 	</control>
-	</control>																	
+	</control>	
+	<control type="label">																														<description>label pour tests</description>
+		<top>1000</top>
+		<height>80</height>	
+		<label>$INFO[]</label>
+	</control>
 </controls>
 </window>

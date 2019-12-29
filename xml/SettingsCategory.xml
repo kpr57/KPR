@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
 	<backgroundcolor>00X000000</backgroundcolor>
-	<defaultcontrol always="true">3</defaultcontrol>		
+	<defaultcontrol always="true">3</defaultcontrol>
 <controls>		
 	<control type="group">
+		<animation effect="slide" start="0,0" end="1920,0" time="1" condition="window.isvisible(pvrchannelmanager) | window.isvisible(pvrgroupmanager)" reversible="false">conditional</animation>
+		<animation effect="slide" end="0,0" delay="5000" time="1" condition="!window.isvisible(pvrchannelmanager) + !window.isvisible(pvrgroupmanager)" reversible="false">conditional</animation>	
 	<include>animation_dialogue</include>	
 	<include>image_fond</include>																												<description>image de fond</description>		
 	<control type="label">																														<description>horloge</description>
@@ -28,6 +30,8 @@
 		<width>auto</width>
 		<ondown>3</ondown>
 		<onclick>SettingsLevelChange</onclick>
+		<onclick>control.setfocus(3,0,absolute)</onclick>
+		<onclick>control.setfocus(19)</onclick>
 		<label>$LOCALIZE[31273] : [LOWERCASE]$INFO[control.getlabel(20)][/LOWERCASE]</label>
 	<include content="bouton">																											
 		<param name="height" value="50"/> 		

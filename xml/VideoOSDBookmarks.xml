@@ -2,18 +2,19 @@
 <window>
 	<backgroundcolor>00X000000</backgroundcolor>
 	<onload>control.setfocus(2)</onload>
+	
 <controls>		
 	<control type="group">
 		<animation effect="fade" start="0" end="100" time="250" reversible="false">windowopen</animation>
-		<animation effect="fade" start="100" end="0" time="250" reversible="false">windowclose</animation>
+		<animation effect="fade" start="100" end="0" time="250" reversible="false">windowclose</animation>		
 		<animation effect="slide" time="500" start="0,0" end="0,-222" condition="string.isequal(skin.string(position_signets),haut)">conditional</animation>
 		<animation effect="slide" time="500" start="0,0" end="0,242" condition="string.isequal(skin.string(position_signets),bas)">conditional</animation>
 		<top>332</top>
-		<height>416</height>
+		<height>416</height>	
 	<control type="image">																														<description>fond signets</description>
 		<aspectratio>scale</aspectratio>
 		<texture colordiffuse="$VAR[couleur_OSD]">commun/texture.png</texture>				
-	</control>			
+	</control>	
 	<control type="group">
 		<visible>string.isequal(skin.string(position_signets),haut)</visible>
 	<include content="barre_separation_horizontale">
@@ -22,7 +23,7 @@
 		<param name="bottom" value="414"/>
 		<param name="colordiffuse" value="20ffffff"/>	
 	</include>
-	</control>
+	</control>	
 	<include content="barre_separation_horizontale">
 		<param name="left" value="25"/> 
 		<param name="right" value="25"/>
@@ -37,8 +38,9 @@
 		<param name="bottom" value="0"/>
 		<param name="colordiffuse" value="20ffffff"/>	
 	</include>
-	</control>	
-	<control type="panel" id="11">																												<description>liste des signets</description>
+	</control>
+	
+	<control type="panel" id="11">																												<description>liste des signets</description>		
 		<top>110</top>		
 		<height>300</height>		
 		<right>0</right>		
@@ -49,88 +51,138 @@
 		<scrolltime tween="cubic" easing="out">500</scrolltime>
 	<itemlayout height="300" width="480">
 	<control type="image">
-		<top>10</top>		
-		<left>30</left>
-		<width>420</width>
-		<height>235</height>
+		<top>20</top>		
+		<left>10</left>
+		<width>460</width>
+		<height>215</height>
 		<aspectratio>stretch</aspectratio>
 		<texture background="true" colordiffuse="03000000" border="10">commun/texture.png</texture>
 		<bordertexture border="10">commun/tuiles.png</bordertexture>
 		<bordersize>10,0,10,10</bordersize>		
 	</control>
 	<control type="image">
-		<top>10</top>
-		<left>40</left>
-		<width>400</width>
-		<height>225</height>
+		<top>20</top>
+		<left>20</left>
+		<width>440</width>
+		<height>205</height>
 		<aspectratio>scale</aspectratio>
 		<texture>$INFO[ListItem.Icon]</texture>
 		<visible>!string.isEmpty(ListItem.Icon)</visible>
 	</control>
 	<control type="image">
-		<top>10</top>
-		<left>40</left>
-		<width>400</width>
-		<height>225</height>
+		<top>20</top>
+		<left>20</left>
+		<width>440</width>
+		<height>205</height>
 		<aspectratio>scale</aspectratio>
-		<texture>fenetres/noimage.png</texture>
+		<texture>extras/chapitre.png</texture>
+		<visible>string.isEmpty(ListItem.Icon)</visible>
+	</control>
+	<control type="label">																														<description>titre du signet</description>
+		<top>20</top>
+		<left>20</left>
+		<width>440</width>
+		<height>205</height>
+		<align>center</align>
+		<font>menu</font>
+		<textcolor>$VAR[gris]</textcolor>
+		<label>$INFO[container(11).listitem.Label2]</label>
 		<visible>string.isEmpty(ListItem.Icon)</visible>
 	</control>	
 	<control type="label">																														<description>titre du signet</description>
 		<top>250</top>
-		<left>40</left>
-		<width>400</width>
+		<left>20</left>
+		<width>440</width>
 		<align>center</align>
 		<height>40</height>
 		<font>texte</font>
 		<textoffsetx>2</textoffsetx>
 		<label>$INFO[ListItem.Label] • $INFO[ListItem.Label2]</label>
+		<visible>!string.isEmpty(ListItem.Icon)</visible>
+	</control>	
+	<control type="label">																														<description>titre du signet</description>
+		<top>250</top>
+		<left>20</left>
+		<width>440</width>
+		<align>center</align>
+		<height>40</height>
+		<font>texte</font>
+		<textoffsetx>2</textoffsetx>
+		<label>$INFO[ListItem.Label]</label>
+		<visible>string.isEmpty(ListItem.Icon)</visible>
 	</control>	
 	</itemlayout>
-	<focusedlayout height="300" width="480">	
+	<focusedlayout height="300" width="480">		
 	<control type="image">
-		<top>10</top>		
-		<left>30</left>
-		<width>420</width>
-		<height>235</height>
+		<top>20</top>		
+		<left>10</left>
+		<width>460</width>
+		<height>215</height>
 		<aspectratio>stretch</aspectratio>
 		<texture background="true" colordiffuse="03000000" border="10">commun/texture.png</texture>
 		<bordertexture border="10">commun/tuiles.png</bordertexture>
 		<bordersize>10,0,10,10</bordersize>		
 	</control>
 	<control type="image">
-		<top>10</top>
-		<left>40</left>
-		<width>400</width>
-		<height>225</height>
+		<top>20</top>
+		<left>20</left>
+		<width>440</width>
+		<height>205</height>
 		<aspectratio>scale</aspectratio>
 		<texture>$INFO[ListItem.Icon]</texture>
 		<visible>!string.isEmpty(ListItem.Icon)</visible>
 	</control>
 	<control type="image">
-		<top>10</top>
-		<left>40</left>
-		<width>400</width>
-		<height>225</height>
+		<top>20</top>
+		<left>20</left>
+		<width>440</width>
+		<height>205</height>
 		<aspectratio>scale</aspectratio>
-		<texture>fenetres/noimage.png</texture>
+		<texture>extras/chapitre.png</texture>
 		<visible>string.isEmpty(ListItem.Icon)</visible>
-	</control>	
+	</control>
+	<control type="label">																														<description>titre du signet</description>
+		<top>20</top>
+		<left>20</left>
+		<width>440</width>
+		<height>205</height>
+		<align>center</align>
+		<font>menu</font>
+		<textcolor>$VAR[gris]</textcolor>
+		<label>$INFO[container(11).listitem.Label2]</label>
+		<visible>string.isEmpty(ListItem.Icon)</visible>
+	</control>
 	<control type="button">
 		<top>250</top>
-		<left>40</left>
-		<width>400</width>
+		<left>20</left>
+		<width>440</width>
 		<height>40</height>		
 		<font>texte</font>
 		<textoffsetx>2</textoffsetx>		
 		<align>center</align>
 		<label>$INFO[ListItem.Label] • $INFO[ListItem.Label2]</label>
 		<texturenofocus colordiffuse="$VAR[couleur_dominante]" border="20">$PARAM[texturenofocus]</texturenofocus>
-		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>			
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
+		<onfocus condition="!String.IsEqual(listitem.icon,) + !string.EndsWith(listitem.icon,none)">setproperty(image,$INFO[listitem.icon],home)</onfocus>
+		<visible>!string.isEmpty(ListItem.Icon)</visible>								
+	</control>	
+	<control type="button">
+		<top>250</top>
+		<left>20</left>
+		<width>440</width>
+		<height>40</height>		
+		<font>texte</font>
+		<textoffsetx>2</textoffsetx>		
+		<align>center</align>
+		<label>$INFO[ListItem.Label]</label>
+		<texturenofocus colordiffuse="$VAR[couleur_dominante]" border="20">$PARAM[texturenofocus]</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
+		<onfocus condition="!String.IsEqual(listitem.icon,) + !string.EndsWith(listitem.icon,none)">setproperty(image,$INFO[listitem.icon],home)</onfocus>
+		<visible>string.isEmpty(ListItem.Icon)</visible>				
 	</control>
 	</focusedlayout>
 	</control>		
-	<control type="group" id="7000">
+	<control type="group" id="7000">	
 	<control type="grouplist" id="8000">																										<description>liste boutons</description>	
 		<top>20</top>	
 		<left>60</left>
@@ -232,6 +284,6 @@
 	</control>
 	</control>
 	</control>
-	</control>		
+	</control>	
 </controls>
 </window>
