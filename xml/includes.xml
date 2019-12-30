@@ -211,6 +211,98 @@
 	</control>
 	</include>
 	
+	
+	<include name="bouton_icone_interface">
+		<param name="id"/>
+		<param name="icone1"/>
+		<param name="icone2"/>
+		<param name="width" default="80"/>
+		<param name="texturenofocus" default="20000000"/>
+		<param name="onclick"/>
+		<param name="onclick2"/>
+		<param name="onclick3"/>
+		<param name="onclick4"/>
+		<param name="onfocus"/>
+		<param name="onfocus2"/>
+		<param name="ondown"/>
+		<param name="enable"/>
+		<param name="selected"/>
+		<param name="visible"/>
+	<definition>
+	<control type="radiobutton" id="$PARAM[id]">
+		<top>30</top>
+		<height>60</height>
+		<width>$PARAM[width]</width>
+		<ondown>$PARAM[ondown]</ondown>
+		<onclick>$PARAM[onclick]</onclick>
+		<onclick>$PARAM[onclick2]</onclick>
+		<onclick>$PARAM[onclick3]</onclick>
+		<onclick>$PARAM[onclick4]</onclick>
+		<onfocus>$PARAM[onfocus]</onfocus>
+		<onfocus>$PARAM[onfocus2]</onfocus>
+		<texturenofocus colordiffuse="$PARAM[texturenofocus]" border="20">commun/bouton.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
+		<textureradioonfocus colordiffuse="$VAR[gris]">$PARAM[icone1]</textureradioonfocus>
+		<textureradioonnofocus colordiffuse="80ffffff">$PARAM[icone1]</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="$VAR[gris]">$PARAM[icone2]</textureradioofffocus>
+		<textureradiooffnofocus colordiffuse="80ffffff">$PARAM[icone2]</textureradiooffnofocus>
+		<radioposx>1</radioposx>
+		<radiowidth>80</radiowidth>
+		<radioheight>80</radioheight>
+		<enable>$PARAM[enable]</enable>
+		<selected>$PARAM[selected]</selected>
+		<visible>$PARAM[visible]</visible>		
+	</control>
+	</definition>
+	</include>
+	
+	<include name="bouton_texte_interface">
+		<param name="id"/>
+		<param name="width" default="auto"/>
+		<param name="align" default="left"/>	
+		<param name="font" default="label"/>
+		<param name="label"/>
+		<param name="textoffsetx" default="20"/>
+		<param name="texturenofocus" default="20000000"/>
+		<param name="onclick"/>
+		<param name="onclick2"/>
+		<param name="onclick3"/>
+		<param name="onclick4"/>
+		<param name="onclick"/>
+		<param name="onclick2"/>
+		<param name="condition_onclick"/>
+		<param name="condition_onclick2"/>
+		<param name="onfocus"/>
+		<param name="onfocus2"/>
+		<param name="ondown"/>
+		<param name="enable"/>
+		<param name="visible"/>
+	<definition>
+	<control type="button" id="$PARAM[id]">
+		<top>30</top>
+		<height>60</height>
+		<width>$PARAM[width]</width>
+		<align>$PARAM[align]</align>
+		<aligny>center</aligny>
+		<font>$PARAM[font]</font>
+		<label>$PARAM[label]</label>
+		<textcolor>80ffffff</textcolor>
+		<textoffsetx>$PARAM[textoffsetx]</textoffsetx>
+		<ondown>$PARAM[ondown]</ondown>
+		<onclick condition="$PARAM[condition_onclick]">$PARAM[onclick]</onclick>
+		<onclick condition="$PARAM[condition_onclick2]">$PARAM[onclick2]</onclick>
+		<onclick>$PARAM[onclick3]</onclick>
+		<onclick>$PARAM[onclick4]</onclick>
+		<onfocus>$PARAM[onfocus]</onfocus>
+		<onfocus>$PARAM[onfocus2]</onfocus>
+		<texturenofocus colordiffuse="$PARAM[texturenofocus]" border="20">commun/bouton.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>		
+		<enable>$PARAM[enable]</enable>
+		<visible>$PARAM[visible]</visible>		
+	</control>
+	</definition>
+	</include>
+	
 	<include name="widget_fake">																												<description>panneau fanart</description>		
 		<param name="id"/>
 		<param name="chemin"/>

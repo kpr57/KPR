@@ -865,153 +865,83 @@
 		<left>430</left>
 		<width>1920</width>
 		<scrolltime tween="cubic" easing="out">500</scrolltime>	
-	<control type="group" id="994">																												<description>horloge</description>
+	<control type="group" id="1100">																											<description>horloge</description>
 		<usecontrolcoords>true</usecontrolcoords>
 		<right>40</right>		
 	<include>titre</include>
 	</control>		
-	<control type="grouplist" id="999">																											<description>boutons recherche et parametres</description>
+	<control type="grouplist" id="1101">																										<description>boutons</description>
 		<usecontrolcoords>true</usecontrolcoords>
 		<height>118</height>			
 		<onleft>1000</onleft>		
 		<orientation>horizontal</orientation>
 		<itemgap>25</itemgap>
-	<control type="radiobutton" id="998">
-		<left>50</left>
-		<top>30</top>
-		<height>60</height>
-		<width>80</width>
-		<ondown>900</ondown>
-		<texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
-		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
-		<textureradioonfocus colordiffuse="$VAR[gris]">menus/recherche.png</textureradioonfocus>
-		<textureradioonnofocus>menus/recherche.png</textureradioonnofocus>
-		<textureradioofffocus colordiffuse="$VAR[gris]">menus/recherche.png</textureradioofffocus>
-		<textureradiooffnofocus>menus/recherche.png</textureradiooffnofocus>
-		<radioposx>1</radioposx>
-		<radiowidth>80</radiowidth>
-		<radioheight>80</radioheight>			
-	</control>
-	<control type="radiobutton" id="992">
-		<top>30</top>
-		<height>60</height>
-		<width>80</width>		
-		<ondown>900</ondown>
-		<onclick>skin.togglesetting(favoris)</onclick>
-		<texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
-		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
-		<textureradioonfocus colordiffuse="$VAR[gris]">icones/favoris_visibles.png</textureradioonfocus>
-		<textureradioonnofocus colordiffuse="d9ffffff">icones/favoris_visibles.png</textureradioonnofocus>
-		<textureradioofffocus colordiffuse="$VAR[gris]">icones/favoris.png</textureradioofffocus>
-		<textureradiooffnofocus colordiffuse="d9ffffff">icones/favoris.png</textureradiooffnofocus>
-		<radioposx>6</radioposx>
-		<radiowidth>70</radiowidth>
-		<radioheight>70</radioheight>
-		<selected>skin.hassetting(favoris)</selected>
-		<visible>!integer.isequal(container(12340).numitems,0)</visible>
-	</control>
-	<control type="radiobutton" id="991">
-		<top>30</top>
-		<height>60</height>
-		<width>80</width>		
-		<ondown>900</ondown>
-		<onclick>activatewindow(addonbrowser,return)</onclick>
-		<texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
-		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
-		<textureradioonfocus colordiffuse="$VAR[gris]">icones/kodi.png</textureradioonfocus>
-		<textureradioonnofocus colordiffuse="d9ffffff">icones/kodi.png</textureradioonnofocus>
-		<textureradioofffocus colordiffuse="$VAR[gris]">icones/kodi.png</textureradioofffocus>
-		<textureradiooffnofocus colordiffuse="d9ffffff">icones/kodi.png</textureradiooffnofocus>
-		<radioposx>6</radioposx>
-		<radiowidth>70</radiowidth>
-		<radioheight>70</radioheight>
-	</control>
-	<control type="radiobutton" id="9911">
-		<top>30</top>
-		<height>60</height>
-		<width>80</width>		
-		<ondown>900</ondown>
-		<onclick>PlayDisc</onclick>
-		<texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
-		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
-		<textureradioonfocus colordiffuse="$VAR[gris]">icones/lire_disque.png</textureradioonfocus>
-		<textureradioonnofocus colordiffuse="d9ffffff">icones/lire_disque.png</textureradioonnofocus>
-		<textureradioofffocus colordiffuse="$VAR[gris]">icones/lire_disque.png</textureradioofffocus>
-		<textureradiooffnofocus colordiffuse="d9ffffff">icones/lire_disque.png</textureradiooffnofocus>
-		<radioposx>6</radioposx>
-		<radiowidth>70</radiowidth>
-		<radioheight>70</radioheight>
-		<visible>!string.isempty(control.getlabel(123456))</visible>
-	</control>
-	<control type="radiobutton" id="9912">
-		<top>30</top>
-		<height>60</height>
-		<width>80</width>		
-		<ondown>900</ondown>
-		<onright>997</onright>
-		<onclick>control.setfocus(998)</onclick>
-		<onclick>PlayerControl(stop)</onclick>
-		<onclick>EjectTray()</onclick>		
-		<texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
-		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
-		<textureradioonfocus colordiffuse="$VAR[gris]">icones/ejecter_disque.png</textureradioonfocus>
-		<textureradioonnofocus colordiffuse="d9ffffff">icones/ejecter_disque.png</textureradioonnofocus>
-		<textureradioofffocus colordiffuse="$VAR[gris]">icones/ejecter_disque.png</textureradioofffocus>
-		<textureradiooffnofocus colordiffuse="d9ffffff">icones/ejecter_disque.png</textureradiooffnofocus>
-		<radioposx>6</radioposx>
-		<radiowidth>70</radiowidth>
-		<radioheight>70</radioheight>
-		<visible>!string.isempty(control.getlabel(123456))</visible>
+	<include content="bouton_icone_interface">
+		<param name="id" value="1102"/>
+		<param name="width" value="25"/>
+		<param name="texturenofocus" value="00ffffff"/>
+		<param name="enable" value="false"/>
+	</include>
+	<include content="bouton_icone_interface">
+		<param name="id" value="1103"/>
+		<param name="icone1" value="menus/recherche.png"/>
+		<param name="icone2" value="menus/recherche.png"/>
+		<param name="ondown" value="1111"/>		
+	</include>
+	<include content="bouton_icone_interface">
+		<param name="id" value="1104"/>
+		<param name="icone1" value="icones/favoris_visibles.png"/>
+		<param name="icone2" value="icones/favoris.png"/>
+		<param name="onclick" value="skin.togglesetting(favoris)"/>
+		<param name="ondown" value="1111"/>
+		<param name="selected" value="skin.hassetting(favoris)"/>
+		<param name="visible" value="!integer.isequal(container(12340).numitems,0)"/>		
+	</include>
+	<include content="bouton_icone_interface">
+		<param name="id" value="1105"/>
+		<param name="icone1" value="icones/kodi.png"/>
+		<param name="icone2" value="icones/kodi.png"/>
+		<param name="onclick" value="activatewindow(addonbrowser,return)"/>
+		<param name="ondown" value="1111"/>		
+	</include>
+	<include content="bouton_icone_interface">
+		<param name="id" value="1106"/>
+		<param name="icone1" value="icones/lire_disque.png"/>
+		<param name="icone2" value="icones/lire_disque.png"/>
+		<param name="onclick" value="PlayDisc"/>
+		<param name="ondown" value="1111"/>
+		<param name="visible" value="!string.isempty(control.getlabel(123456))"/>		
+	</include>
+	<include content="bouton_icone_interface">
+		<param name="id" value="1107"/>
+		<param name="icone1" value="icones/ejecter_disque.png"/>
+		<param name="icone2" value="icones/ejecter_disque.png"/>
+		<param name="onclick" value="control.setfocus(1103)"/>
+		<param name="onclick2" value="PlayerControl(stop)"/>
+		<param name="onclick3" value="EjectTray()"/>
+		<param name="ondown" value="1111"/>
+		<param name="visible" value="!string.isempty(control.getlabel(123456))"/>		
+	</include>	
+	<include content="bouton_icone_interface">
+		<param name="id" value="1108"/>
+		<param name="icone1" value="icones/pause.png"/>
+		<param name="icone2" value="icones/play.png"/>
+		<param name="onclick" value="PlayerControl(Play)"/>
+		<param name="ondown" value="1111"/>
+		<param name="selected" value="!Player.Paused"/>
+		<param name="visible" value="player.hasmedia"/>		
+	</include>
+	<include content="bouton_icone_interface">
+		<param name="id" value="1109"/>
+		<param name="icone1" value="icones/stop.png"/>
+		<param name="icone2" value="icones/stop.png"/>
+		<param name="onclick" value="control.setfocus(1103)"/>
+		<param name="onclick2" value="alarmclock(stop,PlayerControl(stop),00:00,silent)"/>
+		<param name="ondown" value="1111"/>
+		<param name="visible" value="player.hasmedia"/>		
+	</include>
 	</control>	
-	<control type="group" id="993">
-		<top>30</top>
-		<height>60</height>
-		<width>80</width>
-	<control type="image">
-		<texture colordiffuse="20000000" border="20">commun/bouton.png</texture>
-		<visible>!control.hasfocus(997)</visible>
-	</control>	
-	<control type="image">
-		<texture colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texture>
-		<visible>control.hasfocus(997)</visible>
-	</control>
-	<control type="togglebutton" id="997">
-		<left>10</left>
-		<height>60</height>
-		<width>60</width>
-		<ondown>900</ondown>
-		<onleft>9912</onleft>
-		<onright>996</onright>		
-		<onclick>PlayerControl(Play)</onclick>		
-		<texturenofocus colordiffuse="ccffffff">boutons/OSD/pause.png</texturenofocus>
-		<texturefocus colordiffuse="$VAR[gris]">boutons/OSD/pause.png</texturefocus>
-		<alttexturenofocus colordiffuse="ccffffff">boutons/OSD/play.png</alttexturenofocus>
-		<alttexturefocus colordiffuse="$VAR[gris]">boutons/OSD/play.png</alttexturefocus>
-		<usealttexture>Player.Paused</usealttexture>
-	</control>
-		<visible>player.hasmedia</visible>
-	</control>
-	<control type="radiobutton" id="996">
-		<top>30</top>		
-		<height>60</height>
-		<width>80</width>
-		<ondown>900</ondown>
-		<onleft>997</onleft>
-		<onclick>control.setfocus(998)</onclick>
-		<onclick>alarmclock(alarme,PlayerControl(stop),00:00,silent)</onclick>
-		<texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
-		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
-		<textureradioonfocus colordiffuse="$VAR[gris]">boutons/OSD/stop.png</textureradioonfocus>
-		<textureradioonnofocus colordiffuse="ccffffff">boutons/OSD/stop.png</textureradioonnofocus>
-		<textureradioofffocus colordiffuse="$VAR[gris]">boutons/OSD/stop.png</textureradioofffocus>
-		<textureradiooffnofocus colordiffuse="ccffffff">boutons/OSD/stop.png</textureradiooffnofocus>
-		<radioposx>11</radioposx>
-		<radiowidth>60</radiowidth>
-		<radioheight>60</radioheight>			
-		<visible>player.hasmedia</visible>
-	</control>
-	</control>	
-	<control type="group" id="995">																												<description>barre de separation horizontale</description>
+	<control type="group" id="1110">																											<description>barre de separation horizontale</description>
 		<height>2</height>
 	<include content="barre_separation_horizontale">
 		<param name="left" value="25"/> 
@@ -1020,12 +950,12 @@
 	</include>	
 	</control>	
 	<include content="video_en_cours">																											<description>incrustation de la video en cours</description>
-		<param name="id" value="900"/>
-		<param name="id2" value="100"/>		
-		<param name="ondown" value="1234"/>
-		<param name="onup" value="999"/>
+		<param name="id" value="1111"/>
+		<param name="id2" value="1002"/>		
+		<param name="ondown" value="1113"/>
+		<param name="onup" value="1101"/>
 	</include>		
-	<control type="group" id="1233">																											<description>titre widget des favoris</description>
+	<control type="group" id="1112">																											<description>titre widget des favoris</description>
 		<top>70</top>				
 	<control type="image">
 		<top>27</top>		
@@ -1046,7 +976,7 @@
 	</control>
 		<visible>skin.HasSetting(favoris) + !integer.isequal(container(12340).numitems,0)</visible>
 	</control>
-	<control type="panel" id="1234">																											<description>panneau widget des favoris</description>
+	<control type="panel" id="1113">																											<description>panneau widget des favoris</description>
 		<width>1920</width>
 		<height>520</height>
 		<onleft>1000</onleft>
@@ -1151,7 +1081,7 @@
 		<content>favourites://</content>		
 		<visible>skin.HasSetting(favoris) + !integer.isequal(container(12340).numitems,0)</visible>
 	</control>	
-	<control type="group" id="1235">																											<description>separation widget des favoris</description>
+	<control type="group" id="1114">																											<description>separation widget des favoris</description>
 	<include content="barre_separation_horizontale">																							<description>barre de separation horizontale</description>
 		<param name="left" value="25"/> 
 		<param name="right" value="25"/>
@@ -1258,145 +1188,81 @@
 		<left>430</left>
 		<width>1920</width>
 		<scrolltime tween="cubic" easing="out">500</scrolltime>		
-	<control type="group" id="1994">																											<description>horloge</description>
+	<control type="group" id="2100">																											<description>horloge</description>
 		<usecontrolcoords>true</usecontrolcoords>
 		<right>40</right>					
 	<include>titre</include>
 	</control>	
-	<control type="grouplist" id="1999">																										<description>boutons recherche et parametres</description>
+	<control type="grouplist" id="2101">																										<description>boutons</description>
 		<usecontrolcoords>true</usecontrolcoords>
 		<height>118</height>			
 		<onleft>1000</onleft>
 		<orientation>horizontal</orientation>
 		<itemgap>25</itemgap>
-	<control type="radiobutton" id="1998">
-		<left>50</left>
-		<top>30</top>
-		<height>60</height>
-		<width>80</width>
-		<ondown>2000</ondown>
-		<texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
-		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
-		<textureradioonfocus colordiffuse="$VAR[gris]">menus/recherche.png</textureradioonfocus>
-		<textureradioonnofocus>menus/recherche.png</textureradioonnofocus>
-		<textureradioofffocus colordiffuse="$VAR[gris]">menus/recherche.png</textureradioofffocus>
-		<textureradiooffnofocus>menus/recherche.png</textureradiooffnofocus>
-		<radioposx>1</radioposx>
-		<radiowidth>80</radiowidth>
-		<radioheight>80</radioheight>			
-	</control>
-	<control type="button" id="1997">
-		<top>30</top>
-		<height>60</height>
-		<width>auto</width>
-		<ondown>2000</ondown>
-		<onclick>UpdateLibrary(video)</onclick>						
-	<include content="bouton">																										
-		<param name="width" value="auto"/> 
-		<param name="height" value="80"/>
-		<param name="align" value="center"/>			 
+	<include content="bouton_icone_interface">
+		<param name="id" value="2102"/>
+		<param name="width" value="25"/>
+		<param name="texturenofocus" value="00ffffff"/>
+		<param name="enable" value="false"/>
+	</include>
+	<include content="bouton_icone_interface">
+		<param name="id" value="2103"/>
+		<param name="icone1" value="menus/recherche.png"/>
+		<param name="icone2" value="menus/recherche.png"/>
+		<param name="ondown" value="2111"/>		
+	</include>
+	<include content="bouton_texte_interface">
+		<param name="id" value="2104"/>
+		<param name="width" value="auto"/>
 		<param name="label" value="$LOCALIZE[31214]"/>
+		<param name="onclick" value="UpdateLibrary(video)"/>
+		<param name="ondown" value="2111"/>		
 	</include>
-	</control>
-	<control type="button" id="1996">
-		<top>30</top>		
-		<height>60</height>
-		<width>auto</width>
-		<ondown>2000</ondown>		
-		<onclick>CleanLibrary(video)</onclick>		
-	<include content="bouton">																										
-		<param name="width" value="auto"/> 
-		<param name="height" value="80"/>
-		<param name="align" value="center"/>			 
+	<include content="bouton_texte_interface">
+		<param name="id" value="2105"/>
+		<param name="width" value="auto"/>
 		<param name="label" value="$LOCALIZE[31215]"/>
+		<param name="onclick" value="CleanLibrary(video)"/>
+		<param name="ondown" value="2111"/>		
+	</include>	
+	<include content="bouton_icone_interface">
+		<param name="id" value="2106"/>
+		<param name="icone1" value="icones/lire_disque.png"/>
+		<param name="icone2" value="icones/lire_disque.png"/>
+		<param name="onclick" value="PlayDisc"/>
+		<param name="ondown" value="2111"/>
+		<param name="visible" value="!string.isempty(control.getlabel(123456))"/>		
+	</include>
+	<include content="bouton_icone_interface">
+		<param name="id" value="2107"/>
+		<param name="icone1" value="icones/ejecter_disque.png"/>
+		<param name="icone2" value="icones/ejecter_disque.png"/>
+		<param name="onclick" value="control.setfocus(2103)"/>
+		<param name="onclick2" value="PlayerControl(stop)"/>
+		<param name="onclick3" value="EjectTray()"/>
+		<param name="ondown" value="2111"/>
+		<param name="visible" value="!string.isempty(control.getlabel(123456))"/>		
+	</include>	
+	<include content="bouton_icone_interface">
+		<param name="id" value="2108"/>
+		<param name="icone1" value="icones/pause.png"/>
+		<param name="icone2" value="icones/play.png"/>
+		<param name="onclick" value="PlayerControl(Play)"/>
+		<param name="ondown" value="2111"/>
+		<param name="selected" value="!Player.Paused"/>
+		<param name="visible" value="player.hasmedia"/>		
+	</include>
+	<include content="bouton_icone_interface">
+		<param name="id" value="2109"/>
+		<param name="icone1" value="icones/stop.png"/>
+		<param name="icone2" value="icones/stop.png"/>
+		<param name="onclick" value="control.setfocus(2103)"/>
+		<param name="onclick2" value="alarmclock(stop,PlayerControl(stop),00:00,silent)"/>
+		<param name="ondown" value="2111"/>
+		<param name="visible" value="player.hasmedia"/>		
 	</include>
 	</control>	
-	<control type="radiobutton" id="19961">
-		<top>30</top>
-		<height>60</height>
-		<width>80</width>		
-		<ondown>2000</ondown>
-		<onclick>PlayDisc</onclick>
-		<texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
-		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
-		<textureradioonfocus colordiffuse="$VAR[gris]">icones/lire_disque.png</textureradioonfocus>
-		<textureradioonnofocus colordiffuse="d9ffffff">icones/lire_disque.png</textureradioonnofocus>
-		<textureradioofffocus colordiffuse="$VAR[gris]">icones/lire_disque.png</textureradioofffocus>
-		<textureradiooffnofocus colordiffuse="d9ffffff">icones/lire_disque.png</textureradiooffnofocus>
-		<radioposx>6</radioposx>
-		<radiowidth>70</radiowidth>
-		<radioheight>70</radioheight>
-		<visible>!string.isempty(control.getlabel(123456))</visible>
-	</control>
-	<control type="radiobutton" id="19962">
-		<top>30</top>
-		<height>60</height>
-		<width>80</width>		
-		<ondown>2000</ondown>
-		<onright>1993</onright>
-		<onclick>control.setfocus(1998)</onclick>
-		<onclick>PlayerControl(stop)</onclick>
-		<onclick>EjectTray()</onclick>		
-		<texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
-		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
-		<textureradioonfocus colordiffuse="$VAR[gris]">icones/ejecter_disque.png</textureradioonfocus>
-		<textureradioonnofocus colordiffuse="d9ffffff">icones/ejecter_disque.png</textureradioonnofocus>
-		<textureradioofffocus colordiffuse="$VAR[gris]">icones/ejecter_disque.png</textureradioofffocus>
-		<textureradiooffnofocus colordiffuse="d9ffffff">icones/ejecter_disque.png</textureradiooffnofocus>
-		<radioposx>6</radioposx>
-		<radiowidth>70</radiowidth>
-		<radioheight>70</radioheight>
-		<visible>!string.isempty(control.getlabel(123456))</visible>
-	</control>		
-	<control type="group" id="1993">
-		<top>30</top>
-		<height>60</height>
-		<width>80</width>
-	<control type="image">
-		<texture colordiffuse="20000000" border="20">commun/bouton.png</texture>
-		<visible>!control.hasfocus(1992)</visible>
-	</control>	
-	<control type="image">
-		<texture colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texture>
-		<visible>control.hasfocus(1992)</visible>
-	</control>
-	<control type="togglebutton" id="1992">
-		<left>10</left>
-		<height>60</height>
-		<width>60</width>
-		<ondown>2000</ondown>
-		<onleft>19962</onleft>
-		<onright>1991</onright>		
-		<onclick>PlayerControl(Play)</onclick>		
-		<texturenofocus colordiffuse="ccffffff">boutons/OSD/pause.png</texturenofocus>
-		<texturefocus colordiffuse="$VAR[gris]">boutons/OSD/pause.png</texturefocus>
-		<alttexturenofocus colordiffuse="ccffffff">boutons/OSD/play.png</alttexturenofocus>
-		<alttexturefocus colordiffuse="$VAR[gris]">boutons/OSD/play.png</alttexturefocus>
-		<usealttexture>Player.Paused</usealttexture>
-	</control>
-		<visible>player.hasmedia</visible>
-	</control>
-	<control type="radiobutton" id="1991">
-		<top>30</top>		
-		<height>60</height>
-		<width>80</width>
-		<ondown>2000</ondown>
-		<onleft>1992</onleft>
-		<onclick>control.setfocus(1998)</onclick>
-		<onclick>alarmclock(alarme,PlayerControl(stop),00:00,silent)</onclick>
-		<texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
-		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
-		<textureradioonfocus colordiffuse="$VAR[gris]">boutons/OSD/stop.png</textureradioonfocus>
-		<textureradioonnofocus colordiffuse="ccffffff">boutons/OSD/stop.png</textureradioonnofocus>
-		<textureradioofffocus colordiffuse="$VAR[gris]">boutons/OSD/stop.png</textureradioofffocus>
-		<textureradiooffnofocus colordiffuse="ccffffff">boutons/OSD/stop.png</textureradiooffnofocus>
-		<radioposx>11</radioposx>
-		<radiowidth>60</radiowidth>
-		<radioheight>60</radioheight>			
-		<visible>player.hasmedia</visible>
-	</control>	
-	</control>	
-	<control type="group" id="1995">																											<description>barre de separation horizontale</description>
+	<control type="group" id="2110">																											<description>barre de separation horizontale</description>
 		<height>2</height>
 	<include content="barre_separation_horizontale">
 		<param name="left" value="25"/> 
@@ -1405,10 +1271,10 @@
 	</include>
 	</control>		
 	<include content="video_en_cours">																											<description>incrustation de la video en cours</description>
-		<param name="id" value="2000"/>
-		<param name="id2" value="2100"/>		
+		<param name="id" value="2111"/>
+		<param name="id2" value="2002"/>		
 		<param name="ondown" value="2010"/>
-		<param name="onup" value="1999"/>
+		<param name="onup" value="2101"/>
 	</include>		
 	<include content="widget">	
 		<param name="id" value="2010"/>
@@ -1494,145 +1360,81 @@
 		<left>430</left>
 		<width>1920</width>
 		<scrolltime tween="cubic" easing="out">500</scrolltime>		
-	<control type="group" id="3994">																											<description>horloge</description>
+	<control type="group" id="3100">																											<description>horloge</description>
 		<usecontrolcoords>true</usecontrolcoords>
 		<right>40</right>					
 	<include>titre</include>
 	</control>	
-	<control type="grouplist" id="3999">																										<description>boutons recherche et parametres</description>
+	<control type="grouplist" id="3101">																										<description>boutons</description>
 		<usecontrolcoords>true</usecontrolcoords>
 		<height>118</height>			
 		<onleft>1000</onleft>
 		<orientation>horizontal</orientation>
 		<itemgap>25</itemgap>
-	<control type="radiobutton" id="3998">
-		<left>50</left>
-		<top>30</top>
-		<height>60</height>
-		<width>80</width>
-		<ondown>3000</ondown>
-		<texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
-		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
-		<textureradioonfocus colordiffuse="$VAR[gris]">menus/recherche.png</textureradioonfocus>
-		<textureradioonnofocus>menus/recherche.png</textureradioonnofocus>
-		<textureradioofffocus colordiffuse="$VAR[gris]">menus/recherche.png</textureradioofffocus>
-		<textureradiooffnofocus>menus/recherche.png</textureradiooffnofocus>
-		<radioposx>1</radioposx>
-		<radiowidth>80</radiowidth>
-		<radioheight>80</radioheight>			
-	</control>
-	<control type="button" id="3997">
-		<top>30</top>
-		<height>60</height>
-		<width>auto</width>
-		<ondown>3000</ondown>
-		<onclick>UpdateLibrary(video)</onclick>						
-	<include content="bouton">																										
-		<param name="width" value="auto"/> 
-		<param name="height" value="80"/>
-		<param name="align" value="center"/>			 
+	<include content="bouton_icone_interface">
+		<param name="id" value="3102"/>
+		<param name="width" value="25"/>
+		<param name="texturenofocus" value="00ffffff"/>
+		<param name="enable" value="false"/>
+	</include>
+	<include content="bouton_icone_interface">
+		<param name="id" value="3103"/>
+		<param name="icone1" value="menus/recherche.png"/>
+		<param name="icone2" value="menus/recherche.png"/>
+		<param name="ondown" value="3111"/>		
+	</include>
+	<include content="bouton_texte_interface">
+		<param name="id" value="3104"/>
+		<param name="width" value="auto"/>
 		<param name="label" value="$LOCALIZE[31214]"/>
+		<param name="onclick" value="UpdateLibrary(video)"/>
+		<param name="ondown" value="3111"/>		
 	</include>
-	</control>
-	<control type="button" id="3996">
-		<top>30</top>		
-		<height>60</height>
-		<width>auto</width>
-		<ondown>3000</ondown>		
-		<onclick>CleanLibrary(video)</onclick>		
-	<include content="bouton">																										
-		<param name="width" value="auto"/> 
-		<param name="height" value="80"/>
-		<param name="align" value="center"/>			 
+	<include content="bouton_texte_interface">
+		<param name="id" value="3105"/>
+		<param name="width" value="auto"/>
 		<param name="label" value="$LOCALIZE[31215]"/>
+		<param name="onclick" value="CleanLibrary(video)"/>
+		<param name="ondown" value="3111"/>		
+	</include>	
+	<include content="bouton_icone_interface">
+		<param name="id" value="3106"/>
+		<param name="icone1" value="icones/lire_disque.png"/>
+		<param name="icone2" value="icones/lire_disque.png"/>
+		<param name="onclick" value="PlayDisc"/>
+		<param name="ondown" value="3111"/>
+		<param name="visible" value="!string.isempty(control.getlabel(123456))"/>		
+	</include>
+	<include content="bouton_icone_interface">
+		<param name="id" value="3107"/>
+		<param name="icone1" value="icones/ejecter_disque.png"/>
+		<param name="icone2" value="icones/ejecter_disque.png"/>
+		<param name="onclick" value="control.setfocus(3103)"/>
+		<param name="onclick2" value="PlayerControl(stop)"/>
+		<param name="onclick3" value="EjectTray()"/>
+		<param name="ondown" value="3111"/>
+		<param name="visible" value="!string.isempty(control.getlabel(123456))"/>		
+	</include>	
+	<include content="bouton_icone_interface">
+		<param name="id" value="3108"/>
+		<param name="icone1" value="icones/pause.png"/>
+		<param name="icone2" value="icones/play.png"/>
+		<param name="onclick" value="PlayerControl(Play)"/>
+		<param name="ondown" value="3111"/>
+		<param name="selected" value="!Player.Paused"/>
+		<param name="visible" value="player.hasmedia"/>		
+	</include>
+	<include content="bouton_icone_interface">
+		<param name="id" value="3109"/>
+		<param name="icone1" value="icones/stop.png"/>
+		<param name="icone2" value="icones/stop.png"/>
+		<param name="onclick" value="control.setfocus(3103)"/>
+		<param name="onclick2" value="alarmclock(stop,PlayerControl(stop),00:00,silent)"/>
+		<param name="ondown" value="3111"/>
+		<param name="visible" value="player.hasmedia"/>		
 	</include>
 	</control>	
-	<control type="radiobutton" id="39961">
-		<top>30</top>
-		<height>60</height>
-		<width>80</width>		
-		<ondown>3000</ondown>
-		<onclick>PlayDisc</onclick>
-		<texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
-		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
-		<textureradioonfocus colordiffuse="$VAR[gris]">icones/lire_disque.png</textureradioonfocus>
-		<textureradioonnofocus colordiffuse="d9ffffff">icones/lire_disque.png</textureradioonnofocus>
-		<textureradioofffocus colordiffuse="$VAR[gris]">icones/lire_disque.png</textureradioofffocus>
-		<textureradiooffnofocus colordiffuse="d9ffffff">icones/lire_disque.png</textureradiooffnofocus>
-		<radioposx>6</radioposx>
-		<radiowidth>70</radiowidth>
-		<radioheight>70</radioheight>
-		<visible>!string.isempty(control.getlabel(123456))</visible>
-	</control>
-	<control type="radiobutton" id="39962">
-		<top>30</top>
-		<height>60</height>
-		<width>80</width>		
-		<ondown>3000</ondown>
-		<onright>3992</onright>
-		<onclick>control.setfocus(3998)</onclick>
-		<onclick>PlayerControl(stop)</onclick>
-		<onclick>EjectTray()</onclick>		
-		<texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
-		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
-		<textureradioonfocus colordiffuse="$VAR[gris]">icones/ejecter_disque.png</textureradioonfocus>
-		<textureradioonnofocus colordiffuse="d9ffffff">icones/ejecter_disque.png</textureradioonnofocus>
-		<textureradioofffocus colordiffuse="$VAR[gris]">icones/ejecter_disque.png</textureradioofffocus>
-		<textureradiooffnofocus colordiffuse="d9ffffff">icones/ejecter_disque.png</textureradiooffnofocus>
-		<radioposx>6</radioposx>
-		<radiowidth>70</radiowidth>
-		<radioheight>70</radioheight>
-		<visible>!string.isempty(control.getlabel(123456))</visible>
-	</control>			
-	<control type="group" id="3993">
-		<top>30</top>
-		<height>60</height>
-		<width>80</width>
-	<control type="image">
-		<texture colordiffuse="20000000" border="20">commun/bouton.png</texture>
-		<visible>!control.hasfocus(3992)</visible>
-	</control>	
-	<control type="image">
-		<texture colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texture>
-		<visible>control.hasfocus(3992)</visible>
-	</control>
-	<control type="togglebutton" id="3992">
-		<left>10</left>
-		<height>60</height>
-		<width>60</width>
-		<ondown>3000</ondown>
-		<onleft>39962</onleft>
-		<onright>3991</onright>		
-		<onclick>PlayerControl(Play)</onclick>		
-		<texturenofocus colordiffuse="ccffffff">boutons/OSD/pause.png</texturenofocus>
-		<texturefocus colordiffuse="$VAR[gris]">boutons/OSD/pause.png</texturefocus>
-		<alttexturenofocus colordiffuse="ccffffff">boutons/OSD/play.png</alttexturenofocus>
-		<alttexturefocus colordiffuse="$VAR[gris]">boutons/OSD/play.png</alttexturefocus>
-		<usealttexture>Player.Paused</usealttexture>
-	</control>
-		<visible>player.hasmedia</visible>
-	</control>
-	<control type="radiobutton" id="3991">
-		<top>30</top>		
-		<height>60</height>
-		<width>80</width>
-		<ondown>3000</ondown>
-		<onleft>3992</onleft>
-		<onclick>control.setfocus(3998)</onclick>
-		<onclick>alarmclock(alarme,PlayerControl(stop),00:00,silent)</onclick>
-		<texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
-		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
-		<textureradioonfocus colordiffuse="$VAR[gris]">boutons/OSD/stop.png</textureradioonfocus>
-		<textureradioonnofocus colordiffuse="ccffffff">boutons/OSD/stop.png</textureradioonnofocus>
-		<textureradioofffocus colordiffuse="$VAR[gris]">boutons/OSD/stop.png</textureradioofffocus>
-		<textureradiooffnofocus colordiffuse="ccffffff">boutons/OSD/stop.png</textureradiooffnofocus>
-		<radioposx>11</radioposx>
-		<radiowidth>60</radiowidth>
-		<radioheight>60</radioheight>			
-		<visible>player.hasmedia</visible>
-	</control>	
-	</control>	
-	<control type="group" id="3995">																											<description>barre de separation horizontale</description>
+	<control type="group" id="3110">																											<description>barre de separation horizontale</description>
 		<height>2</height>
 	<include content="barre_separation_horizontale">
 		<param name="left" value="25"/> 
@@ -1641,10 +1443,10 @@
 	</include>
 	</control>		
 	<include content="video_en_cours">																											<description>incrustation de la video en cours</description>
-		<param name="id" value="3000"/>
-		<param name="id2" value="3100"/>		
+		<param name="id" value="3111"/>
+		<param name="id2" value="3002"/>		
 		<param name="ondown" value="3010"/>
-		<param name="onup" value="3999"/>
+		<param name="onup" value="3101"/>
 	</include>		
 	<include content="widget">	
 		<param name="id" value="3010"/>
@@ -1724,158 +1526,88 @@
 		<left>430</left>
 		<width>1920</width>
 		<scrolltime tween="cubic" easing="out">500</scrolltime>		
-	<control type="group" id="4994">																											<description>horloge</description>
+	<control type="group" id="4100">																											<description>horloge</description>
 		<usecontrolcoords>true</usecontrolcoords>
 		<right>40</right>					
 	<include>titre</include>
 	</control>	
-	<control type="grouplist" id="4999">																										<description>boutons recherche et parametres</description>
+	<control type="grouplist" id="4101">																										<description>boutons</description>
 		<usecontrolcoords>true</usecontrolcoords>
 		<height>118</height>			
 		<onleft>1000</onleft>
 		<orientation>horizontal</orientation>
 		<itemgap>25</itemgap>
-	<control type="radiobutton" id="4998">
-		<left>50</left>
-		<top>30</top>
-		<height>60</height>
-		<width>80</width>
-		<ondown>4000</ondown>
-		<texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
-		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
-		<textureradioonfocus colordiffuse="$VAR[gris]">menus/recherche.png</textureradioonfocus>
-		<textureradioonnofocus>menus/recherche.png</textureradioonnofocus>
-		<textureradioofffocus colordiffuse="$VAR[gris]">menus/recherche.png</textureradioofffocus>
-		<textureradiooffnofocus>menus/recherche.png</textureradiooffnofocus>
-		<radioposx>1</radioposx>
-		<radiowidth>80</radiowidth>
-		<radioheight>80</radioheight>			
-	</control>
-	<control type="button" id="4997">
-		<top>30</top>
-		<height>60</height>
-		<width>auto</width>
-		<ondown>4000</ondown>
-		<onclick>UpdateLibrary(music)</onclick>						
-	<include content="bouton">																										
-		<param name="width" value="auto"/> 
-		<param name="height" value="80"/>
-		<param name="align" value="center"/>			 
+	<include content="bouton_icone_interface">
+		<param name="id" value="4102"/>
+		<param name="width" value="25"/>
+		<param name="texturenofocus" value="00ffffff"/>
+		<param name="enable" value="false"/>
+	</include>
+	<include content="bouton_icone_interface">
+		<param name="id" value="4103"/>
+		<param name="icone1" value="menus/recherche.png"/>
+		<param name="icone2" value="menus/recherche.png"/>
+		<param name="ondown" value="4111"/>		
+	</include>
+	<include content="bouton_texte_interface">
+		<param name="id" value="4104"/>
+		<param name="width" value="auto"/>
 		<param name="label" value="$LOCALIZE[31214]"/>
-	</include>
-	</control>
-	<control type="button" id="4996">
-		<top>30</top>		
-		<height>60</height>
-		<width>auto</width>
-		<ondown>4000</ondown>
-		<onclick>CleanLibrary(music)</onclick>		
-	<include content="bouton">																										
-		<param name="width" value="auto"/> 
-		<param name="height" value="80"/>
-		<param name="align" value="center"/>			 
+		<param name="onclick" value="UpdateLibrary(music)"/>
+		<param name="ondown" value="4111"/>		
+	</include>	
+	<include content="bouton_texte_interface">
+		<param name="id" value="4105"/>
+		<param name="width" value="auto"/>
 		<param name="label" value="$LOCALIZE[31215]"/>
-	</include>
-	</control>
-	<control type="button" id="4990">
-		<top>30</top>		
-		<height>60</height>
-		<width>auto</width>
-		<ondown>4000</ondown>
-		<onclick>playercontrol(partymode)</onclick>		
-	<include content="bouton">																										
-		<param name="width" value="auto"/> 
-		<param name="height" value="80"/>
-		<param name="align" value="center"/>			 
+		<param name="onclick" value="CleanLibrary(music)"/>
+		<param name="ondown" value="4111"/>		
+	</include>	
+	<include content="bouton_texte_interface">
+		<param name="id" value="4106"/>
+		<param name="width" value="auto"/>
 		<param name="label" value="$LOCALIZE[31231]"/>
+		<param name="onclick" value="playercontrol(partymode)"/>
+		<param name="ondown" value="4111"/>		
+	</include>	
+	<include content="bouton_icone_interface">
+		<param name="id" value="4107"/>
+		<param name="icone1" value="icones/lire_disque.png"/>
+		<param name="icone2" value="icones/lire_disque.png"/>
+		<param name="onclick" value="PlayDisc"/>
+		<param name="ondown" value="4111"/>
+		<param name="visible" value="!string.isempty(control.getlabel(123456))"/>		
 	</include>
-	</control>		
-	<control type="radiobutton" id="49961">
-		<top>30</top>
-		<height>60</height>
-		<width>80</width>		
-		<ondown>4000</ondown>
-		<onclick>PlayDisc</onclick>
-		<texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
-		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
-		<textureradioonfocus colordiffuse="$VAR[gris]">icones/lire_disque.png</textureradioonfocus>
-		<textureradioonnofocus colordiffuse="d9ffffff">icones/lire_disque.png</textureradioonnofocus>
-		<textureradioofffocus colordiffuse="$VAR[gris]">icones/lire_disque.png</textureradioofffocus>
-		<textureradiooffnofocus colordiffuse="d9ffffff">icones/lire_disque.png</textureradiooffnofocus>
-		<radioposx>6</radioposx>
-		<radiowidth>70</radiowidth>
-		<radioheight>70</radioheight>
-		<visible>!string.isempty(control.getlabel(123456))</visible>
-	</control>
-	<control type="radiobutton" id="49962">
-		<top>30</top>
-		<height>60</height>
-		<width>80</width>		
-		<ondown>4000</ondown>
-		<onright>4993</onright>
-		<onclick>control.setfocus(4998)</onclick>
-		<onclick>PlayerControl(stop)</onclick>
-		<onclick>EjectTray()</onclick>		
-		<texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
-		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
-		<textureradioonfocus colordiffuse="$VAR[gris]">icones/ejecter_disque.png</textureradioonfocus>
-		<textureradioonnofocus colordiffuse="d9ffffff">icones/ejecter_disque.png</textureradioonnofocus>
-		<textureradioofffocus colordiffuse="$VAR[gris]">icones/ejecter_disque.png</textureradioofffocus>
-		<textureradiooffnofocus colordiffuse="d9ffffff">icones/ejecter_disque.png</textureradiooffnofocus>
-		<radioposx>6</radioposx>
-		<radiowidth>70</radiowidth>
-		<radioheight>70</radioheight>
-		<visible>!string.isempty(control.getlabel(123456))</visible>
+	<include content="bouton_icone_interface">
+		<param name="id" value="4108"/>
+		<param name="icone1" value="icones/ejecter_disque.png"/>
+		<param name="icone2" value="icones/ejecter_disque.png"/>
+		<param name="onclick" value="control.setfocus(4103)"/>
+		<param name="onclick2" value="PlayerControl(stop)"/>
+		<param name="onclick3" value="EjectTray()"/>
+		<param name="ondown" value="4111"/>
+		<param name="visible" value="!string.isempty(control.getlabel(123456))"/>		
+	</include>	
+	<include content="bouton_icone_interface">
+		<param name="id" value="4109"/>
+		<param name="icone1" value="icones/pause.png"/>
+		<param name="icone2" value="icones/play.png"/>
+		<param name="onclick" value="PlayerControl(Play)"/>
+		<param name="ondown" value="4111"/>
+		<param name="selected" value="!Player.Paused"/>
+		<param name="visible" value="player.hasmedia"/>		
+	</include>
+	<include content="bouton_icone_interface">
+		<param name="id" value="4110"/>
+		<param name="icone1" value="icones/stop.png"/>
+		<param name="icone2" value="icones/stop.png"/>
+		<param name="onclick" value="control.setfocus(4103)"/>
+		<param name="onclick2" value="alarmclock(stop,PlayerControl(stop),00:00,silent)"/>
+		<param name="ondown" value="4111"/>
+		<param name="visible" value="player.hasmedia"/>		
+	</include>	
 	</control>	
-	<control type="group" id="4993">
-		<top>30</top>
-		<height>60</height>
-		<width>80</width>
-	<control type="image">
-		<texture colordiffuse="20000000" border="20">commun/bouton.png</texture>
-		<visible>!control.hasfocus(4992)</visible>
-	</control>	
-	<control type="image">
-		<texture colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texture>
-		<visible>control.hasfocus(4992)</visible>
-	</control>
-	<control type="togglebutton" id="4992">
-		<left>10</left>
-		<height>60</height>
-		<width>60</width>
-		<ondown>4000</ondown>
-		<onleft>49962</onleft>
-		<onright>4991</onright>		
-		<onclick>PlayerControl(Play)</onclick>		
-		<texturenofocus colordiffuse="ccffffff">boutons/OSD/pause.png</texturenofocus>
-		<texturefocus colordiffuse="$VAR[gris]">boutons/OSD/pause.png</texturefocus>
-		<alttexturenofocus colordiffuse="ccffffff">boutons/OSD/play.png</alttexturenofocus>
-		<alttexturefocus colordiffuse="$VAR[gris]">boutons/OSD/play.png</alttexturefocus>
-		<usealttexture>Player.Paused</usealttexture>
-	</control>
-		<visible>player.hasmedia</visible>
-	</control>
-	<control type="radiobutton" id="4991">
-		<top>30</top>		
-		<height>60</height>
-		<width>80</width>
-		<ondown>4000</ondown>
-		<onleft>4992</onleft>
-		<onclick>control.setfocus(4998)</onclick>
-		<onclick>alarmclock(alarme,PlayerControl(stop),00:00,silent)</onclick>
-		<texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
-		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
-		<textureradioonfocus colordiffuse="$VAR[gris]">boutons/OSD/stop.png</textureradioonfocus>
-		<textureradioonnofocus colordiffuse="ccffffff">boutons/OSD/stop.png</textureradioonnofocus>
-		<textureradioofffocus colordiffuse="$VAR[gris]">boutons/OSD/stop.png</textureradioofffocus>
-		<textureradiooffnofocus colordiffuse="ccffffff">boutons/OSD/stop.png</textureradiooffnofocus>
-		<radioposx>11</radioposx>
-		<radiowidth>60</radiowidth>
-		<radioheight>60</radioheight>			
-		<visible>player.hasmedia</visible>
-	</control>	
-	</control>	
-	<control type="group" id="4995">																											<description>barre de separation horizontale</description>
+	<control type="group" id="41102">																											<description>barre de separation horizontale</description>
 		<height>2</height>
 	<include content="barre_separation_horizontale">
 		<param name="left" value="25"/> 
@@ -1884,10 +1616,10 @@
 	</include>
 	</control>		
 	<include content="video_en_cours">																											<description>incrustation de la video en cours</description>
-		<param name="id" value="4000"/>
-		<param name="id2" value="4100"/>		
+		<param name="id" value="4111"/>
+		<param name="id2" value="4002"/>		
 		<param name="ondown" value="4010"/>
-		<param name="onup" value="4999"/>
+		<param name="onup" value="4101"/>
 	</include>		
 	<include content="widget">	
 		<param name="id" value="4010"/>
@@ -1967,119 +1699,67 @@
 		<left>430</left>
 		<width>1920</width>
 		<scrolltime tween="cubic" easing="out">500</scrolltime>		
-	<control type="group" id="5994">																											<description>horloge</description>
+	<control type="group" id="5100">																											<description>horloge</description>
 		<usecontrolcoords>true</usecontrolcoords>
 		<right>40</right>					
 	<include>titre</include>
 	</control>	
-	<control type="grouplist" id="5999">																										<description>boutons recherche et parametres</description>
+	<control type="grouplist" id="5101">																										<description>boutons</description>
 		<usecontrolcoords>true</usecontrolcoords>
 		<height>118</height>			
 		<onleft>1000</onleft>
 		<orientation>horizontal</orientation>
-		<itemgap>20</itemgap>
-	<control type="radiobutton" id="5998">
-		<left>50</left>
-		<top>30</top>
-		<height>60</height>
-		<width>80</width>
-		<ondown>5000</ondown>
-		<texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
-		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
-		<textureradioonfocus colordiffuse="$VAR[gris]">menus/recherche.png</textureradioonfocus>
-		<textureradioonnofocus>menus/recherche.png</textureradioonnofocus>
-		<textureradioofffocus colordiffuse="$VAR[gris]">menus/recherche.png</textureradioofffocus>
-		<textureradiooffnofocus>menus/recherche.png</textureradiooffnofocus>
-		<radioposx>1</radioposx>
-		<radiowidth>80</radiowidth>
-		<radioheight>80</radioheight>			
-	</control>			
-	<control type="radiobutton" id="59961">
-		<top>30</top>
-		<height>60</height>
-		<width>80</width>		
-		<ondown>5000</ondown>
-		<onclick>PlayDisc</onclick>
-		<texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
-		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
-		<textureradioonfocus colordiffuse="$VAR[gris]">icones/lire_disque.png</textureradioonfocus>
-		<textureradioonnofocus colordiffuse="d9ffffff">icones/lire_disque.png</textureradioonnofocus>
-		<textureradioofffocus colordiffuse="$VAR[gris]">icones/lire_disque.png</textureradioofffocus>
-		<textureradiooffnofocus colordiffuse="d9ffffff">icones/lire_disque.png</textureradiooffnofocus>
-		<radioposx>6</radioposx>
-		<radiowidth>70</radiowidth>
-		<radioheight>70</radioheight>
-		<visible>!string.isempty(control.getlabel(123456))</visible>
-	</control>
-	<control type="radiobutton" id="59962">
-		<top>30</top>
-		<height>60</height>
-		<width>80</width>		
-		<ondown>5000</ondown>
-		<onright>5992</onright>
-		<onclick>control.setfocus(5998)</onclick>
-		<onclick>PlayerControl(stop)</onclick>
-		<onclick>EjectTray()</onclick>		
-		<texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
-		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
-		<textureradioonfocus colordiffuse="$VAR[gris]">icones/ejecter_disque.png</textureradioonfocus>
-		<textureradioonnofocus colordiffuse="d9ffffff">icones/ejecter_disque.png</textureradioonnofocus>
-		<textureradioofffocus colordiffuse="$VAR[gris]">icones/ejecter_disque.png</textureradioofffocus>
-		<textureradiooffnofocus colordiffuse="d9ffffff">icones/ejecter_disque.png</textureradiooffnofocus>
-		<radioposx>6</radioposx>
-		<radiowidth>70</radiowidth>
-		<radioheight>70</radioheight>
-		<visible>!string.isempty(control.getlabel(123456))</visible>
+		<itemgap>25</itemgap>
+	<include content="bouton_icone_interface">
+		<param name="id" value="5102"/>
+		<param name="width" value="25"/>
+		<param name="texturenofocus" value="00ffffff"/>
+		<param name="enable" value="false"/>
+	</include>
+	<include content="bouton_icone_interface">
+		<param name="id" value="5103"/>
+		<param name="icone1" value="menus/recherche.png"/>
+		<param name="icone2" value="menus/recherche.png"/>
+		<param name="ondown" value="5111"/>		
+	</include>
+	<include content="bouton_icone_interface">
+		<param name="id" value="5104"/>
+		<param name="icone1" value="icones/lire_disque.png"/>
+		<param name="icone2" value="icones/lire_disque.png"/>
+		<param name="onclick" value="PlayDisc"/>
+		<param name="ondown" value="5111"/>
+		<param name="visible" value="!string.isempty(control.getlabel(123456))"/>		
+	</include>
+	<include content="bouton_icone_interface">
+		<param name="id" value="5105"/>
+		<param name="icone1" value="icones/ejecter_disque.png"/>
+		<param name="icone2" value="icones/ejecter_disque.png"/>
+		<param name="onclick" value="control.setfocus(2103)"/>
+		<param name="onclick2" value="PlayerControl(stop)"/>
+		<param name="onclick3" value="EjectTray()"/>
+		<param name="ondown" value="5111"/>
+		<param name="visible" value="!string.isempty(control.getlabel(123456))"/>		
+	</include>	
+	<include content="bouton_icone_interface">
+		<param name="id" value="5106"/>
+		<param name="icone1" value="icones/pause.png"/>
+		<param name="icone2" value="icones/play.png"/>
+		<param name="onclick" value="PlayerControl(Play)"/>
+		<param name="ondown" value="5111"/>
+		<param name="selected" value="!Player.Paused"/>
+		<param name="visible" value="player.hasmedia"/>		
+	</include>
+	<include content="bouton_icone_interface">
+		<param name="id" value="5107"/>
+		<param name="icone1" value="icones/stop.png"/>
+		<param name="icone2" value="icones/stop.png"/>
+		<param name="onclick" value="control.setfocus(5103)"/>
+		<param name="onclick2" value="alarmclock(stop,PlayerControl(stop),00:00,silent)"/>
+		<param name="ondown" value="5111"/>
+		<param name="visible" value="player.hasmedia"/>		
+	</include>	
 	</control>	
-	<control type="group" id="5993">
-		<top>30</top>
-		<height>60</height>
-		<width>80</width>
-	<control type="image">
-		<texture colordiffuse="20000000" border="20">commun/bouton.png</texture>
-		<visible>!control.hasfocus(5992)</visible>
-	</control>	
-	<control type="image">
-		<texture colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texture>
-		<visible>control.hasfocus(5992)</visible>
-	</control>
-	<control type="togglebutton" id="5992">
-		<left>10</left>
-		<height>60</height>
-		<width>60</width>
-		<ondown>5000</ondown>
-		<onleft>59962</onleft>
-		<onright>5991</onright>		
-		<onclick>PlayerControl(Play)</onclick>		
-		<texturenofocus colordiffuse="ccffffff">boutons/OSD/pause.png</texturenofocus>
-		<texturefocus colordiffuse="$VAR[gris]">boutons/OSD/pause.png</texturefocus>
-		<alttexturenofocus colordiffuse="ccffffff">boutons/OSD/play.png</alttexturenofocus>
-		<alttexturefocus colordiffuse="$VAR[gris]">boutons/OSD/play.png</alttexturefocus>
-		<usealttexture>Player.Paused</usealttexture>
-	</control>
-		<visible>player.hasmedia</visible>
-	</control>
-	<control type="radiobutton" id="5991">
-		<top>30</top>		
-		<height>60</height>
-		<width>80</width>
-		<ondown>5000</ondown>
-		<onleft>5992</onleft>
-		<onclick>control.setfocus(5998)</onclick>
-		<onclick>alarmclock(alarme,PlayerControl(stop),00:00,silent)</onclick>
-		<texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
-		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
-		<textureradioonfocus colordiffuse="$VAR[gris]">boutons/OSD/stop.png</textureradioonfocus>
-		<textureradioonnofocus colordiffuse="ccffffff">boutons/OSD/stop.png</textureradioonnofocus>
-		<textureradioofffocus colordiffuse="$VAR[gris]">boutons/OSD/stop.png</textureradioofffocus>
-		<textureradiooffnofocus colordiffuse="ccffffff">boutons/OSD/stop.png</textureradiooffnofocus>
-		<radioposx>11</radioposx>
-		<radiowidth>60</radiowidth>
-		<radioheight>60</radioheight>			
-		<visible>player.hasmedia</visible>
-	</control>	
-	</control>	
-	<control type="group" id="5995">																											<description>barre de separation horizontale</description>
+	<control type="group" id="5110">																											<description>barre de separation horizontale</description>
 		<height>2</height>
 	<include content="barre_separation_horizontale">
 		<param name="left" value="25"/> 
@@ -2088,10 +1768,10 @@
 	</include>
 	</control>		
 	<include content="video_en_cours">																											<description>incrustation de la video en cours</description>
-		<param name="id" value="5000"/>
-		<param name="id2" value="5100"/>		
+		<param name="id" value="5111"/>
+		<param name="id2" value="5002"/>		
 		<param name="ondown" value="5010"/>
-		<param name="onup" value="5999"/>
+		<param name="onup" value="5101"/>
 	</include>
 	<include content="widget_photos">	
 		<param name="id" value="5010"/>
@@ -2171,155 +1851,97 @@
 		<left>430</left>
 		<width>1920</width>
 		<scrolltime tween="cubic" easing="out">500</scrolltime>		
-	<control type="group" id="6994">																											<description>horloge</description>
+	<control type="group" id="6100">																											<description>horloge</description>
 		<usecontrolcoords>true</usecontrolcoords>
 		<right>40</right>					
 	<include>titre</include>
 	</control>	
-	<control type="grouplist" id="6999">																										<description>boutons recherche et parametres</description>
+	<control type="grouplist" id="6101">																										<description>boutons</description>
 		<usecontrolcoords>true</usecontrolcoords>
 		<height>118</height>		
 		<onleft>1000</onleft>
 		<orientation>horizontal</orientation>
 		<itemgap>25</itemgap>
-	<control type="radiobutton" id="6998">
-		<left>50</left>
-		<top>30</top>
-		<height>60</height>
-		<width>80</width>
-		<ondown>6000</ondown>
-		<onfocus>cancelalarm(actualiser_widget_tv,silent)</onfocus>	
-		<onfocus>alarmclock(actualiser_widget_tv,activatewindow(1299),00:02,loop,silent)</onfocus>
-		<texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
-		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
-		<textureradioonfocus colordiffuse="$VAR[gris]">menus/recherche.png</textureradioonfocus>
-		<textureradioonnofocus>menus/recherche.png</textureradioonnofocus>
-		<textureradioofffocus colordiffuse="$VAR[gris]">menus/recherche.png</textureradioofffocus>
-		<textureradiooffnofocus>menus/recherche.png</textureradiooffnofocus>
-		<radioposx>1</radioposx>
-		<radiowidth>80</radiowidth>
-		<radioheight>80</radioheight>			
-	</control>
-	<control type="button" id="6997">
-		<top>30</top>
-		<height>60</height>
-		<width>auto</width>
-		<ondown>6000</ondown>
-		<onfocus>cancelalarm(actualiser_widget_tv,silent)</onfocus>	
-		<onfocus>alarmclock(actualiser_widget_tv,activatewindow(1299),00:02,loop,silent)</onfocus>
-		<onclick>Control.Move(6800,1)</onclick>			
-		<onclick>setproperty(chemin_widget_tv,pvr://channels/tv/123456,home)</onclick>
-		<onclick>alarmclock(alarme,setproperty(chemin_widget_tv,pvr://channels/tv/$INFO[container(6800).listitem.label],home),00:00,silent)</onclick>		
-	<include content="bouton">																										
-		<param name="width" value="auto"/> 
-		<param name="height" value="80"/>
-		<param name="align" value="center"/>			 
+	<include content="bouton_icone_interface">
+		<param name="id" value="6102"/>
+		<param name="width" value="25"/>
+		<param name="texturenofocus" value="00ffffff"/>
+		<param name="enable" value="false"/>
+	</include>
+	<include content="bouton_icone_interface">
+		<param name="id" value="6103"/>
+		<param name="icone1" value="menus/recherche.png"/>
+		<param name="icone2" value="menus/recherche.png"/>
+		<param name="onfocus" value="cancelalarm(actualiser_widget_tv,silent)"/>
+		<param name="onfocus2" value="alarmclock(actualiser_widget_tv,activatewindow(1299),00:02,loop,silent)"/>
+		<param name="ondown" value="6111"/>		
+	</include>
+	<include content="bouton_texte_interface">
+		<param name="id" value="6104"/>
+		<param name="width" value="auto"/>
 		<param name="label" value="$INFO[container(6800).listitem.label]"/>
+		<param name="onfocus" value="cancelalarm(actualiser_widget_tv,silent)"/>
+		<param name="onfocus2" value="alarmclock(actualiser_widget_tv,activatewindow(1299),00:02,loop,silent)"/>
+		<param name="onclick" value="Control.Move(6800,1)"/>
+		<param name="onclick2" value="setproperty(chemin_widget_tv,pvr://channels/tv/123456,home)"/>
+		<param name="onclick3" value="alarmclock(alarme,setproperty(chemin_widget_tv,pvr://channels/tv/$INFO[container(6800).listitem.label],home),00:00,silent)"/>
+		<param name="ondown" value="6111"/>		
 	</include>
-	</control>
-	<control type="button" id="6996">
-		<top>30</top>
-		<height>60</height>
-		<width>auto</width>
-		<ondown>6000</ondown>
-		<onfocus>cancelalarm(actualiser_widget_tv,silent)</onfocus>	
-		<onfocus>alarmclock(actualiser_widget_tv,activatewindow(1299),00:02,loop,silent)</onfocus>			
-		<onclick>skin.setpath(chemin_logos_tv)</onclick>
-	<include content="bouton">																										
-		<param name="width" value="auto"/> 
-		<param name="height" value="80"/>
-		<param name="align" value="center"/>			 
+	<include content="bouton_texte_interface">
+		<param name="id" value="6105"/>
+		<param name="width" value="auto"/>
 		<param name="label" value="$LOCALIZE[31260]"/>
+		<param name="onfocus" value="cancelalarm(actualiser_widget_tv,silent)"/>
+		<param name="onfocus2" value="alarmclock(actualiser_widget_tv,activatewindow(1299),00:02,loop,silent)"/>
+		<param name="onclick" value="skin.setpath(chemin_logos_tv)"/>
+		<param name="ondown" value="6111"/>		
+	</include>	
+	<include content="bouton_icone_interface">
+		<param name="id" value="6106"/>
+		<param name="icone1" value="icones/lire_disque.png"/>
+		<param name="icone2" value="icones/lire_disque.png"/>
+		<param name="onfocus" value="cancelalarm(actualiser_widget_tv,silent)"/>
+		<param name="onfocus2" value="alarmclock(actualiser_widget_tv,activatewindow(1299),00:02,loop,silent)"/>
+		<param name="onclick" value="PlayDisc"/>
+		<param name="ondown" value="6111"/>
+		<param name="visible" value="!string.isempty(control.getlabel(123456))"/>		
 	</include>
-	</control>			
-	<control type="radiobutton" id="69961">
-		<top>30</top>
-		<height>60</height>
-		<width>80</width>		
-		<ondown>6000</ondown>
-		<onclick>PlayDisc</onclick>
-		<texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
-		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
-		<textureradioonfocus colordiffuse="$VAR[gris]">icones/lire_disque.png</textureradioonfocus>
-		<textureradioonnofocus colordiffuse="d9ffffff">icones/lire_disque.png</textureradioonnofocus>
-		<textureradioofffocus colordiffuse="$VAR[gris]">icones/lire_disque.png</textureradioofffocus>
-		<textureradiooffnofocus colordiffuse="d9ffffff">icones/lire_disque.png</textureradiooffnofocus>
-		<radioposx>6</radioposx>
-		<radiowidth>70</radiowidth>
-		<radioheight>70</radioheight>
-		<visible>!string.isempty(control.getlabel(123456))</visible>
-	</control>
-	<control type="radiobutton" id="69962">
-		<top>30</top>
-		<height>60</height>
-		<width>80</width>		
-		<ondown>6000</ondown>
-		<onright>6993</onright>
-		<onclick>control.setfocus(6998)</onclick>
-		<onclick>PlayerControl(stop)</onclick>
-		<onclick>EjectTray()</onclick>		
-		<texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
-		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
-		<textureradioonfocus colordiffuse="$VAR[gris]">icones/ejecter_disque.png</textureradioonfocus>
-		<textureradioonnofocus colordiffuse="d9ffffff">icones/ejecter_disque.png</textureradioonnofocus>
-		<textureradioofffocus colordiffuse="$VAR[gris]">icones/ejecter_disque.png</textureradioofffocus>
-		<textureradiooffnofocus colordiffuse="d9ffffff">icones/ejecter_disque.png</textureradiooffnofocus>
-		<radioposx>6</radioposx>
-		<radiowidth>70</radiowidth>
-		<radioheight>70</radioheight>
-		<visible>!string.isempty(control.getlabel(123456))</visible>
+	<include content="bouton_icone_interface">
+		<param name="id" value="6107"/>
+		<param name="icone1" value="icones/ejecter_disque.png"/>
+		<param name="icone2" value="icones/ejecter_disque.png"/>
+		<param name="onfocus" value="cancelalarm(actualiser_widget_tv,silent)"/>
+		<param name="onfocus2" value="alarmclock(actualiser_widget_tv,activatewindow(1299),00:02,loop,silent)"/>
+		<param name="onclick" value="control.setfocus(6103)"/>
+		<param name="onclick2" value="PlayerControl(stop)"/>
+		<param name="onclick3" value="EjectTray()"/>
+		<param name="ondown" value="6111"/>
+		<param name="visible" value="!string.isempty(control.getlabel(123456))"/>		
+	</include>	
+	<include content="bouton_icone_interface">
+		<param name="id" value="6108"/>
+		<param name="icone1" value="icones/pause.png"/>
+		<param name="icone2" value="icones/play.png"/>
+		<param name="onfocus" value="cancelalarm(actualiser_widget_tv,silent)"/>
+		<param name="onfocus2" value="alarmclock(actualiser_widget_tv,activatewindow(1299),00:02,loop,silent)"/>
+		<param name="onclick" value="PlayerControl(Play)"/>
+		<param name="ondown" value="6111"/>
+		<param name="selected" value="!Player.Paused"/>
+		<param name="visible" value="player.hasmedia"/>		
+	</include>
+	<include content="bouton_icone_interface">
+		<param name="id" value="6109"/>
+		<param name="icone1" value="icones/stop.png"/>
+		<param name="icone2" value="icones/stop.png"/>
+		<param name="onfocus" value="cancelalarm(actualiser_widget_tv,silent)"/>
+		<param name="onfocus2" value="alarmclock(actualiser_widget_tv,activatewindow(1299),00:02,loop,silent)"/>
+		<param name="onclick" value="control.setfocus(6103)"/>
+		<param name="onclick2" value="alarmclock(stop,PlayerControl(stop),00:00,silent)"/>
+		<param name="ondown" value="6111"/>
+		<param name="visible" value="player.hasmedia"/>		
+	</include>
 	</control>	
-	<control type="group" id="6993">
-		<top>30</top>
-		<height>60</height>
-		<width>80</width>
-	<control type="image">
-		<texture colordiffuse="20000000" border="20">commun/bouton.png</texture>
-		<visible>!control.hasfocus(6992)</visible>
-	</control>
-	<control type="image">
-		<texture colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texture>
-		<visible>control.hasfocus(6992)</visible>
-	</control>
-	<control type="togglebutton" id="6992">
-		<left>10</left>
-		<height>60</height>
-		<width>60</width>
-		<ondown>6000</ondown>
-		<onleft>69962</onleft>
-		<onright>6991</onright>		
-		<onfocus>cancelalarm(actualiser_widget_tv,silent)</onfocus>	
-		<onfocus>alarmclock(actualiser_widget_tv,activatewindow(1299),00:02,loop,silent)</onfocus><onclick>PlayerControl(Play)</onclick>		
-		<texturenofocus colordiffuse="ccffffff">boutons/OSD/pause.png</texturenofocus>
-		<texturefocus colordiffuse="$VAR[gris]">boutons/OSD/pause.png</texturefocus>
-		<alttexturenofocus colordiffuse="ccffffff">boutons/OSD/play.png</alttexturenofocus>
-		<alttexturefocus colordiffuse="$VAR[gris]">boutons/OSD/play.png</alttexturefocus>
-		<usealttexture>Player.Paused</usealttexture>
-	</control>
-		<visible>player.hasmedia</visible>
-	</control>
-	<control type="radiobutton" id="6991">
-		<top>30</top>		
-		<height>60</height>
-		<width>80</width>
-		<ondown>6000</ondown>
-		<onleft>6992</onleft>
-		<onfocus>cancelalarm(actualiser_widget_tv,silent)</onfocus>	
-		<onfocus>alarmclock(actualiser_widget_tv,activatewindow(1299),00:02,loop,silent)</onfocus><onclick>control.setfocus(6998)</onclick>
-		<onclick>alarmclock(alarme,PlayerControl(stop),00:00,silent)</onclick>
-		<texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
-		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
-		<textureradioonfocus colordiffuse="$VAR[gris]">boutons/OSD/stop.png</textureradioonfocus>
-		<textureradioonnofocus colordiffuse="ccffffff">boutons/OSD/stop.png</textureradioonnofocus>
-		<textureradioofffocus colordiffuse="$VAR[gris]">boutons/OSD/stop.png</textureradioofffocus>
-		<textureradiooffnofocus colordiffuse="ccffffff">boutons/OSD/stop.png</textureradiooffnofocus>
-		<radioposx>11</radioposx>
-		<radiowidth>60</radiowidth>
-		<radioheight>60</radioheight>			
-		<visible>player.hasmedia</visible>
-	</control>	
-	</control>	
-	<control type="group" id="6995">																											<description>barre de separation horizontale</description>
+	<control type="group" id="6110">																											<description>barre de separation horizontale</description>
 		<height>2</height>
 	<include content="barre_separation_horizontale">
 		<param name="left" value="25"/> 
@@ -2328,10 +1950,10 @@
 	</include>
 	</control>	
 	<include content="video_en_cours">																											<description>incrustation de la video en cours</description>
-		<param name="id" value="6000"/>
-		<param name="id2" value="6100"/>		
-		<param name="ondown" value="6008"/>
-		<param name="onup" value="6999"/>
+		<param name="id" value="6111"/>
+		<param name="id2" value="6002"/>		
+		<param name="ondown" value="6004"/>
+		<param name="onup" value="6101"/>
 	</include>	
 	<control type="group" id="6004">																											<description>acces rapide</description>
 		<height>75</height>
@@ -2594,7 +2216,7 @@
 		<orientation>vertical</orientation>
 		<preloaditems>2</preloaditems>
 		<scrolltime tween="Linear" easing="in">250</scrolltime>			
-		<onback>control.setFocus(6997)</onback>
+		<onback>control.setFocus(6104)</onback>
 		<onup>6008</onup>
 		<onleft condition="string.isempty(window(home).property(guide_widget_tv))">1000</onleft>		
 		<onleft condition="!string.isempty(window(home).property(guide_widget_tv))">clearproperty(guide_widget_tv,home)</onleft>
@@ -2951,133 +2573,77 @@
 		<left>430</left>
 		<width>1920</width>
 		<scrolltime tween="cubic" easing="out">500</scrolltime>		
-	<control type="group" id="7994">																											<description>horloge</description>
+	<control type="group" id="7100">																											<description>horloge</description>
 		<usecontrolcoords>true</usecontrolcoords>
 		<right>40</right>					
 	<include>titre</include>
 	</control>	
-	<control type="grouplist" id="7999">																										<description>boutons recherche et parametres</description>
+	<control type="grouplist" id="7101">																										<description>boutons</description>
 		<usecontrolcoords>true</usecontrolcoords>
 		<height>118</height>			
 		<onleft>1000</onleft>
 		<orientation>horizontal</orientation>
 		<itemgap>25</itemgap>
-	<control type="radiobutton" id="7998">
-		<left>50</left>
-		<top>30</top>
-		<height>60</height>
-		<width>80</width>
-		<ondown>7000</ondown>
-		<texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
-		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
-		<textureradioonfocus colordiffuse="$VAR[gris]">menus/recherche.png</textureradioonfocus>
-		<textureradioonnofocus>menus/recherche.png</textureradioonnofocus>
-		<textureradioofffocus colordiffuse="$VAR[gris]">menus/recherche.png</textureradioofffocus>
-		<textureradiooffnofocus>menus/recherche.png</textureradiooffnofocus>
-		<radioposx>1</radioposx>
-		<radiowidth>80</radiowidth>
-		<radioheight>80</radioheight>			
-	</control>
-	<control type="button" id="7997">
-		<top>30</top>
-		<height>60</height>
-		<width>auto</width>
-		<ondown>7000</ondown>
-		<onclick condition="string.isempty(window(home).property(type_meteo))">setproperty(type_meteo,horaire,home)</onclick>
-		<onclick condition="!string.isempty(window(home).property(type_meteo))">clearproperty(type_meteo,home)</onclick>		
-	<include content="bouton">																										
-		<param name="width" value="auto"/> 
-		<param name="height" value="80"/>
-		<param name="align" value="center"/>			 
-		<param name="label" value="$LOCALIZE[31267]"/>
+	<include content="bouton_icone_interface">
+		<param name="id" value="7102"/>
+		<param name="width" value="25"/>
+		<param name="texturenofocus" value="00ffffff"/>
+		<param name="enable" value="false"/>
 	</include>
-	</control>			
-	<control type="radiobutton" id="79961">
-		<top>30</top>
-		<height>60</height>
-		<width>80</width>		
-		<ondown>7000</ondown>
-		<onclick>PlayDisc</onclick>
-		<texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
-		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
-		<textureradioonfocus colordiffuse="$VAR[gris]">icones/lire_disque.png</textureradioonfocus>
-		<textureradioonnofocus colordiffuse="d9ffffff">icones/lire_disque.png</textureradioonnofocus>
-		<textureradioofffocus colordiffuse="$VAR[gris]">icones/lire_disque.png</textureradioofffocus>
-		<textureradiooffnofocus colordiffuse="d9ffffff">icones/lire_disque.png</textureradiooffnofocus>
-		<radioposx>6</radioposx>
-		<radiowidth>70</radiowidth>
-		<radioheight>70</radioheight>
-		<visible>!string.isempty(control.getlabel(123456))</visible>
-	</control>
-	<control type="radiobutton" id="79962">
-		<top>30</top>
-		<height>60</height>
-		<width>80</width>		
-		<ondown>7000</ondown>
-		<onright>7992</onright>
-		<onclick>control.setfocus(7998)</onclick>
-		<onclick>PlayerControl(stop)</onclick>
-		<onclick>EjectTray()</onclick>		
-		<texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
-		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
-		<textureradioonfocus colordiffuse="$VAR[gris]">icones/ejecter_disque.png</textureradioonfocus>
-		<textureradioonnofocus colordiffuse="d9ffffff">icones/ejecter_disque.png</textureradioonnofocus>
-		<textureradioofffocus colordiffuse="$VAR[gris]">icones/ejecter_disque.png</textureradioofffocus>
-		<textureradiooffnofocus colordiffuse="d9ffffff">icones/ejecter_disque.png</textureradiooffnofocus>
-		<radioposx>6</radioposx>
-		<radiowidth>70</radiowidth>
-		<radioheight>70</radioheight>
-		<visible>!string.isempty(control.getlabel(123456))</visible>
+	<include content="bouton_icone_interface">
+		<param name="id" value="7103"/>
+		<param name="icone1" value="menus/recherche.png"/>
+		<param name="icone2" value="menus/recherche.png"/>
+		<param name="ondown" value="7111"/>		
+	</include>
+	<include content="bouton_texte_interface">
+		<param name="id" value="7104"/>
+		<param name="width" value="auto"/>
+		<param name="label" value="$LOCALIZE[31267]"/>
+		<param name="onclick" value="setproperty(type_meteo,horaire,home)"/>
+		<param name="onclick2" value="clearproperty(type_meteo,home)"/>		
+		<param name="condition_onclick" value="string.isempty(window(home).property(type_meteo))"/>
+		<param name="condition_onclick2" value="!string.isempty(window(home).property(type_meteo))"/>		
+		<param name="ondown" value="7111"/>		
+	</include>
+	<include content="bouton_icone_interface">
+		<param name="id" value="7105"/>
+		<param name="icone1" value="icones/lire_disque.png"/>
+		<param name="icone2" value="icones/lire_disque.png"/>
+		<param name="onclick" value="PlayDisc"/>
+		<param name="ondown" value="7111"/>
+		<param name="visible" value="!string.isempty(control.getlabel(123456))"/>		
+	</include>
+	<include content="bouton_icone_interface">
+		<param name="id" value="7106"/>
+		<param name="icone1" value="icones/ejecter_disque.png"/>
+		<param name="icone2" value="icones/ejecter_disque.png"/>
+		<param name="onclick" value="control.setfocus(7103)"/>
+		<param name="onclick2" value="PlayerControl(stop)"/>
+		<param name="onclick3" value="EjectTray()"/>
+		<param name="ondown" value="7111"/>
+		<param name="visible" value="!string.isempty(control.getlabel(123456))"/>		
+	</include>	
+	<include content="bouton_icone_interface">
+		<param name="id" value="7107"/>
+		<param name="icone1" value="icones/pause.png"/>
+		<param name="icone2" value="icones/play.png"/>
+		<param name="onclick" value="PlayerControl(Play)"/>
+		<param name="ondown" value="7111"/>
+		<param name="selected" value="!Player.Paused"/>
+		<param name="visible" value="player.hasmedia"/>		
+	</include>
+	<include content="bouton_icone_interface">
+		<param name="id" value="7108"/>
+		<param name="icone1" value="icones/stop.png"/>
+		<param name="icone2" value="icones/stop.png"/>
+		<param name="onclick" value="control.setfocus(7103)"/>
+		<param name="onclick2" value="alarmclock(stop,PlayerControl(stop),00:00,silent)"/>
+		<param name="ondown" value="7111"/>
+		<param name="visible" value="player.hasmedia"/>		
+	</include>
 	</control>	
-	<control type="group" id="7993">
-		<top>30</top>
-		<height>60</height>
-		<width>80</width>
-	<control type="image">
-		<texture colordiffuse="20000000" border="20">commun/bouton.png</texture>
-		<visible>!control.hasfocus(7992)</visible>
-	</control>	
-	<control type="image">
-		<texture colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texture>
-		<visible>control.hasfocus(7992)</visible>
-	</control>
-	<control type="togglebutton" id="7992">
-		<left>10</left>
-		<height>60</height>
-		<width>60</width>
-		<ondown>7000</ondown>
-		<onleft>79962</onleft>
-		<onright>7991</onright>		
-		<onclick>PlayerControl(Play)</onclick>		
-		<texturenofocus colordiffuse="ccffffff">boutons/OSD/pause.png</texturenofocus>
-		<texturefocus colordiffuse="$VAR[gris]">boutons/OSD/pause.png</texturefocus>
-		<alttexturenofocus colordiffuse="ccffffff">boutons/OSD/play.png</alttexturenofocus>
-		<alttexturefocus colordiffuse="$VAR[gris]">boutons/OSD/play.png</alttexturefocus>
-		<usealttexture>Player.Paused</usealttexture>
-	</control>
-		<visible>player.hasmedia</visible>
-	</control>
-	<control type="radiobutton" id="7991">
-		<top>30</top>		
-		<height>60</height>
-		<width>80</width>
-		<ondown>7000</ondown>
-		<onleft>79962</onleft>
-		<onclick>control.setfocus(7998)</onclick>
-		<onclick>alarmclock(alarme,PlayerControl(stop),00:00,silent)</onclick>
-		<texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
-		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
-		<textureradioonfocus colordiffuse="$VAR[gris]">boutons/OSD/stop.png</textureradioonfocus>
-		<textureradioonnofocus colordiffuse="ccffffff">boutons/OSD/stop.png</textureradioonnofocus>
-		<textureradioofffocus colordiffuse="$VAR[gris]">boutons/OSD/stop.png</textureradioofffocus>
-		<textureradiooffnofocus colordiffuse="ccffffff">boutons/OSD/stop.png</textureradiooffnofocus>
-		<radioposx>11</radioposx>
-		<radiowidth>60</radiowidth>
-		<radioheight>60</radioheight>			
-		<visible>player.hasmedia</visible>
-	</control>	
-	</control>	
-	<control type="group" id="7995">																											<description>barre de separation horizontale</description>
+	<control type="group" id="7110">																											<description>barre de separation horizontale</description>
 		<height>2</height>
 	<include content="barre_separation_horizontale">
 		<param name="left" value="25"/> 
@@ -3086,10 +2652,10 @@
 	</include>
 	</control>		
 	<include content="video_en_cours">																											<description>incrustation de la video en cours</description>
-		<param name="id" value="7000"/>
-		<param name="id2" value="7100"/>		
+		<param name="id" value="7111"/>
+		<param name="id2" value="7002"/>		
 		<param name="ondown" value="7004"/>
-		<param name="onup" value="7999"/>
+		<param name="onup" value="7101"/>
 	</include>
 	<control type="group" id="7004">																											<description>acces rapide</description>
 		<height>75</height>
@@ -3659,72 +3225,49 @@
 		<left>430</left>
 		<width>1920</width>
 		<scrolltime tween="cubic" easing="out">500</scrolltime>	
-	<control type="group" id="9994">																											<description>horloge</description>
+	<control type="group" id="9100">																											<description>horloge</description>
 		<usecontrolcoords>true</usecontrolcoords>
 		<right>40</right>					
 	<include>titre</include>
 	</control>	
-	<control type="grouplist" id="9999">																										<description>boutons recherche et parametres</description>
+	<control type="grouplist" id="9101">																										<description>boutons</description>
 		<usecontrolcoords>true</usecontrolcoords>
 		<height>118</height>			
 		<onleft>1000</onleft>
 		<orientation>horizontal</orientation>
 		<itemgap>25</itemgap>
-	<control type="radiobutton" id="9998">
-		<left>50</left>
-		<top>30</top>
-		<height>60</height>
-		<width>80</width>
-		<onleft>1000</onleft>
-		<ondown>9002</ondown>
-		<texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
-		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
-		<textureradioonfocus colordiffuse="$VAR[gris]">menus/recherche.png</textureradioonfocus>
-		<textureradioonnofocus>menus/recherche.png</textureradioonnofocus>
-		<textureradioofffocus colordiffuse="$VAR[gris]">menus/recherche.png</textureradioofffocus>
-		<textureradiooffnofocus>menus/recherche.png</textureradiooffnofocus>
-		<radioposx>1</radioposx>
-		<radiowidth>80</radiowidth>
-		<radioheight>80</radioheight>	
-	</control>					
-	<control type="radiobutton" id="79961">
-		<top>30</top>
-		<height>60</height>
-		<width>80</width>		
-		<ondown>9002</ondown>
-		<onclick>PlayDisc</onclick>
-		<texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
-		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
-		<textureradioonfocus colordiffuse="$VAR[gris]">icones/lire_disque.png</textureradioonfocus>
-		<textureradioonnofocus colordiffuse="d9ffffff">icones/lire_disque.png</textureradioonnofocus>
-		<textureradioofffocus colordiffuse="$VAR[gris]">icones/lire_disque.png</textureradioofffocus>
-		<textureradiooffnofocus colordiffuse="d9ffffff">icones/lire_disque.png</textureradiooffnofocus>
-		<radioposx>6</radioposx>
-		<radiowidth>70</radiowidth>
-		<radioheight>70</radioheight>
-		<visible>!string.isempty(control.getlabel(123456))</visible>
+	<include content="bouton_icone_interface">
+		<param name="id" value="9102"/>
+		<param name="width" value="25"/>
+		<param name="texturenofocus" value="00ffffff"/>
+		<param name="enable" value="false"/>
+	</include>
+	<include content="bouton_icone_interface">
+		<param name="id" value="9103"/>
+		<param name="icone1" value="menus/recherche.png"/>
+		<param name="icone2" value="menus/recherche.png"/>
+		<param name="ondown" value="9002"/>		
+	</include>					
+	<include content="bouton_icone_interface">
+		<param name="id" value="9104"/>
+		<param name="icone1" value="icones/lire_disque.png"/>
+		<param name="icone2" value="icones/lire_disque.png"/>
+		<param name="onclick" value="PlayDisc"/>
+		<param name="ondown" value="9002"/>
+		<param name="visible" value="!string.isempty(control.getlabel(123456))"/>		
+	</include>
+	<include content="bouton_icone_interface">
+		<param name="id" value="9105"/>
+		<param name="icone1" value="icones/ejecter_disque.png"/>
+		<param name="icone2" value="icones/ejecter_disque.png"/>
+		<param name="onclick" value="control.setfocus(9103)"/>
+		<param name="onclick2" value="PlayerControl(stop)"/>
+		<param name="onclick3" value="EjectTray()"/>
+		<param name="ondown" value="9002"/>
+		<param name="visible" value="!string.isempty(control.getlabel(123456))"/>		
+	</include>	
 	</control>
-	<control type="radiobutton" id="79962">
-		<top>30</top>
-		<height>60</height>
-		<width>80</width>		
-		<ondown>9002</ondown>
-		<onclick>control.setfocus(9998)</onclick>
-		<onclick>PlayerControl(stop)</onclick>
-		<onclick>EjectTray()</onclick>		
-		<texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
-		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
-		<textureradioonfocus colordiffuse="$VAR[gris]">icones/ejecter_disque.png</textureradioonfocus>
-		<textureradioonnofocus colordiffuse="d9ffffff">icones/ejecter_disque.png</textureradioonnofocus>
-		<textureradioofffocus colordiffuse="$VAR[gris]">icones/ejecter_disque.png</textureradioofffocus>
-		<textureradiooffnofocus colordiffuse="d9ffffff">icones/ejecter_disque.png</textureradiooffnofocus>
-		<radioposx>6</radioposx>
-		<radiowidth>70</radiowidth>
-		<radioheight>70</radioheight>
-		<visible>!string.isempty(control.getlabel(123456))</visible>
-	</control>	
-	</control>
-	<control type="group" id="9995">																											<description>barre de separation horizontale</description>
+	<control type="group" id="9110">																											<description>barre de separation horizontale</description>
 		<height>2</height>
 	<include content="barre_separation_horizontale">
 		<param name="left" value="25"/> 
@@ -3746,7 +3289,7 @@
 		<onright>7001</onright>
 		<onleft>1000</onleft>
 		<onback>1000</onback>
-		<onup>9999</onup>
+		<onup>9101</onup>
 		<ondown>noop</ondown>
 		<pagecontrol>7001</pagecontrol>
 		<scrolltime tween="linear" easing="out">250</scrolltime>
@@ -3866,72 +3409,49 @@
 		<left>430</left>
 		<width>1920</width>
 		<scrolltime tween="cubic" easing="out">500</scrolltime>	
-	<control type="group" id="10994">																											<description>horloge</description>
+	<control type="group" id="1010">																											<description>horloge</description>
 		<usecontrolcoords>true</usecontrolcoords>
 		<right>40</right>					
 	<include>titre</include>
 	</control>	
-	<control type="grouplist" id="10999">																										<description>boutons recherche et parametres</description>
+	<control type="grouplist" id="1000010">																										<description>boutons</description>
 		<usecontrolcoords>true</usecontrolcoords>
 		<height>118</height>			
 		<onleft>1000</onleft>
 		<orientation>horizontal</orientation>
 		<itemgap>25</itemgap>
-	<control type="radiobutton" id="10998">
-		<left>50</left>
-		<top>30</top>
-		<height>60</height>
-		<width>80</width>
-		<onleft>1000</onleft>
-		<ondown>10002</ondown>
-		<texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
-		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
-		<textureradioonfocus colordiffuse="$VAR[gris]">menus/recherche.png</textureradioonfocus>
-		<textureradioonnofocus>menus/recherche.png</textureradioonnofocus>
-		<textureradioofffocus colordiffuse="$VAR[gris]">menus/recherche.png</textureradioofffocus>
-		<textureradiooffnofocus>menus/recherche.png</textureradiooffnofocus>
-		<radioposx>1</radioposx>
-		<radiowidth>80</radiowidth>
-		<radioheight>80</radioheight>	
+	<include content="bouton_icone_interface">
+		<param name="id" value="1000011"/>
+		<param name="width" value="25"/>
+		<param name="texturenofocus" value="00ffffff"/>
+		<param name="enable" value="false"/>
+	</include>
+	<include content="bouton_icone_interface">
+		<param name="id" value="1000012"/>
+		<param name="icone1" value="menus/recherche.png"/>
+		<param name="icone2" value="menus/recherche.png"/>
+		<param name="ondown" value="1000002"/>		
+	</include>					
+	<include content="bouton_icone_interface">
+		<param name="id" value="1000014"/>
+		<param name="icone1" value="icones/lire_disque.png"/>
+		<param name="icone2" value="icones/lire_disque.png"/>
+		<param name="onclick" value="PlayDisc"/>
+		<param name="ondown" value="1000002"/>
+		<param name="visible" value="!string.isempty(control.getlabel(123456))"/>		
+	</include>
+	<include content="bouton_icone_interface">
+		<param name="id" value="1000015"/>
+		<param name="icone1" value="icones/ejecter_disque.png"/>
+		<param name="icone2" value="icones/ejecter_disque.png"/>
+		<param name="onclick" value="control.setfocus(1000013)"/>
+		<param name="onclick2" value="PlayerControl(stop)"/>
+		<param name="onclick3" value="EjectTray()"/>
+		<param name="ondown" value="1000002"/>
+		<param name="visible" value="!string.isempty(control.getlabel(123456))"/>		
+	</include>	
 	</control>
-		<control type="radiobutton" id="79961">
-		<top>30</top>
-		<height>60</height>
-		<width>80</width>		
-		<ondown>10002</ondown>
-		<onclick>PlayDisc</onclick>
-		<texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
-		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
-		<textureradioonfocus colordiffuse="$VAR[gris]">icones/lire_disque.png</textureradioonfocus>
-		<textureradioonnofocus colordiffuse="d9ffffff">icones/lire_disque.png</textureradioonnofocus>
-		<textureradioofffocus colordiffuse="$VAR[gris]">icones/lire_disque.png</textureradioofffocus>
-		<textureradiooffnofocus colordiffuse="d9ffffff">icones/lire_disque.png</textureradiooffnofocus>
-		<radioposx>6</radioposx>
-		<radiowidth>70</radiowidth>
-		<radioheight>70</radioheight>
-		<visible>!string.isempty(control.getlabel(123456))</visible>
-	</control>
-	<control type="radiobutton" id="79962">
-		<top>30</top>
-		<height>60</height>
-		<width>80</width>		
-		<ondown>10002</ondown>
-		<onclick>control.setfocus(10998)</onclick>
-		<onclick>PlayerControl(stop)</onclick>
-		<onclick>EjectTray()</onclick>		
-		<texturenofocus colordiffuse="20000000" border="20">commun/bouton.png</texturenofocus>
-		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
-		<textureradioonfocus colordiffuse="$VAR[gris]">icones/ejecter_disque.png</textureradioonfocus>
-		<textureradioonnofocus colordiffuse="d9ffffff">icones/ejecter_disque.png</textureradioonnofocus>
-		<textureradioofffocus colordiffuse="$VAR[gris]">icones/ejecter_disque.png</textureradioofffocus>
-		<textureradiooffnofocus colordiffuse="d9ffffff">icones/ejecter_disque.png</textureradiooffnofocus>
-		<radioposx>6</radioposx>
-		<radiowidth>70</radiowidth>
-		<radioheight>70</radioheight>
-		<visible>!string.isempty(control.getlabel(123456))</visible>
-	</control>	
-	</control>
-	<control type="group" id="10995">																											<description>barre de separation horizontale</description>
+	<control type="group" id="10110">																											<description>barre de separation horizontale</description>
 		<height>2</height>
 	<include content="barre_separation_horizontale">
 		<param name="left" value="25"/> 
@@ -3944,16 +3464,16 @@
 		<height>930</height>
 	<include content="panneau_gauche_parametres">
 		<param name="titre" value="$LOCALIZE[31187]"/> 
-		<param name="container" value="10002"/>		
+		<param name="container" value="1020"/>		
 	</include>
-	<control type="panel" id="10002">		
+	<control type="panel" id="1000002">		
 		<left>980</left>
 		<top>110</top>
 		<width>800</width>
 		<height>700</height>
 		<onright>8001</onright>
 		<onleft>1000</onleft>		
-		<onup>10999</onup>
+		<onup>1000010</onup>
 		<ondown>noop</ondown>
 		<onback>1000</onback>
 		<pagecontrol>8001</pagecontrol>
@@ -4040,7 +3560,7 @@
 		<param name="id" value="8001"/> 
 		<param name="top" value="120"/> 
 		<param name="height" value="680"/> 
-		<param name="container" value="10002"/>
+		<param name="container" value="1000002"/>
 	</include>	
 	</control>
 	</control>
