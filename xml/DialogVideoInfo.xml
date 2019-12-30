@@ -128,7 +128,7 @@
 		<left>200</left>
 		<height>700</height>
 		<width>467</width>		
-	<control type="image" id="801">
+	<control type="image">
 		<aspectratio align="center" aligny="bottom">stretch</aspectratio>
 		<texture background="true" border="10">$VAR[poster_video]</texture>
 		<bordertexture border="10">commun/tuiles_grises.png</bordertexture>
