@@ -59,7 +59,7 @@
 	</control>
 	<control type="image">																														<description>fanart</description>
 		<top>-100</top>
-		<texture background="true" colordiffuse="ccffffff">extras/fallback/cd.jpg</texture>
+		<texture background="true" colordiffuse="ccffffff">extras/divers/cd.jpg</texture>
 		<aspectratio>keep</aspectratio>
 		<animation effect="zoom" start="65" end="20" center="auto" time="30000" tween="sine" easing="inout" pulse="true" condition="!Skin.HasSetting(0animation_music_pochette)">Conditional</animation>
 		<animation effect="rotatex" start="-22,-22" end="22,22" center="auto" time="5000" tween="sine" easing="inout" pulse="true" condition="!Skin.HasSetting(0animation_music_pochette)">Conditional</animation>		
@@ -151,7 +151,7 @@
 		<left>20</left>
 		<width>256</width>
 		<height>256</height>
-		<texture fallback="extras/fallback/cd.jpg">$INFO[MusicPlayer.Cover]</texture>
+		<texture fallback="extras/divers/cd.jpg">$INFO[MusicPlayer.Cover]</texture>
 		<aspectratio aligny="center">keep</aspectratio>
 		<visible>!string.isequal(MusicPlayer.Cover,defaultalbumcover.png)</visible>
 	</control>
@@ -161,7 +161,7 @@
 		<left>20</left>
 		<width>256</width>
 		<height>256</height>
-		<texture>extras/fallback/cd.jpg</texture>
+		<texture>extras/divers/cd.jpg</texture>
 		<aspectratio aligny="center">keep</aspectratio>
 		<visible>string.isequal(MusicPlayer.Cover,defaultalbumcover.png)</visible>
 	</control>	
