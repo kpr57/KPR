@@ -3326,7 +3326,7 @@
 	</variable>
 	<variable name="mini_lecteur_resume">
 		<value condition="player.HasAudio + !string.isempty(MusicPlayer.Property(Album_Description))">$INFO[MusicPlayer.Property(Album_Description)]</value>
-		<value condition="player.HasAudio + string.isempty(MusicPlayer.Property(Album_Description))">$INFO[MusicPlayer.Property(Artist_Description)]</value>
+		<value condition="player.HasAudio + string.isempty(MusicPlayer.Property(Album_Description)) + !string.isempty(MusicPlayer.Property(Artist_Description))">$INFO[MusicPlayer.Property(Artist_Description)]</value>
 		<value condition="[VideoPlayer.content(liveTV) | VideoPlayer.content(episodes) | VideoPlayer.content(movies) | VideoPlayer.content(files)] + !string.isempty(videoplayer.plot)">$INFO[videoplayer.plot]</value>
 		<value>[I]$LOCALIZE[31206][/I]</value>
 	</variable>
