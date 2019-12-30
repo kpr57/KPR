@@ -128,50 +128,12 @@
 		<left>200</left>
 		<height>700</height>
 		<width>467</width>		
-	<control type="image">
+	<control type="image" id="801">
 		<aspectratio align="center" aligny="bottom">stretch</aspectratio>
-		<texture background="true" border="10">$INFO[listitem.Art(season.poster)]</texture>
+		<texture background="true" border="10">$VAR[poster_video]</texture>
 		<bordertexture border="10">commun/tuiles_grises.png</bordertexture>
 		<bordersize>10,0,10,10</bordersize>
-		<visible>!String.IsEmpty(listitem.Art(season.poster)) + $EXP[est_un_episode]</visible>
 	</control>	
-	<control type="image">
-		<aspectratio align="center" aligny="bottom">stretch</aspectratio>
-		<texture background="true" border="10">$INFO[listitem.Art(season.poster)]</texture>
-		<bordertexture border="10">commun/tuiles_grises.png</bordertexture>
-		<bordersize>10,0,10,10</bordersize>
-		<visible>[String.IsEmpty(listitem.art(season.poster)) + $EXP[est_un_episode]] | [!$EXP[est_un_episode] + !String.IsEmpty(ListItem.Art(season.poster))]</visible>
-	</control>	
-	<control type="image">
-		<aspectratio align="center" aligny="bottom">stretch</aspectratio>
-		<texture background="true" border="10">$INFO[listitem.Art(poster)]</texture>
-		<bordertexture border="10">commun/tuiles_grises.png</bordertexture>
-		<bordersize>10,0,10,10</bordersize>
-		<visible>[String.IsEmpty(listitem.art(season.poster)) + $EXP[est_un_episode]] | [!$EXP[est_un_episode] + String.IsEmpty(ListItem.Art(season.poster)) + !String.IsEmpty(ListItem.Art(poster))]</visible>
-	</control>
-	<control type="image">	
-		<aspectratio align="center" aligny="bottom">stretch</aspectratio>
-		<texture background="true" border="10">$INFO[listitem.Art(tvshow.poster)]</texture>
-		<bordertexture border="10">commun/tuiles_grises.png</bordertexture>
-		<bordersize>10,0,10,10</bordersize>
-		<visible>[String.IsEmpty(listitem.art(season.poster)) + $EXP[est_un_episode]] | [!$EXP[est_un_episode] + String.IsEmpty(ListItem.Art(season.poster)) + String.IsEmpty(ListItem.Art(poster)) + !String.IsEmpty(ListItem.Art(tvshow.poster))]</visible>
-	</control>
-	<control type="image">
-		<bottom>100</bottom>
-		<aspectratio align="center" aligny="bottom">keep</aspectratio>
-		<texture background="true" border="10">$INFO[listitem.icon]</texture>
-		<bordertexture border="10">commun/tuiles_grises.png</bordertexture>
-		<bordersize>10,0,10,10</bordersize>
-		<visible>[String.IsEmpty(listitem.art(season.poster)) + $EXP[est_un_episode]] | [!$EXP[est_un_episode] + String.IsEmpty(ListItem.Art(season.poster)) + String.IsEmpty(ListItem.Art(tvshow.poster)) + String.IsEmpty(ListItem.Art(poster)) + !String.IsEmpty(ListItem.icon)]</visible>
-	</control>	
-	<control type="image">		
-		<bottom>100</bottom>
-		<aspectratio aligny="bottom">keep</aspectratio>
-		<texture background="true" border="10" colordiffuse="20ffffff">commun/noimage.png</texture>
-		<bordertexture border="10">commun/tuiles_grises.png</bordertexture>
-		<bordersize>10,0,10,10</bordersize>
-		<visible>[String.IsEmpty(listitem.art(season.poster)) + $EXP[est_un_episode]] | [!$EXP[est_un_episode] + [String.IsEmpty(ListItem.Art(season.poster)) | string.endswith(listitem.art(season.poster),none)] + [String.IsEmpty(ListItem.Art(tvshow.poster)) | string.endswith(listitem.art(tvshow.poster),none)] + [String.IsEmpty(ListItem.Art(poster)) | string.endswith(listitem.art(poster),none)] + [String.IsEmpty(ListItem.icon) | string.endswith(listitem.icon,none)]]</visible>		
-	</control>
 	</control>
 	<control type="progress">																													<description>barre de progression</description>
 		<top>855</top>		
@@ -736,6 +698,6 @@
 	</control>	
 	<control type="button" id="3333">																											<description>faux bouton pour fermer la fenetre si aucune information</description>
 		<onfocus>action(close)</onfocus>
-	</control>	
+	</control>
 </controls>
 </window>

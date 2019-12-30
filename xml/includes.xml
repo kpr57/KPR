@@ -7,14 +7,14 @@
 	<!-- touches alt et 0183 pour · -->
 	<!-- touches alt et 179 pour │ -->
 	
-	<expression name="est_un_artiste">string.isEqual(listitem.DBTYPE,artist) | String.IsEqual(Container.Content,artists)</expression>
-	<expression name="est_un_album">string.isEqual(listitem.DBTYPE,album) | String.IsEqual(Container.Content,albums)</expression>
-	<expression name="est_une_chanson">string.isEqual(listitem.DBTYPE,song) | String.IsEqual(Container.Content,songs)</expression>
-	<expression name="est_un_film">string.isEqual(listitem.DBTYPE,movie) | String.IsEqual(Container.Content,movies)</expression>
-	<expression name="est_une_saga">string.isEqual(listitem.DBTYPE,set) | String.IsEqual(Container.Content,sets)</expression>
-	<expression name="est_une_serie">string.isEqual(listitem.DBTYPE,tvshow)  | String.IsEqual(Container.Content,tvshows)</expression>
-	<expression name="est_un_episode">String.IsEqual(listItem.DBTYPE,episode)  | String.IsEqual(Container.Content,episodes)</expression>
-	<expression name="est_une_saison">String.IsEqual(listItem.DBTYPE,season) | String.IsEqual(Container.Content,seasons)</expression>
+	<expression name="est_un_artiste">[string.isEqual(listitem.DBTYPE,artist) | String.IsEqual(Container.Content,artists)]</expression>
+	<expression name="est_un_album">[string.isEqual(listitem.DBTYPE,album) | String.IsEqual(Container.Content,albums)]</expression>
+	<expression name="est_une_chanson">[string.isEqual(listitem.DBTYPE,song) | String.IsEqual(Container.Content,songs)]</expression>
+	<expression name="est_un_film">[string.isEqual(listitem.DBTYPE,movie) | String.IsEqual(Container.Content,movies)]</expression>
+	<expression name="est_une_saga">[string.isEqual(listitem.DBTYPE,set) | String.IsEqual(Container.Content,sets)]</expression>
+	<expression name="est_une_serie">[string.isEqual(listitem.DBTYPE,tvshow)  | String.IsEqual(Container.Content,tvshows)]</expression>
+	<expression name="est_un_episode">[String.IsEqual(listItem.DBTYPE,episode)  | String.IsEqual(Container.Content,episodes)]</expression>
+	<expression name="est_une_saison">[String.IsEqual(listItem.DBTYPE,season) | String.IsEqual(Container.Content,seasons)]</expression>
 	<expression name="est_une_chaine">!string.isEmpty(listitem.ChannelName)</expression>	
 	<expression name="est_une_photo">[string.isequal(listitem.FileExtension,png) | string.isequal(listitem.FileExtension,jpg) | string.isequal(listitem.FileExtension,bmp)]</expression>
 	<expression name="est_une_extension">[string.contains(listitem.folderpath,plugin) + string.contains(listitem.folderpath,?)]</expression>
@@ -22,24 +22,7 @@
 	<expression name="est_un_dossier_parent">[string.isEqual(listitem.label,..) | string.StartsWith(listitem.label,*)]</expression>
 	<expression name="a_une_icone">[!String.IsEmpty(listitem.icon) + !string.endswith(listitem.icon,none)]</expression>
 	<expression name="a_une_image">[window.isvisible(MyPVRRecordings.xml) | String.IsEqual(Container.Content,movies) | String.IsEqual(Container.Content,sets) | String.IsEqual(Container.Content,tvshows) | String.IsEqual(Container.Content,episodes) | String.IsEqual(Container.Content,seasons) | String.IsEqual(Container.Content,videos) | String.IsEqual(Container.Content,tvshow) | String.IsEqual(Container.Content,actors) | String.IsEqual(Container.Content,artists) | String.IsEqual(Container.Content,albums) | String.IsEqual(Container.Content,songs) | String.IsEqual(Container.Content,images) | $EXP[est_un_addon]]</expression>
-	
-	
-	<variable name="icone_status">
-		<value condition="!String.IsEmpty(ListItem.AddonBroken)">icones/inactif.png</value>
-		<value condition="ListItem.Property(addon.orphaned)">icones/orphelin.png</value>
-		<value condition="ListItem.Property(addon.downloading)">icones/install.png</value>
-		<value condition="ListItem.Property(addon.isinstalled) + !ListItem.Property(addon.isenabled) + Window.IsActive(addonbrowser)">icones/inactif.png</value>
-		<value condition="ListItem.Property(addon.hasupdate)">icones/update.png</value>
-		<value condition="!$EXP[est_une_saga] + integer.isequal(listitem.playcount,0) + integer.isequal(listitem.percentplayed,0)">icones/item.png</value>
-		<value condition="!integer.isequal(listitem.percentplayed,0) | [$EXP[est_une_serie] + !integer.isequal(ListItem.Property(WatchedEpisodes),0)] | [$EXP[est_une_saison] + !integer.isequal(ListItem.Property(WatchedEpisodes),0)]">icones/resume.png</value>
-		<value condition="!integer.isequal(listitem.playcount,0) + integer.isequal(listitem.percentplayed,0)">icones/vu2.png</value>
-		<value condition="$EXP[est_une_saga]">icones/saga.png</value>		
-		<value>icones/item.png</value>
-	</variable>
-	
-	
-	
-	
+		
 	<variable name="couleur_dominante">																											<description>couleur de selection dominante</description>
 		<value>ffd99006</value>
 	</variable>
@@ -82,10 +65,6 @@
 	<variable name="gris_40">	
 		<value>40201f20</value>
 	</variable>
-	
-	
-	
-	
 	
 	<include name="video">																														<description>arriere plan video</description>	
 	<control type="videowindow">		
@@ -130,10 +109,6 @@
 		<animation effect="slide" end="-130,0" time="150" condition="string.isempty(window(home).property(parametres_menu)) + !control.hasfocus(1000) + !control.hasfocus(111) + !control.hasfocus(112) + !control.hasfocus(113) + skin.hassetting(menu_icones)">conditional</animation>
 		<animation effect="slide" end="-300,0" time="150" condition="string.isempty(window(home).property(parametres_menu)) + skin.hassetting(menu_icones)">conditional</animation>	
 	</include>	
-	
-	
-	
-	
 	
 	<include name="item_menu_1">
 		<label>$LOCALIZE[31168]</label>
@@ -196,10 +171,6 @@
 		<label>$LOCALIZE[31173]</label>
 		<icon>menus/weather.png</icon>
 	</include>
-	
-	
-	
-	
 	
 	<include name="titre">																														<description>titre de la section + heure</description>
 	<control type="image">
@@ -3513,10 +3484,26 @@
         <value condition="$EXP[est_une_chanson]">$LOCALIZE[179]</value>        
 		<value></value>		
 	</variable>
-	
-	
-	
-	
+	<variable name="poster_video">
+		<value condition="!String.IsEmpty(listitem.Art(season.poster))">$INFO[listitem.Art(season.poster)]</value>
+		<value condition="!String.IsEmpty(ListItem.Art(tvshow.poster))">$INFO[listitem.Art(tvshow.poster)]</value>
+		<value condition="!String.IsEmpty(ListItem.Art(poster))">$INFO[listitem.Art(poster)]</value>
+		<value condition="!String.IsEmpty(ListItem.icon)">$INFO[listitem.icon]</value>
+		<value>commun/noimage.png</value>	
+	</variable>
+	<variable name="icone_status">
+		<value condition="!String.IsEmpty(ListItem.AddonBroken)">icones/inactif.png</value>
+		<value condition="ListItem.Property(addon.orphaned)">icones/orphelin.png</value>
+		<value condition="ListItem.Property(addon.downloading)">icones/install.png</value>
+		<value condition="ListItem.Property(addon.isinstalled) + !ListItem.Property(addon.isenabled) + Window.IsActive(addonbrowser)">icones/inactif.png</value>
+		<value condition="ListItem.Property(addon.hasupdate)">icones/update.png</value>
+		<value condition="!$EXP[est_une_saga] + integer.isequal(listitem.playcount,0) + integer.isequal(listitem.percentplayed,0)">icones/item.png</value>
+		<value condition="!integer.isequal(listitem.percentplayed,0) | [$EXP[est_une_serie] + !integer.isequal(ListItem.Property(WatchedEpisodes),0)] | [$EXP[est_une_saison] + !integer.isequal(ListItem.Property(WatchedEpisodes),0)]">icones/resume.png</value>
+		<value condition="!integer.isequal(listitem.playcount,0) + integer.isequal(listitem.percentplayed,0)">icones/vu2.png</value>
+		<value condition="$EXP[est_une_saga]">icones/saga.png</value>		
+		<value>icones/item.png</value>
+	</variable>	
+		
 	<!-- variables pour la TV -->		
 	<variable name="detail_widget_tv">
 		<value condition="string.isempty(window(home).property(guide_widget_tv))">[UPPERCASE]$INFO[container(6012).listitem.channelname][/UPPERCASE]  •  $INFO[container(6012).listitem.title]  •  $INFO[container(6012).listitem.starttime] - $INFO[container(6012).listitem.endtime]  •  $INFO[container(6012).listitem.duration(hh)] hr $INFO[container(6012).listitem.duration(mm)] min  •  $INFO[container(6012).listitem.genre]</value>
@@ -3771,7 +3758,7 @@
 		<value condition="[window.isvisible(MyPVRRecordings.xml) | window.isvisible(MyPVRTimers.xml)] + !string.isempty(listitem.duration) + !string.isequal(listitem.duration(hh:mm),00:00) + !string.isequal(listitem.duration(hh:mm),00:01) + !string.isequal(listitem.duration(hh:mm),00:02)">$INFO[listitem.duration(hh:mm)]</value>
 		<value condition="$EXP[est_un_episode] + !string.isempty(listitem.duration) + !string.isequal(listitem.duration(hh:mm),00:00) + !string.isequal(listitem.duration(hh:mm),00:01) + !string.isequal(listitem.duration(hh:mm),00:02)">$INFO[listitem.duration(hh:mm)]</value>
 		<value condition="$EXP[est_une_serie] + !string.isempty(listitem.duration) + !string.isequal(listitem.duration(hh:mm),00:00) + !string.isequal(listitem.duration(hh:mm),00:01) + !string.isequal(listitem.duration(hh:mm),00:02)">$INFO[listitem.duration(hh:mm)]</value>
-		<value condition="$EXP[est_une_saison] +  + !string.isempty(listitem.duration) + !string.isequal(listitem.duration(hh:mm),00:00) + !string.isequal(listitem.duration(hh:mm),00:01) + !string.isequal(listitem.duration(hh:mm),00:02)">$INFO[listitem.duration(hh:mm)]</value>
+		<value condition="$EXP[est_une_saison] + !string.isempty(listitem.duration) + !string.isequal(listitem.duration(hh:mm),00:00) + !string.isequal(listitem.duration(hh:mm),00:01) + !string.isequal(listitem.duration(hh:mm),00:02)">$INFO[listitem.duration(hh:mm)]</value>
 		<value condition="$EXP[est_un_artiste] + !string.isempty(listitem.Property(Artist_Died))">$INFO[listitem.Property(Artist_Died)]</value>
 	</variable>	
 	<variable name="vues_infos_6">
@@ -3781,23 +3768,5 @@
 		<value condition="$EXP[est_une_chanson] + !string.isempty(listitem.TrackNumber)">$LOCALIZE[554] $INFO[listitem.TrackNumber] │ $INFO[listitem.duration]</value>
 		<value condition="$EXP[est_un_addon] + !string.isempty(listitem.AddonSummary)">$INFO[listitem.AddonSummary]</value>
 	</variable>	
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	</includes>
