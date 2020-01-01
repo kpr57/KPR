@@ -728,11 +728,51 @@ msgctxt "#31346"
 msgid "Lyrics search ..."
 msgstr "Recherche de paroles ..."
 
+msgctxt "#31347"
+msgid "Movies plot"
+msgstr "Résumés de films"
 
+msgctxt "#31348"
+msgid "TV shows plot"
+msgstr "Résumés de séries"
 
+msgctxt "#31349"
+msgid "Episodes"
+msgstr "Episodes"
 
+msgctxt "#31350"
+msgid "Episodes plot"
+msgstr "Résumés d'épisodes"
 
-#: --------------------------kodi estuary (31001 - 31167)
+msgctxt "#31351"
+msgid "Movies actors"
+msgstr "Acteurs de film"
+
+msgctxt "#31352"
+msgid "TV shows actors"
+msgstr "Acteurs de séries"
+
+msgctxt "#31353"
+msgid "alphabetical order"
+msgstr "ordre alphabétique"
+
+msgctxt "#31354"
+msgid "For languages ​​using accents, the search will not give results if the accents are missing or do not match ![CR][CR]If you are looking for the movies or TV shows of an actor for example \"Will Smith\", the actor name must be complete, \"Will\" or \"Smith\" will not give any result !"
+msgstr "Pour les langues utilisant des accents, la recherche ne donnera pas de résultat si les accents sont manquants ou ne correspondent pas ![CR][CR]Si vous recherchez les films ou séries d'un acteur par exemple \"Will Smith\", le nom d'acteur doit être complet, \"Will\" ou \"Smith\" ne donnera aucun résultat !"
+
+msgctxt "#31355"
+msgid "Skin settings"
+msgstr "Paramètres de l'habillage"
+
+msgctxt "#31356"
+msgid "Switch to full screen mode by clicking a song widget"
+msgstr "Passer en mode plein ecran en cliquant sur un widget chansons"
+
+msgctxt "#31357"
+msgid "Switch to full screen mode"
+msgstr "Passer en mode plein ecran"
+
+#: ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------kodi estuary (31001 - 31167)
 
 msgctxt "#31000"
 msgid "Now playing"
