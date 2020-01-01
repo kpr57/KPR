@@ -11,6 +11,7 @@
 	<onload condition="control.isvisible(11)">control.setfocus(11)</onload>
 	<onload condition="control.isvisible(17)">control.setfocus(17)</onload>
 	<onload condition="control.isvisible(15)">control.setfocus(15)</onload>
+	<onload condition="control.isvisible(18)">control.setfocus(18)</onload>
 <controls>			
 	<include>image_fond</include>
 	<control type="group">
@@ -570,7 +571,7 @@
 		<radioposx>15</radioposx>
 		<radiowidth>70</radiowidth>
 		<radioheight>70</radioheight>				
-		<onclick>playmedia($INFO[listitem.FileNameAndPath],0,noresume)</onclick>
+		<onclick>playmedia($ESCINFO[listitem.FileNameAndPath],0,noresume)</onclick>
 		<onclick>alarmclock(alarme,dialog.close(movieinformation),00:01,silent)</onclick>
 		<visible>[$EXP[est_un_film] | $EXP[est_un_episode]] + !$EXP[est_une_extension]</visible>
 	</control>
@@ -589,6 +590,21 @@
 		<onclick>alarmclock(alarme,dialog.close(movieinformation),00:01,silent)</onclick>
 		<visible>$EXP[est_une_extension]</visible>
 	</control>
+	<control type="radiobutton" id="18">		
+		<height>50</height>
+		<texturenofocus colordiffuse="$VAR[gris]" border="25">commun/bouton.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="25">commun/bouton.png</texturefocus>
+		<textureradioonfocus colordiffuse="ffffffff">icones/infos/parcourir.png</textureradioonfocus>
+		<textureradioonnofocus colordiffuse="ffffffff">icones/infos/parcourir.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="ffffffff">icones/infos/parcourir.png</textureradioofffocus>
+		<textureradiooffnofocus colordiffuse="ffffffff">icones/infos/parcourir.png</textureradiooffnofocus>
+		<radioposx>15</radioposx>
+		<radiowidth>70</radiowidth>
+		<radioheight>70</radioheight>
+		<onclick>sendclick(8)</onclick>
+		<onclick>dialog.close(movieinformation)</onclick>
+		<visible>$EXP[est_une_serie]</visible>
+	</control>
 	<control type="radiobutton" id="19">		
 		<height>50</height>
 		<texturenofocus colordiffuse="$VAR[gris]" border="25">commun/bouton.png</texturenofocus>
@@ -600,7 +616,7 @@
 		<radioposx>15</radioposx>
 		<radiowidth>70</radiowidth>
 		<radioheight>70</radioheight>
-		<onclick>playmedia($INFO[listitem.FileNameAndPath],0,resume)</onclick>
+		<onclick>playmedia($ESCINFO[listitem.FileNameAndPath],0,resume)</onclick>
 		<onclick>alarmclock(alarme,dialog.close(movieinformation),00:01,silent)</onclick>		
 		<visible>control.isenabled(9)</visible>
 	</control>

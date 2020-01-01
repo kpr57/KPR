@@ -103,8 +103,8 @@
 	</include>
 	
 	<include name="style_et_cacher_page_accueil">
-		<animation effect="slide" start="0,0" end="1920,0" time="1" condition="window.isvisible(DialogNumeric.xml) | window.isvisible(addoninformation) | window.isvisible(musicinformation) | window.isvisible(movieinformation) | window.isvisible(pvrguideinfo) | window.isvisible(selectdialog) | window.isvisible(contextmenu)" reversible="false">conditional</animation>
-		<animation effect="slide" end="0,0" delay="100" time="1" condition="!window.isvisible(DialogNumeric.xml) + !window.isvisible(addoninformation) + !window.isvisible(musicinformation) + !window.isvisible(movieinformation) + !window.isvisible(pvrguideinfo) + !window.isvisible(selectdialog) + !window.isvisible(contextmenu)" reversible="false">conditional</animation>		
+		<animation effect="slide" start="0,0" end="1920,0" time="1" condition="window.isvisible(DialogKeyboard.xml) | window.isvisible(DialogNumeric.xml) | window.isvisible(addoninformation) | window.isvisible(musicinformation) | window.isvisible(movieinformation) | window.isvisible(pvrguideinfo) | window.isvisible(selectdialog) | window.isvisible(contextmenu)" reversible="false">conditional</animation>
+		<animation effect="slide" end="0,0" delay="100" time="1" condition="!window.isvisible(DialogKeyboard.xml) + !window.isvisible(DialogNumeric.xml) + !window.isvisible(addoninformation) + !window.isvisible(musicinformation) + !window.isvisible(movieinformation) + !window.isvisible(pvrguideinfo) + !window.isvisible(selectdialog) + !window.isvisible(contextmenu)" reversible="false">conditional</animation>		
 		<animation effect="slide" end="-430,0" time="400" condition="string.isempty(window(home).property(parametres_menu)) + !control.hasfocus(1000) + !control.hasfocus(111) + !control.hasfocus(112) + !control.hasfocus(113) + !skin.hassetting(menu_icones)">conditional</animation>
 		<animation effect="slide" end="-130,0" time="150" condition="string.isempty(window(home).property(parametres_menu)) + !control.hasfocus(1000) + !control.hasfocus(111) + !control.hasfocus(112) + !control.hasfocus(113) + skin.hassetting(menu_icones)">conditional</animation>
 		<animation effect="slide" end="-300,0" time="150" condition="string.isempty(window(home).property(parametres_menu)) + skin.hassetting(menu_icones)">conditional</animation>	
@@ -211,7 +211,6 @@
 	</control>
 	</include>
 	
-	
 	<include name="bouton_icone_interface">
 		<param name="id"/>
 		<param name="icone1"/>
@@ -224,6 +223,7 @@
 		<param name="onclick4"/>
 		<param name="onfocus"/>
 		<param name="onfocus2"/>
+		<param name="onfocus3"/>
 		<param name="ondown"/>
 		<param name="enable"/>
 		<param name="selected"/>
@@ -240,6 +240,7 @@
 		<onclick>$PARAM[onclick4]</onclick>
 		<onfocus>$PARAM[onfocus]</onfocus>
 		<onfocus>$PARAM[onfocus2]</onfocus>
+		<onfocus>$PARAM[onfocus3]</onfocus>
 		<texturenofocus colordiffuse="$PARAM[texturenofocus]" border="20">commun/bouton.png</texturenofocus>
 		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/bouton.png</texturefocus>
 		<textureradioonfocus colordiffuse="$VAR[gris]">$PARAM[icone1]</textureradioonfocus>
@@ -3438,6 +3439,7 @@
 		<value></value>		
 	</variable>
 	<variable name="legende_infos">
+		<value condition="control.hasfocus(18)">$LOCALIZE[20153]</value>
 		<value condition="[control.hasfocus(15) | control.hasfocus(17)] + window.isvisible(movieinformation)">$LOCALIZE[31245]</value>
 		<value condition="control.hasfocus(8) + window.isvisible(MyPVRRecordings.xml)">$LOCALIZE[31312]</value>
 		<value condition="control.hasfocus(19) + window.isvisible(movieinformation)">$LOCALIZE[31246]</value>
@@ -3860,5 +3862,77 @@
 		<value condition="$EXP[est_une_chanson] + !string.isempty(listitem.TrackNumber)">$LOCALIZE[554] $INFO[listitem.TrackNumber] │ $INFO[listitem.duration]</value>
 		<value condition="$EXP[est_un_addon] + !string.isempty(listitem.AddonSummary)">$INFO[listitem.AddonSummary]</value>
 	</variable>	
+	
+	
+	<!-- variables pour les recherches -->
+	<expression name="recherche_est_un_artiste">[string.isEqual(container(700).listitem.DBTYPE,artist) | String.IsEqual(container(700).Content,artists)]</expression>
+	<expression name="recherche_est_un_album">[string.isEqual(container(700).listitem.DBTYPE,album) | String.IsEqual(container(700).Content,albums)]</expression>
+	<expression name="recherche_est_une_chanson">[string.isEqual(container(700).listitem.DBTYPE,song) | String.IsEqual(container(700).Content,songs)]</expression>
+	<expression name="recherche_est_un_film">[string.isEqual(container(700).listitem.DBTYPE,movie) | String.IsEqual(container(700).Content,movies)]</expression>
+	<expression name="recherche_est_une_saga">[string.isEqual(container(700).listitem.DBTYPE,set) | String.IsEqual(container(700).Content,sets)]</expression>
+	<expression name="recherche_est_une_serie">[string.isEqual(container(700).listitem.DBTYPE,tvshow)  | String.IsEqual(container(700).Content,tvshows)]</expression>
+	<expression name="recherche_est_un_episode">[String.IsEqual(container(700).listitem.DBTYPE,episode)  | String.IsEqual(container(700).Content,episodes)]</expression>
+	<expression name="recherche_est_une_saison">[String.IsEqual(listItem.DBTYPE,season) | String.IsEqual(container(700).Content,seasons)]</expression>	
+	<variable name="recherche_infos_resume">
+		<value condition="!string.isempty(container(700).listitem.plot)">$INFO[container(700).listitem.plot]</value>
+		<value condition="!string.isempty(container(700).listitem.AddonDescription)">$INFO[container(700).listitem.AddonDescription]</value>
+		<value condition="$EXP[recherche_est_un_artiste] + !string.isempty(container(700).listitem.Property(Artist_Description))">$INFO[container(700).listitem.Property(Artist_Description)]</value>
+		<value condition="$EXP[recherche_est_un_album] + !string.isempty(container(700).listitem.Property(Album_Description))">$INFO[container(700).listitem.Property(Album_Description)]</value>
+	</variable>
+	<variable name="recherche_titre">
+		<value condition="!string.isempty(container(700).listitem.title)">$INFO[container(700).listitem.title]</value>
+		<value>$INFO[container(700).listitem.label]</value>			
+	</variable>
+	<variable name="recherche_titre_bis">
+		<value condition="!string.isempty(container(700).listitem.originaltitle)"> ($INFO[container(700).listitem.originaltitle])</value>					
+	</variable>
+	<variable name="recherche_infos_1">
+		<value condition="!string.isempty(container(700).listitem.title)">  $INFO[container(700).listitem.title]</value>
+		<value>  $INFO[container(700).listitem.label]</value>			
+	</variable>
+	<variable name="recherche_infos_2">
+		<value condition="[$EXP[recherche_est_un_film] | $EXP[recherche_est_une_saga] | $EXP[recherche_est_une_serie] | $EXP[recherche_est_une_saison] | $EXP[recherche_est_un_episode]] + !string.isempty(container(700).listitem.year)">$INFO[container(700).listitem.year]</value>
+		<value condition="$EXP[recherche_est_un_artiste] + !string.isempty(container(700).listitem.Property(Artist_Gender))">$INFO[container(700).listitem.Property(Artist_Gender)]</value>
+		<value condition="$EXP[recherche_est_un_album] + !string.isempty(container(700).listitem.year)">$INFO[container(700).listitem.year]</value>
+		<value condition="$EXP[recherche_est_une_chanson] + !string.isempty(container(700).listitem.year)">$INFO[container(700).listitem.year]</value>
+	</variable>
+	<variable name="recherche_infos_separation_2">
+		<value condition="!string.isempty(control.getlabel(772)) + [!string.isempty(control.getlabel(773)) | !string.isempty(control.getlabel(774)) | !string.isempty(control.getlabel(775))]"> │ </value>		
+	</variable>
+	<variable name="recherche_infos_3">
+		<value condition="[$EXP[recherche_est_un_film] | $EXP[recherche_est_une_saga] | $EXP[recherche_est_une_serie] | $EXP[recherche_est_une_saison] | $EXP[recherche_est_un_episode]] + !string.isempty(container(700).listitem.premiered)">$INFO[container(700).listitem.premiered]</value>		
+		<value condition="$EXP[recherche_est_un_artiste] + !string.isempty(container(700).listitem.Property(Artist_Mood))">$INFO[container(700).listitem.Property(Artist_Mood)]</value>
+		<value condition="$EXP[recherche_est_un_album] + !string.isempty(container(700).listitem.Property(Album_Label))">$INFO[container(700).listitem.Property(Album_Label)]</value>
+		<value condition="$EXP[recherche_est_une_chanson] + !string.isempty(container(700).listitem.Album)">$INFO[container(700).listitem.Album]</value>
+	</variable>
+	<variable name="recherche_infos_separation_3">
+		<value condition="!string.isempty(control.getlabel(773)) + [!string.isempty(control.getlabel(774)) | !string.isempty(control.getlabel(775))]"> │ </value>		
+	</variable>	
+	<variable name="recherche_infos_4">
+		<value condition="$EXP[recherche_est_un_film] + !string.isempty(container(700).listitem.duration) + !string.isequal(container(700).listitem.duration(hh:mm),00:00) + !string.isequal(container(700).listitem.duration(hh:mm),00:01) + !string.isequal(container(700).listitem.duration(hh:mm),00:02)">$INFO[container(700).listitem.duration(hh:mm)]</value>
+		<value condition="$EXP[recherche_est_un_episode] + !string.isempty(container(700).listitem.season)">$LOCALIZE[31205] $INFO[container(700).listitem.season] │ $LOCALIZE[31204] $INFO[container(700).listitem.Episode]</value>
+		<value condition="$EXP[recherche_est_une_serie] + !string.isempty(container(700).listitem.season)">$INFO[container(700).listitem.season] $LOCALIZE[31193] │ $INFO[container(700).listitem.Property(NumEpisodes)] $LOCALIZE[31194]</value>	
+		<value condition="$EXP[recherche_est_une_saison] + !string.isempty(container(700).listitem.Episode)">$INFO[container(700).listitem.Episode] $LOCALIZE[31194]</value>
+		<value condition="$EXP[recherche_est_un_artiste] + !string.isempty(container(700).listitem.Property(Artist_Born))">$INFO[container(700).listitem.Property(Artist_Born)]</value>
+		<value condition="$EXP[recherche_est_un_album] + !string.isempty(container(700).listitem.Artist)">$INFO[container(700).listitem.Artist]</value>
+		<value condition="$EXP[recherche_est_une_chanson] + !string.isempty(container(700).listitem.AlbumArtist)">$INFO[container(700).listitem.AlbumArtist]</value>
+	</variable>
+	<variable name="recherche_infos_separation_4">
+		<value condition="!string.isempty(control.getlabel(774)) + !string.isempty(control.getlabel(775))"> │ </value>		
+	</variable>	
+	<variable name="recherche_infos_5">
+		<value condition="$EXP[recherche_est_un_episode] + !string.isempty(container(700).listitem.duration) + !string.isequal(container(700).listitem.duration(hh:mm),00:00) + !string.isequal(container(700).listitem.duration(hh:mm),00:01) + !string.isequal(container(700).listitem.duration(hh:mm),00:02)">$INFO[container(700).listitem.duration(hh:mm)]</value>
+		<value condition="$EXP[recherche_est_une_serie] + !string.isempty(container(700).listitem.duration) + !string.isequal(container(700).listitem.duration(hh:mm),00:00) + !string.isequal(container(700).listitem.duration(hh:mm),00:01) + !string.isequal(container(700).listitem.duration(hh:mm),00:02)">$INFO[container(700).listitem.duration(hh:mm)]</value>
+		<value condition="$EXP[recherche_est_une_saison] + !string.isempty(container(700).listitem.duration) + !string.isequal(container(700).listitem.duration(hh:mm),00:00) + !string.isequal(container(700).listitem.duration(hh:mm),00:01) + !string.isequal(container(700).listitem.duration(hh:mm),00:02)">$INFO[container(700).listitem.duration(hh:mm)]</value>
+		<value condition="$EXP[recherche_est_un_artiste] + !string.isempty(container(700).listitem.Property(Artist_Died))">$INFO[container(700).listitem.Property(Artist_Died)]</value>
+	</variable>	
+	<variable name="recherche_infos_6">
+		<value condition="[$EXP[recherche_est_un_film] | $EXP[recherche_est_une_saga] | $EXP[recherche_est_une_serie] | $EXP[recherche_est_une_saison] | $EXP[recherche_est_un_episode] | window.isvisible(MyPVRRecordings.xml)] + !string.isempty(container(700).listitem.genre)">$INFO[container(700).listitem.genre]</value>
+		<value condition="$EXP[recherche_est_un_artiste] + !string.isempty(container(700).listitem.Property(Artist_Style))">$INFO[container(700).listitem.Property(Artist_Style)]</value>
+		<value condition="$EXP[recherche_est_un_album] + !string.isempty(container(700).listitem.genre)">$INFO[container(700).listitem.genre]</value>
+		<value condition="$EXP[recherche_est_une_chanson] + !string.isempty(container(700).listitem.TrackNumber)">$LOCALIZE[554] $INFO[container(700).listitem.TrackNumber] │ $INFO[container(700).listitem.duration]</value>
+	</variable>	
+	
+	
 	
 	</includes>
