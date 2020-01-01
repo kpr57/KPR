@@ -906,6 +906,8 @@
 		<height>390</height>
 		<onleft>1000</onleft>
 		<onback>control.setFocus($PARAM[id],0,absolute)</onback>		
+		<onclick condition="$EXP[est_une_chanson] + skin.hassetting(chanson_plein_ecran)">alarmclock(a5,action(fullscreen),00:01,silent)</onclick>
+		<onclick condition="$EXP[est_une_chanson] + skin.hassetting(chanson_plein_ecran)">playmedia($ESCINFO[ListItem.FileNameAndPath])</onclick>		
 		<preloaditems>2</preloaditems>
 		<scrolltime tween="cubic" easing="out">500</scrolltime>
 		<orientation>horizontal</orientation>	
@@ -1136,6 +1138,8 @@
 		<height>520</height>
 		<onleft>1000</onleft>
 		<onback>control.setFocus($PARAM[id],0,absolute)</onback>		
+		<onclick condition="$EXP[est_une_chanson] + skin.hassetting(chanson_plein_ecran)">alarmclock(a5,action(fullscreen),00:01,silent)</onclick>
+		<onclick condition="$EXP[est_une_chanson] + skin.hassetting(chanson_plein_ecran)">playmedia($ESCINFO[ListItem.FileNameAndPath])</onclick>		
 		<preloaditems>2</preloaditems>
 		<scrolltime tween="cubic" easing="out">500</scrolltime>
 		<orientation>horizontal</orientation>	
@@ -1327,6 +1331,8 @@
 		<height>410</height>
 		<onleft>1000</onleft>
 		<onback>control.setFocus($PARAM[id],0,absolute)</onback>		
+		<onclick condition="$EXP[est_une_chanson] + skin.hassetting(chanson_plein_ecran)">alarmclock(a5,action(fullscreen),00:01,silent)</onclick>
+		<onclick condition="$EXP[est_une_chanson] + skin.hassetting(chanson_plein_ecran)">playmedia($ESCINFO[ListItem.FileNameAndPath])</onclick>		
 		<preloaditems>2</preloaditems>
 		<scrolltime tween="cubic" easing="out">500</scrolltime>
 		<orientation>horizontal</orientation>	
@@ -1533,6 +1539,8 @@
 		<height>400</height>
 		<onleft>1000</onleft>
 		<onback>control.setFocus($PARAM[id],0,absolute)</onback>		
+		<onclick condition="$EXP[est_une_chanson] + skin.hassetting(chanson_plein_ecran)">alarmclock(a5,action(fullscreen),00:01,silent)</onclick>
+		<onclick condition="$EXP[est_une_chanson] + skin.hassetting(chanson_plein_ecran)">playmedia($ESCINFO[ListItem.FileNameAndPath])</onclick>		
 		<preloaditems>2</preloaditems>
 		<scrolltime tween="cubic" easing="out">500</scrolltime>
 		<orientation>horizontal</orientation>	
@@ -1724,6 +1732,8 @@
 		<height>170</height>
 		<onleft>1000</onleft>
 		<onback>control.setFocus($PARAM[id],0,absolute)</onback>		
+		<onclick condition="$EXP[est_une_chanson] + skin.hassetting(chanson_plein_ecran)">alarmclock(a5,action(fullscreen),00:01,silent)</onclick>
+		<onclick condition="$EXP[est_une_chanson] + skin.hassetting(chanson_plein_ecran)">playmedia($ESCINFO[ListItem.FileNameAndPath])</onclick>		
 		<preloaditems>2</preloaditems>
 		<scrolltime tween="cubic" easing="out">500</scrolltime>
 		<orientation>horizontal</orientation>	
@@ -3440,6 +3450,7 @@
 	</variable>
 	<variable name="legende_infos">
 		<value condition="control.hasfocus(18)">$LOCALIZE[20153]</value>
+		<value condition="control.hasfocus(809)">$LOCALIZE[31357]</value>
 		<value condition="[control.hasfocus(15) | control.hasfocus(17)] + window.isvisible(movieinformation)">$LOCALIZE[31245]</value>
 		<value condition="control.hasfocus(8) + window.isvisible(MyPVRRecordings.xml)">$LOCALIZE[31312]</value>
 		<value condition="control.hasfocus(19) + window.isvisible(movieinformation)">$LOCALIZE[31246]</value>

@@ -2,6 +2,8 @@
 <window>	
 	<!--  A FAIRE IMPERATIVEMENT 
 	
+	Mettre un bouton lecture dans les infos si option "afficher les informations" par défaut dans Kodi.
+	Creer un nom de dossier avec des virgules contenant des videos pour voir le probleme.
 		
 	-->	
 	
@@ -281,7 +283,6 @@
 		<param name="id" value="60109"/>
 	</include>
 	</control>
-		
 	
 	<control type="group">																														<description>menu principal</description>
 		<animation effect="slide" end="-450,0" time="400" condition="string.isempty(window(home).property(parametres_menu)) + !control.hasfocus(1000) + !control.hasfocus(111) + !control.hasfocus(112) + !control.hasfocus(113) + !skin.hassetting(menu_icones)">conditional</animation>
@@ -853,9 +854,6 @@
 		
 	</control>
 	</control>
-	
-	
-	
 
 	<control type="grouplist" id="1001">																										<description>page accueil</description>
 		<visible>string.isequal(window(home).property(menu),home)</visible>
@@ -886,6 +884,9 @@
 		<param name="id" value="1103"/>
 		<param name="icone1" value="menus/recherche.png"/>
 		<param name="icone2" value="menus/recherche.png"/>
+		<param name="onfocus" value="skin.setstring(temp,)"/>
+		<param name="onclick" value="setproperty(recherche,1,home)"/>
+		<param name="onclick2" value="skin.setstring(temp)"/>
 		<param name="ondown" value="1111"/>		
 	</include>
 	<include content="bouton_icone_interface">
@@ -1209,6 +1210,9 @@
 		<param name="id" value="2103"/>
 		<param name="icone1" value="menus/recherche.png"/>
 		<param name="icone2" value="menus/recherche.png"/>
+		<param name="onfocus" value="skin.setstring(temp,)"/>
+		<param name="onclick" value="setproperty(recherche,1,home)"/>
+		<param name="onclick2" value="skin.setstring(temp)"/>
 		<param name="ondown" value="2111"/>		
 	</include>
 	<include content="bouton_texte_interface">
@@ -1381,6 +1385,9 @@
 		<param name="id" value="3103"/>
 		<param name="icone1" value="menus/recherche.png"/>
 		<param name="icone2" value="menus/recherche.png"/>
+		<param name="onfocus" value="skin.setstring(temp,)"/>
+		<param name="onclick" value="setproperty(recherche,1,home)"/>
+		<param name="onclick2" value="skin.setstring(temp)"/>
 		<param name="ondown" value="3111"/>		
 	</include>
 	<include content="bouton_texte_interface">
@@ -1547,6 +1554,9 @@
 		<param name="id" value="4103"/>
 		<param name="icone1" value="menus/recherche.png"/>
 		<param name="icone2" value="menus/recherche.png"/>
+		<param name="onfocus" value="skin.setstring(temp,)"/>
+		<param name="onclick" value="setproperty(recherche,1,home)"/>
+		<param name="onclick2" value="skin.setstring(temp)"/>
 		<param name="ondown" value="4111"/>		
 	</include>
 	<include content="bouton_texte_interface">
@@ -1720,6 +1730,9 @@
 		<param name="id" value="5103"/>
 		<param name="icone1" value="menus/recherche.png"/>
 		<param name="icone2" value="menus/recherche.png"/>
+		<param name="onfocus" value="skin.setstring(temp,)"/>
+		<param name="onclick" value="setproperty(recherche,1,home)"/>
+		<param name="onclick2" value="skin.setstring(temp)"/>
 		<param name="ondown" value="5111"/>		
 	</include>
 	<include content="bouton_icone_interface">
@@ -1874,6 +1887,9 @@
 		<param name="icone2" value="menus/recherche.png"/>
 		<param name="onfocus" value="cancelalarm(actualiser_widget_tv,silent)"/>
 		<param name="onfocus2" value="alarmclock(actualiser_widget_tv,activatewindow(1299),00:02,loop,silent)"/>
+		<param name="onfocus3" value="skin.setstring(temp,)"/>
+		<param name="onclick" value="setproperty(recherche,1,home)"/>
+		<param name="onclick2" value="skin.setstring(temp)"/>
 		<param name="ondown" value="6111"/>		
 	</include>
 	<include content="bouton_texte_interface">
@@ -2594,6 +2610,9 @@
 		<param name="id" value="7103"/>
 		<param name="icone1" value="menus/recherche.png"/>
 		<param name="icone2" value="menus/recherche.png"/>
+		<param name="onfocus" value="skin.setstring(temp,)"/>
+		<param name="onclick" value="setproperty(recherche,1,home)"/>
+		<param name="onclick2" value="skin.setstring(temp)"/>
 		<param name="ondown" value="7111"/>		
 	</include>
 	<include content="bouton_texte_interface">
@@ -3246,6 +3265,9 @@
 		<param name="id" value="9103"/>
 		<param name="icone1" value="menus/recherche.png"/>
 		<param name="icone2" value="menus/recherche.png"/>
+		<param name="onfocus" value="skin.setstring(temp,)"/>
+		<param name="onclick" value="setproperty(recherche,1,home)"/>
+		<param name="onclick2" value="skin.setstring(temp)"/>
 		<param name="ondown" value="9002"/>		
 	</include>					
 	<include content="bouton_icone_interface">
@@ -3430,6 +3452,9 @@
 		<param name="id" value="1000012"/>
 		<param name="icone1" value="menus/recherche.png"/>
 		<param name="icone2" value="menus/recherche.png"/>
+		<param name="onfocus" value="skin.setstring(temp,)"/>
+		<param name="onclick" value="setproperty(recherche,1,home)"/>
+		<param name="onclick2" value="skin.setstring(temp)"/>
 		<param name="ondown" value="1000002"/>		
 	</include>					
 	<include content="bouton_icone_interface">

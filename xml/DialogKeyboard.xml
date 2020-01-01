@@ -3,14 +3,24 @@
 	<backgroundcolor>00X000000</backgroundcolor>
 	<include>animation_dialogue</include>
 	<onload condition="!System.HasAddon(plugin.program.autocompletion)">InstallAddon(plugin.program.autocompletion)</onload>
+	<onunload>clearproperty(recherche,home)</onunload>
+	<onunload condition="String.isequal(window(home).property(recherche),1)">activatewindow(1296)</onunload>
 	<defaultcontrol always="true">300</defaultcontrol>	
 <controls>
 	<include>image_fond</include>
 	<control type="label" id="311">																												<description>titre</description>	
 		<height>140</height>
 		<align>center</align>
-		<font>titre</font>				
-	</control>	
+		<font>titre</font>	
+		<visible>!String.isequal(window(home).property(recherche),1)</visible>
+	</control>
+	<control type="label">																														<description>titre si recherche</description>	
+		<height>140</height>
+		<align>center</align>
+		<font>titre</font>
+		<label>$LOCALIZE[16017]</label>
+		<visible>String.isequal(window(home).property(recherche),1)</visible>
+	</control>		
 	<include content="barre_separation_horizontale">																							<description>barre de separation horizontale</description>
 		<param name="left" value="50"/> 
 		<param name="right" value="50"/>
@@ -461,7 +471,8 @@
 		<radioposy>10</radioposy>
 		<radiowidth>40</radiowidth>
 		<radioheight>40</radioheight>
-	    <ondown></ondown>
+	    <onclick>clearproperty(recherche,home)</onclick>
+		<ondown></ondown>
 		<onup></onup>
 	<include>bouton_clavier</include>
 	</control>

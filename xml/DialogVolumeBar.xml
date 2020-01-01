@@ -10,7 +10,7 @@
 		<height>100</height>
 		<aspectratio>stretch</aspectratio>
 		<texture colordiffuse="$VAR[couleur_OSD]">commun/texture.png</texture>
-		<visible>!window.isvisible(VideoOSD.xml) + !player.Paused + !Player.Forwarding + !Player.Rewinding + !player.showinfo</visible>
+		<visible>window.isvisible(fullscreenvideo) + !window.isvisible(VideoOSD.xml) + !player.Paused + !Player.Forwarding + !Player.Rewinding + !player.showinfo</visible>
 	</control>
 	<control type="group">
 		<centerleft>50%</centerleft>

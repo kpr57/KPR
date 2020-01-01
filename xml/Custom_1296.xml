@@ -1,0 +1,792 @@
+<?xml version="1.0" encoding="utf-8"?>
+<window id="1296">
+	<backgroundcolor>00X000000</backgroundcolor>
+	<onload>alarmclock(alarme_recherche,control.setfocus(500),00:01,silent)</onload>
+	<onload>alarmclock(alarme_recherche2,noop,00:01,silent)</onload>
+	<onunload>control.setfocus(700)</onunload>
+	<onunload>clearproperty(cible_recherche,home)</onunload>
+	<onunload>clearproperty(option_recherche,home)</onunload>
+	<onunload>cancelalarm(alarme_recherche,silent)</onunload>
+<controls>	
+	<control type="group">																														<description>faux panels pour verifier si vide ou pas</description>
+		<left>-3000</left>	
+	<include content="widget_fake">
+		<param name="chemin" value="videodb://movies/titles/?xsp=%7B%22rules%22%3A%7B%22or%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22$INFO[skin.string(temp)]%22%5D%7D%2C%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22[LOWERCASE]$INFO[skin.string(temp)][/LOWERCASE]%22%5D%7D%2C%0A%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22[UPPERCASE]$INFO[skin.string(temp)][/UPPERCASE]%22%5D%7D%2C%0A%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22[CAPITALIZE]$INFO[skin.string(temp)][/CAPITALIZE]%22%5D%7D%0A%5D%7D%2C%22type%22%3A%22movies%22%7D"/>
+		<param name="id" value="120"/>
+	</include>
+	<include content="widget_fake">
+		<param name="chemin" value="videodb://movies/titles/?xsp=%7B%22rules%22%3A%7B%22or%22%3A%5B%7B%22field%22%3A%22plot%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22$INFO[skin.string(temp)]%22%5D%7D%2C%7B%22field%22%3A%22plot%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22[LOWERCASE]$INFO[skin.string(temp)][/LOWERCASE]%22%5D%7D%2C%0A%7B%22field%22%3A%22plot%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22[UPPERCASE]$INFO[skin.string(temp)][/UPPERCASE]%22%5D%7D%2C%0A%7B%22field%22%3A%22plot%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22[CAPITALIZE]$INFO[skin.string(temp)][/CAPITALIZE]%22%5D%7D%0A%5D%7D%2C%22type%22%3A%22movies%22%7D"/>
+		<param name="id" value="121"/>
+	</include>
+	<include content="widget_fake">
+		<param name="chemin" value="videodb://tvshows/titles/?xsp=%7B%22rules%22%3A%7B%22or%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22$INFO[skin.string(temp)]%22%5D%7D%2C%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22[LOWERCASE]$INFO[skin.string(temp)][/LOWERCASE]%22%5D%7D%2C%0A%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22[UPPERCASE]$INFO[skin.string(temp)][/UPPERCASE]%22%5D%7D%2C%0A%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22[CAPITALIZE]$INFO[skin.string(temp)][/CAPITALIZE]%22%5D%7D%0A%5D%7D%2C%22type%22%3A%22tvshows%22%7D"/>
+		<param name="id" value="122"/>
+	</include>
+	<include content="widget_fake">
+		<param name="chemin" value="videodb://tvshows/titles/?xsp=%7B%22rules%22%3A%7B%22or%22%3A%5B%7B%22field%22%3A%22plot%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22$INFO[skin.string(temp)]%22%5D%7D%2C%7B%22field%22%3A%22plot%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22[LOWERCASE]$INFO[skin.string(temp)][/LOWERCASE]%22%5D%7D%2C%0A%7B%22field%22%3A%22plot%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22[UPPERCASE]$INFO[skin.string(temp)][/UPPERCASE]%22%5D%7D%2C%0A%7B%22field%22%3A%22plot%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22[CAPITALIZE]$INFO[skin.string(temp)][/CAPITALIZE]%22%5D%7D%0A%5D%7D%2C%22type%22%3A%22tvshows%22%7D"/>
+		<param name="id" value="123"/>
+	</include>
+	<include content="widget_fake">
+		<param name="chemin" value="videodb://recentlyaddedepisodes/?xsp=%7B%22rules%22%3A%7B%22or%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22$INFO[skin.string(temp)]%22%5D%7D%2C%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22[LOWERCASE]$INFO[skin.string(temp)][/LOWERCASE]%22%5D%7D%2C%0A%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22[UPPERCASE]$INFO[skin.string(temp)][/UPPERCASE]%22%5D%7D%2C%0A%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22[CAPITALIZE]$INFO[skin.string(temp)][/CAPITALIZE]%22%5D%7D%0A%5D%7D%2C%22type%22%3A%22episodes%22%7D"/>
+		<param name="id" value="124"/>
+	</include>
+	<include content="widget_fake">
+		<param name="chemin" value="videodb://recentlyaddedepisodes/?xsp=%7B%22rules%22%3A%7B%22or%22%3A%5B%7B%22field%22%3A%22plot%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22$INFO[skin.string(temp)]%22%5D%7D%2C%7B%22field%22%3A%22plot%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22[LOWERCASE]$INFO[skin.string(temp)][/LOWERCASE]%22%5D%7D%2C%0A%7B%22field%22%3A%22plot%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22[UPPERCASE]$INFO[skin.string(temp)][/UPPERCASE]%22%5D%7D%2C%0A%7B%22field%22%3A%22plot%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22[CAPITALIZE]$INFO[skin.string(temp)][/CAPITALIZE]%22%5D%7D%0A%5D%7D%2C%22type%22%3A%22episodes%22%7D"/>
+		<param name="id" value="125"/>
+	</include>
+	<include content="widget_fake">
+		<param name="chemin" value="videodb://movies/titles/?xsp=%7B%22rules%22%3A%7B%22or%22%3A%5B%7B%22field%22%3A%22actor%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22$INFO[skin.string(temp)]%22%5D%7D%2C%7B%22field%22%3A%22actor%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22[LOWERCASE]$INFO[skin.string(temp)][/LOWERCASE]%22%5D%7D%2C%0A%7B%22field%22%3A%22actor%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22[UPPERCASE]$INFO[skin.string(temp)][/UPPERCASE]%22%5D%7D%2C%0A%7B%22field%22%3A%22actor%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22[CAPITALIZE]$INFO[skin.string(temp)][/CAPITALIZE]%22%5D%7D%0A%5D%7D%2C%22type%22%3A%22movies%22%7D"/>
+		<param name="id" value="126"/>
+	</include>
+	<include content="widget_fake">
+		<param name="chemin" value="videodb://tvshows/titles/?xsp=%7B%22rules%22%3A%7B%22or%22%3A%5B%7B%22field%22%3A%22actor%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22$INFO[skin.string(temp)]%22%5D%7D%2C%7B%22field%22%3A%22actor%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22[LOWERCASE]$INFO[skin.string(temp)][/LOWERCASE]%22%5D%7D%2C%0A%7B%22field%22%3A%22actor%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22[UPPERCASE]$INFO[skin.string(temp)][/UPPERCASE]%22%5D%7D%2C%0A%7B%22field%22%3A%22actor%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22[CAPITALIZE]$INFO[skin.string(temp)][/CAPITALIZE]%22%5D%7D%0A%5D%7D%2C%22type%22%3A%22tvshows%22%7D"/>
+		<param name="id" value="127"/>
+	</include>
+	<include content="widget_fake">
+		<param name="chemin" value="musicdb://artists/?xsp=%7B%22rules%22%3A%7B%22or%22%3A%5B%7B%22field%22%3A%22artist%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22$INFO[skin.string(temp)]%22%5D%7D%2C%7B%22field%22%3A%22artist%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22[LOWERCASE]$INFO[skin.string(temp)][/LOWERCASE]%22%5D%7D%2C%0A%7B%22field%22%3A%22artist%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22[UPPERCASE]$INFO[skin.string(temp)][/UPPERCASE]%22%5D%7D%2C%0A%7B%22field%22%3A%22artist%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22[CAPITALIZE]$INFO[skin.string(temp)][/CAPITALIZE]%22%5D%7D%5D%7D%2C%22type%22%3A%22artists%22%7D"/>
+		<param name="id" value="128"/>
+	</include>
+	<include content="widget_fake">
+		<param name="chemin" value="musicdb://albums/?xsp=%7B%22rules%22%3A%7B%22or%22%3A%5B%7B%22field%22%3A%22album%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22$INFO[skin.string(temp)]%22%5D%7D%2C%7B%22field%22%3A%22album%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22[LOWERCASE]$INFO[skin.string(temp)][/LOWERCASE]%22%5D%7D%2C%0A%7B%22field%22%3A%22album%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22[UPPERCASE]$INFO[skin.string(temp)][/UPPERCASE]%22%5D%7D%2C%0A%7B%22field%22%3A%22album%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22[CAPITALIZE]$INFO[skin.string(temp)][/CAPITALIZE]%22%5D%7D%5D%7D%2C%22type%22%3A%22albums%22%7D"/>
+		<param name="id" value="129"/>
+	</include>
+	<include content="widget_fake">
+		<param name="chemin" value="musicdb://songs/?xsp=%7B%22rules%22%3A%7B%22or%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22$INFO[skin.string(temp)]%22%5D%7D%2C%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22[LOWERCASE]$INFO[skin.string(temp)][/LOWERCASE]%22%5D%7D%2C%0A%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22[UPPERCASE]$INFO[skin.string(temp)][/UPPERCASE]%22%5D%7D%2C%0A%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22[CAPITALIZE]$INFO[skin.string(temp)][/CAPITALIZE]%22%5D%7D%5D%7D%2C%22type%22%3A%22songs%22%7D"/>
+		<param name="id" value="130"/>
+	</include>	
+	<include content="widget_fake">
+		<param name="chemin" value="$INFO[window(home).property(option_recherche)]"/>
+		<param name="id" value="701"/>
+	</include>	
+	</control>
+	<include>image_fond</include>
+	<control type="group">																														<description>fanarts</description>
+		<animation effect="fade" start="100" end="0" time="100" condition="window.isvisible(selectdialog) | window.isvisible(contextmenu)" reversible="false">Conditional</animation>
+		<animation effect="fade" start="0" end="100" delay="100" time="100" condition="!window.isvisible(selectdialog) + !window.isvisible(contextmenu)" reversible="false">Conditional</animation>
+	<control type="image" id="703">																												<description>fanart arriere plan</description>
+		<fadetime>200</fadetime>
+		<aspectratio>scale</aspectratio>
+		<texture background="true" fallback="empty.jpg">$INFO[container(700).listitem.art(fanart)]</texture>		
+		<animation effect="fade" time="200">visiblechange</animation>
+		<animation effect="fade" start="0" end="100" time="1000" reversible="false">windowopen</animation>
+		<animation effect="fade" start="100" end="0" time="1" reversible="false">windowclose</animation>
+		<visible>!system.hasalarm(alarme_recherche2) + [!$EXP[recherche_est_un_episode] | $EXP[recherche_est_une_serie]] + !string.isempty(container(700).listitem.art(fanart)) + !string.endswith(container(700).container(700).listitem.art(fanart),none)</visible>
+	</control>
+	<control type="image" id="704">																												<description>fanart arriere plan</description>
+		<fadetime>200</fadetime>
+		<aspectratio>scale</aspectratio>
+		<texture background="true">$INFO[container(700).listitem.art(thumb)]</texture>		
+		<animation effect="fade" time="200">visiblechange</animation>
+		<animation effect="fade" start="0" end="100" time="1000" reversible="false">windowopen</animation>
+		<animation effect="fade" start="100" end="0" time="1" reversible="false">windowclose</animation>
+		<visible>!system.hasalarm(alarme_recherche2) + [$EXP[recherche_est_un_episode] + !$EXP[recherche_est_une_serie]] + !string.isempty(container(700).listitem.art(thumb)) + !string.endswith(container(700).listitem.art(thumb),none)</visible>
+	</control>
+	<control type="image">																														<description>fanart arriere plan</description>
+		<fadetime>200</fadetime>
+		<aspectratio>scale</aspectratio>
+		<texture background="true" fallback="extras/fallback/film.jpg">$INFO[skin.string(arriere_plan_video)]</texture>		
+		<animation effect="fade" time="200">visiblechange</animation>
+		<animation effect="fade" start="0" end="100" time="1000" reversible="false">windowopen</animation>
+		<animation effect="fade" start="100" end="0" time="1" reversible="false">windowclose</animation>
+		<visible>system.hasalarm(alarme_recherche2) | [[!control.isvisible(703) + !control.isvisible(704)] | [String.isequal(Control.GetLabel(703),empty.jpg) + !control.isvisible(704)]]</visible>
+	</control>
+	</control>
+	<control type="image">																														<description>masque arriere plan</description>
+		<aspectratio>scale</aspectratio>
+		<texture colordiffuse="ebffffff">commun/fond.png</texture>				
+	</control>
+	<control type="group">																														<description>partie du haut + liste</description>	
+		<visible>!string.isempty(window(home).property(option_recherche))</visible>
+		<animation effect="fade" start="99" end="100" delay="1000" time="1">visible</animation>		
+		<animation effect="fade" start="100" end="0" time="100" condition="window.isvisible(musicinformation) | window.isvisible(movieinformation) | window.isvisible(selectdialog) | window.isvisible(contextmenu)" reversible="false">Conditional</animation>
+		<animation effect="fade" start="0" end="100" delay="100" time="100" condition="!window.isvisible(musicinformation) + !window.isvisible(movieinformation) + !window.isvisible(selectdialog) + !window.isvisible(contextmenu)" reversible="false">Conditional</animation>
+	<control type="label">																														<description>horloge</description>
+		<right>15</right>
+		<height>116</height>			
+		<font>menu</font>
+		<textcolor>80ffffff</textcolor>
+		<align>right</align>
+		<label>$INFO[system.time(hh:mm)]</label>		
+	</control>		
+	<control type="label">																														<description>nombre elements</description>	
+		<left>1070</left>
+		<top>150</top>
+		<height>50</height>
+		<textcolor>80ffffff</textcolor>
+		<font>texte_resume</font>
+		<label>$INFO[container(700).numitems] $LOCALIZE[31036] │ $LOCALIZE[31276] $INFO[container(700).currentitem]</label>
+	</control>
+	<control type="image">																														<description>notation</description>
+		<left>1070</left>
+		<top>95</top>		
+		<width>151</width>
+		<height>32</height>
+		<aspectratio align="center">keep</aspectratio>
+		<texture colordiffuse="80ffffff">flags/rating/$INFO[container(700).listitem.rating].png</texture>
+		<visible>!string.isempty(container(700).listitem.rating)</visible>
+	</control>	
+	<control type="label">																														<description>methode de tri</description>	
+		<right>15</right>
+		<top>90</top>
+		<height>50</height>
+		<align>right</align>
+		<textcolor>80ffffff</textcolor>
+		<font>texte_resume</font>
+		<label>$LOCALIZE[31275] $LOCALIZE[31353] │ $LOCALIZE[21430]</label>
+	</control>
+	<control type="image">																														<description>3 points titre</description>
+		<top>25</top>		
+		<left>60</left>
+		<height>25</height>
+		<width>10</width>
+		<aspectratio>keep</aspectratio>
+		<texture background="true" colordiffuse="80ffffff">commun/3points.png</texture>
+	</control>
+	<control type="label">																														<description>titre</description>	
+		<top>-20</top>
+		<left>90</left>
+		<width>1620</width>
+		<height>116</height>
+		<textcolor>80ffffff</textcolor>
+		<font>titre</font>
+		<label>$VAR[recherche_titre]$VAR[recherche_titre_bis]</label>
+	</control>	
+	<control type="image">																														<description>fond terme recherche</description>		
+		<top>80</top>
+		<left>-20</left>
+		<width>960</width>
+		<height>50</height>	
+		<texture colordiffuse="$VAR[gris]" border="20">commun/bouton.png</texture>
+	</control>
+	<control type="image">																														<description>icone terme recherche</description>			
+		<top>80</top>
+		<left>-10</left>
+		<width>80</width>
+		<height>50</height>			
+		<texture colordiffuse="$VAR[couleur_dominante]">menus/recherche.png</texture>
+	</control>		
+	<control type="label">																														<description>terme recherche</description>	
+		<top>80</top>
+		<left>70</left>
+		<width>868</width>
+		<height>50</height>	
+		<textcolor>80ffffff</textcolor>
+		<font>titre</font>
+		<label>$INFO[skin.string(temp)]</label>
+		<scroll>true</scroll>
+	</control>
+	<include content="barre_separation_horizontale">																							<description>barre de separation horizontale</description>
+		<param name="left" value="20"/> 
+		<param name="right" value="20"/>
+		<param name="bottom" value="940"/>		
+	</include>		
+	<control type="image">																														<description>fond liste</description>		
+		<top>200</top>
+		<right>0</right>
+		<width>850</width>	
+		<texture colordiffuse="20ffffff">commun/texture.png</texture>
+	</control>	
+	<control type="group">																														<description>lignes si liste incomplete</description>	
+	<control type="image">
+		<right>15</right>
+		<height>1</height>
+		<width>780</width>
+		<top>599</top>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="20000000">commun/texture.png</texture>
+		<visible>integer.isequal(container(701).NumAllItems,1) | integer.isequal(container(701).NumAllItems,0)</visible>
+	</control>
+	<control type="image">
+		<right>15</right>
+		<height>1</height>
+		<width>780</width>
+		<top>559</top>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="20000000">commun/texture.png</texture>
+		<visible>integer.isequal(container(701).NumAllItems,2)</visible>
+	</control>
+	<control type="image">
+		<right>15</right>
+		<height>1</height>
+		<width>780</width>
+		<top>519</top>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="20000000">commun/texture.png</texture>
+		<visible>integer.isequal(container(701).NumAllItems,3)</visible>
+	</control>
+	<control type="image">
+		<right>15</right>
+		<height>1</height>
+		<width>780</width>
+		<top>479</top>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="20000000">commun/texture.png</texture>
+		<visible>integer.isequal(container(701).NumAllItems,4)</visible>
+	</control>
+	<control type="image">
+		<right>15</right>
+		<height>1</height>
+		<width>780</width>
+		<top>439</top>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="20000000">commun/texture.png</texture>
+		<visible>integer.isequal(container(701).NumAllItems,5)</visible>
+	</control>
+	<control type="image">
+		<right>15</right>
+		<height>1</height>
+		<width>780</width>
+		<top>399</top>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="20000000">commun/texture.png</texture>
+		<visible>integer.isequal(container(701).NumAllItems,6)</visible>
+	</control>
+	<control type="image">
+		<right>15</right>
+		<height>1</height>
+		<width>780</width>
+		<top>359</top>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="20000000">commun/texture.png</texture>
+		<visible>integer.isequal(container(701).NumAllItems,7)</visible>
+	</control>
+	<control type="image">
+		<right>15</right>
+		<height>1</height>
+		<width>780</width>
+		<top>319</top>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="20000000">commun/texture.png</texture>
+		<visible>integer.isequal(container(701).NumAllItems,8)</visible>
+	</control>
+	<control type="image">
+		<right>15</right>
+		<height>1</height>
+		<width>780</width>
+		<top>279</top>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="20000000">commun/texture.png</texture>
+		<visible>integer.isequal(container(701).NumAllItems,9)</visible>
+	</control>
+	<control type="image">
+		<right>15</right>
+		<height>1</height>
+		<width>780</width>
+		<top>239</top>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="20000000">commun/texture.png</texture>
+		<visible>integer.isequal(container(701).NumAllItems,10)</visible>
+	</control>
+	</control>
+	<control type="group">																														<description>liste</description>	
+		<animation effect="slide" end="0,400" condition="integer.isequal(container(701).NumAllItems,1) | integer.isequal(container(701).NumAllItems,0)">conditional</animation>
+		<animation effect="slide" end="0,360" condition="integer.isequal(container(701).NumAllItems,2)">conditional</animation>
+		<animation effect="slide" end="0,320" condition="integer.isequal(container(701).NumAllItems,3)">conditional</animation>
+		<animation effect="slide" end="0,280" condition="integer.isequal(container(701).NumAllItems,4)">conditional</animation>
+		<animation effect="slide" end="0,240" condition="integer.isequal(container(701).NumAllItems,5)">conditional</animation>
+		<animation effect="slide" end="0,200" condition="integer.isequal(container(701).NumAllItems,6)">conditional</animation>
+		<animation effect="slide" end="0,160" condition="integer.isequal(container(701).NumAllItems,7)">conditional</animation>
+		<animation effect="slide" end="0,120" condition="integer.isequal(container(701).NumAllItems,8)">conditional</animation>
+		<animation effect="slide" end="0,80" condition="integer.isequal(container(701).NumAllItems,9)">conditional</animation>
+		<animation effect="slide" end="0,40" condition="integer.isequal(container(701).NumAllItems,10)">conditional</animation>
+	<control type="panel" id="700">			
+		<top>200</top>
+		<right>0</right>
+		<width>850</width>
+		<height>880</height>		
+		<onright>60</onright>
+		<onleft>200</onleft>
+		<onup>1000</onup>
+		<pagecontrol>60</pagecontrol>
+		<scrolltime tween="cubic" easing="out">500</scrolltime>		
+	<itemlayout height="80">					
+	<control type="image">
+		<right>15</right>
+		<height>1</height>
+		<width>780</width>		
+		<bottom>0</bottom>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="20000000">commun/texture.png</texture>		
+	</control>
+	<control type="label">
+		<right>15</right>
+		<top>0</top>
+		<width>780</width>		
+		<bottom>1</bottom>
+		<textoffsetx>1</textoffsetx>
+		<label>$VAR[recherche_infos_1]</label>
+	</control>		
+	<control type="image">
+		<top>25</top>
+		<left>15</left>
+		<width>30</width>
+		<height>30</height>
+		<aspectratio>stretch</aspectratio>
+		<texture>$VAR[icone_status]</texture>
+	</control>
+	</itemlayout>	
+	<focusedlayout height="80">		
+	<control type="button">
+		<onfocus condition="!String.IsEqual(listitem.icon,) + !string.EndsWith(listitem.icon,none)">setproperty(image,$INFO[listitem.icon],home)</onfocus>
+		<onfocus condition="String.IsEqual(listitem.icon,) | string.EndsWith(listitem.icon,none)">clearproperty(image,home)</onfocus>	
+		<onfocus condition="!string.isempty(listitem.title)">setproperty(label,$ESCINFO[listitem.title],home)</onfocus>
+		<onfocus condition="string.isempty(listitem.title)">setproperty(label,$ESCINFO[listitem.label],home)</onfocus>		
+	</control>	
+	<control type="image">
+		<right>15</right>
+		<top>0</top>
+		<width>780</width>		
+		<bottom>1</bottom>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="$VAR[couleur_dominante]">commun/texture.png</texture>
+	</control>
+	<control type="image">
+		<right>15</right>
+		<height>1</height>
+		<width>780</width>		
+		<bottom>0</bottom>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="20000000">commun/texture.png</texture>		
+	</control>
+	<control type="label">
+		<right>15</right>
+		<top>0</top>
+		<width>780</width>		
+		<bottom>1</bottom>
+		<textoffsetx>1</textoffsetx>
+		<textcolor>$VAR[gris]</textcolor>
+		<label>$VAR[recherche_infos_1]</label>
+		<scroll>true</scroll>	
+	</control>	
+	<control type="image">
+		<top>25</top>
+		<left>15</left>
+		<width>30</width>
+		<height>30</height>
+		<aspectratio>stretch</aspectratio>
+		<texture>$VAR[icone_status]</texture>
+	</control>
+	</focusedlayout>	
+		<content sortby="title" sortorder="ascending" target="$INFO[window(home).property(cible_recherche)]">$INFO[window(home).property(option_recherche)]</content>	
+	</control>	
+	</control>
+	<control type="group">																														<description>scrollbar</description>	
+	<control type="image">
+		<top>200</top>
+		<right>0</right>
+		<width>15</width>
+		<height>880</height>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="1affffff">commun/texture.png</texture>		
+	</control>
+	<control type="scrollbar" id="60">
+		<top>203</top>
+		<height>874</height>
+		<right>5</right>
+		<width>5</width>		
+		<onleft>700</onleft>
+		<texturesliderbackground colordiffuse="2000ffffff">commun/texture.png</texturesliderbackground>		
+		<texturesliderbar colordiffuse="4000ffffff">commun/texture.png</texturesliderbar>
+		<textureslidernib colordiffuse="ffffffff">commun/texture.png</textureslidernib>
+		<texturesliderbarfocus colordiffuse="4000ffffff">commun/texture.png</texturesliderbarfocus>
+		<textureslidernibfocus colordiffuse="$VAR[couleur_dominante]">commun/texture.png</textureslidernibfocus>
+		<showonepage>true</showonepage>
+		<visible>true</visible>
+	</control>	
+	</control>
+	<control type="group">																														<description>informations</description>		
+	<control type="image">																														<description>grande icone de gauche</description>
+		<top>180</top>
+		<height>500</height>
+		<left>400</left>
+		<right>900</right>
+		<aspectratio align="center" aligny="center">keep</aspectratio>
+		<texture background="true" border="10" fallback="defaultfile.png">$INFO[container(700).listitem.Icon]</texture>
+		<bordertexture border="10">commun/tuiles_grises.png</bordertexture>
+		<bordersize>10,0,10,10</bordersize>
+	</control>
+	<control type="image">																														<description>grande icone de gauche</description>
+		<top>180</top>
+		<height>500</height>
+		<left>400</left>
+		<right>900</right>
+		<aspectratio align="center" aligny="center">keep</aspectratio>
+		<texture background="true" border="10">defaultvideo.png</texture>
+		<bordertexture border="10">commun/tuiles_grises.png</bordertexture>
+		<bordersize>10,0,10,10</bordersize>
+		<visible>[String.IsEqual(container(700).listitem.icon,) | string.EndsWith(container(700).listitem.icon,none)]</visible>	
+	</control>
+	<control type="label">																														<description>informations</description>
+		<bottom>346</bottom>
+		<left>400</left>
+		<right>900</right>
+		<height>50</height>
+		<textcolor>80ffffff</textcolor>
+		<font>infos</font>
+		<align>center</align>		
+		<label>$VAR[recherche_infos_2]$VAR[recherche_infos_separation_2]$VAR[recherche_infos_3]$VAR[recherche_infos_separation_3]$VAR[recherche_infos_4]$VAR[recherche_infos_separation_4]$VAR[recherche_infos_5]</label>		
+	</control>
+	<include content="barre_separation_horizontale">																							<description>barre de separation horizontale</description>
+		<param name="left" value="20"/> 
+		<param name="right" value="870"/>
+		<param name="bottom" value="346"/>		
+	</include>	
+	<control type="textbox">																													<description>resume</description>		
+		<top>755</top>
+		<height>240</height>
+		<right>890</right>
+		<left>40</left>	
+		<font>infos</font>
+		<textcolor>80ffffff</textcolor>
+		<align>justify</align>
+		<label>$VAR[recherche_infos_resume]</label>	
+		<autoscroll>false</autoscroll>			
+	</control>
+	<include content="barre_separation_horizontale">																							<description>barre de separation horizontale</description>
+		<param name="left" value="20"/> 
+		<param name="right" value="870"/>
+		<param name="bottom" value="50"/>		
+	</include>		
+	<control type="label">																														<description>genre</description>
+		<bottom>0</bottom>
+		<right>870</right>
+		<left>20</left>
+		<height>50</height>
+		<font>infos</font>
+		<textcolor>80ffffff</textcolor>
+		<align>center</align>		
+		<label>$VAR[recherche_infos_6]</label>		
+	</control>	
+	</control>
+	</control>
+	<control type="group">																														<description>liste de gauche</description>
+		<left>-350</left>
+		<animation effect="slide" start="0,0" end="350,0" delay="1000" time="1" condition="!string.isempty(window(home).property(option_recherche))">conditional</animation>	
+		<animation effect="fade" start="100" end="0" time="100" condition="window.isvisible(musicinformation) | window.isvisible(movieinformation) | window.isvisible(selectdialog) | window.isvisible(contextmenu)" reversible="false">Conditional</animation>
+		<animation effect="fade" start="0" end="100" delay="100" time="100" condition="!window.isvisible(musicinformation) + !window.isvisible(movieinformation) + !window.isvisible(selectdialog) + !window.isvisible(contextmenu)" reversible="false">Conditional</animation>	
+	<control type="image">																														<description>fond liste</description>		
+		<top>144</top>
+		<width>350</width>
+		<height>583</height>		
+		<texture colordiffuse="20ffffff" border="30">commun/texture.png</texture>
+	</control>	
+	<control type="grouplist" id="200">																											<description>boutons</description>						
+		<top>144</top>		
+		<height>593</height>
+		<width>350</width>
+		<onleft>action(back)</onleft>
+		<onright>control.setfocus(700,0,absolute)</onright>
+		<itemgap>0</itemgap>
+		<orientation>vertical</orientation>
+	<control type="button" id="220">																											<description>films</description>		
+		<height>52</height>
+		<width>350</width>
+		<textoffsetx>10</textoffsetx>
+		<align>left</align>
+		<font>infos</font>
+		<label>$LOCALIZE[342]</label>
+		<label2>$INFO[container(120).numitems]</label2>		
+		<onfocus>setproperty(cible_recherche,videos,home)</onfocus>
+		<onfocus>setproperty(option_recherche,videodb://movies/titles/?xsp=%7B%22rules%22%3A%7B%22or%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22$INFO[skin.string(temp)]%22%5D%7D%2C%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22[LOWERCASE]$INFO[skin.string(temp)][/LOWERCASE]%22%5D%7D%2C%0A%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22[UPPERCASE]$INFO[skin.string(temp)][/UPPERCASE]%22%5D%7D%2C%0A%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22[CAPITALIZE]$INFO[skin.string(temp)][/CAPITALIZE]%22%5D%7D%0A%5D%7D%2C%22type%22%3A%22movies%22%7D,home)</onfocus>
+		<onclick>control.setfocus(700,0,absolute)</onclick>
+		<texturenofocus colordiffuse="00ffffff">commun/texture.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]">commun/texture.png</texturefocus>		
+		<enable>!integer.isequal(container(120).numitems,0)</enable>
+	</control>
+	<control type="image" id="2000">
+		<height>1</height>
+		<width>348</width>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="20000000">commun/texture.png</texture>
+	</control>
+	<control type="button" id="221">																											<description>resumes films</description>		
+		<height>52</height>
+		<width>350</width>
+		<textoffsetx>10</textoffsetx>
+		<align>left</align>
+		<font>infos</font>
+		<label>$LOCALIZE[31347]</label>
+		<label2>$INFO[container(121).numitems]</label2>
+		<onfocus>setproperty(cible_recherche,videos,home)</onfocus>
+		<onfocus>setproperty(option_recherche,videodb://movies/titles/?xsp=%7B%22rules%22%3A%7B%22or%22%3A%5B%7B%22field%22%3A%22plot%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22$INFO[skin.string(temp)]%22%5D%7D%2C%7B%22field%22%3A%22plot%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22[LOWERCASE]$INFO[skin.string(temp)][/LOWERCASE]%22%5D%7D%2C%0A%7B%22field%22%3A%22plot%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22[UPPERCASE]$INFO[skin.string(temp)][/UPPERCASE]%22%5D%7D%2C%0A%7B%22field%22%3A%22plot%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22[CAPITALIZE]$INFO[skin.string(temp)][/CAPITALIZE]%22%5D%7D%0A%5D%7D%2C%22type%22%3A%22movies%22%7D,home)</onfocus>
+		<onclick>control.setfocus(700,0,absolute)</onclick>
+		<texturenofocus colordiffuse="00ffffff">commun/texture.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]">commun/texture.png</texturefocus>
+		<enable>!integer.isequal(container(121).numitems,0)</enable>
+	</control>
+	<control type="image" id="2001">
+		<height>1</height>
+		<width>348</width>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="20000000">commun/texture.png</texture>
+	</control>	
+	<control type="button" id="222">																											<description>series</description>	
+		<height>52</height>
+		<width>350</width>
+		<textoffsetx>10</textoffsetx>
+		<align>left</align>
+		<font>infos</font>
+		<label>$LOCALIZE[31213]</label>
+		<label2>$INFO[container(122).numitems]</label2>
+		<onfocus>setproperty(cible_recherche,videos,home)</onfocus>
+		<onfocus>setproperty(option_recherche,videodb://tvshows/titles/?xsp=%7B%22rules%22%3A%7B%22or%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22$INFO[skin.string(temp)]%22%5D%7D%2C%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22[LOWERCASE]$INFO[skin.string(temp)][/LOWERCASE]%22%5D%7D%2C%0A%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22[UPPERCASE]$INFO[skin.string(temp)][/UPPERCASE]%22%5D%7D%2C%0A%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22[CAPITALIZE]$INFO[skin.string(temp)][/CAPITALIZE]%22%5D%7D%0A%5D%7D%2C%22type%22%3A%22tvshows%22%7D,home)</onfocus>
+		<onclick>control.setfocus(700,0,absolute)</onclick>
+		<texturenofocus colordiffuse="00ffffff">commun/texture.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]">commun/texture.png</texturefocus>
+		<enable>!integer.isequal(container(122).numitems,0)</enable>
+	</control>	
+	<control type="image" id="2002">
+		<height>1</height>
+		<width>348</width>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="20000000">commun/texture.png</texture>
+	</control>
+	<control type="button" id="223">																											<description>resumes series</description>		
+		<height>52</height>
+		<width>350</width>
+		<textoffsetx>10</textoffsetx>
+		<align>left</align>
+		<font>infos</font>
+		<label>$LOCALIZE[31348]</label>
+		<label2>$INFO[container(123).numitems]</label2>
+		<onfocus>setproperty(cible_recherche,videos,home)</onfocus>
+		<onfocus>setproperty(option_recherche,videodb://tvshows/titles/?xsp=%7B%22rules%22%3A%7B%22or%22%3A%5B%7B%22field%22%3A%22plot%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22$INFO[skin.string(temp)]%22%5D%7D%2C%7B%22field%22%3A%22plot%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22[LOWERCASE]$INFO[skin.string(temp)][/LOWERCASE]%22%5D%7D%2C%0A%7B%22field%22%3A%22plot%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22[UPPERCASE]$INFO[skin.string(temp)][/UPPERCASE]%22%5D%7D%2C%0A%7B%22field%22%3A%22plot%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22[CAPITALIZE]$INFO[skin.string(temp)][/CAPITALIZE]%22%5D%7D%0A%5D%7D%2C%22type%22%3A%22tvshows%22%7D,home)</onfocus>
+		<onclick>control.setfocus(700,0,absolute)</onclick>
+		<texturenofocus colordiffuse="00ffffff">commun/texture.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]">commun/texture.png</texturefocus>
+		<enable>!integer.isequal(container(123).numitems,0)</enable>
+	</control>	
+	<control type="image" id="2003">
+		<height>1</height>
+		<width>348</width>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="20000000">commun/texture.png</texture>
+	</control>	
+	<control type="button" id="224">																											<description>episodes</description>	
+		<height>52</height>
+		<width>350</width>
+		<textoffsetx>10</textoffsetx>
+		<align>left</align>
+		<font>infos</font>
+		<label>$LOCALIZE[31349]</label>
+		<label2>$INFO[container(124).numitems]</label2>
+		<onfocus>setproperty(cible_recherche,videos,home)</onfocus>
+		<onfocus>setproperty(option_recherche,videodb://recentlyaddedepisodes/?xsp=%7B%22rules%22%3A%7B%22or%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22$INFO[skin.string(temp)]%22%5D%7D%2C%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22[LOWERCASE]$INFO[skin.string(temp)][/LOWERCASE]%22%5D%7D%2C%0A%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22[UPPERCASE]$INFO[skin.string(temp)][/UPPERCASE]%22%5D%7D%2C%0A%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22[CAPITALIZE]$INFO[skin.string(temp)][/CAPITALIZE]%22%5D%7D%0A%5D%7D%2C%22type%22%3A%22episodes%22%7D,home)</onfocus>
+		<onclick>control.setfocus(700,0,absolute)</onclick>
+		<texturenofocus colordiffuse="00ffffff">commun/texture.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]">commun/texture.png</texturefocus>
+		<enable>!integer.isequal(container(124).numitems,0)</enable>
+	</control>	
+	<control type="image" id="2004">
+		<height>1</height>
+		<width>348</width>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="20000000">commun/texture.png</texture>
+	</control>
+	<control type="button" id="225">																											<description>resumes episodes</description>		
+		<height>52</height>
+		<width>350</width>
+		<textoffsetx>10</textoffsetx>
+		<align>left</align>
+		<font>infos</font>
+		<label>$LOCALIZE[31350]</label>
+		<label2>$INFO[container(125).numitems]</label2>
+		<onfocus>setproperty(cible_recherche,videos,home)</onfocus>
+		<onfocus>setproperty(option_recherche,videodb://recentlyaddedepisodes/?xsp=%7B%22rules%22%3A%7B%22or%22%3A%5B%7B%22field%22%3A%22plot%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22$INFO[skin.string(temp)]%22%5D%7D%2C%7B%22field%22%3A%22plot%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22[LOWERCASE]$INFO[skin.string(temp)][/LOWERCASE]%22%5D%7D%2C%0A%7B%22field%22%3A%22plot%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22[UPPERCASE]$INFO[skin.string(temp)][/UPPERCASE]%22%5D%7D%2C%0A%7B%22field%22%3A%22plot%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22[CAPITALIZE]$INFO[skin.string(temp)][/CAPITALIZE]%22%5D%7D%0A%5D%7D%2C%22type%22%3A%22episodes%22%7D,home)</onfocus>
+		<onclick>control.setfocus(700,0,absolute)</onclick>
+		<texturenofocus colordiffuse="00ffffff">commun/texture.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]">commun/texture.png</texturefocus>
+		<enable>!integer.isequal(container(125).numitems,0)</enable>
+	</control>			
+	<control type="image" id="2005">
+		<height>1</height>
+		<width>348</width>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="20000000">commun/texture.png</texture>
+	</control>
+	<control type="button" id="226">																											<description>acteurs films</description>	
+		<height>52</height>
+		<width>350</width>
+		<textoffsetx>10</textoffsetx>
+		<align>left</align>
+		<font>infos</font>
+		<label>$LOCALIZE[31351]</label>
+		<label2>$INFO[container(126).numitems]</label2>
+		<onfocus>setproperty(cible_recherche,videos,home)</onfocus>
+		<onfocus>setproperty(option_recherche,videodb://movies/titles/?xsp=%7B%22rules%22%3A%7B%22or%22%3A%5B%7B%22field%22%3A%22actor%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22$INFO[skin.string(temp)]%22%5D%7D%2C%7B%22field%22%3A%22actor%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22[LOWERCASE]$INFO[skin.string(temp)][/LOWERCASE]%22%5D%7D%2C%0A%7B%22field%22%3A%22actor%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22[UPPERCASE]$INFO[skin.string(temp)][/UPPERCASE]%22%5D%7D%2C%0A%7B%22field%22%3A%22actor%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22[CAPITALIZE]$INFO[skin.string(temp)][/CAPITALIZE]%22%5D%7D%0A%5D%7D%2C%22type%22%3A%22movies%22%7D,home)</onfocus>
+		<onclick>control.setfocus(700,0,absolute)</onclick>
+		<texturenofocus colordiffuse="00ffffff">commun/texture.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]">commun/texture.png</texturefocus>
+		<enable>!integer.isequal(container(126).numitems,0)</enable>
+	</control>	
+	<control type="image" id="2006">
+		<height>1</height>
+		<width>348</width>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="20000000">commun/texture.png</texture>
+	</control>
+	<control type="button" id="227">																											<description>acteurs episodes</description>		
+		<height>52</height>
+		<width>350</width>
+		<textoffsetx>10</textoffsetx>
+		<align>left</align>
+		<font>infos</font>
+		<label>$LOCALIZE[31352]</label>
+		<label2>$INFO[container(127).numitems]</label2>
+		<onfocus>setproperty(cible_recherche,videos,home)</onfocus>
+		<onfocus>setproperty(option_recherche,videodb://tvshows/titles/?xsp=%7B%22rules%22%3A%7B%22or%22%3A%5B%7B%22field%22%3A%22actor%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22$INFO[skin.string(temp)]%22%5D%7D%2C%7B%22field%22%3A%22actor%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22[LOWERCASE]$INFO[skin.string(temp)][/LOWERCASE]%22%5D%7D%2C%0A%7B%22field%22%3A%22actor%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22[UPPERCASE]$INFO[skin.string(temp)][/UPPERCASE]%22%5D%7D%2C%0A%7B%22field%22%3A%22actor%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22[CAPITALIZE]$INFO[skin.string(temp)][/CAPITALIZE]%22%5D%7D%0A%5D%7D%2C%22type%22%3A%22tvshows%22%7D,home)</onfocus>
+		<onclick>control.setfocus(700,0,absolute)</onclick>
+		<texturenofocus colordiffuse="00ffffff">commun/texture.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]">commun/texture.png</texturefocus>
+		<enable>!integer.isequal(container(127).numitems,0)</enable>
+	</control>				
+	<control type="image" id="2007">
+		<height>1</height>
+		<width>348</width>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="20000000">commun/texture.png</texture>
+	</control>
+	<control type="button" id="228">																											<description>artistes</description>	
+		<height>52</height>
+		<width>350</width>
+		<textoffsetx>10</textoffsetx>
+		<align>left</align>
+		<font>infos</font>
+		<label>$LOCALIZE[31180]</label>
+		<label2>$INFO[container(128).numitems]</label2>
+		<onfocus>setproperty(cible_recherche,music,home)</onfocus>
+		<onfocus>setproperty(option_recherche,musicdb://artists/?xsp=%7B%22rules%22%3A%7B%22or%22%3A%5B%7B%22field%22%3A%22artist%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22$INFO[skin.string(temp)]%22%5D%7D%2C%7B%22field%22%3A%22artist%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22[LOWERCASE]$INFO[skin.string(temp)][/LOWERCASE]%22%5D%7D%2C%0A%7B%22field%22%3A%22artist%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22[UPPERCASE]$INFO[skin.string(temp)][/UPPERCASE]%22%5D%7D%2C%0A%7B%22field%22%3A%22artist%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22[CAPITALIZE]$INFO[skin.string(temp)][/CAPITALIZE]%22%5D%7D%5D%7D%2C%22type%22%3A%22artists%22%7D,home)</onfocus>
+		<onclick>control.setfocus(700,0,absolute)</onclick>
+		<texturenofocus colordiffuse="00ffffff">commun/texture.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]">commun/texture.png</texturefocus>
+		<enable>!integer.isequal(container(128).numitems,0)</enable>
+	</control>	
+	<control type="image" id="2008">
+		<height>1</height>
+		<width>348</width>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="20000000">commun/texture.png</texture>
+	</control>
+	<control type="button" id="229">																											<description>albums</description>		
+		<height>52</height>
+		<width>350</width>
+		<textoffsetx>10</textoffsetx>
+		<align>left</align>
+		<font>infos</font>
+		<label>$LOCALIZE[31179]</label>
+		<label2>$INFO[container(129).numitems]</label2>
+		<onfocus>setproperty(cible_recherche,music,home)</onfocus>
+		<onfocus>setproperty(option_recherche,musicdb://albums/?xsp=%7B%22rules%22%3A%7B%22or%22%3A%5B%7B%22field%22%3A%22album%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22$INFO[skin.string(temp)]%22%5D%7D%2C%7B%22field%22%3A%22album%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22[LOWERCASE]$INFO[skin.string(temp)][/LOWERCASE]%22%5D%7D%2C%0A%7B%22field%22%3A%22album%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22[UPPERCASE]$INFO[skin.string(temp)][/UPPERCASE]%22%5D%7D%2C%0A%7B%22field%22%3A%22album%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22[CAPITALIZE]$INFO[skin.string(temp)][/CAPITALIZE]%22%5D%7D%5D%7D%2C%22type%22%3A%22albums%22%7D,home)</onfocus>
+		<onclick>control.setfocus(700,0,absolute)</onclick>
+		<texturenofocus colordiffuse="00ffffff">commun/texture.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]">commun/texture.png</texturefocus>
+		<enable>!integer.isequal(container(129).numitems,0)</enable>
+	</control>	
+	<control type="image" id="2009">
+		<height>1</height>
+		<width>348</width>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="20000000">commun/texture.png</texture>
+	</control>
+	<control type="button" id="230">																											<description>chansons</description>		
+		<height>52</height>
+		<width>350</width>
+		<textoffsetx>10</textoffsetx>
+		<align>left</align>
+		<font>infos</font>
+		<label>$LOCALIZE[134]</label>
+		<label2>$INFO[container(130).numitems]</label2>
+		<onfocus>setproperty(cible_recherche,music,home)</onfocus>
+		<onfocus>setproperty(option_recherche,musicdb://songs/?xsp=%7B%22rules%22%3A%7B%22or%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22$INFO[skin.string(temp)]%22%5D%7D%2C%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22[LOWERCASE]$INFO[skin.string(temp)][/LOWERCASE]%22%5D%7D%2C%0A%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22[UPPERCASE]$INFO[skin.string(temp)][/UPPERCASE]%22%5D%7D%2C%0A%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22[CAPITALIZE]$INFO[skin.string(temp)][/CAPITALIZE]%22%5D%7D%5D%7D%2C%22type%22%3A%22songs%22%7D,home)</onfocus>
+		<onclick>control.setfocus(700,0,absolute)</onclick>
+		<texturenofocus colordiffuse="00ffffff">commun/texture.png</texturenofocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]">commun/texture.png</texturefocus>
+		<enable>!integer.isequal(container(130).numitems,0)</enable>
+	</control>	
+	</control>
+	</control>	
+	<control type="button" id="500">
+		<onfocus condition="integer.isequal(container(120).numitems,0) + !container(120).isupdating + integer.isequal(container(121).numitems,0) + !container(121).isupdating + integer.isequal(container(122).numitems,0) + !container(122).isupdating + integer.isequal(container(123).numitems,0) + !container(123).isupdating + integer.isequal(container(124).numitems,0) + !container(124).isupdating + integer.isequal(container(125).numitems,0) + !container(125).isupdating + integer.isequal(container(126).numitems,0) + !container(126).isupdating + integer.isequal(container(127).numitems,0) + !container(127).isupdating + integer.isequal(container(128).numitems,0) + !container(128).isupdating + integer.isequal(container(129).numitems,0) + !container(129).isupdating + integer.isequal(container(130).numitems,0) + !container(130).isupdating">control.setfocus(600)</onfocus>
+		<onfocus condition="!integer.isequal(container(120).numitems,0) | !integer.isequal(container(121).numitems,0) | !integer.isequal(container(122).numitems,0) | !integer.isequal(container(123).numitems,0) | !integer.isequal(container(124).numitems,0) | !integer.isequal(container(125).numitems,0) | !integer.isequal(container(126).numitems,0) | !integer.isequal(container(127).numitems,0) | !integer.isequal(container(128).numitems,0) | !integer.isequal(container(129).numitems,0) | !integer.isequal(container(130).numitems,0)">control.setfocus(400)</onfocus>
+	</control>
+	<control type="button" id="400">
+		<onfocus>alarmclock(alarme_recherche2,noop,00:01,silent)</onfocus>
+		<onfocus>cancelalarm(alarme_recherche,silent)</onfocus>
+		<onfocus condition="!integer.isequal(container(130).numitems,0)">control.setfocus(230)</onfocus>
+		<onfocus condition="!integer.isequal(container(129).numitems,0)">control.setfocus(229)</onfocus>
+		<onfocus condition="!integer.isequal(container(128).numitems,0)">control.setfocus(228)</onfocus>
+		<onfocus condition="!integer.isequal(container(127).numitems,0)">control.setfocus(227)</onfocus>
+		<onfocus condition="!integer.isequal(container(126).numitems,0)">control.setfocus(226)</onfocus>
+		<onfocus condition="!integer.isequal(container(125).numitems,0)">control.setfocus(225)</onfocus>
+		<onfocus condition="!integer.isequal(container(124).numitems,0)">control.setfocus(224)</onfocus>
+		<onfocus condition="!integer.isequal(container(123).numitems,0)">control.setfocus(223)</onfocus>
+		<onfocus condition="!integer.isequal(container(122).numitems,0)">control.setfocus(222)</onfocus>
+		<onfocus condition="!integer.isequal(container(121).numitems,0)">control.setfocus(221)</onfocus>
+		<onfocus condition="!integer.isequal(container(120).numitems,0)">control.setfocus(220)</onfocus>
+	</control>
+	<control type="button" id="600">
+		<onfocus>cancelalarm(alarme_recherche,silent)</onfocus>
+		<onfocus>alarmclock(alarme_recherche3,activatewindow(1295),00:00,silent)</onfocus>
+		<onfocus>action(back)</onfocus>			
+	</control>
+	<control type="group">																														<description>animation occupe</description>
+		<visible>system.hasalarm(alarme_recherche2)</visible>
+	<control type="image">
+		<top>0</top>
+		<width>2500</width>
+		<height>2000</height>
+		<aspectratio>stretch</aspectratio>
+		<texture flipy="true">commun/degrade.png</texture>
+	</control>
+	<control type="image">
+		<bottom>0</bottom>		
+		<width>2500</width>
+		<height>2000</height>
+		<aspectratio>stretch</aspectratio>
+		<texture>commun/degrade.png</texture>
+	</control>
+	<control type="image">
+		<centerleft>50%</centerleft>
+		<centertop>50%</centertop>
+		<width>373</width>
+		<height>166</height>
+		<aspectratio>keep</aspectratio>
+		<texture>commun/fond_occupe.png</texture>				
+	</control>
+	<control type="image">
+		<centerleft>50%</centerleft>
+		<centertop>50%</centertop>
+		<width>373</width>
+		<height>166</height>
+		<aspectratio>keep</aspectratio>
+		<texture colordiffuse="$VAR[couleur_dominante]">commun/occupe.png</texture>
+		<animation effect="rotate" center="auto" start="360" end="0" time="1500" loop="true" condition="true">Conditional</animation>			
+	</control>	
+	</control>	
+	<control type="label" id="770">																												<description>label pour tester si infos vides</description>
+		<top>2000</top>
+		<height>10</height>	
+		<label>$VAR[recherche_infos_resume]</label>
+	</control>
+	<control type="label" id="772">																												<description>label pour tester si infos vides</description>
+		<top>2000</top>
+		<height>10</height>	
+		<label>$VAR[recherche_infos_2]</label>
+	</control>
+	<control type="label" id="773">																												<description>label pour tester si infos vides</description>
+		<top>2000</top>
+		<height>10</height>	
+		<label>$VAR[recherche_infos_3]</label>
+	</control>
+	<control type="label" id="774">																												<description>label pour tester si infos vides</description>
+		<top>2000</top>
+		<height>10</height>	
+		<label>$VAR[recherche_infos_4]</label>
+	</control>
+	<control type="label" id="775">																												<description>label pour tester si infos vides</description>
+		<top>2000</top>
+		<height>10</height>	
+		<label>$VAR[recherche_infos_5]</label>
+	</control>
+</controls>
+</window>

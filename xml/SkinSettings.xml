@@ -1,7 +1,252 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>		
 	<backgroundcolor>00X000000</backgroundcolor>
-	<onload>close</onload>	
-<controls>			
+	<defaultcontrol always="true">211</defaultcontrol>	
+<controls>				
+	<control type="group">
+	<include>image_fond</include>																												<description>image de fond</description>		
+	<control type="group">																														<description>horloge</description>
+		<right>40</right>					
+	<include>titre</include>
+	</control>
+	<control type="button" id="40">
+		<top>35</top>		
+		<left>50</left>
+		<height>60</height>
+		<width>auto</width>
+		<label>$LOCALIZE[31355]</label>
+	<include content="bouton">																										
+		<param name="width" value="auto"/> 
+		<param name="height" value="80"/>
+		<param name="align" value="center"/>			
+	</include>
+	</control>		
+	<include content="barre_separation_horizontale">																							<description>barre de separation horizontale</description>
+		<param name="left" value="25"/> 
+		<param name="right" value="25"/>
+		<param name="bottom" value="950"/>		
+	</include>
+	<control type="grouplist" id="211">																											<description>liste des boutons de gauche</description>		
+		<top>200</top>
+		<left>60</left>
+		<width>600</width>
+		<height>800</height>
+		<onleft>action(back)</onleft>
+		<onright>8000</onright>		
+		<itemgap>20</itemgap>				
+	<control type="button" id="95">
+		<onfocus>setproperty(menu,1)</onfocus>
+	<include content="bouton">
+		<param name="height" value="65"/>
+		<param name="label" value="$LOCALIZE[31021]"/>	
+	</include>
+	</control>
+	<control type="button" id="94">
+		<enable>false</enable>
+	<include content="bouton">
+		<param name="height" value="65"/>
+		<param name="label" value=""/>			
+	</include>
+	</control>
+	<control type="button" id="96">
+		<enable>false</enable>
+	<include content="bouton">
+		<param name="height" value="65"/>
+		<param name="label" value=""/>	
+	</include>
+	</control>
+	<control type="button" id="97">
+		<enable>false</enable>
+	<include content="bouton">
+		<param name="height" value="65"/>
+		<param name="label" value=""/>	
+	</include>
+	</control>
+	<control type="button" id="98">
+		<enable>false</enable>
+	<include content="bouton">
+		<param name="height" value="65"/>	
+		<param name="label" value=""/>	
+	</include>
+	</control>
+	<control type="button" id="99">
+		<enable>false</enable>
+	<include content="bouton">
+		<param name="height" value="65"/>
+		<param name="label" value=""/>	
+	</include>
+	</control>
+	<control type="button" id="100">
+		<enable>false</enable>
+	<include content="bouton">
+		<param name="height" value="65"/>
+		<param name="label" value=""/>	
+	</include>
+	</control>
+	</control>	
+	<include content="barre_separation_horizontale">																							<description>barre de separation horizontale</description>
+		<param name="left" value="25"/> 
+		<param name="right" value="1205"/>
+		<param name="bottom" value="285"/>		
+	</include>
+	<control type="label">
+		<top>795</top>
+		<left>40</left>
+		<width>880</width>
+		<height>90</height>
+		<font>texte</font>
+		<textcolor>80ffffff</textcolor>
+		<label>$INFO[System.FriendlyName]</label>		
+	</control>	
+	<include content="barre_separation_horizontale">																							<description>barre de separation horizontale</description>
+		<param name="left" value="25"/> 
+		<param name="right" value="1205"/>
+		<param name="bottom" value="195"/>		
+	</include>	
+	<control type="label">
+		<top>905</top>
+		<left>40</left>
+		<width>880</width>
+		<height>50</height>
+		<font>texte</font>
+		<textcolor>80ffffff</textcolor>
+		<label>$LOCALIZE[144] $INFO[System.BuildVersion]</label>		
+	</control>
+	<control type="label">
+		<top>945</top>
+		<left>40</left>
+		<width>880</width>
+		<height>50</height>
+		<font>texte</font>
+		<textcolor>80ffffff</textcolor>
+		<label>$LOCALIZE[31030]: $INFO[system.memory(used)] / $INFO[system.memory(total)] ($INFO[system.memory(used.percent)])</label>		
+	</control>
+	<control type="label">
+		<top>985</top>
+		<left>40</left>
+		<width>880</width>
+		<height>50</height>
+		<font>texte</font>
+		<textcolor>80ffffff</textcolor>
+		<label>$LOCALIZE[13271] $INFO[System.CpuUsage]</label>		
+	</control>	
+	<control type="image">																														<description>fond liste des informations</description>
+		<top>200</top>
+		<right>50</right>
+		<width>1140</width>
+		<height>800</height>
+		<aspectratio>stretch</aspectratio>
+		<texture colordiffuse="20000000" border="50">commun/bouton.png</texture>
+	</control>	
+	<control type="grouplist" id="8000">																										<description>liste des informations</description>				
+		<top>210</top>
+		<right>80</right>
+		<width>1100</width>
+		<height>780</height>
+		<onleft>211</onleft>
+		<onright>60</onright>
+		<pagecontrol>60</pagecontrol>
+		<itemgap>20</itemgap>		
+		<scrolltime tween="Linear" easing="in">250</scrolltime>
+		<visible>string.isequal(window.property(menu),1)</visible>
+	<control type="radiobutton" id="2">
+		<onclick>Skin.ToggleSetting(chanson_plein_ecran)</onclick>
+		<selected>skin.hassetting(chanson_plein_ecran)</selected>
+	<include content="bouton">																											
+		<param name="width" value="1100"/> 
+		<param name="height" value="60"/> 
+		<param name="textoffsetx" value="40"/>
+		<param name="texturenofocus_colordiffuse" value="05ffffff"/>
+		<param name="label" value="$LOCALIZE[31356]"/>
+	</include>	
+	</control>
+	<control type="button" id="3">		
+	<include content="bouton">																											
+		<param name="width" value="1100"/> 
+		<param name="height" value="60"/> 
+		<param name="textoffsetx" value="40"/>
+		<param name="texturenofocus_colordiffuse" value="05ffffff"/>
+	</include>	
+	</control>
+	<control type="button" id="4">
+	<include content="bouton">																											
+		<param name="width" value="1100"/> 
+		<param name="height" value="60"/> 
+		<param name="textoffsetx" value="40"/>
+		<param name="texturenofocus_colordiffuse" value="05ffffff"/>
+	</include>			
+	</control>
+	<control type="button" id="5">				
+	<include content="bouton">																											
+		<param name="width" value="1100"/> 
+		<param name="height" value="60"/> 
+		<param name="textoffsetx" value="40"/>
+		<param name="texturenofocus_colordiffuse" value="05ffffff"/>
+	</include>			
+	</control>
+	<control type="button" id="6">			
+	<include content="bouton">																											
+		<param name="width" value="1100"/> 
+		<param name="height" value="60"/> 
+		<param name="textoffsetx" value="40"/>
+		<param name="texturenofocus_colordiffuse" value="05ffffff"/>
+	</include>		
+	</control>	
+	<control type="button" id="7">			
+	<include content="bouton">																											
+		<param name="width" value="1100"/> 
+		<param name="height" value="60"/> 
+		<param name="textoffsetx" value="40"/>
+		<param name="texturenofocus_colordiffuse" value="05ffffff"/>
+	</include>		
+	</control>
+	<control type="button" id="8">			
+	<include content="bouton">																											
+		<param name="width" value="1100"/> 
+		<param name="height" value="60"/> 
+		<param name="textoffsetx" value="40"/>
+		<param name="texturenofocus_colordiffuse" value="05ffffff"/>
+	</include>		
+	</control>
+	<control type="button" id="9">		
+	<include content="bouton">																											
+		<param name="width" value="1100"/> 
+		<param name="height" value="60"/> 
+		<param name="textoffsetx" value="40"/>
+		<param name="texturenofocus_colordiffuse" value="05ffffff"/>
+	</include>			
+	</control>
+	<control type="button" id="10">			
+	<include content="bouton">																											
+		<param name="width" value="1100"/> 
+		<param name="height" value="60"/> 
+		<param name="textoffsetx" value="40"/>
+		<param name="texturenofocus_colordiffuse" value="05ffffff"/>
+	</include>		
+	</control>
+	<control type="button" id="11">		
+	<include content="bouton">																											
+		<param name="width" value="1100"/> 
+		<param name="height" value="60"/> 
+		<param name="textoffsetx" value="40"/>
+		<param name="texturenofocus_colordiffuse" value="05ffffff"/>
+	</include>			
+	</control>	
+	<control type="button" id="12">		
+	<include content="bouton">																											
+		<param name="width" value="1100"/> 
+		<param name="height" value="60"/> 
+		<param name="textoffsetx" value="40"/>
+		<param name="texturenofocus_colordiffuse" value="05ffffff"/>
+	</include>			
+	</control>			
+	</control>
+	<include content="scrollbar_parametres">																									<description>scrollbar</description>
+		<param name="id" value="60"/> 
+		<param name="top" value="210"/> 
+		<param name="height" value="780"/> 
+		<param name="container" value="8000"/>		
+	</include>
+	</control>
 </controls>
 </window>
