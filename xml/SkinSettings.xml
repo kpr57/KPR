@@ -1,15 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>		
 	<backgroundcolor>00X000000</backgroundcolor>
-	<defaultcontrol always="true">211</defaultcontrol>	
+	<defaultcontrol always="true">400</defaultcontrol>	
 <controls>				
 	<control type="group">
 	<include>image_fond</include>																												<description>image de fond</description>		
+	<control type="multiimage" id="67891">																										<description>dossier photos arriere plan</description>		
+		<animation effect="slide" start="0,0" end="1920,0" time="1" condition="window.isvisible(DialogKeyboard.xml) | window.isvisible(DialogNumeric.xml) | window.isvisible(addoninformation) | window.isvisible(musicinformation) | window.isvisible(movieinformation) | window.isvisible(pvrguideinfo) | window.isvisible(selectdialog) | window.isvisible(contextmenu)" reversible="false">conditional</animation>
+		<animation effect="slide" end="0,0" delay="100" time="1" condition="!window.isvisible(DialogKeyboard.xml) + !window.isvisible(DialogNumeric.xml) + !window.isvisible(addoninformation) + !window.isvisible(musicinformation) + !window.isvisible(movieinformation) + !window.isvisible(pvrguideinfo) + !window.isvisible(selectdialog) + !window.isvisible(contextmenu)" reversible="false">conditional</animation>		
+		<timeperimage>5000</timeperimage>
+		<fadetime>2500</fadetime>
+		<aspectratio>scale</aspectratio>
+		<randomize>true</randomize>
+		<imagepath>$INFO[skin.string(arriere_plan_photos)]</imagepath>
+		<animation effect="zoom" start="110" end="140" center="auto" time="20000" tween="sine" easing="inout" pulse="true" condition="Skin.HasSetting(animation_arriere_plan_photos)">Conditional</animation>
+		<animation effect="slide" start="-50,-50" end="50,50" time="60000" tween="sine" easing="inout" pulse="true" condition="Skin.HasSetting(animation_arriere_plan_photos)">Conditional</animation>
+		<visible>skin.hassetting(activer_arriere_plan_photos)</visible>
+	</control>
+	<control type="image" id="67892">																											<description>photo arriere plan</description>		
+		<animation effect="slide" start="0,0" end="1920,0" time="1" condition="window.isvisible(DialogKeyboard.xml) | window.isvisible(DialogNumeric.xml) | window.isvisible(addoninformation) | window.isvisible(musicinformation) | window.isvisible(movieinformation) | window.isvisible(pvrguideinfo) | window.isvisible(selectdialog) | window.isvisible(contextmenu)" reversible="false">conditional</animation>
+		<animation effect="slide" end="0,0" delay="100" time="1" condition="!window.isvisible(DialogKeyboard.xml) + !window.isvisible(DialogNumeric.xml) + !window.isvisible(addoninformation) + !window.isvisible(musicinformation) + !window.isvisible(movieinformation) + !window.isvisible(pvrguideinfo) + !window.isvisible(selectdialog) + !window.isvisible(contextmenu)" reversible="false">conditional</animation>		
+		<aspectratio>scale</aspectratio>
+		<texture>$INFO[skin.string(arriere_plan_une_photo)]</texture>
+		<animation effect="zoom" start="110" end="140" center="auto" time="20000" tween="sine" easing="inout" pulse="true" condition="Skin.HasSetting(animation_arriere_plan_photos)">Conditional</animation>
+		<animation effect="slide" start="-50,-50" end="50,50" time="60000" tween="sine" easing="inout" pulse="true" condition="Skin.HasSetting(animation_arriere_plan_photos)">Conditional</animation>
+		<visible>skin.hassetting(activer_arriere_plan_une_photo)</visible>
+	</control>
+	<control type="image" id="67890">																											<description>fanart meteo</description>
+		<animation effect="slide" start="0,0" end="1920,0" time="1" condition="window.isvisible(DialogKeyboard.xml) | window.isvisible(DialogNumeric.xml) | window.isvisible(addoninformation) | window.isvisible(musicinformation) | window.isvisible(movieinformation) | window.isvisible(pvrguideinfo) | window.isvisible(selectdialog) | window.isvisible(contextmenu)" reversible="false">conditional</animation>
+		<animation effect="slide" end="0,0" delay="100" time="1" condition="!window.isvisible(DialogKeyboard.xml) + !window.isvisible(DialogNumeric.xml) + !window.isvisible(addoninformation) + !window.isvisible(musicinformation) + !window.isvisible(movieinformation) + !window.isvisible(pvrguideinfo) + !window.isvisible(selectdialog) + !window.isvisible(contextmenu)" reversible="false">conditional</animation>		
+		<fadetime>500</fadetime>
+		<aspectratio>scale</aspectratio>	
+		<texture>$INFO[Skin.String(weather.fanart.path),,]$INFO[Weather.fanartcode,,]$VAR[extension_fanart_meteo]</texture>		
+		<animation effect="zoom" start="110" end="140" center="auto" time="20000" tween="sine" easing="inout" pulse="true" condition="Skin.HasSetting(animation_arriere_plan_photos)">Conditional</animation>
+		<animation effect="slide" start="-50,-50" end="50,50" time="60000" tween="sine" easing="inout" pulse="true" condition="Skin.HasSetting(animation_arriere_plan_photos)">Conditional</animation>
+		<visible>skin.hassetting(activer_arriere_plan_meteo) + [!string.isempty(Skin.String(weather.fanart.path)) + !String.contains(Skin.String(weather.fanart.path),multi)]</visible>
+	</control>
+	<control type="image" id="67890">																											<description>fanart meteo par defaut</description>
+		<animation effect="slide" start="0,0" end="1920,0" time="1" condition="window.isvisible(DialogKeyboard.xml) | window.isvisible(DialogNumeric.xml) | window.isvisible(addoninformation) | window.isvisible(musicinformation) | window.isvisible(movieinformation) | window.isvisible(pvrguideinfo) | window.isvisible(selectdialog) | window.isvisible(contextmenu)" reversible="false">conditional</animation>
+		<animation effect="slide" end="0,0" delay="100" time="1" condition="!window.isvisible(DialogKeyboard.xml) + !window.isvisible(DialogNumeric.xml) + !window.isvisible(addoninformation) + !window.isvisible(musicinformation) + !window.isvisible(movieinformation) + !window.isvisible(pvrguideinfo) + !window.isvisible(selectdialog) + !window.isvisible(contextmenu)" reversible="false">conditional</animation>		
+		<fadetime>500</fadetime>
+		<aspectratio>scale</aspectratio>	
+		<texture>extras/meteo/fanarts/$INFO[Weather.fanartcode,,]$VAR[extension_fanart_meteo]</texture>		
+		<animation effect="zoom" start="110" end="140" center="auto" time="20000" tween="sine" easing="inout" pulse="true" condition="Skin.HasSetting(animation_arriere_plan_photos)">Conditional</animation>
+		<animation effect="slide" start="-50,-50" end="50,50" time="60000" tween="sine" easing="inout" pulse="true" condition="Skin.HasSetting(animation_arriere_plan_photos)">Conditional</animation>
+		<visible>skin.hassetting(activer_arriere_plan_meteo) + string.isempty(Skin.String(weather.fanart.path))</visible>		
+	</control>
+	<control type="multiimage" id="67890">																										<description>fanart meteo anime</description>		
+		<animation effect="slide" start="0,0" end="1920,0" time="1" condition="window.isvisible(DialogKeyboard.xml) | window.isvisible(DialogNumeric.xml) | window.isvisible(addoninformation) | window.isvisible(musicinformation) | window.isvisible(movieinformation) | window.isvisible(pvrguideinfo) | window.isvisible(selectdialog) | window.isvisible(contextmenu)" reversible="false">conditional</animation>
+		<animation effect="slide" end="0,0" delay="100" time="1" condition="!window.isvisible(DialogKeyboard.xml) + !window.isvisible(DialogNumeric.xml) + !window.isvisible(addoninformation) + !window.isvisible(musicinformation) + !window.isvisible(movieinformation) + !window.isvisible(pvrguideinfo) + !window.isvisible(selectdialog) + !window.isvisible(contextmenu)" reversible="false">conditional</animation>		
+		<timeperimage>5000</timeperimage>
+		<fadetime>2500</fadetime>
+		<imagepath>$INFO[Skin.String(weather.fanart.path),,]$INFO[Weather.fanartcode,,]$VAR[extension_fanart_meteo]</imagepath>
+		<animation effect="zoom" start="110" end="140" center="auto" time="20000" tween="sine" easing="inout" pulse="true" condition="Skin.HasSetting(animation_arriere_plan_photos)">Conditional</animation>
+		<animation effect="slide" start="-50,-50" end="50,50" time="60000" tween="sine" easing="inout" pulse="true" condition="Skin.HasSetting(animation_arriere_plan_photos)">Conditional</animation>
+		<visible>skin.hassetting(activer_arriere_plan_meteo) + [!string.isempty(Skin.String(weather.fanart.path)) + String.contains(Skin.String(weather.fanart.path),multi)]</visible>
+	</control>	
+	<control type="image">																														<description>masque fond</description>	
+		<texture colordiffuse="$VAR[masque]">commun/fond.png</texture>	
+	</control>	
 	<control type="group">																														<description>horloge</description>
 		<right>40</right>					
 	<include>titre</include>
 	</control>
-	<control type="button" id="40">
+	<control type="button">
 		<top>35</top>		
 		<left>50</left>
 		<height>60</height>
@@ -26,33 +80,38 @@
 		<param name="right" value="25"/>
 		<param name="bottom" value="950"/>		
 	</include>
-	<control type="grouplist" id="211">																											<description>liste des boutons de gauche</description>		
+	<control type="grouplist" id="400">																											<description>liste des boutons de gauche</description>		
 		<top>200</top>
 		<left>60</left>
 		<width>600</width>
 		<height>800</height>
 		<onleft>action(back)</onleft>
-		<onright>8000</onright>		
+		<onright condition="string.isequal(window.property(menu),1)">1000</onright>		
+		<onright condition="string.isequal(window.property(menu),2)">1100</onright>	
+		<onright condition="string.isequal(window.property(menu),3)">1200</onright>			
 		<itemgap>20</itemgap>				
-	<control type="button" id="95">
+	<control type="button" id="94">
 		<onfocus>setproperty(menu,1)</onfocus>
+		<onclick>action(right)</onclick>				
 	<include content="bouton">
 		<param name="height" value="65"/>
-		<param name="label" value="$LOCALIZE[31021]"/>	
+		<param name="label" value="$LOCALIZE[31365]"/>	
 	</include>
 	</control>
-	<control type="button" id="94">
-		<enable>false</enable>
+	<control type="button" id="95">
+		<onfocus>setproperty(menu,2)</onfocus>
+		<onclick>action(right)</onclick>		
 	<include content="bouton">
 		<param name="height" value="65"/>
-		<param name="label" value=""/>			
+		<param name="label" value="$LOCALIZE[31369]"/>			
 	</include>
 	</control>
 	<control type="button" id="96">
-		<enable>false</enable>
+		<onfocus>setproperty(menu,3)</onfocus>
+		<onclick>action(right)</onclick>
 	<include content="bouton">
 		<param name="height" value="65"/>
-		<param name="label" value=""/>	
+		<param name="label" value="$LOCALIZE[31021]"/>	
 	</include>
 	</control>
 	<control type="button" id="97">
@@ -138,115 +197,501 @@
 		<aspectratio>stretch</aspectratio>
 		<texture colordiffuse="20000000" border="50">commun/bouton.png</texture>
 	</control>	
-	<control type="grouplist" id="8000">																										<description>liste des informations</description>				
+	<control type="grouplist" id="1000">																										<description>liste 1</description>				
 		<top>210</top>
 		<right>80</right>
 		<width>1100</width>
 		<height>780</height>
-		<onleft>211</onleft>
+		<onleft>400</onleft>
 		<onright>60</onright>
 		<pagecontrol>60</pagecontrol>
 		<itemgap>20</itemgap>		
 		<scrolltime tween="Linear" easing="in">250</scrolltime>
 		<visible>string.isequal(window.property(menu),1)</visible>
-	<control type="radiobutton" id="2">
+	<control type="radiobutton" id="1001">
+		<onclick>Skin.reset(activer_arriere_plan_une_photo)</onclick>
+		<onclick>Skin.reset(activer_arriere_plan_meteo)</onclick>
+		<onclick>Skin.reset(activer_arriere_plan_fanart)</onclick>
+		<onclick>Skin.ToggleSetting(activer_arriere_plan_photos)</onclick>
+		<selected>skin.hassetting(activer_arriere_plan_photos)</selected>
+	<include content="bouton">																											
+		<param name="width" value="1100"/> 
+		<param name="height" value="60"/>
+		<param name="texturenofocus_colordiffuse" value="05ffffff"/>
+		<param name="label" value="$LOCALIZE[31358]"/>
+	</include>	
+	</control>
+	<control type="button" id="1002">
+		<enable>skin.hassetting(activer_arriere_plan_photos)</enable>
+		<onclick>Skin.setpath(arriere_plan_photos,special://skin/media/extras/arriere_plans/)</onclick>
+	<include content="bouton">																											
+		<param name="width" value="1100"/> 
+		<param name="height" value="60"/>
+		<param name="texturenofocus_colordiffuse" value="05ffffff"/>
+		<param name="label" value="$LOCALIZE[31359]"/>
+		<param name="label2" value="$INFO[skin.string(arriere_plan_photos)]"/>
+	</include>	
+	</control>			
+	<control type="radiobutton" id="1003">				
+		<onclick>Skin.reset(activer_arriere_plan_photos)</onclick>
+		<onclick>Skin.reset(activer_arriere_plan_meteo)</onclick>
+		<onclick>Skin.reset(activer_arriere_plan_fanart)</onclick>
+		<onclick>Skin.ToggleSetting(activer_arriere_plan_une_photo)</onclick>
+		<selected>skin.hassetting(activer_arriere_plan_une_photo)</selected>
+	<include content="bouton">																											
+		<param name="width" value="1100"/> 
+		<param name="height" value="60"/>
+		<param name="texturenofocus_colordiffuse" value="05ffffff"/>
+		<param name="label" value="$LOCALIZE[31361]"/>
+	</include>			
+	</control>
+	<control type="button" id="1004">
+		<enable>skin.hassetting(activer_arriere_plan_une_photo)</enable>
+		<onclick>Skin.setimage(arriere_plan_une_photo,special://skin/media/extras/arriere_plans/)</onclick>
+	<include content="bouton">																											
+		<param name="width" value="1100"/> 
+		<param name="height" value="60"/>
+		<param name="texturenofocus_colordiffuse" value="05ffffff"/>
+		<param name="label" value="$LOCALIZE[31362]"/>
+		<param name="label2" value="$INFO[skin.string(arriere_plan_une_photo)]"/>
+	</include>	
+	</control>	
+	<control type="radiobutton" id="1005">
+		<onclick>Skin.reset(activer_arriere_plan_photos)</onclick>
+		<onclick>Skin.reset(activer_arriere_plan_une_photo)</onclick>
+		<onclick>Skin.reset(activer_arriere_plan_fanart)</onclick>
+		<onclick>Skin.ToggleSetting(activer_arriere_plan_meteo)</onclick>
+		<selected>skin.hassetting(activer_arriere_plan_meteo)</selected>		
+	<include content="bouton">																											
+		<param name="width" value="1100"/> 
+		<param name="height" value="60"/>
+		<param name="texturenofocus_colordiffuse" value="05ffffff"/>
+		<param name="label" value="$LOCALIZE[31368]"/>		
+	</include>			
+	</control>		
+	<control type="radiobutton" id="1006">	
+		<onclick>Skin.reset(activer_arriere_plan_photos)</onclick>
+		<onclick>Skin.reset(activer_arriere_plan_une_photo)</onclick>
+		<onclick>Skin.reset(activer_arriere_plan_meteo)</onclick>
+		<onclick>Skin.ToggleSetting(activer_arriere_plan_fanart)</onclick>
+		<selected>skin.hassetting(activer_arriere_plan_fanart)</selected>			
+	<include content="bouton">																											
+		<param name="width" value="1100"/> 
+		<param name="height" value="60"/>
+		<param name="texturenofocus_colordiffuse" value="05ffffff"/>
+		<param name="label" value="$LOCALIZE[31372]"/>		
+	</include>			
+	</control>
+	<control type="radiobutton" id="1007">			
+		<enable>skin.hassetting(activer_arriere_plan_photos) | skin.hassetting(activer_arriere_plan_une_photo) | skin.hassetting(activer_arriere_plan_meteo) | skin.hassetting(activer_arriere_plan_fanart)</enable>
+		<onclick>Skin.ToggleSetting(animation_arriere_plan_photos)</onclick>
+		<selected>skin.hassetting(animation_arriere_plan_photos)</selected>
+	<include content="bouton">																											
+		<param name="width" value="1100"/> 
+		<param name="height" value="60"/>
+		<param name="texturenofocus_colordiffuse" value="05ffffff"/>
+		<param name="label" value="$LOCALIZE[31360]"/>
+	</include>		
+	</control>	
+	<control type="button" id="1008">			
+		<enable>skin.hassetting(activer_arriere_plan_photos) | skin.hassetting(activer_arriere_plan_une_photo) | skin.hassetting(activer_arriere_plan_meteo) | skin.hassetting(activer_arriere_plan_fanart)</enable>
+		<onclick>control.setfocus(500)</onclick>	
+	<include content="bouton">																											
+		<param name="width" value="1100"/> 
+		<param name="height" value="60"/>
+		<param name="texturenofocus_colordiffuse" value="05ffffff"/>
+		<param name="label" value="$LOCALIZE[31366] : $VAR[opacite_masque]"/>
+	</include>			
+	</control>
+	<control type="radiobutton" id="1009">
+		<enable>false</enable>
+	<include content="bouton">																											
+		<param name="width" value="1100"/> 
+		<param name="height" value="60"/>
+		<param name="texturenofocus_colordiffuse" value="05ffffff"/>
+	</include>			
+	</control>	
+	<control type="button" id="1010">	
+		<onclick>Skin.reset(activer_arriere_plan_photos)</onclick>
+		<onclick>Skin.reset(activer_arriere_plan_une_photo)</onclick>
+		<onclick>Skin.reset(activer_arriere_plan_meteo)</onclick>
+		<onclick>Skin.reset(activer_arriere_plan_fanart)</onclick>
+		<onclick>Skin.reset(animation_arriere_plan_photos)</onclick>
+		<onclick>Skin.setstring(arriere_plan_photos,special://skin/media/extras/arriere_plans/)</onclick>
+		<onclick>Skin.setstring(arriere_plan_une_photo,special://skin/media/extras/arriere_plans/default.jpg)</onclick>
+		<onclick>skin.setstring(opacite_arriere_plan,e6)</onclick>
+	<include content="bouton">																											
+		<param name="width" value="1100"/> 
+		<param name="height" value="60"/>
+		<param name="texturenofocus_colordiffuse" value="05ffffff"/>
+		<param name="label" value="$LOCALIZE[10041]"/>
+	</include>			
+	</control>					
+	</control>
+	<include content="scrollbar_parametres">																									<description>scrollbar liste 1</description>
+		<param name="id" value="60"/> 
+		<param name="top" value="210"/> 
+		<param name="height" value="780"/> 
+		<param name="container" value="1000"/>
+		<param name="visible" value="string.isequal(window.property(menu),1)"/>
+	</include>	
+	
+	
+	<control type="grouplist" id="1100">																										<description>liste 2</description>				
+		<top>210</top>
+		<right>80</right>
+		<width>1100</width>
+		<height>780</height>
+		<onleft>400</onleft>
+		<onright>61</onright>
+		<pagecontrol>61</pagecontrol>
+		<itemgap>20</itemgap>		
+		<scrolltime tween="Linear" easing="in">250</scrolltime>
+		<visible>string.isequal(window.property(menu),2) | window.isvisible(1222)</visible>
+	<control type="button" id="1101">
+		<onclick>setproperty(couleur,couleur_dominante,home)</onclick>
+		<onclick>activateWindow(1222)</onclick>		
+	<include content="bouton">																											
+		<param name="width" value="1100"/> 
+		<param name="height" value="60"/>
+		<param name="texturenofocus_colordiffuse" value="05ffffff"/>
+		<param name="label" value="$LOCALIZE[31370]"/>
+	</include>	
+	</control>
+	<control type="button" id="1102">
+		<onclick>setproperty(couleur,couleur_encours,home)</onclick>
+		<onclick>activateWindow(1222)</onclick>	
+	<include content="bouton">																											
+		<param name="width" value="1100"/> 
+		<param name="height" value="60"/>
+		<param name="texturenofocus_colordiffuse" value="05ffffff"/>
+		<param name="label" value="$LOCALIZE[31371]"/>
+	</include>	
+	</control>
+	<control type="button" id="1103">
+		<enable>false</enable>
+	<include content="bouton">																											
+		<param name="width" value="1100"/> 
+		<param name="height" value="60"/>
+		<param name="texturenofocus_colordiffuse" value="05ffffff"/>
+	</include>	
+	</control>
+	<control type="button" id="1104">
+		<enable>false</enable>
+	<include content="bouton">																											
+		<param name="width" value="1100"/> 
+		<param name="height" value="60"/>
+		<param name="texturenofocus_colordiffuse" value="05ffffff"/>
+	</include>	
+	</control>
+	<control type="button" id="1105">
+		<enable>false</enable>
+	<include content="bouton">																											
+		<param name="width" value="1100"/> 
+		<param name="height" value="60"/>
+		<param name="texturenofocus_colordiffuse" value="05ffffff"/>
+	</include>	
+	</control>
+	<control type="button" id="1106">
+		<enable>false</enable>
+	<include content="bouton">																											
+		<param name="width" value="1100"/> 
+		<param name="height" value="60"/>
+		<param name="texturenofocus_colordiffuse" value="05ffffff"/>
+	</include>	
+	</control>
+	<control type="button" id="1107">
+		<enable>false</enable>
+	<include content="bouton">																											
+		<param name="width" value="1100"/> 
+		<param name="height" value="60"/>
+		<param name="texturenofocus_colordiffuse" value="05ffffff"/>
+	</include>	
+	</control>
+	<control type="button" id="1108">
+		<enable>false</enable>
+	<include content="bouton">																											
+		<param name="width" value="1100"/> 
+		<param name="height" value="60"/>
+		<param name="texturenofocus_colordiffuse" value="05ffffff"/>
+	</include>	
+	</control>
+	<control type="button" id="1109">
+		<enable>false</enable>
+	<include content="bouton">																											
+		<param name="width" value="1100"/> 
+		<param name="height" value="60"/>
+		<param name="texturenofocus_colordiffuse" value="05ffffff"/>
+	</include>	
+	</control>
+	<control type="button" id="1110">
+		<onclick>Skin.reset(couleur_dominante)</onclick>
+		<onclick>Skin.reset(couleur_encours)</onclick>		
+	<include content="bouton">																											
+		<param name="width" value="1100"/> 
+		<param name="height" value="60"/>
+		<param name="texturenofocus_colordiffuse" value="05ffffff"/>
+		<param name="label" value="$LOCALIZE[10041]"/>
+	</include>			
+	</control>
+	</control>
+	<include content="scrollbar_parametres">																									<description>scrollbar liste 1</description>
+		<param name="id" value="61"/> 
+		<param name="top" value="210"/> 
+		<param name="height" value="780"/> 
+		<param name="container" value="1100"/>
+		<param name="visible" value="string.isequal(window.property(menu),2) | window.isvisible(1222)"/>
+	</include>
+
+
+
+	<control type="grouplist" id="1200">																										<description>liste 3</description>				
+		<top>210</top>
+		<right>80</right>
+		<width>1100</width>
+		<height>780</height>
+		<onleft>400</onleft>
+		<onright>61</onright>
+		<pagecontrol>61</pagecontrol>
+		<itemgap>20</itemgap>		
+		<scrolltime tween="Linear" easing="in">250</scrolltime>
+		<visible>string.isequal(window.property(menu),3)</visible>	
+	<control type="radiobutton" id="1201">
 		<onclick>Skin.ToggleSetting(chanson_plein_ecran)</onclick>
 		<selected>skin.hassetting(chanson_plein_ecran)</selected>
 	<include content="bouton">																											
 		<param name="width" value="1100"/> 
-		<param name="height" value="60"/> 
-		<param name="textoffsetx" value="40"/>
+		<param name="height" value="60"/>
 		<param name="texturenofocus_colordiffuse" value="05ffffff"/>
 		<param name="label" value="$LOCALIZE[31356]"/>
+	</include>
+	</control>	
+	<control type="radiobutton" id="1202">
+		<onclick>Skin.ToggleSetting(infos_pause)</onclick>
+		<selected>skin.hassetting(infos_pause)</selected>
+	<include content="bouton">																											
+		<param name="width" value="1100"/> 
+		<param name="height" value="60"/>
+		<param name="texturenofocus_colordiffuse" value="05ffffff"/>
+		<param name="label" value="$LOCALIZE[31373]"/>
+	</include>
+	</control>	
+	<control type="button" id="1203">
+		<enable>false</enable>
+	<include content="bouton">																											
+		<param name="width" value="1100"/> 
+		<param name="height" value="60"/>
+		<param name="texturenofocus_colordiffuse" value="05ffffff"/>
 	</include>	
 	</control>
-	<control type="button" id="3">		
+	<control type="button" id="1204">
+		<enable>false</enable>
 	<include content="bouton">																											
 		<param name="width" value="1100"/> 
-		<param name="height" value="60"/> 
-		<param name="textoffsetx" value="40"/>
+		<param name="height" value="60"/>
 		<param name="texturenofocus_colordiffuse" value="05ffffff"/>
 	</include>	
 	</control>
-	<control type="button" id="4">
+	<control type="button" id="1205">
+		<enable>false</enable>
 	<include content="bouton">																											
 		<param name="width" value="1100"/> 
-		<param name="height" value="60"/> 
-		<param name="textoffsetx" value="40"/>
+		<param name="height" value="60"/>
 		<param name="texturenofocus_colordiffuse" value="05ffffff"/>
+	</include>	
+	</control>
+	<control type="button" id="1206">
+		<enable>false</enable>
+	<include content="bouton">																											
+		<param name="width" value="1100"/> 
+		<param name="height" value="60"/>
+		<param name="texturenofocus_colordiffuse" value="05ffffff"/>
+	</include>	
+	</control>
+	<control type="button" id="1207">
+		<enable>false</enable>
+	<include content="bouton">																											
+		<param name="width" value="1100"/> 
+		<param name="height" value="60"/>
+		<param name="texturenofocus_colordiffuse" value="05ffffff"/>
+	</include>	
+	</control>
+	<control type="button" id="1208">
+		<enable>false</enable>
+	<include content="bouton">																											
+		<param name="width" value="1100"/> 
+		<param name="height" value="60"/>
+		<param name="texturenofocus_colordiffuse" value="05ffffff"/>
+	</include>	
+	</control>
+	<control type="button" id="1209">
+		<enable>false</enable>
+	<include content="bouton">																											
+		<param name="width" value="1100"/> 
+		<param name="height" value="60"/>
+		<param name="texturenofocus_colordiffuse" value="05ffffff"/>
+	</include>	
+	</control>
+	<control type="button" id="1210">
+		<onclick>Skin.reset(chanson_plein_ecran)</onclick>		
+	<include content="bouton">																											
+		<param name="width" value="1100"/> 
+		<param name="height" value="60"/>
+		<param name="texturenofocus_colordiffuse" value="05ffffff"/>
+		<param name="label" value="$LOCALIZE[10041]"/>
 	</include>			
 	</control>
-	<control type="button" id="5">				
-	<include content="bouton">																											
-		<param name="width" value="1100"/> 
-		<param name="height" value="60"/> 
-		<param name="textoffsetx" value="40"/>
-		<param name="texturenofocus_colordiffuse" value="05ffffff"/>
-	</include>			
 	</control>
-	<control type="button" id="6">			
-	<include content="bouton">																											
-		<param name="width" value="1100"/> 
-		<param name="height" value="60"/> 
-		<param name="textoffsetx" value="40"/>
-		<param name="texturenofocus_colordiffuse" value="05ffffff"/>
-	</include>		
-	</control>	
-	<control type="button" id="7">			
-	<include content="bouton">																											
-		<param name="width" value="1100"/> 
-		<param name="height" value="60"/> 
-		<param name="textoffsetx" value="40"/>
-		<param name="texturenofocus_colordiffuse" value="05ffffff"/>
-	</include>		
-	</control>
-	<control type="button" id="8">			
-	<include content="bouton">																											
-		<param name="width" value="1100"/> 
-		<param name="height" value="60"/> 
-		<param name="textoffsetx" value="40"/>
-		<param name="texturenofocus_colordiffuse" value="05ffffff"/>
-	</include>		
-	</control>
-	<control type="button" id="9">		
-	<include content="bouton">																											
-		<param name="width" value="1100"/> 
-		<param name="height" value="60"/> 
-		<param name="textoffsetx" value="40"/>
-		<param name="texturenofocus_colordiffuse" value="05ffffff"/>
-	</include>			
-	</control>
-	<control type="button" id="10">			
-	<include content="bouton">																											
-		<param name="width" value="1100"/> 
-		<param name="height" value="60"/> 
-		<param name="textoffsetx" value="40"/>
-		<param name="texturenofocus_colordiffuse" value="05ffffff"/>
-	</include>		
-	</control>
-	<control type="button" id="11">		
-	<include content="bouton">																											
-		<param name="width" value="1100"/> 
-		<param name="height" value="60"/> 
-		<param name="textoffsetx" value="40"/>
-		<param name="texturenofocus_colordiffuse" value="05ffffff"/>
-	</include>			
-	</control>	
-	<control type="button" id="12">		
-	<include content="bouton">																											
-		<param name="width" value="1100"/> 
-		<param name="height" value="60"/> 
-		<param name="textoffsetx" value="40"/>
-		<param name="texturenofocus_colordiffuse" value="05ffffff"/>
-	</include>			
-	</control>			
-	</control>
-	<include content="scrollbar_parametres">																									<description>scrollbar</description>
-		<param name="id" value="60"/> 
+	<include content="scrollbar_parametres">																									<description>scrollbar liste 1</description>
+		<param name="id" value="61"/> 
 		<param name="top" value="210"/> 
 		<param name="height" value="780"/> 
-		<param name="container" value="8000"/>		
+		<param name="container" value="1200"/>
+		<param name="visible" value="string.isequal(window.property(menu),3)"/>
 	</include>
+	
+	<control type="group">																														<description>reglage opacite arriere plan</description>
+		<visible>string.isequal(window.property(menu),1)</visible>
+	<control type="button" id="500">																											<description>bouton reglage opacite</description>			
+		<onclick>control.setfocus(1008)</onclick>		
+		<onright condition="string.isequal(skin.string(opacite_arriere_plan),cc)">skin.setstring(opacite_arriere_plan,cf)</onright>		
+		<onright condition="string.isequal(skin.string(opacite_arriere_plan),cf)">skin.setstring(opacite_arriere_plan,d1)</onright>		
+		<onright condition="string.isequal(skin.string(opacite_arriere_plan),d1)">skin.setstring(opacite_arriere_plan,d4)</onright>		
+		<onright condition="string.isequal(skin.string(opacite_arriere_plan),d4)">skin.setstring(opacite_arriere_plan,d6)</onright>				
+		<onright condition="string.isequal(skin.string(opacite_arriere_plan),d6)">skin.setstring(opacite_arriere_plan,d9)</onright>		
+		<onright condition="string.isequal(skin.string(opacite_arriere_plan),d9)">skin.setstring(opacite_arriere_plan,db)</onright>		
+		<onright condition="string.isequal(skin.string(opacite_arriere_plan),db)">skin.setstring(opacite_arriere_plan,de)</onright>		
+		<onright condition="string.isequal(skin.string(opacite_arriere_plan),de)">skin.setstring(opacite_arriere_plan,e0)</onright>		
+		<onright condition="string.isequal(skin.string(opacite_arriere_plan),e0)">skin.setstring(opacite_arriere_plan,e3)</onright>		
+		<onright condition="string.isequal(skin.string(opacite_arriere_plan),e3)">skin.setstring(opacite_arriere_plan,e6)</onright>				
+		<onright condition="string.isequal(skin.string(opacite_arriere_plan),e6)">skin.setstring(opacite_arriere_plan,e8)</onright>		
+		<onright condition="string.isequal(skin.string(opacite_arriere_plan),e8)">skin.setstring(opacite_arriere_plan,eb)</onright>		
+		<onright condition="string.isequal(skin.string(opacite_arriere_plan),eb)">skin.setstring(opacite_arriere_plan,ed)</onright>		
+		<onright condition="string.isequal(skin.string(opacite_arriere_plan),ed)">skin.setstring(opacite_arriere_plan,f0)</onright>		
+		<onright condition="string.isequal(skin.string(opacite_arriere_plan),f0)">skin.setstring(opacite_arriere_plan,f2)</onright>		
+		<onright condition="string.isequal(skin.string(opacite_arriere_plan),f2)">skin.setstring(opacite_arriere_plan,f5)</onright>
+		<onright condition="string.isequal(skin.string(opacite_arriere_plan),f5)">skin.setstring(opacite_arriere_plan,f7)</onright>		
+		<onright condition="string.isequal(skin.string(opacite_arriere_plan),f7)">skin.setstring(opacite_arriere_plan,fa)</onright>		
+		<onright condition="string.isequal(skin.string(opacite_arriere_plan),fa)">skin.setstring(opacite_arriere_plan,fc)</onright>			
+		<onleft condition="string.isequal(skin.string(opacite_arriere_plan),fc)">skin.setstring(opacite_arriere_plan,fa)</onleft>		
+		<onleft condition="string.isequal(skin.string(opacite_arriere_plan),fa)">skin.setstring(opacite_arriere_plan,f7)</onleft>
+		<onleft condition="string.isequal(skin.string(opacite_arriere_plan),f7)">skin.setstring(opacite_arriere_plan,f5)</onleft>		
+		<onleft condition="string.isequal(skin.string(opacite_arriere_plan),f5)">skin.setstring(opacite_arriere_plan,f2)</onleft>				
+		<onleft condition="string.isequal(skin.string(opacite_arriere_plan),f2)">skin.setstring(opacite_arriere_plan,f0)</onleft>		
+		<onleft condition="string.isequal(skin.string(opacite_arriere_plan),f0)">skin.setstring(opacite_arriere_plan,ed)</onleft>
+		<onleft condition="string.isequal(skin.string(opacite_arriere_plan),ed)">skin.setstring(opacite_arriere_plan,eb)</onleft>		
+		<onleft condition="string.isequal(skin.string(opacite_arriere_plan),eb)">skin.setstring(opacite_arriere_plan,e8)</onleft>								
+		<onleft condition="string.isequal(skin.string(opacite_arriere_plan),e8)">skin.setstring(opacite_arriere_plan,e6)</onleft>				
+		<onleft condition="string.isequal(skin.string(opacite_arriere_plan),e6)">skin.setstring(opacite_arriere_plan,e3)</onleft>		
+		<onleft condition="string.isequal(skin.string(opacite_arriere_plan),e3)">skin.setstring(opacite_arriere_plan,e0)</onleft>
+		<onleft condition="string.isequal(skin.string(opacite_arriere_plan),e0)">skin.setstring(opacite_arriere_plan,de)</onleft>		
+		<onleft condition="string.isequal(skin.string(opacite_arriere_plan),de)">skin.setstring(opacite_arriere_plan,db)</onleft>				
+		<onleft condition="string.isequal(skin.string(opacite_arriere_plan),db)">skin.setstring(opacite_arriere_plan,d9)</onleft>		
+		<onleft condition="string.isequal(skin.string(opacite_arriere_plan),d9)">skin.setstring(opacite_arriere_plan,d6)</onleft>
+		<onleft condition="string.isequal(skin.string(opacite_arriere_plan),d6)">skin.setstring(opacite_arriere_plan,d4)</onleft>		
+		<onleft condition="string.isequal(skin.string(opacite_arriere_plan),d4)">skin.setstring(opacite_arriere_plan,d1)</onleft>								
+		<onleft condition="string.isequal(skin.string(opacite_arriere_plan),d1)">skin.setstring(opacite_arriere_plan,cf)</onleft>				
+		<onleft condition="string.isequal(skin.string(opacite_arriere_plan),cf)">skin.setstring(opacite_arriere_plan,cc)</onleft>				
+	</control>
+	<control type="button">																														<description>fond bouton si focus slider</description>
+		<right>80</right>
+		<top>770</top>
+		<textcolor>$VAR[gris]</textcolor>
+		<visible>control.hasfocus(500)</visible>
+	<include content="bouton">																											
+		<param name="width" value="1100"/> 
+		<param name="height" value="60"/>
+		<param name="texturenofocus_colordiffuse" value="$VAR[couleur_dominante]"/>
+		<param name="label" value="$LOCALIZE[31366] : $VAR[opacite_masque]"/>
+	</include>			
+	</control>
+	<control type="image">																														<description>fond slider opacite</description>
+		<left>1530</left>
+		<top>794</top>
+		<width>302</width>
+		<height>10</height>
+		<texture colordiffuse="80ffffff">commun/texture.png</texture>
+		<visible>control.isenabled(1007)</visible>
+	</control>
+	<control type="image">																														<description>fond slider opacite</description>
+		<left>1530</left>
+		<top>794</top>
+		<width>302</width>
+		<height>10</height>
+		<texture colordiffuse="80808080">commun/texture.png</texture>
+		<visible>!control.isenabled(1007)</visible>
+	</control>
+	<control type="image" id="501">																												<description>slider opacite</description>
+		<left>1531</left>
+		<top>795</top>
+		<width>15</width>
+		<height>8</height>
+		<texture colordiffuse="$VAR[slider_opacite_masque]">commun/texture.png</texture>
+		<animation effect="slide" start="0,0," end="0,0" condition="string.isequal(skin.string(opacite_arriere_plan),cc)">conditional</animation>
+		<animation effect="slide" start="0,0," end="15,0" condition="string.isequal(skin.string(opacite_arriere_plan),cf)">conditional</animation>
+		<animation effect="slide" start="0,0," end="30,0" condition="string.isequal(skin.string(opacite_arriere_plan),d1)">conditional</animation>
+		<animation effect="slide" start="0,0," end="45,0" condition="string.isequal(skin.string(opacite_arriere_plan),d4)">conditional</animation>
+		<animation effect="slide" start="0,0," end="60,0" condition="string.isequal(skin.string(opacite_arriere_plan),d6)">conditional</animation>
+		<animation effect="slide" start="0,0," end="75,0" condition="string.isequal(skin.string(opacite_arriere_plan),d9)">conditional</animation>
+		<animation effect="slide" start="0,0," end="90,0" condition="string.isequal(skin.string(opacite_arriere_plan),db)">conditional</animation>
+		<animation effect="slide" start="0,0," end="105,0" condition="string.isequal(skin.string(opacite_arriere_plan),de)">conditional</animation>
+		<animation effect="slide" start="0,0," end="120,0" condition="string.isequal(skin.string(opacite_arriere_plan),e0)">conditional</animation>
+		<animation effect="slide" start="0,0," end="135,0" condition="string.isequal(skin.string(opacite_arriere_plan),e3)">conditional</animation>
+		<animation effect="slide" start="0,0," end="150,0" condition="string.isequal(skin.string(opacite_arriere_plan),e6)">conditional</animation>
+		<animation effect="slide" start="0,0," end="165,0" condition="string.isequal(skin.string(opacite_arriere_plan),e8)">conditional</animation>
+		<animation effect="slide" start="0,0," end="180,0" condition="string.isequal(skin.string(opacite_arriere_plan),eb)">conditional</animation>
+		<animation effect="slide" start="0,0," end="195,0" condition="string.isequal(skin.string(opacite_arriere_plan),ed)">conditional</animation>
+		<animation effect="slide" start="0,0," end="210,0" condition="string.isequal(skin.string(opacite_arriere_plan),f0)">conditional</animation>
+		<animation effect="slide" start="0,0," end="225,0" condition="string.isequal(skin.string(opacite_arriere_plan),f2)">conditional</animation>
+		<animation effect="slide" start="0,0," end="240,0" condition="string.isequal(skin.string(opacite_arriere_plan),f5)">conditional</animation>
+		<animation effect="slide" start="0,0," end="255,0" condition="string.isequal(skin.string(opacite_arriere_plan),f7)">conditional</animation>
+		<animation effect="slide" start="0,0," end="270,0" condition="string.isequal(skin.string(opacite_arriere_plan),fa)">conditional</animation>
+		<animation effect="slide" start="0,0," end="285,0" condition="string.isequal(skin.string(opacite_arriere_plan),fc)">conditional</animation>	
+	</control>
+	</control>
+	<control type="group">																														<description>couleur dominante</description>
+		<visible>string.isequal(window.property(menu),2) | window.isvisible(1222)</visible>
+	<control type="image">
+		<right>88</right>
+		<top>220</top>
+		<width>100</width>
+		<height>40</height>
+		<texture colordiffuse="$VAR[gris]">commun/texture.png</texture>
+	</control>
+	<control type="image">
+		<right>89</right>
+		<top>221</top>
+		<width>98</width>
+		<height>38</height>
+		<texture colordiffuse="$VAR[couleur_dominante]">commun/texture.png</texture>
+	</control>
+	</control>
+	<control type="group">																														<description>couleur encours</description>
+		<visible>string.isequal(window.property(menu),2) | window.isvisible(1222)</visible>
+	<control type="image">
+		<right>88</right>
+		<top>300</top>
+		<width>100</width>
+		<height>40</height>
+		<texture colordiffuse="$VAR[gris]">commun/texture.png</texture>
+	</control>
+	<control type="image">
+		<right>89</right>
+		<top>301</top>
+		<width>98</width>
+		<height>38</height>
+		<texture colordiffuse="$VAR[couleur_encours]">commun/texture.png</texture>
+	</control>
+	</control>
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	</control>
 </controls>
 </window>

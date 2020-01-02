@@ -19,7 +19,7 @@
 		<top>110</top>
 		<bottom>90</bottom>
 		<animation effect="fade" start="100" end="0" delay="200" time="1">hidden</animation>		
-		<animation effect="fade" start="100" end="0" condition="player.showinfo">conditional</animation>		
+		<animation effect="fade" start="100" end="0" condition="[[skin.hassetting(infos_pause) + Player.Paused] | player.showinfo]">conditional</animation>		
 		<visible>!videoplayer.content(livetv) + window.isvisible(VideoOSD.xml) + [window.isvisible(1222) | window.isvisible(1220) | window.isvisible(DialogSelect.xml) | window.isvisible(DialogConfirm.xml) | window.isvisible(dialogsettings.xml) | window.isvisible(DialogNotification.xml)]</visible>
 		<aspectratio>scale</aspectratio>
 		<texture colordiffuse="$VAR[couleur_OSD]">commun/texture.png</texture>				
@@ -28,7 +28,7 @@
 		<top>110</top>
 		<bottom>150</bottom>
 		<animation effect="fade" start="100" end="0" delay="200" time="1">hidden</animation>		
-		<animation effect="fade" start="100" end="0" condition="player.showinfo">conditional</animation>		
+		<animation effect="fade" start="100" end="0" condition="[[skin.hassetting(infos_pause) + Player.Paused] | player.showinfo]">conditional</animation>		
 		<visible>videoplayer.content(livetv) + window.isvisible(VideoOSD.xml) + [window.isvisible(1222) | window.isvisible(1220) | window.isvisible(DialogSelect.xml) | window.isvisible(DialogConfirm.xml) | window.isvisible(dialogsettings.xml) | window.isvisible(DialogNotification.xml)]</visible>
 		<aspectratio>scale</aspectratio>
 		<texture colordiffuse="$VAR[couleur_OSD]">commun/texture.png</texture>				
@@ -38,7 +38,7 @@
 		<width>1920</width>
 		<height>1080</height>
 		<animation effect="fade" start="100" end="0" delay="200" time="1">hidden</animation>		
-		<animation effect="fade" start="100" end="0" condition="player.showinfo">conditional</animation>		
+		<animation effect="fade" start="100" end="0" condition="[[skin.hassetting(infos_pause) + Player.Paused] | player.showinfo]">conditional</animation>		
 		<visible>!window.isvisible(VideoOSD.xml) + [window.isvisible(1222) | window.isvisible(1220) | window.isvisible(DialogSelect.xml) | window.isvisible(DialogConfirm.xml) | window.isvisible(dialogsettings.xml) | window.isvisible(DialogNotification.xml)]</visible>
 		<aspectratio>scale</aspectratio>
 		<texture colordiffuse="$VAR[couleur_OSD]">commun/texture.png</texture>				
@@ -49,7 +49,7 @@
 		<height>1080</height>
 		<aspectratio>stretch</aspectratio>
 		<texture colordiffuse="$VAR[couleur_OSD]">commun/texture.png</texture>
-		<visible>player.showinfo + !window.isvisible(VideoOSDBookmarks.xml)</visible>
+		<visible>[[skin.hassetting(infos_pause) + Player.Paused] | player.showinfo] + !window.isvisible(VideoOSDBookmarks.xml)</visible>
 	</control>
 	<control type="image" id="1">																												<description>fond titre OSD</description>
 		<centerleft>50%</centerleft>
@@ -57,7 +57,7 @@
 		<height>110</height>
 		<aspectratio>stretch</aspectratio>
 		<texture colordiffuse="$VAR[couleur_OSD]">commun/texture.png</texture>
-		<visible>[player.Paused | Player.Forwarding | Player.Rewinding] + !player.showinfo</visible>						
+		<visible>[[!skin.hassetting(infos_pause) + Player.Paused] | Player.Forwarding | Player.Rewinding] + !player.showinfo</visible>						
 	</control>
 	<control type="group" id="1">       																										<description>informations haut de page (etat du lecteur)</description>
 		<visible>[player.Paused | Player.Forwarding | Player.Rewinding] + !window.isvisible(DialogSlider.xml) + !window.isvisible(1221)</visible>			
@@ -120,7 +120,7 @@
 	</control>		
 	</control>	
 	<control type="group" id="1">																												<description>infos du haut</description>
-		<visible>player.showinfo + !window.isvisible(DialogSlider.xml) + !window.isvisible(1221)</visible>
+		<visible>[[skin.hassetting(infos_pause) + Player.Paused] | player.showinfo] + !window.isvisible(DialogSlider.xml) + !window.isvisible(1221)</visible>
 		<animation effect="fade" start="0" end="100" time="100" reversible="false" condition="!window.isvisible(videoosd.xml)">visible</animation>
 		<animation effect="fade" start="100" end="0" time="100" reversible="false" condition="!window.isvisible(videoosd.xml)">hidden</animation>		
 	<control type="label" id="1">       																										<description>titre</description>
@@ -145,7 +145,7 @@
 	</control>
 	</control>
 	<control type="grouplist" id="1">																											<description>flags</description>				
-		<visible>player.showinfo</visible>
+		<visible>[[skin.hassetting(infos_pause) + Player.Paused] | player.showinfo]</visible>
 		<animation effect="fade" start="0" end="100" time="100" reversible="false" condition="!window.isvisible(videoosd.xml)">visible</animation>
 		<animation effect="fade" start="100" end="0" time="100" reversible="false" condition="!window.isvisible(videoosd.xml)">hidden</animation>	
 		<right>40</right>
@@ -182,7 +182,7 @@
 	</control>			
 	</control>
 	<control type="group" id="1">																												<description>infos video</description>
-		<visible>player.showinfo + !videoplayer.content(liveTV)</visible>
+		<visible>[[skin.hassetting(infos_pause) + Player.Paused] | player.showinfo] + !videoplayer.content(liveTV)</visible>
 		<animation effect="fade" start="0" end="100" time="100" reversible="false">visible</animation>
 		<animation effect="fade" start="100" end="0" time="100" reversible="false">hidden</animation>
 		<animation effect="fade" start="100" end="0" time="100" condition="window.isvisible(1222) | window.isvisible(1220) | window.isvisible(VideoOSDBookmarks.xml) | window.isvisible(DialogSelect.xml) | window.isvisible(DialogConfirm.xml) | window.isvisible(dialogsettings.xml) | window.isvisible(DialogNotification.xml)">conditional</animation>
@@ -566,7 +566,7 @@
 	</control>	
 	</control>	
 	<control type="group" id="1">																												<description>infos tv</description>
-		<visible>player.showinfo + videoplayer.content(liveTV)</visible>
+		<visible>[[skin.hassetting(infos_pause) + Player.Paused] | player.showinfo] + videoplayer.content(liveTV)</visible>
 		<animation effect="fade" start="0" end="100" time="100" reversible="false">visible</animation>
 		<animation effect="fade" start="100" end="0" time="100" reversible="false">hidden</animation>
 		<animation effect="fade" start="100" end="0" time="100" condition="window.isvisible(1222) | window.isvisible(1220) | window.isvisible(VideoOSDBookmarks.xml) | window.isvisible(DialogSelect.xml) | window.isvisible(DialogConfirm.xml) | window.isvisible(dialogsettings.xml) | window.isvisible(DialogNotification.xml)">conditional</animation>

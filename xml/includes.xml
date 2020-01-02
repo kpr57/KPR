@@ -23,8 +23,11 @@
 	<expression name="a_une_icone">[!String.IsEmpty(listitem.icon) + !string.endswith(listitem.icon,none)]</expression>
 	<expression name="a_une_image">[window.isvisible(MyPVRRecordings.xml) | String.IsEqual(Container.Content,movies) | String.IsEqual(Container.Content,sets) | String.IsEqual(Container.Content,tvshows) | String.IsEqual(Container.Content,episodes) | String.IsEqual(Container.Content,seasons) | String.IsEqual(Container.Content,videos) | String.IsEqual(Container.Content,tvshow) | String.IsEqual(Container.Content,actors) | String.IsEqual(Container.Content,artists) | String.IsEqual(Container.Content,albums) | String.IsEqual(Container.Content,songs) | String.IsEqual(Container.Content,images) | $EXP[est_un_addon]]</expression>
 		
+	
+	
 	<variable name="couleur_dominante">																											<description>couleur de selection dominante</description>
-		<value>ffd99006</value>
+		<value condition="!string.isempty(skin.string(couleur_dominante))">ff$INFO[skin.string(couleur_dominante)]</value>
+		<value>ffe5a00d</value>
 	</variable>
 
 	<variable name="couleur_OSD">																												<description>couleur OSD (opacite + base)</description>
@@ -55,6 +58,7 @@
 	</variable>		
 	
 	<variable name="couleur_encours">																											<description>couleur de fond des indications encours</description>
+		<value condition="!string.isempty(skin.string(couleur_encours))">ff$INFO[skin.string(couleur_encours)]</value>
 		<value>ffc0392b</value>
 	</variable>
 	
@@ -64,6 +68,39 @@
 	
 	<variable name="gris_40">	
 		<value>40201f20</value>
+	</variable>
+
+	<variable name="masque">
+		<value>$INFO[skin.string(opacite_arriere_plan)]ffffff</value>
+	</variable>
+	
+	<variable name="slider_opacite_masque">
+		<value condition="control.hasfocus(500)">$VAR[couleur_dominante]</value>
+		<value condition="!control.isenabled(1007)">80201f20</value>
+		<value>a6201f20</value>
+	</variable>
+	
+	<variable name="opacite_masque">
+		<value condition="string.isequal(skin.string(opacite_arriere_plan),cc)">80%</value>
+		<value condition="string.isequal(skin.string(opacite_arriere_plan),cf)">81%</value>
+		<value condition="string.isequal(skin.string(opacite_arriere_plan),d1)">82%</value>
+		<value condition="string.isequal(skin.string(opacite_arriere_plan),d4)">83%</value>
+		<value condition="string.isequal(skin.string(opacite_arriere_plan),d6)">84%</value>
+		<value condition="string.isequal(skin.string(opacite_arriere_plan),d9)">85%</value>
+		<value condition="string.isequal(skin.string(opacite_arriere_plan),db)">86%</value>
+		<value condition="string.isequal(skin.string(opacite_arriere_plan),de)">87%</value>
+		<value condition="string.isequal(skin.string(opacite_arriere_plan),e0)">88%</value>
+		<value condition="string.isequal(skin.string(opacite_arriere_plan),e3)">89%</value>
+		<value condition="string.isequal(skin.string(opacite_arriere_plan),e6)">90%</value>
+		<value condition="string.isequal(skin.string(opacite_arriere_plan),e8)">91%</value>
+		<value condition="string.isequal(skin.string(opacite_arriere_plan),eb)">92%</value>
+		<value condition="string.isequal(skin.string(opacite_arriere_plan),ed)">93%</value>
+		<value condition="string.isequal(skin.string(opacite_arriere_plan),f0)">94%</value>
+		<value condition="string.isequal(skin.string(opacite_arriere_plan),f2)">95%</value>
+		<value condition="string.isequal(skin.string(opacite_arriere_plan),f5)">96%</value>
+		<value condition="string.isequal(skin.string(opacite_arriere_plan),f7)">97%</value>
+		<value condition="string.isequal(skin.string(opacite_arriere_plan),fa)">98%</value>
+		<value condition="string.isequal(skin.string(opacite_arriere_plan),fc)">99%</value>	
 	</variable>
 	
 	<include name="video">																														<description>arriere plan video</description>	
@@ -76,10 +113,10 @@
 	<control type="videowindow">		
 		<top>1080</top>
 	</control>
-	<control type="image">
-		<texture>commun/fond.png</texture>
-	</control>		
-	</include>	
+	<control type="image">																														<description>masque fond si meteo</description>	
+		<texture>commun/fond.png</texture>	
+	</control>
+	</include>
 	
 	<include name="animation_dialogue">																											<description>animation des fenetres de dialogue</description>
 		<animation effect="fade" start="0" end="100" time="100" reversible="false">windowopen</animation>
@@ -3792,8 +3829,10 @@
 	<!-- variables pour le lecteur OSD -->
 	<variable name="etat_lecteur">																												<description>etat du lecteur (pause etc...)</description>
 		<value condition="Player.Paused">[UPPERCASE]$LOCALIZE[31268]  •  [/UPPERCASE]</value>
-		<value condition="Player.Forwarding">[UPPERCASE]$LOCALIZE[31039] $VAR[seekspeed]  •  [/UPPERCASE]</value>
-		<value condition="Player.Rewinding">[UPPERCASE]$LOCALIZE[31038] $VAR[seekspeed]  •  [/UPPERCASE]</value>
+		<value condition="!player.content(liveTV) + Player.Forwarding">[UPPERCASE]$LOCALIZE[31039] $VAR[seekspeed]  •  $INFO[Player.Time(hh:mm:ss)]/$INFO[Player.duration(hh:mm:ss)]  •  [/UPPERCASE]</value>
+		<value condition="!player.content(liveTV) + Player.Rewinding">[UPPERCASE]$LOCALIZE[31038]  •  $VAR[seekspeed]  •  $INFO[Player.Time(hh:mm:ss)]/$INFO[Player.duration(hh:mm:ss)]  •  [/UPPERCASE]</value>
+		<value condition="player.content(liveTV) + Player.Forwarding">[UPPERCASE]$LOCALIZE[31039] $VAR[seekspeed]  •  [/UPPERCASE]</value>
+		<value condition="player.content(liveTV) + Player.Rewinding">[UPPERCASE]$LOCALIZE[31038]  •  $VAR[seekspeed]  •  [/UPPERCASE]</value>
 		<value condition=""></value>
 	</variable>
 	<variable name="seekspeed">		

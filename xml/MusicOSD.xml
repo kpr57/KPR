@@ -235,7 +235,7 @@
 	</include>
 	</control>
 	</control>	
-	<control type="image">																												<description>separation verticale</description>	
+	<control type="image">																														<description>separation verticale</description>	
 		<right>182</right>
 		<height>80</height>
 		<bottom>0</bottom>

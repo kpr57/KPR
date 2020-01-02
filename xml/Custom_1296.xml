@@ -136,7 +136,7 @@
 	</control>
 	<control type="image">																														<description>3 points titre</description>
 		<top>25</top>		
-		<left>60</left>
+		<left>30</left>
 		<height>25</height>
 		<width>10</width>
 		<aspectratio>keep</aspectratio>
@@ -144,7 +144,7 @@
 	</control>
 	<control type="label">																														<description>titre</description>	
 		<top>-20</top>
-		<left>90</left>
+		<left>60</left>
 		<width>1620</width>
 		<height>116</height>
 		<textcolor>80ffffff</textcolor>

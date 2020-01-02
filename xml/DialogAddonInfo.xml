@@ -180,14 +180,27 @@
 		<width>auto</width>				
 		<align>center</align>	
 	<include content="petit_bouton">
-		<param name="label" value="[UPPERCASE]$LOCALIZE[24144][/UPPERCASE]"/>
+		<param name="label" value="[UPPERCASE]$LOCALIZE[31363][/UPPERCASE]"/>
 		<param name="textcolor" value="ffffffff"/>
 		<param name="textoffsetx" value="15"/>
 		<param name="texturenofocus" value="commun/bouton.png"/>
 		<param name="texturenofocus_colordiffuse" value="ff8d0204"/>
 	</include>
 		<visible>String.StartsWith(Control.GetLabel(6),$LOCALIZE[24038])</visible>
-	</control>
+	</control>	
+	<control type="button">	
+		<height>22</height>			
+		<width>auto</width>				
+		<align>center</align>	
+	<include content="petit_bouton">
+		<param name="label" value="[UPPERCASE]$LOCALIZE[31364][/UPPERCASE]"/>
+		<param name="textcolor" value="ffffffff"/>
+		<param name="textoffsetx" value="15"/>
+		<param name="texturenofocus" value="commun/bouton.png"/>
+		<param name="texturenofocus_colordiffuse" value="ff8d0204"/>
+	</include>
+		<visible>!String.IsEmpty(ListItem.AddonBroken)</visible>
+	</control>	
 	<control type="button">	
 		<height>22</height>			
 		<width>auto</width>				

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <window type="dialog" id="1222">
 	<backgroundcolor>00X000000</backgroundcolor>
+	<onunload>clearproperty(couleur,home)</onunload>
 	<defaultcontrol always="true">8000</defaultcontrol>
 <controls>
 	<control type="progress" id="1111">
@@ -51,7 +52,7 @@
 		<height>102</height>
 		<aspectratio>stretch</aspectratio>
 		<texturenofocus colordiffuse="00ffffff" border="20">commun/selection.png</texturenofocus>
-		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/selection.png</texturefocus>
+		<texturefocus colordiffuse="$VAR[couleur_dominante]" border="20">commun/selection.png</texturefocus>		
 	</control>
 	<control type="image">	
 		<top>6</top>
@@ -63,26 +64,31 @@
 	</control>
 	</focusedlayout>
 	<content>
-	<item><property name="couleur">00000f</property><onclick>skin.setstring(couleur_base_OSD,$INFO[listitem.property(couleur)])</onclick></item>
-	<item><property name="couleur">1abc9c</property><onclick>skin.setstring(couleur_base_OSD,$INFO[listitem.property(couleur)])</onclick></item>
-	<item><property name="couleur">2ecc71</property><onclick>skin.setstring(couleur_base_OSD,$INFO[listitem.property(couleur)])</onclick></item>
-	<item><property name="couleur">3498db</property><onclick>skin.setstring(couleur_base_OSD,$INFO[listitem.property(couleur)])</onclick></item>
-	<item><property name="couleur">9b59b6</property><onclick>skin.setstring(couleur_base_OSD,$INFO[listitem.property(couleur)])</onclick></item>
-	<item><property name="couleur">34495e</property><onclick>skin.setstring(couleur_base_OSD,$INFO[listitem.property(couleur)])</onclick></item>
-	<item><property name="couleur">16a085</property><onclick>skin.setstring(couleur_base_OSD,$INFO[listitem.property(couleur)])</onclick></item>
-	<item><property name="couleur">ffffff</property><onclick>skin.setstring(couleur_base_OSD,$INFO[listitem.property(couleur)])</onclick></item>
-	<item><property name="couleur">2980b9</property><onclick>skin.setstring(couleur_base_OSD,$INFO[listitem.property(couleur)])</onclick></item>
-	<item><property name="couleur">8e44ad</property><onclick>skin.setstring(couleur_base_OSD,$INFO[listitem.property(couleur)])</onclick></item>
-	<item><property name="couleur">2c3e50</property><onclick>skin.setstring(couleur_base_OSD,$INFO[listitem.property(couleur)])</onclick></item>
-	<item><property name="couleur">f1c40f</property><onclick>skin.setstring(couleur_base_OSD,$INFO[listitem.property(couleur)])</onclick></item>
-	<item><property name="couleur">e67e22</property><onclick>skin.setstring(couleur_base_OSD,$INFO[listitem.property(couleur)])</onclick></item>
-	<item><property name="couleur">e74c3c</property><onclick>skin.setstring(couleur_base_OSD,$INFO[listitem.property(couleur)])</onclick></item>
-	<item><property name="couleur">2F3238</property><onclick>skin.setstring(couleur_base_OSD,$INFO[listitem.property(couleur)])</onclick></item>
-	<item><property name="couleur">95a5a6</property><onclick>skin.setstring(couleur_base_OSD,$INFO[listitem.property(couleur)])</onclick></item>
-	<item><property name="couleur">f39c12</property><onclick>skin.setstring(couleur_base_OSD,$INFO[listitem.property(couleur)])</onclick></item>
-	<item><property name="couleur">c0392b</property><onclick>skin.setstring(couleur_base_OSD,$INFO[listitem.property(couleur)])</onclick></item>
-	<item><property name="couleur">bdc3c7</property><onclick>skin.setstring(couleur_base_OSD,$INFO[listitem.property(couleur)])</onclick></item>
-	<item><property name="couleur">7f8c8d</property><onclick>skin.setstring(couleur_base_OSD,$INFO[listitem.property(couleur)])</onclick></item>
+	<item><visible>string.isequal(window(home).property(couleur),couleur_base_osd)</visible><property name="couleur">00000f</property><onclick>skin.setstring($INFO[window(home).property(couleur)],$INFO[listitem.property(couleur)])</onclick><onclick>control.setfocus(8101)</onclick><onclick>control.setfocus(8101)</onclick></item>
+	<item><visible>string.isequal(window(home).property(couleur),couleur_dominante) | string.isequal(window(home).property(couleur),couleur_encours)</visible><property name="couleur">910d15</property><onclick>skin.setstring($INFO[window(home).property(couleur)],$INFO[listitem.property(couleur)])</onclick><onclick>control.setfocus(8101)</onclick><onclick>control.setfocus(8101)</onclick></item>
+	<item><property name="couleur">1abc9c</property><onclick>skin.setstring($INFO[window(home).property(couleur)],$INFO[listitem.property(couleur)])</onclick><onclick>control.setfocus(8101)</onclick><onclick>control.setfocus(8101)</onclick></item>
+	<item><property name="couleur">2ecc71</property><onclick>skin.setstring($INFO[window(home).property(couleur)],$INFO[listitem.property(couleur)])</onclick><onclick>control.setfocus(8101)</onclick><onclick>control.setfocus(8101)</onclick></item>
+	<item><property name="couleur">3498db</property><onclick>skin.setstring($INFO[window(home).property(couleur)],$INFO[listitem.property(couleur)])</onclick><onclick>control.setfocus(8101)</onclick></item>
+	<item><property name="couleur">9b59b6</property><onclick>skin.setstring($INFO[window(home).property(couleur)],$INFO[listitem.property(couleur)])</onclick><onclick>control.setfocus(8101)</onclick></item>
+	<item><visible>string.isequal(window(home).property(couleur),couleur_base_osd)</visible><property name="couleur">34495e</property><onclick>skin.setstring($INFO[window(home).property(couleur)],$INFO[listitem.property(couleur)])</onclick><onclick>control.setfocus(8101)</onclick></item>
+	<item><visible>string.isequal(window(home).property(couleur),couleur_dominante) | string.isequal(window(home).property(couleur),couleur_encours)</visible><property name="couleur">c8b1ab</property><onclick>skin.setstring($INFO[window(home).property(couleur)],$INFO[listitem.property(couleur)])</onclick><onclick>control.setfocus(8101)</onclick></item>
+	<item><property name="couleur">16a085</property><onclick>skin.setstring($INFO[window(home).property(couleur)],$INFO[listitem.property(couleur)])</onclick><onclick>control.setfocus(8101)</onclick></item>
+	<item><visible>string.isequal(window(home).property(couleur),couleur_base_osd)</visible><property name="couleur">ffffff</property><onclick>skin.setstring($INFO[window(home).property(couleur)],$INFO[listitem.property(couleur)])</onclick><onclick>control.setfocus(8101)</onclick></item>
+	<item><visible>string.isequal(window(home).property(couleur),couleur_dominante) | string.isequal(window(home).property(couleur),couleur_encours)</visible><property name="couleur">a28956</property><onclick>skin.setstring($INFO[window(home).property(couleur)],$INFO[listitem.property(couleur)])</onclick><onclick>control.setfocus(8101)</onclick></item>
+	<item><property name="couleur">2980b9</property><onclick>skin.setstring($INFO[window(home).property(couleur)],$INFO[listitem.property(couleur)])</onclick><onclick>control.setfocus(8101)</onclick></item>
+	<item><property name="couleur">8e44ad</property><onclick>skin.setstring($INFO[window(home).property(couleur)],$INFO[listitem.property(couleur)])</onclick><onclick>control.setfocus(8101)</onclick></item>
+	<item><visible>string.isequal(window(home).property(couleur),couleur_base_osd)</visible><property name="couleur">2c3e50</property><onclick>skin.setstring($INFO[window(home).property(couleur)],$INFO[listitem.property(couleur)])</onclick><onclick>control.setfocus(8101)</onclick></item>
+	<item><visible>string.isequal(window(home).property(couleur),couleur_dominante) | string.isequal(window(home).property(couleur),couleur_encours)</visible><property name="couleur">91946f</property><onclick>skin.setstring($INFO[window(home).property(couleur)],$INFO[listitem.property(couleur)])</onclick><onclick>control.setfocus(8101)</onclick></item>
+	<item><property name="couleur">f1c40f</property><onclick>skin.setstring($INFO[window(home).property(couleur)],$INFO[listitem.property(couleur)])</onclick><onclick>control.setfocus(8101)</onclick></item>
+	<item><property name="couleur">e67e22</property><onclick>skin.setstring($INFO[window(home).property(couleur)],$INFO[listitem.property(couleur)])</onclick><onclick>control.setfocus(8101)</onclick></item>
+	<item><property name="couleur">e74c3c</property><onclick>skin.setstring($INFO[window(home).property(couleur)],$INFO[listitem.property(couleur)])</onclick><onclick>control.setfocus(8101)</onclick></item>
+	<item><visible>string.isequal(window(home).property(couleur),couleur_base_osd)</visible><property name="couleur">2F3238</property><onclick>skin.setstring($INFO[window(home).property(couleur)],$INFO[listitem.property(couleur)])</onclick><onclick>control.setfocus(8101)</onclick></item>
+	<item><visible>string.isequal(window(home).property(couleur),couleur_dominante) | string.isequal(window(home).property(couleur),couleur_encours)</visible><property name="couleur">83babf</property><onclick>skin.setstring($INFO[window(home).property(couleur)],$INFO[listitem.property(couleur)])</onclick><onclick>control.setfocus(8101)</onclick></item>
+	<item><property name="couleur">95a5a6</property><onclick>skin.setstring($INFO[window(home).property(couleur)],$INFO[listitem.property(couleur)])</onclick><onclick>control.setfocus(8101)</onclick></item>
+	<item><property name="couleur">e5a00d</property><onclick>skin.setstring($INFO[window(home).property(couleur)],$INFO[listitem.property(couleur)])</onclick><onclick>control.setfocus(8101)</onclick></item>
+	<item><property name="couleur">c0392b</property><onclick>skin.setstring($INFO[window(home).property(couleur)],$INFO[listitem.property(couleur)])</onclick><onclick>control.setfocus(8101)</onclick></item>
+	<item><property name="couleur">bdc3c7</property><onclick>skin.setstring($INFO[window(home).property(couleur)],$INFO[listitem.property(couleur)])</onclick><onclick>control.setfocus(8101)</onclick></item>
+	<item><property name="couleur">7f8c8d</property><onclick>skin.setstring($INFO[window(home).property(couleur)],$INFO[listitem.property(couleur)])</onclick><onclick>control.setfocus(8101)</onclick></item>
 	</content>
 	</control>
 	<control type="grouplist" id="8100">																										<description>liste boutons</description>	
@@ -104,9 +110,7 @@
 		<param name="align" value="center"/>
 	</include>			
 	</control>
-	</control>	
-	
-	
+	</control>		
 	</control>	
 </controls>
 </window>

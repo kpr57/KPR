@@ -8,8 +8,11 @@
 	<onload condition="string.isempty(skin.string(item_menu_6))">skin.setstring(item_menu_6,meteo)</onload>	
 	<onload condition="string.isEqual(skin.string(weather.fanart.path),)">skin.setString(weather.fanart.path,extras/meteo/fanarts/)</onload>
 	<onload condition="string.isEqual(skin.string(weather.icons.path),)">skin.setString(weather.icons.path,extras/meteo/icones/)</onload>
-	<onload condition="string.isEqual(skin.string(opacite_osd),)">skin.setString(opacite_osd,b3)</onload>
+	<onload condition="string.isEqual(skin.string(opacite_osd),)">skin.setString(opacite_osd,b3)</onload>	
+	<onload condition="string.isEqual(skin.string(opacite_arriere_plan),)">skin.setString(opacite_arriere_plan,e6)</onload>	
 	<onload condition="string.isEqual(skin.string(couleur_base_OSD),)">skin.setString(couleur_base_OSD,2c3e50)</onload>
+	<onload condition="string.isempty(skin.string(arriere_plan_photos))">skin.setString(arriere_plan_photos,special://skin/media/extras/arriere_plans/)</onload>	
+	<onload condition="string.isempty(skin.string(arriere_plan_une_photo))">skin.setString(arriere_plan_une_photo,special://skin/media/extras/arriere_plans/default.jpg)</onload>
 	<onload condition="string.isempty(skin.string(arriere_plan_addon))">skin.setString(arriere_plan_addon,special://skin/media/extras/fallback/addon.jpg)</onload>
 	<onload condition="string.isempty(skin.string(arriere_plan_video))">skin.setString(arriere_plan_video,special://skin/media/extras/fallback/film.jpg)</onload>
 	<onload condition="string.isempty(skin.string(arriere_plan_musique))">skin.setString(arriere_plan_musique,special://skin/media/extras/fallback/musique.jpg)</onload>

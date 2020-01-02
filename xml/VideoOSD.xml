@@ -52,7 +52,7 @@
 		<height>90</height>
 		<aspectratio>stretch</aspectratio>
 		<texture colordiffuse="$VAR[couleur_OSD]">commun/texture.png</texture>
-		<visible>!videoplayer.content(liveTV) + [!player.showinfo | window.isvisible(VideoOSDBookmarks.xml)]</visible>
+		<visible>!videoplayer.content(liveTV) + [[!player.showinfo + ![skin.hassetting(infos_pause) + Player.Paused]] | window.isvisible(VideoOSDBookmarks.xml)]</visible>
 	</control>
 	<control type="image">																														<description>fond lecteur OSD tv</description>
 		<bottom>0</bottom>
@@ -61,7 +61,7 @@
 		<height>150</height>
 		<aspectratio>stretch</aspectratio>
 		<texture colordiffuse="$VAR[couleur_OSD]">commun/texture.png</texture>
-		<visible>videoplayer.content(liveTV) + !player.showinfo</visible>
+		<visible>videoplayer.content(liveTV) + !player.showinfo + ![skin.hassetting(infos_pause) + Player.Paused]</visible>
 		</control>
 	<control type="image">																														<description>fond barres de progression</description>
 		<left>39</left>
@@ -191,6 +191,7 @@
 		<param name="onclick3" value="clearproperty(infos_process,home)"/>
 		<param name="icone1" value="infos_process"/>	
 		<param name="icone2" value="infos_process"/>
+		<param name="enable" value="![skin.hassetting(infos_pause) + Player.Paused]"/>
 	</include>
 	<include content="bouton_lecteur">																											<description>bouton infos</description>
 		<param name="id" value="399"/> 
@@ -198,6 +199,7 @@
 		<param name="onclick2" value="action(info)"/>
 		<param name="icone1" value="info"/>	
 		<param name="icone2" value="info"/>
+		<param name="enable" value="![skin.hassetting(infos_pause) + Player.Paused]"/>
 	</include>
 	<include content="bouton_lecteur">																											<description>bouton epg</description>
 		<param name="id" value="400"/> 
@@ -298,7 +300,8 @@
 	</include>			
 	<include content="bouton_lecteur">																											<description>bouton couleur OSD</description>
 		<param name="id" value="412"/> 
-		<param name="onclick" value="activateWindow(1222)"/>
+		<param name="onclick" value="setproperty(couleur,couleur_base_OSD,home)"/>
+		<param name="onclick2" value="activateWindow(1222)"/>
 		<param name="icone1" value="couleur"/>	
 		<param name="icone2" value="couleur"/>
 	</include>
@@ -346,7 +349,7 @@
 	</control>			
 	</control>	
 	<control type="group">       																												<description>informations lecteur et decoderur TV</description>
-		<visible>!player.showinfo + !window.isvisible(1222) + !window.isvisible(1220) + !window.isvisible(VideoOSDBookmarks.xml) + !window.isvisible(osdsubtitlesettings) + !window.isvisible(DialogSelect.xml) + !window.isvisible(DialogConfirm.xml) + !window.isvisible(dialogsettings.xml) + !window.isvisible(DialogNotification.xml)</visible>
+		<visible>![skin.hassetting(infos_pause) + Player.Paused] + !player.showinfo + !window.isvisible(1222) + !window.isvisible(1220) + !window.isvisible(VideoOSDBookmarks.xml) + !window.isvisible(osdsubtitlesettings) + !window.isvisible(DialogSelect.xml) + !window.isvisible(DialogConfirm.xml) + !window.isvisible(dialogsettings.xml) + !window.isvisible(DialogNotification.xml)</visible>
 		<animation effect="slide" start="0" end="443" time="0" reversible="false" condition="!videoplayer.content(liveTV)">condtitional</animation>
 		<animation effect="fade" start="0" end="100" time="100" reversible="false" condition="string.isequal(window(home).property(infos_process),1)">conditional</animation>
 		<animation effect="fade" start="100" end="0" time="100" reversible="false" condition="!string.isequal(window(home).property(infos_process),1)">conditional</animation>	

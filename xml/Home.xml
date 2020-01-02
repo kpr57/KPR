@@ -41,26 +41,42 @@
 	<defaultcontrol>1000</defaultcontrol>	
 <controls>
 	<include>image_fond</include>		
-	<control type="multiimage" id="67891">																										<description>fanart meteo anime</description>		
-		<animation effect="slide" start="0,0" end="1920,0" time="1" condition="window.isvisible(DialogKeyboard.xml) | window.isvisible(DialogNumeric.xml) | window.isvisible(addoninformation) | window.isvisible(musicinformation) | window.isvisible(movieinformation) | window.isvisible(pvrguideinfo) | window.isvisible(selectdialog) | window.isvisible(contextmenu)" reversible="false">conditional</animation>
+	<control type="group">
+		<animation effect="slide" start="0,0" end="4000,0" time="1" condition="window.isvisible(DialogKeyboard.xml) | window.isvisible(DialogNumeric.xml) | window.isvisible(addoninformation) | window.isvisible(musicinformation) | window.isvisible(movieinformation) | window.isvisible(pvrguideinfo) | window.isvisible(selectdialog) | window.isvisible(contextmenu)" reversible="false">conditional</animation>
 		<animation effect="slide" end="0,0" delay="100" time="1" condition="!window.isvisible(DialogKeyboard.xml) + !window.isvisible(DialogNumeric.xml) + !window.isvisible(addoninformation) + !window.isvisible(musicinformation) + !window.isvisible(movieinformation) + !window.isvisible(pvrguideinfo) + !window.isvisible(selectdialog) + !window.isvisible(contextmenu)" reversible="false">conditional</animation>		
+		<animation effect="zoom" start="110" end="140" center="auto" time="20000" tween="sine" easing="inout" pulse="true" condition="Skin.HasSetting(animation_arriere_plan_photos)">Conditional</animation>
+		<animation effect="slide" start="-50,-50" end="50,50" time="60000" tween="sine" easing="inout" pulse="true" condition="Skin.HasSetting(animation_arriere_plan_photos)">Conditional</animation>
+	<control type="group">	
+		<visible>skin.hassetting(activer_arriere_plan_fanart) + window.isvisible(home) + !string.isequal(window(home).property(menu),$LOCALIZE[31173])</visible>
+	<control type="image" id="67892">																											<description>photo arriere plan</description>		
+		<fadetime>500</fadetime>
+		<aspectratio>scale</aspectratio>
+		<texture>$INFO[listitem.art(thumb)]</texture>		
+	</control>
+	<control type="image" id="67892">																											<description>photo arriere plan</description>		
+		<fadetime>500</fadetime>
+		<aspectratio>scale</aspectratio>
+		<texture>$INFO[listitem.epgeventicon]</texture>
+	</control>
+	<control type="image" id="67892">																											<description>photo arriere plan</description>		
+		<fadetime>500</fadetime>
+		<aspectratio>scale</aspectratio>
+		<texture>$INFO[listitem.art(fanart)]</texture>
+	</control>
+	</control>
+	<control type="multiimage" id="67891">																										<description>dossier photos arriere plan</description>		
 		<timeperimage>5000</timeperimage>
-		<fadetime>2500</fadetime>
+		<fadetime>500</fadetime>
 		<aspectratio>scale</aspectratio>
 		<randomize>true</randomize>
 		<imagepath>$INFO[skin.string(arriere_plan_photos)]</imagepath>
-		<animation effect="zoom" start="110" end="140" center="auto" time="20000" tween="sine" easing="inout" pulse="true" condition="Skin.HasSetting(animation_arriere_plan_photos)">Conditional</animation>
-		<animation effect="slide" start="-50,-50" end="50,50" time="60000" tween="sine" easing="inout" pulse="true" condition="Skin.HasSetting(animation_arriere_plan_photos)">Conditional</animation>
-		<visible>skin.hassetting(activer_arriere_plan_photos) + window.isvisible(home)</visible>
+		<visible>skin.hassetting(activer_arriere_plan_photos) + window.isvisible(home) + !string.isequal(window(home).property(menu),$LOCALIZE[31173])</visible>
 	</control>
-	<control type="image" id="67892">																										<description>fanart meteo anime</description>		
-		<animation effect="slide" start="0,0" end="1920,0" time="1" condition="window.isvisible(DialogKeyboard.xml) | window.isvisible(DialogNumeric.xml) | window.isvisible(addoninformation) | window.isvisible(musicinformation) | window.isvisible(movieinformation) | window.isvisible(pvrguideinfo) | window.isvisible(selectdialog) | window.isvisible(contextmenu)" reversible="false">conditional</animation>
-		<animation effect="slide" end="0,0" delay="100" time="1" condition="!window.isvisible(DialogKeyboard.xml) + !window.isvisible(DialogNumeric.xml) + !window.isvisible(addoninformation) + !window.isvisible(musicinformation) + !window.isvisible(movieinformation) + !window.isvisible(pvrguideinfo) + !window.isvisible(selectdialog) + !window.isvisible(contextmenu)" reversible="false">conditional</animation>		
+	<control type="image" id="67892">																											<description>photo arriere plan</description>		
 		<aspectratio>scale</aspectratio>
 		<texture>$INFO[skin.string(arriere_plan_une_photo)]</texture>
-		<animation effect="zoom" start="110" end="140" center="auto" time="20000" tween="sine" easing="inout" pulse="true" condition="Skin.HasSetting(animation_arriere_plan_photos)">Conditional</animation>
-		<animation effect="slide" start="-50,-50" end="50,50" time="60000" tween="sine" easing="inout" pulse="true" condition="Skin.HasSetting(animation_arriere_plan_photos)">Conditional</animation>
-		<visible>skin.hassetting(activer_arriere_plan_une_photo) + window.isvisible(home)</visible>
+		<visible>skin.hassetting(activer_arriere_plan_une_photo) + window.isvisible(home) + !string.isequal(window(home).property(menu),$LOCALIZE[31173])</visible>
+	</control>
 	</control>
 	<control type="image" id="67890">																											<description>fanart meteo</description>
 		<fadetime>500</fadetime>
@@ -75,29 +91,43 @@
 		<visible>!control.hasfocus(1000) + string.isequal(window(home).property(menu),$LOCALIZE[31173]) + string.isempty(Skin.String(weather.fanart.path))</visible>		
 	</control>
 	<control type="multiimage" id="67890">																										<description>fanart meteo anime</description>		
-		<fadetime>5000</fadetime>
+		<timeperimage>5000</timeperimage>
+		<fadetime>500</fadetime>
 		<imagepath>$INFO[Skin.String(weather.fanart.path),,]$INFO[container(7010).listitem.Property(FanartCode),,]$VAR[extension_fanart_meteo]</imagepath>
 		<visible>!control.hasfocus(1000) + string.isequal(window(home).property(menu),$LOCALIZE[31173]) + [!string.isempty(Skin.String(weather.fanart.path)) + String.contains(Skin.String(weather.fanart.path),multi)]</visible>
 	</control>
 	<control type="image" id="67890">																											<description>fanart meteo</description>
+		<animation effect="slide" start="0,0" end="4000,0" time="1" condition="window.isvisible(DialogKeyboard.xml) | window.isvisible(DialogNumeric.xml) | window.isvisible(addoninformation) | window.isvisible(musicinformation) | window.isvisible(movieinformation) | window.isvisible(pvrguideinfo) | window.isvisible(selectdialog) | window.isvisible(contextmenu)" reversible="false">conditional</animation>
+		<animation effect="slide" end="0,0" delay="100" time="1" condition="!window.isvisible(DialogKeyboard.xml) + !window.isvisible(DialogNumeric.xml) + !window.isvisible(addoninformation) + !window.isvisible(musicinformation) + !window.isvisible(movieinformation) + !window.isvisible(pvrguideinfo) + !window.isvisible(selectdialog) + !window.isvisible(contextmenu)" reversible="false">conditional</animation>		
 		<fadetime>500</fadetime>
 		<aspectratio>scale</aspectratio>	
 		<texture>$INFO[Skin.String(weather.fanart.path),,]$INFO[Weather.fanartcode,,]$VAR[extension_fanart_meteo]</texture>		
-		<visible>control.hasfocus(1000) + string.isequal(window(home).property(menu),$LOCALIZE[31173]) + [!string.isempty(Skin.String(weather.fanart.path)) + !String.contains(Skin.String(weather.fanart.path),multi)]</visible>
+		<animation effect="zoom" start="110" end="140" center="auto" time="20000" tween="sine" easing="inout" pulse="true" condition="Skin.HasSetting(animation_arriere_plan_photos)">Conditional</animation>
+		<animation effect="slide" start="-50,-50" end="50,50" time="60000" tween="sine" easing="inout" pulse="true" condition="Skin.HasSetting(animation_arriere_plan_photos)">Conditional</animation>
+		<visible>[[skin.hassetting(activer_arriere_plan_meteo) + !string.isequal(window(home).property(menu),$LOCALIZE[31173])] | [control.hasfocus(1000) + string.isequal(window(home).property(menu),$LOCALIZE[31173])]] + [!string.isempty(Skin.String(weather.fanart.path)) + !String.contains(Skin.String(weather.fanart.path),multi)]</visible>
 	</control>
 	<control type="image" id="67890">																											<description>fanart meteo par defaut</description>
+		<animation effect="slide" start="0,0" end="4000,0" time="1" condition="window.isvisible(DialogKeyboard.xml) | window.isvisible(DialogNumeric.xml) | window.isvisible(addoninformation) | window.isvisible(musicinformation) | window.isvisible(movieinformation) | window.isvisible(pvrguideinfo) | window.isvisible(selectdialog) | window.isvisible(contextmenu)" reversible="false">conditional</animation>
+		<animation effect="slide" end="0,0" delay="100" time="1" condition="!window.isvisible(DialogKeyboard.xml) + !window.isvisible(DialogNumeric.xml) + !window.isvisible(addoninformation) + !window.isvisible(musicinformation) + !window.isvisible(movieinformation) + !window.isvisible(pvrguideinfo) + !window.isvisible(selectdialog) + !window.isvisible(contextmenu)" reversible="false">conditional</animation>		
 		<fadetime>500</fadetime>
 		<aspectratio>scale</aspectratio>	
 		<texture>extras/meteo/fanarts/$INFO[Weather.fanartcode,,]$VAR[extension_fanart_meteo]</texture>		
-		<visible>control.hasfocus(1000) + string.isequal(window(home).property(menu),$LOCALIZE[31173]) + string.isempty(Skin.String(weather.fanart.path))</visible>		
+		<animation effect="zoom" start="110" end="140" center="auto" time="20000" tween="sine" easing="inout" pulse="true" condition="Skin.HasSetting(animation_arriere_plan_photos)">Conditional</animation>
+		<animation effect="slide" start="-50,-50" end="50,50" time="60000" tween="sine" easing="inout" pulse="true" condition="Skin.HasSetting(animation_arriere_plan_photos)">Conditional</animation>
+		<visible>[[skin.hassetting(activer_arriere_plan_meteo) + !string.isequal(window(home).property(menu),$LOCALIZE[31173])] | [control.hasfocus(1000) + string.isequal(window(home).property(menu),$LOCALIZE[31173])]] + string.isempty(Skin.String(weather.fanart.path))</visible>		
 	</control>
 	<control type="multiimage" id="67890">																										<description>fanart meteo anime</description>		
-		<fadetime>5000</fadetime>
+		<animation effect="slide" start="0,0" end="4000,0" time="1" condition="window.isvisible(DialogKeyboard.xml) | window.isvisible(DialogNumeric.xml) | window.isvisible(addoninformation) | window.isvisible(musicinformation) | window.isvisible(movieinformation) | window.isvisible(pvrguideinfo) | window.isvisible(selectdialog) | window.isvisible(contextmenu)" reversible="false">conditional</animation>
+		<animation effect="slide" end="0,0" delay="100" time="1" condition="!window.isvisible(DialogKeyboard.xml) + !window.isvisible(DialogNumeric.xml) + !window.isvisible(addoninformation) + !window.isvisible(musicinformation) + !window.isvisible(movieinformation) + !window.isvisible(pvrguideinfo) + !window.isvisible(selectdialog) + !window.isvisible(contextmenu)" reversible="false">conditional</animation>		
+		<timeperimage>5000</timeperimage>
+		<fadetime>500</fadetime>
 		<imagepath>$INFO[Skin.String(weather.fanart.path),,]$INFO[Weather.fanartcode,,]$VAR[extension_fanart_meteo]</imagepath>
-		<visible>control.hasfocus(1000) + string.isequal(window(home).property(menu),$LOCALIZE[31173]) + [!string.isempty(Skin.String(weather.fanart.path)) + String.contains(Skin.String(weather.fanart.path),multi)]</visible>
+		<animation effect="zoom" start="110" end="140" center="auto" time="20000" tween="sine" easing="inout" pulse="true" condition="Skin.HasSetting(animation_arriere_plan_photos)">Conditional</animation>
+		<animation effect="slide" start="-50,-50" end="50,50" time="60000" tween="sine" easing="inout" pulse="true" condition="Skin.HasSetting(animation_arriere_plan_photos)">Conditional</animation>
+		<visible>[[skin.hassetting(activer_arriere_plan_meteo) + !string.isequal(window(home).property(menu),$LOCALIZE[31173])] | [control.hasfocus(1000) + string.isequal(window(home).property(menu),$LOCALIZE[31173])]] + [!string.isempty(Skin.String(weather.fanart.path)) + String.contains(Skin.String(weather.fanart.path),multi)]</visible>
 	</control>	
 	<control type="image">																														<description>masque fond si meteo</description>	
-		<texture colordiffuse="ebffffff">commun/fond.png</texture>
+		<texture colordiffuse="$VAR[masque]">commun/fond.png</texture>
 		<visible>control.isVisible(67890) | control.isVisible(67891) | control.isVisible(67892)</visible>	
 	</control>
 	<control type="label" id="123456">																											<description>label pour tester si dvd ou pas</description>

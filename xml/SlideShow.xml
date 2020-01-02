@@ -3,7 +3,7 @@
 	<backgroundcolor>00X000000</backgroundcolor>		
 	<animation effect="fade" start="100" end="99" time="200" reversible="false">windowclose</animation>
 	<onload condition="string.isequal(window(home).property(infos_diaporama),1)">alarmclock(alar,action(info),00:00,silent)</onload>		
-	<onunload>alarmclock(alarme,control.setfocus(1225),00:00,silent)</onunload>
+	<onunload condition="window.isvisible(1224)">alarmclock(alarme,control.setfocus(1225),00:00,silent)</onunload>
 <controls>
 	<control type="image">																												<description>masque arriere plan video</description>
 		<aspectratio>scale</aspectratio>
