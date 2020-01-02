@@ -1,21 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>	
-	<!--  A FAIRE IMPERATIVEMENT 
-	
-	A mettre sur Github >>>> 
-	medias/extras/fallback/arriere_plans  >>>>>>  OK FAIT
-	home.xml
-	SkinSettings.xml
-	SlideShow.xml
-	Startup.xml	
-	
-	!!!!!! le mieux est de copier tous le dosier xml !!!!!!
-	
-	+ les fichiers langage !!!
-	
-	-->	
-	
-	
 	<backgroundcolor>00X000000</backgroundcolor>
 	<onload condition="string.isempty(window(home).property(groupes_tv))">setproperty(groupes_tv,pvr://channels/tv/123456,home)</onload>	
 	<onload condition="string.isempty(window(home).property(groupes_tv))">setproperty(groupes_tv,pvr://channels/tv/,home)</onload>		
@@ -36,8 +20,6 @@
 	<onload condition="!string.isempty(window(home).property(parametres_menu))">control.setfocus(1555)</onload>
 	<onload condition="string.isequal(window(home).property(parametres_menu),2)">alarmclock(pm,control.setfocus(1556),00:00,silent)</onload>
 	<onload condition="string.isequal(window(home).property(parametres_menu),3)">alarmclock(pm,control.setfocus(1557),00:00,silent)</onload>
-	
-	
 	<defaultcontrol>1000</defaultcontrol>	
 <controls>
 	<include>image_fond</include>		
