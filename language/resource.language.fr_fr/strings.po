@@ -832,6 +832,10 @@ msgctxt "#31372"
 msgid "Use a fanart as background for the interface when it is available"
 msgstr "Utiliser un fanart comme arriere plan de l'interface si disponible"
 
+msgctxt "#31373"
+msgid "Display video/TV information when the player is paused"
+msgstr "Afficher les informations vidéo/TV quand le lecteur est en pause"
+
 
 #: ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------kodi estuary (31001 - 31167)
 
