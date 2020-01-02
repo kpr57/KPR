@@ -549,35 +549,35 @@ msgid "No update available"
 msgstr "Aucune mise à jour disponible"
 
 msgctxt "#31302"
-msgid "Uninstall this extension"
+msgid "Uninstall this add-on"
 msgstr "Désinstaller cette extension"
 
 msgctxt "#31303"
-msgid "Install this extension"
+msgid "Install this add-on"
 msgstr "Installer cette extension"
 
 msgctxt "#31304"
-msgid "Enable this extension"
+msgid "Enable this add-on"
 msgstr "Désactiver cette extension"
 
 msgctxt "#31305"
-msgid "Disable this extension"
+msgid "Disable this add-on"
 msgstr "Activer cette extension"
 
 msgctxt "#31306"
-msgid "Update this extension"
+msgid "Update this add-on"
 msgstr "Mettre à jour cette extension"
 
 msgctxt "#31307"
-msgid "Access extension settings"
+msgid "Access add-ons settings"
 msgstr "Accéder aux paramètres de l'extension"
 
 msgctxt "#31308"
-msgid "Access the dependencies of the extension"
+msgid "Access the dependencies of the add-on"
 msgstr "Accéder aux dépendances de l'extension"
 
 msgctxt "#31309"
-msgid "Use this extension"
+msgid "Use this add-on"
 msgstr "Utiliser cette extension"
 
 msgctxt "#31310"
@@ -771,6 +771,67 @@ msgstr "Passer en mode plein ecran en cliquant sur un widget chansons"
 msgctxt "#31357"
 msgid "Switch to full screen mode"
 msgstr "Passer en mode plein ecran"
+
+msgctxt "#31358"
+msgid "Use a photo folder as background for the interface"
+msgstr "Utiliser un dossier de photos comme arriere plan de l'interface"
+
+msgctxt "#31359"
+msgid "Photo folder to use"
+msgstr "Dossier de photos à utiliser"
+
+msgctxt "#31360"
+msgid "Animate the photos of the background of the interface"
+msgstr "Animer les photos de l'arriere plan de l'interface"
+
+msgctxt "#31361"
+msgid "Use a single photo as background for the interface"
+msgstr "Utiliser une photo unique comme arriere plan de l'interface"
+
+msgctxt "#31362"
+msgid "Photo to use"
+msgstr "Photo à utiliser"
+
+msgctxt "#31363"
+msgid "Add-on not installed"
+msgstr "Extension non installée"
+
+msgctxt "#31364"
+msgid "Add-on marked broken"
+msgstr "Extension signalé défaillante"
+
+msgctxt "#31365"
+msgid "Background options"
+msgstr "Options de l'arriere plan"
+
+msgctxt "#31366"
+msgid "Background mask opacity"
+msgstr "Opacité du masque d'arriere plan"
+
+msgctxt "#31367"
+msgid "Default background"
+msgstr "Arriere plan par défaut"
+
+msgctxt "#31368"
+msgid "Use actual weather fanart as background for the interface"
+msgstr "Utiliser le fanart de la météo actuelle comme arriere plan de l'interface"
+
+msgctxt "#31369"
+msgid "Color options"
+msgstr "Options de couleur"
+
+msgctxt "#31370"
+msgid "Dominant interface color"
+msgstr "Couleur dominante de l'interface"
+
+msgctxt "#31371"
+msgid "Background color of information \"in progress \" \"number of views\"..."
+msgstr "Couleur de fond des informations \"en cours\" \"nombre de vues\"..."
+
+msgctxt "#31372"
+msgid "Use a fanart as background for the interface when it is available"
+msgstr "Utiliser un fanart comme arriere plan de l'interface si disponible"
+
 
 #: ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------kodi estuary (31001 - 31167)
 

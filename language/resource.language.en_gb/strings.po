@@ -464,7 +464,7 @@ msgid "Check for available updates"
 msgstr ""
 
 msgctxt "#31281"
-msgid "Access extensions settings"
+msgid "Access add-ons settings"
 msgstr ""
 
 msgctxt "#31282"
@@ -548,35 +548,35 @@ msgid "No update available"
 msgstr ""
 
 msgctxt "#31302"
-msgid "Uninstall this extension"
+msgid "Uninstall this add-on"
 msgstr ""
 
 msgctxt "#31303"
-msgid "Install this extension"
+msgid "Install this add-on"
 msgstr ""
 
 msgctxt "#31304"
-msgid "Enable this extension"
+msgid "Enable this add-on"
 msgstr ""
 
 msgctxt "#31305"
-msgid "Disable this extension"
+msgid "Disable this add-on"
 msgstr ""
 
 msgctxt "#31306"
-msgid "Update this extension"
+msgid "Update this add-on"
 msgstr ""
 
 msgctxt "#31307"
-msgid "Access extension settings"
+msgid "Access add-ons settings"
 msgstr ""
 
 msgctxt "#31308"
-msgid "Access the dependencies of the extension"
+msgid "Access the dependencies of the add-on"
 msgstr ""
 
 msgctxt "#31309"
-msgid "Use this extension"
+msgid "Use this add-on"
 msgstr ""
 
 msgctxt "#31310"
@@ -769,6 +769,66 @@ msgstr ""
 
 msgctxt "#31357"
 msgid "Switch to full screen mode"
+msgstr ""
+
+msgctxt "#31358"
+msgid "Use a photo folder as background for the interface"
+msgstr ""
+
+msgctxt "#31359"
+msgid "Photo folder to use"
+msgstr ""
+
+msgctxt "#31360"
+msgid "Animate the photos of the background of the interface"
+msgstr ""
+
+msgctxt "#31361"
+msgid "Use a single photo as background for the interface"
+msgstr ""
+
+msgctxt "#31362"
+msgid "Photo to use"
+msgstr ""
+
+msgctxt "#31363"
+msgid "Add-on not installed"
+msgstr ""
+
+msgctxt "#31364"
+msgid "Add-on marked broken"
+msgstr ""
+
+msgctxt "#31365"
+msgid "Background options"
+msgstr ""
+
+msgctxt "#31366"
+msgid "Background mask opacity"
+msgstr ""
+
+msgctxt "#31367"
+msgid "Default background"
+msgstr ""
+
+msgctxt "#31368"
+msgid "Use actual weather fanart as background for the interface"
+msgstr ""
+
+msgctxt "#31369"
+msgid "Color options"
+msgstr ""
+
+msgctxt "#31370"
+msgid "Dominant interface color"
+msgstr ""
+
+msgctxt "#31371"
+msgid "Background color of information \"in progress \" \"number of views\"..."
+msgstr ""
+
+msgctxt "#31372"
+msgid "Use a fanart as background for the interface when it is available"
 msgstr ""
 
 #: ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------kodi estuary (31001 - 31167)
