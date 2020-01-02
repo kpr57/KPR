@@ -2,9 +2,17 @@
 <window>	
 	<!--  A FAIRE IMPERATIVEMENT 
 	
-	Mettre un bouton lecture dans les infos si option "afficher les informations" par défaut dans Kodi.
-	Creer un nom de dossier avec des virgules contenant des videos pour voir le probleme.
-		
+	A mettre sur Github >>>> 
+	medias/extras/fallback/arriere_plans  >>>>>>  OK FAIT
+	home.xml
+	SkinSettings.xml
+	SlideShow.xml
+	Startup.xml	
+	
+	!!!!!! le mieux est de copier tous le dosier xml !!!!!!
+	
+	+ les fichiers langage !!!
+	
 	-->	
 	
 	
@@ -33,6 +41,27 @@
 	<defaultcontrol>1000</defaultcontrol>	
 <controls>
 	<include>image_fond</include>		
+	<control type="multiimage" id="67891">																										<description>fanart meteo anime</description>		
+		<animation effect="slide" start="0,0" end="1920,0" time="1" condition="window.isvisible(DialogKeyboard.xml) | window.isvisible(DialogNumeric.xml) | window.isvisible(addoninformation) | window.isvisible(musicinformation) | window.isvisible(movieinformation) | window.isvisible(pvrguideinfo) | window.isvisible(selectdialog) | window.isvisible(contextmenu)" reversible="false">conditional</animation>
+		<animation effect="slide" end="0,0" delay="100" time="1" condition="!window.isvisible(DialogKeyboard.xml) + !window.isvisible(DialogNumeric.xml) + !window.isvisible(addoninformation) + !window.isvisible(musicinformation) + !window.isvisible(movieinformation) + !window.isvisible(pvrguideinfo) + !window.isvisible(selectdialog) + !window.isvisible(contextmenu)" reversible="false">conditional</animation>		
+		<timeperimage>5000</timeperimage>
+		<fadetime>2500</fadetime>
+		<aspectratio>scale</aspectratio>
+		<randomize>true</randomize>
+		<imagepath>$INFO[skin.string(arriere_plan_photos)]</imagepath>
+		<animation effect="zoom" start="110" end="140" center="auto" time="20000" tween="sine" easing="inout" pulse="true" condition="Skin.HasSetting(animation_arriere_plan_photos)">Conditional</animation>
+		<animation effect="slide" start="-50,-50" end="50,50" time="60000" tween="sine" easing="inout" pulse="true" condition="Skin.HasSetting(animation_arriere_plan_photos)">Conditional</animation>
+		<visible>skin.hassetting(activer_arriere_plan_photos) + window.isvisible(home)</visible>
+	</control>
+	<control type="image" id="67892">																										<description>fanart meteo anime</description>		
+		<animation effect="slide" start="0,0" end="1920,0" time="1" condition="window.isvisible(DialogKeyboard.xml) | window.isvisible(DialogNumeric.xml) | window.isvisible(addoninformation) | window.isvisible(musicinformation) | window.isvisible(movieinformation) | window.isvisible(pvrguideinfo) | window.isvisible(selectdialog) | window.isvisible(contextmenu)" reversible="false">conditional</animation>
+		<animation effect="slide" end="0,0" delay="100" time="1" condition="!window.isvisible(DialogKeyboard.xml) + !window.isvisible(DialogNumeric.xml) + !window.isvisible(addoninformation) + !window.isvisible(musicinformation) + !window.isvisible(movieinformation) + !window.isvisible(pvrguideinfo) + !window.isvisible(selectdialog) + !window.isvisible(contextmenu)" reversible="false">conditional</animation>		
+		<aspectratio>scale</aspectratio>
+		<texture>$INFO[skin.string(arriere_plan_une_photo)]</texture>
+		<animation effect="zoom" start="110" end="140" center="auto" time="20000" tween="sine" easing="inout" pulse="true" condition="Skin.HasSetting(animation_arriere_plan_photos)">Conditional</animation>
+		<animation effect="slide" start="-50,-50" end="50,50" time="60000" tween="sine" easing="inout" pulse="true" condition="Skin.HasSetting(animation_arriere_plan_photos)">Conditional</animation>
+		<visible>skin.hassetting(activer_arriere_plan_une_photo) + window.isvisible(home)</visible>
+	</control>
 	<control type="image" id="67890">																											<description>fanart meteo</description>
 		<fadetime>500</fadetime>
 		<aspectratio>scale</aspectratio>	
@@ -69,7 +98,7 @@
 	</control>	
 	<control type="image">																														<description>masque fond si meteo</description>	
 		<texture colordiffuse="ebffffff">commun/fond.png</texture>
-		<visible>control.isVisible(67890)</visible>	
+		<visible>control.isVisible(67890) | control.isVisible(67891) | control.isVisible(67892)</visible>	
 	</control>
 	<control type="label" id="123456">																											<description>label pour tester si dvd ou pas</description>
 		<left>-3000</left>
@@ -367,7 +396,7 @@
 	<focusedlayout height="122">
 	<control type="button">
 		<onfocus>cancelalarm(actualiser_widget_tv,silent)</onfocus>			
-		<onfocus condition="string.isequal(listitem.label,$LOCALIZE[31171])">alarmclock(actualiser_widget_tv,activatewindow(1299),00:02,loop,silent)</onfocus>
+		<onfocus condition="string.isequal(listitem.label,$LOCALIZE[31171])">alarmclock(actualiser_widget_tv,activatewindow(1299),00:05,loop,silent)</onfocus>
 		<onfocus>setproperty(menu,$INFO[container(1000).listitem.label],home)</onfocus>
 	</control>
 	<control type="group">
@@ -1886,7 +1915,7 @@
 		<param name="icone1" value="menus/recherche.png"/>
 		<param name="icone2" value="menus/recherche.png"/>
 		<param name="onfocus" value="cancelalarm(actualiser_widget_tv,silent)"/>
-		<param name="onfocus2" value="alarmclock(actualiser_widget_tv,activatewindow(1299),00:02,loop,silent)"/>
+		<param name="onfocus2" value="alarmclock(actualiser_widget_tv,activatewindow(1299),00:05,loop,silent)"/>
 		<param name="onfocus3" value="skin.setstring(temp,)"/>
 		<param name="onclick" value="setproperty(recherche,1,home)"/>
 		<param name="onclick2" value="skin.setstring(temp)"/>
@@ -1897,7 +1926,7 @@
 		<param name="width" value="auto"/>
 		<param name="label" value="$INFO[container(6800).listitem.label]"/>
 		<param name="onfocus" value="cancelalarm(actualiser_widget_tv,silent)"/>
-		<param name="onfocus2" value="alarmclock(actualiser_widget_tv,activatewindow(1299),00:02,loop,silent)"/>
+		<param name="onfocus2" value="alarmclock(actualiser_widget_tv,activatewindow(1299),00:05,loop,silent)"/>
 		<param name="onclick" value="Control.Move(6800,1)"/>
 		<param name="onclick2" value="setproperty(chemin_widget_tv,pvr://channels/tv/123456,home)"/>
 		<param name="onclick3" value="alarmclock(alarme,setproperty(chemin_widget_tv,pvr://channels/tv/$INFO[container(6800).listitem.label],home),00:00,silent)"/>
@@ -1908,7 +1937,7 @@
 		<param name="width" value="auto"/>
 		<param name="label" value="$LOCALIZE[31260]"/>
 		<param name="onfocus" value="cancelalarm(actualiser_widget_tv,silent)"/>
-		<param name="onfocus2" value="alarmclock(actualiser_widget_tv,activatewindow(1299),00:02,loop,silent)"/>
+		<param name="onfocus2" value="alarmclock(actualiser_widget_tv,activatewindow(1299),00:05,loop,silent)"/>
 		<param name="onclick" value="skin.setpath(chemin_logos_tv)"/>
 		<param name="ondown" value="6111"/>		
 	</include>	
@@ -1917,7 +1946,7 @@
 		<param name="icone1" value="icones/lire_disque.png"/>
 		<param name="icone2" value="icones/lire_disque.png"/>
 		<param name="onfocus" value="cancelalarm(actualiser_widget_tv,silent)"/>
-		<param name="onfocus2" value="alarmclock(actualiser_widget_tv,activatewindow(1299),00:02,loop,silent)"/>
+		<param name="onfocus2" value="alarmclock(actualiser_widget_tv,activatewindow(1299),00:05,loop,silent)"/>
 		<param name="onclick" value="PlayDisc"/>
 		<param name="ondown" value="6111"/>
 		<param name="visible" value="!string.isempty(control.getlabel(123456))"/>		
@@ -1927,7 +1956,7 @@
 		<param name="icone1" value="icones/ejecter_disque.png"/>
 		<param name="icone2" value="icones/ejecter_disque.png"/>
 		<param name="onfocus" value="cancelalarm(actualiser_widget_tv,silent)"/>
-		<param name="onfocus2" value="alarmclock(actualiser_widget_tv,activatewindow(1299),00:02,loop,silent)"/>
+		<param name="onfocus2" value="alarmclock(actualiser_widget_tv,activatewindow(1299),00:05,loop,silent)"/>
 		<param name="onclick" value="control.setfocus(6103)"/>
 		<param name="onclick2" value="PlayerControl(stop)"/>
 		<param name="onclick3" value="EjectTray()"/>
@@ -1939,7 +1968,7 @@
 		<param name="icone1" value="icones/pause.png"/>
 		<param name="icone2" value="icones/play.png"/>
 		<param name="onfocus" value="cancelalarm(actualiser_widget_tv,silent)"/>
-		<param name="onfocus2" value="alarmclock(actualiser_widget_tv,activatewindow(1299),00:02,loop,silent)"/>
+		<param name="onfocus2" value="alarmclock(actualiser_widget_tv,activatewindow(1299),00:05,loop,silent)"/>
 		<param name="onclick" value="PlayerControl(Play)"/>
 		<param name="ondown" value="6111"/>
 		<param name="selected" value="!Player.Paused"/>
@@ -1950,7 +1979,7 @@
 		<param name="icone1" value="icones/stop.png"/>
 		<param name="icone2" value="icones/stop.png"/>
 		<param name="onfocus" value="cancelalarm(actualiser_widget_tv,silent)"/>
-		<param name="onfocus2" value="alarmclock(actualiser_widget_tv,activatewindow(1299),00:02,loop,silent)"/>
+		<param name="onfocus2" value="alarmclock(actualiser_widget_tv,activatewindow(1299),00:05,loop,silent)"/>
 		<param name="onclick" value="control.setfocus(6103)"/>
 		<param name="onclick2" value="alarmclock(stop,PlayerControl(stop),00:00,silent)"/>
 		<param name="ondown" value="6111"/>
@@ -2035,7 +2064,7 @@
 		<onfocus>clearproperty(image,home)</onfocus>
 		<onfocus>clearproperty(label,home)</onfocus>		
 		<onfocus>cancelalarm(actualiser_widget_tv,silent)</onfocus>	
-		<onfocus>alarmclock(actualiser_widget_tv,activatewindow(1299),00:02,loop,silent)</onfocus>
+		<onfocus>alarmclock(actualiser_widget_tv,activatewindow(1299),00:05,loop,silent)</onfocus>
 	<include content="bouton">																										
 		<param name="width" value="290"/> 
 		<param name="height" value="60"/>
@@ -2367,7 +2396,7 @@
 		<onfocus>setproperty(image,$INFO[container(6012).listitem.epgeventicon],home)</onfocus>
 		<onfocus>setproperty(label,[CAPITALIZE][LOWERCASE]$INFO[container(6012).listitem.label][/LOWERCASE][/CAPITALIZE] • $INFO[listitem.title],home)</onfocus>
 		<onfocus>cancelalarm(actualiser_widget_tv,silent)</onfocus>	
-		<onfocus>alarmclock(actualiser_widget_tv,activatewindow(1299),00:02,loop,silent)</onfocus>		
+		<onfocus>alarmclock(actualiser_widget_tv,activatewindow(1299),00:05,loop,silent)</onfocus>		
 	</control>
 	<control type="group">																														<description>liste des chaines</description>		
 		<width>250</width>	

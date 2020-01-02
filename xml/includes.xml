@@ -3326,7 +3326,7 @@
 		<ondown>$PARAM[ondown]</ondown>
 		<onleft>1000</onleft>
 		<onfocus condition="string.isequal(window(home).property(menu),$LOCALIZE[31171])">cancelalarm(actualiser_widget_tv,silent)</onfocus>	
-		<onfocus condition="string.isequal(window(home).property(menu),$LOCALIZE[31171])">alarmclock(actualiser_widget_tv,activatewindow(1299),00:02,loop,silent)</onfocus><onclick>action(fullscreen)</onclick>
+		<onfocus condition="string.isequal(window(home).property(menu),$LOCALIZE[31171])">alarmclock(actualiser_widget_tv,activatewindow(1299),00:05,loop,silent)</onfocus><onclick>action(fullscreen)</onclick>
 		<right>50</right>
 		<top>20</top>
 		<width>473</width>
