@@ -296,6 +296,8 @@
 		<height>880</height>		
 		<onright>60</onright>
 		<onleft>200</onleft>
+		<onclick condition="$EXP[recherche_est_une_chanson] + skin.hassetting(chanson_plein_ecran)">alarmclock(a5,action(fullscreen),00:01,silent)</onclick>
+		<onclick condition="$EXP[recherche_est_une_chanson] + skin.hassetting(chanson_plein_ecran)">playmedia($ESCINFO[ListItem.FileNameAndPath])</onclick>		
 		<pagecontrol>60</pagecontrol>
 		<scrolltime tween="cubic" easing="out">500</scrolltime>		
 	<itemlayout height="80">					
